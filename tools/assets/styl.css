@@ -1673,3 +1673,6 @@ h3:hover .kotva { opacity: 1; }
 @media (max-width: 40rem) {
   .ucet-panel { right: 1rem; }
 }
+
+/* Odkazy na lokální testy: viditelné jen na disku a na localhostu (skript.js). */
+[data-jen-lokalne][hidden] { display: none !important; }

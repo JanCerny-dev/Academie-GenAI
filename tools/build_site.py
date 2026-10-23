@@ -226,7 +226,7 @@ def prehled_postupu(web: Web, postup: dict) -> str:
 def stranka_uvodu(web: Web, cesty_, varovani: list[str], souhrn: dict, postup: dict) -> str:
     slov = sum(d.slova_zdroje for d in web.dokumenty.values())
     plan = studijni_plan(cesty_.readme, varovani)
-    lokalni = ('<li><strong>Lokální testy</strong> — otázky z placených kurzů Udemy, jen na tomto počítači, '
+    lokalni = ('<li data-jen-lokalne hidden><strong>Lokální testy</strong> — otázky z placených kurzů Udemy, jen na tomto počítači, '
                '<a href="lokalni/index.html">otevřít</a>.</li>') if web.lokalni else ""
     stav = []
     if web.dokumenty:

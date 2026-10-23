@@ -368,7 +368,17 @@
     });
   }
 
+  /* --- odkazy na lokální testy jen na tomto počítači ---------------------- */
+
+  /* web/lokalni/ se nepublikuje, na GitHub Pages by odkaz vedl na 404. */
+  function nastavLokalni() {
+    var h = location.hostname;
+    if (location.protocol !== "file:" && h !== "localhost" && h !== "127.0.0.1") return;
+    [].forEach.call(document.querySelectorAll("[data-jen-lokalne]"), function (x) { x.hidden = false; });
+  }
+
   function start() {
+    nastavLokalni();
     nastavTema();
     nastavVysledky();
     nastavPodmenu();

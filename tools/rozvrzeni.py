@@ -65,7 +65,9 @@ class Web:
             polozky.append(f'<li><a href="{koren}{cil}"{aktualni}><b>{k}</b> {e(KAPITOLY[k]["kratce"])}</a></li>')
         podmenu = (f'<ul class="podmenu" id="podmenu-kapitoly" aria-label="Seznam kapitol">{"".join(polozky)}</ul>'
                    if polozky else "")
-        lokalni = odkaz("lokalni/index.html", "Lokální testy", "lokalni", "lokalni-odkaz") if self.lokalni else ""
+        # Lokální část se nepublikuje: odkaz je skrytý a skript.js ho ukáže jen na disku a na localhostu.
+        lokalni = (odkaz("lokalni/index.html", "Lokální testy", "lokalni", "lokalni-odkaz")
+                   .replace("<a ", "<a data-jen-lokalne hidden ", 1) if self.lokalni else "")
         return f"""<a class="preskocit" href="#text">Přeskočit na text</a>
 <div class="postup" aria-hidden="true"></div>
 <header class="hlavicka">
