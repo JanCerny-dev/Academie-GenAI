@@ -1,0 +1,14 @@
+rules_version = '2';
+// Pravidla Firestore pro web CT-GenAI (assets/ucet.js).
+// Každý přihlášený uživatel smí jen svůj dokument uzivatele/{uid} se třemi poli.
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /uzivatele/{uid} {
+      allow read, delete: if request.auth != null && request.auth.uid == uid;
+      allow create, update: if request.auth != null && request.auth.uid == uid
+                            && request.resource.data.keys().hasOnly(['stav', 'casy', 'upraveno'])
+                            && request.resource.data.stav is string
+                            && request.resource.data.casy is string;
+    }
+  }
+}

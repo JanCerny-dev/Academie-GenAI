@@ -1,0 +1,1897 @@
+{
+ "popis": "Testovací Udemy",
+ "zdroj": "podraza-practice",
+ "testy": [
+  {
+   "nazev": "Practice Test 1",
+   "otazky": [
+    {
+     "id": "UD-TEST-001",
+     "zdroj": "podraza-practice",
+     "lo": "GenAI-1.1.1",
+     "k": "K1",
+     "body": 1,
+     "vyber": 1,
+     "keep_order": false,
+     "en": {
+      "q": "<p>Udemy-only question number 1 that must never leave the local folder?</p>",
+      "moznosti": [
+       "Answer text 1 of UD-TEST-001",
+       "Answer text 2 of UD-TEST-001",
+       "Answer text 3 of UD-TEST-001",
+       "Answer text 4 of UD-TEST-001"
+      ],
+      "vysvetleni": {
+       "a": "Correct.",
+       "b": "Incorrect.",
+       "c": "Incorrect.",
+       "d": "Incorrect."
+      },
+      "vysvetleni_obecne": "<p>General explanation.</p>"
+     },
+     "cz": {
+      "q": "<p>Testovací otázka UD-TEST-001 k GenAI-1.1.1?</p>",
+      "moznosti": [
+       "Text odpovědi 1 otázky UD-TEST-001",
+       "Text odpovědi 2 otázky UD-TEST-001",
+       "Text odpovědi 3 otázky UD-TEST-001",
+       "Text odpovědi 4 otázky UD-TEST-001"
+      ],
+      "vysvetleni": {
+       "a": "Správně.",
+       "b": "Špatně.",
+       "c": "Špatně.",
+       "d": "Špatně."
+      },
+      "vysvetleni_obecne": "<p>Obecné vysvětlení.</p>"
+     },
+     "spravne": [
+      "a"
+     ],
+     "oddil": "1.1.1",
+     "poznamka": ""
+    },
+    {
+     "id": "UD-TEST-002",
+     "zdroj": "podraza-practice",
+     "lo": "GenAI-1.1.2",
+     "k": "K2",
+     "body": 1,
+     "vyber": 1,
+     "keep_order": false,
+     "en": {
+      "q": "<p>Udemy-only question number 2 that must never leave the local folder?</p>",
+      "moznosti": [
+       "Answer text 1 of UD-TEST-002",
+       "Answer text 2 of UD-TEST-002",
+       "Answer text 3 of UD-TEST-002",
+       "Answer text 4 of UD-TEST-002"
+      ],
+      "vysvetleni": {
+       "a": "Incorrect.",
+       "b": "Correct.",
+       "c": "Incorrect.",
+       "d": "Incorrect."
+      },
+      "vysvetleni_obecne": "<p>General explanation.</p>"
+     },
+     "cz": {
+      "q": "<p>Testovací otázka UD-TEST-002 k GenAI-1.1.2?</p>",
+      "moznosti": [
+       "Text odpovědi 1 otázky UD-TEST-002",
+       "Text odpovědi 2 otázky UD-TEST-002",
+       "Text odpovědi 3 otázky UD-TEST-002",
+       "Text odpovědi 4 otázky UD-TEST-002"
+      ],
+      "vysvetleni": {
+       "a": "Špatně.",
+       "b": "Správně.",
+       "c": "Špatně.",
+       "d": "Špatně."
+      },
+      "vysvetleni_obecne": "<p>Obecné vysvětlení.</p>"
+     },
+     "spravne": [
+      "b"
+     ],
+     "oddil": "1.1.2",
+     "poznamka": ""
+    },
+    {
+     "id": "UD-TEST-003",
+     "zdroj": "podraza-practice",
+     "lo": "GenAI-1.1.2",
+     "k": "K2",
+     "body": 1,
+     "vyber": 1,
+     "keep_order": false,
+     "en": {
+      "q": "<p>Udemy-only question number 3 that must never leave the local folder?</p>",
+      "moznosti": [
+       "Answer text 1 of UD-TEST-002",
+       "Answer text 2 of UD-TEST-002",
+       "Answer text 3 of UD-TEST-002",
+       "Answer text 4 of UD-TEST-002"
+      ],
+      "vysvetleni": {
+       "a": "Incorrect.",
+       "b": "Correct.",
+       "c": "Incorrect.",
+       "d": "Incorrect."
+      },
+      "vysvetleni_obecne": "<p>General explanation.</p>"
+     },
+     "cz": {
+      "q": "<p>Testovací otázka UD-TEST-002 k GenAI-1.1.2?</p>",
+      "moznosti": [
+       "Text odpovědi 1 otázky UD-TEST-002",
+       "Text odpovědi 2 otázky UD-TEST-002",
+       "Text odpovědi 3 otázky UD-TEST-002",
+       "Text odpovědi 4 otázky UD-TEST-002"
+      ],
+      "vysvetleni": {
+       "a": "Špatně.",
+       "b": "Správně.",
+       "c": "Špatně.",
+       "d": "Špatně."
+      },
+      "vysvetleni_obecne": "<p>Obecné vysvětlení.</p>"
+     },
+     "spravne": [
+      "b"
+     ],
+     "oddil": "1.1.2",
+     "poznamka": ""
+    },
+    {
+     "id": "UD-TEST-004",
+     "zdroj": "podraza-practice",
+     "lo": "GenAI-1.1.3",
+     "k": "K2",
+     "body": 1,
+     "vyber": 1,
+     "keep_order": false,
+     "en": {
+      "q": "<p>Udemy-only question number 4 that must never leave the local folder?</p>",
+      "moznosti": [
+       "Answer text 1 of UD-TEST-003",
+       "Answer text 2 of UD-TEST-003",
+       "Answer text 3 of UD-TEST-003",
+       "Answer text 4 of UD-TEST-003"
+      ],
+      "vysvetleni": {
+       "a": "Incorrect.",
+       "b": "Incorrect.",
+       "c": "Correct.",
+       "d": "Incorrect."
+      },
+      "vysvetleni_obecne": "<p>General explanation.</p>"
+     },
+     "cz": {
+      "q": "<p>Testovací otázka UD-TEST-003 k GenAI-1.1.3?</p>",
+      "moznosti": [
+       "Text odpovědi 1 otázky UD-TEST-003",
+       "Text odpovědi 2 otázky UD-TEST-003",
+       "Text odpovědi 3 otázky UD-TEST-003",
+       "Text odpovědi 4 otázky UD-TEST-003"
+      ],
+      "vysvetleni": {
+       "a": "Špatně.",
+       "b": "Špatně.",
+       "c": "Správně.",
+       "d": "Špatně."
+      },
+      "vysvetleni_obecne": "<p>Obecné vysvětlení.</p>"
+     },
+     "spravne": [
+      "c"
+     ],
+     "oddil": "1.1.3",
+     "poznamka": ""
+    },
+    {
+     "id": "UD-TEST-005",
+     "zdroj": "podraza-practice",
+     "lo": "GenAI-1.1.4",
+     "k": "K2",
+     "body": 1,
+     "vyber": 1,
+     "keep_order": false,
+     "en": {
+      "q": "<p>Udemy-only question number 5 that must never leave the local folder?</p>",
+      "moznosti": [
+       "Answer text 1 of UD-TEST-004",
+       "Answer text 2 of UD-TEST-004",
+       "Answer text 3 of UD-TEST-004",
+       "Answer text 4 of UD-TEST-004"
+      ],
+      "vysvetleni": {
+       "a": "Incorrect.",
+       "b": "Incorrect.",
+       "c": "Incorrect.",
+       "d": "Correct."
+      },
+      "vysvetleni_obecne": "<p>General explanation.</p>"
+     },
+     "cz": {
+      "q": "<p>Testovací otázka UD-TEST-004 k GenAI-1.1.4?</p>",
+      "moznosti": [
+       "Text odpovědi 1 otázky UD-TEST-004",
+       "Text odpovědi 2 otázky UD-TEST-004",
+       "Text odpovědi 3 otázky UD-TEST-004",
+       "Text odpovědi 4 otázky UD-TEST-004"
+      ],
+      "vysvetleni": {
+       "a": "Špatně.",
+       "b": "Špatně.",
+       "c": "Špatně.",
+       "d": "Správně."
+      },
+      "vysvetleni_obecne": "<p>Obecné vysvětlení.</p>"
+     },
+     "spravne": [
+      "d"
+     ],
+     "oddil": "1.1.4",
+     "poznamka": ""
+    },
+    {
+     "id": "UD-TEST-006",
+     "zdroj": "podraza-practice",
+     "lo": "GenAI-1.2.1",
+     "k": "K2",
+     "body": 1,
+     "vyber": 1,
+     "keep_order": false,
+     "en": {
+      "q": "<p>Udemy-only question number 6 that must never leave the local folder?</p>",
+      "moznosti": [
+       "Answer text 1 of UD-TEST-005",
+       "Answer text 2 of UD-TEST-005",
+       "Answer text 3 of UD-TEST-005",
+       "Answer text 4 of UD-TEST-005"
+      ],
+      "vysvetleni": {
+       "a": "Correct.",
+       "b": "Incorrect.",
+       "c": "Incorrect.",
+       "d": "Incorrect."
+      },
+      "vysvetleni_obecne": "<p>General explanation.</p>"
+     },
+     "cz": {
+      "q": "<p>Testovací otázka UD-TEST-005 k GenAI-1.2.1?</p>",
+      "moznosti": [
+       "Text odpovědi 1 otázky UD-TEST-005",
+       "Text odpovědi 2 otázky UD-TEST-005",
+       "Text odpovědi 3 otázky UD-TEST-005",
+       "Text odpovědi 4 otázky UD-TEST-005"
+      ],
+      "vysvetleni": {
+       "a": "Správně.",
+       "b": "Špatně.",
+       "c": "Špatně.",
+       "d": "Špatně."
+      },
+      "vysvetleni_obecne": "<p>Obecné vysvětlení.</p>"
+     },
+     "spravne": [
+      "a"
+     ],
+     "oddil": "1.2.1",
+     "poznamka": ""
+    },
+    {
+     "id": "UD-TEST-007",
+     "zdroj": "podraza-practice",
+     "lo": "GenAI-1.2.2",
+     "k": "K2",
+     "body": 1,
+     "vyber": 1,
+     "keep_order": false,
+     "en": {
+      "q": "<p>Udemy-only question number 7 that must never leave the local folder?</p>",
+      "moznosti": [
+       "Answer text 1 of UD-TEST-006",
+       "Answer text 2 of UD-TEST-006",
+       "Answer text 3 of UD-TEST-006",
+       "Answer text 4 of UD-TEST-006"
+      ],
+      "vysvetleni": {
+       "a": "Incorrect.",
+       "b": "Correct.",
+       "c": "Incorrect.",
+       "d": "Incorrect."
+      },
+      "vysvetleni_obecne": "<p>General explanation.</p>"
+     },
+     "cz": {
+      "q": "<p>Testovací otázka UD-TEST-006 k GenAI-1.2.2?</p>",
+      "moznosti": [
+       "Text odpovědi 1 otázky UD-TEST-006",
+       "Text odpovědi 2 otázky UD-TEST-006",
+       "Text odpovědi 3 otázky UD-TEST-006",
+       "Text odpovědi 4 otázky UD-TEST-006"
+      ],
+      "vysvetleni": {
+       "a": "Špatně.",
+       "b": "Správně.",
+       "c": "Špatně.",
+       "d": "Špatně."
+      },
+      "vysvetleni_obecne": "<p>Obecné vysvětlení.</p>"
+     },
+     "spravne": [
+      "b"
+     ],
+     "oddil": "1.2.2",
+     "poznamka": ""
+    },
+    {
+     "id": "UD-TEST-008",
+     "zdroj": "podraza-practice",
+     "lo": "GenAI-2.1.1",
+     "k": "K2",
+     "body": 1,
+     "vyber": 1,
+     "keep_order": false,
+     "en": {
+      "q": "<p>Udemy-only question number 8 that must never leave the local folder?</p>",
+      "moznosti": [
+       "Answer text 1 of UD-TEST-007",
+       "Answer text 2 of UD-TEST-007",
+       "Answer text 3 of UD-TEST-007",
+       "Answer text 4 of UD-TEST-007"
+      ],
+      "vysvetleni": {
+       "a": "Incorrect.",
+       "b": "Incorrect.",
+       "c": "Correct.",
+       "d": "Incorrect."
+      },
+      "vysvetleni_obecne": "<p>General explanation.</p>"
+     },
+     "cz": {
+      "q": "<p>Testovací otázka UD-TEST-007 k GenAI-2.1.1?</p>",
+      "moznosti": [
+       "Text odpovědi 1 otázky UD-TEST-007",
+       "Text odpovědi 2 otázky UD-TEST-007",
+       "Text odpovědi 3 otázky UD-TEST-007",
+       "Text odpovědi 4 otázky UD-TEST-007"
+      ],
+      "vysvetleni": {
+       "a": "Špatně.",
+       "b": "Špatně.",
+       "c": "Správně.",
+       "d": "Špatně."
+      },
+      "vysvetleni_obecne": "<p>Obecné vysvětlení.</p>"
+     },
+     "spravne": [
+      "c"
+     ],
+     "oddil": "2.1.1",
+     "poznamka": ""
+    },
+    {
+     "id": "UD-TEST-009",
+     "zdroj": "podraza-practice",
+     "lo": "GenAI-2.1.1",
+     "k": "K2",
+     "body": 1,
+     "vyber": 1,
+     "keep_order": false,
+     "en": {
+      "q": "<p>Udemy-only question number 9 that must never leave the local folder?</p>",
+      "moznosti": [
+       "Answer text 1 of UD-TEST-007",
+       "Answer text 2 of UD-TEST-007",
+       "Answer text 3 of UD-TEST-007",
+       "Answer text 4 of UD-TEST-007"
+      ],
+      "vysvetleni": {
+       "a": "Incorrect.",
+       "b": "Incorrect.",
+       "c": "Correct.",
+       "d": "Incorrect."
+      },
+      "vysvetleni_obecne": "<p>General explanation.</p>"
+     },
+     "cz": {
+      "q": "<p>Testovací otázka UD-TEST-007 k GenAI-2.1.1?</p>",
+      "moznosti": [
+       "Text odpovědi 1 otázky UD-TEST-007",
+       "Text odpovědi 2 otázky UD-TEST-007",
+       "Text odpovědi 3 otázky UD-TEST-007",
+       "Text odpovědi 4 otázky UD-TEST-007"
+      ],
+      "vysvetleni": {
+       "a": "Špatně.",
+       "b": "Špatně.",
+       "c": "Správně.",
+       "d": "Špatně."
+      },
+      "vysvetleni_obecne": "<p>Obecné vysvětlení.</p>"
+     },
+     "spravne": [
+      "c"
+     ],
+     "oddil": "2.1.1",
+     "poznamka": ""
+    },
+    {
+     "id": "UD-TEST-010",
+     "zdroj": "podraza-practice",
+     "lo": "GenAI-2.1.2",
+     "k": "K2",
+     "body": 1,
+     "vyber": 1,
+     "keep_order": false,
+     "en": {
+      "q": "<p>Udemy-only question number 10 that must never leave the local folder?</p>",
+      "moznosti": [
+       "Answer text 1 of UD-TEST-008",
+       "Answer text 2 of UD-TEST-008",
+       "Answer text 3 of UD-TEST-008",
+       "Answer text 4 of UD-TEST-008"
+      ],
+      "vysvetleni": {
+       "a": "Incorrect.",
+       "b": "Incorrect.",
+       "c": "Incorrect.",
+       "d": "Correct."
+      },
+      "vysvetleni_obecne": "<p>General explanation.</p>"
+     },
+     "cz": {
+      "q": "<p>Testovací otázka UD-TEST-008 k GenAI-2.1.2?</p>",
+      "moznosti": [
+       "Text odpovědi 1 otázky UD-TEST-008",
+       "Text odpovědi 2 otázky UD-TEST-008",
+       "Text odpovědi 3 otázky UD-TEST-008",
+       "Text odpovědi 4 otázky UD-TEST-008"
+      ],
+      "vysvetleni": {
+       "a": "Špatně.",
+       "b": "Špatně.",
+       "c": "Špatně.",
+       "d": "Správně."
+      },
+      "vysvetleni_obecne": "<p>Obecné vysvětlení.</p>"
+     },
+     "spravne": [
+      "d"
+     ],
+     "oddil": "2.1.2",
+     "poznamka": ""
+    },
+    {
+     "id": "UD-TEST-011",
+     "zdroj": "podraza-practice",
+     "lo": "GenAI-2.1.3",
+     "k": "K2",
+     "body": 1,
+     "vyber": 1,
+     "keep_order": false,
+     "en": {
+      "q": "<p>Udemy-only question number 11 that must never leave the local folder?</p>",
+      "moznosti": [
+       "Answer text 1 of UD-TEST-009",
+       "Answer text 2 of UD-TEST-009",
+       "Answer text 3 of UD-TEST-009",
+       "Answer text 4 of UD-TEST-009"
+      ],
+      "vysvetleni": {
+       "a": "Correct.",
+       "b": "Incorrect.",
+       "c": "Incorrect.",
+       "d": "Incorrect."
+      },
+      "vysvetleni_obecne": "<p>General explanation.</p>"
+     },
+     "cz": {
+      "q": "<p>Testovací otázka UD-TEST-009 k GenAI-2.1.3?</p>",
+      "moznosti": [
+       "Text odpovědi 1 otázky UD-TEST-009",
+       "Text odpovědi 2 otázky UD-TEST-009",
+       "Text odpovědi 3 otázky UD-TEST-009",
+       "Text odpovědi 4 otázky UD-TEST-009"
+      ],
+      "vysvetleni": {
+       "a": "Správně.",
+       "b": "Špatně.",
+       "c": "Špatně.",
+       "d": "Špatně."
+      },
+      "vysvetleni_obecne": "<p>Obecné vysvětlení.</p>"
+     },
+     "spravne": [
+      "a"
+     ],
+     "oddil": "2.1.3",
+     "poznamka": ""
+    },
+    {
+     "id": "UD-TEST-012",
+     "zdroj": "podraza-practice",
+     "lo": "GenAI-2.2.1",
+     "k": "K3",
+     "body": 2,
+     "vyber": 1,
+     "keep_order": false,
+     "en": {
+      "q": "<p>Udemy-only question number 12 that must never leave the local folder?</p>",
+      "moznosti": [
+       "Answer text 1 of UD-TEST-010",
+       "Answer text 2 of UD-TEST-010",
+       "Answer text 3 of UD-TEST-010",
+       "Answer text 4 of UD-TEST-010"
+      ],
+      "vysvetleni": {
+       "a": "Incorrect.",
+       "b": "Correct.",
+       "c": "Incorrect.",
+       "d": "Incorrect."
+      },
+      "vysvetleni_obecne": "<p>General explanation.</p>"
+     },
+     "cz": {
+      "q": "<p>Testovací otázka UD-TEST-010 k GenAI-2.2.1?</p>",
+      "moznosti": [
+       "Text odpovědi 1 otázky UD-TEST-010",
+       "Text odpovědi 2 otázky UD-TEST-010",
+       "Text odpovědi 3 otázky UD-TEST-010",
+       "Text odpovědi 4 otázky UD-TEST-010"
+      ],
+      "vysvetleni": {
+       "a": "Špatně.",
+       "b": "Správně.",
+       "c": "Špatně.",
+       "d": "Špatně."
+      },
+      "vysvetleni_obecne": "<p>Obecné vysvětlení.</p>"
+     },
+     "spravne": [
+      "b"
+     ],
+     "oddil": "2.2.1",
+     "poznamka": ""
+    },
+    {
+     "id": "UD-TEST-013",
+     "zdroj": "podraza-practice",
+     "lo": "GenAI-2.2.2",
+     "k": "K3",
+     "body": 2,
+     "vyber": 1,
+     "keep_order": false,
+     "en": {
+      "q": "<p>Udemy-only question number 13 that must never leave the local folder?</p>",
+      "moznosti": [
+       "Answer text 1 of UD-TEST-011",
+       "Answer text 2 of UD-TEST-011",
+       "Answer text 3 of UD-TEST-011",
+       "Answer text 4 of UD-TEST-011"
+      ],
+      "vysvetleni": {
+       "a": "Incorrect.",
+       "b": "Incorrect.",
+       "c": "Correct.",
+       "d": "Incorrect."
+      },
+      "vysvetleni_obecne": "<p>General explanation.</p>"
+     },
+     "cz": {
+      "q": "<p>Testovací otázka UD-TEST-011 k GenAI-2.2.2?</p>",
+      "moznosti": [
+       "Text odpovědi 1 otázky UD-TEST-011",
+       "Text odpovědi 2 otázky UD-TEST-011",
+       "Text odpovědi 3 otázky UD-TEST-011",
+       "Text odpovědi 4 otázky UD-TEST-011"
+      ],
+      "vysvetleni": {
+       "a": "Špatně.",
+       "b": "Špatně.",
+       "c": "Správně.",
+       "d": "Špatně."
+      },
+      "vysvetleni_obecne": "<p>Obecné vysvětlení.</p>"
+     },
+     "spravne": [
+      "c"
+     ],
+     "oddil": "2.2.2",
+     "poznamka": ""
+    },
+    {
+     "id": "UD-TEST-014",
+     "zdroj": "podraza-practice",
+     "lo": "GenAI-2.2.3",
+     "k": "K3",
+     "body": 2,
+     "vyber": 1,
+     "keep_order": false,
+     "en": {
+      "q": "<p>Udemy-only question number 14 that must never leave the local folder?</p>",
+      "moznosti": [
+       "Answer text 1 of UD-TEST-012",
+       "Answer text 2 of UD-TEST-012",
+       "Answer text 3 of UD-TEST-012",
+       "Answer text 4 of UD-TEST-012"
+      ],
+      "vysvetleni": {
+       "a": "Incorrect.",
+       "b": "Incorrect.",
+       "c": "Incorrect.",
+       "d": "Correct."
+      },
+      "vysvetleni_obecne": "<p>General explanation.</p>"
+     },
+     "cz": {
+      "q": "<p>Testovací otázka UD-TEST-012 k GenAI-2.2.3?</p>",
+      "moznosti": [
+       "Text odpovědi 1 otázky UD-TEST-012",
+       "Text odpovědi 2 otázky UD-TEST-012",
+       "Text odpovědi 3 otázky UD-TEST-012",
+       "Text odpovědi 4 otázky UD-TEST-012"
+      ],
+      "vysvetleni": {
+       "a": "Špatně.",
+       "b": "Špatně.",
+       "c": "Špatně.",
+       "d": "Správně."
+      },
+      "vysvetleni_obecne": "<p>Obecné vysvětlení.</p>"
+     },
+     "spravne": [
+      "d"
+     ],
+     "oddil": "2.2.3",
+     "poznamka": ""
+    },
+    {
+     "id": "UD-TEST-015",
+     "zdroj": "podraza-practice",
+     "lo": "GenAI-2.2.4",
+     "k": "K3",
+     "body": 2,
+     "vyber": 1,
+     "keep_order": false,
+     "en": {
+      "q": "<p>Udemy-only question number 15 that must never leave the local folder?</p>",
+      "moznosti": [
+       "Answer text 1 of UD-TEST-013",
+       "Answer text 2 of UD-TEST-013",
+       "Answer text 3 of UD-TEST-013",
+       "Answer text 4 of UD-TEST-013"
+      ],
+      "vysvetleni": {
+       "a": "Correct.",
+       "b": "Incorrect.",
+       "c": "Incorrect.",
+       "d": "Incorrect."
+      },
+      "vysvetleni_obecne": "<p>General explanation.</p>"
+     },
+     "cz": {
+      "q": "<p>Testovací otázka UD-TEST-013 k GenAI-2.2.4?</p>",
+      "moznosti": [
+       "Text odpovědi 1 otázky UD-TEST-013",
+       "Text odpovědi 2 otázky UD-TEST-013",
+       "Text odpovědi 3 otázky UD-TEST-013",
+       "Text odpovědi 4 otázky UD-TEST-013"
+      ],
+      "vysvetleni": {
+       "a": "Správně.",
+       "b": "Špatně.",
+       "c": "Špatně.",
+       "d": "Špatně."
+      },
+      "vysvetleni_obecne": "<p>Obecné vysvětlení.</p>"
+     },
+     "spravne": [
+      "a"
+     ],
+     "oddil": "2.2.4",
+     "poznamka": ""
+    },
+    {
+     "id": "UD-TEST-016",
+     "zdroj": "podraza-practice",
+     "lo": "GenAI-2.2.5",
+     "k": "K3",
+     "body": 2,
+     "vyber": 1,
+     "keep_order": false,
+     "en": {
+      "q": "<p>Udemy-only question number 16 that must never leave the local folder?</p>",
+      "moznosti": [
+       "Answer text 1 of UD-TEST-014",
+       "Answer text 2 of UD-TEST-014",
+       "Answer text 3 of UD-TEST-014",
+       "Answer text 4 of UD-TEST-014"
+      ],
+      "vysvetleni": {
+       "a": "Incorrect.",
+       "b": "Correct.",
+       "c": "Incorrect.",
+       "d": "Incorrect."
+      },
+      "vysvetleni_obecne": "<p>General explanation.</p>"
+     },
+     "cz": {
+      "q": "<p>Testovací otázka UD-TEST-014 k GenAI-2.2.5?</p>",
+      "moznosti": [
+       "Text odpovědi 1 otázky UD-TEST-014",
+       "Text odpovědi 2 otázky UD-TEST-014",
+       "Text odpovědi 3 otázky UD-TEST-014",
+       "Text odpovědi 4 otázky UD-TEST-014"
+      ],
+      "vysvetleni": {
+       "a": "Špatně.",
+       "b": "Správně.",
+       "c": "Špatně.",
+       "d": "Špatně."
+      },
+      "vysvetleni_obecne": "<p>Obecné vysvětlení.</p>"
+     },
+     "spravne": [
+      "b"
+     ],
+     "oddil": "2.2.5",
+     "poznamka": ""
+    },
+    {
+     "id": "UD-TEST-017",
+     "zdroj": "podraza-practice",
+     "lo": "GenAI-2.3.1",
+     "k": "K2",
+     "body": 1,
+     "vyber": 1,
+     "keep_order": false,
+     "en": {
+      "q": "<p>Udemy-only question number 17 that must never leave the local folder?</p>",
+      "moznosti": [
+       "Answer text 1 of UD-TEST-015",
+       "Answer text 2 of UD-TEST-015",
+       "Answer text 3 of UD-TEST-015",
+       "Answer text 4 of UD-TEST-015"
+      ],
+      "vysvetleni": {
+       "a": "Incorrect.",
+       "b": "Incorrect.",
+       "c": "Correct.",
+       "d": "Incorrect."
+      },
+      "vysvetleni_obecne": "<p>General explanation.</p>"
+     },
+     "cz": {
+      "q": "<p>Testovací otázka UD-TEST-015 k GenAI-2.3.1?</p>",
+      "moznosti": [
+       "Text odpovědi 1 otázky UD-TEST-015",
+       "Text odpovědi 2 otázky UD-TEST-015",
+       "Text odpovědi 3 otázky UD-TEST-015",
+       "Text odpovědi 4 otázky UD-TEST-015"
+      ],
+      "vysvetleni": {
+       "a": "Špatně.",
+       "b": "Špatně.",
+       "c": "Správně.",
+       "d": "Špatně."
+      },
+      "vysvetleni_obecne": "<p>Obecné vysvětlení.</p>"
+     },
+     "spravne": [
+      "c"
+     ],
+     "oddil": "2.3.1",
+     "poznamka": ""
+    },
+    {
+     "id": "UD-TEST-018",
+     "zdroj": "podraza-practice",
+     "lo": "GenAI-2.3.2",
+     "k": "K2",
+     "body": 1,
+     "vyber": 1,
+     "keep_order": false,
+     "en": {
+      "q": "<p>Udemy-only question number 18 that must never leave the local folder?</p>",
+      "moznosti": [
+       "Answer text 1 of UD-TEST-016",
+       "Answer text 2 of UD-TEST-016",
+       "Answer text 3 of UD-TEST-016",
+       "Answer text 4 of UD-TEST-016"
+      ],
+      "vysvetleni": {
+       "a": "Incorrect.",
+       "b": "Incorrect.",
+       "c": "Incorrect.",
+       "d": "Correct."
+      },
+      "vysvetleni_obecne": "<p>General explanation.</p>"
+     },
+     "cz": {
+      "q": "<p>Testovací otázka UD-TEST-016 k GenAI-2.3.2?</p>",
+      "moznosti": [
+       "Text odpovědi 1 otázky UD-TEST-016",
+       "Text odpovědi 2 otázky UD-TEST-016",
+       "Text odpovědi 3 otázky UD-TEST-016",
+       "Text odpovědi 4 otázky UD-TEST-016"
+      ],
+      "vysvetleni": {
+       "a": "Špatně.",
+       "b": "Špatně.",
+       "c": "Špatně.",
+       "d": "Správně."
+      },
+      "vysvetleni_obecne": "<p>Obecné vysvětlení.</p>"
+     },
+     "spravne": [
+      "d"
+     ],
+     "oddil": "2.3.2",
+     "poznamka": ""
+    },
+    {
+     "id": "UD-TEST-019",
+     "zdroj": "podraza-practice",
+     "lo": "GenAI-3.1.1",
+     "k": "K1",
+     "body": 1,
+     "vyber": 1,
+     "keep_order": false,
+     "en": {
+      "q": "<p>Udemy-only question number 19 that must never leave the local folder?</p>",
+      "moznosti": [
+       "Answer text 1 of UD-TEST-017",
+       "Answer text 2 of UD-TEST-017",
+       "Answer text 3 of UD-TEST-017",
+       "Answer text 4 of UD-TEST-017"
+      ],
+      "vysvetleni": {
+       "a": "Correct.",
+       "b": "Incorrect.",
+       "c": "Incorrect.",
+       "d": "Incorrect."
+      },
+      "vysvetleni_obecne": "<p>General explanation.</p>"
+     },
+     "cz": {
+      "q": "<p>Testovací otázka UD-TEST-017 k GenAI-3.1.1?</p>",
+      "moznosti": [
+       "Text odpovědi 1 otázky UD-TEST-017",
+       "Text odpovědi 2 otázky UD-TEST-017",
+       "Text odpovědi 3 otázky UD-TEST-017",
+       "Text odpovědi 4 otázky UD-TEST-017"
+      ],
+      "vysvetleni": {
+       "a": "Správně.",
+       "b": "Špatně.",
+       "c": "Špatně.",
+       "d": "Špatně."
+      },
+      "vysvetleni_obecne": "<p>Obecné vysvětlení.</p>"
+     },
+     "spravne": [
+      "a"
+     ],
+     "oddil": "3.1.1",
+     "poznamka": ""
+    },
+    {
+     "id": "UD-TEST-020",
+     "zdroj": "podraza-practice",
+     "lo": "GenAI-3.1.2",
+     "k": "K3",
+     "body": 2,
+     "vyber": 1,
+     "keep_order": false,
+     "en": {
+      "q": "<p>Udemy-only question number 20 that must never leave the local folder?</p>",
+      "moznosti": [
+       "Answer text 1 of UD-TEST-018",
+       "Answer text 2 of UD-TEST-018",
+       "Answer text 3 of UD-TEST-018",
+       "Answer text 4 of UD-TEST-018"
+      ],
+      "vysvetleni": {
+       "a": "Incorrect.",
+       "b": "Correct.",
+       "c": "Incorrect.",
+       "d": "Incorrect."
+      },
+      "vysvetleni_obecne": "<p>General explanation.</p>"
+     },
+     "cz": {
+      "q": "<p>Testovací otázka UD-TEST-018 k GenAI-3.1.2?</p>",
+      "moznosti": [
+       "Text odpovědi 1 otázky UD-TEST-018",
+       "Text odpovědi 2 otázky UD-TEST-018",
+       "Text odpovědi 3 otázky UD-TEST-018",
+       "Text odpovědi 4 otázky UD-TEST-018"
+      ],
+      "vysvetleni": {
+       "a": "Špatně.",
+       "b": "Správně.",
+       "c": "Špatně.",
+       "d": "Špatně."
+      },
+      "vysvetleni_obecne": "<p>Obecné vysvětlení.</p>"
+     },
+     "spravne": [
+      "b"
+     ],
+     "oddil": "3.1.2",
+     "poznamka": ""
+    },
+    {
+     "id": "UD-TEST-021",
+     "zdroj": "podraza-practice",
+     "lo": "GenAI-3.1.3",
+     "k": "K2",
+     "body": 1,
+     "vyber": 1,
+     "keep_order": false,
+     "en": {
+      "q": "<p>Udemy-only question number 21 that must never leave the local folder?</p>",
+      "moznosti": [
+       "Answer text 1 of UD-TEST-019",
+       "Answer text 2 of UD-TEST-019",
+       "Answer text 3 of UD-TEST-019",
+       "Answer text 4 of UD-TEST-019"
+      ],
+      "vysvetleni": {
+       "a": "Incorrect.",
+       "b": "Incorrect.",
+       "c": "Correct.",
+       "d": "Incorrect."
+      },
+      "vysvetleni_obecne": "<p>General explanation.</p>"
+     },
+     "cz": {
+      "q": "<p>Testovací otázka UD-TEST-019 k GenAI-3.1.3?</p>",
+      "moznosti": [
+       "Text odpovědi 1 otázky UD-TEST-019",
+       "Text odpovědi 2 otázky UD-TEST-019",
+       "Text odpovědi 3 otázky UD-TEST-019",
+       "Text odpovědi 4 otázky UD-TEST-019"
+      ],
+      "vysvetleni": {
+       "a": "Špatně.",
+       "b": "Špatně.",
+       "c": "Správně.",
+       "d": "Špatně."
+      },
+      "vysvetleni_obecne": "<p>Obecné vysvětlení.</p>"
+     },
+     "spravne": [
+      "c"
+     ],
+     "oddil": "3.1.3",
+     "poznamka": ""
+    },
+    {
+     "id": "UD-TEST-022",
+     "zdroj": "podraza-practice",
+     "lo": "GenAI-3.1.4",
+     "k": "K1",
+     "body": 1,
+     "vyber": 1,
+     "keep_order": false,
+     "en": {
+      "q": "<p>Udemy-only question number 22 that must never leave the local folder?</p>",
+      "moznosti": [
+       "Answer text 1 of UD-TEST-020",
+       "Answer text 2 of UD-TEST-020",
+       "Answer text 3 of UD-TEST-020",
+       "Answer text 4 of UD-TEST-020"
+      ],
+      "vysvetleni": {
+       "a": "Incorrect.",
+       "b": "Incorrect.",
+       "c": "Incorrect.",
+       "d": "Correct."
+      },
+      "vysvetleni_obecne": "<p>General explanation.</p>"
+     },
+     "cz": {
+      "q": "<p>Testovací otázka UD-TEST-020 k GenAI-3.1.4?</p>",
+      "moznosti": [
+       "Text odpovědi 1 otázky UD-TEST-020",
+       "Text odpovědi 2 otázky UD-TEST-020",
+       "Text odpovědi 3 otázky UD-TEST-020",
+       "Text odpovědi 4 otázky UD-TEST-020"
+      ],
+      "vysvetleni": {
+       "a": "Špatně.",
+       "b": "Špatně.",
+       "c": "Špatně.",
+       "d": "Správně."
+      },
+      "vysvetleni_obecne": "<p>Obecné vysvětlení.</p>"
+     },
+     "spravne": [
+      "d"
+     ],
+     "oddil": "3.1.4",
+     "poznamka": ""
+    },
+    {
+     "id": "UD-TEST-023",
+     "zdroj": "podraza-practice",
+     "lo": "GenAI-3.2.1",
+     "k": "K2",
+     "body": 1,
+     "vyber": 1,
+     "keep_order": false,
+     "en": {
+      "q": "<p>Udemy-only question number 23 that must never leave the local folder?</p>",
+      "moznosti": [
+       "Answer text 1 of UD-TEST-021",
+       "Answer text 2 of UD-TEST-021",
+       "Answer text 3 of UD-TEST-021",
+       "Answer text 4 of UD-TEST-021"
+      ],
+      "vysvetleni": {
+       "a": "Correct.",
+       "b": "Incorrect.",
+       "c": "Incorrect.",
+       "d": "Incorrect."
+      },
+      "vysvetleni_obecne": "<p>General explanation.</p>"
+     },
+     "cz": {
+      "q": "<p>Testovací otázka UD-TEST-021 k GenAI-3.2.1?</p>",
+      "moznosti": [
+       "Text odpovědi 1 otázky UD-TEST-021",
+       "Text odpovědi 2 otázky UD-TEST-021",
+       "Text odpovědi 3 otázky UD-TEST-021",
+       "Text odpovědi 4 otázky UD-TEST-021"
+      ],
+      "vysvetleni": {
+       "a": "Správně.",
+       "b": "Špatně.",
+       "c": "Špatně.",
+       "d": "Špatně."
+      },
+      "vysvetleni_obecne": "<p>Obecné vysvětlení.</p>"
+     },
+     "spravne": [
+      "a"
+     ],
+     "oddil": "3.2.1",
+     "poznamka": ""
+    },
+    {
+     "id": "UD-TEST-024",
+     "zdroj": "podraza-practice",
+     "lo": "GenAI-3.2.2",
+     "k": "K2",
+     "body": 1,
+     "vyber": 1,
+     "keep_order": false,
+     "en": {
+      "q": "<p>Udemy-only question number 24 that must never leave the local folder?</p>",
+      "moznosti": [
+       "Answer text 1 of UD-TEST-022",
+       "Answer text 2 of UD-TEST-022",
+       "Answer text 3 of UD-TEST-022",
+       "Answer text 4 of UD-TEST-022"
+      ],
+      "vysvetleni": {
+       "a": "Incorrect.",
+       "b": "Correct.",
+       "c": "Incorrect.",
+       "d": "Incorrect."
+      },
+      "vysvetleni_obecne": "<p>General explanation.</p>"
+     },
+     "cz": {
+      "q": "<p>Testovací otázka UD-TEST-022 k GenAI-3.2.2?</p>",
+      "moznosti": [
+       "Text odpovědi 1 otázky UD-TEST-022",
+       "Text odpovědi 2 otázky UD-TEST-022",
+       "Text odpovědi 3 otázky UD-TEST-022",
+       "Text odpovědi 4 otázky UD-TEST-022"
+      ],
+      "vysvetleni": {
+       "a": "Špatně.",
+       "b": "Správně.",
+       "c": "Špatně.",
+       "d": "Špatně."
+      },
+      "vysvetleni_obecne": "<p>Obecné vysvětlení.</p>"
+     },
+     "spravne": [
+      "b"
+     ],
+     "oddil": "3.2.2",
+     "poznamka": ""
+    },
+    {
+     "id": "UD-TEST-025",
+     "zdroj": "podraza-practice",
+     "lo": "GenAI-3.2.2",
+     "k": "K2",
+     "body": 1,
+     "vyber": 1,
+     "keep_order": false,
+     "en": {
+      "q": "<p>Udemy-only question number 25 that must never leave the local folder?</p>",
+      "moznosti": [
+       "Answer text 1 of UD-TEST-022",
+       "Answer text 2 of UD-TEST-022",
+       "Answer text 3 of UD-TEST-022",
+       "Answer text 4 of UD-TEST-022"
+      ],
+      "vysvetleni": {
+       "a": "Incorrect.",
+       "b": "Correct.",
+       "c": "Incorrect.",
+       "d": "Incorrect."
+      },
+      "vysvetleni_obecne": "<p>General explanation.</p>"
+     },
+     "cz": {
+      "q": "<p>Testovací otázka UD-TEST-022 k GenAI-3.2.2?</p>",
+      "moznosti": [
+       "Text odpovědi 1 otázky UD-TEST-022",
+       "Text odpovědi 2 otázky UD-TEST-022",
+       "Text odpovědi 3 otázky UD-TEST-022",
+       "Text odpovědi 4 otázky UD-TEST-022"
+      ],
+      "vysvetleni": {
+       "a": "Špatně.",
+       "b": "Správně.",
+       "c": "Špatně.",
+       "d": "Špatně."
+      },
+      "vysvetleni_obecne": "<p>Obecné vysvětlení.</p>"
+     },
+     "spravne": [
+      "b"
+     ],
+     "oddil": "3.2.2",
+     "poznamka": ""
+    },
+    {
+     "id": "UD-TEST-026",
+     "zdroj": "podraza-practice",
+     "lo": "GenAI-3.2.3",
+     "k": "K2",
+     "body": 1,
+     "vyber": 1,
+     "keep_order": false,
+     "en": {
+      "q": "<p>Udemy-only question number 26 that must never leave the local folder?</p>",
+      "moznosti": [
+       "Answer text 1 of UD-TEST-023",
+       "Answer text 2 of UD-TEST-023",
+       "Answer text 3 of UD-TEST-023",
+       "Answer text 4 of UD-TEST-023"
+      ],
+      "vysvetleni": {
+       "a": "Incorrect.",
+       "b": "Incorrect.",
+       "c": "Correct.",
+       "d": "Incorrect."
+      },
+      "vysvetleni_obecne": "<p>General explanation.</p>"
+     },
+     "cz": {
+      "q": "<p>Testovací otázka UD-TEST-023 k GenAI-3.2.3?</p>",
+      "moznosti": [
+       "Text odpovědi 1 otázky UD-TEST-023",
+       "Text odpovědi 2 otázky UD-TEST-023",
+       "Text odpovědi 3 otázky UD-TEST-023",
+       "Text odpovědi 4 otázky UD-TEST-023"
+      ],
+      "vysvetleni": {
+       "a": "Špatně.",
+       "b": "Špatně.",
+       "c": "Správně.",
+       "d": "Špatně."
+      },
+      "vysvetleni_obecne": "<p>Obecné vysvětlení.</p>"
+     },
+     "spravne": [
+      "c"
+     ],
+     "oddil": "3.2.3",
+     "poznamka": ""
+    },
+    {
+     "id": "UD-TEST-027",
+     "zdroj": "podraza-practice",
+     "lo": "GenAI-3.3.1",
+     "k": "K2",
+     "body": 1,
+     "vyber": 1,
+     "keep_order": false,
+     "en": {
+      "q": "<p>Udemy-only question number 27 that must never leave the local folder?</p>",
+      "moznosti": [
+       "Answer text 1 of UD-TEST-024",
+       "Answer text 2 of UD-TEST-024",
+       "Answer text 3 of UD-TEST-024",
+       "Answer text 4 of UD-TEST-024"
+      ],
+      "vysvetleni": {
+       "a": "Incorrect.",
+       "b": "Incorrect.",
+       "c": "Incorrect.",
+       "d": "Correct."
+      },
+      "vysvetleni_obecne": "<p>General explanation.</p>"
+     },
+     "cz": {
+      "q": "<p>Testovací otázka UD-TEST-024 k GenAI-3.3.1?</p>",
+      "moznosti": [
+       "Text odpovědi 1 otázky UD-TEST-024",
+       "Text odpovědi 2 otázky UD-TEST-024",
+       "Text odpovědi 3 otázky UD-TEST-024",
+       "Text odpovědi 4 otázky UD-TEST-024"
+      ],
+      "vysvetleni": {
+       "a": "Špatně.",
+       "b": "Špatně.",
+       "c": "Špatně.",
+       "d": "Správně."
+      },
+      "vysvetleni_obecne": "<p>Obecné vysvětlení.</p>"
+     },
+     "spravne": [
+      "d"
+     ],
+     "oddil": "3.3.1",
+     "poznamka": ""
+    },
+    {
+     "id": "UD-TEST-028",
+     "zdroj": "podraza-practice",
+     "lo": "GenAI-3.4.1",
+     "k": "K1",
+     "body": 1,
+     "vyber": 1,
+     "keep_order": false,
+     "en": {
+      "q": "<p>Udemy-only question number 28 that must never leave the local folder?</p>",
+      "moznosti": [
+       "Answer text 1 of UD-TEST-025",
+       "Answer text 2 of UD-TEST-025",
+       "Answer text 3 of UD-TEST-025",
+       "Answer text 4 of UD-TEST-025"
+      ],
+      "vysvetleni": {
+       "a": "Correct.",
+       "b": "Incorrect.",
+       "c": "Incorrect.",
+       "d": "Incorrect."
+      },
+      "vysvetleni_obecne": "<p>General explanation.</p>"
+     },
+     "cz": {
+      "q": "<p>Testovací otázka UD-TEST-025 k GenAI-3.4.1?</p>",
+      "moznosti": [
+       "Text odpovědi 1 otázky UD-TEST-025",
+       "Text odpovědi 2 otázky UD-TEST-025",
+       "Text odpovědi 3 otázky UD-TEST-025",
+       "Text odpovědi 4 otázky UD-TEST-025"
+      ],
+      "vysvetleni": {
+       "a": "Správně.",
+       "b": "Špatně.",
+       "c": "Špatně.",
+       "d": "Špatně."
+      },
+      "vysvetleni_obecne": "<p>Obecné vysvětlení.</p>"
+     },
+     "spravne": [
+      "a"
+     ],
+     "oddil": "3.4.1",
+     "poznamka": ""
+    },
+    {
+     "id": "UD-TEST-029",
+     "zdroj": "podraza-practice",
+     "lo": "GenAI-4.1.1",
+     "k": "K2",
+     "body": 1,
+     "vyber": 1,
+     "keep_order": false,
+     "en": {
+      "q": "<p>Udemy-only question number 29 that must never leave the local folder?</p>",
+      "moznosti": [
+       "Answer text 1 of UD-TEST-026",
+       "Answer text 2 of UD-TEST-026",
+       "Answer text 3 of UD-TEST-026",
+       "Answer text 4 of UD-TEST-026"
+      ],
+      "vysvetleni": {
+       "a": "Incorrect.",
+       "b": "Correct.",
+       "c": "Incorrect.",
+       "d": "Incorrect."
+      },
+      "vysvetleni_obecne": "<p>General explanation.</p>"
+     },
+     "cz": {
+      "q": "<p>Testovací otázka UD-TEST-026 k GenAI-4.1.1?</p>",
+      "moznosti": [
+       "Text odpovědi 1 otázky UD-TEST-026",
+       "Text odpovědi 2 otázky UD-TEST-026",
+       "Text odpovědi 3 otázky UD-TEST-026",
+       "Text odpovědi 4 otázky UD-TEST-026"
+      ],
+      "vysvetleni": {
+       "a": "Špatně.",
+       "b": "Správně.",
+       "c": "Špatně.",
+       "d": "Špatně."
+      },
+      "vysvetleni_obecne": "<p>Obecné vysvětlení.</p>"
+     },
+     "spravne": [
+      "b"
+     ],
+     "oddil": "4.1.1",
+     "poznamka": ""
+    },
+    {
+     "id": "UD-TEST-030",
+     "zdroj": "podraza-practice",
+     "lo": "GenAI-4.1.2",
+     "k": "K2",
+     "body": 1,
+     "vyber": 1,
+     "keep_order": false,
+     "en": {
+      "q": "<p>Udemy-only question number 30 that must never leave the local folder?</p>",
+      "moznosti": [
+       "Answer text 1 of UD-TEST-027",
+       "Answer text 2 of UD-TEST-027",
+       "Answer text 3 of UD-TEST-027",
+       "Answer text 4 of UD-TEST-027"
+      ],
+      "vysvetleni": {
+       "a": "Incorrect.",
+       "b": "Incorrect.",
+       "c": "Correct.",
+       "d": "Incorrect."
+      },
+      "vysvetleni_obecne": "<p>General explanation.</p>"
+     },
+     "cz": {
+      "q": "<p>Testovací otázka UD-TEST-027 k GenAI-4.1.2?</p>",
+      "moznosti": [
+       "Text odpovědi 1 otázky UD-TEST-027",
+       "Text odpovědi 2 otázky UD-TEST-027",
+       "Text odpovědi 3 otázky UD-TEST-027",
+       "Text odpovědi 4 otázky UD-TEST-027"
+      ],
+      "vysvetleni": {
+       "a": "Špatně.",
+       "b": "Špatně.",
+       "c": "Správně.",
+       "d": "Špatně."
+      },
+      "vysvetleni_obecne": "<p>Obecné vysvětlení.</p>"
+     },
+     "spravne": [
+      "c"
+     ],
+     "oddil": "4.1.2",
+     "poznamka": ""
+    },
+    {
+     "id": "UD-TEST-031",
+     "zdroj": "podraza-practice",
+     "lo": "GenAI-4.1.3",
+     "k": "K2",
+     "body": 1,
+     "vyber": 1,
+     "keep_order": false,
+     "en": {
+      "q": "<p>Udemy-only question number 31 that must never leave the local folder?</p>",
+      "moznosti": [
+       "Answer text 1 of UD-TEST-028",
+       "Answer text 2 of UD-TEST-028",
+       "Answer text 3 of UD-TEST-028",
+       "Answer text 4 of UD-TEST-028"
+      ],
+      "vysvetleni": {
+       "a": "Incorrect.",
+       "b": "Incorrect.",
+       "c": "Incorrect.",
+       "d": "Correct."
+      },
+      "vysvetleni_obecne": "<p>General explanation.</p>"
+     },
+     "cz": {
+      "q": "<p>Testovací otázka UD-TEST-028 k GenAI-4.1.3?</p>",
+      "moznosti": [
+       "Text odpovědi 1 otázky UD-TEST-028",
+       "Text odpovědi 2 otázky UD-TEST-028",
+       "Text odpovědi 3 otázky UD-TEST-028",
+       "Text odpovědi 4 otázky UD-TEST-028"
+      ],
+      "vysvetleni": {
+       "a": "Špatně.",
+       "b": "Špatně.",
+       "c": "Špatně.",
+       "d": "Správně."
+      },
+      "vysvetleni_obecne": "<p>Obecné vysvětlení.</p>"
+     },
+     "spravne": [
+      "d"
+     ],
+     "oddil": "4.1.3",
+     "poznamka": ""
+    },
+    {
+     "id": "UD-TEST-032",
+     "zdroj": "podraza-practice",
+     "lo": "GenAI-4.2.1",
+     "k": "K2",
+     "body": 1,
+     "vyber": 1,
+     "keep_order": false,
+     "en": {
+      "q": "<p>Udemy-only question number 32 that must never leave the local folder?</p>",
+      "moznosti": [
+       "Answer text 1 of UD-TEST-029",
+       "Answer text 2 of UD-TEST-029",
+       "Answer text 3 of UD-TEST-029",
+       "Answer text 4 of UD-TEST-029"
+      ],
+      "vysvetleni": {
+       "a": "Correct.",
+       "b": "Incorrect.",
+       "c": "Incorrect.",
+       "d": "Incorrect."
+      },
+      "vysvetleni_obecne": "<p>General explanation.</p>"
+     },
+     "cz": {
+      "q": "<p>Testovací otázka UD-TEST-029 k GenAI-4.2.1?</p>",
+      "moznosti": [
+       "Text odpovědi 1 otázky UD-TEST-029",
+       "Text odpovědi 2 otázky UD-TEST-029",
+       "Text odpovědi 3 otázky UD-TEST-029",
+       "Text odpovědi 4 otázky UD-TEST-029"
+      ],
+      "vysvetleni": {
+       "a": "Správně.",
+       "b": "Špatně.",
+       "c": "Špatně.",
+       "d": "Špatně."
+      },
+      "vysvetleni_obecne": "<p>Obecné vysvětlení.</p>"
+     },
+     "spravne": [
+      "a"
+     ],
+     "oddil": "4.2.1",
+     "poznamka": ""
+    },
+    {
+     "id": "UD-TEST-033",
+     "zdroj": "podraza-practice",
+     "lo": "GenAI-4.2.2",
+     "k": "K2",
+     "body": 1,
+     "vyber": 1,
+     "keep_order": false,
+     "en": {
+      "q": "<p>Udemy-only question number 33 that must never leave the local folder?</p>",
+      "moznosti": [
+       "Answer text 1 of UD-TEST-030",
+       "Answer text 2 of UD-TEST-030",
+       "Answer text 3 of UD-TEST-030",
+       "Answer text 4 of UD-TEST-030"
+      ],
+      "vysvetleni": {
+       "a": "Incorrect.",
+       "b": "Correct.",
+       "c": "Incorrect.",
+       "d": "Incorrect."
+      },
+      "vysvetleni_obecne": "<p>General explanation.</p>"
+     },
+     "cz": {
+      "q": "<p>Testovací otázka UD-TEST-030 k GenAI-4.2.2?</p>",
+      "moznosti": [
+       "Text odpovědi 1 otázky UD-TEST-030",
+       "Text odpovědi 2 otázky UD-TEST-030",
+       "Text odpovědi 3 otázky UD-TEST-030",
+       "Text odpovědi 4 otázky UD-TEST-030"
+      ],
+      "vysvetleni": {
+       "a": "Špatně.",
+       "b": "Správně.",
+       "c": "Špatně.",
+       "d": "Špatně."
+      },
+      "vysvetleni_obecne": "<p>Obecné vysvětlení.</p>"
+     },
+     "spravne": [
+      "b"
+     ],
+     "oddil": "4.2.2",
+     "poznamka": ""
+    },
+    {
+     "id": "UD-TEST-034",
+     "zdroj": "podraza-practice",
+     "lo": "GenAI-5.1.1",
+     "k": "K1",
+     "body": 1,
+     "vyber": 1,
+     "keep_order": false,
+     "en": {
+      "q": "<p>Udemy-only question number 34 that must never leave the local folder?</p>",
+      "moznosti": [
+       "Answer text 1 of UD-TEST-031",
+       "Answer text 2 of UD-TEST-031",
+       "Answer text 3 of UD-TEST-031",
+       "Answer text 4 of UD-TEST-031"
+      ],
+      "vysvetleni": {
+       "a": "Incorrect.",
+       "b": "Incorrect.",
+       "c": "Correct.",
+       "d": "Incorrect."
+      },
+      "vysvetleni_obecne": "<p>General explanation.</p>"
+     },
+     "cz": {
+      "q": "<p>Testovací otázka UD-TEST-031 k GenAI-5.1.1?</p>",
+      "moznosti": [
+       "Text odpovědi 1 otázky UD-TEST-031",
+       "Text odpovědi 2 otázky UD-TEST-031",
+       "Text odpovědi 3 otázky UD-TEST-031",
+       "Text odpovědi 4 otázky UD-TEST-031"
+      ],
+      "vysvetleni": {
+       "a": "Špatně.",
+       "b": "Špatně.",
+       "c": "Správně.",
+       "d": "Špatně."
+      },
+      "vysvetleni_obecne": "<p>Obecné vysvětlení.</p>"
+     },
+     "spravne": [
+      "c"
+     ],
+     "oddil": "5.1.1",
+     "poznamka": ""
+    },
+    {
+     "id": "UD-TEST-035",
+     "zdroj": "podraza-practice",
+     "lo": "GenAI-5.1.2",
+     "k": "K2",
+     "body": 1,
+     "vyber": 1,
+     "keep_order": false,
+     "en": {
+      "q": "<p>Udemy-only question number 35 that must never leave the local folder?</p>",
+      "moznosti": [
+       "Answer text 1 of UD-TEST-032",
+       "Answer text 2 of UD-TEST-032",
+       "Answer text 3 of UD-TEST-032",
+       "Answer text 4 of UD-TEST-032"
+      ],
+      "vysvetleni": {
+       "a": "Incorrect.",
+       "b": "Incorrect.",
+       "c": "Incorrect.",
+       "d": "Correct."
+      },
+      "vysvetleni_obecne": "<p>General explanation.</p>"
+     },
+     "cz": {
+      "q": "<p>Testovací otázka UD-TEST-032 k GenAI-5.1.2?</p>",
+      "moznosti": [
+       "Text odpovědi 1 otázky UD-TEST-032",
+       "Text odpovědi 2 otázky UD-TEST-032",
+       "Text odpovědi 3 otázky UD-TEST-032",
+       "Text odpovědi 4 otázky UD-TEST-032"
+      ],
+      "vysvetleni": {
+       "a": "Špatně.",
+       "b": "Špatně.",
+       "c": "Špatně.",
+       "d": "Správně."
+      },
+      "vysvetleni_obecne": "<p>Obecné vysvětlení.</p>"
+     },
+     "spravne": [
+      "d"
+     ],
+     "oddil": "5.1.2",
+     "poznamka": ""
+    },
+    {
+     "id": "UD-TEST-036",
+     "zdroj": "podraza-practice",
+     "lo": "GenAI-5.1.3",
+     "k": "K2",
+     "body": 1,
+     "vyber": 1,
+     "keep_order": false,
+     "en": {
+      "q": "<p>Udemy-only question number 36 that must never leave the local folder?</p>",
+      "moznosti": [
+       "Answer text 1 of UD-TEST-033",
+       "Answer text 2 of UD-TEST-033",
+       "Answer text 3 of UD-TEST-033",
+       "Answer text 4 of UD-TEST-033"
+      ],
+      "vysvetleni": {
+       "a": "Correct.",
+       "b": "Incorrect.",
+       "c": "Incorrect.",
+       "d": "Incorrect."
+      },
+      "vysvetleni_obecne": "<p>General explanation.</p>"
+     },
+     "cz": {
+      "q": "<p>Testovací otázka UD-TEST-033 k GenAI-5.1.3?</p>",
+      "moznosti": [
+       "Text odpovědi 1 otázky UD-TEST-033",
+       "Text odpovědi 2 otázky UD-TEST-033",
+       "Text odpovědi 3 otázky UD-TEST-033",
+       "Text odpovědi 4 otázky UD-TEST-033"
+      ],
+      "vysvetleni": {
+       "a": "Správně.",
+       "b": "Špatně.",
+       "c": "Špatně.",
+       "d": "Špatně."
+      },
+      "vysvetleni_obecne": "<p>Obecné vysvětlení.</p>"
+     },
+     "spravne": [
+      "a"
+     ],
+     "oddil": "5.1.3",
+     "poznamka": ""
+    },
+    {
+     "id": "UD-TEST-037",
+     "zdroj": "podraza-practice",
+     "lo": "GenAI-5.1.4",
+     "k": "K1",
+     "body": 1,
+     "vyber": 1,
+     "keep_order": false,
+     "en": {
+      "q": "<p>Udemy-only question number 37 that must never leave the local folder?</p>",
+      "moznosti": [
+       "Answer text 1 of UD-TEST-034",
+       "Answer text 2 of UD-TEST-034",
+       "Answer text 3 of UD-TEST-034",
+       "Answer text 4 of UD-TEST-034"
+      ],
+      "vysvetleni": {
+       "a": "Incorrect.",
+       "b": "Correct.",
+       "c": "Incorrect.",
+       "d": "Incorrect."
+      },
+      "vysvetleni_obecne": "<p>General explanation.</p>"
+     },
+     "cz": {
+      "q": "<p>Testovací otázka UD-TEST-034 k GenAI-5.1.4?</p>",
+      "moznosti": [
+       "Text odpovědi 1 otázky UD-TEST-034",
+       "Text odpovědi 2 otázky UD-TEST-034",
+       "Text odpovědi 3 otázky UD-TEST-034",
+       "Text odpovědi 4 otázky UD-TEST-034"
+      ],
+      "vysvetleni": {
+       "a": "Špatně.",
+       "b": "Správně.",
+       "c": "Špatně.",
+       "d": "Špatně."
+      },
+      "vysvetleni_obecne": "<p>Obecné vysvětlení.</p>"
+     },
+     "spravne": [
+      "b"
+     ],
+     "oddil": "5.1.4",
+     "poznamka": ""
+    },
+    {
+     "id": "UD-TEST-038",
+     "zdroj": "podraza-practice",
+     "lo": "GenAI-5.2.1",
+     "k": "K2",
+     "body": 1,
+     "vyber": 1,
+     "keep_order": false,
+     "en": {
+      "q": "<p>Udemy-only question number 38 that must never leave the local folder?</p>",
+      "moznosti": [
+       "Answer text 1 of UD-TEST-035",
+       "Answer text 2 of UD-TEST-035",
+       "Answer text 3 of UD-TEST-035",
+       "Answer text 4 of UD-TEST-035"
+      ],
+      "vysvetleni": {
+       "a": "Incorrect.",
+       "b": "Incorrect.",
+       "c": "Correct.",
+       "d": "Incorrect."
+      },
+      "vysvetleni_obecne": "<p>General explanation.</p>"
+     },
+     "cz": {
+      "q": "<p>Testovací otázka UD-TEST-035 k GenAI-5.2.1?</p>",
+      "moznosti": [
+       "Text odpovědi 1 otázky UD-TEST-035",
+       "Text odpovědi 2 otázky UD-TEST-035",
+       "Text odpovědi 3 otázky UD-TEST-035",
+       "Text odpovědi 4 otázky UD-TEST-035"
+      ],
+      "vysvetleni": {
+       "a": "Špatně.",
+       "b": "Špatně.",
+       "c": "Správně.",
+       "d": "Špatně."
+      },
+      "vysvetleni_obecne": "<p>Obecné vysvětlení.</p>"
+     },
+     "spravne": [
+      "c"
+     ],
+     "oddil": "5.2.1",
+     "poznamka": ""
+    },
+    {
+     "id": "UD-TEST-039",
+     "zdroj": "podraza-practice",
+     "lo": "GenAI-5.2.2",
+     "k": "K1",
+     "body": 1,
+     "vyber": 1,
+     "keep_order": false,
+     "en": {
+      "q": "<p>Udemy-only question number 39 that must never leave the local folder?</p>",
+      "moznosti": [
+       "Answer text 1 of UD-TEST-036",
+       "Answer text 2 of UD-TEST-036",
+       "Answer text 3 of UD-TEST-036",
+       "Answer text 4 of UD-TEST-036"
+      ],
+      "vysvetleni": {
+       "a": "Incorrect.",
+       "b": "Incorrect.",
+       "c": "Incorrect.",
+       "d": "Correct."
+      },
+      "vysvetleni_obecne": "<p>General explanation.</p>"
+     },
+     "cz": {
+      "q": "<p>Testovací otázka UD-TEST-036 k GenAI-5.2.2?</p>",
+      "moznosti": [
+       "Text odpovědi 1 otázky UD-TEST-036",
+       "Text odpovědi 2 otázky UD-TEST-036",
+       "Text odpovědi 3 otázky UD-TEST-036",
+       "Text odpovědi 4 otázky UD-TEST-036"
+      ],
+      "vysvetleni": {
+       "a": "Špatně.",
+       "b": "Špatně.",
+       "c": "Špatně.",
+       "d": "Správně."
+      },
+      "vysvetleni_obecne": "<p>Obecné vysvětlení.</p>"
+     },
+     "spravne": [
+      "d"
+     ],
+     "oddil": "5.2.2",
+     "poznamka": ""
+    },
+    {
+     "id": "UD-TEST-040",
+     "zdroj": "podraza-practice",
+     "lo": "GenAI-5.2.3",
+     "k": "K1",
+     "body": 1,
+     "vyber": 1,
+     "keep_order": false,
+     "en": {
+      "q": "<p>Udemy-only question number 40 that must never leave the local folder?</p>",
+      "moznosti": [
+       "Answer text 1 of UD-TEST-037",
+       "Answer text 2 of UD-TEST-037",
+       "Answer text 3 of UD-TEST-037",
+       "Answer text 4 of UD-TEST-037"
+      ],
+      "vysvetleni": {
+       "a": "Correct.",
+       "b": "Incorrect.",
+       "c": "Incorrect.",
+       "d": "Incorrect."
+      },
+      "vysvetleni_obecne": "<p>General explanation.</p>"
+     },
+     "cz": {
+      "q": "<p>Testovací otázka UD-TEST-037 k GenAI-5.2.3?</p>",
+      "moznosti": [
+       "Text odpovědi 1 otázky UD-TEST-037",
+       "Text odpovědi 2 otázky UD-TEST-037",
+       "Text odpovědi 3 otázky UD-TEST-037",
+       "Text odpovědi 4 otázky UD-TEST-037"
+      ],
+      "vysvetleni": {
+       "a": "Správně.",
+       "b": "Špatně.",
+       "c": "Špatně.",
+       "d": "Špatně."
+      },
+      "vysvetleni_obecne": "<p>Obecné vysvětlení.</p>"
+     },
+     "spravne": [
+      "a"
+     ],
+     "oddil": "5.2.3",
+     "poznamka": ""
+    },
+    {
+     "id": "UD-TEST-BEZLO",
+     "zdroj": "shetty-tools",
+     "lo": null,
+     "k": "K1",
+     "body": 1,
+     "vyber": 1,
+     "keep_order": false,
+     "en": {
+      "q": "<p>Test question UD-TEST-BEZLO for GenAI-1.1.1?</p>",
+      "moznosti": [
+       "Answer text 1 of UD-TEST-BEZLO",
+       "Answer text 2 of UD-TEST-BEZLO",
+       "Answer text 3 of UD-TEST-BEZLO",
+       "Answer text 4 of UD-TEST-BEZLO"
+      ],
+      "vysvetleni": {
+       "a": "Correct.",
+       "b": "Incorrect.",
+       "c": "Incorrect.",
+       "d": "Incorrect."
+      },
+      "vysvetleni_obecne": "<p>General explanation.</p>"
+     },
+     "cz": {
+      "q": "<p>Testovací otázka UD-TEST-BEZLO k GenAI-1.1.1?</p>",
+      "moznosti": [
+       "Text odpovědi 1 otázky UD-TEST-BEZLO",
+       "Text odpovědi 2 otázky UD-TEST-BEZLO",
+       "Text odpovědi 3 otázky UD-TEST-BEZLO",
+       "Text odpovědi 4 otázky UD-TEST-BEZLO"
+      ],
+      "vysvetleni": {
+       "a": "Správně.",
+       "b": "Špatně.",
+       "c": "Špatně.",
+       "d": "Špatně."
+      },
+      "vysvetleni_obecne": "<p>Obecné vysvětlení.</p>"
+     },
+     "spravne": [
+      "a"
+     ],
+     "oddil": "1.1.1",
+     "poznamka": ""
+    }
+   ]
+  }
+ ]
+}

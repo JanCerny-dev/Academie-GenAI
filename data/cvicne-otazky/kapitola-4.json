@@ -1,0 +1,905 @@
+{
+ "popis": "Vlastní cvičné otázky ke kapitole 4 sylabu CT-GenAI v1.1 (LLM-Powered Test Infrastructure). Pět otázek na každý studijní cíl, úroveň K2, EN i CZ. Napsáno nově podle sylabu, nejde o parafráze Sample Exam A ani otázek z kurzů.",
+ "otazky": [
+  {
+   "id": "CG-4.1.1-01", "zdroj": "vlastni", "lo": "GenAI-4.1.1", "k": "K2", "body": 1, "vyber": 1, "keep_order": false,
+   "en": {
+    "q": "<p>Which of the following statements BEST explains why an LLM-powered test infrastructure goes beyond a traditional client-server model?</p>",
+    "moznosti": [
+     "The LLM interprets and reasons about testware and generates test insights dynamically from context such as requirements, code or test results.",
+     "The front-end stores the test cases locally, so a back-end is no longer required to process user input.",
+     "The responses are selected from a library of scripted answers that testers maintain for each type of query.",
+     "The LLM replaces the relational database as the primary storage for structured test data."
+    ],
+    "vysvetleni": {
+     "a": "Correct. Section 4.1.1 describes the LLM as a smart processing component that reasons based on testware and generates insights dynamically from context, unlike a plain server.",
+     "b": "Incorrect. The back-end remains essential: it handles authentication, data retrieval, prompt preparation and interaction with the LLM (4.1.1).",
+     "c": "Incorrect. Scripted answers describe rule-based chatbots, which the syllabus contrasts with LLM-powered test infrastructure (4.1.1).",
+     "d": "Incorrect. Relational databases remain one of the data sources integrated by the back-end. The LLM generates responses, it is not a data store (4.1.1)."
+    },
+    "vysvetleni_obecne": "The four differences from a client-server model in 4.1.1: the LLM reasons about testware, responses are generated dynamically from context, the back-end integrates multiple data sources, and the back-end post-processes the output."
+   },
+   "cz": {
+    "q": "<p>Které z následujících tvrzení NEJLÉPE vysvětluje, proč infrastruktura testování postavená na LLM přesahuje tradiční model klient-server?</p>",
+    "moznosti": [
+     "LLM interpretuje testware, uvažuje nad ním a vytváří poznatky dynamicky z kontextu, jako jsou požadavky, kód nebo výsledky testů.",
+     "Front-end ukládá testovací případy lokálně, takže back-end už vstup uživatele zpracovávat nemusí.",
+     "Odpovědi se vybírají z knihovny předem napsaných odpovědí, kterou testeři udržují pro každý typ dotazu.",
+     "LLM nahrazuje relační databázi jako hlavní úložiště strukturovaných testovacích dat."
+    ],
+    "vysvetleni": {
+     "a": "Správně. Oddíl 4.1.1 popisuje LLM jako chytrou zpracovávající komponentu, která uvažuje nad testwarem a vytváří poznatky dynamicky z kontextu.",
+     "b": "Špatně. Back-end zůstává nezbytný: ověřuje uživatele, vyhledává data, připravuje prompt a komunikuje s LLM (4.1.1).",
+     "c": "Špatně. Předem napsané odpovědi jsou znakem chatbotů založených na pravidlech, se kterými sylabus infrastrukturu s LLM srovnává (4.1.1).",
+     "d": "Špatně. Relační databáze zůstává jedním ze zdrojů dat back-endu. LLM generuje odpovědi, není to úložiště (4.1.1)."
+    },
+    "vysvetleni_obecne": "Čtyři rozdíly oproti klientovi a serveru v 4.1.1: LLM uvažuje nad testwarem, odpovědi vznikají dynamicky z kontextu, back-end spojuje více zdrojů dat a back-end upravuje výstup modelu."
+   },
+   "spravne": ["a"], "oddil": "4.1.1", "poznamka": ""
+  },
+  {
+   "id": "CG-4.1.1-02", "zdroj": "vlastni", "lo": "GenAI-4.1.1", "k": "K2", "body": 1, "vyber": 1, "keep_order": false,
+   "en": {
+    "q": "<p>A test team uses an in-house LLM-powered tool to derive test cases from user stories. Testers report that the generated test cases appear in varying layouts and sometimes reference requirement identifiers that do not exist in the requirements repository.</p><p>Which architectural function addresses this problem MOST directly?</p>",
+    "moznosti": [
+     "Authentication performed by the back-end before the prompt is sent.",
+     "Hosting the LLM as a third-party service instead of an in-house model.",
+     "Post-processing of the LLM's raw output by the back-end before it is presented on the front-end.",
+     "Adding more input fields to the front-end so testers can describe the layout."
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. Authentication controls who can use the system and which data they may access. It does not change the content of the output (4.1.1).",
+     "b": "Incorrect. Moving the LLM to a third-party service does not ensure a consistent layout or valid references. The raw output would still need refining (4.1.1).",
+     "c": "Correct. Section 4.1.1 states that the back-end enhances the raw output through post-processing so that it aligns with the test conditions of the test process before presenting it, for example by applying a template and checking references.",
+     "d": "Incorrect. More input fields may help the prompt, but the front-end only collects input and displays results. Checking and refining output is a back-end function (4.1.1)."
+    },
+    "vysvetleni_obecne": "Post-processing is the back-end function that aligns LLM output with the test process before the user sees it."
+   },
+   "cz": {
+    "q": "<p>Testovací tým používá vlastní nástroj postavený na LLM, který odvozuje testovací případy z uživatelských scénářů. Testeři hlásí, že vygenerované testovací případy mají pokaždé jinou úpravu a někdy odkazují na identifikátory požadavků, které v repozitáři požadavků neexistují.</p><p>Která funkce architektury řeší tento problém NEJPŘÍMĚJI?</p>",
+    "moznosti": [
+     "Autentizace, kterou back-end provede před odesláním promptu.",
+     "Hostování LLM jako služby třetí strany místo vlastního modelu.",
+     "Následné zpracování surového výstupu LLM v back-endu, než se zobrazí ve front-endu.",
+     "Přidání dalších vstupních polí do front-endu, aby testeři mohli popsat požadovanou úpravu."
+    ],
+    "vysvetleni": {
+     "a": "Špatně. Autentizace řídí, kdo systém používá a k jakým datům má přístup. Obsah výstupu nemění (4.1.1).",
+     "b": "Špatně. Přesun LLM ke třetí straně nezajistí jednotnou úpravu ani platné odkazy. Surový výstup by bylo stále potřeba upravit (4.1.1).",
+     "c": "Správně. Podle 4.1.1 back-end vylepšuje surový výstup následným zpracováním, aby odpovídal testovacím podmínkám, a teprve pak ho předá front-endu. Například použije šablonu a ověří odkazy.",
+     "d": "Špatně. Další pole mohou zlepšit prompt, ale front-end jen sbírá vstup a zobrazuje výsledek. Kontrola a úprava výstupu je funkce back-endu (4.1.1)."
+    },
+    "vysvetleni_obecne": "Post-processing je funkce back-endu, která sladí výstup LLM s testovacím procesem dřív, než ho uvidí uživatel."
+   },
+   "spravne": ["c"], "oddil": "4.1.1", "poznamka": ""
+  },
+  {
+   "id": "CG-4.1.1-03", "zdroj": "vlastni", "lo": "GenAI-4.1.1", "k": "K2", "body": 1, "vyber": 1, "keep_order": false,
+   "en": {
+    "q": "<p>The back-end of an LLM-powered test tool integrates several data sources. Which of the following statements correctly describes the role of these data sources?</p>",
+    "moznosti": [
+     "A vector database stores test execution results in tables so that exact queries such as counts of failed tests can be answered.",
+     "A relational database provides semantic retrieval of related content by comparing embeddings.",
+     "A vector database handles user authentication, while a relational database prepares the prompt.",
+     "A relational database holds structured data such as existing test cases, while a vector database enables retrieval of related content by meaning using embeddings."
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. Tables and exact queries describe a relational database. A vector database stores high-dimensional vectors for similarity search (4.1.1, 4.1.2).",
+     "b": "Incorrect. The roles are swapped. Semantic retrieval using embeddings is the purpose of a vector database (4.1.1).",
+     "c": "Incorrect. Authentication and prompt preparation are functions of the back-end, not of the databases (4.1.1).",
+     "d": "Correct. Section 4.1.1 lists relational databases for structured data used in testing, such as test cases, and vector databases for semantic retrieval of related content using embeddings."
+    },
+    "vysvetleni_obecne": "Relational database: structured data, exact queries. Vector database: embeddings, retrieval by semantic similarity."
+   },
+   "cz": {
+    "q": "<p>Back-end testovacího nástroje postaveného na LLM spojuje několik zdrojů dat. Které z následujících tvrzení správně popisuje roli těchto zdrojů?</p>",
+    "moznosti": [
+     "Vektorová databáze ukládá výsledky běhů testů do tabulek, aby šlo odpovídat na přesné dotazy, například kolik testů selhalo.",
+     "Relační databáze umožňuje sémantické vyhledávání souvisejícího obsahu porovnáváním embeddingů.",
+     "Vektorová databáze zajišťuje autentizaci uživatelů a relační databáze připravuje prompt.",
+     "Relační databáze drží strukturovaná data, například existující testovací případy, a vektorová databáze umožňuje vyhledat související obsah podle významu pomocí embeddingů."
+    ],
+    "vysvetleni": {
+     "a": "Špatně. Tabulky a přesné dotazy popisují relační databázi. Vektorová databáze ukládá vektory pro vyhledávání podle podobnosti (4.1.1, 4.1.2).",
+     "b": "Špatně. Role jsou prohozené. Sémantické vyhledávání pomocí embeddingů je úloha vektorové databáze (4.1.1).",
+     "c": "Špatně. Autentizace a příprava promptu jsou funkce back-endu, ne databází (4.1.1).",
+     "d": "Správně. Oddíl 4.1.1 uvádí relační databáze pro strukturovaná data, například testovací případy, a vektorové databáze pro sémantické vyhledávání pomocí embeddingů."
+    },
+    "vysvetleni_obecne": "Relační databáze: strukturovaná data a přesné dotazy. Vektorová databáze: embeddingy a vyhledávání podle významu."
+   },
+   "spravne": ["d"], "oddil": "4.1.1", "poznamka": ""
+  },
+  {
+   "id": "CG-4.1.1-04", "zdroj": "vlastni", "lo": "GenAI-4.1.1", "k": "K2", "body": 1, "vyber": 1, "keep_order": false,
+   "en": {
+    "q": "<p>A bank plans to build an LLM-powered test tool. Its compliance department does not allow requirement specifications to leave the bank's own infrastructure.</p><p>Which of the following options for the LLM component is consistent with this constraint and with the architecture described in the syllabus?</p>",
+    "moznosti": [
+     "Use a third-party LLM accessed via API, because back-end authentication prevents the specifications from leaving the bank.",
+     "Use a custom in-house model operated within the bank's infrastructure.",
+     "Move prompt preparation to the front-end, so that the specifications never reach the back-end.",
+     "Rely on post-processing to remove sensitive content from the LLM's responses before they are displayed."
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. Authentication controls access to the tool. It does not stop data in the prompt from being sent to an external provider (4.1.1).",
+     "b": "Correct. Section 4.1.1 states that the LLM may be hosted as a third-party service accessed via API or as a custom in-house model. An in-house model keeps the prompts, including specifications, inside the bank.",
+     "c": "Incorrect. Prompt preparation is a back-end function, and the location of prompt preparation does not change where the LLM is hosted. The prompt would still go to the LLM (4.1.1).",
+     "d": "Incorrect. Post-processing works on the response. By then the specifications would already have been sent to the LLM in the prompt (4.1.1)."
+    },
+    "vysvetleni_obecne": "The LLM component can be a third-party service via API or an in-house model. The choice affects where prompt data is processed."
+   },
+   "cz": {
+    "q": "<p>Banka plánuje postavit testovací nástroj na LLM. Oddělení compliance nedovoluje, aby specifikace požadavků opustily vlastní infrastrukturu banky.</p><p>Která z následujících možností pro komponentu LLM odpovídá tomuto omezení i architektuře popsané v sylabu?</p>",
+    "moznosti": [
+     "Použít LLM třetí strany přes API, protože autentizace v back-endu zabrání, aby specifikace banku opustily.",
+     "Použít vlastní model provozovaný v infrastruktuře banky.",
+     "Přesunout přípravu promptu do front-endu, aby se specifikace k back-endu vůbec nedostaly.",
+     "Spolehnout se na následné zpracování, které z odpovědí LLM před zobrazením odstraní citlivý obsah."
+    ],
+    "vysvetleni": {
+     "a": "Špatně. Autentizace řídí přístup k nástroji. Nezabrání tomu, aby data v promptu odešla k externímu poskytovateli (4.1.1).",
+     "b": "Správně. Podle 4.1.1 může LLM běžet jako služba třetí strany přes API nebo jako vlastní model. Vlastní model udrží prompty včetně specifikací uvnitř banky.",
+     "c": "Špatně. Příprava promptu je funkce back-endu a její umístění nemění, kde běží LLM. Prompt by k LLM odešel stejně (4.1.1).",
+     "d": "Špatně. Následné zpracování pracuje s odpovědí. Specifikace by v té chvíli už byly odeslané modelu v promptu (4.1.1)."
+    },
+    "vysvetleni_obecne": "Komponenta LLM může být služba třetí strany přes API nebo vlastní model. Volba určuje, kde se data z promptu zpracovávají."
+   },
+   "spravne": ["b"], "oddil": "4.1.1", "poznamka": ""
+  },
+  {
+   "id": "CG-4.1.1-05", "zdroj": "vlastni", "lo": "GenAI-4.1.1", "k": "K2", "body": 1, "vyber": 1, "keep_order": false,
+   "en": {
+    "q": "<p>Which of the following statements BEST describes the difference between a traditional AI chatbot and an LLM-powered test tool?</p>",
+    "moznosti": [
+     "An AI chatbot uses an LLM, whereas an LLM-powered test tool relies on a rule-based engine to guarantee consistent results.",
+     "An LLM-powered test tool cannot use third-party LLMs, whereas an AI chatbot always does.",
+     "An LLM-powered test tool is designed to support testing by processing test-related queries, analyzing requirements, generating test cases and evaluating outputs, whereas an AI chatbot focuses primarily on conversational interaction.",
+     "An AI chatbot always includes a vector database in its back-end, whereas an LLM-powered test tool uses only the knowledge of the LLM."
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. Both use an LLM. The syllabus contrasts LLM-powered infrastructure with rule-based chatbots, not the other way round (4.1.1).",
+     "b": "Incorrect. Section 4.1.1 explicitly allows the LLM of a test tool to be a third-party service accessed via API.",
+     "c": "Correct. This matches the definition in 4.1.1: the chatbot focuses on conversation, while the test tool supports test activities such as requirements analysis, test case generation and output evaluation.",
+     "d": "Incorrect. The syllabus mentions vector databases as a data source of the LLM-powered test infrastructure back-end, not as a mandatory part of chatbots (4.1.1)."
+    },
+    "vysvetleni_obecne": "See also 1.2.2: chatbots offer conversational interaction, LLM-powered applications integrate LLMs via APIs for well-defined testing tasks."
+   },
+   "cz": {
+    "q": "<p>Které z následujících tvrzení NEJLÉPE popisuje rozdíl mezi tradičním AI chatbotem a testovacím nástrojem postaveným na LLM?</p>",
+    "moznosti": [
+     "AI chatbot používá LLM, kdežto testovací nástroj na LLM se kvůli konzistentním výsledkům opírá o systém pravidel.",
+     "Testovací nástroj na LLM nemůže používat LLM třetích stran, kdežto AI chatbot je používá vždy.",
+     "Testovací nástroj na LLM je navržený na podporu testování: zpracovává testovací dotazy, analyzuje požadavky, generuje testovací případy a vyhodnocuje výstupy. AI chatbot se soustředí hlavně na konverzaci.",
+     "AI chatbot má v back-endu vždy vektorovou databázi, kdežto testovací nástroj na LLM používá jen znalosti modelu."
+    ],
+    "vysvetleni": {
+     "a": "Špatně. Oba používají LLM. Sylabus staví infrastrukturu s LLM do protikladu k chatbotům založeným na pravidlech, ne naopak (4.1.1).",
+     "b": "Špatně. Oddíl 4.1.1 výslovně připouští, že LLM testovacího nástroje je služba třetí strany přes API.",
+     "c": "Správně. Odpovídá to definici v 4.1.1: chatbot se soustředí na konverzaci, testovací nástroj podporuje testovací činnosti, jako je analýza požadavků, generování testovacích případů a vyhodnocení výstupů.",
+     "d": "Špatně. Vektorovou databázi sylabus uvádí jako zdroj dat back-endu infrastruktury testování s LLM, ne jako povinnou součást chatbotu (4.1.1)."
+    },
+    "vysvetleni_obecne": "Viz také 1.2.2: chatboty nabízejí konverzaci, aplikace na LLM zapojují model přes API do jasně definovaných testovacích úloh."
+   },
+   "spravne": ["c"], "oddil": "4.1.1", "poznamka": ""
+  },
+  {
+   "id": "CG-4.1.2-01", "zdroj": "vlastni", "lo": "GenAI-4.1.2", "k": "K2", "body": 1, "vyber": 1, "keep_order": false,
+   "en": {
+    "q": "<p>Which of the following BEST describes what a RAG system does when a tester submits a query at runtime?</p>",
+    "moznosti": [
+     "It splits the project documents into chunks and encodes each chunk into an embedding.",
+     "It encodes the query, retrieves the chunks that are most semantically similar to it, and passes them to the LLM as context for generating the response.",
+     "It updates the weights of the LLM with the retrieved chunks so that the model remembers them for future queries.",
+     "It replaces the tester's query with the retrieved chunks, so that the LLM answers only from the documents and ignores the query."
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. Chunking and encoding the documents belong to preprocessing, which takes place before queries are processed (4.1.2).",
+     "b": "Correct. Section 4.1.2 describes the user prompt processing phase as retrieval based on semantic similarity followed by generation, in which the retrieved information is fed to the LLM.",
+     "c": "Incorrect. RAG does not change model weights. Updating weights through further training is fine-tuning (4.1.2, 4.2.1).",
+     "d": "Incorrect. The retrieved chunks are added as context. The query remains part of the prompt and the LLM combines its existing knowledge with the new data (4.1.2)."
+    },
+    "vysvetleni_obecne": "Two phases of RAG: preprocessing (chunk, clean, embed, store) and user prompt processing (retrieval, generation)."
+   },
+   "cz": {
+    "q": "<p>Co z následujícího NEJLÉPE popisuje, co systém RAG udělá, když tester za běhu zadá dotaz?</p>",
+    "moznosti": [
+     "Rozdělí dokumenty projektu na části a každou část převede na embedding.",
+     "Zakóduje dotaz, vyhledá části, které jsou mu sémanticky nejpodobnější, a předá je LLM jako kontext pro vytvoření odpovědi.",
+     "Aktualizuje váhy LLM podle vyhledaných částí, aby si je model zapamatoval pro další dotazy.",
+     "Nahradí dotaz testera vyhledanými částmi, takže LLM odpovídá jen z dokumentů a dotaz ignoruje."
+    ],
+    "vysvetleni": {
+     "a": "Špatně. Rozdělení a převod dokumentů patří do předzpracování, které proběhne před zpracováním dotazů (4.1.2).",
+     "b": "Správně. Oddíl 4.1.2 popisuje zpracování promptu jako vyhledání podle sémantické podobnosti a následné generování, při kterém LLM dostane vyhledané informace.",
+     "c": "Špatně. RAG váhy modelu nemění. Úprava vah dalším tréninkem je fine-tuning (4.1.2, 4.2.1).",
+     "d": "Špatně. Vyhledané části se přidávají jako kontext. Dotaz zůstává součástí promptu a LLM kombinuje své znalosti s novými daty (4.1.2)."
+    },
+    "vysvetleni_obecne": "Dvě fáze RAG: předzpracování (rozdělit, vyčistit, převést na embeddingy, uložit) a zpracování dotazu (vyhledání, generování)."
+   },
+   "spravne": ["b"], "oddil": "4.1.2", "poznamka": ""
+  },
+  {
+   "id": "CG-4.1.2-02", "zdroj": "vlastni", "lo": "GenAI-4.1.2", "k": "K2", "body": 1, "vyber": 1, "keep_order": true,
+   "en": {
+    "q": "<p>A team prepares its test basis documents for a RAG system. Consider the following preprocessing steps:</p><ol><li>Store the embeddings in a vector database</li><li>Split the documents into chunks</li><li>Encode each chunk into an embedding</li><li>Clean and process each chunk</li></ol><p>Which of the following represents the correct order?</p>",
+    "moznosti": [
+     "2 – 3 – 4 – 1",
+     "4 – 2 – 1 – 3",
+     "2 – 4 – 1 – 3",
+     "2 – 4 – 3 – 1"
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. Each chunk is cleaned and processed before it is encoded into an embedding (4.1.2).",
+     "b": "Incorrect. Cleaning is done on chunks, so splitting comes first. Storing must also follow encoding (4.1.2).",
+     "c": "Incorrect. Embeddings can only be stored after they have been created (4.1.2).",
+     "d": "Correct. According to 4.1.2, documents are broken into chunks, each chunk is cleaned and processed, encoded into an embedding, and the embeddings are stored in a vector database."
+    },
+    "vysvetleni_obecne": "Preprocessing order: chunk, clean and process, embed, store."
+   },
+   "cz": {
+    "q": "<p>Tým připravuje dokumenty testovací báze pro systém RAG. Uvažujte tyto kroky předzpracování:</p><ol><li>Uložit embeddingy do vektorové databáze</li><li>Rozdělit dokumenty na části</li><li>Převést každou část na embedding</li><li>Vyčistit a zpracovat každou část</li></ol><p>Které pořadí je správné?</p>",
+    "moznosti": [
+     "2 – 3 – 4 – 1",
+     "4 – 2 – 1 – 3",
+     "2 – 4 – 1 – 3",
+     "2 – 4 – 3 – 1"
+    ],
+    "vysvetleni": {
+     "a": "Špatně. Každá část se vyčistí a zpracuje dřív, než se převede na embedding (4.1.2).",
+     "b": "Špatně. Čistí se jednotlivé části, takže rozdělení je první. Uložení musí následovat až po převodu (4.1.2).",
+     "c": "Špatně. Embeddingy lze uložit až poté, co vzniknou (4.1.2).",
+     "d": "Správně. Podle 4.1.2 se dokumenty rozdělí na části, každá část se vyčistí a zpracuje, převede na embedding a embeddingy se uloží do vektorové databáze."
+    },
+    "vysvetleni_obecne": "Pořadí předzpracování: rozdělit, vyčistit a zpracovat, převést na embedding, uložit."
+   },
+   "spravne": ["d"], "oddil": "4.1.2", "poznamka": ""
+  },
+  {
+   "id": "CG-4.1.2-03", "zdroj": "vlastni", "lo": "GenAI-4.1.2", "k": "K2", "body": 1, "vyber": 1, "keep_order": false,
+   "en": {
+    "q": "<p>An automotive supplier uses an LLM to derive test conditions for an electronic control unit. The requirements are updated every week, and the generated test conditions often contain limit values from older requirement versions.</p><p>How would introducing RAG MOST likely improve the results?</p>",
+    "moznosti": [
+     "RAG retrieves relevant chunks of the current requirements at query time and provides them to the LLM as context, so that the test conditions are grounded in the latest specification.",
+     "RAG retrains the LLM every week on the updated requirements, so that the new limit values become part of the model's parameters.",
+     "RAG lowers the temperature of the LLM, so that the generated limit values become deterministic.",
+     "RAG replaces the model's pre-existing knowledge with the documents, which guarantees that the output contains no hallucinations."
+    ],
+    "vysvetleni": {
+     "a": "Correct. Section 4.1.2 states that RAG gives LLM-powered test infrastructure access to enterprise data sources in real time, ensuring that test analysis and test design are aligned with the latest specifications and requirements.",
+     "b": "Incorrect. Retraining the model describes fine-tuning. RAG supplies retrieved data during inference without changing the model (4.1.2, 4.2.1).",
+     "c": "Incorrect. Temperature is a mitigation for non-deterministic behaviour (3.1.4). It does not provide current requirement values.",
+     "d": "Incorrect. The LLM combines its existing knowledge with the retrieved data (4.1.2). RAG increases accuracy and relevance but does not guarantee the absence of hallucinations."
+    },
+    "vysvetleni_obecne": "RAG grounds the response in current data retrieved at runtime. It reduces, but does not eliminate, the risk of incorrect output."
+   },
+   "cz": {
+    "q": "<p>Dodavatel pro automotive používá LLM k odvození testovacích podmínek pro řídicí jednotku. Požadavky se mění každý týden a vygenerované testovací podmínky často obsahují mezní hodnoty ze starších verzí požadavků.</p><p>Jak by zavedení RAG NEJSPÍŠ zlepšilo výsledky?</p>",
+    "moznosti": [
+     "RAG při dotazu vyhledá relevantní části aktuálních požadavků a předá je LLM jako kontext, takže testovací podmínky vycházejí z nejnovější specifikace.",
+     "RAG každý týden znovu natrénuje LLM na aktualizovaných požadavcích, takže nové mezní hodnoty se stanou součástí parametrů modelu.",
+     "RAG sníží teplotu LLM, takže vygenerované mezní hodnoty budou deterministické.",
+     "RAG nahradí dosavadní znalosti modelu dokumenty, což zaručí, že výstup nebude obsahovat halucinace."
+    ],
+    "vysvetleni": {
+     "a": "Správně. Podle 4.1.2 dává RAG infrastruktuře testování přístup k firemním zdrojům dat v reálném čase, takže testovací analýza a návrh testů odpovídají nejnovějším specifikacím a požadavkům.",
+     "b": "Špatně. Opakovaný trénink popisuje fine-tuning. RAG dodává vyhledaná data při inferenci a model nemění (4.1.2, 4.2.1).",
+     "c": "Špatně. Teplota je opatření proti nedeterministickému chování (3.1.4). Aktuální hodnoty z požadavků nedodá.",
+     "d": "Špatně. LLM kombinuje své znalosti s vyhledanými daty (4.1.2). RAG zvyšuje přesnost a relevanci, ale nepřítomnost halucinací nezaručuje."
+    },
+    "vysvetleni_obecne": "RAG podkládá odpověď aktuálními daty vyhledanými za běhu. Riziko chybného výstupu snižuje, ale neodstraňuje."
+   },
+   "spravne": ["a"], "oddil": "4.1.2", "poznamka": ""
+  },
+  {
+   "id": "CG-4.1.2-04", "zdroj": "vlastni", "lo": "GenAI-4.1.2", "k": "K2", "body": 1, "vyber": 1, "keep_order": false,
+   "en": {
+    "q": "<p>A tester asks a RAG-enabled test tool: 'What should happen when someone tries many passwords in a row?' The relevant requirement states: 'After three failed login attempts, the account is locked for 15 minutes.' The tool retrieves this requirement.</p><p>Which of the following statements BEST explains why the requirement was retrieved?</p>",
+    "moznosti": [
+     "The retrieval step searches only for chunks that contain the exact keywords of the query.",
+     "The LLM first generates an answer, and the answer is then compared with the requirements stored in the relational database.",
+     "The embeddings of the query and of the requirement chunk are close to each other, because the two texts have a similar meaning.",
+     "The requirement was retrieved because it was part of the data the LLM was originally trained on."
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. The query and the requirement share almost no keywords. RAG retrieval is based on semantic similarity, not on exact keyword matches (4.1.2).",
+     "b": "Incorrect. Retrieval happens before generation, and it uses the vector database, not the relational database (4.1.2).",
+     "c": "Correct. Section 4.1.2 states that retrieval is typically based on semantic similarity between the embeddings of the prompt and those of the chunks. Texts with similar meaning have embeddings that are close together (1.1).",
+     "d": "Incorrect. RAG retrieves information from the vector database created during preprocessing, not from the model's training data (4.1.2)."
+    },
+    "vysvetleni_obecne": "Semantic retrieval finds related content even when the wording differs."
+   },
+   "cz": {
+    "q": "<p>Tester se zeptá testovacího nástroje s RAG: „Co se má stát, když někdo zkouší mnoho hesel za sebou?“ Relevantní požadavek zní: „Po třech neúspěšných pokusech o přihlášení se účet na 15 minut zablokuje.“ Nástroj tento požadavek vyhledá.</p><p>Které z následujících tvrzení NEJLÉPE vysvětluje, proč byl požadavek nalezen?</p>",
+    "moznosti": [
+     "Krok vyhledání hledá jen části, které obsahují přesně stejná klíčová slova jako dotaz.",
+     "LLM nejdřív vygeneruje odpověď a ta se pak porovná s požadavky uloženými v relační databázi.",
+     "Embeddingy dotazu a části s požadavkem leží blízko sebe, protože oba texty mají podobný význam.",
+     "Požadavek byl nalezen, protože byl součástí dat, na kterých byl LLM původně natrénován."
+    ],
+    "vysvetleni": {
+     "a": "Špatně. Dotaz a požadavek nemají skoro žádná společná slova. Vyhledávání v RAG je založené na sémantické podobnosti, ne na shodě klíčových slov (4.1.2).",
+     "b": "Špatně. Vyhledání probíhá před generováním a používá vektorovou databázi, ne relační (4.1.2).",
+     "c": "Správně. Podle 4.1.2 je vyhledání obvykle založené na sémantické podobnosti mezi embeddingy promptu a embeddingy částí. Texty s podobným významem mají blízké embeddingy (1.1).",
+     "d": "Špatně. RAG vyhledává ve vektorové databázi vytvořené při předzpracování, ne v trénovacích datech modelu (4.1.2)."
+    },
+    "vysvetleni_obecne": "Sémantické vyhledávání najde související obsah, i když je formulovaný jinými slovy."
+   },
+   "spravne": ["c"], "oddil": "4.1.2", "poznamka": ""
+  },
+  {
+   "id": "CG-4.1.2-05", "zdroj": "vlastni", "lo": "GenAI-4.1.2", "k": "K2", "body": 1, "vyber": 1, "keep_order": false,
+   "en": {
+    "q": "<p>Which of the following statements BEST describes a grounded response in the context of RAG?</p>",
+    "moznosti": [
+     "A response that the LLM generates only from its training data, without any additional context.",
+     "A response that always contains links to public internet sources found by a search engine.",
+     "A response that is guaranteed to be correct because all of its content comes from the vector database.",
+     "A response rooted in relevant, accurate and contextually appropriate information gathered during retrieval and combined with the model's pre-existing knowledge."
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. This describes an LLM without RAG. A grounded response is enriched with data retrieved for the prompt (4.1.2).",
+     "b": "Incorrect. RAG in the syllabus retrieves from prepared data sources such as enterprise documentation in a vector database, not necessarily from the internet (4.1.2).",
+     "c": "Incorrect. The LLM combines retrieved data with its own knowledge, and LLM risks such as hallucinations remain (3.1, 4.1.2). Correctness is not guaranteed.",
+     "d": "Correct. Section 4.1.2 describes a relevant response as rooted in information gathered during retrieval, not only based on the model's pre-existing training."
+    },
+    "vysvetleni_obecne": "Grounding means the answer is supported by retrieved data. It improves accuracy and relevance but does not replace review."
+   },
+   "cz": {
+    "q": "<p>Které z následujících tvrzení NEJLÉPE popisuje podloženou odpověď (grounded response) v kontextu RAG?</p>",
+    "moznosti": [
+     "Odpověď, kterou LLM vytvoří jen ze svých trénovacích dat bez dalšího kontextu.",
+     "Odpověď, která vždy obsahuje odkazy na veřejné zdroje na internetu nalezené vyhledávačem.",
+     "Odpověď, která je zaručeně správná, protože veškerý její obsah pochází z vektorové databáze.",
+     "Odpověď, která vychází z relevantních, přesných a kontextově vhodných informací získaných při vyhledávání a spojených s dosavadními znalostmi modelu."
+    ],
+    "vysvetleni": {
+     "a": "Špatně. To popisuje LLM bez RAG. Podložená odpověď je obohacená o data vyhledaná k promptu (4.1.2).",
+     "b": "Špatně. RAG v sylabu vyhledává v připravených zdrojích, například ve firemní dokumentaci ve vektorové databázi, nemusí jít o internet (4.1.2).",
+     "c": "Špatně. LLM spojuje vyhledaná data se svými znalostmi a rizika LLM, jako jsou halucinace, trvají (3.1, 4.1.2). Správnost zaručená není.",
+     "d": "Správně. Oddíl 4.1.2 popisuje relevantní odpověď jako zakotvenou v informacích získaných při vyhledávání, ne jen v tom, co se model naučil při trénování."
+    },
+    "vysvetleni_obecne": "Podložená odpověď je opřená o vyhledaná data. Zvyšuje přesnost a relevanci, ale kontrolu nenahrazuje."
+   },
+   "spravne": ["d"], "oddil": "4.1.2", "poznamka": ""
+  },
+  {
+   "id": "CG-4.1.3-01", "zdroj": "vlastni", "lo": "GenAI-4.1.3", "k": "K2", "body": 1, "vyber": 1, "keep_order": false,
+   "en": {
+    "q": "<p>Which capability MOST clearly distinguishes an LLM-powered agent from a traditional AI chatbot?</p>",
+    "moznosti": [
+     "Understanding and generating natural language.",
+     "Processing longer prompts because of a larger context window.",
+     "Invoking a predefined set of functions (tools) to interact with and manipulate external systems.",
+     "Following a system prompt that defines its tone and boundaries."
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. Both chatbots and agents rely on LLMs for natural language understanding and generation (4.1.3).",
+     "b": "Incorrect. The size of the context window depends on the model, not on whether it is used in an agent or a chatbot.",
+     "c": "Correct. Section 4.1.3 states that, unlike chatbots focused on question-response interaction, agents can act by invoking predefined functions called tools.",
+     "d": "Incorrect. System prompts are used in chatbots as well (2.1). They do not let the application act on external systems."
+    },
+    "vysvetleni_obecne": "Agents act through tools. Chatbots answer questions."
+   },
+   "cz": {
+    "q": "<p>Která schopnost NEJZŘETELNĚJI odlišuje agenta postaveného na LLM od tradičního AI chatbotu?</p>",
+    "moznosti": [
+     "Porozumění přirozenému jazyku a jeho generování.",
+     "Zpracování delších promptů díky většímu kontextovému oknu.",
+     "Volání předem definované sady funkcí (nástrojů), pomocí kterých pracuje s externími systémy a mění je.",
+     "Dodržování systémového promptu, který určuje tón a hranice odpovědí."
+    ],
+    "vysvetleni": {
+     "a": "Špatně. Chatboty i agenti využívají LLM k porozumění jazyku a jeho generování (4.1.3).",
+     "b": "Špatně. Velikost kontextového okna závisí na modelu, ne na tom, zda je použit v agentovi nebo chatbotu.",
+     "c": "Správně. Podle 4.1.3 agenti na rozdíl od chatbotů, kteří se soustředí na otázky a odpovědi, umí jednat voláním předem definovaných funkcí, nástrojů.",
+     "d": "Špatně. Systémové prompty používají i chatboty (2.1). Nedávají aplikaci možnost jednat v externích systémech."
+    },
+    "vysvetleni_obecne": "Agent jedná přes nástroje. Chatbot odpovídá na otázky."
+   },
+   "spravne": ["c"], "oddil": "4.1.3", "poznamka": ""
+  },
+  {
+   "id": "CG-4.1.3-02", "zdroj": "vlastni", "lo": "GenAI-4.1.3", "k": "K2", "body": 1, "vyber": 1, "keep_order": false,
+   "en": {
+    "q": "<p>An insurance company introduces an LLM-powered agent that analyses failed regression tests of its claims-handling system and creates defect reports in the defect tracker. Developers complain that some reports describe failures that do not exist.</p><p>Which action is MOST consistent with the syllabus?</p>",
+    "moznosti": [
+     "Run the agent semi-autonomously, so that a tester reviews proposed defect reports before they are created, and add automated checks of the agent's results.",
+     "Switch the agent to fully autonomous operation with reinforcement learning, so that it learns to avoid false reports without human involvement.",
+     "Keep the agent as it is, because agents that use tools do not suffer from hallucinations.",
+     "Replace the defect tracker integration with a larger context window, so that the agent can see all test logs at once."
+    ],
+    "vysvetleni": {
+     "a": "Correct. Section 4.1.3 recommends mitigating agent risks by automated verification of the agents' results or by using semi-autonomous agents for critical tasks.",
+     "b": "Incorrect. Autonomous operation reduces human oversight, which is the opposite of what the syllabus recommends for critical tasks (4.1.3).",
+     "c": "Incorrect. Agents suffer from the same problems as LLMs, including hallucinations, reasoning errors and biases (4.1.3, 3.1).",
+     "d": "Incorrect. A larger context window does not address the risk of incorrect results. The syllabus names verification and human oversight as mitigations (4.1.3)."
+    },
+    "vysvetleni_obecne": "Agent risks are mitigated by automated verification and by semi-autonomous operation for critical tasks."
+   },
+   "cz": {
+    "q": "<p>Pojišťovna zavede agenta postaveného na LLM, který analyzuje selhané regresní testy systému pro likvidaci pojistných událostí a zakládá reporty o defektech v nástroji pro správu defektů. Vývojáři si stěžují, že některé reporty popisují selhání, která neexistují.</p><p>Který krok NEJLÉPE odpovídá sylabu?</p>",
+    "moznosti": [
+     "Provozovat agenta poloautonomně, aby tester navržené reporty před založením zkontroloval, a doplnit automatické kontroly výsledků agenta.",
+     "Přepnout agenta na plně autonomní provoz s učením posilováním, aby se falešným reportům naučil vyhnout bez účasti člověka.",
+     "Ponechat agenta beze změny, protože agenti, kteří používají nástroje, nehalucinují.",
+     "Nahradit napojení na nástroj pro správu defektů větším kontextovým oknem, aby agent viděl všechny logy najednou."
+    ],
+    "vysvetleni": {
+     "a": "Správně. Oddíl 4.1.3 doporučuje rizika agentů zmírnit automatickou verifikací jejich výsledků nebo použitím poloautonomních agentů pro kritické úlohy.",
+     "b": "Špatně. Autonomní provoz omezuje lidský dohled, tedy opak toho, co sylabus doporučuje u kritických úloh (4.1.3).",
+     "c": "Špatně. Agenti mají stejné problémy jako LLM: halucinace, chyby v uvažování a zkreslení (4.1.3, 3.1).",
+     "d": "Špatně. Větší kontextové okno riziko chybných výsledků neřeší. Sylabus jako opatření uvádí verifikaci a lidský dohled (4.1.3)."
+    },
+    "vysvetleni_obecne": "Rizika agentů se zmírňují automatickou verifikací a poloautonomním provozem u kritických úloh."
+   },
+   "spravne": ["a"], "oddil": "4.1.3", "poznamka": ""
+  },
+  {
+   "id": "CG-4.1.3-03", "zdroj": "vlastni", "lo": "GenAI-4.1.3", "k": "K2", "body": 1, "vyber": 1, "keep_order": false,
+   "en": {
+    "q": "<p>A test organization sets up one agent that analyses requirements, a second agent that generates automated test scripts, and a third agent that evaluates test results and writes the test report. A coordinating component passes the outputs from one agent to the next.</p><p>What does the syllabus call this coordinated effort among multiple agents?</p>",
+    "moznosti": [
+     "Prompt chaining",
+     "Orchestration",
+     "Fine-tuning",
+     "Retrieval-augmented generation"
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. Prompt chaining uses the output of one prompt as the input of another (2.1.2). It describes a prompting technique, not coordination of several specialized agents.",
+     "b": "Correct. Section 4.1.3 describes multi-agent architectures in which agents with specialized roles communicate and coordinate. This coordinated effort is called orchestration.",
+     "c": "Incorrect. Fine-tuning adapts a model by further training on a targeted dataset (4.2.1).",
+     "d": "Incorrect. RAG adds retrieved data to the prompt (4.1.2). It does not describe collaboration of agents."
+    },
+    "vysvetleni_obecne": "Multi-agent architecture with specialized roles and coordination is orchestration."
+   },
+   "cz": {
+    "q": "<p>Testovací organizace nastaví jednoho agenta, který analyzuje požadavky, druhého, který generuje automatizované testovací skripty, a třetího, který vyhodnocuje výsledky testů a píše report. Koordinační komponenta předává výstupy od jednoho agenta k dalšímu.</p><p>Jak sylabus nazývá tuto koordinovanou spolupráci více agentů?</p>",
+    "moznosti": [
+     "Řetězení promptů (prompt chaining)",
+     "Orchestrace (orchestration)",
+     "Fine-tuning",
+     "Retrieval-augmented generation"
+    ],
+    "vysvetleni": {
+     "a": "Špatně. Řetězení promptů používá výstup jednoho promptu jako vstup dalšího (2.1.2). Je to technika promptování, ne koordinace specializovaných agentů.",
+     "b": "Správně. Oddíl 4.1.3 popisuje multiagentní architektury, kde agenti se specializovanými rolemi komunikují a koordinují se. Této spolupráci se říká orchestrace.",
+     "c": "Špatně. Fine-tuning přizpůsobuje model dalším tréninkem na cílené datové sadě (4.2.1).",
+     "d": "Špatně. RAG přidává do promptu vyhledaná data (4.1.2). Spolupráci agentů nepopisuje."
+    },
+    "vysvetleni_obecne": "Multiagentní architektura se specializovanými rolemi a jejich koordinací je orchestrace."
+   },
+   "spravne": ["b"], "oddil": "4.1.3", "poznamka": ""
+  },
+  {
+   "id": "CG-4.1.3-04", "zdroj": "vlastni", "lo": "GenAI-4.1.3", "k": "K2", "body": 1, "vyber": 1, "keep_order": false,
+   "en": {
+    "q": "<p>Which of the following statements BEST describes how AI assistants based on LLM-powered agents change test automation, according to the syllabus?</p>",
+    "moznosti": [
+     "They make testers unnecessary, because they perform all test activities fully autonomously.",
+     "They are limited to test execution, because test analysis and test design cannot be supported by agents.",
+     "They move test automation from goal-driven agents back to precisely scripted test execution, which improves repeatability.",
+     "They shift test automation from script-based execution to goal-driven, agent-based automation that semi-autonomously supports activities from test analysis to test reporting."
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. The syllabus describes these assistants as working in a semi-autonomous manner and stresses verification and human oversight (4.1.3).",
+     "b": "Incorrect. The syllabus lists test analysis, test design, test implementation, test execution and test reporting (4.1.3).",
+     "c": "Incorrect. The direction is reversed. The syllabus describes a shift from script-based execution to goal-driven, agent-based automation (4.1.3).",
+     "d": "Correct. Section 4.1.3 states that assistants transform user stories or requirements into test artefacts across the test lifecycle and shift test automation from script-based execution to goal-driven, agent-based test automation."
+    },
+    "vysvetleni_obecne": "Benefits named in the syllabus: less manual effort, shorter feedback cycles, end-to-end automation workflow."
+   },
+   "cz": {
+    "q": "<p>Které z následujících tvrzení podle sylabu NEJLÉPE popisuje, jak AI asistenti založení na agentech s LLM mění automatizaci testování?</p>",
+    "moznosti": [
+     "Testery už nepotřebujeme, protože asistenti provádějí všechny testovací činnosti plně autonomně.",
+     "Omezují se na provedení testů, protože testovací analýzu a návrh testů agenti podporovat nemohou.",
+     "Vracejí automatizaci od agentů řízených cílem zpět k přesně naskriptovanému provádění testů, což zlepšuje opakovatelnost.",
+     "Posouvají automatizaci od provádění skriptů k automatizaci řízené cílem a postavené na agentech, která poloautonomně podporuje činnosti od testovací analýzy po reportování."
+    ],
+    "vysvetleni": {
+     "a": "Špatně. Sylabus popisuje tyto asistenty jako poloautonomní a zdůrazňuje verifikaci a lidský dohled (4.1.3).",
+     "b": "Špatně. Sylabus vyjmenovává testovací analýzu, návrh testů, implementaci testů, provedení testů i reportování (4.1.3).",
+     "c": "Špatně. Směr je opačný. Sylabus popisuje posun od skriptů k automatizaci řízené cílem a postavené na agentech (4.1.3).",
+     "d": "Správně. Podle 4.1.3 asistenti převádějí uživatelské scénáře nebo požadavky na testware v celém procesu a posouvají automatizaci od provádění skriptů k automatizaci řízené cílem a postavené na agentech."
+    },
+    "vysvetleni_obecne": "Přínosy podle sylabu: méně ruční práce, kratší zpětná vazba, souvislý automatizovaný tok práce."
+   },
+   "spravne": ["d"], "oddil": "4.1.3", "poznamka": ""
+  },
+  {
+   "id": "CG-4.1.3-05", "zdroj": "vlastni", "lo": "GenAI-4.1.3", "k": "K2", "body": 1, "vyber": 1, "keep_order": false,
+   "en": {
+    "q": "<p>Which of the following statements correctly contrasts autonomous and semi-autonomous LLM-powered agents?</p>",
+    "moznosti": [
+     "Autonomous agents operate independently with minimal human intervention, using predefined rules, reinforcement learning and adaptive feedback loops, whereas semi-autonomous agents work with periodic human oversight to ensure the output meets user-defined goals.",
+     "Autonomous agents are always part of a multi-agent architecture, whereas semi-autonomous agents always work alone.",
+     "Semi-autonomous agents cannot invoke tools and therefore only provide recommendations, whereas autonomous agents can act on external systems.",
+     "Autonomous agents do not produce hallucinations because their adaptive feedback loops correct every error, whereas semi-autonomous agents need human review for this reason."
+    ],
+    "vysvetleni": {
+     "a": "Correct. This matches the two degrees of autonomy described in section 4.1.3.",
+     "b": "Incorrect. The degree of autonomy and the multi-agent architecture are independent concepts in 4.1.3. Both types can work alone or together with other agents.",
+     "c": "Incorrect. Both types are agents and can invoke tools. The difference lies in the level of human oversight (4.1.3).",
+     "d": "Incorrect. All LLM-powered agents can produce hallucinations, reasoning errors and biases (4.1.3)."
+    },
+    "vysvetleni_obecne": "The degree of autonomy is defined by how much a human is involved."
+   },
+   "cz": {
+    "q": "<p>Které z následujících tvrzení správně porovnává autonomní a poloautonomní agenty postavené na LLM?</p>",
+    "moznosti": [
+     "Autonomní agenti pracují samostatně s minimálním zásahem člověka a využívají předem daná pravidla, učení posilováním a adaptivní zpětnovazební smyčky. Poloautonomní agenti pracují s pravidelným lidským dohledem, aby výstup odpovídal cílům uživatele.",
+     "Autonomní agenti jsou vždy součástí multiagentní architektury, kdežto poloautonomní agenti pracují vždy sami.",
+     "Poloautonomní agenti nemohou volat nástroje, a proto jen doporučují. Autonomní agenti umí jednat v externích systémech.",
+     "Autonomní agenti nehalucinují, protože adaptivní zpětnovazební smyčky opraví každou chybu. Poloautonomní agenti kvůli tomu potřebují lidskou kontrolu."
+    ],
+    "vysvetleni": {
+     "a": "Správně. Odpovídá to dvěma úrovním autonomie popsaným v oddílu 4.1.3.",
+     "b": "Špatně. Úroveň autonomie a multiagentní architektura jsou v 4.1.3 nezávislé pojmy. Oba typy mohou pracovat samostatně i s dalšími agenty.",
+     "c": "Špatně. Oba typy jsou agenti a mohou volat nástroje. Liší se mírou lidského dohledu (4.1.3).",
+     "d": "Špatně. Všichni agenti postavení na LLM mohou halucinovat, chybovat v uvažování a být zkreslení (4.1.3)."
+    },
+    "vysvetleni_obecne": "Úroveň autonomie určuje míra zapojení člověka."
+   },
+   "spravne": ["a"], "oddil": "4.1.3", "poznamka": ""
+  },
+  {
+   "id": "CG-4.2.1-01", "zdroj": "vlastni", "lo": "GenAI-4.2.1", "k": "K2", "body": 1, "vyber": 1, "keep_order": false,
+   "en": {
+    "q": "<p>In which of the following situations is fine-tuning a language model MOST appropriate?</p>",
+    "moznosti": [
+     "The answers must always reflect requirement documents that change every day.",
+     "A tester needs a one-off summary of a single defect report.",
+     "Testers want each answer to cite the exact passage of the source document it was based on.",
+     "An organization wants a model to generate test cases from user stories consistently in its own output format and terminology, and it has a large set of user stories with approved test cases."
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. Frequently changing facts are better supplied at runtime through RAG (4.1.2). A fine-tuned model would quickly become outdated.",
+     "b": "Incorrect. A one-off task is handled by a suitable prompt (chapter 2). Fine-tuning requires a dataset and significant effort (4.2.1).",
+     "c": "Incorrect. Linking answers to source passages is a strength of RAG, where retrieved chunks are known (4.1.2). Knowledge learned through fine-tuning cannot be traced to a specific passage.",
+     "d": "Correct. Section 4.2.1 gives this example: training the model on the organization's user stories and test cases aligns it with the organization's test process and terminology."
+    },
+    "vysvetleni_obecne": "Fine-tuning suits a narrow, recurring task with a stable output format and domain vocabulary and with good training data."
+   },
+   "cz": {
+    "q": "<p>Ve které z následujících situací je fine-tuning jazykového modelu NEJVHODNĚJŠÍ?</p>",
+    "moznosti": [
+     "Odpovědi musí vždy odpovídat dokumentům s požadavky, které se mění každý den.",
+     "Tester potřebuje jednorázové shrnutí jednoho reportu o defektu.",
+     "Testeři chtějí, aby každá odpověď citovala přesnou pasáž zdrojového dokumentu, ze které vychází.",
+     "Organizace chce, aby model generoval testovací případy z uživatelských scénářů vždy ve vlastním výstupním formátu a terminologii, a má velkou sadu scénářů se schválenými testovacími případy."
+    ],
+    "vysvetleni": {
+     "a": "Špatně. Často se měnící fakta je lepší dodávat za běhu přes RAG (4.1.2). Doladěný model by rychle zastaral.",
+     "b": "Špatně. Jednorázovou úlohu vyřeší vhodný prompt (kapitola 2). Fine-tuning vyžaduje datovou sadu a značné úsilí (4.2.1).",
+     "c": "Špatně. Navázání odpovědi na zdrojovou pasáž je silná stránka RAG, kde jsou nalezené části známé (4.1.2). Znalost získanou doladěním nelze dohledat ke konkrétní pasáži.",
+     "d": "Správně. Oddíl 4.2.1 uvádí právě tento příklad: trénink na uživatelských scénářích a testovacích případech organizace sladí model s jejím testovacím procesem a terminologií."
+    },
+    "vysvetleni_obecne": "Fine-tuning se hodí na úzkou opakovanou úlohu se stálým formátem a doménovým slovníkem, pokud jsou k dispozici kvalitní trénovací data."
+   },
+   "spravne": ["d"], "oddil": "4.2.1", "poznamka": "Volba c a a vychází z kombinace 4.1.2 a 4.2.1. Sylabus přímé srovnání RAG a fine-tuningu nepodává, jen je v 3.1.3 označuje za doplňující se techniky."
+  },
+  {
+   "id": "CG-4.2.1-02", "zdroj": "vlastni", "lo": "GenAI-4.2.1", "k": "K2", "body": 1, "vyber": 1, "keep_order": false,
+   "en": {
+    "q": "<p>Which of the following statements correctly describes a difference between fine-tuning and RAG?</p>",
+    "moznosti": [
+     "Both fine-tuning and RAG modify the weights of the model, but RAG does so only for the retrieved documents.",
+     "Fine-tuning updates the model's parameters through further training on a targeted dataset, whereas RAG supplies retrieved data as context at inference time without changing the model.",
+     "Fine-tuning changes only the system prompt of the model, whereas RAG retrains the model on enterprise data.",
+     "RAG trains the embedding layer of the LLM on enterprise documents, whereas fine-tuning does not involve any training."
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. RAG does not modify the model's weights. It adds retrieved information to the prompt (4.1.2).",
+     "b": "Correct. Fine-tuning involves further training the model on a targeted dataset (4.2.1, Appendix D: updating LLM weights). RAG retrieves relevant chunks at runtime and feeds them to the LLM (4.1.2).",
+     "c": "Incorrect. Changing the system prompt is prompt engineering, and RAG does not retrain the model (2.1, 4.1.2).",
+     "d": "Incorrect. RAG uses a pre-trained embedding model to encode chunks but does not train the LLM. Fine-tuning is a training process (4.1.2, 4.2.1)."
+    },
+    "vysvetleni_obecne": "Fine-tuning changes the model. RAG changes what the model receives in the prompt."
+   },
+   "cz": {
+    "q": "<p>Které z následujících tvrzení správně popisuje rozdíl mezi fine-tuningem a RAG?</p>",
+    "moznosti": [
+     "Fine-tuning i RAG upravují váhy modelu, RAG to ale dělá jen pro vyhledané dokumenty.",
+     "Fine-tuning upravuje parametry modelu dalším tréninkem na cílené datové sadě, kdežto RAG dodává vyhledaná data jako kontext při inferenci a model nemění.",
+     "Fine-tuning mění jen systémový prompt modelu, kdežto RAG model znovu trénuje na firemních datech.",
+     "RAG trénuje vrstvu embeddingů LLM na firemních dokumentech, kdežto fine-tuning žádný trénink nezahrnuje."
+    ],
+    "vysvetleni": {
+     "a": "Špatně. RAG váhy modelu nemění. Přidává vyhledané informace do promptu (4.1.2).",
+     "b": "Správně. Fine-tuning znamená další trénink modelu na cílené datové sadě (4.2.1, Appendix D: úprava vah LLM). RAG za běhu vyhledá relevantní části a předá je LLM (4.1.2).",
+     "c": "Špatně. Změna systémového promptu je prompt engineering a RAG model netrénuje (2.1, 4.1.2).",
+     "d": "Špatně. RAG používá k převodu částí předtrénovaný model pro embeddingy, ale LLM netrénuje. Fine-tuning je trénink (4.1.2, 4.2.1)."
+    },
+    "vysvetleni_obecne": "Fine-tuning mění model. RAG mění to, co model dostane v promptu."
+   },
+   "spravne": ["b"], "oddil": "4.2.1", "poznamka": ""
+  },
+  {
+   "id": "CG-4.2.1-03", "zdroj": "vlastni", "lo": "GenAI-4.2.1", "k": "K2", "body": 1, "vyber": 1, "keep_order": false,
+   "en": {
+    "q": "<p>A team fine-tunes an SLM exclusively on test cases for the payment module of a web shop. On examples from that module, the model produces excellent results. When it is asked to generate test cases for the new loyalty programme module, it produces poor test cases that repeat payment-specific steps.</p><p>Which challenge of fine-tuning does this situation illustrate?</p>",
+    "moznosti": [
+     "Opacity",
+     "Insufficient computational resources",
+     "Overfitting",
+     "Prompt injection"
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. Opacity is the lack of transparency in how the model reaches its outputs (4.2.1). The described problem is the poor performance on new data, not a lack of explanation.",
+     "b": "Incorrect. The model was trained successfully and performs well on familiar data. The problem is not a lack of computing power (4.2.1).",
+     "c": "Correct. Section 4.2.1 defines overfitting as the model becoming too specialized to the training data, negatively impacting its performance on new, unseen data.",
+     "d": "Incorrect. Prompt injection is a manipulative attack (3.2.2), not a challenge of the fine-tuning process."
+    },
+    "vysvetleni_obecne": "Good results on training data and poor results on new scenarios are the typical sign of overfitting."
+   },
+   "cz": {
+    "q": "<p>Tým doladí SLM výhradně na testovacích případech platebního modulu e-shopu. Na příkladech z tohoto modulu dává model výborné výsledky. Když má vygenerovat testovací případy pro nový modul věrnostního programu, vytvoří slabé testy, které opakují kroky typické pro platby.</p><p>Kterou výzvu fine-tuningu tato situace ilustruje?</p>",
+    "moznosti": [
+     "Neprůhlednost (opacity)",
+     "Nedostatečné výpočetní zdroje",
+     "Přeučení (overfitting)",
+     "Prompt injection"
+    ],
+    "vysvetleni": {
+     "a": "Špatně. Neprůhlednost znamená, že není vidět, jak model k výstupu dospěl (4.2.1). Popsaný problém je slabý výkon na nových datech, ne chybějící vysvětlení.",
+     "b": "Špatně. Model se úspěšně natrénoval a na známých datech funguje dobře. Nejde o nedostatek výpočetního výkonu (4.2.1).",
+     "c": "Správně. Oddíl 4.2.1 definuje přeučení jako stav, kdy je model příliš specializovaný na trénovací data a na nových, neviděných datech funguje hůř.",
+     "d": "Špatně. Prompt injection je manipulativní útok (3.2.2), ne výzva procesu doladění."
+    },
+    "vysvetleni_obecne": "Dobré výsledky na trénovacích datech a slabé na nových scénářích jsou typický znak přeučení."
+   },
+   "spravne": ["c"], "oddil": "4.2.1", "poznamka": ""
+  },
+  {
+   "id": "CG-4.2.1-04", "zdroj": "vlastni", "lo": "GenAI-4.2.1", "k": "K2", "body": 1, "vyber": 1, "keep_order": false,
+   "en": {
+    "q": "<p>A test team wants a language model that classifies incoming defect reports into five fixed categories. The task is narrow and repetitive. The team considers fine-tuning a small language model (SLM) instead of a large one.</p><p>Which of the following statements BEST supports this choice?</p>",
+    "moznosti": [
+     "A fine-tuned SLM can achieve high performance on a specific task without the computational overhead required to fine-tune an LLM.",
+     "SLMs cannot be fine-tuned, so the team can use them directly without preparing any training data.",
+     "SLMs do not require a training dataset, because they learn the categories from the first prompt.",
+     "Fine-tuning an SLM removes the opacity of the model, so every classification can be fully explained."
+    ],
+    "vysvetleni": {
+     "a": "Correct. Section 4.2.1 states that fine-tuning can be applied to SLMs, which are less resource intensive, and that a fine-tuned SLM can achieve higher performance for specific tasks without the overhead of LLMs.",
+     "b": "Incorrect. The syllabus explicitly states that SLMs can be fine-tuned (4.2.1).",
+     "c": "Incorrect. Fine-tuning always involves further training on a targeted dataset, for SLMs as well (4.2.1).",
+     "d": "Incorrect. Opacity is listed as a challenge of fine-tuning in general. Using an SLM does not remove it (4.2.1)."
+    },
+    "vysvetleni_obecne": "The choice between LLM and SLM depends on the requirements of the task. SLMs offer efficiency for narrow tasks."
+   },
+   "cz": {
+    "q": "<p>Testovací tým chce jazykový model, který bude třídit příchozí reporty o defektech do pěti pevných kategorií. Úloha je úzká a opakovaná. Tým zvažuje, že místo velkého modelu doladí malý jazykový model (SLM).</p><p>Které z následujících tvrzení tuto volbu NEJLÉPE podporuje?</p>",
+    "moznosti": [
+     "Doladěný SLM může u konkrétní úlohy dosáhnout vysokého výkonu bez výpočetních nároků, které vyžaduje doladění LLM.",
+     "SLM nelze doladit, takže je tým může použít rovnou bez přípravy trénovacích dat.",
+     "SLM nepotřebují trénovací datovou sadu, protože se kategorie naučí z prvního promptu.",
+     "Doladění SLM odstraní neprůhlednost modelu, takže každé zařazení půjde plně vysvětlit."
+    ],
+    "vysvetleni": {
+     "a": "Správně. Podle 4.2.1 lze doladit i SLM, které jsou méně náročné na zdroje, a doladěný SLM může u konkrétních úloh dosáhnout vyššího výkonu bez nákladů spojených s LLM.",
+     "b": "Špatně. Sylabus výslovně uvádí, že SLM doladit lze (4.2.1).",
+     "c": "Špatně. Fine-tuning vždy znamená další trénink na cílené datové sadě, i u SLM (4.2.1).",
+     "d": "Špatně. Neprůhlednost je výzva fine-tuningu obecně. Použití SLM ji neodstraní (4.2.1)."
+    },
+    "vysvetleni_obecne": "Volba mezi LLM a SLM závisí na požadavcích úlohy. SLM jsou efektivní u úzkých úloh."
+   },
+   "spravne": ["a"], "oddil": "4.2.1", "poznamka": ""
+  },
+  {
+   "id": "CG-4.2.1-05", "zdroj": "vlastni", "lo": "GenAI-4.2.1", "k": "K2", "body": 1, "vyber": 1, "keep_order": false,
+   "en": {
+    "q": "<p>Which of the following is NOT one of the challenges of fine-tuning a GenAI model for software testing described in the syllabus?</p>",
+    "moznosti": [
+     "Avoiding biased or inaccurate results by ensuring high-quality, task-specific training datasets.",
+     "Losing the ability to process natural language input after the model has been fine-tuned.",
+     "Addressing the lack of transparency in the model's reasoning, which complicates debugging and validation.",
+     "Managing the significant computational resources required for fine-tuning LLMs."
+    ],
+    "vysvetleni": {
+     "a": "Incorrect choice. Biased or inaccurate results caused by poor training data are the first challenge listed in 4.2.1.",
+     "b": "Correct choice. The syllabus does not list this. Fine-tuning adapts the model to a task or domain; it does not remove its basic language capabilities (4.2.1).",
+     "c": "Incorrect choice. Opacity is one of the listed challenges (4.2.1).",
+     "d": "Incorrect choice. Computational resources for fine-tuning LLMs are one of the listed challenges (4.2.1)."
+    },
+    "vysvetleni_obecne": "The four challenges in 4.2.1: biased or inaccurate results, overfitting, opacity, computational resources."
+   },
+   "cz": {
+    "q": "<p>Co z následujícího NENÍ jednou z výzev fine-tuningu modelu generativní AI pro testování, které popisuje sylabus?</p>",
+    "moznosti": [
+     "Vyhnout se zkresleným nebo nepřesným výsledkům zajištěním kvalitních trénovacích dat zaměřených na úlohu.",
+     "Ztráta schopnosti zpracovat vstup v přirozeném jazyce poté, co je model doladěn.",
+     "Řešit chybějící průhlednost uvažování modelu, která komplikuje ladění a validaci.",
+     "Zvládnout značné výpočetní zdroje potřebné k doladění LLM."
+    ],
+    "vysvetleni": {
+     "a": "Nesprávná volba. Zkreslené nebo nepřesné výsledky kvůli špatným datům jsou první výzva v 4.2.1.",
+     "b": "Správná volba. Tuto výzvu sylabus neuvádí. Fine-tuning přizpůsobuje model úloze nebo doméně, základní jazykové schopnosti mu nebere (4.2.1).",
+     "c": "Nesprávná volba. Neprůhlednost je jedna z uvedených výzev (4.2.1).",
+     "d": "Nesprávná volba. Výpočetní zdroje pro doladění LLM jsou jedna z uvedených výzev (4.2.1)."
+    },
+    "vysvetleni_obecne": "Čtyři výzvy v 4.2.1: zkreslené nebo nepřesné výsledky, přeučení, neprůhlednost, výpočetní zdroje."
+   },
+   "spravne": ["b"], "oddil": "4.2.1", "poznamka": ""
+  },
+  {
+   "id": "CG-4.2.2-01", "zdroj": "vlastni", "lo": "GenAI-4.2.2", "k": "K2", "body": 1, "vyber": 1, "keep_order": false,
+   "en": {
+    "q": "<p>An organization decides to activate the GenAI features of its commercial test management tool to generate test case proposals from requirements.</p><p>Which LLMOps consideration is specific to this approach, in addition to data privacy, security and operational cost?</p>",
+    "moznosti": [
+     "Evaluating the data security and performance assurances offered by the test tool provider, supported by a cost-benefit analysis and risk assessment.",
+     "Planning GPU capacity, data storage and staff training for developing and hosting its own model.",
+     "Choosing between an LLM-as-a-Service platform and an open-source LLM deployed for a chatbot.",
+     "None, because the tool provider is responsible for all LLMOps decisions."
+    ],
+    "vysvetleni": {
+     "a": "Correct. Section 4.2.2 states that for test tools with GenAI capabilities, organizations must also evaluate the data security and performance assurances of the provider, and that a thorough cost-benefit analysis and risk assessment is required.",
+     "b": "Incorrect. Planning computational resources, storage and staff training is emphasized for in-house development (4.2.2).",
+     "c": "Incorrect. This choice is described for the AI chatbot approach (4.2.2).",
+     "d": "Incorrect. The organization still has to assess the provider and the risks. LLMOps decisions depend on the chosen approach, but they do not disappear (4.2.2)."
+    },
+    "vysvetleni_obecne": "Each of the three approaches in 4.2.2 has its own emphasis."
+   },
+   "cz": {
+    "q": "<p>Organizace se rozhodne zapnout funkce generativní AI ve svém komerčním nástroji pro správu testů, aby generovaly návrhy testovacích případů z požadavků.</p><p>Která úvaha LLMOps je pro tento přístup specifická, vedle ochrany dat, bezpečnosti a provozních nákladů?</p>",
+    "moznosti": [
+     "Posoudit záruky poskytovatele testovacího nástroje k bezpečnosti dat a výkonu, podložené analýzou nákladů a přínosů a posouzením rizik.",
+     "Naplánovat kapacitu GPU, úložiště dat a školení lidí pro vývoj a provoz vlastního modelu.",
+     "Vybrat mezi platformou LLM jako služba a open-source LLM nasazeným pro chatbot.",
+     "Žádná, protože za všechna rozhodnutí LLMOps odpovídá poskytovatel nástroje."
+    ],
+    "vysvetleni": {
+     "a": "Správně. Podle 4.2.2 musí organizace u testovacích nástrojů s GenAI navíc posoudit záruky poskytovatele k bezpečnosti dat a výkonu a provést důkladnou analýzu nákladů a přínosů a posouzení rizik.",
+     "b": "Špatně. Plánování výpočetního výkonu, úložiště a školení sylabus zdůrazňuje u vlastního vývoje (4.2.2).",
+     "c": "Špatně. Tuto volbu sylabus popisuje u přístupu s AI chatbotem (4.2.2).",
+     "d": "Špatně. Organizace musí poskytovatele i rizika posoudit sama. Rozhodnutí LLMOps závisí na přístupu, ale nemizí (4.2.2)."
+    },
+    "vysvetleni_obecne": "Každý ze tří přístupů v 4.2.2 má jiný důraz."
+   },
+   "spravne": ["a"], "oddil": "4.2.2", "poznamka": ""
+  },
+  {
+   "id": "CG-4.2.2-02", "zdroj": "vlastni", "lo": "GenAI-4.2.2", "k": "K2", "body": 1, "vyber": 1, "keep_order": false,
+   "en": {
+    "q": "<p>A bank decides to develop its own GenAI-based test tool in-house. Which of the following considerations does the syllabus emphasize for this approach?</p>",
+    "moznosti": [
+     "Relying primarily on the vendor's assurances regarding data privacy and model performance.",
+     "Skipping validation processes, because an internally developed tool is under the bank's full control.",
+     "Optimizing only the cost of tokens, because data privacy risks do not apply to in-house tools.",
+     "Careful planning of computational resources, data storage and staff training, together with structured processes for validating and maintaining the GenAI-specific developments."
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. Vendor assurances are relevant when using external services or tools. In-house development emphasizes the organization's own control (4.2.2).",
+     "b": "Incorrect. The syllabus explicitly requires structured processes for validating and maintaining GenAI developments (4.2.2).",
+     "c": "Incorrect. In-house development emphasizes comprehensive control of data privacy and security risks; these risks still have to be managed (4.2.2).",
+     "d": "Correct. Section 4.2.2 lists resource planning (computational resources, data storage, staff training), structured validation and maintenance processes and the necessary expertise for in-house development."
+    },
+    "vysvetleni_obecne": "In-house development gives the most control, but it requires resources, processes and expertise."
+   },
+   "cz": {
+    "q": "<p>Banka se rozhodne vyvinout vlastní testovací nástroj založený na generativní AI. Kterou z následujících úvah sylabus u tohoto přístupu zdůrazňuje?</p>",
+    "moznosti": [
+     "Spolehnout se hlavně na záruky dodavatele týkající se ochrany dat a výkonu modelu.",
+     "Vynechat procesy validace, protože interně vyvinutý nástroj má banka plně pod kontrolou.",
+     "Optimalizovat jen cenu tokenů, protože rizika ochrany dat se vlastních nástrojů netýkají.",
+     "Pečlivě plánovat výpočetní výkon, úložiště dat a školení lidí a zavést strukturované procesy validace a údržby vývoje specifického pro GenAI."
+    ],
+    "vysvetleni": {
+     "a": "Špatně. Záruky dodavatele jsou podstatné u externích služeb nebo nástrojů. Vlastní vývoj stojí na vlastní kontrole organizace (4.2.2).",
+     "b": "Špatně. Sylabus strukturované procesy validace a údržby výslovně vyžaduje (4.2.2).",
+     "c": "Špatně. Vlastní vývoj zdůrazňuje plnou kontrolu nad riziky ochrany dat a bezpečnosti. Tato rizika je stále potřeba řídit (4.2.2).",
+     "d": "Správně. Oddíl 4.2.2 u vlastního vývoje uvádí plánování zdrojů (výpočetní výkon, úložiště, školení), strukturované procesy validace a údržby a potřebnou odbornost."
+    },
+    "vysvetleni_obecne": "Vlastní vývoj dává nejvíc kontroly, ale vyžaduje zdroje, procesy a odbornost."
+   },
+   "spravne": ["d"], "oddil": "4.2.2", "poznamka": ""
+  },
+  {
+   "id": "CG-4.2.2-03", "zdroj": "vlastni", "lo": "GenAI-4.2.2", "k": "K2", "body": 1, "vyber": 1, "keep_order": false,
+   "en": {
+    "q": "<p>A test organization uses an approved AI chatbot for brainstorming test ideas and, at the same time, develops an in-house GenAI tool for tasks involving confidential data.</p><p>Which statement about this situation is correct according to the syllabus?</p>",
+    "moznosti": [
+     "This is not recommended, because an organization should choose one approach to keep its LLMOps decisions consistent.",
+     "The approaches are not mutually exclusive, can be implemented simultaneously depending on the test activities, and can be enhanced with RAG and fine-tuning.",
+     "Combining the approaches is possible only if both use the same LLM provider.",
+     "The in-house tool removes the need to assess the data privacy risks of the chatbot."
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. Section 4.2.2 explicitly states that the approaches are not mutually exclusive.",
+     "b": "Correct. Section 4.2.2 states that an organization might use an AI chatbot for some tasks while developing custom tools for others, and that the approaches can incorporate RAG and fine-tuning.",
+     "c": "Incorrect. The syllabus sets no such condition (4.2.2).",
+     "d": "Incorrect. Each approach has its own considerations. The chatbot still requires assessment of data privacy and security risks (4.2.2)."
+    },
+    "vysvetleni_obecne": "Organizations can mix approaches per test activity."
+   },
+   "cz": {
+    "q": "<p>Testovací organizace používá schválený AI chatbot na hledání nápadů na testy a současně vyvíjí vlastní nástroj s GenAI pro úlohy s důvěrnými daty.</p><p>Které tvrzení o této situaci je podle sylabu správné?</p>",
+    "moznosti": [
+     "Nedoporučuje se to, protože organizace má zvolit jeden přístup, aby rozhodnutí LLMOps byla konzistentní.",
+     "Přístupy se nevylučují, mohou běžet současně podle testovacích činností a lze je rozšířit o RAG a fine-tuning.",
+     "Kombinace přístupů je možná jen tehdy, když oba používají stejného poskytovatele LLM.",
+     "Vlastní nástroj odstraňuje potřebu posuzovat rizika ochrany dat u chatbotu."
+    ],
+    "vysvetleni": {
+     "a": "Špatně. Oddíl 4.2.2 výslovně říká, že se přístupy nevylučují.",
+     "b": "Správně. Podle 4.2.2 může organizace používat AI chatbot pro některé úlohy a vlastní nástroje pro jiné a přístupy mohou zahrnovat RAG a fine-tuning.",
+     "c": "Špatně. Žádnou takovou podmínku sylabus neuvádí (4.2.2).",
+     "d": "Špatně. Každý přístup má své úvahy. U chatbotu je stále potřeba posoudit rizika ochrany dat a bezpečnosti (4.2.2)."
+    },
+    "vysvetleni_obecne": "Organizace může přístupy kombinovat podle testovacích činností."
+   },
+   "spravne": ["b"], "oddil": "4.2.2", "poznamka": ""
+  },
+  {
+   "id": "CG-4.2.2-04", "zdroj": "vlastni", "lo": "GenAI-4.2.2", "k": "K2", "body": 1, "vyber": 1, "keep_order": false,
+   "en": {
+    "q": "<p>Which of the following activities is part of LLMOps for an LLM used in a test tool?</p>",
+    "moznosti": [
+     "Writing user stories that describe the functions of the LLM for the product owner.",
+     "Designing a new transformer architecture for a foundation model.",
+     "Monitoring and maintaining the LLM after it has been deployed to production, for example by tracking the quality and cost of its responses.",
+     "Selecting black-box test techniques for the system under test."
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. Writing user stories is a requirements activity, not an LLMOps practice (4.2.2).",
+     "b": "Incorrect. Designing model architectures is research and model development, not operating LLMs in production (4.2.2).",
+     "c": "Correct. LLMOps covers the development, deployment and maintenance of LLMs in production (4.2.2). The syllabus definition in Appendix D explicitly includes monitoring.",
+     "d": "Incorrect. Selecting test techniques is a test design activity (CTFL). It does not concern operating LLMs."
+    },
+    "vysvetleni_obecne": "LLMOps covers the lifecycle of LLMs in production: development, deployment, monitoring and maintenance."
+   },
+   "cz": {
+    "q": "<p>Která z následujících činností patří do LLMOps pro LLM používaný v testovacím nástroji?</p>",
+    "moznosti": [
+     "Psaní uživatelských scénářů, které popisují funkce LLM pro vlastníka produktu.",
+     "Návrh nové architektury transformeru pro foundation model.",
+     "Monitoring a údržba LLM po nasazení do provozu, například sledování kvality a ceny jeho odpovědí.",
+     "Výběr technik testování černé skříňky pro testovaný systém."
+    ],
+    "vysvetleni": {
+     "a": "Špatně. Psaní uživatelských scénářů je práce s požadavky, ne praxe LLMOps (4.2.2).",
+     "b": "Špatně. Návrh architektury modelu je výzkum a vývoj modelu, ne provoz LLM (4.2.2).",
+     "c": "Správně. LLMOps pokrývá vývoj, nasazení a údržbu LLM v provozu (4.2.2). Definice v Appendixu D výslovně zahrnuje monitoring.",
+     "d": "Špatně. Výběr technik testování je součást návrhu testů (CTFL). S provozem LLM nesouvisí."
+    },
+    "vysvetleni_obecne": "LLMOps pokrývá životní cyklus LLM v provozu: vývoj, nasazení, monitoring a údržbu."
+   },
+   "spravne": ["c"], "oddil": "4.2.2", "poznamka": ""
+  },
+  {
+   "id": "CG-4.2.2-05", "zdroj": "vlastni", "lo": "GenAI-4.2.2", "k": "K2", "body": 1, "vyber": 1, "keep_order": false,
+   "en": {
+    "q": "<p>A test team wants to start using an AI chatbot to support test analysis. Which of the following BEST describes the primary LLMOps considerations for this approach?</p>",
+    "moznosti": [
+     "Fine-tuning the chatbot's model on the team's test cases before any use.",
+     "Evaluating only the performance assurances of the test management tool provider.",
+     "Planning staff training and data storage for the development of the team's own foundation model.",
+     "Managing data privacy and security risks while optimizing cost, for example by using an LLM-as-a-Service platform with adequate assurances or an in-house deployment of an open-source LLM."
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. Fine-tuning can enhance any approach, but the syllabus does not require it for chatbot use (4.2.2).",
+     "b": "Incorrect. Assurances of a test tool provider belong to the approach of using a test tool with GenAI capabilities (4.2.2).",
+     "c": "Incorrect. Resource planning and staff training are emphasized for in-house development of a test tool (4.2.2).",
+     "d": "Correct. Section 4.2.2 names data privacy and security risks and cost optimization as primary considerations for AI chatbots, with the options of LLM-as-a-Service or in-house infrastructure using open-source LLMs."
+    },
+    "vysvetleni_obecne": "Chatbot: privacy, security, cost; vendor assurances or internal capabilities must be assessed."
+   },
+   "cz": {
+    "q": "<p>Testovací tým chce začít používat AI chatbot na podporu testovací analýzy. Co z následujícího NEJLÉPE popisuje hlavní úvahy LLMOps u tohoto přístupu?</p>",
+    "moznosti": [
+     "Před jakýmkoli použitím doladit model chatbotu na testovacích případech týmu.",
+     "Posoudit jen záruky výkonu od poskytovatele nástroje pro správu testů.",
+     "Naplánovat školení lidí a úložiště dat pro vývoj vlastního foundation modelu týmu.",
+     "Řídit rizika ochrany dat a bezpečnosti a optimalizovat náklady, například použitím platformy LLM jako služba s dostatečnými zárukami nebo vlastním nasazením open-source LLM."
+    ],
+    "vysvetleni": {
+     "a": "Špatně. Fine-tuning může rozšířit kterýkoli přístup, ale sylabus ho pro použití chatbotu nevyžaduje (4.2.2).",
+     "b": "Špatně. Záruky poskytovatele testovacího nástroje patří k přístupu s testovacím nástrojem s GenAI (4.2.2).",
+     "c": "Špatně. Plánování zdrojů a školení sylabus zdůrazňuje u vlastního vývoje testovacího nástroje (4.2.2).",
+     "d": "Správně. Oddíl 4.2.2 uvádí u AI chatbotů jako hlavní úvahy rizika ochrany dat a bezpečnosti a optimalizaci nákladů, s možností LLM jako služby nebo vlastní infrastruktury s open-source LLM."
+    },
+    "vysvetleni_obecne": "Chatbot: ochrana dat, bezpečnost, náklady. Je nutné posoudit záruky dodavatele nebo vlastní schopnosti."
+   },
+   "spravne": ["d"], "oddil": "4.2.2", "poznamka": ""
+  }
+ ]
+}

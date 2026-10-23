@@ -1,0 +1,15 @@
+# Podklady chráněné autorským právem a soukromá studijní data — nikdy do repozitáře
+zdroje/
+data/udemy/
+web/lokalni/
+*.pdf
+*.docx
+*.pptx
+*.zip
+__pycache__/
+*.pyc
+# výstup testovacího běhu (python tools/build_site.py --testdata)
+tools/_testdata/web/
+# Soukromé poznámky (klienti, práce, lokální cesty) — jen lokálně, veřejné README je v .github/README.md
+/README.md
+/PRAVIDLA_ZPRACOVANI.md

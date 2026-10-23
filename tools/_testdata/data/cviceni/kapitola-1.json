@@ -1,0 +1,33 @@
+[
+ {
+  "id": "HO-1.1.2",
+  "uroven": "H1",
+  "lo": "GenAI-1.1.2",
+  "nazev": "Tokenizace",
+  "cil": "Spočítat tokeny.",
+  "zadani": "Vezmi **pět** textů.\n\n- jeden\n- dva",
+  "kroky": [
+   "Otevři tokenizér.",
+   "Vlož text."
+  ],
+  "prompt": "Count the tokens in:\n<text>",
+  "co_sledovat": [
+   "čeština má víc tokenů"
+  ],
+  "projekt": "uctenky",
+  "cas_min": 15
+ },
+ {
+  "id": "CV-1-01",
+  "uroven": "H2",
+  "lo": "GenAI-1.2.1",
+  "nazev": "Vlastní cvičení",
+  "cil": "Cíl.",
+  "zadani": "Zadání.",
+  "kroky": [],
+  "prompt": "",
+  "co_sledovat": [],
+  "projekt": "obecné",
+  "cas_min": 10
+ }
+]

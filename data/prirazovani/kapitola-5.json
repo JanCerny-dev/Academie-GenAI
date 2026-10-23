@@ -1,0 +1,209 @@
+[
+ {"id": "rizika-shadow-ai", "sek": "5.1.1", "nazev": "Které riziko stínové AI to je?",
+  "zdroj": "Sylabus 5.1.1.", "otazka": "Zařaď situaci k riziku stínové AI. Pokud nejde o stínovou AI, vyber poslední kategorii.",
+  "kat": [
+   ["sec", "Bezpečnost a ochrana dat", "information security and data privacy weaknesses", "Osobní nástroj nemusí být dobře zabezpečený, hrozí únik dat."],
+   ["comp", "Compliance a regulace", "compliance and regulatory issues", "Neschválený nástroj vede k porušení norem a předpisů a k právním následkům."],
+   ["ip", "Duševní vlastnictví", "vague intellectual property", "Nejasné licence a zpracování chráněných dat bez oprávnění vedou ke sporům."],
+   ["ne", "Nejde o stínovou AI", "not shadow AI", "Nástroj je schválený a používá se podle pravidel."]
+  ],
+  "pol": [
+   ["Free chatbot si podle svých podmínek ukládá konverzace a tester do něj vložil log s rodnými čísly.", "sec", "Osobní údaje opustily chráněné prostředí v nástroji bez dostatečného zabezpečení."],
+   ["Veřejné AI rozšíření prohlížeče, které si tester sám nainstaloval, čte obsah všech otevřených stránek včetně testovacího prostředí banky.", "sec", "Neprověřený nástroj má přístup k datům, která nemá vidět. Riziko úniku."],
+   ["Banka při auditu zjistí, že dodavatel zpracovával její dokumentaci v cloudové službě, kterou smlouva nepovoluje.", "comp", "Jde o porušení smluvních a regulatorních požadavků s právními důsledky."],
+   ["Pojišťovna musí podle interních pravidel vést evidenci AI systémů, ale tým používá nástroj, o kterém nikdo neví.", "comp", "Neschválený nástroj obchází povinnosti, které organizaci ukládají předpisy a normy."],
+   ["Tester vloží do chatbotu kapitolu placené odborné knihy a nechá z ní vytvořit školicí materiál pro klienta.", "ip", "Chráněná data se zpracovávají bez oprávnění, výsledek může porušit autorská práva."],
+   ["Nástroj pro generování testovacích skriptů má licenci, ze které není jasné, komu patří vygenerovaný kód.", "ip", "Nejasné licenční podmínky jsou přesně riziko duševního vlastnictví podle 5.1.1."],
+   ["Analytik si v osobním účtu nechá navrhnout diagram procesu a klient později zjistí, že konkurence má téměř stejný.", "ip", "Nejasné vlastnictví výstupu vede ke sporu o duševní vlastnictví."],
+   ["Tým používá AI asistenta, kterého firma schválila pro interní dokumenty, a vkládá do něj jen interní dokumenty.", "ne", "Nástroj je schválený a používá se v rozsahu schválení. Nejde o stínovou AI."],
+   ["Testovací agent běží v tenantu klienta a klient ho písemně schválil pro regresní testy.", "ne", "Formální schválení i dohled existují. Nejde o stínovou AI."],
+   ["Vývojář si doma pro vlastní hobby projekt zkouší veřejný chatbot na veřejném kódu.", "ne", "Nejde o použití v organizaci ani o pracovní data. Definice stínové AI se na to nevztahuje."]
+  ]},
+
+ {"id": "strategie-aspekty", "sek": "5.1.2", "nazev": "Který aspekt strategie GenAI to je?",
+  "zdroj": "Sylabus 5.1.2.", "otazka": "Zařaď prvek strategie k aspektu, který popisuje.",
+  "kat": [
+   ["cil", "Měřitelné cíle testování", "measurable test objectives", "Produktivita, kratší testovací cykly, vyšší kvalita."],
+   ["llm", "Výběr LLM", "LLM selection", "Sladění s cíli, kompatibilita s infrastrukturou, škálovatelnost."],
+   ["data", "Kvalita dat", "data quality", "Přesná a relevantní vstupní data chráněná bezpečnostními postupy."],
+   ["skol", "Školení", "training programs", "Technické a etické dovednosti týmu."],
+   ["metr", "Metriky", "metrics", "Měření účinnosti výsledků GenAI podle 2.3.1."],
+   ["prav", "Procesní pravidla", "process guidelines", "Citlivá data, transparentnost, quality gates s revizí."]
+  ],
+  "pol": [
+   ["Snížit čas na přípravu regresních testovacích případů o 30 % do konce čtvrtletí.", "cil", "Konkrétní a měřitelný cíl zaměřený na produktivitu."],
+   ["Zkrátit testovací cyklus před vydáním z deseti na sedm dní.", "cil", "Zkrácení testovacích cyklů je jeden ze tří příkladů cílů v sylabu."],
+   ["Ověřit, že model jde napojit na nástroj pro správu testů a do CI pipeline.", "llm", "Kompatibilita se stávající testovací infrastrukturou je součást výběru LLM."],
+   ["Ověřit, že řešení zvládne nárůst z jednoho projektu na deset.", "llm", "Požadavky na škálovatelnost systému patří k výběru LLM ve strategii."],
+   ["Před použitím odstranit z uživatelských scénářů rozporné a zastaralé požadavky.", "data", "Přesnost a relevance vstupních dat je jádro aspektu kvality dat."],
+   ["Ukládat podklady pro prompty jen v úložišti s řízeným přístupem.", "data", "Sylabus chce data chráněná spolehlivými bezpečnostními postupy."],
+   ["Workshop o zkreslení (bias) a odpovědném používání AI výstupů.", "skol", "Etická složka školení."],
+   ["Praktické školení psaní promptů pro testovací případy.", "skol", "Technická složka školení."],
+   ["Sledovat podíl vygenerovaných skriptů, které se spustí bez chyby.", "metr", "Execution success rate je metrika z 2.3.1."],
+   ["Porovnat čas AI a člověka na tvorbu stejné sady testovacích případů.", "metr", "Time efficiency je metrika z 2.3.1."],
+   ["Každý testovací případ od AI v nástroji označit štítkem AI-generated.", "prav", "Povinnost transparentnosti je součást procesních pravidel."],
+   ["Vygenerovaný testware smí do regresní sady až po revizi seniorním testerem.", "prav", "Quality gate s revizí vygenerovaného testwaru."],
+   ["Zakázat vkládání osobních údajů klientů do jakéhokoli promptu.", "prav", "Pravidla pro používání citlivých dat patří k procesním pravidlům."]
+  ]},
+
+ {"id": "kriteria-vyberu", "sek": "5.1.3", "nazev": "Které kritérium výběru LLM/SLM se posuzuje?",
+  "zdroj": "Sylabus 5.1.3.", "otazka": "Zařaď otázku nebo zjištění ke kritériu výběru modelu. Poslední kategorie je pro věci, které podle sylabu kritériem nejsou.",
+  "kat": [
+   ["perf", "Výkon modelu", "model performance", "Kvalita na cílových testovacích úlohách proti benchmarkům organizace."],
+   ["ft", "Potenciál pro doladění", "fine-tuning potential", "Je možné a užitečné model doladit na doménových datech?"],
+   ["cost", "Opakované náklady", "recurring cost", "Licenční poplatky a provozní náklady."],
+   ["comm", "Komunita a podpora", "community and support", "Aktivní komunita a podrobná dokumentace."],
+   ["ne", "Podle sylabu nejde o kritérium", "not a criterion", "Distraktor nebo jednorázová věc."]
+  ],
+  "pol": [
+   ["Na 50 vlastních uživatelských scénářích má model A vyšší recall testovacích případů než model B.", "perf", "Měření na cílových úlohách proti vlastnímu benchmarku metrikou z 2.3.1."],
+   ["Model C dosahuje u přijatých testovacích případů lepšího relevance and contextual fit podle našeho referenčního hodnocení.", "perf", "Opět výkon na vlastních testovacích úlohách."],
+   ["Dodavatel nabízí doladění na vlastních datech a máme 3 000 historických reportů o defektech.", "ft", "Možnost a užitečnost doladění na doménových datech."],
+   ["Licence open source modelu povoluje úpravy a doladění vah.", "ft", "Licence určuje, jestli je doladění vůbec možné."],
+   ["Cena za milion tokenů vynásobená očekávaným měsíčním objemem volání.", "cost", "Typický výpočet opakovaných nákladů z HO-5.1.3."],
+   ["Měsíční nájem GPU serveru pro provoz open source modelu.", "cost", "Provozní náklad, který se opakuje."],
+   ["K modelu existuje aktivní fórum a podrobná dokumentace API.", "comm", "Přesně kritérium komunity a podpory."],
+   ["Na problémy s integrací nikdo neodpovídá a dokumentace má dvě strany.", "comm", "Slabá komunita a podpora komplikuje nasazení i řešení problémů."],
+   ["Model vede veřejný žebříček pro generování kódu.", "ne", "Veřejný benchmark mimo testovací úlohy sylabus jako kritérium nepřijímá."],
+   ["Jednorázová cena pilotního projektu na ověření modelu.", "ne", "Pilot je jednorázový náklad, ne opakovaný."],
+   ["Model je nejnovější a nejvíc se o něm mluví v médiích.", "ne", "Popularita ani novost nejsou kritériem podle 5.1.3."]
+  ]},
+
+ {"id": "slm-nebo-llm", "sek": "5.1.3", "nazev": "Spíš SLM, nebo spíš LLM?",
+  "zdroj": "Odvozeno ze sylabu 1.1.2, 4.2.1, 5.1.3 a 5.2.1 (sylabus tabulku nedává).", "otazka": "Rozhodni, jaký typ modelu bys pro úlohu zkusil jako první. O konečném výběru vždy rozhoduje měření výkonu.",
+  "kat": [
+   ["slm", "Spíš SLM", "small language model", "Úzká, opakovaná úloha, omezený rozpočet, data ve vlastním prostředí."],
+   ["llm", "Spíš LLM", "large language model", "Široké znalosti, složité uvažování, velké kontextové okno."]
+  ],
+  "pol": [
+   ["Třídění 300 nových reportů o defektech denně do 12 kategorií podle komponenty.", "slm", "Úzká, opakovaná klasifikace s velkým objemem. Přiměřeně velký model šetří náklady i energii."],
+   ["Extrakce testovacích podmínek z dvousetstránkové specifikace nového produktu.", "llm", "Dlouhý vstup, potřeba velkého kontextového okna a porozumění souvislostem."],
+   ["Data obsahují čísla účtů a nesmí opustit server banky, úloha je jednoduché maskování a přeformulování.", "slm", "Malý model lze provozovat lokálně a úloha nevyžaduje široké znalosti."],
+   ["Analýza příčin selhání, která vyžaduje propojit logy, změny v kódu a požadavky.", "llm", "Složité uvažování přes více zdrojů."],
+   ["Převod jednoho pevně daného formátu testovacího případu do jiného pevně daného formátu.", "slm", "Úzká, dobře popsaná transformace."],
+   ["Návrh testovací strategie pro nový produkt v doméně, kterou tým nezná.", "llm", "Široké znalosti a uvažování nad nejasným zadáním."],
+   ["Máme 5 000 kvalitních příkladů uživatelský scénář a testovací případ ve firemním formátu a chceme je generovat ve velkém.", "slm", "Doladěný SLM podle 4.2.1 dosáhne vysokého výkonu bez výpočetní zátěže LLM."],
+   ["Multimodální úloha: porovnat snímek obrazovky s návrhem a popsat rozdíly.", "llm", "Vyžaduje multimodální schopnosti, které mají spíš větší modely."],
+   ["Shrnutí jednoho krátkého výsledku testovacího běhu do tří vět, desetkrát denně.", "slm", "Jednoduchá úloha, velký model by byl zbytečně drahý a energeticky náročný."],
+   ["Generování testovacích nápadů pro exploratorní testování nové funkce s nejasnými požadavky.", "llm", "Kreativní a široká úloha, kde pomáhají širší znalosti."]
+  ]},
+
+ {"id": "faze-zavedeni", "sek": "5.1.4", "nazev": "Do které fáze zavedení činnost patří?",
+  "zdroj": "Sylabus 5.1.4.", "otazka": "Zařaď činnost k fázi zavedení GenAI.",
+  "kat": [
+   ["disc", "Objevování", "Discovery", "Povědomí a budování schopností."],
+   ["init", "Zahájení a definice použití", "Initiation and usage definition", "Výběr a prioritizace případů použití, infrastruktura, odbornost, sladění."],
+   ["util", "Využívání a iterace", "Utilization and iteration", "Plná integrace, monitoring, měření transformace, škálování."]
+  ],
+  "pol": [
+   ["Úvodní školení testerů o tom, co je LLM a jak napsat prompt.", "disc", "Školení na koncepty GenAI patří do první fáze."],
+   ["Testeři dostanou přístup ke schválenému AI asistentovi.", "disc", "Zpřístupnění LLM/SLM je činnost fáze Discovery."],
+   ["Testeři si zkoušejí generovat testovací případy pro ukázkovou aplikaci.", "disc", "Experimenty s prvními případy použití budují jistotu."],
+   ["Tým sestaví seznam možných případů použití a seřadí je podle přínosu a rizika.", "init", "Identifikace a prioritizace případů použití."],
+   ["Architekt posoudí, jestli jde AI nástroj napojit na nástroj pro správu testů.", "init", "Posouzení testovací infrastruktury s LLM."],
+   ["Ověří se, že vybrané případy použití odpovídají potřebám organizace a pravidlům klienta.", "init", "Sladění s potřebami organizace."],
+   ["Dva testeři se v pilotních případech použití cíleně specializují a stávají se interními odborníky.", "init", "Rozvoj odbornosti je součást druhé fáze."],
+   ["Shrnutí regresních běhů pomocí AI je standardní krok v pipeline všech týmů.", "util", "Plná integrace do testovacích procesů."],
+   ["Každý měsíc se vyhodnocuje ušetřený čas a podíl opravených AI výstupů.", "util", "Měření a řízení transformace."],
+   ["Tým průběžně sleduje nové verze modelů a nástrojů a jejich dopad na výsledky.", "util", "Průběžný monitoring vývoje GenAI a nástrojů."],
+   ["Osvědčený postup se rozšiřuje z jednoho projektu na pět dalších.", "util", "Škálovatelnost a udržitelné přínosy."]
+  ]},
+
+ {"id": "dovednosti-oblasti", "sek": "5.2.1", "nazev": "Do které oblasti dovedností a znalostí to patří?",
+  "zdroj": "Sylabus 5.2.1 (rozdělení do pěti oblastí je pomůcka výkladu).", "otazka": "Zařaď dovednost nebo znalost k oblasti podle 5.2.1. Poslední kategorie je pro věci, které do 5.2.1 nepatří.",
+  "kat": [
+   ["tech", "Technické AI dovednosti", "prompt engineering, context windows, test review methods", "Tvorba promptů, kontextové okno, metody revize."],
+   ["dom", "Doménová a testovací odbornost s AI", "domain and test expertise combined with AI skills", "Posouzení AI výstupu díky znalosti domény a testování."],
+   ["komp", "Hlavní kompetence", "key competencies", "Posouzení schopností LLM, zpřesňování promptů, hodnocení AI testwaru."],
+   ["riz", "Rizika a ochrana dat", "risks, data security, sanitization", "Rizika GenAI a jejich zmírnění, sanitizace, prompty šetrné k soukromí."],
+   ["env", "Environmentální hledisko", "environmental considerations", "Modely přiměřené velikosti, výpočetní zátěž, náklady a energie."],
+   ["ne", "Nepatří do 5.2.1", "not in 5.2.1", "Nesplnitelný cíl, práce dodavatele modelu nebo dovednost bez vazby na AI."]
+  ],
+  "pol": [
+   ["Rozdělit dlouhou specifikaci na části, protože se celá nevejde do kontextového okna.", "tech", "Porozumění kontextovému oknu je technická AI dovednost."],
+   ["Použít strukturovaný prompt s rolí, kontextem, instrukcí a formátem výstupu.", "tech", "Ovládání technik prompt engineeringu."],
+   ["Mít kontrolní seznam pro revizi AI testovacích případů.", "tech", "Metody revize testů, které sylabus jmenuje v první větě 5.2.1."],
+   ["Díky znalosti pravidel pro výpočet pojistného poznat, že AI uvedla špatný očekávaný výsledek.", "dom", "Kombinace doménové znalosti s AI výstupem."],
+   ["Posoudit, jestli AI v reportu o defektech správně odlišila selhání od chyby v testu.", "dom", "Testovací odbornost při analýze reportů o defektech."],
+   ["Určit, jestli daný model zvládne generovat Gherkin ve firemním formátu, nebo ho bude třeba přizpůsobit.", "komp", "Posouzení schopností LLM pro úlohu."],
+   ["Hodnotit vygenerované skripty podle podílu úspěšně spuštěných.", "komp", "Hodnocení AI testwaru."],
+   ["Nahradit v logu čísla účtů zástupnými hodnotami před vložením do promptu.", "riz", "Sanitizace dat."],
+   ["Vědět, že halucinace se zmírňují revizí a ověřením proti testovací bázi.", "riz", "Znalost rizik GenAI a běžných způsobů zmírnění."],
+   ["Na jednoduchou klasifikaci použít menší model místo nejsilnějšího.", "env", "Výběr modelu přiměřené velikosti."],
+   ["Nespouštět generování znovu a znovu bez důvodu.", "env", "Omezení zbytečné výpočetní zátěže a spotřeby energie."],
+   ["Ovládnout techniky, které halucinacím úplně zabrání.", "ne", "Halucinace nelze odstranit, jen zmírnit. Nesplnitelný cíl."],
+   ["Zkontrolovat kvalitu trénovacích dat, na kterých dodavatel model trénoval.", "ne", "Práce vývojáře modelu, tester k těmto datům obvykle nemá přístup."]
+  ]},
+
+ {"id": "budovani-schopnosti", "sek": "5.2.2", "nazev": "Který prvek budování schopností týmu to je?",
+  "zdroj": "Sylabus 5.2.2.", "otazka": "Zařaď aktivitu k prvku budování GenAI schopností v týmu. Poslední kategorie je pro postupy, které jdou proti 5.2.2.",
+  "kat": [
+   ["hands", "Praxe s různými modely", "practicing with various LLMs/SLMs", "Praktický přístup, zkoušení více modelů."],
+   ["cesta", "Strukturovaná cesta a postupné zapojení", "structured learning paths, gradual integration", "Učení podle plánu, od základů k promptům pro testování, AI postupně do práce."],
+   ["peer", "Řízená cvičení a učení od kolegů", "guided exercises, peer learning", "Cvičení se zpětnou vazbou, sdílení mezi kolegy."],
+   ["vzor", "Vzory promptů", "prompt patterns", "Znovupoužitelné šablony promptů."],
+   ["cop", "Komunita praxe", "communities of practice", "Pravidelná setkání, knihovny vzorů, poučení napříč projekty."],
+   ["proti", "Jde proti 5.2.2", "contrary to 5.2.2", "Jen teorie, vše najednou, bez struktury, bez sdílení."]
+  ],
+  "pol": [
+   ["Stejnou úlohu tým vyzkouší na třech různých modelech a porovná výsledky.", "hands", "Praxe s různými LLM/SLM."],
+   ["Školení probíhá v nástroji na skutečných testovacích úlohách s vymyšlenými daty.", "hands", "Praktický přístup místo teorie."],
+   ["Vzdělávací plán má čtyři moduly od základů promptů po prompty pro reporty o defektech.", "cesta", "Strukturovaná cesta s postupem k promptům specifickým pro testování."],
+   ["Tým nejdřív používá AI jen na shrnutí výsledků běhu, za měsíc přidá návrh testovacích případů.", "cesta", "Postupné zapojení AI do každodenních úloh."],
+   ["Lektor zadá úlohu, testeři napíšou prompt a lektor ho okomentuje.", "peer", "Řízené cvičení se zpětnou vazbou."],
+   ["Dva testeři si navzájem procházejí prompty a hledají slabá místa.", "peer", "Učení od kolegů."],
+   ["Šablona pro převod uživatelského scénáře na testovací případy s pevnými sekcemi.", "vzor", "Znovupoužitelná šablona pro konzistentní výstup."],
+   ["Měsíční setkání, kde týmy ukazují úspěšná použití GenAI a probírají potíže.", "cop", "Činnost komunity praxe."],
+   ["Sdílená knihovna vzorů promptů a zápisy poučení z projektů.", "cop", "Komunita praxe sdílí knihovny a dokumentuje poučení."],
+   ["Zapojit AI do všech testovacích úloh hned od prvního dne.", "proti", "Sylabus chce postupné zapojení."],
+   ["Poslat tým jen na teoretický kurz a dál se tomu nevěnovat.", "proti", "Chybí praktický přístup a sdílení."],
+   ["Každý si experimentuje sám a dobré prompty si nechává pro sebe.", "proti", "Chybí struktura i sdílení know-how v organizaci."]
+  ]},
+
+ {"id": "role-tester-manazer", "sek": "5.2.3", "nazev": "Čí odpovědnost to je?",
+  "zdroj": "Sylabus 5.2.3.", "otazka": "Zařaď odpovědnost k roli podle 5.2.3. Poslední kategorie je pro tvrzení, která sylabu odporují.",
+  "kat": [
+   ["tester", "Tester", "tester / AI-assisted test specialist", "Vede a ověřuje AI, revize, prompty, knihovny promptů."],
+   ["tm", "Test manažer", "test manager", "Strategie, rizika, monitoring a řízení AI procesů, governance, hybridní tým."],
+   ["ne", "Nikdo, odporuje sylabu", "contrary to syllabus", "Nahrazení lidí, odstranění revize, práce mimo roli."]
+  ],
+  "pol": [
+   ["Revidovat celkový výstup AI před použitím.", "tester", "Revize AI výstupu je nová úloha testera."],
+   ["Upravit prompt, když AI opakovaně vynechává negativní testovací případy.", "tester", "Zpřesňování promptů."],
+   ["Udržovat týmovou knihovnu promptů pro testování.", "tester", "Údržba knihoven promptů specifických pro testování."],
+   ["Spojit znalost hraničních hodnot s ověřením testovacích případů od AI.", "tester", "AI-assisted test specialist kombinuje testovací techniky s ověřováním AI testwaru."],
+   ["Doplnit do testovací strategie, pro které úlohy se AI používá.", "tm", "Vytvoření testovací strategie založené na AI."],
+   ["Přidat do registru rizik halucinace v očekávaných výsledcích.", "tm", "Řízení rizik spojených s AI."],
+   ["Sledovat v reportu o postupu testování podíl zamítnutých AI výstupů.", "tm", "Monitoring a řízení testovacích procesů založených na AI."],
+   ["Určit pravidla, co smí AI agent dělat v testovacím prostředí klienta.", "tm", "AI governance framework pro případ použití."],
+   ["Zajistit, aby tým uměl testovací techniky i pracovat s AI.", "tm", "Tradiční kompetence a AI gramotnost týmu."],
+   ["Koordinovat testery a AI agenty v jednom týmu.", "tm", "Řízení hybridního týmu."],
+   ["Nahradit test manažera autonomním AI agentem.", "ne", "Sylabus mluví o rovnováze lidí a AI, ne o nahrazení."],
+   ["Přestat revidovat AI výstupy, protože jsou dost dobré.", "ne", "Revize je podle 5.1.2 i 5.2.3 povinná součást procesu."],
+   ["Test manažer dolaďuje architekturu modelu.", "ne", "To není úloha test manažera podle 5.2.3."]
+  ]},
+
+ {"id": "pravda-nepravda-k5", "sek": "5", "nazev": "Pravda, nebo nepravda podle sylabu?",
+  "zdroj": "Sylabus 5.1 a 5.2.", "otazka": "Rozhodni, jestli tvrzení odpovídá sylabu CT-GenAI v1.1.",
+  "kat": [
+   ["p", "Pravda", "true", "Tvrzení odpovídá sylabu."],
+   ["n", "Nepravda", "false", "Tvrzení sylabu odporuje."]
+  ],
+  "pol": [
+   ["Stínová AI je používání GenAI v organizaci bez formálního schválení nebo dohledu.", "p", "Definice ze slovníku sylabu."],
+   ["Stínová AI snižuje riziko sporů o duševní vlastnictví, protože nástroj vybírá sám uživatel.", "n", "Nejasné licence riziko sporů zvyšují."],
+   ["Riziku stínové AI pomáhá předejít strategie a kroky pro integraci a nasazení GenAI.", "p", "Závěr 5.1.1."],
+   ["Strategie GenAI začíná výběrem nejvýkonnějšího modelu.", "n", "Začíná definicí měřitelných cílů testování."],
+   ["Procesní pravidla zahrnují quality gates s revizí vygenerovaného testwaru.", "p", "5.1.2."],
+   ["Pro výběr modelu pro testovací úlohy existuje dostatek veřejných benchmarků.", "n", "Sylabus říká opak, benchmarků pro testovací úlohy je málo."],
+   ["Organizace může pro své testovací úlohy vybrat více než jeden model.", "p", "Konec 5.1.3: one or more LLMs/SLMs."],
+   ["Náklady na pilotní ověření modelu patří mezi opakované náklady.", "n", "Pilot je jednorázový náklad."],
+   ["Zavedení GenAI má podle sylabu tři fáze.", "p", "Discovery, Initiation and usage definition, Utilization and iteration."],
+   ["Fáze zavedení musí proběhnout postupně pro celou organizaci najednou.", "n", "Mohou běžet souběžně pro různé případy použití."],
+   ["Sanitizace dat znamená odstranit nebo zamaskovat citlivé, osobní a důvěrné informace.", "p", "5.2.1."],
+   ["Školení týmu má být hlavně teoretické a vést ho mají externí experti.", "n", "Sylabus chce praktický přístup, peer learning a sdílení v organizaci."],
+   ["Vzor promptu je znovupoužitelná šablona pro konzistentní a spolehlivé výstupy.", "p", "Definice z 5.2.2."],
+   ["Monitoring a řízení testovacích procesů založených na AI je nová úloha testera.", "n", "Podle 5.2.3 patří test manažerovi."],
+   ["Test manažer má zajistit, aby tým měl tradiční testovací kompetence i AI gramotnost.", "p", "5.2.3."]
+  ]}
+]

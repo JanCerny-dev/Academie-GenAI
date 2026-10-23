@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="cs" data-tema="">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kartičky | ISTQB CT-GenAI</title>
+<meta name="description" content="Kartičky s pojmy ISTQB CT-GenAI (EN–CZ) s opakováním Leitnerovou metodou.">
+<meta name="color-scheme" content="light dark">
+<link rel="stylesheet" href="assets/styl.css">
+<script>
+/* Nastaví uložený režim ještě před vykreslením, aby stránka neproblikla. */
+(function(){try{var t=localStorage.getItem('genai-tema');if(t){document.documentElement.setAttribute('data-tema',t);}}catch(e){}})();
+</script>
+</head>
+<body>
+<a class="preskocit" href="#text">Přeskočit na text</a>
+<div class="postup" aria-hidden="true"></div>
+<header class="hlavicka">
+  <div class="hlavicka-vnitrek">
+    <a class="znacka" href="index.html">ISTQB CT-GenAI <span>česká studijní příručka</span></a>
+    <nav class="navigace" aria-label="Hlavní navigace">
+      <a href="index.html">Úvod</a>
+      <span class="skupina" data-skupina>
+        <a href="kapitoly.html" class="zvyraznit">Kapitoly</a>
+        <ul class="podmenu" id="podmenu-kapitoly" aria-label="Seznam kapitol"><li><a href="kapitola-1/vyklad.html"><b>1</b> Úvod do generativní AI</a></li><li><a href="kapitola-2/vyklad.html"><b>2</b> Prompt engineering</a></li><li><a href="kapitola-3/vyklad.html"><b>3</b> Rizika generativní AI</a></li><li><a href="kapitola-4/vyklad.html"><b>4</b> Infrastruktura s LLM</a></li><li><a href="kapitola-5/vyklad.html"><b>5</b> Zavedení GenAI v organizaci</a></li></ul>
+      </span>
+      <a href="slovnik.html">Slovník</a>
+      <a href="karticky.html" aria-current="page">Kartičky</a>
+      <a href="prirazovani.html">Přiřazování</a>
+      <a href="cviceni.html">Cvičení</a>
+      <a href="praxe.html">Praxe</a>
+      <a href="cile.html">Cíle</a>
+      <a href="zkouska.html">Zkouška</a>
+      <a href="lokalni/index.html" class="lokalni-odkaz">Lokální testy</a>
+      <button type="button" class="prepinac-tema" data-prepinac-tema>Tmavý režim</button>
+      <button type="button" class="ucet-tlacitko" data-ucet hidden>Přihlásit</button>
+    </nav>
+  </div>
+</header>
+<div class="stranka uvod">
+<main id="text">
+<div class="uvod-hlava uvod-hlava--strucna">
+  <p class="drobky">Opakování pojmů</p>
+  <h1>Kartičky</h1>
+  <p class="perex">Na líci je anglický termín, na rubu český překlad a definice. Kartičky se řadí
+  do pěti přihrádek (Leitnerova metoda): co umíš, posune se dál a vrací se méně často, co neumíš, jde zpět do první.</p>
+  <p class="napoveda"><kbd>Mezerník</kbd> otočí kartičku, <kbd>→</kbd> umím, <kbd>←</kbd> neumím.
+  Stav se ukládá jen v tomto prohlížeči.</p>
+</div>
+<div id="karticky" data-pocet="215">
+  <noscript><p class="poznamka">Kartičky potřebují zapnutý JavaScript.</p></noscript>
+</div>
+</main>
+</div>
+<footer class="paticka">
+  <div class="paticka-vnitrek">
+    <p><strong>Neoficiální studijní materiál.</strong> Tento web není produktem ani publikací ISTQB®.
+    ISTQB® je registrovaná ochranná známka International Software Testing Qualifications Board.
+    Texty jsou vlastním zpracováním autora vytvořeným při přípravě na zkoušku CT-GenAI; oficiální sylabus
+    a vzorovou zkoušku si stáhněte přímo na istqb.org.</p>
+    <p>Ke zkoušce vždy platí znění oficiálního sylabu CT-GenAI v1.1. Doplněné informace a příklady z praxe
+    slouží k porozumění, nikoli jako zdroj správných odpovědí u zkoušky.</p>
+    <ul>
+      <li><a href="https://istqb.org/certifications/gen-ai/" target="_blank" rel="noopener noreferrer">ISTQB — CT-GenAI</a></li>
+      <li><a href="https://glossary.istqb.org" target="_blank" rel="noopener noreferrer">Slovník ISTQB</a></li>
+      <li><a href="https://casqb.org" target="_blank" rel="noopener noreferrer">CaSQB</a></li>
+      <li><a href="zdroje.html">Zdroje a autorská práva</a></li>
+    </ul>
+  </div>
+</footer>
+<script src="assets/ucet-konfig.js"></script>
+<script src="assets/ucet.js"></script>
+<script src="assets/skript.js"></script>
+<script src="assets/data/slovnik.js"></script>
+<script src="assets/karticky.js"></script>
+</body>
+</html>

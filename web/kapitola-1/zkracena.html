@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="cs" data-tema="">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>1. Úvod do generativní AI — Zkrácená verze | ISTQB CT-GenAI</title>
+<meta name="description" content="Zkrácená verze kapitoly 1 sylabu ISTQB CT-GenAI v1.1: Úvod do generativní AI pro testování softwaru. Jen to, co je nutné znát ke zkoušce. K rychlému opakování.">
+<meta name="color-scheme" content="light dark">
+<link rel="stylesheet" href="../assets/styl.css">
+<script>
+/* Nastaví uložený režim ještě před vykreslením, aby stránka neproblikla. */
+(function(){try{var t=localStorage.getItem('genai-tema');if(t){document.documentElement.setAttribute('data-tema',t);}}catch(e){}})();
+</script>
+</head>
+<body data-kapitola="1">
+<a class="preskocit" href="#text">Přeskočit na text</a>
+<div class="postup" aria-hidden="true"></div>
+<header class="hlavicka">
+  <div class="hlavicka-vnitrek">
+    <a class="znacka" href="../index.html">ISTQB CT-GenAI <span>česká studijní příručka</span></a>
+    <nav class="navigace" aria-label="Hlavní navigace">
+      <a href="../index.html">Úvod</a>
+      <span class="skupina" data-skupina>
+        <a href="../kapitoly.html" class="zvyraznit" aria-current="page">Kapitoly</a>
+        <ul class="podmenu" id="podmenu-kapitoly" aria-label="Seznam kapitol"><li><a href="../kapitola-1/zkracena.html" aria-current="page"><b>1</b> Úvod do generativní AI</a></li><li><a href="../kapitola-2/zkracena.html"><b>2</b> Prompt engineering</a></li><li><a href="../kapitola-3/zkracena.html"><b>3</b> Rizika generativní AI</a></li><li><a href="../kapitola-4/zkracena.html"><b>4</b> Infrastruktura s LLM</a></li><li><a href="../kapitola-5/zkracena.html"><b>5</b> Zavedení GenAI v organizaci</a></li></ul>
+      </span>
+      <a href="../slovnik.html">Slovník</a>
+      <a href="../karticky.html">Kartičky</a>
+      <a href="../prirazovani.html">Přiřazování</a>
+      <a href="../cviceni.html">Cvičení</a>
+      <a href="../praxe.html">Praxe</a>
+      <a href="../cile.html">Cíle</a>
+      <a href="../zkouska.html">Zkouška</a>
+      <a href="../lokalni/index.html" class="lokalni-odkaz">Lokální testy</a>
+      <button type="button" class="prepinac-tema" data-prepinac-tema>Tmavý režim</button>
+      <button type="button" class="ucet-tlacitko" data-ucet hidden>Přihlásit</button>
+    </nav>
+  </div>
+</header>
+<div class="stranka">
+<div class="layout">
+<main>
+<div class="zahlavi">
+  <p class="drobky">Kapitola 1 · Zkrácená verze</p>
+  <h1>Úvod do generativní AI pro testování softwaru</h1>
+  <p class="podtitul">To nejnutnější ke zkoušce: typy AI, jak LLM zpracovává text, kategorie LLM, multimodalita, schopnosti LLM a dva způsoby práce s nimi.</p>
+  <ul class="meta"><li>1 295 slov</li><li>≈ 8 min čtení</li><li>≈ 9 min poslechu</li><li>2 oddíly</li><li>100 min výuky podle sylabu</li></ul>
+</div>
+<nav class="varianty" aria-label="Varianta zpracování kapitoly 1"><a href="vyklad.html">Plný výklad</a><a href="zkracena.html" aria-current="page">Zkrácená verze</a></nav>
+<article class="text" id="text">
+<p>Kapitola má v sylabu 100 minut. Ve zkoušce na ni připadá 7 otázek za 7 bodů: jedna K1 k oddílu 1.1.1, dvě K2 k oddílu 1.1.2 a po jedné K2 k oddílům 1.1.3, 1.1.4, 1.2.1 a 1.2.2. Praktická cvičení HO-1.1.2 a HO-1.1.4 se nezkoušejí.</p>
+<h2 id="oddil-1-1">1.1 Základy generativní AI a klíčové pojmy<a class="kotva" href="#oddil-1-1" aria-label="Odkaz na tento oddíl"></a></h2>
+<aside class="lo-blok" data-stitek="Studijní cíle (learning objectives)" aria-label="Studijní cíle (learning objectives)"><ul><li class="lo k1" id="lo-1-1-1"><span class="lo-id">GenAI-1.1.1</span> <span class="lo-k" data-k="K1">K1</span> <span class="lo-text">Recall different types of AI: symbolic AI, classical machine learning, deep learning, and generative AI</span></li><li class="lo k2" id="lo-1-1-2"><span class="lo-id">GenAI-1.1.2</span> <span class="lo-k" data-k="K2">K2</span> <span class="lo-text">Explain the basics of generative AI and large language models</span></li><li class="lo k2" id="lo-1-1-3"><span class="lo-id">GenAI-1.1.3</span> <span class="lo-k" data-k="K2">K2</span> <span class="lo-text">Distinguish between foundation, instruction-tuned and reasoning LLMs</span></li><li class="lo k2" id="lo-1-1-4"><span class="lo-id">GenAI-1.1.4</span> <span class="lo-k" data-k="K2">K2</span> <span class="lo-text">Write and execute a given prompt addressing a test task using a multimodal LLM model</span></li></ul></aside>
+<p><strong>Generative AI</strong> (generativní AI) používá velké předtrénované modely a vytváří nový obsah podobný lidskému: text, obrázky, kód. <strong>Large language model</strong> (LLM) je model GenAI předtrénovaný na velkém množství textu. Z promptu pozná kontext a vytvoří relevantní odpověď. V testování pomáhá v celém procesu: revize akceptačních kritérií, testovací případy a skripty, hledání defektů, analýza vzorců defektů, syntetická testovací data, dokumentace.</p>
+<h3 id="oddil-1-1-1">1.1.1 Spektrum AI<a class="kotva" href="#oddil-1-1-1" aria-label="Odkaz na tento oddíl"></a></h3>
+<p>Sylabus rozlišuje čtyři přístupy. Každý má jeden rozlišující znak.</p>
+<div class="tabulka-obal"><table><thead><tr><th>Typ</th><th>Rozlišující znak</th></tr></thead><tbody><tr><td><strong>Symbolic AI</strong> (symbolická AI)</td><td>pravidla a symboly napsané člověkem, napodobuje lidské rozhodování</td></tr><tr><td><strong>Classical machine learning</strong> (klasické ML)</td><td>řízené daty: příprava dat, ruční výběr příznaků (<strong>feature selection</strong>), trénování modelu; např. kategorizace defektů, předpověď problémů</td></tr><tr><td><strong>Deep learning</strong> (hluboké učení)</td><td>neuronové sítě s více vrstvami, příznaky se učí samy z velkých a složitých dat (obraz, zvuk, text); člověk pořád anotuje, ladí, ověřuje</td></tr><tr><td><strong>Generative AI</strong></td><td>používá hluboké učení a vytváří nový obsah podle vzorců z trénovacích dat</td></tr></tbody></table></div>
+<p><strong>Feature</strong> (příznak) je jedna měřitelná vlastnost vstupních dat, ze které se model učí a podle které předpovídá. Hlavní výhoda GenAI pro testování: předtrénovaný model lze použít přímo, bez další fáze trénování. Přináší to ale rizika (kapitola 3).</p>
+<aside class="vsuvka vsuvka--zkouska" data-stitek="Pozor u zkoušky" aria-label="Pozor u zkoušky"><p>K1 otázka: přiřaď popis k typu AI. Klasické ML proti hlubokému učení rozlišuje to, kdo určuje příznaky. U klasického ML člověk, u hlubokého učení síť sama.</p></aside>
+<h3 id="oddil-1-1-2">1.1.2 Základy GenAI a LLM<a class="kotva" href="#oddil-1-1-2" aria-label="Odkaz na tento oddíl"></a></h3>
+<p>LLM stojí na modelu <strong>generative pre-trained transformer</strong> (GPT), trénovaném na knihách, článcích a webu. <strong>Small language models</strong> (SLM) mají méně parametrů a jsou to lehká, zaměřená řešení.</p>
+<p>Text se pro model převádí na čísla ve dvou krocích. <strong>Tokenization</strong> (tokenizace) rozdělí text na tokeny. Token je znak, část slova nebo slovo. <strong>Embedding</strong> převede každý token na vektor ve vícerozměrném prostoru, který nese význam, syntaxi a kontext. Tokeny s podobným významem mají blízké vektory.</p>
+<p>V tokenech se měří velikost kontextového okna, cena za použití modelu přes API (vstup i výstup zvlášť) i doba zpracování. Počet tokenů není počet slov. Anglický text má v průměru zhruba jeden token na čtyři znaky, čeština a strukturovaná data (JSON, logy, kód) obvykle víc tokenů na stejnou délku.</p>
+<p><strong>Transformer</strong> je architektura neuronové sítě, která pomocí self-attention zachycuje vztahy mezi tokeny i v dlouhém textu. Při inferenci LLM předpovídá další token. Výsledek je statisticky pravděpodobný, ale ne nutně správný.</p>
+<p>LLM jsou <strong>non-deterministic</strong> (nedeterministické): stejný vstup může dát různé výstupy. Příčinou je pravděpodobnostní inference a nastavení hyperparametrů.</p>
+<p><strong>Context window</strong> (kontextové okno) je množství předchozího textu v tokenech, které model při generování bere v úvahu. Větší okno udrží souvislosti v dlouhém textu (např. velké testovací logy), ale zvyšuje výpočetní náročnost a dobu zpracování. Co se do okna nevejde, model nevidí. Do okna se počítá systémový prompt, celá konverzace, vložené dokumenty i generovaná odpověď. Proto chatbot v dlouhé konverzaci „zapomene“ pokyn ze začátku a proto se dlouhé logy mají před analýzou zkrátit nebo rozdělit.</p>
+<p>Pro testera z toho plynou dva praktické důsledky. Výstup LLM je potřeba ověřit, protože pravděpodobný text může být chybný. A u aplikace, která LLM obsahuje, nelze očekávaný výsledek porovnávat znak po znaku. Ověřují se vlastnosti odpovědi, například obsah, formát a délka.</p>
+<aside class="vsuvka vsuvka--zkouska" data-stitek="Pozor u zkoušky" aria-label="Pozor u zkoušky"><p>Tokenizace text dělí na stavební kameny. Embedding je vektor s významem. Předpověď dalšího tokenu dělá transformer. Kontextové okno omezuje rozsah textu, který model najednou bere v úvahu. Neřídí pořadí ani rychlost zpracování. Scénář „model ignoruje začátek dlouhého dokumentu“ vysvětluje kontextové okno, ne nedeterminismus.</p></aside>
+<h3 id="oddil-1-1-3">1.1.3 Základní, instrukční a uvažující LLM<a class="kotva" href="#oddil-1-1-3" aria-label="Odkaz na tento oddíl"></a></h3>
+<div class="tabulka-obal"><table><thead><tr><th>Kategorie</th><th>Vznik</th><th>Hodí se na</th></tr></thead><tbody><tr><td><strong>Foundation LLM</strong> (base LLM)</td><td>předtrénování na obrovských pestrých datech</td><td>univerzální použití; pro konkrétní úlohu potřebuje přizpůsobení</td></tr><tr><td><strong>Instruction-tuned LLM</strong></td><td>doladění základního modelu na dvojicích prompt a očekávaná odpověď</td><td>plnění instrukcí, dodržení formátu a šablony (Gherkin, JSON)</td></tr><tr><td><strong>Reasoning LLM</strong></td><td>další trénink na úlohách s mezikroky (chain-of-thought)</td><td>logické vyvozování, vícekroková analýza, syntéza složitých informací</td></tr></tbody></table></div>
+<p>V testování se používají instruction-tuned (někdy „non-reasoning“) i reasoning modely. Volba závisí na složitosti úlohy a potřebě uvažování.</p>
+<aside class="vsuvka vsuvka--zkouska" data-stitek="Pozor u zkoušky" aria-label="Pozor u zkoušky"><p>Přesné dodržení šablony nebo syntaxe vede na instruction-tuned LLM. Syntéza dat z více zdrojů, trendy a priority vedou na reasoning LLM. Uvažující model není automaticky nejlepší volba. Ladění na instrukce je krok vývoje modelu, ne ladění na pravidla konkrétního projektu.</p></aside>
+<h3 id="oddil-1-1-4">1.1.4 Multimodální LLM a modely pro obraz a jazyk<a class="kotva" href="#oddil-1-1-4" aria-label="Odkaz na tento oddíl"></a></h3>
+<p><strong>Multimodal model</strong> zpracovává více modalit: text, obraz, zvuk, video. Rozšiřuje transformer a učí se vztahy mezi druhy dat. Tokenizace se přizpůsobí modalitě. Obrázek se pomocí modelu pro obraz a jazyk převede na embeddingy a ty zpracuje transformer.</p>
+<p><strong>Vision-language model</strong> (VLM) je podmnožina multimodálních LLM pro obraz a text. Úlohy: popis obrázku, odpovídání na otázky k obrázku, kontrola souladu textu a obrazu. V testování porovná snímek obrazovky nebo wireframe s uživatelským scénářem, reportem o defektu nebo očekávaným výsledkem a pomůže navrhnout testovací případy z textu i obrazu, čímž zvyšuje pokrytí.</p>
+<p>Úskalí: model může přehlédnout drobný nebo nečitelný text, domyslet si prvek, který na snímku není, a ze statického obrázku nepozná chování aplikace. Snímky obrazovky mohou obsahovat citlivá data, která do veřejného modelu nepatří.</p>
+<aside class="vsuvka vsuvka--zkouska" data-stitek="Pozor u zkoušky" aria-label="Pozor u zkoušky"><p>VLM je podmnožina multimodálních LLM, ne naopak, a pojmy nejsou zaměnitelné.</p></aside>
+<h2 id="oddil-1-2">1.2 Využití generativní AI v testování: základní principy<a class="kotva" href="#oddil-1-2" aria-label="Odkaz na tento oddíl"></a></h2>
+<aside class="lo-blok" data-stitek="Studijní cíle (learning objectives)" aria-label="Studijní cíle (learning objectives)"><ul><li class="lo k2" id="lo-1-2-1"><span class="lo-id">GenAI-1.2.1</span> <span class="lo-k" data-k="K2">K2</span> <span class="lo-text">Give examples of key LLM capabilities for test tasks</span></li><li class="lo k2" id="lo-1-2-2"><span class="lo-id">GenAI-1.2.2</span> <span class="lo-k" data-k="K2">K2</span> <span class="lo-text">Compare interaction models when using GenAI for software testing</span></li></ul></aside>
+<p>LLM dobře zpracovávají přirozený jazyk a kód, generují text a kód, odpovídají na otázky, shrnují, překládají a v multimodálním režimu analyzují obrázky. Tester je může využít dvěma doplňujícími se způsoby: přes AI chatboty a přes aplikace na LLM integrované do testovacích nástrojů.</p>
+<h3 id="oddil-1-2-1">1.2.1 Hlavní schopnosti LLM pro testovací úlohy<a class="kotva" href="#oddil-1-2-1" aria-label="Odkaz na tento oddíl"></a></h3>
+<p>Sylabus uvádí sedm schopností:</p>
+<ol><li><strong>Analýza a zlepšování požadavků:</strong> nejednoznačnosti, nekonzistence, chybějící informace, otázky pro stakeholdery.</li><li><strong>Podpora tvorby testovacích případů:</strong> testovací případy a cíle testování z testovací báze.</li><li><strong>Generování testovacího orákula:</strong> očekávané výsledky.</li><li><strong>Generování testovacích dat:</strong> datové sady, hraniční hodnoty, kombinace.</li><li><strong>Podpora automatizace testů:</strong> skripty z popisu testovacího případu, návrhy úprav skriptů, vhodné testovací techniky.</li><li><strong>Analýza výsledků testů:</strong> shrnutí, třídění anomálií podle závažnosti a priority.</li><li><strong>Tvorba testwaru:</strong> plány testů, reporty o testování a o defektech a jejich aktualizace.</li></ol>
+<aside class="vsuvka vsuvka--zkouska" data-stitek="Pozor u zkoušky" aria-label="Pozor u zkoušky"><p>Distraktory slibují víc než sylabus: spouštění všech testů bez člověka, vývoj celé aplikace k nasazení, samostatné průzkumné testování. LLM ve všech úlohách pomáhá, výstup kontroluje člověk.</p></aside>
+<h3 id="oddil-1-2-2">1.2.2 AI chatboti a testovací aplikace postavené na LLM<a class="kotva" href="#oddil-1-2-2" aria-label="Odkaz na tento oddíl"></a></h3>
+<p><strong>AI chatbot</strong> je konverzační rozhraní k LLM. Tester píše v přirozeném jazyce a dostává okamžité odpovědi. Řetězením promptů výstup zpřesňuje. Hodí se na rutinní úlohy, průzkumné testování, zaškolení, rychlou zpětnou vazbu a vysvětlení pojmů. Zvládnou ho i netechničtí stakeholdeři.</p>
+<p><strong>LLM-powered testing application</strong> integruje LLM přes API a plní přesně vymezené, často automatizované úlohy: generování testovacích případů, analýzu defektů, tvorbu testovacích dat. Nabízí víc přizpůsobení a škálovatelnost. Organizace a dodavatelé ji vkládají do testovacích frameworků. Ve vyspělé podobě jde o AI agenty (kapitola 4).</p>
+<div class="tabulka-obal"><table><thead><tr><th>Hledisko</th><th>AI chatbot</th><th>Aplikace na LLM</th></tr></thead><tbody><tr><td>Rozhraní</td><td>konverzace</td><td>integrace přes API</td></tr><tr><td>Úlohy</td><td>ad hoc, rutinní, průzkum</td><td>přesně vymezené, automatizované</td></tr><tr><td>Přizpůsobení</td><td>omezené</td><td>vysoké, škálovatelné</td></tr><tr><td>Uživatelé</td><td>kdokoli, i netechnický</td><td>testeři v rámci nástroje</td></tr></tbody></table></div>
+<p>Oba způsoby potřebují dobrý prompt engineering (kapitola 2). Jasné a konkrétní instrukce zvyšují šanci, že výstup bude přesný, relevantní a v souladu s cíli testování.</p>
+<aside class="vsuvka vsuvka--zkouska" data-stitek="Pozor u zkoušky" aria-label="Pozor u zkoušky"><p>Chatbot = konverzace, ad hoc úlohy. Aplikace na LLM = integrace přes API, přizpůsobené řešení konkrétních úloh. Distraktory role prohazují nebo tvrdí, že u integrované aplikace na promptu nezáleží.</p></aside>
+</article>
+<div class="splneno-radek" data-nepocitat><button type="button" class="tlacitko splneno" data-splneno="kapitola-1-zkracena" data-text-ne="Označit jako prostudované" data-text-ano="✓ Prostudováno" aria-pressed="false">Označit jako prostudované</button></div>
+<nav class="naradi sousede" aria-label="Sousední kapitoly"><a href="../kapitola-2/zkracena.html">2. Prompt engineering →</a></nav>
+</main>
+<aside class="strom" aria-label="Obsah kapitoly"><h2>V této kapitole</h2><ol><li><a href="#oddil-1-1">1.1 Základy generativní AI a klíčové pojmy</a><ol><li><a href="#oddil-1-1-1">1.1.1 Spektrum AI</a></li><li><a href="#oddil-1-1-2">1.1.2 Základy GenAI a LLM</a></li><li><a href="#oddil-1-1-3">1.1.3 Základní, instrukční a uvažující LLM</a></li><li><a href="#oddil-1-1-4">1.1.4 Multimodální LLM a modely pro obraz a jazyk</a></li></ol></li><li><a href="#oddil-1-2">1.2 Využití generativní AI v testování: základní principy</a><ol><li><a href="#oddil-1-2-1">1.2.1 Hlavní schopnosti LLM pro testovací úlohy</a></li><li><a href="#oddil-1-2-2">1.2.2 AI chatboti a testovací aplikace postavené na LLM</a></li></ol></li></ol></aside>
+</div>
+</div>
+<footer class="paticka">
+  <div class="paticka-vnitrek">
+    <p><strong>Neoficiální studijní materiál.</strong> Tento web není produktem ani publikací ISTQB®.
+    ISTQB® je registrovaná ochranná známka International Software Testing Qualifications Board.
+    Texty jsou vlastním zpracováním autora vytvořeným při přípravě na zkoušku CT-GenAI; oficiální sylabus
+    a vzorovou zkoušku si stáhněte přímo na istqb.org.</p>
+    <p>Ke zkoušce vždy platí znění oficiálního sylabu CT-GenAI v1.1. Doplněné informace a příklady z praxe
+    slouží k porozumění, nikoli jako zdroj správných odpovědí u zkoušky.</p>
+    <ul>
+      <li><a href="https://istqb.org/certifications/gen-ai/" target="_blank" rel="noopener noreferrer">ISTQB — CT-GenAI</a></li>
+      <li><a href="https://glossary.istqb.org" target="_blank" rel="noopener noreferrer">Slovník ISTQB</a></li>
+      <li><a href="https://casqb.org" target="_blank" rel="noopener noreferrer">CaSQB</a></li>
+      <li><a href="../zdroje.html">Zdroje a autorská práva</a></li>
+    </ul>
+  </div>
+</footer>
+<script src="../assets/ucet-konfig.js"></script>
+<script src="../assets/ucet.js"></script>
+<script src="../assets/skript.js"></script>
+</body>
+</html>

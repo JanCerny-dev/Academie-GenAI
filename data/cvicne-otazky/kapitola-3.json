@@ -1,0 +1,2259 @@
+{
+ "popis": "Vlastní cvičné otázky ke kapitole 3 sylabu CT-GenAI v1.1 (Managing Risks of Generative AI in Software Testing). Napsáno podle learning objectives, nejde o parafráze otázek ze Sample Exam A ani z Udemy kurzů. Počet na LO = počet otázek ve zkoušce × 4 + 1.",
+ "otazky": [
+  {
+   "id": "CG-3.1.1-01",
+   "zdroj": "vlastni",
+   "lo": "GenAI-3.1.1",
+   "k": "K1",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Which of the following BEST describes a hallucination in LLM output used for a test task?</p>",
+    "moznosti": [
+     "The LLM produces output that is factually incorrect or irrelevant to the given task, for example a test case for a feature that is not in the requirements.",
+     "The LLM reaches an incorrect conclusion from correct input data because it misinterprets conditional logic.",
+     "The LLM systematically prefers certain kinds of test data because of imbalances in its training data.",
+     "The LLM returns a different set of test cases each time the same prompt is submitted."
+    ],
+    "vysvetleni": {
+     "a": "Correct. This matches the definition of hallucination in syllabus section 3.1.1.",
+     "b": "Incorrect. This describes a reasoning error (syllabus 3.1.1).",
+     "c": "Incorrect. This describes bias (syllabus 3.1.1).",
+     "d": "Incorrect. This describes non-deterministic behavior (syllabus 1.1.2 and 3.1.4), not a hallucination."
+    },
+    "vysvetleni_obecne": "Hallucination = factually incorrect or irrelevant output (syllabus 3.1.1)."
+   },
+   "cz": {
+    "q": "<p>Který z následujících popisů NEJLÉPE vystihuje halucinaci ve výstupu LLM použitém pro testovací úlohu?</p>",
+    "moznosti": [
+     "LLM vytvoří výstup, který je fakticky nesprávný nebo nesouvisí se zadanou úlohou, například testovací případ pro funkci, která v požadavcích není.",
+     "LLM dojde ke špatnému závěru ze správných vstupních dat, protože chybně vyloží podmínku.",
+     "LLM systematicky upřednostňuje určitý druh testovacích dat kvůli nerovnováze v trénovacích datech.",
+     "LLM vrátí při každém odeslání stejného promptu jinou sadu testovacích případů."
+    ],
+    "vysvetleni": {
+     "a": "Správně. Odpovídá to definici halucinace v oddílu 3.1.1 sylabu.",
+     "b": "Nesprávně. To je chyba v uvažování (sylabus 3.1.1).",
+     "c": "Nesprávně. To je zkreslení (sylabus 3.1.1).",
+     "d": "Nesprávně. To je nedeterministické chování (sylabus 1.1.2 a 3.1.4), ne halucinace."
+    },
+    "vysvetleni_obecne": "Halucinace = fakticky nesprávný nebo nesouvisející výstup (sylabus 3.1.1)."
+   },
+   "spravne": [
+    "a"
+   ],
+   "oddil": "3.1.1",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-3.1.1-02",
+   "zdroj": "vlastni",
+   "lo": "GenAI-3.1.1",
+   "k": "K1",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Which statement BEST describes a reasoning error in LLM output?</p>",
+    "moznosti": [
+     "The model invents an acceptance criterion that is not present in the user story.",
+     "The model misinterprets a logical structure, such as cause and effect or a step-by-step procedure, and reaches a wrong conclusion.",
+     "The model cuts off its answer because the output exceeds the maximum number of tokens.",
+     "The model generates mostly happy-path tests because such tests dominate the data it was trained on."
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. Inventing content that is not in the input is a hallucination (syllabus 3.1.1).",
+     "b": "Correct. Syllabus 3.1.1 defines reasoning errors as misinterpretation of logical structures leading to incorrect conclusions.",
+     "c": "Incorrect. A truncated output caused by token limits is not one of the three defect types described in syllabus 3.1.1.",
+     "d": "Incorrect. A systematic preference rooted in training data is bias (syllabus 3.1.1)."
+    },
+    "vysvetleni_obecne": "LLMs rely on pattern matching rather than true logical reasoning, which leads to reasoning errors (syllabus 3.1.1)."
+   },
+   "cz": {
+    "q": "<p>Které tvrzení NEJLÉPE popisuje chybu v uvažování ve výstupu LLM?</p>",
+    "moznosti": [
+     "Model si vymyslí akceptační kritérium, které v uživatelském scénáři není.",
+     "Model chybně vyloží logickou strukturu, například příčinu a následek nebo postup po krocích, a dojde ke špatnému závěru.",
+     "Model odpověď useká, protože výstup překročí maximální počet tokenů.",
+     "Model generuje hlavně testy šťastné cesty, protože takové testy převažují v datech, na kterých se učil."
+    ],
+    "vysvetleni": {
+     "a": "Nesprávně. Vymyšlený obsah, který ve vstupu není, je halucinace (sylabus 3.1.1).",
+     "b": "Správně. Sylabus 3.1.1 definuje chybu v uvažování jako chybný výklad logické struktury, který vede ke špatnému závěru.",
+     "c": "Nesprávně. Useknutý výstup kvůli limitu tokenů nepatří mezi tři druhy vad z oddílu 3.1.1.",
+     "d": "Nesprávně. Systematický sklon z trénovacích dat je zkreslení (sylabus 3.1.1)."
+    },
+    "vysvetleni_obecne": "LLM spoléhá na rozpoznávání vzorů místo skutečného logického uvažování, odtud chyby v uvažování (sylabus 3.1.1)."
+   },
+   "spravne": [
+    "b"
+   ],
+   "oddil": "3.1.1",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-3.1.1-03",
+   "zdroj": "vlastni",
+   "lo": "GenAI-3.1.1",
+   "k": "K1",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>According to the syllabus, where do biases in LLM output originate?</p>",
+    "moznosti": [
+     "From the temperature setting used during inference.",
+     "From the use of prompt chaining by the tester.",
+     "From the data on which the model was trained.",
+     "From the size of the model's context window."
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. Temperature influences randomness of the output (syllabus 3.1.4), not the origin of bias.",
+     "b": "Incorrect. Prompt chaining is a mitigation technique (syllabus 3.1.3), not a source of bias.",
+     "c": "Correct. Syllabus 3.1.1 states that LLM biases originate from the training data.",
+     "d": "Incorrect. The context window determines how much text the model can consider (syllabus 1.1.2); it is not named as the origin of bias."
+    },
+    "vysvetleni_obecne": "Example from the syllabus: models trained mainly on English data may underrepresent non-English perspectives."
+   },
+   "cz": {
+    "q": "<p>Odkud podle sylabu pochází zkreslení ve výstupu LLM?</p>",
+    "moznosti": [
+     "Z nastavení teploty během inference.",
+     "Z toho, že tester použije řetězení promptů.",
+     "Z dat, na kterých byl model trénován.",
+     "Z velikosti kontextového okna modelu."
+    ],
+    "vysvetleni": {
+     "a": "Nesprávně. Teplota ovlivňuje náhodnost výstupu (sylabus 3.1.4), nikoli původ zkreslení.",
+     "b": "Nesprávně. Řetězení promptů je technika zmírnění (sylabus 3.1.3), ne zdroj zkreslení.",
+     "c": "Správně. Sylabus 3.1.1 uvádí, že zkreslení pochází z trénovacích dat.",
+     "d": "Nesprávně. Kontextové okno určuje, kolik textu model zohlední (sylabus 1.1.2). Sylabus ho jako původ zkreslení neuvádí."
+    },
+    "vysvetleni_obecne": "Příklad ze sylabu: model trénovaný hlavně na anglických datech může upozaďovat neanglické pohledy."
+   },
+   "spravne": [
+    "c"
+   ],
+   "oddil": "3.1.1",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-3.1.1-04",
+   "zdroj": "vlastni",
+   "lo": "GenAI-3.1.1",
+   "k": "K1",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Which test task is MOST likely to be affected by reasoning errors of an LLM?</p>",
+    "moznosti": [
+     "Rewording a defect report so that it is easier to read.",
+     "Translating test case titles from English into Czech.",
+     "Suggesting alternative labels for buttons as ideas for exploratory testing.",
+     "Prioritizing test cases based on risk scores and dependencies between features."
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. Rewording is a language task with little logical reasoning; hallucinations are a bigger risk here than reasoning errors.",
+     "b": "Incorrect. Translation relies on language patterns, which LLMs handle well; it is not a typical reasoning task.",
+     "c": "Incorrect. This is a creative task; it does not depend on cause-and-effect or step-by-step logic.",
+     "d": "Correct. Syllabus 3.1.1 names test planning and test case prioritization as tasks requiring logical reasoning where LLMs can make reasoning errors."
+    },
+    "vysvetleni_obecne": "Tasks such as test planning, estimation and prioritization require logical reasoning (syllabus 3.1.1)."
+   },
+   "cz": {
+    "q": "<p>Kterou testovací úlohu NEJSPÍŠ ovlivní chyby LLM v uvažování?</p>",
+    "moznosti": [
+     "Přeformulování reportu o defektu, aby se lépe četl.",
+     "Překlad názvů testovacích případů z angličtiny do češtiny.",
+     "Návrh alternativních popisků tlačítek jako nápadů pro explorativní testování.",
+     "Prioritizace testovacích případů podle skóre rizika a závislostí mezi funkcemi."
+    ],
+    "vysvetleni": {
+     "a": "Nesprávně. Přeformulování je jazyková úloha s malým podílem logiky. Spíš tu hrozí halucinace.",
+     "b": "Nesprávně. Překlad stojí na jazykových vzorech, které LLM zvládá dobře. Není to typická úloha na uvažování.",
+     "c": "Nesprávně. Je to kreativní úloha, nezávisí na logice příčiny a následku ani na postupu po krocích.",
+     "d": "Správně. Sylabus 3.1.1 jmenuje plánování testování a prioritizaci testovacích případů jako úlohy, které vyžadují logické uvažování."
+    },
+    "vysvetleni_obecne": "Úlohy jako plánování, odhad a prioritizace vyžadují logické uvažování (sylabus 3.1.1)."
+   },
+   "spravne": [
+    "d"
+   ],
+   "oddil": "3.1.1",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-3.1.1-05",
+   "zdroj": "vlastni",
+   "lo": "GenAI-3.1.1",
+   "k": "K1",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>According to the syllabus, what are the causes of hallucinations, reasoning errors and biases in GenAI output?</p>",
+    "moznosti": [
+     "The nature of the training data and the inherent limitations of the transformer model.",
+     "Insufficient computing power of the tester's local device.",
+     "The use of structured data formats in prompts.",
+     "Missing encryption of the data transmitted to the LLM."
+    ],
+    "vysvetleni": {
+     "a": "Correct. Syllabus 3.1.1 attributes all three defect types to the training data and the limitations of the transformer model.",
+     "b": "Incorrect. The syllabus does not mention local computing power as a cause.",
+     "c": "Incorrect. Clear, structured formats are a mitigation technique (syllabus 3.1.3).",
+     "d": "Incorrect. Encryption relates to data security (syllabus 3.2.3), not to the quality defects of the output."
+    },
+    "vysvetleni_obecne": "Plausible is not necessarily correct: the transformer generates statistically plausible text (syllabus 1.1.2, 3.1.1)."
+   },
+   "cz": {
+    "q": "<p>Co jsou podle sylabu příčiny halucinací, chyb v uvažování a zkreslení ve výstupu generativní AI?</p>",
+    "moznosti": [
+     "Povaha trénovacích dat a vnitřní omezení modelu transformer.",
+     "Nedostatečný výpočetní výkon testerova počítače.",
+     "Použití strukturovaných formátů dat v promptech.",
+     "Chybějící šifrování dat posílaných do LLM."
+    ],
+    "vysvetleni": {
+     "a": "Správně. Sylabus 3.1.1 přisuzuje všechny tři vady trénovacím datům a omezením architektury transformer.",
+     "b": "Nesprávně. Sylabus výkon lokálního zařízení jako příčinu neuvádí.",
+     "c": "Nesprávně. Jasné strukturované formáty jsou technika zmírnění (sylabus 3.1.3).",
+     "d": "Nesprávně. Šifrování souvisí s bezpečností dat (sylabus 3.2.3), ne s vadami kvality výstupu."
+    },
+    "vysvetleni_obecne": "Věrohodné neznamená správné: transformer vytváří statisticky věrohodný text (sylabus 1.1.2, 3.1.1)."
+   },
+   "spravne": [
+    "a"
+   ],
+   "oddil": "3.1.1",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-3.1.2-01",
+   "zdroj": "vlastni",
+   "lo": "GenAI-3.1.2",
+   "k": "K3",
+   "body": 2,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>A tester gives an LLM the following user story and receives the output shown.</p><pre>User story: As a user, I want to change my password.\nAC1: The new password has at least 12 characters.\nAC2: The new password must differ from the current password.\nAC3: The user must enter the current password.\n\nLLM output:\nTC-01 New password with 11 characters is rejected (AC1)\nTC-02 New password with 12 characters is accepted (AC1)\nTC-03 New password identical to the current one is rejected (AC2)\nTC-04 Wrong current password is rejected (AC3)\nTC-05 After a successful change, a push notification is sent to the user&#x27;s phone (AC2)</pre><p>Which statement BEST identifies the defect in the LLM output?</p>",
+    "moznosti": [
+     "TC-01 and TC-02 contain a reasoning error, because boundary value analysis for a minimum of 12 requires the values 12 and 13.",
+     "TC-05 is a hallucination, because it verifies a push notification that is not part of any acceptance criterion.",
+     "TC-03 is a hallucination, because AC2 does not refer to the current password.",
+     "The output shows bias, because all test cases are negative tests."
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. For a minimum length of 12, the values 11 (invalid) and 12 (valid) are the correct two-value boundary values.",
+     "b": "Correct. No acceptance criterion mentions a notification; the LLM invented it and linked it to AC2. Cross-verification against the user story reveals it (syllabus 3.1.1, 3.1.2).",
+     "c": "Incorrect. AC2 explicitly requires the new password to differ from the current one, so TC-03 is grounded in the input.",
+     "d": "Incorrect. TC-02 and TC-05 are positive tests, so the claim is false; there is no systematic one-sidedness here."
+    },
+    "vysvetleni_obecne": "Check each test case against the input: whatever has no basis in the acceptance criteria is a candidate hallucination."
+   },
+   "cz": {
+    "q": "<p>Tester zadá LLM následující uživatelský scénář a dostane uvedený výstup.</p><pre>Uživatelský scénář: Jako uživatel chci změnit heslo.\nAC1: Nové heslo má aspoň 12 znaků.\nAC2: Nové heslo se musí lišit od současného.\nAC3: Uživatel musí zadat současné heslo.\n\nVýstup LLM:\nTC-01 Nové heslo s 11 znaky je odmítnuto (AC1)\nTC-02 Nové heslo s 12 znaky je přijato (AC1)\nTC-03 Nové heslo shodné se současným je odmítnuto (AC2)\nTC-04 Chybné současné heslo je odmítnuto (AC3)\nTC-05 Po úspěšné změně přijde uživateli na telefon push notifikace (AC2)</pre><p>Které tvrzení NEJLÉPE určuje vadu ve výstupu LLM?</p>",
+    "moznosti": [
+     "TC-01 a TC-02 obsahují chybu v uvažování, protože analýza hraničních hodnot pro minimum 12 vyžaduje hodnoty 12 a 13.",
+     "TC-05 je halucinace, protože ověřuje push notifikaci, která není v žádném akceptačním kritériu.",
+     "TC-03 je halucinace, protože AC2 se současného hesla netýká.",
+     "Výstup ukazuje zkreslení, protože všechny testovací případy jsou negativní."
+    ],
+    "vysvetleni": {
+     "a": "Nesprávně. Pro minimální délku 12 jsou správné dvoubodové hraniční hodnoty 11 (neplatná) a 12 (platná).",
+     "b": "Správně. Žádné kritérium notifikaci nezmiňuje, model ji vymyslel a přiřadil k AC2. Odhalí to křížové ověření se scénářem (sylabus 3.1.1, 3.1.2).",
+     "c": "Nesprávně. AC2 výslovně požaduje, aby se nové heslo lišilo od současného. TC-03 má oporu ve vstupu.",
+     "d": "Nesprávně. TC-02 a TC-05 jsou pozitivní testy, tvrzení neplatí a systematická jednostrannost tu není."
+    },
+    "vysvetleni_obecne": "Každý testovací případ porovnejte se vstupem. Co nemá oporu v akceptačních kritériích, je kandidát na halucinaci."
+   },
+   "spravne": [
+    "b"
+   ],
+   "oddil": "3.1.2",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-3.1.2-02",
+   "zdroj": "vlastni",
+   "lo": "GenAI-3.1.2",
+   "k": "K3",
+   "body": 2,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>An LLM created the following decision table from a business rule.</p><pre>Rule: Shipping is free if (order total &gt;= 1,000 CZK AND the customer is logged in)\n      OR the customer has a premium membership.\n\nLLM decision table:\nRow  Total  Logged in  Premium  Free shipping\n1    1,200  yes        no       yes\n2      800  yes        yes      no\n3    1,500  no         no       no\n4      500  no         no       no</pre><p>Which type of defect does the output contain, and which detection approach reveals it MOST directly?</p>",
+    "moznosti": [
+     "A hallucination in row 2; cross-verification against the requirements, because premium membership is not part of the rule.",
+     "Bias in rows 3 and 4; review of the test data against the coverage requirements.",
+     "A reasoning error in row 2; logical validation of each row against the rule.",
+     "A hallucination in row 1; consultation with a domain expert on shipping rules."
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. Premium membership is explicitly part of the rule, so nothing was invented.",
+     "b": "Incorrect. Rows 3 and 4 are evaluated correctly, and four rows do not show a systematic preference.",
+     "c": "Correct. A premium member gets free shipping regardless of the other conditions, so row 2 should be 'yes'. The input values are correct, the logic is wrong. Logical validation detects reasoning errors (syllabus 3.1.1, 3.1.2).",
+     "d": "Incorrect. Row 1 meets the first part of the rule (total >= 1,000 and logged in), so free shipping is correct."
+    },
+    "vysvetleni_obecne": "Correct facts plus a wrong conclusion indicate a reasoning error (syllabus 3.1.1); logical validation and output testing detect it (3.1.2)."
+   },
+   "cz": {
+    "q": "<p>LLM vytvořil z obchodního pravidla následující rozhodovací tabulku.</p><pre>Pravidlo: Doprava je zdarma, když (objednávka &gt;= 1 000 Kč A zákazník je přihlášen)\n         NEBO má zákazník prémiové členství.\n\nRozhodovací tabulka od LLM:\nŘádek  Objednávka  Přihlášen  Prémium  Doprava zdarma\n1      1 200       ano        ne       ano\n2        800       ano        ano      ne\n3      1 500       ne         ne       ne\n4        500       ne         ne       ne</pre><p>Jaký druh vady výstup obsahuje a která metoda detekce ji odhalí NEJPŘÍMĚJI?</p>",
+    "moznosti": [
+     "Halucinace v řádku 2; křížové ověření s požadavky, protože prémiové členství v pravidle není.",
+     "Zkreslení v řádcích 3 a 4; revize testovacích dat proti požadavkům na pokrytí.",
+     "Chyba v uvažování v řádku 2; logická validace každého řádku proti pravidlu.",
+     "Halucinace v řádku 1; konzultace s doménovým expertem na pravidla dopravy."
+    ],
+    "vysvetleni": {
+     "a": "Nesprávně. Prémiové členství v pravidle výslovně je, nic nebylo vymyšleno.",
+     "b": "Nesprávně. Řádky 3 a 4 jsou vyhodnoceny správně a čtyři řádky neukazují systematický sklon.",
+     "c": "Správně. Zákazník s prémiovým členstvím má dopravu zdarma bez ohledu na ostatní podmínky, řádek 2 má být „ano“. Údaje jsou správné, selhala logika. Chyby v uvažování odhaluje logická validace (sylabus 3.1.1, 3.1.2).",
+     "d": "Nesprávně. Řádek 1 splňuje první část pravidla (objednávka >= 1 000 a přihlášen), doprava zdarma je správně."
+    },
+    "vysvetleni_obecne": "Správná fakta a chybný závěr znamenají chybu v uvažování (sylabus 3.1.1). Odhalí ji logická validace a testování výstupu (3.1.2)."
+   },
+   "spravne": [
+    "c"
+   ],
+   "oddil": "3.1.2",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-3.1.2-03",
+   "zdroj": "vlastni",
+   "lo": "GenAI-3.1.2",
+   "k": "K3",
+   "body": 2,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>A tester asks an LLM for synthetic test data and receives the following output.</p><pre>Prompt: Generate 8 test customers for the registration form of a Czech bank.\n\nLLM output (excerpt, all 8 records follow the same pattern):\n{&quot;first_name&quot;: &quot;James&quot;, &quot;last_name&quot;: &quot;Wilson&quot;, &quot;phone&quot;: &quot;+1 202 555 0143&quot;,\n &quot;zip&quot;: &quot;10001&quot;, &quot;birth_date&quot;: &quot;04/23/1987&quot;, &quot;currency&quot;: &quot;USD&quot;}\n{&quot;first_name&quot;: &quot;Emma&quot;, &quot;last_name&quot;: &quot;Taylor&quot;, &quot;phone&quot;: &quot;+1 312 555 0198&quot;,\n &quot;zip&quot;: &quot;60601&quot;, &quot;birth_date&quot;: &quot;11/02/1992&quot;, &quot;currency&quot;: &quot;USD&quot;}</pre><p>Which statement BEST describes the defect and how it should be detected?</p>",
+    "moznosti": [
+     "Hallucination, because the customers do not exist; cross-verify the records against the production customer database.",
+     "Reasoning error; validate the logical flow of the steps used to generate the records.",
+     "No defect; synthetic data must differ from the real customer population for privacy reasons.",
+     "Bias; review whether the generated data represents the customer population defined in the test strategy."
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. Synthetic data is supposed to be fictitious, so invented persons are not a defect. Comparing with production data would also create a data privacy risk (syllabus 3.2).",
+     "b": "Incorrect. Nothing is calculated or concluded here; the problem is a systematic preference, not faulty logic.",
+     "c": "Incorrect. Synthetic data must not contain real personal data, but it should still be representative of the population defined in the test strategy (syllabus 2.2.2, 3.1.2).",
+     "d": "Correct. All records follow US patterns (names, phone codes, ZIP codes, date format, currency) although the target is a Czech bank. This systematic one-sidedness is bias, detected by reviewing synthetic data against the test strategy and coverage (syllabus 3.1.1, 3.1.2)."
+    },
+    "vysvetleni_obecne": "Bias shows as a repeated pattern across many outputs (syllabus 3.1.1); detection reviews testware against the test strategy (3.1.2)."
+   },
+   "cz": {
+    "q": "<p>Tester požádá LLM o syntetická testovací data a dostane následující výstup.</p><pre>Prompt: Vygeneruj 8 testovacích zákazníků pro registrační formulář české banky.\n\nVýstup LLM (výřez, všech 8 záznamů má stejný vzor):\n{&quot;first_name&quot;: &quot;James&quot;, &quot;last_name&quot;: &quot;Wilson&quot;, &quot;phone&quot;: &quot;+1 202 555 0143&quot;,\n &quot;zip&quot;: &quot;10001&quot;, &quot;birth_date&quot;: &quot;04/23/1987&quot;, &quot;currency&quot;: &quot;USD&quot;}\n{&quot;first_name&quot;: &quot;Emma&quot;, &quot;last_name&quot;: &quot;Taylor&quot;, &quot;phone&quot;: &quot;+1 312 555 0198&quot;,\n &quot;zip&quot;: &quot;60601&quot;, &quot;birth_date&quot;: &quot;11/02/1992&quot;, &quot;currency&quot;: &quot;USD&quot;}</pre><p>Které tvrzení NEJLÉPE popisuje vadu a způsob, jak ji odhalit?</p>",
+    "moznosti": [
+     "Halucinace, protože zákazníci neexistují; ověřit záznamy proti produkční databázi zákazníků.",
+     "Chyba v uvažování; ověřit logický tok kroků, kterými záznamy vznikly.",
+     "Žádná vada; syntetická data se musí od skutečné populace zákazníků lišit kvůli ochraně dat.",
+     "Zkreslení; revize, zda vygenerovaná data odpovídají populaci zákazníků definované v testovací strategii."
+    ],
+    "vysvetleni": {
+     "a": "Nesprávně. Syntetická data mají být smyšlená, vymyšlené osoby nejsou vada. Porovnání s produkcí by navíc vytvořilo riziko pro ochranu dat (sylabus 3.2).",
+     "b": "Nesprávně. Nic se tu nepočítá ani neodvozuje. Problém je systematický sklon, ne chybná logika.",
+     "c": "Nesprávně. Syntetická data nesmí obsahovat skutečné osobní údaje, ale mají být reprezentativní vůči populaci ze strategie (sylabus 2.2.2, 3.1.2).",
+     "d": "Správně. Všechny záznamy mají americké vzory (jména, předvolby, PSČ, formát data, měna), přestože cílem je česká banka. Systematická jednostrannost je zkreslení. Odhalí ji revize syntetických dat proti strategii a pokrytí (sylabus 3.1.1, 3.1.2)."
+    },
+    "vysvetleni_obecne": "Zkreslení se projeví opakujícím se vzorem napříč výstupy (sylabus 3.1.1). Detekce porovná testware se strategií (3.1.2)."
+   },
+   "spravne": [
+    "d"
+   ],
+   "oddil": "3.1.2",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-3.1.2-04",
+   "zdroj": "vlastni",
+   "lo": "GenAI-3.1.2",
+   "k": "K3",
+   "body": 2,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>A test manager uses an LLM to estimate test effort.</p><pre>Input: 120 test cases, 4 testers, each tester executes 10 test cases per day.\nThe test environment needs 1 day of setup, which must be finished before execution starts.\n\nLLM output:\nTeam capacity: 4 x 10 = 40 test cases per day.\nExecution: 120 / 40 = 3 days.\nSince 4 testers are available, the environment setup can be shared among them\nand done in parallel with execution. Total duration: 3 days.</pre><p>Which statement BEST evaluates the LLM output?</p>",
+    "moznosti": [
+     "It contains a reasoning error: the setup must precede execution, so the total duration is 4 days.",
+     "It contains a hallucination, because environment setup was not part of the input.",
+     "It shows bias, because LLMs systematically produce optimistic estimates.",
+     "It is correct, because four testers can perform the setup in a quarter of a day."
+    ],
+    "vysvetleni": {
+     "a": "Correct. The calculations of capacity and execution time are right, but the LLM ignores the stated dependency (cause and effect). The correct result is 1 + 3 = 4 days (syllabus 3.1.1, 3.1.2).",
+     "b": "Incorrect. The environment setup is explicitly stated in the input.",
+     "c": "Incorrect. The defect is a single logical mistake about the order of activities, not a systematic preference shown across outputs.",
+     "d": "Incorrect. The input says the setup needs 1 day and must be finished before execution; nothing indicates it can be split."
+    },
+    "vysvetleni_obecne": "Test planning and estimation are typical tasks where LLMs make reasoning errors (syllabus 3.1.1, HO-3.1.2b)."
+   },
+   "cz": {
+    "q": "<p>Testovací manažer použije LLM k odhadu pracnosti testování.</p><pre>Vstup: 120 testovacích případů, 4 testeři, každý provede 10 testovacích případů za den.\nTestovací prostředí potřebuje 1 den přípravy, která musí skončit před začátkem provádění.\n\nVýstup LLM:\nKapacita týmu: 4 x 10 = 40 testovacích případů za den.\nProvedení: 120 / 40 = 3 dny.\nProtože jsou k dispozici 4 testeři, přípravu prostředí si rozdělí\na udělají ji souběžně s prováděním. Celková doba: 3 dny.</pre><p>Které tvrzení NEJLÉPE hodnotí výstup LLM?</p>",
+    "moznosti": [
+     "Obsahuje chybu v uvažování: příprava musí předcházet provádění, celková doba je tedy 4 dny.",
+     "Obsahuje halucinaci, protože příprava prostředí ve vstupu nebyla.",
+     "Ukazuje zkreslení, protože LLM systematicky vytváří optimistické odhady.",
+     "Je správně, protože čtyři testeři zvládnou přípravu za čtvrt dne."
+    ],
+    "vysvetleni": {
+     "a": "Správně. Výpočet kapacity i doby provádění sedí, ale LLM přehlédl zadanou závislost (příčina a následek). Správně je 1 + 3 = 4 dny (sylabus 3.1.1, 3.1.2).",
+     "b": "Nesprávně. Příprava prostředí ve vstupu výslovně je.",
+     "c": "Nesprávně. Vada je jednorázová logická chyba v pořadí činností, ne systematický sklon napříč výstupy.",
+     "d": "Nesprávně. Vstup říká, že příprava trvá 1 den a musí skončit před prováděním. Nic neříká, že ji lze rozdělit."
+    },
+    "vysvetleni_obecne": "Plánování a odhad pracnosti jsou typické úlohy s chybami v uvažování (sylabus 3.1.1, HO-3.1.2b)."
+   },
+   "spravne": [
+    "a"
+   ],
+   "oddil": "3.1.2",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-3.1.2-05",
+   "zdroj": "vlastni",
+   "lo": "GenAI-3.1.2",
+   "k": "K3",
+   "body": 2,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>A tester asks an LLM to generate an API test with the Python library requests. Running the generated test gives the result shown.</p><pre>import requests\n\ndef test_get_policy_status():\n    response = requests.get(&quot;https://api.test.local/policies/12345&quot;)\n    assert response.status_ok()\n    assert response.json()[&quot;status&quot;] == &quot;ACTIVE&quot;\n\nTest run:\nAttributeError: &#x27;Response&#x27; object has no attribute &#x27;status_ok&#x27;</pre><p>Which statement BEST describes the defect in the generated test?</p>",
+    "moznosti": [
+     "It is a reasoning error, because status code 200 is not the expected response to a GET request.",
+     "It is a hallucination: the script calls a method that does not exist in the library.",
+     "It is bias, because the LLM prefers the requests library over other HTTP clients.",
+     "It is non-deterministic behavior, because the same prompt might produce a working script next time."
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. 200 is the usual success code for GET, and the script does not even check a specific code; the failure is caused by a non-existent method.",
+     "b": "Correct. The requests library offers, for example, response.ok or raise_for_status(), but no status_ok() method. A non-functioning script calling a non-existent function is a hallucination (syllabus 3.1.1). Cross-verification with the library documentation would find it before execution (3.1.2).",
+     "c": "Incorrect. Choosing a common library is not a defect, and a single wrong method call is not a systematic preference.",
+     "d": "Incorrect. Non-determinism explains why outputs vary, but the defect in this output is the non-existent method, i.e. a hallucination."
+    },
+    "vysvetleni_obecne": "Generated scripts that call non-existent functions are a typical hallucination in testing (syllabus 3.1.1)."
+   },
+   "cz": {
+    "q": "<p>Tester požádá LLM o API test v Pythonu s knihovnou requests. Spuštění vygenerovaného testu dá uvedený výsledek.</p><pre>import requests\n\ndef test_get_policy_status():\n    response = requests.get(&quot;https://api.test.local/policies/12345&quot;)\n    assert response.status_ok()\n    assert response.json()[&quot;status&quot;] == &quot;ACTIVE&quot;\n\nTest run:\nAttributeError: &#x27;Response&#x27; object has no attribute &#x27;status_ok&#x27;</pre><p>Které tvrzení NEJLÉPE popisuje vadu ve vygenerovaném testu?</p>",
+    "moznosti": [
+     "Je to chyba v uvažování, protože kód 200 není očekávaná odpověď na GET.",
+     "Je to halucinace: skript volá metodu, která v knihovně neexistuje.",
+     "Je to zkreslení, protože LLM upřednostňuje knihovnu requests před jinými HTTP klienty.",
+     "Je to nedeterministické chování, protože stejný prompt by příště mohl vytvořit funkční skript."
+    ],
+    "vysvetleni": {
+     "a": "Nesprávně. 200 je běžný kód úspěchu pro GET a skript konkrétní kód ani nekontroluje. Selhání způsobila neexistující metoda.",
+     "b": "Správně. Knihovna requests nabízí například response.ok nebo raise_for_status(), ale metodu status_ok() nemá. Nefunkční skript s neexistující funkcí je halucinace (sylabus 3.1.1). Křížové ověření s dokumentací by ji odhalilo i před spuštěním (3.1.2).",
+     "c": "Nesprávně. Volba běžné knihovny není vada a jedno chybné volání metody není systematický sklon.",
+     "d": "Nesprávně. Nedeterminismus vysvětluje, proč se výstupy liší. Vadou v tomto výstupu je ale neexistující metoda, tedy halucinace."
+    },
+    "vysvetleni_obecne": "Vygenerované skripty volající neexistující funkce jsou typická halucinace v testování (sylabus 3.1.1)."
+   },
+   "spravne": [
+    "b"
+   ],
+   "oddil": "3.1.2",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-3.1.3-01",
+   "zdroj": "vlastni",
+   "lo": "GenAI-3.1.3",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>A tester asks an LLM to generate test cases from a feature title only. The LLM adds several business rules that the product does not have. Which mitigation technique addresses this problem MOST directly?</p>",
+    "moznosti": [
+     "Increase the temperature so that the LLM explores more alternatives.",
+     "Ask the LLM to generate many more test cases, so the invented ones form a small share.",
+     "Provide complete context, such as the user story, acceptance criteria and constraints, in the prompt.",
+     "Rewrite the prompt as an unstructured narrative so that the LLM can interpret it freely."
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. A higher temperature increases randomness (syllabus 3.1.4) and does not supply the missing information.",
+     "b": "Incorrect. More output does not remove invented rules; it increases review effort.",
+     "c": "Correct. Hallucinations are more likely when relevant contextual input is missing; providing complete context reduces the room for invention (syllabus 3.1.3, 2.1.1).",
+     "d": "Incorrect. The syllabus recommends clear, interpretable formats; free interpretation increases misunderstandings (syllabus 3.1.3)."
+    },
+    "vysvetleni_obecne": "Defects are more likely when prompts are poorly designed or relevant context is missing (syllabus 3.1.3)."
+   },
+   "cz": {
+    "q": "<p>Tester žádá LLM o testovací případy jen podle názvu funkce. LLM přidá několik obchodních pravidel, která produkt nemá. Která technika zmírnění řeší tento problém NEJPŘÍMĚJI?</p>",
+    "moznosti": [
+     "Zvýšit teplotu, aby LLM prozkoumal víc variant.",
+     "Požádat LLM o mnohem víc testovacích případů, aby vymyšlené tvořily jen malý podíl.",
+     "Dodat do promptu úplný kontext, například uživatelský scénář, akceptační kritéria a omezení.",
+     "Přepsat prompt jako volné vyprávění, aby ho LLM mohl vykládat volně."
+    ],
+    "vysvetleni": {
+     "a": "Nesprávně. Vyšší teplota zvyšuje náhodnost (sylabus 3.1.4) a chybějící informace nedodá.",
+     "b": "Nesprávně. Víc výstupu vymyšlená pravidla neodstraní, jen zvýší pracnost revize.",
+     "c": "Správně. Halucinace jsou pravděpodobnější, když chybí relevantní kontext. Úplný kontext zmenší prostor pro výmysly (sylabus 3.1.3, 2.1.1).",
+     "d": "Nesprávně. Sylabus doporučuje jasné, srozumitelné formáty. Volný výklad nedorozumění zvyšuje (sylabus 3.1.3)."
+    },
+    "vysvetleni_obecne": "Vady jsou pravděpodobnější u špatně navrženého promptu nebo při chybějícím kontextu (sylabus 3.1.3)."
+   },
+   "spravne": [
+    "c"
+   ],
+   "oddil": "3.1.3",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-3.1.3-02",
+   "zdroj": "vlastni",
+   "lo": "GenAI-3.1.3",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Which statement BEST explains why dividing a complex prompt into smaller steps helps to mitigate LLM defects?</p>",
+    "moznosti": [
+     "Smaller prompts always consume fewer tokens in total, which eliminates hallucinations.",
+     "Splitting the prompt guarantees deterministic output of the LLM.",
+     "Smaller prompts remove the need for human review of the final result.",
+     "Each intermediate output can be verified before it is used in the next step, so reasoning errors are detected early."
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. A chain of prompts may use more tokens in total, and no technique eliminates hallucinations completely.",
+     "b": "Incorrect. Prompt chaining does not remove non-determinism; complete reproducibility cannot be guaranteed (syllabus 3.1.4).",
+     "c": "Incorrect. Human review remains essential (syllabus 3.1.2, 3.2.3).",
+     "d": "Correct. Syllabus 3.1.3 describes prompt chaining with systematic verification of each output, which helps detect reasoning errors early."
+    },
+    "vysvetleni_obecne": "Prompt chaining (syllabus 2.1.2) is applied as a mitigation technique in 3.1.3."
+   },
+   "cz": {
+    "q": "<p>Které tvrzení NEJLÉPE vysvětluje, proč rozdělení složitého promptu na menší kroky pomáhá zmírnit vady LLM?</p>",
+    "moznosti": [
+     "Menší prompty vždy spotřebují celkem méně tokenů, a tím odstraní halucinace.",
+     "Rozdělení promptu zaručí deterministický výstup LLM.",
+     "Menší prompty odstraní potřebu lidské revize výsledku.",
+     "Každý mezivýsledek lze ověřit dřív, než se použije v dalším kroku, takže se chyby v uvažování odhalí brzy."
+    ],
+    "vysvetleni": {
+     "a": "Nesprávně. Řetězec promptů může celkem spotřebovat víc tokenů a žádná technika halucinace zcela neodstraní.",
+     "b": "Nesprávně. Řetězení promptů nedeterminismus neodstraní, úplnou reprodukovatelnost zaručit nelze (sylabus 3.1.4).",
+     "c": "Nesprávně. Lidská revize zůstává nezbytná (sylabus 3.1.2, 3.2.3).",
+     "d": "Správně. Sylabus 3.1.3 popisuje řetězení promptů s ověřením každého výstupu, které pomáhá odhalit chyby v uvažování brzy."
+    },
+    "vysvetleni_obecne": "Řetězení promptů (sylabus 2.1.2) se v 3.1.3 používá jako technika zmírnění."
+   },
+   "spravne": [
+    "d"
+   ],
+   "oddil": "3.1.3",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-3.1.3-03",
+   "zdroj": "vlastni",
+   "lo": "GenAI-3.1.3",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Which of the following is an example of using a clear, interpretable data format to reduce hallucinations and reasoning errors?</p>",
+    "moznosti": [
+     "Providing acceptance criteria as a table with ID, condition and expected result instead of a free-text paragraph.",
+     "Attaching a photo of a handwritten whiteboard sketch so that the LLM sees the original source.",
+     "Letting the LLM decide which input format it prefers.",
+     "Merging requirements, logs and e-mails into one long text block so that no context is lost."
+    ],
+    "vysvetleni": {
+     "a": "Correct. Structured, straightforward formats help the model focus on the essential aspects of the task (syllabus 3.1.3).",
+     "b": "Incorrect. Handwritten sketches are hard to interpret and ambiguous, which the syllabus advises to avoid.",
+     "c": "Incorrect. The tester should choose a clear format; leaving it open does not reduce ambiguity.",
+     "d": "Incorrect. Context should be complete, but an unstructured mixture is hard to interpret and conflicts with the advice on clear formats."
+    },
+    "vysvetleni_obecne": "Avoid formats that are ambiguous or hard for GenAI to interpret (syllabus 3.1.3)."
+   },
+   "cz": {
+    "q": "<p>Který z následujících příkladů ukazuje použití jasného a srozumitelného formátu dat ke snížení halucinací a chyb v uvažování?</p>",
+    "moznosti": [
+     "Dodat akceptační kritéria jako tabulku s ID, podmínkou a očekávaným výsledkem místo souvislého odstavce.",
+     "Přiložit fotografii ručně kresleného náčrtu z tabule, aby LLM viděl původní zdroj.",
+     "Nechat LLM rozhodnout, jaký formát vstupu preferuje.",
+     "Spojit požadavky, logy a e-maily do jednoho dlouhého bloku textu, aby se neztratil kontext."
+    ],
+    "vysvetleni": {
+     "a": "Správně. Strukturované, přímočaré formáty pomáhají modelu soustředit se na podstatu úlohy (sylabus 3.1.3).",
+     "b": "Nesprávně. Ruční náčrt je těžko čitelný a nejednoznačný, a toho se má tester podle sylabu vyvarovat.",
+     "c": "Nesprávně. Jasný formát má zvolit tester. Ponechat to otevřené nejednoznačnost nesníží.",
+     "d": "Nesprávně. Kontext má být úplný, ale nestrukturovaná směs je těžko čitelná a odporuje doporučení k jasným formátům."
+    },
+    "vysvetleni_obecne": "Vyhnout se formátům, které jsou nejednoznačné nebo pro generativní AI těžko čitelné (sylabus 3.1.3)."
+   },
+   "spravne": [
+    "a"
+   ],
+   "oddil": "3.1.3",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-3.1.3-04",
+   "zdroj": "vlastni",
+   "lo": "GenAI-3.1.3",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>A test manager wants to find unreliable parts of an LLM-generated test strategy for a safety-related function. Which technique addresses this need MOST directly?</p>",
+    "moznosti": [
+     "Raise the temperature to obtain more alternatives from a single model.",
+     "Evaluate the same prompt with several LLMs and compare their outputs.",
+     "Use the same model with a fixed seed, so that the strategy is reproducible.",
+     "Shorten the prompt by removing the description of the safety function."
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. More randomness from one model does not show which parts are reliable.",
+     "b": "Correct. Comparing results across models helps detect output errors and select the most reliable results (syllabus 3.1.3).",
+     "c": "Incorrect. A seed improves reproducibility (syllabus 3.1.4), but a reproducible output can still be wrong.",
+     "d": "Incorrect. Removing context increases the risk of hallucinations (syllabus 3.1.3)."
+    },
+    "vysvetleni_obecne": "Differences between models point to output that needs careful review (syllabus 3.1.3)."
+   },
+   "cz": {
+    "q": "<p>Testovací manažer chce najít nespolehlivá místa v testovací strategii vygenerované LLM pro funkci související s bezpečností. Která technika tuto potřebu řeší NEJPŘÍMĚJI?</p>",
+    "moznosti": [
+     "Zvýšit teplotu a získat víc variant od jednoho modelu.",
+     "Vyhodnotit stejný prompt na několika LLM a porovnat jejich výstupy.",
+     "Použít stejný model s pevným semínkem, aby byla strategie reprodukovatelná.",
+     "Zkrátit prompt vynecháním popisu bezpečnostní funkce."
+    ],
+    "vysvetleni": {
+     "a": "Nesprávně. Víc náhody od jednoho modelu neukáže, které části jsou spolehlivé.",
+     "b": "Správně. Porovnání výsledků více modelů pomáhá odhalit chyby ve výstupu a vybrat nejspolehlivější výsledek (sylabus 3.1.3).",
+     "c": "Nesprávně. Semínko zlepší opakovatelnost (sylabus 3.1.4), ale opakovatelný výstup může být stále chybný.",
+     "d": "Nesprávně. Odebrání kontextu zvyšuje riziko halucinací (sylabus 3.1.3)."
+    },
+    "vysvetleni_obecne": "Rozdíly mezi modely ukazují na výstup, který potřebuje pečlivou revizi (sylabus 3.1.3)."
+   },
+   "spravne": [
+    "b"
+   ],
+   "oddil": "3.1.3",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-3.1.3-05",
+   "zdroj": "vlastni",
+   "lo": "GenAI-3.1.3",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Which statement about mitigating hallucinations, reasoning errors and biases is consistent with the syllabus?</p>",
+    "moznosti": [
+     "A general-purpose model is always the best choice, because it has seen the most data.",
+     "Once a hallucination is fixed in one conversation, it does not reappear with the same LLM.",
+     "These defects are more likely when prompts are poorly designed or relevant contextual data is missing.",
+     "RAG and fine-tuning remove the need to review LLM output."
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. The syllabus recommends selecting a model appropriate for the task (syllabus 3.1.3, 5.1.3).",
+     "b": "Incorrect. Because of non-determinism, defects may reappear in another conversation (syllabus 3.1).",
+     "c": "Correct. Syllabus 3.1.3 states this as the starting point for the mitigation techniques.",
+     "d": "Incorrect. The syllabus mentions RAG and fine-tuning as complementary techniques (chapter 4); review remains necessary."
+    },
+    "vysvetleni_obecne": "Mitigation techniques: complete context, prompt segmentation, clear formats, appropriate model, comparing models (syllabus 3.1.3)."
+   },
+   "cz": {
+    "q": "<p>Které tvrzení o zmírnění halucinací, chyb v uvažování a zkreslení odpovídá sylabu?</p>",
+    "moznosti": [
+     "Obecný model je vždy nejlepší volba, protože viděl nejvíc dat.",
+     "Když se halucinace v jedné konverzaci opraví, se stejným LLM se už neobjeví.",
+     "Tyto vady jsou pravděpodobnější, když je prompt špatně navržený nebo chybí relevantní kontextová data.",
+     "RAG a fine-tuning odstraní potřebu revidovat výstup LLM."
+    ],
+    "vysvetleni": {
+     "a": "Nesprávně. Sylabus doporučuje vybrat model vhodný pro úlohu (sylabus 3.1.3, 5.1.3).",
+     "b": "Nesprávně. Kvůli nedeterminismu se vady mohou v jiné konverzaci vrátit (sylabus 3.1).",
+     "c": "Správně. Sylabus 3.1.3 to uvádí jako výchozí bod pro techniky zmírnění.",
+     "d": "Nesprávně. Sylabus RAG a fine-tuning uvádí jako doplňkové techniky (kapitola 4). Revize zůstává nutná."
+    },
+    "vysvetleni_obecne": "Techniky zmírnění: úplný kontext, rozdělení promptu, jasné formáty, vhodný model, porovnání modelů (sylabus 3.1.3)."
+   },
+   "spravne": [
+    "c"
+   ],
+   "oddil": "3.1.3",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-3.1.4-01",
+   "zdroj": "vlastni",
+   "lo": "GenAI-3.1.4",
+   "k": "K1",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>A tester lowers the temperature of an LLM to obtain more consistent regression test cases. Which side effect should the tester expect?</p>",
+    "moznosti": [
+     "The training data of the model are updated.",
+     "The outputs become more creative.",
+     "The context window of the model is enlarged.",
+     "The outputs become more repetitive and less diverse."
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. Temperature acts during inference and does not change training data.",
+     "b": "Incorrect. Creativity increases with higher, not lower, temperature.",
+     "c": "Incorrect. Temperature has no influence on the size of the context window.",
+     "d": "Correct. Lowering temperature reduces randomness but also limits creativity and diversity (syllabus 3.1.4)."
+    },
+    "vysvetleni_obecne": "Temperature controls randomness or creativity of LLM output (syllabus 3.1.4, Appendix D)."
+   },
+   "cz": {
+    "q": "<p>Tester sníží teplotu LLM, aby dostal konzistentnější regresní testovací případy. Jaký vedlejší účinek má očekávat?</p>",
+    "moznosti": [
+     "Aktualizují se trénovací data modelu.",
+     "Výstupy budou kreativnější.",
+     "Zvětší se kontextové okno modelu.",
+     "Výstupy budou víc opakující se a méně rozmanité."
+    ],
+    "vysvetleni": {
+     "a": "Nesprávně. Teplota působí při inferenci a trénovací data nemění.",
+     "b": "Nesprávně. Kreativita roste s vyšší teplotou, ne s nižší.",
+     "c": "Nesprávně. Teplota velikost kontextového okna neovlivňuje.",
+     "d": "Správně. Nižší teplota snižuje náhodnost, ale omezuje i kreativitu a rozmanitost (sylabus 3.1.4)."
+    },
+    "vysvetleni_obecne": "Teplota řídí náhodnost nebo kreativitu výstupu LLM (sylabus 3.1.4, příloha D)."
+   },
+   "spravne": [
+    "d"
+   ],
+   "oddil": "3.1.4",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-3.1.4-02",
+   "zdroj": "vlastni",
+   "lo": "GenAI-3.1.4",
+   "k": "K1",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>What is the purpose of setting a random seed when using an LLM?</p>",
+    "moznosti": [
+     "To make the model use the same pseudo-random sequence, which improves reproducibility.",
+     "To restrict the answers of the model to a specific domain, such as medicine.",
+     "To reduce the number of tokens in the output.",
+     "To guarantee that the output is factually correct."
+    ],
+    "vysvetleni": {
+     "a": "Correct. Syllabus 3.1.4: a seed ensures the same pseudo-random sequence is used, which improves reproducibility.",
+     "b": "Incorrect. A seed does not restrict topics; domain focus comes from the prompt, RAG or fine-tuning.",
+     "c": "Incorrect. Output length is not controlled by the seed.",
+     "d": "Incorrect. A reproducible output can still contain hallucinations."
+    },
+    "vysvetleni_obecne": "Only some LLM implementations allow setting a seed (syllabus 3.1.4)."
+   },
+   "cz": {
+    "q": "<p>K čemu slouží nastavení náhodného semínka (random seed) při použití LLM?</p>",
+    "moznosti": [
+     "Aby model použil stejnou pseudonáhodnou posloupnost, což zlepší opakovatelnost.",
+     "Aby omezilo odpovědi modelu na určitou oblast, například medicínu.",
+     "Aby snížilo počet tokenů ve výstupu.",
+     "Aby zaručilo, že výstup je fakticky správný."
+    ],
+    "vysvetleni": {
+     "a": "Správně. Sylabus 3.1.4: semínko zajistí stejnou pseudonáhodnou posloupnost a tím lepší opakovatelnost.",
+     "b": "Nesprávně. Semínko témata neomezuje. Zaměření na doménu dává prompt, RAG nebo fine-tuning.",
+     "c": "Nesprávně. Délku výstupu semínko neřídí.",
+     "d": "Nesprávně. Opakovatelný výstup může stále obsahovat halucinace."
+    },
+    "vysvetleni_obecne": "Nastavení semínka umožňují jen některé implementace LLM (sylabus 3.1.4)."
+   },
+   "spravne": [
+    "a"
+   ],
+   "oddil": "3.1.4",
+   "poznamka": "Distraktor o omezení na doménu vychází z chybného tvrzení v jednom Udemy kurzu."
+  },
+  {
+   "id": "CG-3.1.4-03",
+   "zdroj": "vlastni",
+   "lo": "GenAI-3.1.4",
+   "k": "K1",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Which statement about the non-deterministic behavior of LLMs is correct?</p>",
+    "moznosti": [
+     "It occurs only when the LLM is accessed through a web browser.",
+     "It results from probabilistic sampling during inference, and the risk of variability increases with longer outputs.",
+     "It is caused by the model being retrained after each prompt.",
+     "Long outputs reduce variability because random effects average out."
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. Non-determinism is inherent to LLM inference, regardless of the access channel.",
+     "b": "Correct. Syllabus 3.1.4 states both the cause (probabilistic sampling during inference) and that long outputs increase the risk of variability.",
+     "c": "Incorrect. Models are not retrained after each prompt; variability arises from sampling.",
+     "d": "Incorrect. The syllabus states the opposite: long outputs increase the risk of variability."
+    },
+    "vysvetleni_obecne": "Same input, different outputs: probabilistic sampling during inference (syllabus 1.1.2, 3.1.4)."
+   },
+   "cz": {
+    "q": "<p>Které tvrzení o nedeterministickém chování LLM je správné?</p>",
+    "moznosti": [
+     "Projevuje se jen při přístupu k LLM přes webový prohlížeč.",
+     "Vzniká pravděpodobnostním výběrem při inferenci a riziko odchylek roste s délkou výstupu.",
+     "Vzniká tím, že se model po každém promptu znovu trénuje.",
+     "Dlouhé výstupy odchylky snižují, protože se náhodné vlivy zprůměrují."
+    ],
+    "vysvetleni": {
+     "a": "Nesprávně. Nedeterminismus patří k inferenci LLM bez ohledu na způsob přístupu.",
+     "b": "Správně. Sylabus 3.1.4 uvádí příčinu (pravděpodobnostní výběr při inferenci) i to, že delší výstup zvyšuje riziko odchylek.",
+     "c": "Nesprávně. Model se po každém promptu netrénuje, odchylky vznikají výběrem tokenů.",
+     "d": "Nesprávně. Sylabus uvádí opak: dlouhý výstup riziko odchylek zvyšuje."
+    },
+    "vysvetleni_obecne": "Stejný vstup, různé výstupy: pravděpodobnostní výběr při inferenci (sylabus 1.1.2, 3.1.4)."
+   },
+   "spravne": [
+    "b"
+   ],
+   "oddil": "3.1.4",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-3.1.4-04",
+   "zdroj": "vlastni",
+   "lo": "GenAI-3.1.4",
+   "k": "K1",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Which combination of measures does the syllabus list to reduce variability of LLM outputs?</p>",
+    "moznosti": [
+     "Increasing the temperature, enlarging the context window, and removing the system prompt.",
+     "Fine-tuning the model after each run, requesting longer outputs, and disabling seeds.",
+     "Lowering the temperature, setting a random seed, and automating aspects of output verification.",
+     "Using only zero-shot prompts and avoiding structured output formats."
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. A higher temperature increases randomness; the other measures are not listed.",
+     "b": "Incorrect. Longer outputs increase variability, and disabling seeds reduces reproducibility.",
+     "c": "Correct. Syllabus 3.1.4 lists adjusting temperature and setting seeds, and adds automating some aspects of output verification for structured, consistent evaluation.",
+     "d": "Incorrect. These are not measures against non-determinism in the syllabus; structured outputs actually ease automated verification."
+    },
+    "vysvetleni_obecne": "Complete reproducibility cannot be guaranteed, but variability can be reduced (syllabus 3.1.4)."
+   },
+   "cz": {
+    "q": "<p>Kterou kombinaci opatření uvádí sylabus ke snížení variability výstupů LLM?</p>",
+    "moznosti": [
+     "Zvýšení teploty, zvětšení kontextového okna a odstranění systémového promptu.",
+     "Fine-tuning modelu po každém běhu, delší výstupy a vypnutí semínek.",
+     "Snížení teploty, nastavení semínka a automatizace části ověřování výstupu.",
+     "Používat jen zero-shot prompty a vyhýbat se strukturovaným formátům výstupu."
+    ],
+    "vysvetleni": {
+     "a": "Nesprávně. Vyšší teplota náhodnost zvyšuje, ostatní opatření sylabus neuvádí.",
+     "b": "Nesprávně. Delší výstupy variabilitu zvyšují a vypnutí semínka zhoršuje opakovatelnost.",
+     "c": "Správně. Sylabus 3.1.4 uvádí úpravu teploty a nastavení semínka a přidává automatizaci části ověření výstupu pro strukturované a konzistentní hodnocení.",
+     "d": "Nesprávně. Sylabus tato opatření proti nedeterminismu neuvádí. Strukturovaný výstup naopak usnadní automatické ověření."
+    },
+    "vysvetleni_obecne": "Úplnou reprodukovatelnost zaručit nelze, variabilitu lze snížit (sylabus 3.1.4)."
+   },
+   "spravne": [
+    "c"
+   ],
+   "oddil": "3.1.4",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-3.1.4-05",
+   "zdroj": "vlastni",
+   "lo": "GenAI-3.1.4",
+   "k": "K1",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>A tester sets the temperature to its minimum value and uses a fixed seed. What can the tester expect?</p>",
+    "moznosti": [
+     "Identical output is guaranteed for all future runs and model versions.",
+     "Hallucinations are eliminated.",
+     "The model refuses all creative tasks.",
+     "Variability is reduced, but complete reproducibility cannot be guaranteed."
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. No setting guarantees identical output, especially across model versions.",
+     "b": "Incorrect. Lower randomness does not make the content correct; hallucinations can still occur.",
+     "c": "Incorrect. Creativity and diversity are reduced, but the model does not refuse tasks.",
+     "d": "Correct. Syllabus 3.1.4 states that complete reproducibility cannot be guaranteed, although these strategies reduce variability."
+    },
+    "vysvetleni_obecne": "Temperature and seed reduce variability; they do not eliminate it (syllabus 3.1.4)."
+   },
+   "cz": {
+    "q": "<p>Tester nastaví teplotu na minimum a použije pevné semínko. Co může očekávat?</p>",
+    "moznosti": [
+     "Stejný výstup je zaručen pro všechny budoucí běhy i verze modelu.",
+     "Halucinace zmizí.",
+     "Model odmítne všechny kreativní úlohy.",
+     "Variabilita se sníží, ale úplnou reprodukovatelnost zaručit nelze."
+    ],
+    "vysvetleni": {
+     "a": "Nesprávně. Žádné nastavení stejný výstup nezaručí, tím méně mezi verzemi modelu.",
+     "b": "Nesprávně. Menší náhodnost neznamená správný obsah, halucinace se mohou objevit dál.",
+     "c": "Nesprávně. Kreativita a rozmanitost klesne, ale model úlohy neodmítá.",
+     "d": "Správně. Sylabus 3.1.4 uvádí, že úplnou reprodukovatelnost zaručit nelze, i když tato opatření variabilitu snižují."
+    },
+    "vysvetleni_obecne": "Teplota a semínko variabilitu snižují, neodstraní ji (sylabus 3.1.4)."
+   },
+   "spravne": [
+    "d"
+   ],
+   "oddil": "3.1.4",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-3.2.1-01",
+   "zdroj": "vlastni",
+   "lo": "GenAI-3.2.1",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>A tester pastes a production log into an LLM to generate test cases. The generated test cases, stored in the test management tool, contain the names and account numbers of real customers from the log. Which risk does this illustrate MOST directly?</p>",
+    "moznosti": [
+     "Unintentional data exposure.",
+     "Lack of control over data usage.",
+     "An attack on the LLM-powered test infrastructure.",
+     "Bias in the generated test cases."
+    ],
+    "vysvetleni": {
+     "a": "Correct. The output accidentally reveals sensitive information (syllabus 3.2.1).",
+     "b": "Incorrect. This concerns the GenAI tool storing or processing data without consent or control; the scenario focuses on the output revealing data.",
+     "c": "Incorrect. No attacker is involved; the exposure results from careless data handling.",
+     "d": "Incorrect. Bias is a quality defect from training data (syllabus 3.1.1), not a data privacy risk."
+    },
+    "vysvetleni_obecne": "Data privacy concerns: unintentional data exposure, lack of control over data usage, compliance risks (syllabus 3.2.1)."
+   },
+   "cz": {
+    "q": "<p>Tester vloží do LLM produkční log, aby z něj vytvořil testovací případy. Vygenerované testovací případy uložené v nástroji pro správu testů obsahují jména a čísla účtů skutečných klientů z logu. Které riziko to ilustruje NEJPŘÍMĚJI?</p>",
+    "moznosti": [
+     "Neúmyslné vyzrazení dat.",
+     "Ztráta kontroly nad použitím dat.",
+     "Útok na testovací infrastrukturu postavenou na LLM.",
+     "Zkreslení ve vygenerovaných testovacích případech."
+    ],
+    "vysvetleni": {
+     "a": "Správně. Výstup nechtěně odhaluje citlivé informace (sylabus 3.2.1).",
+     "b": "Nesprávně. To se týká ukládání a zpracování dat nástrojem bez souhlasu nebo kontroly. Situace ale popisuje výstup, který data odhaluje.",
+     "c": "Nesprávně. Není tu žádný útočník, vyzrazení vzniklo neopatrným zacházením s daty.",
+     "d": "Nesprávně. Zkreslení je vada kvality pocházející z trénovacích dat (sylabus 3.1.1), ne riziko pro ochranu dat."
+    },
+    "vysvetleni_obecne": "Rizika pro ochranu dat: neúmyslné vyzrazení, ztráta kontroly nad použitím dat, nesoulad s předpisy (sylabus 3.2.1)."
+   },
+   "spravne": [
+    "a"
+   ],
+   "oddil": "3.2.1",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-3.2.1-02",
+   "zdroj": "vlastni",
+   "lo": "GenAI-3.2.1",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Which situation is an example of lack of control over data usage?</p>",
+    "moznosti": [
+     "The LLM output contains an access token that was included in the prompt.",
+     "A free GenAI tool stores the prompts on its servers and may use them for training, and the organization cannot restrict this.",
+     "An attacker gains access to the test tool through a weak password.",
+     "The LLM generates test data that underrepresents older users."
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. This is unintentional data exposure in the output.",
+     "b": "Correct. GenAI tools may store and process data without explicit consent or control of the user (syllabus 3.2.1).",
+     "c": "Incorrect. This is a security risk to the LLM-powered test infrastructure (unauthorized access).",
+     "d": "Incorrect. This is bias (syllabus 3.1.1)."
+    },
+    "vysvetleni_obecne": "Lack of control may lead to misuse or unauthorized access (syllabus 3.2.1)."
+   },
+   "cz": {
+    "q": "<p>Která situace je příkladem ztráty kontroly nad použitím dat?</p>",
+    "moznosti": [
+     "Výstup LLM obsahuje přístupový token, který byl v promptu.",
+     "Bezplatný nástroj generativní AI ukládá prompty na svých serverech a může je použít k tréninku, a organizace to nemůže omezit.",
+     "Útočník se dostane do testovacího nástroje přes slabé heslo.",
+     "LLM generuje testovací data, ve kterých jsou málo zastoupeni starší uživatelé."
+    ],
+    "vysvetleni": {
+     "a": "Nesprávně. To je neúmyslné vyzrazení dat ve výstupu.",
+     "b": "Správně. Nástroje generativní AI mohou data ukládat a zpracovávat bez výslovného souhlasu nebo kontroly uživatele (sylabus 3.2.1).",
+     "c": "Nesprávně. To je bezpečnostní riziko pro testovací infrastrukturu (neoprávněný přístup).",
+     "d": "Nesprávně. To je zkreslení (sylabus 3.1.1)."
+    },
+    "vysvetleni_obecne": "Ztráta kontroly může vést ke zneužití nebo neoprávněnému přístupu (sylabus 3.2.1)."
+   },
+   "spravne": [
+    "b"
+   ],
+   "oddil": "3.2.1",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-3.2.1-03",
+   "zdroj": "vlastni",
+   "lo": "GenAI-3.2.1",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Why can using a GenAI tool with real customer data in testing lead to compliance risks?</p>",
+    "moznosti": [
+     "Because GDPR explicitly prohibits any use of GenAI.",
+     "Because GenAI tools always produce hallucinations when processing personal data.",
+     "Processing personal data without meeting the requirements of data protection regulations such as GDPR can result in legal disputes.",
+     "Because the NIST AI RMF is binding law in the EU."
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. Data protection regulations do not explicitly restrict GenAI but provide safeguards (syllabus 3.2.3).",
+     "b": "Incorrect. Hallucinations are a quality issue, not the reason for compliance risks.",
+     "c": "Correct. Syllabus 3.2.1 names compliance risks with regulations such as GDPR, which could lead to legal disputes.",
+     "d": "Incorrect. The NIST AI RMF is a US framework, not a regulation (syllabus 3.4.1)."
+    },
+    "vysvetleni_obecne": "GDPR = Regulation (EU) 2016/679 (syllabus 3.2.1)."
+   },
+   "cz": {
+    "q": "<p>Proč může použití nástroje generativní AI se skutečnými daty klientů při testování vést k riziku nesouladu s předpisy?</p>",
+    "moznosti": [
+     "Protože GDPR výslovně zakazuje jakékoli použití generativní AI.",
+     "Protože nástroje generativní AI při zpracování osobních údajů vždy halucinují.",
+     "Zpracování osobních údajů bez splnění požadavků předpisů o ochraně dat, jako je GDPR, může vést k právním sporům.",
+     "Protože NIST AI RMF je v EU závazný zákon."
+    ],
+    "vysvetleni": {
+     "a": "Nesprávně. Předpisy o ochraně dat generativní AI výslovně neomezují, obsahují ale pojistky (sylabus 3.2.3).",
+     "b": "Nesprávně. Halucinace jsou problém kvality, nejsou důvodem rizika nesouladu.",
+     "c": "Správně. Sylabus 3.2.1 jmenuje riziko nesouladu s předpisy, jako je GDPR, které může vést k právním sporům.",
+     "d": "Nesprávně. NIST AI RMF je americký rámec, ne předpis (sylabus 3.4.1)."
+    },
+    "vysvetleni_obecne": "GDPR = nařízení (EU) 2016/679 (sylabus 3.2.1)."
+   },
+   "spravne": [
+    "c"
+   ],
+   "oddil": "3.2.1",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-3.2.1-04",
+   "zdroj": "vlastni",
+   "lo": "GenAI-3.2.1",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Which of the following is a SECURITY risk, rather than a data privacy concern, when testing with GenAI?</p>",
+    "moznosti": [
+     "A GenAI tool stores sensitive data without explicit consent of the user.",
+     "The output of the LLM accidentally reveals sensitive information.",
+     "A GenAI tool is used without complying with GDPR.",
+     "Attackers intentionally introduce malicious input data to mislead the LLM used in the test infrastructure."
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. This is the data privacy concern 'lack of control over data usage'.",
+     "b": "Incorrect. This is the data privacy concern 'unintentional data exposure'.",
+     "c": "Incorrect. This is the data privacy concern 'compliance risks'.",
+     "d": "Correct. Syllabus 3.2.1 lists this among the specific security risks."
+    },
+    "vysvetleni_obecne": "Syllabus 3.2.1 separates data privacy concerns from security risks."
+   },
+   "cz": {
+    "q": "<p>Které z následujících je BEZPEČNOSTNÍ riziko, a ne obava týkající se ochrany dat, při testování s generativní AI?</p>",
+    "moznosti": [
+     "Nástroj generativní AI ukládá citlivá data bez výslovného souhlasu uživatele.",
+     "Výstup LLM nechtěně odhalí citlivou informaci.",
+     "Nástroj generativní AI se používá bez souladu s GDPR.",
+     "Útočníci úmyslně vnášejí škodlivá vstupní data, aby zmátli LLM v testovací infrastruktuře."
+    ],
+    "vysvetleni": {
+     "a": "Nesprávně. To je obava o ochranu dat „ztráta kontroly nad použitím dat“.",
+     "b": "Nesprávně. To je obava o ochranu dat „neúmyslné vyzrazení dat“.",
+     "c": "Nesprávně. To je obava o ochranu dat „riziko nesouladu s předpisy“.",
+     "d": "Správně. Sylabus 3.2.1 to uvádí mezi specifickými bezpečnostními riziky."
+    },
+    "vysvetleni_obecne": "Sylabus 3.2.1 odděluje obavy o ochranu dat od bezpečnostních rizik."
+   },
+   "spravne": [
+    "d"
+   ],
+   "oddil": "3.2.1",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-3.2.1-05",
+   "zdroj": "vlastni",
+   "lo": "GenAI-3.2.1",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Which statement BEST explains why LLM-powered test infrastructure needs security attention?</p>",
+    "moznosti": [
+     "It can be vulnerable to data breaches and unauthorized access, and attackers can exploit LLM vulnerabilities to change its behavior or extract sensitive information.",
+     "It never processes production data, so the risk is only theoretical.",
+     "LLMs encrypt all processed data by default, so only the network needs protection.",
+     "Security risks arise only while the model is trained, not while it is used."
+    ],
+    "vysvetleni": {
+     "a": "Correct. This summarizes the security risks in syllabus 3.2.1.",
+     "b": "Incorrect. Test data, logs and testware often contain sensitive information.",
+     "c": "Incorrect. Encryption and access controls must be implemented deliberately (syllabus 3.2.3).",
+     "d": "Incorrect. Several attack vectors act during use, for example request manipulation (syllabus 3.2.2)."
+    },
+    "vysvetleni_obecne": "Robust data protection is needed to prevent breaches, unauthorized access and exposure of confidential data (syllabus 3.2)."
+   },
+   "cz": {
+    "q": "<p>Které tvrzení NEJLÉPE vysvětluje, proč testovací infrastruktura postavená na LLM vyžaduje pozornost z hlediska bezpečnosti?</p>",
+    "moznosti": [
+     "Může být zranitelná vůči únikům dat a neoprávněnému přístupu a útočníci mohou zneužít zranitelnosti LLM ke změně jeho chování nebo k získání citlivých informací.",
+     "Nikdy nezpracovává produkční data, takže riziko je jen teoretické.",
+     "LLM ve výchozím stavu šifrují všechna zpracovaná data, takže chránit je potřeba jen síť.",
+     "Bezpečnostní rizika vznikají jen při tréninku modelu, ne při jeho používání."
+    ],
+    "vysvetleni": {
+     "a": "Správně. Shrnuje to bezpečnostní rizika ze sylabu 3.2.1.",
+     "b": "Nesprávně. Testovací data, logy a testware často citlivé informace obsahují.",
+     "c": "Nesprávně. Šifrování a řízení přístupu je potřeba zavést záměrně (sylabus 3.2.3).",
+     "d": "Nesprávně. Několik vektorů útoku působí při používání, například manipulace s požadavkem (sylabus 3.2.2)."
+    },
+    "vysvetleni_obecne": "Je potřeba robustní ochrana dat proti únikům, neoprávněnému přístupu a vyzrazení důvěrných dat (sylabus 3.2)."
+   },
+   "spravne": [
+    "a"
+   ],
+   "oddil": "3.2.1",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-3.2.2-01",
+   "zdroj": "vlastni",
+   "lo": "GenAI-3.2.2",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>An attacker sends extremely long prompts to an LLM-based test assistant until the assistant starts to output fragments of documents it was trained on. Which attack vector does this describe?</p>",
+    "moznosti": [
+     "Request manipulation",
+     "Context manipulation",
+     "Data poisoning",
+     "Malicious code generation"
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. Request manipulation means introducing data that disrupts the AI's output during use (syllabus 3.2.2).",
+     "b": "Correct. Context manipulation means sending requests designed to extract confidential training data (syllabus 3.2.2). Overloading the context window to reveal training data is the syllabus example.",
+     "c": "Incorrect. Data poisoning means manipulating training data (syllabus 3.2.2).",
+     "d": "Incorrect. Malicious code generation means manipulating an LLM to generate backdoors, e.g. external command calls, during use (syllabus 3.2.2)."
+    },
+    "vysvetleni_obecne": "The four attack vectors in syllabus 3.2.2: context manipulation, request manipulation, data poisoning, malicious code generation."
+   },
+   "cz": {
+    "q": "<p>Útočník posílá testovacímu asistentovi postavenému na LLM extrémně dlouhé prompty, dokud asistent nezačne vypisovat útržky dokumentů, na kterých se učil. Který vektor útoku to popisuje?</p>",
+    "moznosti": [
+     "Manipulace s požadavkem (request manipulation)",
+     "Manipulace s kontextem (context manipulation)",
+     "Otrávení dat (data poisoning)",
+     "Generování škodlivého kódu (malicious code generation)"
+    ],
+    "vysvetleni": {
+     "a": "Nesprávně. Manipulace s požadavkem znamená vložit data, která při použití naruší výstup AI (sylabus 3.2.2).",
+     "b": "Správně. Manipulace s kontextem znamená posílat požadavky, které mají z modelu vytáhnout důvěrná trénovací data (sylabus 3.2.2). Zahlcení kontextového okna, po kterém model odhalí trénovací data, je příklad ze sylabu.",
+     "c": "Nesprávně. Otrávení dat znamená manipulaci s trénovacími daty (sylabus 3.2.2).",
+     "d": "Nesprávně. Generování škodlivého kódu znamená zmanipulovat LLM, aby při použití vytvořil zadní vrátka, např. volání externích příkazů (sylabus 3.2.2)."
+    },
+    "vysvetleni_obecne": "Čtyři vektory útoku ze sylabu 3.2.2: manipulace s kontextem, manipulace s požadavkem, otrávení dat, generování škodlivého kódu."
+   },
+   "spravne": [
+    "b"
+   ],
+   "oddil": "3.2.2",
+   "poznamka": "Ve verzi sylabu 1.0 se tento vektor jmenoval data exfiltration."
+  },
+  {
+   "id": "CG-3.2.2-02",
+   "zdroj": "vlastni",
+   "lo": "GenAI-3.2.2",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>A defect report contains a screenshot with almost invisible text. When the LLM-based tool processes the report, it proposes acceptance criteria that are unrelated to the feature. Which attack vector does this describe?</p>",
+    "moznosti": [
+     "Context manipulation",
+     "Data poisoning",
+     "Request manipulation",
+     "Malicious code generation"
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. Context manipulation means sending requests designed to extract confidential training data (syllabus 3.2.2).",
+     "b": "Incorrect. Data poisoning means manipulating training data (syllabus 3.2.2).",
+     "c": "Correct. Request manipulation means introducing data that disrupts the AI's output during use (syllabus 3.2.2). An image that lures the AI into a different context and provokes hallucinated acceptance criteria matches the syllabus example.",
+     "d": "Incorrect. Malicious code generation means manipulating an LLM to generate backdoors, e.g. external command calls, during use (syllabus 3.2.2)."
+    },
+    "vysvetleni_obecne": "Request manipulation acts on the input during use; its goal is a disrupted output."
+   },
+   "cz": {
+    "q": "<p>Report o defektu obsahuje snímek obrazovky s téměř neviditelným textem. Když ho zpracuje nástroj postavený na LLM, navrhne akceptační kritéria, která s funkcí nesouvisejí. Který vektor útoku to popisuje?</p>",
+    "moznosti": [
+     "Manipulace s kontextem (context manipulation)",
+     "Otrávení dat (data poisoning)",
+     "Manipulace s požadavkem (request manipulation)",
+     "Generování škodlivého kódu (malicious code generation)"
+    ],
+    "vysvetleni": {
+     "a": "Nesprávně. Manipulace s kontextem znamená posílat požadavky, které mají z modelu vytáhnout důvěrná trénovací data (sylabus 3.2.2).",
+     "b": "Nesprávně. Otrávení dat znamená manipulaci s trénovacími daty (sylabus 3.2.2).",
+     "c": "Správně. Manipulace s požadavkem znamená vložit data, která při použití naruší výstup AI (sylabus 3.2.2). Obrázek, který AI zavede do jiného kontextu a vyvolá halucinovaná akceptační kritéria, odpovídá příkladu ze sylabu.",
+     "d": "Nesprávně. Generování škodlivého kódu znamená zmanipulovat LLM, aby při použití vytvořil zadní vrátka, např. volání externích příkazů (sylabus 3.2.2)."
+    },
+    "vysvetleni_obecne": "Manipulace s požadavkem působí na vstup při použití, cílem je narušený výstup."
+   },
+   "spravne": [
+    "c"
+   ],
+   "oddil": "3.2.2",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-3.2.2-03",
+   "zdroj": "vlastni",
+   "lo": "GenAI-3.2.2",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>A GenAI test case generator is regularly retrained on test cases that users have marked as accepted. A competitor creates many accounts and marks deliberately flawed test cases as accepted. Which attack vector does this describe?</p>",
+    "moznosti": [
+     "Context manipulation",
+     "Request manipulation",
+     "Malicious code generation",
+     "Data poisoning"
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. Context manipulation means sending requests designed to extract confidential training data (syllabus 3.2.2).",
+     "b": "Incorrect. Request manipulation means introducing data that disrupts the AI's output during use (syllabus 3.2.2).",
+     "c": "Incorrect. Malicious code generation means manipulating an LLM to generate backdoors, e.g. external command calls, during use (syllabus 3.2.2).",
+     "d": "Correct. Data poisoning means manipulating training data (syllabus 3.2.2). The attacker manipulates the data the model is trained on, similar to fake evaluations in the syllabus example."
+    },
+    "vysvetleni_obecne": "Data poisoning targets the data used for training, not a single interaction."
+   },
+   "cz": {
+    "q": "<p>Generátor testovacích případů s generativní AI se pravidelně přeučuje na testovacích případech, které uživatelé označili jako přijaté. Konkurent si založí mnoho účtů a označuje záměrně vadné testovací případy jako přijaté. Který vektor útoku to popisuje?</p>",
+    "moznosti": [
+     "Manipulace s kontextem (context manipulation)",
+     "Manipulace s požadavkem (request manipulation)",
+     "Generování škodlivého kódu (malicious code generation)",
+     "Otrávení dat (data poisoning)"
+    ],
+    "vysvetleni": {
+     "a": "Nesprávně. Manipulace s kontextem znamená posílat požadavky, které mají z modelu vytáhnout důvěrná trénovací data (sylabus 3.2.2).",
+     "b": "Nesprávně. Manipulace s požadavkem znamená vložit data, která při použití naruší výstup AI (sylabus 3.2.2).",
+     "c": "Nesprávně. Generování škodlivého kódu znamená zmanipulovat LLM, aby při použití vytvořil zadní vrátka, např. volání externích příkazů (sylabus 3.2.2).",
+     "d": "Správně. Otrávení dat znamená manipulaci s trénovacími daty (sylabus 3.2.2). Útočník manipuluje s daty, na kterých se model učí, podobně jako falešná hodnocení v příkladu ze sylabu."
+    },
+    "vysvetleni_obecne": "Otrávení dat míří na data pro trénink, ne na jednu interakci."
+   },
+   "spravne": [
+    "d"
+   ],
+   "oddil": "3.2.2",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-3.2.2-04",
+   "zdroj": "vlastni",
+   "lo": "GenAI-3.2.2",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>During review, a tester finds that an LLM-generated test setup function downloads a shell script from an external IP address and executes it. Which attack vector is MOST likely involved?</p>",
+    "moznosti": [
+     "Malicious code generation",
+     "Context manipulation",
+     "Request manipulation",
+     "Data poisoning"
+    ],
+    "vysvetleni": {
+     "a": "Correct. Malicious code generation means manipulating an LLM to generate backdoors, e.g. external command calls, during use (syllabus 3.2.2). Downloading and executing code from an external address is a backdoor through external command calls.",
+     "b": "Incorrect. Context manipulation means sending requests designed to extract confidential training data (syllabus 3.2.2).",
+     "c": "Incorrect. Request manipulation means introducing data that disrupts the AI's output during use (syllabus 3.2.2).",
+     "d": "Incorrect. Data poisoning means manipulating training data (syllabus 3.2.2)."
+    },
+    "vysvetleni_obecne": "Generated code must be reviewed before execution (syllabus 3.2.3)."
+   },
+   "cz": {
+    "q": "<p>Při revizi tester zjistí, že funkce pro přípravu testů vygenerovaná LLM stahuje shellový skript z externí IP adresy a spouští ho. Který vektor útoku je NEJSPÍŠ ve hře?</p>",
+    "moznosti": [
+     "Generování škodlivého kódu (malicious code generation)",
+     "Manipulace s kontextem (context manipulation)",
+     "Manipulace s požadavkem (request manipulation)",
+     "Otrávení dat (data poisoning)"
+    ],
+    "vysvetleni": {
+     "a": "Správně. Generování škodlivého kódu znamená zmanipulovat LLM, aby při použití vytvořil zadní vrátka, např. volání externích příkazů (sylabus 3.2.2). Stažení a spuštění kódu z externí adresy jsou zadní vrátka přes volání externích příkazů.",
+     "b": "Nesprávně. Manipulace s kontextem znamená posílat požadavky, které mají z modelu vytáhnout důvěrná trénovací data (sylabus 3.2.2).",
+     "c": "Nesprávně. Manipulace s požadavkem znamená vložit data, která při použití naruší výstup AI (sylabus 3.2.2).",
+     "d": "Nesprávně. Otrávení dat znamená manipulaci s trénovacími daty (sylabus 3.2.2)."
+    },
+    "vysvetleni_obecne": "Vygenerovaný kód je nutné před spuštěním revidovat (sylabus 3.2.3)."
+   },
+   "spravne": [
+    "a"
+   ],
+   "oddil": "3.2.2",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-3.2.2-05",
+   "zdroj": "vlastni",
+   "lo": "GenAI-3.2.2",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Which statement BEST distinguishes data poisoning from the other attack vectors described in the syllabus?</p>",
+    "moznosti": [
+     "Data poisoning works only with image inputs.",
+     "Data poisoning targets the data the model learns from, while the other vectors act on the model while it is used.",
+     "Data poisoning aims to extract confidential training data from the model.",
+     "Data poisoning makes the model generate code with backdoors."
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. The syllabus example involves fake evaluations, not images; images are the example for request manipulation.",
+     "b": "Correct. Data poisoning is manipulating training data; context manipulation, request manipulation and malicious code generation happen during use (syllabus 3.2.2).",
+     "c": "Incorrect. Extracting training data is context manipulation.",
+     "d": "Incorrect. Generating backdoors is malicious code generation."
+    },
+    "vysvetleni_obecne": "Ask what the attacker manipulates: training data (poisoning) or the interaction during use (other vectors)."
+   },
+   "cz": {
+    "q": "<p>Které tvrzení NEJLÉPE odlišuje otrávení dat od ostatních vektorů útoku popsaných v sylabu?</p>",
+    "moznosti": [
+     "Otrávení dat funguje jen s obrazovými vstupy.",
+     "Otrávení dat míří na data, ze kterých se model učí, zatímco ostatní vektory působí na model při používání.",
+     "Cílem otrávení dat je získat z modelu důvěrná trénovací data.",
+     "Otrávení dat přiměje model generovat kód se zadními vrátky."
+    ],
+    "vysvetleni": {
+     "a": "Nesprávně. Příklad v sylabu jsou falešná hodnocení, ne obrázky. Obrázky jsou příklad manipulace s požadavkem.",
+     "b": "Správně. Otrávení dat je manipulace s trénovacími daty. Manipulace s kontextem, s požadavkem i generování škodlivého kódu probíhají při použití (sylabus 3.2.2).",
+     "c": "Nesprávně. Získání trénovacích dat je manipulace s kontextem.",
+     "d": "Nesprávně. Generování zadních vrátek je generování škodlivého kódu."
+    },
+    "vysvetleni_obecne": "Ptejte se, s čím útočník manipuluje: s trénovacími daty (otrávení), nebo s interakcí při použití (ostatní vektory)."
+   },
+   "spravne": [
+    "b"
+   ],
+   "oddil": "3.2.2",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-3.2.2-06",
+   "zdroj": "vlastni",
+   "lo": "GenAI-3.2.2",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Which example BEST illustrates context manipulation?</p>",
+    "moznosti": [
+     "A requirements document contains hidden text that makes the LLM skip tests for authorization.",
+     "Users systematically give top ratings to poor AI-generated test reports to influence future training.",
+     "Crafted requests make a model fine-tuned on internal defect reports reveal customer e-mail addresses contained in those reports.",
+     "The LLM is manipulated into adding a hidden call to an external command in a test script."
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. Introducing data that disrupts the output is request manipulation.",
+     "b": "Incorrect. Manipulating training data through fake ratings is data poisoning.",
+     "c": "Correct. The requests aim to extract confidential data the model was trained on (syllabus 3.2.2).",
+     "d": "Incorrect. Backdoors via external command calls are malicious code generation."
+    },
+    "vysvetleni_obecne": "Context manipulation is a GenAI-specific keyword of chapter 3."
+   },
+   "cz": {
+    "q": "<p>Který příklad NEJLÉPE ilustruje manipulaci s kontextem?</p>",
+    "moznosti": [
+     "Dokument s požadavky obsahuje skrytý text, kvůli kterému LLM vynechá testy autorizace.",
+     "Uživatelé systematicky dávají nejlepší hodnocení špatným AI reportům o testování, aby ovlivnili další trénink.",
+     "Cíleně sestavené požadavky přimějí model doladěný na interních reportech o defektech vyzradit e-mailové adresy klientů, které v reportech byly.",
+     "LLM je zmanipulován, aby do testovacího skriptu přidal skryté volání externího příkazu."
+    ],
+    "vysvetleni": {
+     "a": "Nesprávně. Vložení dat, která naruší výstup, je manipulace s požadavkem.",
+     "b": "Nesprávně. Manipulace s trénovacími daty přes falešná hodnocení je otrávení dat.",
+     "c": "Správně. Požadavky mají z modelu vytáhnout důvěrná data, na kterých byl trénován (sylabus 3.2.2).",
+     "d": "Nesprávně. Zadní vrátka přes volání externích příkazů jsou generování škodlivého kódu."
+    },
+    "vysvetleni_obecne": "Manipulace s kontextem je klíčové slovo kapitoly 3 specifické pro generativní AI."
+   },
+   "spravne": [
+    "c"
+   ],
+   "oddil": "3.2.2",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-3.2.2-07",
+   "zdroj": "vlastni",
+   "lo": "GenAI-3.2.2",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>A tester reviews LLM-generated automation code before it is merged. Which finding indicates malicious code generation?</p>",
+    "moznosti": [
+     "The script uses an existing but deprecated method of the test framework.",
+     "The test names are in English although the team uses Czech names.",
+     "One assertion contains a wrong expected value.",
+     "A helper function sends all environment variables of the CI job to a hard-coded external IP address."
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. This is a maintainability issue, not a backdoor.",
+     "b": "Incorrect. This is a style issue, possibly a sign of bias, but not malicious code.",
+     "c": "Incorrect. A wrong expected value is a defect in the testware (hallucination or reasoning error), not a backdoor.",
+     "d": "Correct. Opening a communication channel to a specific external address is the syllabus example of a backdoor (syllabus 3.2.2)."
+    },
+    "vysvetleni_obecne": "Warning signs: external command calls, downloads, hard-coded addresses, sending secrets."
+   },
+   "cz": {
+    "q": "<p>Tester reviduje automatizační kód vygenerovaný LLM před sloučením. Které zjištění ukazuje na generování škodlivého kódu?</p>",
+    "moznosti": [
+     "Skript používá existující, ale zastaralou metodu testovacího frameworku.",
+     "Názvy testů jsou anglicky, přestože tým používá české názvy.",
+     "Jedna aserce obsahuje chybnou očekávanou hodnotu.",
+     "Pomocná funkce posílá všechny proměnné prostředí úlohy v CI na pevně zadanou externí IP adresu."
+    ],
+    "vysvetleni": {
+     "a": "Nesprávně. To je problém udržovatelnosti, ne zadní vrátka.",
+     "b": "Nesprávně. To je otázka stylu, nanejvýš projev zkreslení, ne škodlivý kód.",
+     "c": "Nesprávně. Chybná očekávaná hodnota je vada testwaru (halucinace nebo chyba v uvažování), ne zadní vrátka.",
+     "d": "Správně. Otevření komunikačního kanálu na konkrétní externí adresu je příklad zadních vrátek ze sylabu (sylabus 3.2.2)."
+    },
+    "vysvetleni_obecne": "Varovné znaky: volání externích příkazů, stahování, pevné adresy, odesílání tajných údajů."
+   },
+   "spravne": [
+    "d"
+   ],
+   "oddil": "3.2.2",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-3.2.2-08",
+   "zdroj": "vlastni",
+   "lo": "GenAI-3.2.2",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Which pair correctly matches an attack vector with its description?</p>",
+    "moznosti": [
+     "Request manipulation – introducing data, such as misleading images, that disrupts the AI's output.",
+     "Context manipulation – inserting backdoors into generated code.",
+     "Malicious code generation – manipulating training data with fake ratings.",
+     "Data poisoning – extracting confidential training data with very long prompts."
+    ],
+    "vysvetleni": {
+     "a": "Correct. This matches the description and example in syllabus 3.2.2.",
+     "b": "Incorrect. Backdoors belong to malicious code generation; context manipulation extracts training data.",
+     "c": "Incorrect. Fake ratings in training data are data poisoning.",
+     "d": "Incorrect. Extracting training data with long prompts is context manipulation."
+    },
+    "vysvetleni_obecne": "Learn each vector with its goal and the syllabus example (syllabus 3.2.2)."
+   },
+   "cz": {
+    "q": "<p>Která dvojice správně přiřazuje vektor útoku k jeho popisu?</p>",
+    "moznosti": [
+     "Manipulace s požadavkem – vložení dat, například zavádějících obrázků, která naruší výstup AI.",
+     "Manipulace s kontextem – vložení zadních vrátek do generovaného kódu.",
+     "Generování škodlivého kódu – manipulace s trénovacími daty pomocí falešných hodnocení.",
+     "Otrávení dat – získání důvěrných trénovacích dat velmi dlouhými prompty."
+    ],
+    "vysvetleni": {
+     "a": "Správně. Odpovídá to popisu a příkladu ze sylabu 3.2.2.",
+     "b": "Nesprávně. Zadní vrátka patří ke generování škodlivého kódu. Manipulace s kontextem získává trénovací data.",
+     "c": "Nesprávně. Falešná hodnocení v trénovacích datech jsou otrávení dat.",
+     "d": "Nesprávně. Získání trénovacích dat dlouhými prompty je manipulace s kontextem."
+    },
+    "vysvetleni_obecne": "Naučte se ke každému vektoru jeho cíl a příklad ze sylabu (sylabus 3.2.2)."
+   },
+   "spravne": [
+    "a"
+   ],
+   "oddil": "3.2.2",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-3.2.2-09",
+   "zdroj": "vlastni",
+   "lo": "GenAI-3.2.2",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>A requirements document processed by an LLM-based test tool contains hidden instructions telling the model to omit all tests for user authorization. Which attack vector from the syllabus does this MOST closely correspond to?</p>",
+    "moznosti": [
+     "Context manipulation",
+     "Request manipulation",
+     "Data poisoning",
+     "Malicious code generation"
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. Context manipulation means sending requests designed to extract confidential training data (syllabus 3.2.2).",
+     "b": "Correct. Request manipulation means introducing data that disrupts the AI's output during use (syllabus 3.2.2). The hidden instructions are data introduced at use time that disrupt the output; nothing in the training data is changed.",
+     "c": "Incorrect. Data poisoning means manipulating training data (syllabus 3.2.2).",
+     "d": "Incorrect. Malicious code generation means manipulating an LLM to generate backdoors, e.g. external command calls, during use (syllabus 3.2.2)."
+    },
+    "vysvetleni_obecne": "Outside the syllabus, this is known as (indirect) prompt injection."
+   },
+   "cz": {
+    "q": "<p>Dokument s požadavky, který zpracuje testovací nástroj postavený na LLM, obsahuje skryté pokyny, ať model vynechá všechny testy autorizace uživatelů. Kterému vektoru útoku ze sylabu to NEJVÍC odpovídá?</p>",
+    "moznosti": [
+     "Manipulace s kontextem (context manipulation)",
+     "Manipulace s požadavkem (request manipulation)",
+     "Otrávení dat (data poisoning)",
+     "Generování škodlivého kódu (malicious code generation)"
+    ],
+    "vysvetleni": {
+     "a": "Nesprávně. Manipulace s kontextem znamená posílat požadavky, které mají z modelu vytáhnout důvěrná trénovací data (sylabus 3.2.2).",
+     "b": "Správně. Manipulace s požadavkem znamená vložit data, která při použití naruší výstup AI (sylabus 3.2.2). Skryté pokyny jsou data vložená při použití, která naruší výstup. Trénovací data se nemění.",
+     "c": "Nesprávně. Otrávení dat znamená manipulaci s trénovacími daty (sylabus 3.2.2).",
+     "d": "Nesprávně. Generování škodlivého kódu znamená zmanipulovat LLM, aby při použití vytvořil zadní vrátka, např. volání externích příkazů (sylabus 3.2.2)."
+    },
+    "vysvetleni_obecne": "Mimo sylabus se tomu říká (nepřímý) prompt injection."
+   },
+   "spravne": [
+    "b"
+   ],
+   "oddil": "3.2.2",
+   "poznamka": "Pojem prompt injection sylabus v1.1 nepoužívá. Otázka míří na nejbližší vektor z tabulky 3.2.2."
+  },
+  {
+   "id": "CG-3.2.3-01",
+   "zdroj": "vlastni",
+   "lo": "GenAI-3.2.3",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Which statement about data protection regulations such as GDPR and the use of GenAI in testing is consistent with the syllabus?</p>",
+    "moznosti": [
+     "They explicitly ban uploading any test data to an LLM.",
+     "They apply only to the training of LLMs, not to the data in prompts.",
+     "They do not explicitly restrict GenAI, but their safeguards, such as lawfulness and purpose limitation, can limit what can be done.",
+     "GDPR is a best-practice framework published by NIST."
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. The syllabus states that they do not restrict GenAI explicitly.",
+     "b": "Incorrect. Any processing of personal data, including in prompts, is subject to data protection rules.",
+     "c": "Correct. This is stated in syllabus 3.2.3.",
+     "d": "Incorrect. GDPR is Regulation (EU) 2016/679; NIST publishes the AI RMF (syllabus 3.4.1)."
+    },
+    "vysvetleni_obecne": "Regulations and standards emerge to mitigate GenAI risks (syllabus 3.2.3, 3.4.1)."
+   },
+   "cz": {
+    "q": "<p>Které tvrzení o předpisech na ochranu dat, jako je GDPR, a o použití generativní AI v testování odpovídá sylabu?</p>",
+    "moznosti": [
+     "Výslovně zakazují nahrát do LLM jakákoli testovací data.",
+     "Vztahují se jen na trénink LLM, ne na data v promptech.",
+     "Generativní AI výslovně neomezují, ale jejich pojistky, například zákonnost a omezení účelu, mohou omezit, co lze dělat.",
+     "GDPR je rámec osvědčených postupů, který vydal NIST."
+    ],
+    "vysvetleni": {
+     "a": "Nesprávně. Sylabus uvádí, že generativní AI výslovně neomezují.",
+     "b": "Nesprávně. Pravidla ochrany dat platí pro každé zpracování osobních údajů, i v promptu.",
+     "c": "Správně. Přesně to uvádí sylabus 3.2.3.",
+     "d": "Nesprávně. GDPR je nařízení (EU) 2016/679. NIST vydává AI RMF (sylabus 3.4.1)."
+    },
+    "vysvetleni_obecne": "Předpisy a standardy vznikají, aby zmírnily rizika generativní AI (sylabus 3.2.3, 3.4.1)."
+   },
+   "spravne": [
+    "c"
+   ],
+   "oddil": "3.2.3",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-3.2.3-02",
+   "zdroj": "vlastni",
+   "lo": "GenAI-3.2.3",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>A tester designs tests for a loan application form with an LLM. Which practice is an example of data minimization?</p>",
+    "moznosti": [
+     "Encrypting the connection between the test tool and the LLM provider.",
+     "Training the test team on the policy for using GenAI tools.",
+     "Comparing the generated tests with the output of another LLM.",
+     "Giving the LLM only field definitions and business rules instead of real customer applications."
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. This is secure data transmission.",
+     "b": "Incorrect. This is resources training.",
+     "c": "Incorrect. This is evaluation by comparison with another LLM, which targets output quality.",
+     "d": "Correct. Data minimization means using only the necessary amount of non-sensitive data (syllabus 3.2.3)."
+    },
+    "vysvetleni_obecne": "Data privacy measures: minimization, anonymization/pseudonymization, secure storage and transmission, resources training (syllabus 3.2.3)."
+   },
+   "cz": {
+    "q": "<p>Tester navrhuje s pomocí LLM testy pro formulář žádosti o úvěr. Který postup je příkladem minimalizace dat?</p>",
+    "moznosti": [
+     "Zašifrovat spojení mezi testovacím nástrojem a poskytovatelem LLM.",
+     "Proškolit testovací tým v pravidlech pro používání nástrojů generativní AI.",
+     "Porovnat vygenerované testy s výstupem jiného LLM.",
+     "Dát LLM jen definice polí a obchodní pravidla místo skutečných žádostí klientů."
+    ],
+    "vysvetleni": {
+     "a": "Nesprávně. To je bezpečný přenos dat.",
+     "b": "Nesprávně. To je školení lidí.",
+     "c": "Nesprávně. To je hodnocení porovnáním s jiným LLM, míří na kvalitu výstupu.",
+     "d": "Správně. Minimalizace dat znamená použít jen nezbytné množství necitlivých dat (sylabus 3.2.3)."
+    },
+    "vysvetleni_obecne": "Opatření na ochranu dat: minimalizace, anonymizace a pseudonymizace, bezpečné uložení a přenos, školení (sylabus 3.2.3)."
+   },
+   "spravne": [
+    "d"
+   ],
+   "oddil": "3.2.3",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-3.2.3-03",
+   "zdroj": "vlastni",
+   "lo": "GenAI-3.2.3",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>A bank requires that no test data leave its own data center. Which choice of a secure operational environment fits this requirement?</p>",
+    "moznosti": [
+     "Installing the LLM in the organization's own infrastructure.",
+     "Using a commercial, secure offering of an LLM provider.",
+     "Using a free public chatbot with the chat history switched off.",
+     "Letting each tester choose a GenAI tool and documenting the choice afterwards."
+    ],
+    "vysvetleni": {
+     "a": "Correct. This is one of the three options in syllabus 3.2.3 and keeps data inside the bank.",
+     "b": "Incorrect. A secure commercial offering is a valid option in general, but the data are processed by the provider outside the bank's data center.",
+     "c": "Incorrect. The data still leave the bank, and the organization has no contractual control.",
+     "d": "Incorrect. This is uncontrolled use (shadow AI, chapter 5) and does not ensure the requirement."
+    },
+    "vysvetleni_obecne": "Options in the syllabus: commercial secure offering, secure cloud, or the organization's own infrastructure, depending on the confidentiality level."
+   },
+   "cz": {
+    "q": "<p>Banka požaduje, aby žádná testovací data neopustila její vlastní datové centrum. Která volba bezpečného provozního prostředí tomuto požadavku odpovídá?</p>",
+    "moznosti": [
+     "Nainstalovat LLM do vlastní infrastruktury organizace.",
+     "Použít komerční zabezpečenou nabídku poskytovatele LLM.",
+     "Použít bezplatný veřejný chatbot s vypnutou historií konverzací.",
+     "Nechat každého testera vybrat si nástroj generativní AI a volbu zdokumentovat dodatečně."
+    ],
+    "vysvetleni": {
+     "a": "Správně. Je to jedna ze tří možností ze sylabu 3.2.3 a data zůstanou v bance.",
+     "b": "Nesprávně. Komerční nabídka je obecně platná možnost, ale data zpracuje poskytovatel mimo datové centrum banky.",
+     "c": "Nesprávně. Data i tak opustí banku a organizace nemá smluvní kontrolu.",
+     "d": "Nesprávně. To je nekontrolované použití (stínová AI, kapitola 5) a požadavek nezajistí."
+    },
+    "vysvetleni_obecne": "Možnosti ze sylabu: komerční zabezpečená nabídka, zabezpečený cloud, nebo vlastní infrastruktura, podle požadované důvěrnosti."
+   },
+   "spravne": [
+    "a"
+   ],
+   "oddil": "3.2.3",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-3.2.3-04",
+   "zdroj": "vlastni",
+   "lo": "GenAI-3.2.3",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Which statement about mitigation strategies for data privacy and security is consistent with the syllabus?</p>",
+    "moznosti": [
+     "A single strategy, such as encryption, is sufficient for GenAI in testing.",
+     "The strategies are complementary and usually need to be combined; involving security engineers, legal counsel, the CTO or the CISO is recommended.",
+     "Individual testers should decide on mitigation without involving other roles.",
+     "Security audits are needed only once, before the first use of the tool."
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. The syllabus states that a combination is required.",
+     "b": "Correct. Syllabus 3.2.3 states that a combination is required and recommends involving these roles.",
+     "c": "Incorrect. The syllabus recommends involving senior security and legal roles.",
+     "d": "Incorrect. The syllabus recommends regular security audits and vulnerability assessments."
+    },
+    "vysvetleni_obecne": "Mitigation strategies are complementary (syllabus 3.2.3)."
+   },
+   "cz": {
+    "q": "<p>Které tvrzení o strategiích zmírnění rizik pro ochranu dat a bezpečnost odpovídá sylabu?</p>",
+    "moznosti": [
+     "Jedna strategie, například šifrování, pro generativní AI v testování stačí.",
+     "Strategie se doplňují a obvykle je nutné je kombinovat. Doporučuje se zapojit bezpečnostní inženýry, právníky, CTO nebo CISO.",
+     "O zmírnění mají rozhodovat jednotliví testeři bez zapojení dalších rolí.",
+     "Bezpečnostní audit je potřeba jen jednou, před prvním použitím nástroje."
+    ],
+    "vysvetleni": {
+     "a": "Nesprávně. Sylabus uvádí, že je potřeba kombinace.",
+     "b": "Správně. Sylabus 3.2.3 uvádí, že je potřeba kombinace, a doporučuje tyto role zapojit.",
+     "c": "Nesprávně. Sylabus doporučuje zapojit zkušené bezpečnostní a právní role.",
+     "d": "Nesprávně. Sylabus doporučuje pravidelné audity a hodnocení zranitelností."
+    },
+    "vysvetleni_obecne": "Strategie zmírnění se doplňují (sylabus 3.2.3)."
+   },
+   "spravne": [
+    "b"
+   ],
+   "oddil": "3.2.3",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-3.2.3-05",
+   "zdroj": "vlastni",
+   "lo": "GenAI-3.2.3",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>A team uses an LLM to generate automation scripts that run in the CI pipeline with access to test databases. Which mitigation BEST reduces the risk of executing malicious generated code?</p>",
+    "moznosti": [
+     "Lowering the temperature of the LLM.",
+     "Anonymizing the test data before it is sent to the LLM.",
+     "Systematic human review of the generated scripts before they are executed.",
+     "Limiting unnecessary interactions with the model."
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. Temperature affects variability, not whether code contains backdoors.",
+     "b": "Incorrect. Anonymization protects personal data but does not detect malicious code.",
+     "c": "Correct. Human evaluation of the generated output is essential (syllabus 3.2.3) and catches backdoors before execution.",
+     "d": "Incorrect. This is a best practice for energy consumption (syllabus 3.3.1)."
+    },
+    "vysvetleni_obecne": "Additional strategies include systematic review, comparison with another LLM, a secure environment, audits and staying updated (syllabus 3.2.3)."
+   },
+   "cz": {
+    "q": "<p>Tým používá LLM k generování automatizačních skriptů, které běží v CI s přístupem k testovacím databázím. Které opatření NEJLÉPE sníží riziko spuštění škodlivého vygenerovaného kódu?</p>",
+    "moznosti": [
+     "Snížit teplotu LLM.",
+     "Anonymizovat testovací data před odesláním do LLM.",
+     "Systematická lidská revize vygenerovaných skriptů před jejich spuštěním.",
+     "Omezit zbytečné interakce s modelem."
+    ],
+    "vysvetleni": {
+     "a": "Nesprávně. Teplota ovlivňuje variabilitu, ne to, zda kód obsahuje zadní vrátka.",
+     "b": "Nesprávně. Anonymizace chrání osobní údaje, ale škodlivý kód neodhalí.",
+     "c": "Správně. Lidské hodnocení výstupu je nezbytné (sylabus 3.2.3) a zachytí zadní vrátka před spuštěním.",
+     "d": "Nesprávně. To je osvědčený postup pro spotřebu energie (sylabus 3.3.1)."
+    },
+    "vysvetleni_obecne": "Doplňková opatření: systematická revize, porovnání s jiným LLM, bezpečné prostředí, audity a sledování osvědčených postupů (sylabus 3.2.3)."
+   },
+   "spravne": [
+    "c"
+   ],
+   "oddil": "3.2.3",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-3.3.1-01",
+   "zdroj": "vlastni",
+   "lo": "GenAI-3.3.1",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Which GenAI-supported test task is likely to consume the MOST energy per generated output?</p>",
+    "moznosti": [
+     "Summarizing a short defect report.",
+     "Generating ten test case titles from a user story.",
+     "Classifying a single log line as error or warning.",
+     "Generating images of user interface states for visual comparison tests."
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. This is a short text task with low computational effort.",
+     "b": "Incorrect. This is a short text generation task.",
+     "c": "Incorrect. This is a very small text task.",
+     "d": "Correct. Generating an image can consume as much energy as fully charging a smartphone, while text generation needs only a small fraction (syllabus 3.3.1)."
+    },
+    "vysvetleni_obecne": "The complexity of the task and the computational resources required influence energy consumption (syllabus 3.3.1)."
+   },
+   "cz": {
+    "q": "<p>Která testovací úloha s podporou generativní AI pravděpodobně spotřebuje NEJVÍC energie na jeden vygenerovaný výstup?</p>",
+    "moznosti": [
+     "Shrnutí krátkého reportu o defektu.",
+     "Vygenerování deseti názvů testovacích případů z uživatelského scénáře.",
+     "Klasifikace jednoho řádku logu jako chyby nebo varování.",
+     "Generování obrázků stavů uživatelského rozhraní pro vizuální srovnávací testy."
+    ],
+    "vysvetleni": {
+     "a": "Nesprávně. Je to krátká textová úloha s malou výpočetní náročností.",
+     "b": "Nesprávně. Je to krátké generování textu.",
+     "c": "Nesprávně. Je to velmi malá textová úloha.",
+     "d": "Správně. Vygenerování obrázku může spotřebovat tolik energie jako nabití telefonu, generování textu jen zlomek (sylabus 3.3.1)."
+    },
+    "vysvetleni_obecne": "Spotřebu energie ovlivňuje složitost úlohy a potřebné výpočetní zdroje (sylabus 3.3.1)."
+   },
+   "spravne": [
+    "d"
+   ],
+   "oddil": "3.3.1",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-3.3.1-02",
+   "zdroj": "vlastni",
+   "lo": "GenAI-3.3.1",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Which statement BEST explains why the energy consumption of text-based GenAI test tasks should not be ignored?</p>",
+    "moznosti": [
+     "Although one text generation seems negligible, the cumulative use by millions of users leads to significant energy use and CO₂ emissions.",
+     "Text generation uses more energy per output than image generation.",
+     "Only the training of LLMs consumes energy; usage is free of emissions.",
+     "Exact energy values for every prompt are published, so teams can easily calculate them."
+    ],
+    "vysvetleni": {
+     "a": "Correct. Syllabus 3.3.1 emphasizes the cumulative effect across millions of users.",
+     "b": "Incorrect. The syllabus states the opposite.",
+     "c": "Incorrect. The syllabus states that usage increases the load on devices, networks and data centers (syllabus 3.3).",
+     "d": "Incorrect. The syllabus notes that accurate data is hard to obtain."
+    },
+    "vysvetleni_obecne": "Energy consumption rises sharply as usage increases (syllabus 3.3.1)."
+   },
+   "cz": {
+    "q": "<p>Které tvrzení NEJLÉPE vysvětluje, proč se spotřeba energie textových testovacích úloh s generativní AI nemá přehlížet?</p>",
+    "moznosti": [
+     "Jedno vygenerování textu se zdá zanedbatelné, ale souhrnné použití milionů uživatelů vede k velké spotřebě energie a emisím CO₂.",
+     "Generování textu spotřebuje na jeden výstup víc energie než generování obrázku.",
+     "Energii spotřebuje jen trénink LLM, používání je bez emisí.",
+     "Přesné hodnoty energie pro každý prompt jsou zveřejněné, takže je tým snadno spočítá."
+    ],
+    "vysvetleni": {
+     "a": "Správně. Sylabus 3.3.1 zdůrazňuje souhrnný účinek přes miliony uživatelů.",
+     "b": "Nesprávně. Sylabus uvádí opak.",
+     "c": "Nesprávně. Sylabus uvádí, že používání zatěžuje zařízení, sítě a datová centra (sylabus 3.3).",
+     "d": "Nesprávně. Sylabus uvádí, že přesná data se získávají těžko."
+    },
+    "vysvetleni_obecne": "Spotřeba energie prudce roste s rostoucím používáním (sylabus 3.3.1)."
+   },
+   "spravne": [
+    "a"
+   ],
+   "oddil": "3.3.1",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-3.3.1-03",
+   "zdroj": "vlastni",
+   "lo": "GenAI-3.3.1",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Every night, a team sends the same prompt five times for each of 2,000 regression test cases to the largest available LLM to check output consistency, even when nothing has changed. Which change would MOST reduce energy consumption while keeping the purpose?</p>",
+    "moznosti": [
+     "Increase the temperature so that fewer runs are needed.",
+     "Run the consistency check only when the prompt or model changes, and use a smaller model if it is sufficient for the task.",
+     "Add the full test logs to every prompt to give more context.",
+     "Ask the model to return a screenshot-like image instead of text."
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. A higher temperature increases variability, which would require more checking, not less.",
+     "b": "Correct. Fewer unnecessary interactions and a model with lower resource needs reduce consumption; this reflects the impact of model usage (syllabus 3.3.1).",
+     "c": "Incorrect. More tokens in the context increase computational effort (syllabus 1.1.2).",
+     "d": "Incorrect. Image generation is far more energy-intensive than text generation."
+    },
+    "vysvetleni_obecne": "Best practice: limit unnecessary model interactions (syllabus 3.3.1)."
+   },
+   "cz": {
+    "q": "<p>Tým každou noc posílá největšímu dostupnému LLM stejný prompt pětkrát pro každý z 2 000 regresních testovacích případů, aby ověřil konzistenci výstupu, i když se nic nezměnilo. Která změna NEJVÍC sníží spotřebu energie a zachová účel?</p>",
+    "moznosti": [
+     "Zvýšit teplotu, aby bylo potřeba méně běhů.",
+     "Spouštět kontrolu konzistence jen při změně promptu nebo modelu a použít menší model, pokud na úlohu stačí.",
+     "Přidat do každého promptu celé testovací logy, aby měl model víc kontextu.",
+     "Požádat model o výstup v podobě obrázku místo textu."
+    ],
+    "vysvetleni": {
+     "a": "Nesprávně. Vyšší teplota zvyšuje variabilitu, kontroly by bylo potřeba víc, ne méně.",
+     "b": "Správně. Méně zbytečných interakcí a model s menšími nároky spotřebu sníží. Odráží to vliv způsobu použití modelu (sylabus 3.3.1).",
+     "c": "Nesprávně. Víc tokenů v kontextu zvyšuje výpočetní náročnost (sylabus 1.1.2).",
+     "d": "Nesprávně. Generování obrázků je mnohem náročnější na energii než generování textu."
+    },
+    "vysvetleni_obecne": "Osvědčený postup: omezit zbytečné interakce s modelem (sylabus 3.3.1)."
+   },
+   "spravne": [
+    "b"
+   ],
+   "oddil": "3.3.1",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-3.3.1-04",
+   "zdroj": "vlastni",
+   "lo": "GenAI-3.3.1",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Which factors does the syllabus name as influencing the energy consumption of GenAI?</p>",
+    "moznosti": [
+     "The tester's experience and the number of defects found.",
+     "The programming language of the test object.",
+     "The complexity of the task and the computational resources required.",
+     "The number of acceptance criteria per user story only."
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. These are not named as factors of energy consumption.",
+     "b": "Incorrect. The syllabus does not mention the programming language of the test object.",
+     "c": "Correct. Syllabus 3.3.1 names these two factors.",
+     "d": "Incorrect. This is not a factor named in the syllabus."
+    },
+    "vysvetleni_obecne": "Example: an image consumes much more energy than text (syllabus 3.3.1)."
+   },
+   "cz": {
+    "q": "<p>Které faktory podle sylabu ovlivňují spotřebu energie generativní AI?</p>",
+    "moznosti": [
+     "Zkušenost testera a počet nalezených defektů.",
+     "Programovací jazyk testovaného objektu.",
+     "Složitost úlohy a potřebné výpočetní zdroje.",
+     "Jen počet akceptačních kritérií v uživatelském scénáři."
+    ],
+    "vysvetleni": {
+     "a": "Nesprávně. Sylabus je jako faktory spotřeby energie neuvádí.",
+     "b": "Nesprávně. Programovací jazyk testovaného objektu sylabus nezmiňuje.",
+     "c": "Správně. Sylabus 3.3.1 jmenuje právě tyto dva faktory.",
+     "d": "Nesprávně. Takový faktor sylabus neuvádí."
+    },
+    "vysvetleni_obecne": "Příklad: obrázek spotřebuje mnohem víc energie než text (sylabus 3.3.1)."
+   },
+   "spravne": [
+    "c"
+   ],
+   "oddil": "3.3.1",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-3.3.1-05",
+   "zdroj": "vlastni",
+   "lo": "GenAI-3.3.1",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Which statement about the available data on the environmental impact of GenAI is consistent with the syllabus?</p>",
+    "moznosti": [
+     "Because the data is uncertain, environmental impact can be ignored when planning GenAI use in testing.",
+     "Only image generation contributes to CO₂ emissions; text generation does not.",
+     "Energy consumption decreases as usage of GenAI increases, due to economies of scale.",
+     "Accurate data is hard to obtain, but energy-intensive operations clearly contribute collectively to significant CO₂ emissions."
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. The syllabus states that the impact should not be underestimated.",
+     "b": "Incorrect. Text generation consumes less, but its cumulative impact is significant.",
+     "c": "Incorrect. The syllabus states that energy consumption rises sharply as usage increases.",
+     "d": "Correct. Syllabus 3.3.1 states both points (Luccioni 2024b, Berthelot 2024)."
+    },
+    "vysvetleni_obecne": "Do not underestimate the environmental impact of GenAI (syllabus 3.3.1)."
+   },
+   "cz": {
+    "q": "<p>Které tvrzení o dostupných datech o dopadu generativní AI na životní prostředí odpovídá sylabu?</p>",
+    "moznosti": [
+     "Protože jsou data nejistá, lze dopad na životní prostředí při plánování použití generativní AI v testování přehlížet.",
+     "K emisím CO₂ přispívá jen generování obrázků, generování textu ne.",
+     "Spotřeba energie s rostoucím používáním generativní AI klesá díky úsporám z rozsahu.",
+     "Přesná data se získávají těžko, ale energeticky náročné operace zjevně dohromady přispívají k významným emisím CO₂."
+    ],
+    "vysvetleni": {
+     "a": "Nesprávně. Sylabus uvádí, že dopad se nemá podceňovat.",
+     "b": "Nesprávně. Text spotřebuje méně, ale jeho souhrnný dopad je značný.",
+     "c": "Nesprávně. Sylabus uvádí, že spotřeba s používáním prudce roste.",
+     "d": "Správně. Sylabus 3.3.1 uvádí obojí (Luccioni 2024b, Berthelot 2024)."
+    },
+    "vysvetleni_obecne": "Dopad generativní AI na životní prostředí se nemá podceňovat (sylabus 3.3.1)."
+   },
+   "spravne": [
+    "d"
+   ],
+   "oddil": "3.3.1",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-3.4.1-01",
+   "zdroj": "vlastni",
+   "lo": "GenAI-3.4.1",
+   "k": "K1",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Which document specifies requirements for managing AI systems within an organization?</p>",
+    "moznosti": [
+     "ISO/IEC 42001:2023",
+     "ISO/IEC 23053:2022",
+     "NIST AI Risk Management Framework",
+     "ISO/IEC 25010:2023"
+    ],
+    "vysvetleni": {
+     "a": "Correct. ISO/IEC 42001 specifies requirements for an AI management system (syllabus 3.4.1).",
+     "b": "Incorrect. ISO/IEC 23053 provides a framework for AI systems using machine learning and their lifecycle.",
+     "c": "Incorrect. The NIST AI RMF offers guidelines for managing AI risks; it is a framework, not management system requirements.",
+     "d": "Incorrect. ISO/IEC 25010 is a product quality model known from CTFL and is not listed in syllabus 3.4.1."
+    },
+    "vysvetleni_obecne": "Syllabus 3.4.1 lists ISO/IEC 42001, ISO/IEC 23053, the EU AI Act and the NIST AI RMF."
+   },
+   "cz": {
+    "q": "<p>Který dokument stanoví požadavky na řízení AI systémů v organizaci?</p>",
+    "moznosti": [
+     "ISO/IEC 42001:2023",
+     "ISO/IEC 23053:2022",
+     "NIST AI Risk Management Framework",
+     "ISO/IEC 25010:2023"
+    ],
+    "vysvetleni": {
+     "a": "Správně. ISO/IEC 42001 stanoví požadavky na systém řízení AI (sylabus 3.4.1).",
+     "b": "Nesprávně. ISO/IEC 23053 dává rámec pro AI systémy se strojovým učením a jejich životní cyklus.",
+     "c": "Nesprávně. NIST AI RMF nabízí doporučení k řízení rizik AI. Je to rámec, ne požadavky na systém řízení.",
+     "d": "Nesprávně. ISO/IEC 25010 je model kvality produktu známý ze CTFL a v sylabu 3.4.1 není."
+    },
+    "vysvetleni_obecne": "Sylabus 3.4.1 uvádí ISO/IEC 42001, ISO/IEC 23053, EU AI Act a NIST AI RMF."
+   },
+   "spravne": [
+    "a"
+   ],
+   "oddil": "3.4.1",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-3.4.1-02",
+   "zdroj": "vlastni",
+   "lo": "GenAI-3.4.1",
+   "k": "K1",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Which of the following is a regulation that classifies AI applications by risk level?</p>",
+    "moznosti": [
+     "NIST AI Risk Management Framework",
+     "EU AI Act",
+     "ISO/IEC 42001:2023",
+     "ISO/IEC/IEEE 29119-2:2021"
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. The NIST AI RMF is a US framework, not a regulation.",
+     "b": "Correct. The EU AI Act establishes a legal framework and classifies applications by risk level (syllabus 3.4.1).",
+     "c": "Incorrect. ISO/IEC 42001 is a standard for AI management systems.",
+     "d": "Incorrect. This is a standard for test processes known from CTFL and is not listed in syllabus 3.4.1."
+    },
+    "vysvetleni_obecne": "Types in syllabus 3.4.1: standard (42001, 23053), regulation (EU AI Act), framework (NIST AI RMF)."
+   },
+   "cz": {
+    "q": "<p>Který z následujících dokumentů je předpis, který dělí AI aplikace podle úrovně rizika?</p>",
+    "moznosti": [
+     "NIST AI Risk Management Framework",
+     "EU AI Act",
+     "ISO/IEC 42001:2023",
+     "ISO/IEC/IEEE 29119-2:2021"
+    ],
+    "vysvetleni": {
+     "a": "Nesprávně. NIST AI RMF je americký rámec, ne předpis.",
+     "b": "Správně. EU AI Act zavádí právní rámec a dělí aplikace podle úrovně rizika (sylabus 3.4.1).",
+     "c": "Nesprávně. ISO/IEC 42001 je standard pro systém řízení AI.",
+     "d": "Nesprávně. Je to standard pro testovací procesy známý ze CTFL, v sylabu 3.4.1 není."
+    },
+    "vysvetleni_obecne": "Typy ze sylabu 3.4.1: standard (42001, 23053), předpis (EU AI Act), rámec (NIST AI RMF)."
+   },
+   "spravne": [
+    "b"
+   ],
+   "oddil": "3.4.1",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-3.4.1-03",
+   "zdroj": "vlastni",
+   "lo": "GenAI-3.4.1",
+   "k": "K1",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Which document is a US framework offering guidelines for managing AI risks with a focus on fairness, transparency and security?</p>",
+    "moznosti": [
+     "EU AI Act",
+     "ISO/IEC 23053:2022",
+     "NIST AI Risk Management Framework",
+     "General Data Protection Regulation (GDPR)"
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. The EU AI Act is a European regulation.",
+     "b": "Incorrect. ISO/IEC 23053 is an international standard with a framework for ML-based AI systems.",
+     "c": "Correct. This matches the description in syllabus 3.4.1.",
+     "d": "Incorrect. GDPR is an EU regulation on personal data protection."
+    },
+    "vysvetleni_obecne": "NIST AI RMF supports fairness and helps prevent biased test results (syllabus 3.4.1)."
+   },
+   "cz": {
+    "q": "<p>Který dokument je americký rámec s doporučeními pro řízení rizik AI se zaměřením na férovost, transparentnost a bezpečnost?</p>",
+    "moznosti": [
+     "EU AI Act",
+     "ISO/IEC 23053:2022",
+     "NIST AI Risk Management Framework",
+     "Obecné nařízení o ochraně osobních údajů (GDPR)"
+    ],
+    "vysvetleni": {
+     "a": "Nesprávně. EU AI Act je evropský předpis.",
+     "b": "Nesprávně. ISO/IEC 23053 je mezinárodní standard s rámcem pro AI systémy se strojovým učením.",
+     "c": "Správně. Odpovídá to popisu v sylabu 3.4.1.",
+     "d": "Nesprávně. GDPR je nařízení EU o ochraně osobních údajů."
+    },
+    "vysvetleni_obecne": "NIST AI RMF podporuje férovost a pomáhá předcházet zkresleným výsledkům testů (sylabus 3.4.1)."
+   },
+   "spravne": [
+    "c"
+   ],
+   "oddil": "3.4.1",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-3.4.1-04",
+   "zdroj": "vlastni",
+   "lo": "GenAI-3.4.1",
+   "k": "K1",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Which standard provides a framework for AI lifecycle processes for systems using machine learning, emphasizing safety and transparency?</p>",
+    "moznosti": [
+     "ISO/IEC 42001:2023",
+     "ISO/IEC 25010:2023",
+     "ISO/IEC/IEEE 29119-3:2021",
+     "ISO/IEC 23053:2022"
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. ISO/IEC 42001 specifies requirements for managing AI systems within an organization.",
+     "b": "Incorrect. ISO/IEC 25010 is a product quality model and is not listed in syllabus 3.4.1.",
+     "c": "Incorrect. This standard covers test documentation and is not listed in syllabus 3.4.1.",
+     "d": "Correct. This matches the description in syllabus 3.4.1."
+    },
+    "vysvetleni_obecne": "In testing, ISO/IEC 23053 provides a framework for data quality, transparency and safety (syllabus 3.4.1)."
+   },
+   "cz": {
+    "q": "<p>Který standard poskytuje rámec pro procesy životního cyklu AI systémů se strojovým učením s důrazem na bezpečnost a transparentnost?</p>",
+    "moznosti": [
+     "ISO/IEC 42001:2023",
+     "ISO/IEC 25010:2023",
+     "ISO/IEC/IEEE 29119-3:2021",
+     "ISO/IEC 23053:2022"
+    ],
+    "vysvetleni": {
+     "a": "Nesprávně. ISO/IEC 42001 stanoví požadavky na řízení AI systémů v organizaci.",
+     "b": "Nesprávně. ISO/IEC 25010 je model kvality produktu a v sylabu 3.4.1 není.",
+     "c": "Nesprávně. Tento standard se týká testovací dokumentace a v sylabu 3.4.1 není.",
+     "d": "Správně. Odpovídá to popisu v sylabu 3.4.1."
+    },
+    "vysvetleni_obecne": "V testování dává ISO/IEC 23053 rámec pro kvalitu dat, transparentnost a bezpečnost (sylabus 3.4.1)."
+   },
+   "spravne": [
+    "d"
+   ],
+   "oddil": "3.4.1",
+   "poznamka": "Sample Exam A v1.1 u 23053 uvádí „fault tolerance“, sylabus v1.1 „safety“."
+  },
+  {
+   "id": "CG-3.4.1-05",
+   "zdroj": "vlastni",
+   "lo": "GenAI-3.4.1",
+   "k": "K1",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Why should test organizations keep track of AI regulations, standards and frameworks?</p>",
+    "moznosti": [
+     "Because AI technologies and their regulatory landscape keep evolving, including regulations, standards, national laws and best-practice frameworks.",
+     "Because the listed standards replace the need for defined test processes.",
+     "Because the EU AI Act applies only to companies based in the United States.",
+     "Because an organization certified to ISO/IEC 42001 no longer has to comply with GDPR."
+    ],
+    "vysvetleni": {
+     "a": "Correct. Syllabus 3.4.1 states that test organizations need to stay updated as the landscape evolves.",
+     "b": "Incorrect. The standards support responsible use of GenAI; they do not replace test processes.",
+     "c": "Incorrect. The EU AI Act is a European regulation.",
+     "d": "Incorrect. A standard certification does not replace legal obligations."
+    },
+    "vysvetleni_obecne": "Addressing GenAI risks should consider regulations, standards and best-practice frameworks (syllabus 3.4)."
+   },
+   "cz": {
+    "q": "<p>Proč mají testovací organizace sledovat předpisy, standardy a rámce pro AI?</p>",
+    "moznosti": [
+     "Protože se technologie AI i oblast předpisů stále vyvíjejí, včetně předpisů, standardů, národních zákonů a rámců osvědčených postupů.",
+     "Protože uvedené standardy nahrazují potřebu definovaných testovacích procesů.",
+     "Protože EU AI Act platí jen pro firmy se sídlem v USA.",
+     "Protože organizace certifikovaná podle ISO/IEC 42001 už nemusí dodržovat GDPR."
+    ],
+    "vysvetleni": {
+     "a": "Správně. Sylabus 3.4.1 uvádí, že testovací organizace musí držet krok s vývojem.",
+     "b": "Nesprávně. Standardy podporují odpovědné použití generativní AI, testovací procesy nenahrazují.",
+     "c": "Nesprávně. EU AI Act je evropský předpis.",
+     "d": "Nesprávně. Certifikace podle standardu nenahrazuje zákonné povinnosti."
+    },
+    "vysvetleni_obecne": "Při řešení rizik generativní AI je třeba brát v úvahu předpisy, standardy a rámce osvědčených postupů (sylabus 3.4)."
+   },
+   "spravne": [
+    "a"
+   ],
+   "oddil": "3.4.1",
+   "poznamka": ""
+  }
+ ]
+}

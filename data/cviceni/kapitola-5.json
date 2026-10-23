@@ -1,0 +1,109 @@
+[
+ {"id": "HO-5.1.3", "uroven": "H1", "lo": "GenAI-5.1.3",
+  "nazev": "Odhad opakovaných nákladů GenAI pro testovací úlohu",
+  "cil": "Spočítat a porovnat měsíční opakované náklady jedné testovací úlohy u komerčního modelu a u open source modelu a pochopit, co o výsledku rozhoduje.",
+  "zadani": "Vyber jednu opakovanou testovací úlohu, například noční shrnutí výsledků regresního běhu nebo generování testovacích případů z nových uživatelských scénářů. Odhadni tokeny na vstupu a výstupu, četnost a rezervu na opakování. Spočítej měsíční náklady pro alespoň jeden komerční model (cena za tokeny podle aktuálního ceníku dodavatele) a pro jeden open source model provozovaný na vlastním nebo pronajatém serveru. Použij jen vymyšlená nebo veřejná data.",
+  "kroky": [
+   "Popiš úlohu jednou větou a urči četnost (kolikrát denně, kolik dní v měsíci).",
+   "Odhadni tokeny jednoho volání: systémový prompt, vložená data a výstup. Pomůcka: 1 token je zhruba 4 znaky anglického textu, u češtiny počítej spíš víc tokenů.",
+   "Ověř si počet tokenů nástrojem pro tokenizaci (tokenizer) u jednoho reálného promptu s vymyšlenými daty.",
+   "Na stránkách dodavatelů dohledej aktuální ceny za vstupní a výstupní tokeny. Ceny si zapiš i s datem.",
+   "Spočítej cenu jednoho volání, pak měsíční náklad včetně rezervy 20 % na opakování.",
+   "U open source modelu odhadni cenu serveru (např. pronájem GPU instance) a hodiny správy za měsíc.",
+   "Porovnej obě varianty v tabulce. Spočítej, při jakém počtu volání za měsíc se varianty vyrovnají.",
+   "Napiš tři věty závěru: co rozhoduje o ceně, kdy se vyplatí která varianta, co výpočet nezahrnuje (například čas na revizi výstupů)."
+  ],
+  "prompt": "Jsi asistent pro odhad nákladů. Úloha: každou noc shrnout výsledky regresního běhu (cca 12 000 tokenů vstupu, systémový prompt 800 tokenů, výstup 1 000 tokenů), 22 běhů měsíčně, rezerva 20 %. Ceny: model A X USD / 1M vstupních a Y USD / 1M výstupních tokenů; model B open source na serveru za Z USD měsíčně plus 4 hodiny správy po W USD. Spočítej měsíční náklady obou variant krok za krokem a bod zvratu v počtu volání. Výpočet ukaž v tabulce, nic nezaokrouhluj před koncem.",
+  "co_sledovat": [
+   "Rozlišuješ opakované náklady (tokeny, licence, server, správa) od jednorázových (pilot, instalace)?",
+   "Počítáš vstupní a výstupní tokeny zvlášť? Výstupní bývají dražší.",
+   "Ověřil jsi výpočet modelu ručně? LLM v aritmetice chybuje.",
+   "Má závěr i neekonomické hledisko, například jestli data smějí opustit vlastní prostředí?"
+  ],
+  "projekt": "obecné", "cas_min": 45},
+
+ {"id": "CV-5-01", "uroven": "H2", "lo": "GenAI-5.1.4",
+  "nazev": "Roadmapa zavedení GenAI na testovacím projektu",
+  "cil": "Sestavit roadmapu zavedení GenAI pro smyšlený testovací projekt podle tří fází sylabu, s metrikami a riziky.",
+  "zadani": "Smyšlený projekt: dodavatel testuje pro banku webovou aplikaci pro správu plateb (tým 6 testerů, regresní sada 900 testovacích případů, dvoutýdenní sprinty). Navrhni roadmapu na 6 měsíců. Pro každou fázi (Discovery, Initiation and usage definition, Utilization and iteration) uveď činnosti, výstup, metriky a rizika. Vyber alespoň tři případy použití a ukaž, že každý může být v jiné fázi. Nepoužívej žádná skutečná firemní ani klientská data.",
+  "kroky": [
+   "Napiš 2 až 3 měřitelné cíle (5.1.2), např. zkrátit přípravu regresních testovacích případů o X %.",
+   "Vypiš 5 kandidátních případů použití a seřaď je podle přínosu a rizika (práce s osobními daty = vyšší riziko).",
+   "Pro fázi Discovery popiš školení, přístup ke schválenému nástroji a první experimenty na veřejné ukázkové aplikaci.",
+   "Pro fázi Initiation and usage definition vyber 3 případy použití, posuď napojení na nástroj pro správu testů a CI a sepiš dohodu s klientem, jaká data smí do nástroje.",
+   "Pro fázi Utilization and iteration urči metriky (např. podíl AI výstupů přijatých bez úprav, ušetřený čas, execution success rate) a jak často se vyhodnocují.",
+   "Doplň registr rizik: stínová AI, únik dat, halucinace v očekávaných výsledcích, strach ze ztráty práce. Ke každému opatření.",
+   "Nakresli časovou osu (text nebo tabulka), na které jsou případy použití v různých fázích současně."
+  ],
+  "prompt": "Jsi zkušený test manažer. Pro smyšlený projekt (tým 6 testerů, bankovní webová aplikace pro platby, regresní sada 900 případů, sprinty 2 týdny) navrhni šestiměsíční roadmapu zavedení GenAI podle fází Discovery, Initiation and usage definition, Utilization and iteration. Pro každou fázi uveď činnosti, výstup, metriky a rizika. Vyber tři případy použití a ukaž, že mohou být v různých fázích. Klientská data do nástroje nevkládáme, pracujeme s vymyšlenými daty. Výstup jako tabulka a krátký registr rizik.",
+  "co_sledovat": [
+   "Jsou názvy fází přesně podle sylabu?",
+   "Jsou cíle měřitelné a mají metriky, které je ověří?",
+   "Je v plánu revize AI výstupů (quality gate) a označení AI obsahu?",
+   "Řeší plán lidskou stránku, tedy obavy z nahrazení?",
+   "Výstup modelu kontroluješ ty, nepřebíráš ho bez úprav."
+  ],
+  "projekt": "obecné", "cas_min": 60},
+
+ {"id": "CV-5-02", "uroven": "H2", "lo": "GenAI-5.1.3",
+  "nazev": "Výběrová matice LLM vs. SLM pro tři testovací úlohy",
+  "cil": "Pro tři různé testovací úlohy rozhodnout podle čtyř kritérií sylabu, jestli zkusit nejdřív SLM, nebo LLM, a navrhnout, jak výběr ověřit měřením.",
+  "zadani": "Úlohy: (1) třídění reportů o defektech podle komponenty, 300 denně, data nesmí opustit vlastní prostředí; (2) extrakce testovacích podmínek ze 150stránkové specifikace, jednou za release; (3) generování Playwright testů z testovacích případů pro projekt uctenky. Pro každou úlohu vyplň matici: výkon (jak ho změříš, na jakém vlastním vzorku), potenciál pro doladění, opakované náklady (hrubý odhad), komunita a podpora. Doplň rozlišovací znaky: funkční schopnosti, kontextové okno, typ licence.",
+  "kroky": [
+   "Pro každou úlohu popiš vstup, výstup, objem a omezení na data.",
+   "Navrhni vlastní benchmark: 20 až 50 příkladů s referenčním výsledkem a metriku z 2.3.1 (accuracy, recall, execution success rate…).",
+   "Vyplň matici čtyř kritérií pro kandidáta SLM a kandidáta LLM.",
+   "Pro úlohu 3 (uctenky) skutečně porovnej dva dostupné modely na 10 testovacích případech a změř execution success rate vygenerovaných testů.",
+   "Rozhodni a zdůvodni: SLM, LLM, nebo kombinace více modelů.",
+   "Napiš, co by tvé rozhodnutí změnilo (např. jiný objem, jiná pravidla pro data)."
+  ],
+  "prompt": "Mám tři testovací úlohy: [popis 1], [popis 2], [popis 3]. Pro každou vytvoř tabulku se čtyřmi kritérii výběru modelu podle ISTQB CT-GenAI 5.1.3 (model performance, fine-tuning potential, recurring cost, community and support) a porovnej malý jazykový model provozovaný lokálně s velkým komerčním modelem. U výkonu navrhni, jak ho změřit na vlastním vzorku dat a jakou metrikou. Nevybírej podle veřejných žebříčků.",
+  "co_sledovat": [
+   "Opíráš výkon o vlastní benchmark, ne o veřejný žebříček?",
+   "Odlišuješ opakované a jednorázové náklady?",
+   "Zohledňuješ pravidla pro data (lokální provoz)?",
+   "Připouštíš více modelů pro různé úlohy?"
+  ],
+  "projekt": "uctenky", "cas_min": 60},
+
+ {"id": "CV-5-03", "uroven": "H1", "lo": "GenAI-5.1.1",
+  "nazev": "Pravidla proti stínové AI pro testovací tým",
+  "cil": "Sepsat stručná a použitelná pravidla, která testovacímu týmu nabídnou schválenou cestu místo stínové AI a pokryjí všechna tři rizika z 5.1.1.",
+  "zadani": "Pro smyšlený testovací tým, který pracuje pro banku a pojišťovnu, napiš pravidla na jednu stranu A4. Pravidla nesmí být jen zákazy: musí říct, jaký nástroj a postup použít místo zakázaného. Pokryj bezpečnost a ochranu dat, compliance a duševní vlastnictví. Nevymýšlej konkrétní interní pravidla skutečné firmy, piš obecně a místa pro firemní specifika označ jako [doplnit podle pravidel firmy].",
+  "kroky": [
+   "Sepiš 5 typických situací, kdy tester sáhne po neschváleném nástroji, a proč (čas, pohodlí, neznalost).",
+   "Ke každé situaci přiřaď riziko z 5.1.1 (bezpečnost a data, compliance, IP).",
+   "Ke každé situaci napiš schválenou alternativu: jaký typ nástroje, s jakými daty, kdo ho schvaluje [doplnit].",
+   "Přidej pravidla pro data: co nikdy nevkládat (osobní údaje, klientská data, přístupové údaje), jak data sanitizovat, kdy použít syntetická data.",
+   "Přidej pravidla pro výstupy: označení AI obsahu, revize před použitím, licenční nejasnosti hlásit.",
+   "Přidej postup, jak požádat o schválení nového nástroje a na koho se obrátit [doplnit, např. AI board nebo bezpečnostní útvar].",
+   "Zkontroluj text: věty krátké, bez obecných frází, každé pravidlo má konkrétní akci."
+  ],
+  "prompt": "Pomoz mi sepsat pravidla proti stínové AI pro testovací tým dodavatele, který testuje pro banky a pojišťovny. Pravidla mají mít jednu stranu, pokrýt tři rizika podle ISTQB CT-GenAI 5.1.1 (security a data privacy, compliance, intellectual property) a ke každému zákazu nabídnout schválenou alternativu. Místa, kde záleží na konkrétních pravidlech firmy, označ [doplnit podle pravidel firmy]. Nevymýšlej konkrétní názvy nástrojů ani interní předpisy.",
+  "co_sledovat": [
+   "Pokrývají pravidla všechna tři rizika?",
+   "Má každý zákaz schválenou alternativu?",
+   "Nejsou v textu vymyšlená firemní pravidla prezentovaná jako skutečná?",
+   "Je jasné, na koho se obrátit, když tester neví?"
+  ],
+  "projekt": "obecné", "cas_min": 40},
+
+ {"id": "CV-5-04", "uroven": "H1", "lo": "GenAI-5.2.1",
+  "nazev": "Sebehodnocení dovedností pro testování s GenAI",
+  "cil": "Ohodnotit vlastní úroveň v pěti oblastech dovedností a znalostí z 5.2.1 a z výsledku odvodit tři konkrétní kroky rozvoje.",
+  "zadani": "Ohodnoť se na škále 1 až 4 (1 = neznám, 2 = znám teorii, 3 = používám občas, 4 = používám běžně a umím to naučit druhé) v těchto položkách: prompt engineering, porozumění kontextovému oknu, metody revize AI testwaru, doménová a testovací odbornost při posouzení AI výstupu, posouzení schopností LLM, zpřesňování promptů, hodnocení AI testwaru metrikami, znalost rizik GenAI a jejich zmírnění, sanitizace dat a prompty šetrné k soukromí, výběr modelu přiměřené velikosti. Ke každé položce napiš důkaz (konkrétní situaci, kdy jsi to dělal).",
+  "kroky": [
+   "Vytvoř tabulku: oblast, položka, hodnocení 1 až 4, důkaz.",
+   "U položek s hodnocením 1 až 2 napiš, proč je to slabé místo.",
+   "Vyber tři položky s největším dopadem na tvou práci.",
+   "Ke každé navrhni konkrétní krok na 2 týdny (např. kontrolní seznam pro revizi AI testovacích případů, skript na maskování dat, porovnání malého a velkého modelu na jedné úloze).",
+   "Po dvou týdnech se ohodnoť znovu a zapiš změnu."
+  ],
+  "prompt": "Jsem test analytik a chci se ohodnotit podle ISTQB CT-GenAI 5.2.1. Polož mi postupně otázky ke každé z těchto oblastí: technické AI dovednosti, doménová a testovací odbornost, posouzení schopností LLM a zpřesňování promptů, rizika a ochrana dat, environmentální hledisko. Ke každé oblasti se zeptej na konkrétní příklad z mé praxe. Na konci navrhni tři kroky rozvoje na dva týdny. Nehodnoť mě sám, hodnocení dám já.",
+  "co_sledovat": [
+   "Má každé hodnocení konkrétní důkaz, ne jen pocit?",
+   "Jsou kroky rozvoje konkrétní a ověřitelné?",
+   "Do konverzace s modelem nevkládej firemní ani klientská data, jen obecný popis situací."
+  ],
+  "projekt": "obecné", "cas_min": 30}
+]

@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="cs" data-tema="">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Praxe | ISTQB CT-GenAI</title>
+<meta name="description" content="Praktické návody k AI nástrojům v testování: chat, GitHub Copilot, MCP, Claude Code, Python s Behave a Playwright, CI/CD.">
+<meta name="color-scheme" content="light dark">
+<link rel="stylesheet" href="assets/styl.css">
+<script>
+/* Nastaví uložený režim ještě před vykreslením, aby stránka neproblikla. */
+(function(){try{var t=localStorage.getItem('genai-tema');if(t){document.documentElement.setAttribute('data-tema',t);}}catch(e){}})();
+</script>
+</head>
+<body data-kapitola="6">
+<a class="preskocit" href="#text">Přeskočit na text</a>
+<div class="postup" aria-hidden="true"></div>
+<header class="hlavicka">
+  <div class="hlavicka-vnitrek">
+    <a class="znacka" href="index.html">ISTQB CT-GenAI <span>česká studijní příručka</span></a>
+    <nav class="navigace" aria-label="Hlavní navigace">
+      <a href="index.html">Úvod</a>
+      <span class="skupina" data-skupina>
+        <a href="kapitoly.html" class="zvyraznit">Kapitoly</a>
+        <ul class="podmenu" id="podmenu-kapitoly" aria-label="Seznam kapitol"><li><a href="kapitola-1/vyklad.html"><b>1</b> Úvod do generativní AI</a></li><li><a href="kapitola-2/vyklad.html"><b>2</b> Prompt engineering</a></li><li><a href="kapitola-3/vyklad.html"><b>3</b> Rizika generativní AI</a></li><li><a href="kapitola-4/vyklad.html"><b>4</b> Infrastruktura s LLM</a></li><li><a href="kapitola-5/vyklad.html"><b>5</b> Zavedení GenAI v organizaci</a></li></ul>
+      </span>
+      <a href="slovnik.html">Slovník</a>
+      <a href="karticky.html">Kartičky</a>
+      <a href="prirazovani.html">Přiřazování</a>
+      <a href="cviceni.html">Cvičení</a>
+      <a href="praxe.html" aria-current="page">Praxe</a>
+      <a href="cile.html">Cíle</a>
+      <a href="zkouska.html">Zkouška</a>
+      <a href="lokalni/index.html" class="lokalni-odkaz">Lokální testy</a>
+      <button type="button" class="prepinac-tema" data-prepinac-tema>Tmavý režim</button>
+      <button type="button" class="ucet-tlacitko" data-ucet hidden>Přihlásit</button>
+    </nav>
+  </div>
+</header>
+<div class="stranka uvod">
+<main id="text">
+<div class="uvod-hlava">
+  <p class="drobky">Praktické kurzy · mimo zkoušku</p>
+  <h1>Praxe</h1>
+  <p class="perex">Návody krok za krokem, jak AI nástroje použít v testování: od chatbota přes GitHub Copilot,
+  MCP a Claude Code po vlastní framework v Pythonu a běh v CI. Podklady jsou dva praktické kurzy
+  (Rahul Shetty: AI Tools for QA, Gianni Bruno: GenAI v Pythonu), výklad je vlastními slovy.</p>
+  <p class="poznamka"><strong>Do cloudových nástrojů nikdy firemní ani klientská data.</strong>
+  Cvičení běží na veřejných demo aplikacích (EventHub z kurzu, webdriveruniversity.com, goal-tracker API)
+  nebo na vlastních projektech. API klíče patří do proměnných prostředí, ne do kódu.</p>
+  <p>Tahle sekce na zkoušku nepřipravuje. Ukazuje, jak pojmy ze sylabu (prompt chaining, RAG, agenti, LLMOps)
+  vypadají v práci. U každého modulu je odkaz na související kapitoly.</p>
+  <p class="napoveda" id="praxe-celkem" aria-live="polite" data-praxe-cviceni="praxe-01-prompty-pro-testera-login-portal-od-nuly praxe-01-prompty-pro-testera-tri-techniky-jedna-uloha praxe-01-prompty-pro-testera-rozpory-v-pozadavcich praxe-02-lokalni-modely-a-ochrana-dat-lokalni-versus-cloud-na-jedne-uloze praxe-02-lokalni-modely-a-ochrana-dat-rag-nad-dokumentaci-vlastniho-projektu praxe-02-lokalni-modely-a-ochrana-dat-rozsireni-maskovani praxe-03-github-copilot-pro-testera-login-portal-s-copilotem praxe-03-github-copilot-pro-testera-druhy-vlastni-agent-recenzent-testu praxe-03-github-copilot-pro-testera-agent-nad-vlastnim-projektem praxe-04-mcp-a-playwright-mcp-rezervace-jako-rucni-kroky-a-test praxe-04-mcp-a-playwright-mcp-data-z-databaze-do-formulare praxe-04-mcp-a-playwright-mcp-posudek-ciziho-serveru praxe-05-claude-code-pro-qa-skills-pro-vlastni-projekt-uctenky praxe-05-claude-code-pro-qa-recenze-a-oprava-jednoho-testu praxe-05-claude-code-pro-qa-report-pokryti-a-jeho-kontrola praxe-06-ci-cd-a-docker-s-ai-agentem-cervena-pipeline-schvalne praxe-06-ci-cd-a-docker-s-ai-agentem-kontejner-proti-lokalnimu-eventhubu praxe-06-ci-cd-a-docker-s-ai-agentem-cela-aplikace-v-github-actions praxe-07-n8n-agent-pro-qa-agent-ktery-nezaklada-duplicity praxe-07-n8n-agent-pro-qa-test-prompt-injection praxe-07-n8n-agent-pro-qa-klasicke-workflow-proti-agentovi praxe-08-nastroje-postavene-na-llm-platforma-proti-vlastnimu-agentovi praxe-08-nastroje-postavene-na-llm-hodnoceni-druhe-platformy praxe-08-nastroje-postavene-na-llm-doporuceni-pro-tym praxe-09-python-a-openai-api-login-portal-misto-contact-us praxe-09-python-a-openai-api-zmer-opakovatelnost praxe-09-python-a-openai-api-recenze-vystupu-podle-metrik praxe-10-bdd-framework-behave-playwright-ai-rozsir-examples-o-techniky-navrhu-testu praxe-10-bdd-framework-behave-playwright-ai-druhy-feature-soubor-pro-login-portal praxe-10-bdd-framework-behave-playwright-ai-zmer-kolik-navrhu-z-ai-bylo-pouzitelnych praxe-11-api-testy-s-ai-scenare-z-dokumentace-goal-trackeru praxe-11-api-testy-s-ai-porovnani-odpovedi-se-snapshotem praxe-11-api-testy-s-ai-sql-dotazy-se-zmenenym-schematem praxe-12-jenkins-ci-a-reporty-nocni-regresni-beh praxe-12-jenkins-ci-a-reporty-freestyle-job-prevedeny-na-jenkinsfile praxe-12-jenkins-ci-a-reporty-srovnani-jenkins-a-github-actions praxe-projekt-etapa-0-hotova praxe-projekt-etapa-1-hotova praxe-projekt-etapa-2-hotova praxe-projekt-etapa-3-hotova praxe-projekt-etapa-4-hotova praxe-projekt-etapa-5-hotova praxe-projekt-etapa-6-hotova praxe-projekt-etapa-7-hotova" data-praxe-postup>44 cvičení</p>
+</div>
+<section class="sekce" id="rozcestnik"><h2>Tahák a závěrečný projekt</h2><p>Tahák porovnává všechny nástroje ze sekce na jedné stránce. Závěrečný projekt spojí moduly do jedné aplikace, kterou jde ukázat na GitHubu.</p><ul class="mrizka"><li class="karta praxe-karta" id="modul-tahak" data-praxe-cviceni="">
+  <p class="karta-cislo">Začni tady</p>
+  <h3>Tahák nástrojů</h3>
+  <p class="praxe-podtitul">Všechny nástroje ze sekce Praxe na jedné stránce: k čemu jsou, kdy je nepoužít, kolik stojí a kam tečou data.</p>
+  <p class="karta-meta">15–20 min · začátečník</p>
+  <p class="praxe-nastroje">ChatGPT, Microsoft Copilot, NotebookLM, GPT4All, Ollama, GitHub Copilot, MCP, Playwright MCP, Claude Code, n8n, ContextQA, OpenAI API, Anthropic API, Behave, Playwright, Jenkins, GitHub Actions</p>
+  <p class="praxe-postup" data-praxe-postup>bez cvičení</p>
+  <ul><li><a href="praxe/tahak.html" class="hlavni" data-splneno-odkaz="modul-tahak">Otevřít<span>≈ 9 min čtení</span></a></li></ul>
+</li><li class="karta praxe-karta" id="modul-projekt" data-praxe-cviceni="praxe-projekt-etapa-0-hotova praxe-projekt-etapa-1-hotova praxe-projekt-etapa-2-hotova praxe-projekt-etapa-3-hotova praxe-projekt-etapa-4-hotova praxe-projekt-etapa-5-hotova praxe-projekt-etapa-6-hotova praxe-projekt-etapa-7-hotova">
+  <p class="karta-cislo">Na závěr</p>
+  <h3>Závěrečný projekt</h3>
+  <p class="praxe-podtitul">AI asistent pro test design. Ze specifikace vzniknou testovací podmínky, testovací případy, scénáře v Gherkin a spustitelné testy. Kvalitu výstupu měří metriky ze sylabu a celé to běží v CI.</p>
+  <p class="karta-meta">40–50 h (4–5 týdnů po 10 h) · pokročilý</p>
+  <p class="praxe-nastroje">Python 3.12, OpenAI API nebo Anthropic API (volitelně Ollama), Behave, Playwright, requests, pytest, GitHub Actions</p>
+  <p class="praxe-postup" data-praxe-postup>8 cvičení</p>
+  <ul><li><a href="praxe/projekt.html" class="hlavni" data-splneno-odkaz="modul-projekt">Otevřít<span>≈ 12 min čtení</span></a></li></ul>
+</li></ul></section><section class="sekce" id="skupina-chat"><h2>Nástroje v chatu</h2><p class="praxe-skupina-popis">Chatboti a aplikace bez programování: prompty pro testovací úlohy, práce s dokumenty, lokální modely.</p><ul class="mrizka"><li class="karta praxe-karta" id="modul-01-prompty-pro-testera" data-praxe-cviceni="praxe-01-prompty-pro-testera-login-portal-od-nuly praxe-01-prompty-pro-testera-tri-techniky-jedna-uloha praxe-01-prompty-pro-testera-rozpory-v-pozadavcich">
+  <p class="karta-cislo">Modul 1</p>
+  <h3>Prompty pro testera v chatu</h3>
+  <p class="praxe-podtitul">Z dokumentu s požadavky vytvoříš v běžném AI chatu testovací případy, testovací plán, rozdělení testů do pyramidy a kombinace testovacích dat a výsledek zkontroluješ.</p>
+  <p class="karta-meta">3–4 h · začátečník</p>
+  <p class="praxe-nastroje">ChatGPT, Microsoft Copilot, Google Gemini nebo NotebookLM, webový prohlížeč, Python 3 (jen krok 10)</p>
+  <p class="praxe-postup" data-praxe-postup>3 cvičení</p>
+  <ul><li><a href="praxe/01-prompty-pro-testera.html" class="hlavni" data-splneno-odkaz="modul-01-prompty-pro-testera">Otevřít<span>≈ 28 min čtení</span></a></li></ul>
+</li><li class="karta praxe-karta" id="modul-02-lokalni-modely-a-ochrana-dat" data-praxe-cviceni="praxe-02-lokalni-modely-a-ochrana-dat-lokalni-versus-cloud-na-jedne-uloze praxe-02-lokalni-modely-a-ochrana-dat-rag-nad-dokumentaci-vlastniho-projektu praxe-02-lokalni-modely-a-ochrana-dat-rozsireni-maskovani">
+  <p class="karta-cislo">Modul 2</p>
+  <h3>Lokální modely a ochrana dat</h3>
+  <p class="praxe-podtitul">Rozběhneš jazykový model na vlastním počítači, necháš ho odpovídat z vlastních dokumentů a z Pythonu, a víš, kdy má lokální model v bance smysl a kdy ne.</p>
+  <p class="karta-meta">3–4 h (plus stahování modelů) · středně pokročilý</p>
+  <p class="praxe-nastroje">GPT4All, Python 3, volitelně Ollama nebo LM Studio, Hugging Face Transformers (jen ukázka)</p>
+  <p class="praxe-postup" data-praxe-postup>3 cvičení</p>
+  <ul><li><a href="praxe/02-lokalni-modely-a-ochrana-dat.html" class="hlavni" data-splneno-odkaz="modul-02-lokalni-modely-a-ochrana-dat">Otevřít<span>≈ 20 min čtení</span></a></li></ul>
+</li><li class="karta praxe-karta" id="modul-08-nastroje-postavene-na-llm" data-praxe-cviceni="praxe-08-nastroje-postavene-na-llm-platforma-proti-vlastnimu-agentovi praxe-08-nastroje-postavene-na-llm-hodnoceni-druhe-platformy praxe-08-nastroje-postavene-na-llm-doporuceni-pro-tym">
+  <p class="karta-cislo">Modul 8</p>
+  <h3>Testovací nástroje postavené na LLM</h3>
+  <p class="praxe-podtitul">Vyzkoušíš komerční testovací platformu s LLM na EventHubu od nahrání požadavků po plán vydání a podle vlastních kritérií posoudíš, jestli by obstála na projektu pro banku.</p>
+  <p class="karta-meta">2–3 h · začátečník</p>
+  <p class="praxe-nastroje">ContextQA, TestMu AI (KaneAI), testRigor, rozšíření prohlížeče Chrome</p>
+  <p class="praxe-postup" data-praxe-postup>3 cvičení</p>
+  <ul><li><a href="praxe/08-nastroje-postavene-na-llm.html" class="hlavni" data-splneno-odkaz="modul-08-nastroje-postavene-na-llm">Otevřít<span>≈ 16 min čtení</span></a></li></ul>
+</li></ul></section><section class="sekce" id="skupina-ide"><h2>AI v IDE a agenti</h2><p class="praxe-skupina-popis">GitHub Copilot ve vývojovém prostředí, MCP servery, Claude Code a skills, n8n a další agenti.</p><ul class="mrizka"><li class="karta praxe-karta" id="modul-03-github-copilot-pro-testera" data-praxe-cviceni="praxe-03-github-copilot-pro-testera-login-portal-s-copilotem praxe-03-github-copilot-pro-testera-druhy-vlastni-agent-recenzent-testu praxe-03-github-copilot-pro-testera-agent-nad-vlastnim-projektem">
+  <p class="karta-cislo">Modul 3</p>
+  <h3>GitHub Copilot pro testera</h3>
+  <p class="praxe-podtitul">S Copilotem ve VS Code postavíš a rozšíříš malý testovací projekt v Pythonu s Playwrightem a pytestem, napíšeš vlastního agenta na návrh scénářů a vyzkoušíš cloudového agenta na GitHubu.</p>
+  <p class="karta-meta">4–5 h · středně pokročilý</p>
+  <p class="praxe-nastroje">VS Code, GitHub Copilot, Python 3, pytest, Playwright (pytest-playwright), Git, GitHub; volitelně PyCharm</p>
+  <p class="praxe-postup" data-praxe-postup>3 cvičení</p>
+  <ul><li><a href="praxe/03-github-copilot-pro-testera.html" class="hlavni" data-splneno-odkaz="modul-03-github-copilot-pro-testera">Otevřít<span>≈ 23 min čtení</span></a></li></ul>
+</li><li class="karta praxe-karta" id="modul-04-mcp-a-playwright-mcp" data-praxe-cviceni="praxe-04-mcp-a-playwright-mcp-rezervace-jako-rucni-kroky-a-test praxe-04-mcp-a-playwright-mcp-data-z-databaze-do-formulare praxe-04-mcp-a-playwright-mcp-posudek-ciziho-serveru">
+  <p class="karta-cislo">Modul 4</p>
+  <h3>MCP a Playwright MCP</h3>
+  <p class="praxe-podtitul">Připojíš k LLM prohlížeč, soubory, API a databázi přes MCP servery, necháš agenta projít aplikaci a z jeho průzkumu vznikne Playwright test.</p>
+  <p class="karta-meta">3–4 h · středně pokročilý</p>
+  <p class="praxe-nastroje">Model Context Protocol, Playwright MCP, VS Code s GitHub Copilot, Claude Code nebo Claude Desktop, Node.js</p>
+  <p class="praxe-postup" data-praxe-postup>3 cvičení</p>
+  <ul><li><a href="praxe/04-mcp-a-playwright-mcp.html" class="hlavni" data-splneno-odkaz="modul-04-mcp-a-playwright-mcp">Otevřít<span>≈ 20 min čtení</span></a></li></ul>
+</li><li class="karta praxe-karta" id="modul-05-claude-code-pro-qa" data-praxe-cviceni="praxe-05-claude-code-pro-qa-skills-pro-vlastni-projekt-uctenky praxe-05-claude-code-pro-qa-recenze-a-oprava-jednoho-testu praxe-05-claude-code-pro-qa-report-pokryti-a-jeho-kontrola">
+  <p class="karta-cislo">Modul 5</p>
+  <h3>Claude Code pro QA – skills a agenti nad EventHubem</h3>
+  <p class="praxe-podtitul">Nad kódem EventHubu postavíš řetězec skills, který vytvoří testovací scénáře, rozdělí je do vrstev pyramidy, napíše a spustí Playwright testy, zreviduje je a vydá report pokrytí.</p>
+  <p class="karta-meta">6–8 h (rozděl do tří večerů) · pokročilý</p>
+  <p class="praxe-nastroje">Claude Code, Playwright, Playwright MCP, Node.js, VS Code</p>
+  <p class="praxe-postup" data-praxe-postup>3 cvičení</p>
+  <ul><li><a href="praxe/05-claude-code-pro-qa.html" class="hlavni" data-splneno-odkaz="modul-05-claude-code-pro-qa">Otevřít<span>≈ 37 min čtení</span></a></li></ul>
+</li><li class="karta praxe-karta" id="modul-07-n8n-agent-pro-qa" data-praxe-cviceni="praxe-07-n8n-agent-pro-qa-agent-ktery-nezaklada-duplicity praxe-07-n8n-agent-pro-qa-test-prompt-injection praxe-07-n8n-agent-pro-qa-klasicke-workflow-proti-agentovi">
+  <p class="karta-cislo">Modul 7</p>
+  <h3>Agent v n8n pro QA workflow</h3>
+  <p class="praxe-podtitul">Postavíš v n8n AI agenta, který přečte tabulku nalezených defektů, nové založí v Jiře a pošle souhrn, a otestuješ, co agent udělá s duplicitami a s podvrženým textem v tabulce.</p>
+  <p class="karta-meta">2–3 h · středně pokročilý</p>
+  <p class="praxe-nastroje">n8n, Jira Cloud, Google Sheets, Gmail, OpenAI API nebo Anthropic API</p>
+  <p class="praxe-postup" data-praxe-postup>3 cvičení</p>
+  <ul><li><a href="praxe/07-n8n-agent-pro-qa.html" class="hlavni" data-splneno-odkaz="modul-07-n8n-agent-pro-qa">Otevřít<span>≈ 16 min čtení</span></a></li></ul>
+</li></ul></section><section class="sekce" id="skupina-python"><h2>Automatizace v Pythonu</h2><p class="praxe-skupina-popis">Volání LLM z Pythonu přes API a testovací framework s Behave a Playwright.</p><ul class="mrizka"><li class="karta praxe-karta" id="modul-09-python-a-openai-api" data-praxe-cviceni="praxe-09-python-a-openai-api-login-portal-misto-contact-us praxe-09-python-a-openai-api-zmer-opakovatelnost praxe-09-python-a-openai-api-recenze-vystupu-podle-metrik">
+  <p class="karta-cislo">Modul 9</p>
+  <h3>Generování testovacích případů z Pythonu přes API LLM</h3>
+  <p class="praxe-podtitul">Napíšeš skript, který z požadavků vygeneruje testovací případy ve formátu JSON, zkontroluje je a řekne, kolik volání stálo.</p>
+  <p class="karta-meta">3–4 h · středně pokročilý</p>
+  <p class="praxe-nastroje">Python 3.12, openai (Python SDK), python-dotenv, VS Code</p>
+  <p class="praxe-postup" data-praxe-postup>3 cvičení</p>
+  <ul><li><a href="praxe/09-python-a-openai-api.html" class="hlavni" data-splneno-odkaz="modul-09-python-a-openai-api">Otevřít<span>≈ 23 min čtení</span></a></li></ul>
+</li><li class="karta praxe-karta" id="modul-10-bdd-framework-behave-playwright-ai" data-praxe-cviceni="praxe-10-bdd-framework-behave-playwright-ai-rozsir-examples-o-techniky-navrhu-testu praxe-10-bdd-framework-behave-playwright-ai-druhy-feature-soubor-pro-login-portal praxe-10-bdd-framework-behave-playwright-ai-zmer-kolik-navrhu-z-ai-bylo-pouzitelnych">
+  <p class="karta-cislo">Modul 10</p>
+  <h3>BDD framework – Behave, Playwright a AI</h3>
+  <p class="praxe-podtitul">Krok za krokem postavíš testovací framework nad formulářem Contact Us, ve kterém AI píše scénáře a navrhuje kód kroků a ty ho kontroluješ.</p>
+  <p class="karta-meta">8–10 h · pokročilý</p>
+  <p class="praxe-nastroje">Python 3.12, Behave, Playwright, openai, allure-behave, Allure CLI, VS Code</p>
+  <p class="praxe-postup" data-praxe-postup>3 cvičení</p>
+  <ul><li><a href="praxe/10-bdd-framework-behave-playwright-ai.html" class="hlavni" data-splneno-odkaz="modul-10-bdd-framework-behave-playwright-ai">Otevřít<span>≈ 34 min čtení</span></a></li></ul>
+</li><li class="karta praxe-karta" id="modul-11-api-testy-s-ai" data-praxe-cviceni="praxe-11-api-testy-s-ai-scenare-z-dokumentace-goal-trackeru praxe-11-api-testy-s-ai-porovnani-odpovedi-se-snapshotem praxe-11-api-testy-s-ai-sql-dotazy-se-zmenenym-schematem">
+  <p class="karta-cislo">Modul 11</p>
+  <h3>Testy API s AI</h3>
+  <p class="praxe-podtitul">Přidáš do BDD frameworku testy API, necháš AI navrhnout scénáře z dokumentace a kontraktu a ověříš odpovědi i data v databázi.</p>
+  <p class="karta-meta">4–5 h · pokročilý</p>
+  <p class="praxe-nastroje">Python 3.12, Behave, requests, Playwright (APIRequestContext), openai, SQLite</p>
+  <p class="praxe-postup" data-praxe-postup>3 cvičení</p>
+  <ul><li><a href="praxe/11-api-testy-s-ai.html" class="hlavni" data-splneno-odkaz="modul-11-api-testy-s-ai">Otevřít<span>≈ 22 min čtení</span></a></li></ul>
+</li></ul></section><section class="sekce" id="skupina-ci"><h2>CI/CD</h2><p class="praxe-skupina-popis">Spouštění testů a evaluací v Jenkinsu a GitHub Actions, kontejnery.</p><ul class="mrizka"><li class="karta praxe-karta" id="modul-06-ci-cd-a-docker-s-ai-agentem" data-praxe-cviceni="praxe-06-ci-cd-a-docker-s-ai-agentem-cervena-pipeline-schvalne praxe-06-ci-cd-a-docker-s-ai-agentem-kontejner-proti-lokalnimu-eventhubu praxe-06-ci-cd-a-docker-s-ai-agentem-cela-aplikace-v-github-actions">
+  <p class="karta-cislo">Modul 6</p>
+  <h3>CI/CD a Docker s AI agentem</h3>
+  <p class="praxe-podtitul">Necháš agenta napsat GitHub Actions workflow pro Playwright testy a Docker kontejner pro jejich lokální běh, a pak oba výsledky zreviduješ a opravíš to, co agent udělal špatně.</p>
+  <p class="karta-meta">3–4 h · středně pokročilý</p>
+  <p class="praxe-nastroje">GitHub Actions, Docker Desktop, Claude Code, GitHub CLI, Playwright</p>
+  <p class="praxe-postup" data-praxe-postup>3 cvičení</p>
+  <ul><li><a href="praxe/06-ci-cd-a-docker-s-ai-agentem.html" class="hlavni" data-splneno-odkaz="modul-06-ci-cd-a-docker-s-ai-agentem">Otevřít<span>≈ 19 min čtení</span></a></li></ul>
+</li><li class="karta praxe-karta" id="modul-12-jenkins-ci-a-reporty" data-praxe-cviceni="praxe-12-jenkins-ci-a-reporty-nocni-regresni-beh praxe-12-jenkins-ci-a-reporty-freestyle-job-prevedeny-na-jenkinsfile praxe-12-jenkins-ci-a-reporty-srovnani-jenkins-a-github-actions">
+  <p class="karta-cislo">Modul 12</p>
+  <h3>Jenkins CI a Allure reporty</h3>
+  <p class="praxe-podtitul">Spustíš BDD framework z modulů 10 a 11 v Jenkinsu s výběrem tagu a s reportem Allure u každého buildu, a pro srovnání v GitHub Actions.</p>
+  <p class="karta-meta">3–4 h · středně pokročilý</p>
+  <p class="praxe-nastroje">Java JDK 21, Jenkins LTS, Allure Jenkins Plugin, GitHub Actions, Python 3.12</p>
+  <p class="praxe-postup" data-praxe-postup>3 cvičení</p>
+  <ul><li><a href="praxe/12-jenkins-ci-a-reporty.html" class="hlavni" data-splneno-odkaz="modul-12-jenkins-ci-a-reporty">Otevřít<span>≈ 17 min čtení</span></a></li></ul>
+</li></ul></section>
+<p class="zk-zdroj">Nástroje se rychle mění. Verze, ceny a podmínky v modulech platí k datu uvedenému v textu;
+před použitím je ověř u výrobce.</p>
+</main>
+</div>
+<footer class="paticka">
+  <div class="paticka-vnitrek">
+    <p><strong>Neoficiální studijní materiál.</strong> Tento web není produktem ani publikací ISTQB®.
+    ISTQB® je registrovaná ochranná známka International Software Testing Qualifications Board.
+    Texty jsou vlastním zpracováním autora vytvořeným při přípravě na zkoušku CT-GenAI; oficiální sylabus
+    a vzorovou zkoušku si stáhněte přímo na istqb.org.</p>
+    <p>Ke zkoušce vždy platí znění oficiálního sylabu CT-GenAI v1.1. Doplněné informace a příklady z praxe
+    slouží k porozumění, nikoli jako zdroj správných odpovědí u zkoušky.</p>
+    <ul>
+      <li><a href="https://istqb.org/certifications/gen-ai/" target="_blank" rel="noopener noreferrer">ISTQB — CT-GenAI</a></li>
+      <li><a href="https://glossary.istqb.org" target="_blank" rel="noopener noreferrer">Slovník ISTQB</a></li>
+      <li><a href="https://casqb.org" target="_blank" rel="noopener noreferrer">CaSQB</a></li>
+      <li><a href="zdroje.html">Zdroje a autorská práva</a></li>
+    </ul>
+  </div>
+</footer>
+<script src="assets/ucet-konfig.js"></script>
+<script src="assets/ucet.js"></script>
+<script src="assets/skript.js"></script>
+</body>
+</html>

@@ -1,0 +1,425 @@
+<!doctype html>
+<html lang="cs" data-tema="">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Claude Code pro QA – skills a agenti nad EventHubem | Praxe | ISTQB CT-GenAI</title>
+<meta name="description" content="Praxe CT-GenAI: Claude Code pro QA – skills a agenti nad EventHubem. Nad kódem EventHubu postavíš řetězec skills, který vytvoří testovací scénáře, rozdělí je do vrstev pyramidy, napíše a spustí Playwright testy, zreviduje je a vydá report pokrytí.">
+<meta name="color-scheme" content="light dark">
+<link rel="stylesheet" href="../assets/styl.css">
+<script>
+/* Nastaví uložený režim ještě před vykreslením, aby stránka neproblikla. */
+(function(){try{var t=localStorage.getItem('genai-tema');if(t){document.documentElement.setAttribute('data-tema',t);}}catch(e){}})();
+</script>
+</head>
+<body data-kapitola="6">
+<a class="preskocit" href="#text">Přeskočit na text</a>
+<div class="postup" aria-hidden="true"></div>
+<header class="hlavicka">
+  <div class="hlavicka-vnitrek">
+    <a class="znacka" href="../index.html">ISTQB CT-GenAI <span>česká studijní příručka</span></a>
+    <nav class="navigace" aria-label="Hlavní navigace">
+      <a href="../index.html">Úvod</a>
+      <span class="skupina" data-skupina>
+        <a href="../kapitoly.html" class="zvyraznit">Kapitoly</a>
+        <ul class="podmenu" id="podmenu-kapitoly" aria-label="Seznam kapitol"><li><a href="../kapitola-1/vyklad.html"><b>1</b> Úvod do generativní AI</a></li><li><a href="../kapitola-2/vyklad.html"><b>2</b> Prompt engineering</a></li><li><a href="../kapitola-3/vyklad.html"><b>3</b> Rizika generativní AI</a></li><li><a href="../kapitola-4/vyklad.html"><b>4</b> Infrastruktura s LLM</a></li><li><a href="../kapitola-5/vyklad.html"><b>5</b> Zavedení GenAI v organizaci</a></li></ul>
+      </span>
+      <a href="../slovnik.html">Slovník</a>
+      <a href="../karticky.html">Kartičky</a>
+      <a href="../prirazovani.html">Přiřazování</a>
+      <a href="../cviceni.html">Cvičení</a>
+      <a href="../praxe.html" aria-current="page">Praxe</a>
+      <a href="../cile.html">Cíle</a>
+      <a href="../zkouska.html">Zkouška</a>
+      <a href="../lokalni/index.html" class="lokalni-odkaz">Lokální testy</a>
+      <button type="button" class="prepinac-tema" data-prepinac-tema>Tmavý režim</button>
+      <button type="button" class="ucet-tlacitko" data-ucet hidden>Přihlásit</button>
+    </nav>
+  </div>
+</header>
+<div class="stranka">
+<div class="layout">
+<main>
+<div class="zahlavi">
+  <p class="drobky"><a href="../praxe.html">Praxe</a> · Modul 5</p>
+  <h1>Claude Code pro QA – skills a agenti nad EventHubem</h1>
+  <p class="podtitul">Nad kódem EventHubu postavíš řetězec skills, který vytvoří testovací scénáře, rozdělí je do vrstev pyramidy, napíše a spustí Playwright testy, zreviduje je a vydá report pokrytí.</p>
+  <ul class="meta"><li>Čas: 6–8 h (rozděl do tří večerů)</li><li>Úroveň: pokročilý</li><li>Nástroje: Claude Code, Playwright, Playwright MCP, Node.js, VS Code</li><li>6 231 slov</li><li>≈ 37 min čtení</li><li>3 cvičení</li></ul>
+  <p class="praxe-souvislosti"><span>Souvisí s kapitolami CT-GenAI: <a href="../kapitola-1/vyklad.html">1. Úvod do generativní AI</a> · <a href="../kapitola-2/vyklad.html">2. Prompt engineering</a> · <a href="../kapitola-3/vyklad.html">3. Rizika generativní AI</a> · <a href="../kapitola-4/vyklad.html">4. Infrastruktura s LLM</a> · <a href="../kapitola-5/vyklad.html">5. Zavedení GenAI v organizaci</a></span><span>Zdroje: Shetty L30–L43 (přílohy eventhub.zip, skills.zip, Claude-Code-Skills-System.pptx)</span></p>
+  <p class="napoveda" id="praxe-souhrn" aria-live="polite" data-praxe-cviceni="praxe-05-claude-code-pro-qa-skills-pro-vlastni-projekt-uctenky praxe-05-claude-code-pro-qa-recenze-a-oprava-jednoho-testu praxe-05-claude-code-pro-qa-report-pokryti-a-jeho-kontrola"><span data-praxe-postup>3 cvičení</span>. Hotová cvičení si odškrtni, stav se ukládá v tomto prohlížeči, po přihlášení i v účtu.</p>
+</div>
+<article class="text" id="text">
+<p>Agent z modulu <a href="04-mcp-a-playwright-mcp.html">MCP a Playwright MCP</a> uměl jednu věc: projít stránku a napsat test. Všechno ostatní mu musel tester říct v promptu. Jak vypadá doména, jaké jsou konvence projektu, kam uložit výsledek. Při další úloze znovu.</p>
+<p>Shetty v sekci 6 ukazuje, jak tohle know-how uložit do souborů. <strong>Claude Code</strong> je agent, který běží v terminálu nad celým projektem. Čte kód, spouští příkazy a zapisuje soubory. Jeho <strong>skills</strong> jsou složky se souborem <code>SKILL.md</code>, ve kterých je popsané, co agent má vědět nebo jak má postupovat. Shetty jich nad demo aplikací EventHub napíše šest. Dvě uchovávají znalosti, čtyři řídí práci. Dohromady tvoří řetězec, ve kterém výstup jednoho kroku čte další krok.</p>
+<div class="kod" data-jazyk="text"><pre><code> eventhub-domain (znalosti)        playwright-best-practices (znalosti)
+        |                                   |
+        v                                   v
+ /create-scenarios --&gt; docs/test-scenarios.md
+                              |
+                              v
+ /test-strategy  -----&gt; docs/test-strategy.md
+                              |
+                              v
+ /generate-tests ----&gt; tests/*.spec.js  --(spustí, opraví)--&gt; zelené testy
+                              |
+                              v
+ /review-tests  -----&gt; report v chatu  --&gt; opravy zpět do /generate-tests
+                              |
+                              v
+ cílený prompt (L43) -&gt; report pokrytí: plánováno vs. implementováno</code></pre></div>
+<p>Modul vychází ze skutečných souborů z přílohy kurzu (<code>eventhub\.claude\skills\</code> a <code>skills.zip</code>, obsah je totožný). Ukážu jejich strukturu, vysvětlím, proč jsou napsané právě tak, upozorním na místa, kde si samy odporují, a ke každému typu napíšeš vlastní minimální variantu.</p>
+<h2 id="co-postavis">Co postavíš<a class="kotva" href="#co-postavis" aria-label="Odkaz na tento oddíl"></a></h2>
+<ul><li>Projekt EventHub s vlastním, zkráceným <code>CLAUDE.md</code> a se souborem <code>.claude/settings.json</code>, který říká, co agent smí bez ptaní a co nikdy.</li><li>Šest skills z kurzu ve složce <code>.claude/skills/</code>, přečtené a pochopené, s opravenými rozpory.</li><li>Vlastní znalostní skill s podsoubory a vlastní agentní skill <code>/coverage-report</code>.</li><li>Dokumenty <code>docs/test-scenarios.md</code> a <code>docs/test-strategy.md</code> pro rezervace, které vytvoří agent a ty je zrevidíš.</li><li>Tři Playwright testy, které agent napíše, spustí a opraví, a revizi těchto testů od dalšího skillu.</li><li>Report pokrytí <code>docs/coverage-report.md</code>, který porovná plán se skutečně napsanými testy.</li></ul>
+<h2 id="predpoklady">Předpoklady<a class="kotva" href="#predpoklady" aria-label="Odkaz na tento oddíl"></a></h2>
+<p><strong>Znalosti.</strong> Modul předpokládá, že znáš Claude Code jako uživatel (prompt, schvalování akcí, <code>/clear</code>). Playwright a MCP z modulu 4. Testovací pyramidu a rozdíl mezi testem jednotky, integračním testem a end-to-end testem z CTFL.</p>
+<p><strong>Software.</strong> Stav k 23. 10. 2026, verze ověř:</p>
+<div class="tabulka-obal"><table><thead><tr><th>Nástroj</th><th>K čemu</th><th>Cena</th></tr></thead><tbody><tr><td>Claude Code (CLI)</td><td>agent v terminálu</td><td>předplatné Claude Pro kolem 20 USD měsíčně (17 USD při ročním placení) nebo Max, případně platba za API. Shetty v L31 uvádí 10 USD, to už neplatí.</td></tr><tr><td>Git for Windows</td><td>na Windows ho Claude Code potřebuje (Git Bash)</td><td>zdarma</td></tr><tr><td>Node.js 20 LTS nebo novější</td><td>EventHub, Playwright, Playwright MCP</td><td>zdarma</td></tr><tr><td><code>@playwright/test</code> 1.58.x</td><td>verze z <code>package.json</code> EventHubu</td><td>zdarma</td></tr><tr><td>Playwright MCP</td><td>ověření lokátorů v prohlížeči (modul 4)</td><td>zdarma</td></tr><tr><td>VS Code</td><td>čtení souborů, které agent vytvoří</td><td>zdarma</td></tr></tbody></table></div>
+<p><strong>Aplikace.</strong> EventHub z přílohy kurzu. Můžeš pracovat proti veřejné instanci <code>eventhub.rahulshettyacademy.com</code> (tak to dělá kurz) nebo proti lokální instanci. Lokální spuštění popisuje <code>README.md</code> v příloze: MySQL, <code>npm run setup</code>, <code>npm run db:push</code>, <code>npm run seed</code>, <code>npm run dev</code>. Spustíš ho sám. Na veřejné instanci si založ vlastní účet. Účty z kurzu (<code>rahulshetty1@gmail.com</code>) sdílí všichni studenti a test, který maže všechny rezervace, smaže i jejich data.</p>
+<p><strong>Kde.</strong> Na soukromém počítači, ve vlastní kopii projektu. Kód EventHubu je materiál placeného kurzu. Do veřejného repozitáře ho nedávej.</p>
+<aside class="vsuvka vsuvka--pozor" data-stitek="Pozor" aria-label="Pozor"><p>Claude Code čte soubory projektu a jejich obsah posílá do cloudu Anthropic. Spouští příkazy s tvými právy. Proto: žádný firemní ani klientský kód, žádná firemní data. Před prací si nastav oprávnění (krok 4). Co agent smí bez ptaní, patří do <code>.claude/settings.json</code> (sdílené, v gitu) nebo <code>.claude/settings.local.json</code> (osobní, mimo git). Do <code>deny</code> dej čtení souborů <code>.env</code>. Tokeny (GitHub, Jira, API klíče) patří do proměnných prostředí nebo do správce tajemství, nikdy do <code>CLAUDE.md</code>, do skills ani do povolených příkazů. Na firemním počítači Claude Code bez schválení nepoužívej. Schválený přístup řeší AI platform tým.</p></aside>
+<h2 id="postup">Postup<a class="kotva" href="#postup" aria-label="Odkaz na tento oddíl"></a></h2>
+<h3 id="krok-1-od-jednoho-agenta-k-retezci-l30-l31">Krok 1: Od jednoho agenta k řetězci (L30, L31)<a class="kotva" href="#krok-1-od-jednoho-agenta-k-retezci-l30-l31" aria-label="Odkaz na tento oddíl"></a></h3>
+<p>Shetty začíná sekci kritikou vlastní ukázky z MCP. Jeden agent s pěti servery a dvaatřiceti nástroji funguje, ale špatně se udržuje. Instrukce pro databázi, prohlížeč a API se míchají. Změna pro jednu úlohu ovlivní ostatní. Ladí se těžko.</p>
+<p>Řešení je stejné jako v návrhu kódu: rozdělit odpovědnosti. Každý specializovaný krok má svoji roli, svoje zdroje a svůj výstup. Shetty tomu říká <strong>agentic AI</strong> (agentní AI): víc specializovaných agentů, kteří spolupracují na cíli, který zadá člověk. Pojem odpovídá sylabu, kde agentní AI znamená systémy, které samostatně plánují a provádějí kroky k dosažení cíle.</p>
+<p>V kurzu se „agentem“ myslí agentní skill, ne samostatný proces. Claude Code má i skutečné <strong>subagents</strong> (podagenty) s vlastním kontextovým oknem. Těm se věnuje krok 14. Řetězec v tomto modulu běží v jedné konverzaci a jednotlivé kroky si předávají práci přes soubory v <code>docs/</code>.</p>
+<p>Shetty volí pro QA čtyři role: návrhář scénářů, testovací architekt, automatizační inženýr a recenzent. Každá role odpovídá jednomu kroku testovacího procesu z CTFL: návrh testů, plánování úrovní, implementace a revize.</p>
+<h3 id="krok-2-instalace-a-prvni-spusteni-l33-l34">Krok 2: Instalace a první spuštění (L33, L34)<a class="kotva" href="#krok-2-instalace-a-prvni-spusteni-l33-l34" aria-label="Odkaz na tento oddíl"></a></h3>
+<p>Instalace se mění častěji než zbytek modulu. Postupuj podle oficiální dokumentace (docs.claude.com, sekce Claude Code). V říjnu 2026 je na Windows doporučený nativní instalátor spuštěný z PowerShellu. Na macOS a Linuxu skript přes <code>curl</code>. Shetty v L33 radí nejdřív nainstalovat Git for Windows, protože Claude Code na Windows používá Git Bash. Ověření:</p>
+<div class="kod" data-jazyk="powershell"><pre><code>claude --version
+claude doctor</code></pre></div>
+<p>Druhý příkaz zkontroluje instalaci a vypíše problémy. Pak přejdi do kořene projektu a spusť <code>claude</code>. Agent pracuje nad složkou, ve které jsi ho spustil. Všechno, co v ní je, může číst. Konec sezení je <code>exit</code> nebo dvakrát Ctrl+C (L34).</p>
+<p>Shetty ukazuje i alternativu: Claude Desktop, záložka <em>Code</em>, výběr složky projektu. Funkčně jde o totéž. V terminálu je ale vidět víc z toho, co agent dělá.</p>
+<p>Kurz instaluje také rozšíření <strong>Claude in Chrome</strong>, přes které agent ovládá běžný prohlížeč. V L41 ho agent použije sám od sebe místo Playwright MCP. V tomto modulu ho nepoužíváme. Na firemních počítačích ho zakazuje firemní politika. Navíc pracuje v profilu prohlížeče s tvými přihlášeními a cookies. Pro ověřování lokátorů stačí Playwright MCP s izolovaným profilem.</p>
+<h3 id="krok-3-init-a-claude-md-l33">Krok 3: <code>/init</code> a <code>CLAUDE.md</code> (L33)<a class="kotva" href="#krok-3-init-a-claude-md-l33" aria-label="Odkaz na tento oddíl"></a></h3>
+<p>Každá práce v novém projektu začíná příkazem <code>/init</code>. Claude Code projde kód a vytvoří v kořeni soubor <code>CLAUDE.md</code>. V něm je přehled projektu, technologie, příkazy pro spuštění a testy a konvence kódu.</p>
+<p>Podstatné je, jak se soubor používá. <code>CLAUDE.md</code> se načte <strong>celý do každé konverzace</strong>. Proto má být krátký. Shettyho slajd doporučuje kolem 50 řádků: přehled, konvence, odkazy. Podrobnosti patří do skills, které se načítají jen podle potřeby.</p>
+<p><code>CLAUDE.md</code> z přílohy EventHubu je dobrý příklad i odstrašující případ zároveň. Má rozumnou strukturu:</p>
+<div class="kod" data-jazyk="text"><pre><code># EventHub - Project Conventions for Claude Code
+## Project Overview        2 věty o aplikaci
+## Tech Stack              Next.js 14, Express, Prisma, MySQL, JWT, Playwright
+## Project Structure       strom složek
+## Architecture Pattern    Routes -&gt; Controllers -&gt; Services -&gt; Repositories
+## Commands to Run         npm run dev, seed, test, test:ui, jeden test
+## Testing Conventions     umístění testů, priorita lokátorů, zákaz waitForTimeout
+## Key Business Rules      7 pravidel jednou větou
+## Custom Slash Commands   4 agenti
+## Skill Documents         odkazy
+## Code Style</code></pre></div>
+<p>Když ho ale porovnáš se skutečnou strukturou projektu, najdeš tři problémy:</p>
+<ol><li>Odkazuje na <code>.claude/commands/</code> a <code>.claude/docs/playwright-best-practices.md</code>. Takové složky v projektu nejsou. Skills jsou v <code>.claude/skills/</code>. Soubor vznikl dřív a s projektem se neaktualizoval. Agent pak hledá soubory, které neexistují.</li><li>Obsahuje testovací účet i s heslem. Soubor je v gitu a načítá se do každé konverzace.</li><li>Obchodní pravidla se opakují ve skillu <code>eventhub-domain</code>. Když se pravidlo změní, musíš ho opravit na dvou místech.</li></ol>
+<p>Udělej si vlastní verzi. Zkopíruj projekt do své pracovní složky, starý <code>CLAUDE.md</code> přejmenuj na <code>CLAUDE.kurz.md</code> a spusť <code>/init</code>. Pak výsledek uprav podle těchto zásad:</p>
+<div class="kod" data-jazyk="markdown"><pre><code># EventHub – konvence pro Claude Code
+
+Demo aplikace pro rezervaci vstupenek (cvičná, z kurzu Shetty).
+Frontend Next.js 14 (port 3000), backend Express + Prisma + MySQL (port 3001).
+
+## Příkazy
+- npm run dev – frontend i backend
+- npm run seed – 10 statických akcí a testovací uživatelé
+- npx playwright test tests/&lt;soubor&gt;.spec.js --reporter=line – jeden test
+
+## Testy
+- Playwright E2E v tests/&lt;feature&gt;.spec.js, jen Chromium.
+- Adresa aplikace z proměnné BASE_URL, účet z EVENTHUB_USER a EVENTHUB_PASSWORD.
+- Standardy: skill playwright-best-practices. Doména: skill eventhub-domain.
+
+## Pravidla pro agenta
+- Neměň kód v backend/ a frontend/ bez výslovného pokynu. Hledáš-li chybu aplikace, nahlas ji.
+- Nikdy nečti .env soubory a nevypisuj tokeny ani hesla.
+- Výstupy analýz ukládej do docs/.</code></pre></div>
+<p>Soubor má pod 25 řádků. Nic v něm není dvakrát a neobsahuje žádné tajemství.</p>
+<h3 id="krok-4-co-agent-smi-opravneni">Krok 4: Co agent smí (oprávnění)<a class="kotva" href="#krok-4-co-agent-smi-opravneni" aria-label="Odkaz na tento oddíl"></a></h3>
+<p>Než agentovi dáš první úkol, rozhodni, co smí. Claude Code se u každé akce, která něco mění nebo spouští, zeptá. Odpověď „ano, a už se neptej“ zapíše pravidlo do <code>.claude/settings.local.json</code>. Ten soubor je osobní a Claude Code ho při vytvoření nastaví jako ignorovaný gitem. Sdílená pravidla týmu patří do <code>.claude/settings.json</code>, který v gitu je.</p>
+<p>Soubor <code>settings.local.json</code> z přílohy EventHubu je poučný. Ukazuje, co se v něm za pár týdnů práce nasbírá:</p>
+<ul><li>Povolené <code>git push origin main</code>, <code>git commit:*</code>, <code>docker run:*</code>, <code>docker compose *</code> a <code>gh api *</code>. Agent tedy smí bez ptaní poslat kód do hlavní větve, spustit libovolný kontejner a volat libovolné GitHub API.</li><li>Celý příkaz <code>curl</code> s e-mailem a heslem testovacího účtu.</li><li>Celý <strong>JWT token</strong> v povoleném příkazu. Token je v čitelné podobě v souboru, který se dostal do zipu kurzu.</li><li>Absolutní cesty z autorova počítače, které jinde nefungují.</li></ul>
+<p>Osobní soubor, který se dostal k tisícům studentů, je přesně ten typ úniku, kterému má rozdělení na <code>settings.json</code> a <code>settings.local.json</code> zabránit. Nestačí spoléhat na <code>.gitignore</code>. Soubor se dá zabalit do zipu, poslat e-mailem nebo zkopírovat.</p>
+<p>Vlastní minimální <code>.claude/settings.json</code> pro tento modul:</p>
+<div class="kod" data-jazyk="json"><pre><code>{
+  "permissions": {
+    "allow": [
+      "Bash(npx playwright test *)",
+      "Bash(npx playwright show-report)",
+      "mcp__playwright__browser_navigate",
+      "mcp__playwright__browser_snapshot"
+    ],
+    "ask": [
+      "Bash(git commit *)",
+      "Bash(git push *)",
+      "mcp__playwright__browser_click",
+      "mcp__playwright__browser_type"
+    ],
+    "deny": [
+      "Read(./.env)",
+      "Read(./backend/.env)",
+      "Read(./frontend/.env.local)",
+      "Bash(rm -rf *)"
+    ]
+  }
+}</code></pre></div>
+<p>Princip je jednoduchý. Bez ptaní jen čtení a spouštění testů. S dotazem všechno, co mění repozitář nebo stav aplikace. Nikdy čtení tajemství. Zápis vzorů se mezi verzemi Claude Code měnil (v souboru EventHubu najdeš <code>git add:*</code> i <code>gh api *</code>). Přesnou syntaxi ověř v dokumentaci, sekce <em>Permissions</em>. Aktuální pravidla vypíše v Claude Code příkaz <code>/permissions</code>.</p>
+<aside class="vsuvka vsuvka--praxe" data-stitek="Příklad z praxe" aria-label="Příklad z praxe"><p>Stejná logika platí pro Šmoulu. Agent, který běží bez dozoru (headless) a dostává úkoly přes Telegram, nemá nikoho, kdo by schválil akci. Jeho pravidla <code>allow</code> a <code>deny</code> jsou jediná brzda. Co by se nemělo stát ani jednou, patří do <code>deny</code>, ne do instrukce v promptu.</p></aside>
+<h3 id="krok-5-knowledge-skills-a-agent-skills-l35-l38-l40">Krok 5: Knowledge skills a agent skills (L35, L38, L40)<a class="kotva" href="#krok-5-knowledge-skills-a-agent-skills-l35-l38-l40" aria-label="Odkaz na tento oddíl"></a></h3>
+<p>Skill je složka v <code>.claude/skills/&lt;název&gt;/</code> se souborem <code>SKILL.md</code>. Soubor má na začátku <strong>frontmatter</strong> (hlavičku v YAML mezi dvěma řádky <code>---</code>) a pod ní text v Markdownu. Text je obyčejná instrukce v přirozeném jazyce. Žádná šablona tam není.</p>
+<p>Shetty rozlišuje dva druhy skills. Pravidlo z jeho slajdu: když skill <strong>něco ví</strong>, je to knowledge skill. Když skill <strong>něco dělá</strong>, je to agent skill.</p>
+<div class="tabulka-obal"><table><thead><tr><th></th><th>Knowledge skill (znalostní)</th><th>Agent skill (agentní)</th></tr></thead><tbody><tr><td>Obsah</td><td>fakta, pravidla, API, lokátory, standardy</td><td>role, postup, formát výstupu, pravidla</td></tr><tr><td>Příklad z kurzu</td><td><code>eventhub-domain</code>, <code>playwright-best-practices</code></td><td><code>create-scenarios</code>, <code>test-strategy</code>, <code>generate-tests</code>, <code>review-tests</code></td></tr><tr><td>Frontmatter v kurzu</td><td><code>user-invocable: false</code></td><td><code>disable-model-invocation: true</code></td></tr><tr><td>Kdo ho spouští</td><td>Claude sám, když usoudí, že je relevantní</td><td>jen uživatel přes <code>/název</code></td></tr><tr><td>Popis (<code>description</code>)</td><td>je v kontextu každé konverzace</td><td>v kontextu není, uživatel ho vidí v nabídce <code>/</code></td></tr><tr><td>Analogie ze slajdu</td><td>příručka na polici</td><td>konzultant s vlastní metodikou</td></tr></tbody></table></div>
+<p>Tabulka shrnuje, proč se oba druhy liší ve frontmatteru. Znalostní skill má být dostupný kdykoli, kdy ho úloha potřebuje. Proto ho model najde podle popisu. Agentní skill spouští akce, a ty má spouštět člověk. Proto ho model sám vyvolat nesmí.</p>
+<p>Jak se skills načítají, popisuje dokumentace Claude Code takto (stav 10/2026, ověř):</p>
+<ul><li>Bez obou přepínačů: skill může spustit uživatel i model. Popis je v kontextu.</li><li><code>disable-model-invocation: true</code>: skill spustí jen uživatel. Popis v kontextu není.</li><li><code>user-invocable: false</code>: skill nenajdeš v nabídce <code>/</code>, spouští ho jen model. Popis v kontextu je.</li><li>Celý obsah <code>SKILL.md</code> se načte až ve chvíli, kdy se skill použije. Podsoubory se načtou, jen když na ně agent podle odkazu sáhne.</li></ul>
+<p>Pozor na rozpor v kurzu. Shetty v L40 říká, že skills s <code>user-invocable: false</code> se „načtou celé hned na začátku“. Jeho vlastní slajd (<em>The Description Field</em>) to říká správně: na začátku je v kontextu jen popis. Celý soubor se načte, až když ho model potřebuje. Pro návrh skills z toho plyne praktická věc. Popis znalostního skillu piš jako klíčová slova, podle kterých ho model najde. Popis agentního skillu piš jako popisek v menu, podle kterého ho najdeš ty.</p>
+<p>Další pole frontmatteru, která se v kurzu objevují nebo se hodí:</p>
+<ul><li><code>name</code> je název skillu a zároveň příkaz <code>/name</code>.</li><li><code>description</code> je popis, viz výše. Bez dobrého popisu model znalostní skill nenajde.</li><li><code>argument-hint</code> je nápověda k argumentu v nabídce, například <code>[feature-name or blank for full suite]</code>.</li><li><code>$ARGUMENTS</code> v textu skillu se nahradí tím, co napíšeš za příkaz. <code>/create-scenarios booking management</code> dosadí <code>booking management</code>.</li><li><code>allowed-tools</code> povolí vybrané nástroje bez ptaní, dokud je skill aktivní. Používej opatrně (krok 13).</li></ul>
+<aside class="vsuvka vsuvka--pojem" id="pojem-skill-claude-code" data-stitek="Pojem" aria-label="Pojem"><p class="pojem-term">skill (Claude Code)</p><p>Složka <code>.claude/skills/&lt;název&gt;/</code> se souborem <code>SKILL.md</code>. Frontmatter určuje název, popis a kdo skill smí spustit. Text pod ním je instrukce nebo znalost v přirozeném jazyce. Claude Code načte celý obsah, až když se skill použije.</p></aside>
+<h3 id="krok-6-znalostni-skill-eventhub-domain-a-chytre-odkazy-l36-l37">Krok 6: Znalostní skill <code>eventhub-domain</code> a chytré odkazy (L36, L37)<a class="kotva" href="#krok-6-znalostni-skill-eventhub-domain-a-chytre-odkazy-l36-l37" aria-label="Odkaz na tento oddíl"></a></h3>
+<p>Struktura skillu z kurzu:</p>
+<div class="kod" data-jazyk="text"><pre><code>.claude/skills/eventhub-domain/
+├── SKILL.md            90 řádků: přehled, technologie, architektura, datové modely, rozcestník
+├── business-rules.md   57 řádků: limity, sandbox, rezervační kód, refundace, cena
+├── api-reference.md    39 řádků: endpointy, stavové kódy chyb
+├── ui-selectors.md     48 řádků: lokátory po stránkách
+└── user-flows.md       71 řádků: pět uživatelských toků, testovací data</code></pre></div>
+<p>Frontmatter hlavního souboru:</p>
+<div class="kod" data-jazyk="yaml"><pre><code>---
+name: eventhub-domain
+description: EventHub application domain knowledge — business rules, API endpoints,
+  data models, user flows, UI selectors, and error scenarios. Use when writing tests,
+  reviewing code, creating scenarios, or answering questions about how EventHub works.
+user-invocable: false
+---</code></pre></div>
+<p>Popis obsahuje dvě části. Co skill obsahuje a kdy ho použít. Druhá část je pro model důležitější. Podle ní pozná, že úloha „napiš scénáře pro rezervace“ tento skill potřebuje.</p>
+<p>Na konci <code>SKILL.md</code> je rozcestník:</p>
+<div class="kod" data-jazyk="markdown"><pre><code>## Detailed Knowledge (Sub-Files)
+Load these based on what the current task needs:
+- **Business rules &amp; validation logic** → read `./business-rules.md`
+- **API endpoints &amp; error codes** → read `./api-reference.md`
+- **UI selectors for test automation** → read `./ui-selectors.md`
+- **User flows, test scenarios &amp; test data** → read `./user-flows.md`</code></pre></div>
+<p>Tomu Shetty v L37 říká chytré odkazy (smart references). Problém, který řeší, je <strong>context bloat</strong> (nafouknutí kontextu). Doménový dokument bankovní aplikace má snadno tisíce řádků. Kdyby byl v jednom souboru, agent by ho četl celý při každé úloze. Rychle by vyčerpal kontextové okno, platil by za zbytečné tokeny a s rostoucím kontextem by se zhoršovala kvalita odpovědí. S rozcestníkem si agent pro manuální scénáře přečte pravidla a toky. Lokátory a API vynechá. Automatizační agent si přečte lokátory. Slajd uvádí, který agent čte který podsoubor.</p>
+<p>Stejný princip platí i pro agentní skills. Slajd <em>Keep Skills Lightweight</em> ukazuje agenta, který měl 71 řádků, protože obsahoval celý kontrolní seznam revize. Po úpravě má 30 řádků a jednu větu: „přečti skill best practices, ten je tvůj kontrolní seznam“. Pravidlo zní: co už je ve znalostním skillu, v agentovi neopakuj, jen na to odkaž.</p>
+<h4 id="co-v-domenovem-skillu-nesedi">Co v doménovém skillu nesedí</h4>
+<p>Když skill čteš jako tester, najdeš rozpory. Tohle je cenná dovednost, protože agent rozpor neohlásí. Vybere si jednu verzi a pokračuje.</p>
+<div class="tabulka-obal"><table><thead><tr><th>Pravidlo</th><th><code>business-rules.md</code></th><th><code>user-flows.md</code></th><th>kód</th></tr></thead><tbody><tr><td>počet akcí na stránce</td><td>„max 9 events at a time“</td><td>„12 events per page“</td><td>frontend posílá <code>limit: 12</code>, backend má výchozí <code>10</code></td></tr></tbody></table></div>
+<p>Tabulka ukazuje tři různá čísla pro jedno pravidlo. ContextQA v sekci 11 se na totéž ptá a Shetty odpoví „devět“. Agent <code>create-scenarios</code> z něj udělá očekávaný výsledek podle toho, který soubor zrovna přečetl. Proto doménový skill revidují lidé, kteří doménu znají, stejně jako jakoukoli jinou testovací bázi.</p>
+<p>Druhý nález je v konfiguraci. <code>backend/src/config/env.js</code> má záložní hodnotu <code>JWT_SECRET</code>, která se použije, když proměnná prostředí chybí. To není chyba skillu, ale dobrý podnět pro bezpečnostní scénář, který agent sám nenavrhl.</p>
+<h3 id="krok-7-vlastni-znalostni-skill">Krok 7: Vlastní znalostní skill<a class="kotva" href="#krok-7-vlastni-znalostni-skill" aria-label="Odkaz na tento oddíl"></a></h3>
+<p>Napiš si malý znalostní skill sám. Smyslem je projít celý cyklus: soubor, popis, ověření, že ho model najde. Téma: pravidla rezervací, zkrácená a v češtině.</p>
+<p>Soubor <code>.claude/skills/eventhub-rezervace/SKILL.md</code>:</p>
+<div class="kod" data-jazyk="markdown"><pre><code>---
+name: eventhub-rezervace
+description: Pravidla rezervací v EventHubu – limity, rezervační kód, refundace,
+  izolace uživatelů. Použij při návrhu, psaní nebo revizi testů rezervací.
+user-invocable: false
+---
+
+# Rezervace v EventHubu
+
+- Jedna rezervace má 1 až 10 lístků. Cena = cena akce × počet lístků.
+- Uživatel má nejvýš 9 rezervací. Desátá smaže nejstarší (FIFO).
+- Rezervační kód má tvar &lt;písmeno&gt;-&lt;6 znaků&gt;. Písmeno je první písmeno názvu akce, velké.
+- Zrušení rezervace vrátí místa akci.
+- Cizí rezervace vrací 403 a text „Access Denied“.
+
+Podrobnosti o refundaci: ./refundace.md
+Rozpory s jinými soubory: ./otevrene-otazky.md – než z nich uděláš očekávaný výsledek, zeptej se.</code></pre></div>
+<p>Soubor <code>refundace.md</code> vedle něj:</p>
+<div class="kod" data-jazyk="markdown"><pre><code># Refundace
+- 1 lístek: nárok na plnou refundaci.
+- Víc lístků: bez nároku („Group bookings (N tickets) are non-refundable“).
+- Výsledek se zobrazí po zhruba 4 s, mezitím běží spinner (#refund-spinner).
+- Logika je jen ve frontendu, backend refundaci nemá.</code></pre></div>
+<p>A <code>otevrene-otazky.md</code> s rozporem z kroku 6. Poslední řádek <code>SKILL.md</code> je nejdůležitější část celého skillu. Agent dostane pravidlo, co dělat s nejistotou. Bez něj by rozpor potichu rozhodl sám.</p>
+<p>Ověření: spusť nové sezení a napiš „kolik lístků může mít jedna rezervace a jak se pozná, ke které akci patří rezervační kód“. Agent by měl skill použít sám (v terminálu uvidíš, že ho načetl). Pak se zeptej na něco, co skill neobsahuje, třeba na formát telefonu. Agent by měl buď hledat v kódu, nebo říct, že to neví. Pokud si odpověď vymyslí, je to halucinace. Zapiš si ji.</p>
+<h3 id="krok-8-agentni-skill-create-scenarios-l36-l38">Krok 8: Agentní skill <code>create-scenarios</code> (L36, L38)<a class="kotva" href="#krok-8-agentni-skill-create-scenarios-l36-l38" aria-label="Odkaz na tento oddíl"></a></h3>
+<p>Agentní skill z kurzu má 50 řádků. Struktura je čitelná na první pohled:</p>
+<div class="kod" data-jazyk="text"><pre><code>frontmatter     name, description, disable-model-invocation: true, argument-hint
+role            "Senior Functional Test Designer – myslíš jako uživatel i jako útočník"
+zdroje          1. skill eventhub-domain  2. jeho business-rules.md a user-flows.md
+                3. frontend/app/  4. backend/src/services/
+úloha           "Create test scenarios for: $ARGUMENTS", bez argumentu celá aplikace
+myšlení         6 pohledů: Happy Path, Business Rules, Security, Negative/Error,
+                Edge Cases, UI State
+výstup          docs/test-scenarios.md, šablona TC s kategorií, prioritou P0–P3,
+                předpoklady, kroky, očekávaným výsledkem, pravidlem a vrstvou
+číslování       TC-001–099 Happy Path, 100–199 pravidla, 200–299 bezpečnost, ...
+pravidla        každý scénář musí mít oporu v pravidle nebo v kódu</code></pre></div>
+<p>Shetty v L35 vysvětluje, proč skill vypadá takhle. Nový tester v týmu dostane od seniora tři věci: kde najde dokumentaci, jak má o testech přemýšlet a v jakém formátu je má odevzdat. Agent potřebuje totéž. Role nastaví úhel pohledu. Šest pohledů zabrání tomu, aby agent napsal jen šťastné cesty. Šablona a číslování dělají výstup strojově čitelný pro další krok.</p>
+<p>Všimni si dvou detailů. Zdroje zahrnují kód frontendu a backendu, nejen dokumentaci. Agent tak může najít chování, které dokumentace nepopisuje. Pravidlo „každý scénář musí mít oporu“ je ochrana proti halucinaci. Scénář bez zdroje je vymyšlený.</p>
+<p>Spuštění:</p>
+<div class="kod" data-jazyk="text"><pre><code>/create-scenarios booking management</code></pre></div>
+<p>Shetty v L39 ukazuje, že skill jde spustit i větou („vytvoř scénáře pro správu rezervací“). U <code>disable-model-invocation: true</code> to ale podle dokumentace nefunguje. Model skill sám vyvolat nesmí a jeho popis nevidí. Agent pak úlohu udělá bez skillu, po svém. Spolehlivá cesta je lomítko a název. Ověř to sám: zadej úlohu větou a podívej se, jestli se v <code>docs/</code> objevil soubor v předepsané šabloně.</p>
+<p>Během běhu uvidíš, že Claude Code spouští vestavěného podagenta <strong>Explore</strong>, který prochází kód. Běh trvá jednotky minut. Výsledek z kurzu je v příloze: <code>docs/test-scenarios.md</code>, 706 řádků, 53 scénářů pro správu rezervací. Shetty v L38 hlásí 45 scénářů. Stejný skill nad stejným kódem dal pokaždé jiný počet. To je nedeterministické chování, které popisuje sylabus. Počty z tvého běhu se budou lišit taky.</p>
+<p>Revize scénářů je tvoje práce. Projdi aspoň tyto body:</p>
+<ol><li>Má každý scénář vyplněné pole <em>Business Rule</em>? Najdi pravidlo ve skillu nebo v kódu.</li><li>Jsou scénáře pro obě verze rozporu z kroku 6, nebo agent jednu vybral?</li><li>Opakují se scénáře pod jinými čísly?</li><li>Jsou bezpečnostní scénáře proveditelné (cizí rezervace, chybějící token), nebo jen obecné?</li><li>Odpovídají priority riziku? P0 by měl být tok, bez kterého aplikace nemá smysl.</li></ol>
+<aside class="vsuvka vsuvka--praxe" data-stitek="Příklad z praxe" aria-label="Příklad z praxe"><p>Pro bankovní projekt je doménový skill testovací báze: pravidla platebního příkazu, limity, autorizace. Tam nesmí do cloudového modelu ani jeho kopie. Stejná struktura skillů jde ale použít s modelem, který klient schválil a provozuje ve svém prostředí. Know-how v souborech je přenositelné, model se dá vyměnit.</p></aside>
+<h3 id="krok-9-agentni-skill-test-strategy-l39">Krok 9: Agentní skill <code>test-strategy</code> (L39)<a class="kotva" href="#krok-9-agentni-skill-test-strategy-l39" aria-label="Odkaz na tento oddíl"></a></h3>
+<p>Druhý agent čte výstup prvního. Jeho role je testovací stratég, „napůl vývojář, napůl tester“. Shetty to zdůvodňuje tím, že bez znalosti kódu nejde rozhodnout, co je testovatelné testem jednotky.</p>
+<p>Jádro skillu jsou rozhodovací pravidla:</p>
+<div class="kod" data-jazyk="text"><pre><code>1. Čistá funkce bez vstupu a výstupu do okolí  -&gt; Unit
+2. Pravidlo v backendu nebo kontrakt API        -&gt; API/Integration
+3. Vykreslení jedné komponenty, stav UI         -&gt; Component
+4. Tok přes víc stránek, celý stack             -&gt; E2E
+5. Jde to otestovat na nižší vrstvě?            -&gt; posuň dolů
+6. Nevíš?                                       -&gt; nejnižší vrstva, která stačí</code></pre></div>
+<p>K tomu seznam <strong>anti-patterns</strong> (protivzorů), které má hlásit. Validace vstupu testovaná přes E2E. Chybové kódy API testované přes prohlížeč. Žádný E2E test pro kritický tok. Všechno v E2E, tedy „kornout zmrzliny místo pyramidy“. A dvě pravidla pro výstup. Kritická pravidla se testují na víc vrstvách. Každé sporné zařazení musí mít zdůvodnění.</p>
+<p>Spuštění:</p>
+<div class="kod" data-jazyk="text"><pre><code>/test-strategy booking scenarios</code></pre></div>
+<p>Výsledek z kurzu (<code>docs/test-strategy.md</code>):</p>
+<div class="tabulka-obal"><table><thead><tr><th>Vrstva</th><th>Počet</th><th>Na co</th></tr></thead><tbody><tr><td>Unit</td><td>5</td><td><code>randomRef</code>, <code>generateUniqueRef</code>, výpočet ceny</td></tr><tr><td>API / integrace</td><td>22</td><td>kontrakt, autentizace, pravidla, stav databáze</td></tr><tr><td>Component</td><td>14</td><td>stavy UI, podmíněné zobrazení, refundace</td></tr><tr><td>E2E</td><td>12</td><td>kritické toky, víc stránek, bezpečnost mezi uživateli</td></tr></tbody></table></div>
+<p>Tabulka ukazuje tvar pyramidy. Široký základ tvoří API testy, E2E je jen pětina. Dokument navíc obsahuje sekci <em>Decision Rationale</em>. Například refundace patří do komponentového testu, protože je to čistě frontendová logika se spinnerem. Bezpečnost mezi uživateli naopak zůstává i v E2E, protože jde o tok přes dvě přihlášení.</p>
+<p>Na tomto výstupu se nejlépe ukazuje, kde agent pomáhá a kde rozhoduje člověk. Agent udělá první návrh za pár minut a odkáže na konkrétní funkce v kódu. Rozhodnutí, kdo které testy napíše, zůstává na týmu. Unit a komponentové testy patří vývojářům. Shetty v L39 doporučuje dokument s nimi projít. Tester si vezme API a E2E vrstvu.</p>
+<p>Kontrolní otázky pro tvoji revizi: Odpovídají odkazy na soubory a funkce skutečnému kódu? Je E2E opravdu jen tam, kde nižší vrstva nestačí? Jsou všechna kritická pravidla (rezervační kód, izolace uživatelů) aspoň na dvou vrstvách?</p>
+<h3 id="krok-10-znalostni-skill-playwright-best-practices-l40">Krok 10: Znalostní skill <code>playwright-best-practices</code> (L40)<a class="kotva" href="#krok-10-znalostni-skill-playwright-best-practices-l40" aria-label="Odkaz na tento oddíl"></a></h3>
+<p>Než agent začne psát testy, potřebuje „zaškolení“ jako nový člen týmu. Shetty to v L40 přirovnává k předání znalostí (KT). Skill má 344 řádků a jedenáct oddílů:</p>
+<div class="kod" data-jazyk="text"><pre><code>1  nastavení projektu (testDir, timeouty, Chromium, reportér, screenshoty)
+2  priorita lokátorů: data-testid &gt; role &gt; label/placeholder &gt; id &gt; CSS, a co nikdy
+3  filtrování a zúžení (filter hasText, has, scope na rodiče)
+4  aserce (viditelnost, URL, obsah, čísla, vlastní timeout)
+5  struktura testu (přihlášení -&gt; akce -&gt; aserce), page objects u větších sad
+6  mockování API přes page.route
+7  (číslo v souboru chybí)  testovací data a uživatelé
+8  dynamická data (unikátní názvy)
+9  čekání (auto-waiting, waitUntil; nikdy waitForTimeout)
+10 ladění (console, jeden test, UI mód, report)
+11 protivzory v tabulce</code></pre></div>
+<p>Je to znalostní skill (<code>user-invocable: false</code>). Čte ho <code>generate-tests</code>, který podle něj píše, i <code>review-tests</code>, který podle něj kontroluje. Jeden dokument tak slouží jako zadání i jako kritérium přijetí. To je dobrý vzor i pro lidský tým.</p>
+<p>Při čtení najdeš rozpor, který stojí za zapsání. Skill v oddílu 1 uvádí základní adresu <code>http://localhost:3000</code>. <code>playwright.config.ts</code> má <code>https://eventhub.rahulshettyacademy.com</code>. Vygenerovaný test <code>tests/booking-management.spec.js</code> má adresu i přihlašovací údaje zapsané napevno jako konstanty v kódu. Skill v oddílu 11 přitom zakazuje „hardcoded“ data. Agent tedy pravidlo porušil a recenzent to v kurzu nezachytil. Testovací uživatelé i s heslem jsou navíc přímo v textu skillu. Pro veřejnou demo aplikaci to nevadí. Pro jakoukoli jinou je to vzor, který nechceš opakovat.</p>
+<p>Oprav to ve své kopii. V oddílu 1 napiš, že adresa se bere z <code>process.env.BASE_URL</code>. Do oddílu s testovacími uživateli napiš jen názvy proměnných. Do <code>playwright.config.ts</code> dej <code>baseURL: process.env.BASE_URL ?? 'http://localhost:3000'</code>.</p>
+<h3 id="krok-11-agentni-skill-generate-tests-napsat-spustit-opravit-l40-l41">Krok 11: Agentní skill <code>generate-tests</code>: napsat, spustit, opravit (L40, L41)<a class="kotva" href="#krok-11-agentni-skill-generate-tests-napsat-spustit-opravit-l40-l41" aria-label="Odkaz na tento oddíl"></a></h3>
+<p>Tohle je nejcennější skill sekce. Shetty o něm v L40 říká, že je to „zlato“. Agent nekončí napsáním kódu. Pokračuje smyčkou:</p>
+<div class="kod" data-jazyk="text"><pre><code>Krok 1  Napiš      přečti skills, existující testy a frontend, zapiš tests/&lt;feature&gt;.spec.js
+Krok 2  Ověř       přes Playwright MCP otevři stránky a zkontroluj, že lokátory existují
+Krok 3  Spusť      npx playwright test tests/&lt;soubor&gt;.spec.js --reporter=line
+Krok 4  Rozhodni   když test padá, trojí kontrola:
+                   - chybová hláška: timeout, prvek nenalezen, nesedí aserce?
+                   - prohlížeč (MCP) a kód frontendu: změnil se lokátor? je prvek podmíněný?
+                   - doménový skill: je očekávané chování skutečně požadavek?
+                       doména chování potvrzuje      -&gt; chyba testu, oprav test
+                       kód odporuje doméně           -&gt; možná chyba aplikace, nahlas ji,
+                                                        test potichu nepřizpůsobuj
+                   oprav a spusť znovu, dokud test neprojde</code></pre></div>
+<p>Skill končí větou, kterou Shetty v L41 vyzdvihuje: „Nekonči po napsání. Test je hotový, až když projde ve skutečném prohlížeči.“</p>
+<p>Trojí kontrola je to, čím se skill liší od běžného <strong>self-healing</strong> (samoopravného) testu. Samooprava, která jen hledá nový lokátor, dokáže „opravit“ test tak, že projde přes chybu aplikace. Shetty to vysvětluje na příkladu: test čeká, že se okno nezobrazí, ale okno se zobrazí. Test nemá okno odkliknout, aby prošel. Má se podívat do domény. Když doména říká, že okno se zobrazit nemá, je to chyba aplikace. Test má selhat a agent ji má nahlásit.</p>
+<p>Spuštění podle L41:</p>
+<div class="kod" data-jazyk="text"><pre><code>/generate-tests booking flow – první 3 E2E testy z docs/test-strategy.md</code></pre></div>
+<p>Omezení na tři testy je rozumné. Celá sada E2E by běžela desítky minut a spotřebovala velkou část limitu předplatného. V kurzu trvá generování tří testů kolem 10 minut.</p>
+<p>Co se v L41 stalo a na co si dát pozor:</p>
+<ul><li>Skill říká „použij Playwright MCP“. Agent přesto použil Claude in Chrome, protože ho měl k dispozici. Agent si vybírá nástroj sám. Když chceš konkrétní nástroj, nedávej mu jiný. Pokud Playwright MCP nemáš připojený, agent ho podle L41 může zkusit doinstalovat a zeptá se na povolení. Neodsouhlasuj to automaticky.</li><li>Výsledek byl šest testů v jednom souboru (<code>tests/booking-management.spec.js</code>, 221 řádků), všechny zelené. Zelené testy ale nic neříkají o jejich kvalitě. To ukáže až revize.</li><li>Shetty nakonec nechal testy spustit v režimu s oknem prohlížeče (<code>--headed</code>), aby viděl, co dělají. To je dobrý zvyk. Podívej se aspoň jednou na každý nový test, než mu začneš věřit.</li></ul>
+<h3 id="krok-12-agentni-skill-review-tests-l41">Krok 12: Agentní skill <code>review-tests</code> (L41)<a class="kotva" href="#krok-12-agentni-skill-review-tests-l41" aria-label="Odkaz na tento oddíl"></a></h3>
+<p>Čtvrtý agent je „přísný, ale konstruktivní“ recenzent. Kontrolním seznamem je skill best practices. Postup: přečíst standard, přečíst test a frontend, porovnat řádek po řádku, ověřit aserce proti doméně. Výstup pro každý soubor: co je dobře, nálezy označené <code>[CRITICAL]</code>, <code>[IMPORTANT]</code> a <code>[SUGGESTION]</code> s číslem řádku, kódem, opravou a porušeným pravidlem, skóre z deseti a seřazené opravy.</p>
+<p>Dvě pravidla na konci skillu stojí za převzetí do jakéhokoli review promptu: „každý nález musí odkazovat na pravidlo“ a „nevymýšlej nálezy, když je test dobrý, řekni to“. První brání vágním připomínkám. Druhé brání tomu, aby model hledal chyby jen proto, že dostal roli recenzenta.</p>
+<p>V kurzu dostaly testy skóre 7,5 z 10. Hlavní výtka byla kvalita lokátorů, například CSS selektor tam, kde existuje id. Shetty pak výstup recenze vložil zpět do <code>/generate-tests</code> s pokynem „oprav podle těchto nálezů“. Tak vzniká smyčka dvou agentů, kterou řídí člověk.</p>
+<p>Skill nemá určené, kam výstup uložit. V kurzu skončil v chatu. Pro další práci je lepší soubor. Doplň do své kopie řádek „výstup zapiš do <code>docs/reviews/&lt;soubor-testu&gt;.md</code>“.</p>
+<p>Zkus si také, co recenzent nenašel. Zadat mu můžeš přímo: „Porušuje test pravidlo o pevně zapsaných datech z oddílu 11?“ Recenzent by měl najít konstanty <code>BASE_URL</code>, <code>USER_EMAIL</code> a <code>USER_PASSWORD</code>. Proč je nenašel sám? Protože kontroluje řádky proti seznamu a tento protivzor v seznamu formulovaný je jen obecně („Hardcoded booking/event IDs“). Recenzent dělá to, co mu kontrolní seznam řekne.</p>
+<h3 id="krok-13-cilena-analyza-pokryti-s-reportem-l43">Krok 13: Cílená analýza pokrytí s reportem (L43)<a class="kotva" href="#krok-13-cilena-analyza-pokryti-s-reportem-l43" aria-label="Odkaz na tento oddíl"></a></h3>
+<p>V posledních lekcích Shetty spouští kroky ručně za sebou. V L43 ukazuje opak: zadá cíl a nechá agenta, ať si kroky naplánuje sám. Prompt zní zhruba takto (vlastní formulace):</p>
+<div class="kod" data-jazyk="text"><pre><code>Analyzuj mezery v pokrytí testy.
+1. Přečti docs/test-scenarios.md a docs/test-strategy.md, co je naplánováno.
+2. Přečti všechny soubory v tests/, co je implementováno.
+3. Spusť všechny Playwright testy a zjisti, které procházejí.
+4. Vytvoř report: plánováno vs. implementováno po vrstvách, chybějící scénáře
+   s prioritou, doporučení, co doplnit nejdřív.</code></pre></div>
+<p>Agent při tom sáhne po několika skills najednou a podagenti Explore čtou dokumenty souběžně. Výsledek v kurzu je očekávaný: E2E vrstva má 3 nebo 6 testů z dvanácti, ostatní vrstvy 0 %. Hodnota reportu není v tomto čísle. Je v tom, že každá mezera má číslo scénáře a prioritu, takže z reportu jde rovnou plánovat.</p>
+<p>Během běhu se Shettymu objeví hláška o kompaktování konverzace a zbývajících 6 % kontextu. Celá sekce proběhla v jednom sezení a kontext se zaplnil. Shetty sezení ukončí, spustí nové a prompt zopakuje. Pro tebe z toho plynou dvě zásady. Velké úlohy začínej v čisté konverzaci (<code>/clear</code>). Zaplnění kontextu sleduj příkazem <code>/context</code>.</p>
+<p>Opakovaný cílový prompt je kandidát na vlastní agentní skill. Napiš ho. Soubor <code>.claude/skills/coverage-report/SKILL.md</code>:</p>
+<div class="kod" data-jazyk="markdown"><pre><code>---
+name: coverage-report
+description: Report pokrytí – porovná plánované scénáře a strategii s testy v tests/
+disable-model-invocation: true
+argument-hint: [oblast, např. booking; prázdné = vše]
+---
+
+# Analytik pokrytí
+
+Jsi test analytik. Porovnáváš plán s realitou. Neopravuješ testy a nepíšeš nové.
+
+## Vstupy
+1. docs/test-scenarios.md – seznam scénářů (TC-xxx)
+2. docs/test-strategy.md – přiřazení scénářů do vrstev
+3. tests/*.spec.js – implementované E2E testy (TC číslo bývá v názvu testu)
+
+## Úloha
+Oblast: $ARGUMENTS
+1. Sestav seznam plánovaných scénářů pro oblast, s vrstvou a prioritou.
+2. Ke každému najdi implementovaný test. Shodu poznáš podle TC čísla v názvu
+   nebo komentáři. Bez čísla shodu neodhaduj, zapiš „nejisté“.
+3. Spusť E2E testy: npx playwright test --reporter=line
+4. Zapiš docs/coverage-report.md:
+   - tabulka po vrstvách: plánováno / implementováno / prochází
+   - seznam chybějících P0 a P1 scénářů
+   - testy, které neodpovídají žádnému scénáři
+   - nejasnosti a rozpory, které jsi našel
+
+## Pravidla
+- Čísla počítej ze souborů, neodhaduj.
+- Když test padá, zapiš to. Neopravuj ho.
+- Na konci reportu uveď datum a že report vytvořil AI agent.</code></pre></div>
+<p>Tři věci jsou na skillu jinak než v kurzu. Skill má výslovně řečeno, co nedělá (neopravuje testy). Má pravidlo pro nejistou shodu, aby si ji nevymýšlel. A report nese informaci, že ho vytvořil agent. To je požadavek transparentnosti, který zná sylabus i interní pravidla firem.</p>
+<p>Zkus ho spustit: <code>/coverage-report booking</code>. Pak report ověř ručně na třech náhodných řádcích.</p>
+<p>Pole <code>allowed-tools</code> by šlo použít k tomu, aby skill spouštěl testy bez ptaní. Pro report to není potřeba. Jedno schválení příkazu je malá cena za to, že víš, co běží.</p>
+<h3 id="krok-14-subagenti-rozsahy-skills-a-co-patri-do-gitu-l43">Krok 14: Subagenti, rozsahy skills a co patří do gitu (L43)<a class="kotva" href="#krok-14-subagenti-rozsahy-skills-a-co-patri-do-gitu-l43" aria-label="Odkaz na tento oddíl"></a></h3>
+<p><strong>Subagents</strong> (podagenti) jsou v Claude Code samostatná věc. Definují se v <code>.claude/agents/&lt;název&gt;.md</code>, mají vlastní systémový prompt, vlastní seznam nástrojů a hlavně vlastní kontextové okno. Hlavní konverzace jim předá úlohu a dostane zpět jen výsledek. Vestavěný Explore, kterého jsi viděl v krocích 8 a 9, je takový podagent. Skill lze spustit v podagentovi také přes pole <code>context: fork</code> ve frontmatteru (ověř v dokumentaci své verze). Přehled podagentů a jejich správu najdeš pod příkazem <code>/agents</code>.</p>
+<p>Kdy co použít:</p>
+<div class="tabulka-obal"><table><thead><tr><th>Potřeba</th><th>Řešení</th></tr></thead><tbody><tr><td>znalost, kterou model najde sám</td><td>znalostní skill</td></tr><tr><td>opakovaný postup spouštěný člověkem</td><td>agentní skill</td></tr><tr><td>úloha, která čte hodně souborů a vrací krátký výsledek</td><td>podagent (šetří hlavní kontext)</td></tr><tr><td>fakt, který musí znát každá konverzace</td><td><code>CLAUDE.md</code>, krátce</td></tr></tbody></table></div>
+<p>Tabulka nahrazuje Shettyho jednodušší dělení. Pro modul stačí skills. Podagent se vyplatí, když hlavní konverzace dochází kontext, typicky u analýzy pokrytí nad velkým projektem.</p>
+<p>Skills mají tři rozsahy (slajd <em>Skill Scopes</em>):</p>
+<ul><li><strong>Projekt</strong>: <code>.claude/skills/</code> v repozitáři. Sdílí je tým přes git. Doménové skills a agenti projektu.</li><li><strong>Osobní</strong>: <code>~/.claude/skills/</code> (na Windows <code>C:\Users\&lt;jméno&gt;\.claude\skills\</code>). Platí ve všech tvých projektech, do gitu nejdou.</li><li><strong>Podnik</strong>: spravované nastavení, které nasazuje správce. Firemní standardy pro všechny.</li></ul>
+<p>Při shodě názvu má přednost podnik, pak osobní, pak projekt. Shetty v L43 doporučuje dobrý skill nabídnout jako firemní standard. Ve firmě to jde jen schválenou cestou přes správce nástroje.</p>
+<p>Do gitu projektu patří <code>CLAUDE.md</code>, <code>.claude/settings.json</code>, <code>.claude/skills/</code> a případně <code>.claude/agents/</code>. Nepatří tam <code>.claude/settings.local.json</code> a nic, co obsahuje tajemství.</p>
+<h3 id="krok-15-kontrolni-seznam-pro-vlastni-skill-a-rozvrzeni-prace">Krok 15: Kontrolní seznam pro vlastní skill a rozvržení práce<a class="kotva" href="#krok-15-kontrolni-seznam-pro-vlastni-skill-a-rozvrzeni-prace" aria-label="Odkaz na tento oddíl"></a></h3>
+<p>Shetty v L41 shrnuje sekci větou, že veškerá inteligence je v tom, jak napíšeš skills. Napsat je ale umí jen člověk, který danou práci umí sám. Strategii nenapíše někdo, kdo nezná testovací pyramidu. Standardy Playwrightu nenapíše někdo, kdo v něm nepsal. Skill je zapsaná odbornost, ne náhrada za ni.</p>
+<p>Když píšeš nový skill nebo přebíráš cizí, projdi tyto otázky:</p>
+<div class="tabulka-obal"><table><thead><tr><th>Otázka</th><th>Znalostní skill</th><th>Agentní skill</th></tr></thead><tbody><tr><td>Říká popis, kdy se má skill použít?</td><td>slovy ze zadání úloh</td><td>jako popisek v menu</td></tr><tr><td>Je správně frontmatter?</td><td><code>user-invocable: false</code></td><td><code>disable-model-invocation: true</code></td></tr><tr><td>Má hlavní soubor rozumnou délku?</td><td>do 100 řádků, zbytek v podsouborech</td><td>do 60 řádků, znalosti jen odkazem</td></tr><tr><td>Jsou zdroje konkrétní?</td><td>–</td><td>cesty k souborům a skillům, ne „projdi projekt“</td></tr><tr><td>Je určený výstup?</td><td>–</td><td>soubor, šablona, číslování</td></tr><tr><td>Říká, co dělat s nejistotou?</td><td>odkaz na otevřené otázky</td><td>„zeptej se“ nebo „zapiš jako nejisté“</td></tr><tr><td>Říká, co nedělat?</td><td>–</td><td>například „neměň kód aplikace“, „neopravuj, jen hlas“</td></tr><tr><td>Obsahuje tajemství?</td><td>nikdy</td><td>nikdy</td></tr><tr><td>Sedí odkazy na soubory?</td><td>ověř po každém přesunu</td><td>ověř po každém přesunu</td></tr></tbody></table></div>
+<p>Tabulka je stejná pro skills z kurzu i pro tvoje vlastní. Skills z kurzu ve většině bodů obstojí. Výjimky jsou výstup <code>review-tests</code> (není určený), pravidlo pro nejistotu (chybí všude) a hesla ve <code>playwright-best-practices</code>.</p>
+<p>Rozvržení modulu do tří večerů:</p>
+<ol><li><strong>Večer 1</strong> (kroky 1 až 7): instalace, <code>CLAUDE.md</code>, oprávnění, čtení skills, vlastní znalostní skill. Bez spouštění agentních skills. Výsledek: projekt připravený k práci a seznam rozporů v doméně.</li><li><strong>Večer 2</strong> (kroky 8 až 10): scénáře a strategie pro rezervace, revize obou dokumentů, oprava <code>playwright-best-practices</code>. Každý agentní skill v nové konverzaci.</li><li><strong>Večer 3</strong> (kroky 11 až 14): generování a revize testů, report pokrytí, cvičení.</li></ol>
+<p>Každý agentní běh spotřebuje znatelnou část limitu předplatného. Generování testů v kurzu běželo kolem deseti minut. Když limit dojde uprostřed běhu, zůstane rozpracovaný soubor. Proto po každém kroku commit ve své kopii projektu. Kdyby agent něco pokazil, vrátíš se o krok zpět.</p>
+<h2 id="overeni">Ověření<a class="kotva" href="#overeni" aria-label="Odkaz na tento oddíl"></a></h2>
+<ul><li><code>claude doctor</code> nehlásí chyby. V projektu je tvůj <code>CLAUDE.md</code> pod 50 řádků bez hesel.</li><li><code>/permissions</code> ukazuje tvoje pravidla. Pokus přečíst <code>backend/.env</code> agent odmítne.</li><li>V nabídce <code>/</code> vidíš <code>create-scenarios</code>, <code>test-strategy</code>, <code>generate-tests</code>, <code>review-tests</code> a <code>coverage-report</code>. Znalostní skills <code>eventhub-domain</code>, <code>playwright-best-practices</code> a <code>eventhub-rezervace</code> v nabídce nejsou.</li><li>Na otázku o pravidlech rezervací agent sám načte <code>eventhub-rezervace</code>.</li><li><code>docs/test-scenarios.md</code> a <code>docs/test-strategy.md</code> existují a mají šablonu ze skillů. Máš poznámky z revize.</li><li>Tři E2E testy projdou příkazem <code>npx playwright test</code>. V kódu nejsou adresa ani přihlašovací údaje.</li><li><code>docs/coverage-report.md</code> existuje. Tři řádky jsi ověřil ručně a sedí.</li></ul>
+<h2 id="caste-chyby">Časté chyby<a class="kotva" href="#caste-chyby" aria-label="Odkaz na tento oddíl"></a></h2>
+<p><strong><code>CLAUDE.md</code> jako odkladiště.</strong> Soubor roste s každou úlohou a načítá se celý pokaždé. Podrobnosti patří do skills.</p>
+<p><strong>Zastaralé odkazy.</strong> <code>CLAUDE.md</code> nebo skill odkazuje na soubory, které už neexistují (v kurzu <code>.claude/commands/</code> a <code>.claude/docs/</code>). Agent je hledá a ztrácí čas. Po přesunu souborů projdi odkazy.</p>
+<p><strong>Agentní skill spuštěný větou.</strong> U <code>disable-model-invocation: true</code> ho model sám nevyvolá. Úlohu udělá bez skillu a výsledek nemá předepsaný formát. Používej <code>/název</code>.</p>
+<p><strong>Znalostní skill, který model nenajde.</strong> Obvykle kvůli obecnému popisu. Do <code>description</code> napiš, kdy se má skill použít, slovy, která se objeví v zadání.</p>
+<p><strong>Duplicitní znalost.</strong> Pravidlo ve skillu agenta i ve znalostním skillu. Po změně platí jen jedna verze. V agentovi jen odkaz.</p>
+<p><strong>Rozpory v doménových souborech.</strong> Agent je neohlásí a vybere si. Doménový skill je testovací báze a potřebuje revizi.</p>
+<p><strong>Zelené testy = hotovo.</strong> Test, který prošel, může testovat špatnou věc nebo porušovat standard. Revize a pohled na běh v prohlížeči jsou součást práce.</p>
+<p><strong>Test „opravený“ přes chybu aplikace.</strong> Bez trojí kontroly agent přizpůsobí test chování aplikace. Defekt pak zůstane skrytý.</p>
+<p><strong>Plný kontext.</strong> Dlouhé sezení přes celý řetězec skončí kompaktováním a zapomínáním. Každý velký krok v nové konverzaci, předávka přes soubory v <code>docs/</code>.</p>
+<p><strong>Široká povolení.</strong> „Povolit vždy“ u <code>git push</code> nebo <code>docker run</code> v osobním nastavení. Za pár týdnů nevíš, co všechno agent smí.</p>
+<p><strong>Sdílený testovací účet.</strong> Na veřejné instanci účty z kurzu sdílí všichni. Test „smaž všechny rezervace“ ovlivní cizí běhy a cizí běhy ovlivní tvoje testy.</p>
+<h2 id="cviceni">Cvičení<a class="kotva" href="#cviceni" aria-label="Odkaz na tento oddíl"></a></h2>
+<aside class="vsuvka vsuvka--cviceni" id="praxe-05-claude-code-pro-qa-skills-pro-vlastni-projekt-uctenky" data-stitek="Cvičení" aria-label="Cvičení"><p class="praxe-blok-nazev">Skills pro vlastní projekt Účtenky</p><p>Cíl: přenést strukturu na projekt, který znáš. Pro <code>uctenky</code> (Django + React + Playwright) napiš znalostní skill <code>uctenky-domena</code> s hlavním souborem do 60 řádků a dvěma podsoubory (pravidla a API). Pak upravenou kopii <code>create-scenarios</code> pro jednu oblast, například nahrání účtenky. Hotovo: <code>/create-scenarios-uctenky nahrání</code> vytvoří soubor scénářů v šabloně. Aspoň 80 % scénářů má v poli pravidla odkaz, který v doménovém skillu nebo v kódu skutečně existuje. Máš zapsané, které scénáře byly vymyšlené a co jsi kvůli nim ve skillu upravil.</p><p class="praxe-cviceni-pata" data-nepocitat><label class="zk-volba praxe-hotovo"><input type="checkbox" data-praxe-hotovo="praxe-05-claude-code-pro-qa-skills-pro-vlastni-projekt-uctenky"> Hotovo</label></p></aside>
+<aside class="vsuvka vsuvka--cviceni" id="praxe-05-claude-code-pro-qa-recenze-a-oprava-jednoho-testu" data-stitek="Cvičení" aria-label="Cvičení"><p class="praxe-blok-nazev">Recenze a oprava jednoho testu</p><p>Cíl: projít smyčku generování a revize. Spusť <code>/review-tests</code> na test z kroku 11. Doplň do skillu <code>review-tests</code> pravidlo o pevně zapsaných adresách a přihlašovacích údajích a spusť revizi znovu. Nálezy předej <code>/generate-tests</code> k opravě. Hotovo: druhá revize najde pevně zapsané údaje. Po opravě je test zelený, čte adresu a účet z proměnných prostředí a skóre recenzenta je vyšší než na začátku. Rozdíl mezi první a druhou revizí máš zapsaný ve dvou větách.</p><p class="praxe-cviceni-pata" data-nepocitat><label class="zk-volba praxe-hotovo"><input type="checkbox" data-praxe-hotovo="praxe-05-claude-code-pro-qa-recenze-a-oprava-jednoho-testu"> Hotovo</label></p></aside>
+<aside class="vsuvka vsuvka--cviceni" id="praxe-05-claude-code-pro-qa-report-pokryti-a-jeho-kontrola" data-stitek="Cvičení" aria-label="Cvičení"><p class="praxe-blok-nazev">Report pokrytí a jeho kontrola</p><p>Cíl: ověřit, jestli se reportu dá věřit. Spusť <code>/coverage-report booking</code> dvakrát v čistých konverzacích. Porovnej oba reporty. Hotovo: tabulka, ve které jsou čísla z obou běhů vedle sebe a čísla, která jsi spočítal ručně. U každého rozdílu je vysvětlení (nejistá shoda, padající test, jiný výklad). Pokud se běhy liší, upravíš pravidla ve skillu tak, aby se rozdíl při třetím běhu zmenšil.</p><p class="praxe-cviceni-pata" data-nepocitat><label class="zk-volba praxe-hotovo"><input type="checkbox" data-praxe-hotovo="praxe-05-claude-code-pro-qa-report-pokryti-a-jeho-kontrola"> Hotovo</label></p></aside>
+<h2 id="souvislost-se-sylabem-ct-genai">Souvislost se sylabem CT-GenAI<a class="kotva" href="#souvislost-se-sylabem-ct-genai" aria-label="Odkaz na tento oddíl"></a></h2>
+<p>Celý modul ilustruje <strong>kapitolu 4, oddíl 4.1.3</strong> (agenti postavení na LLM v automatizaci testovacích procesů). Agent tu plánuje, volá nástroje (soubory, terminál, Playwright MCP), pozoruje výsledek a pokračuje. Řetězec čtyř agentních skills s předávkou přes soubory a cílový prompt z kroku 13 odpovídají víceagentnímu a autonomnímu použití z téhož oddílu. Schvalování příkazů a revize každého výstupu jsou <strong>human-in-the-loop</strong>. Znalostní skills s rozcestníkem jsou blízké principu RAG z <strong>oddílu 4.1.2</strong>: model dostane jen tu část znalostí, kterou úloha potřebuje. Architekturu nástroje (rozhraní, příprava kontextu, LLM) popisuje <strong>oddíl 4.1.1</strong>.</p>
+<p><code>CLAUDE.md</code> a text agentního skillu plní roli <strong>systémového promptu</strong> z <strong>kapitoly 2, oddílu 2.1.3</strong>. Role, pravidla a formát platí pro celou úlohu. Uživatelský prompt (<code>/create-scenarios booking</code>) jen upřesní cíl. Šest pohledů ve <code>create-scenarios</code> je strukturovaný prompt z <strong>oddílu 2.1.1</strong>. Scénáře, strategie a testy pokrývají <strong>oddíl 2.2.2</strong> (návrh a implementace testů) a <strong>oddíl 2.2.3</strong> (automatizované testování, samoopravné testy a jejich riziko). Report pokrytí z kroku 13 je analýza pokrytí z <strong>oddílu 2.2.1</strong> a podklad pro monitoring a řízení testování z <strong>oddílu 2.2.4</strong>. Opakovaný běh a porovnání v cvičení 3 jsou hodnocení výstupu z <strong>oddílu 2.3</strong>.</p>
+<p>Rozpory v doménových souborech, vymyšlené scénáře a tvrzení agenta o vlastní práci jsou halucinace a chyby v uvažování z <strong>kapitoly 3, oddílu 3.1.1</strong>. Jiný počet scénářů při každém běhu je nedeterministické chování z <strong>oddílu 3.1.4</strong>. Oprávnění, zákaz čtení <code>.env</code> a únik tokenu v <code>settings.local.json</code> patří do <strong>oddílů 3.2.1 a 3.2.3</strong>.</p>
+<p>Rozdíl mezi chatem a agentem, který pracuje nad celým projektem, je v <strong>kapitole 1, oddílu 1.2.2</strong>. Používání Claude Code na firemním kódu bez schválení je stínová AI z <strong>kapitoly 5, oddílu 5.1.1</strong>. Revize vygenerovaného testwaru a označení reportu jako výstupu AI odpovídají kvalitativním branám a povinnosti transparentnosti z <strong>oddílu 5.1.2</strong>.</p>
+</article>
+<div class="splneno-radek" data-nepocitat><button type="button" class="tlacitko splneno" data-splneno="modul-05-claude-code-pro-qa" data-text-ne="Označit jako prostudované" data-text-ano="✓ Prostudováno" aria-pressed="false">Označit jako prostudované</button></div>
+<nav class="naradi sousede" aria-label="Sousední moduly"><a href="04-mcp-a-playwright-mcp.html">← 4. MCP a Playwright MCP</a><a href="../praxe.html">Všechny moduly</a><a href="06-ci-cd-a-docker-s-ai-agentem.html">6. CI/CD a Docker s AI agentem →</a></nav>
+</main>
+<aside class="strom" aria-label="Obsah stránky"><h2>V tomto modulu</h2><ol><li><a href="#co-postavis">Co postavíš</a></li><li><a href="#predpoklady">Předpoklady</a></li><li><a href="#postup">Postup</a><ol><li><a href="#krok-1-od-jednoho-agenta-k-retezci-l30-l31">Krok 1: Od jednoho agenta k řetězci (L30, L31)</a></li><li><a href="#krok-2-instalace-a-prvni-spusteni-l33-l34">Krok 2: Instalace a první spuštění (L33, L34)</a></li><li><a href="#krok-3-init-a-claude-md-l33">Krok 3: <code>/init</code> a <code>CLAUDE.md</code> (L33)</a></li><li><a href="#krok-4-co-agent-smi-opravneni">Krok 4: Co agent smí (oprávnění)</a></li><li><a href="#krok-5-knowledge-skills-a-agent-skills-l35-l38-l40">Krok 5: Knowledge skills a agent skills (L35, L38, L40)</a></li><li><a href="#krok-6-znalostni-skill-eventhub-domain-a-chytre-odkazy-l36-l37">Krok 6: Znalostní skill <code>eventhub-domain</code> a chytré odkazy (L36, L37)</a></li><li><a href="#krok-7-vlastni-znalostni-skill">Krok 7: Vlastní znalostní skill</a></li><li><a href="#krok-8-agentni-skill-create-scenarios-l36-l38">Krok 8: Agentní skill <code>create-scenarios</code> (L36, L38)</a></li><li><a href="#krok-9-agentni-skill-test-strategy-l39">Krok 9: Agentní skill <code>test-strategy</code> (L39)</a></li><li><a href="#krok-10-znalostni-skill-playwright-best-practices-l40">Krok 10: Znalostní skill <code>playwright-best-practices</code> (L40)</a></li><li><a href="#krok-11-agentni-skill-generate-tests-napsat-spustit-opravit-l40-l41">Krok 11: Agentní skill <code>generate-tests</code>: napsat, spustit, opravit (L40, L41)</a></li><li><a href="#krok-12-agentni-skill-review-tests-l41">Krok 12: Agentní skill <code>review-tests</code> (L41)</a></li><li><a href="#krok-13-cilena-analyza-pokryti-s-reportem-l43">Krok 13: Cílená analýza pokrytí s reportem (L43)</a></li><li><a href="#krok-14-subagenti-rozsahy-skills-a-co-patri-do-gitu-l43">Krok 14: Subagenti, rozsahy skills a co patří do gitu (L43)</a></li><li><a href="#krok-15-kontrolni-seznam-pro-vlastni-skill-a-rozvrzeni-prace">Krok 15: Kontrolní seznam pro vlastní skill a rozvržení práce</a></li></ol></li><li><a href="#overeni">Ověření</a></li><li><a href="#caste-chyby">Časté chyby</a></li><li><a href="#cviceni">Cvičení</a></li><li><a href="#souvislost-se-sylabem-ct-genai">Souvislost se sylabem CT-GenAI</a></li></ol></aside>
+</div>
+</div>
+<footer class="paticka">
+  <div class="paticka-vnitrek">
+    <p><strong>Neoficiální studijní materiál.</strong> Tento web není produktem ani publikací ISTQB®.
+    ISTQB® je registrovaná ochranná známka International Software Testing Qualifications Board.
+    Texty jsou vlastním zpracováním autora vytvořeným při přípravě na zkoušku CT-GenAI; oficiální sylabus
+    a vzorovou zkoušku si stáhněte přímo na istqb.org.</p>
+    <p>Ke zkoušce vždy platí znění oficiálního sylabu CT-GenAI v1.1. Doplněné informace a příklady z praxe
+    slouží k porozumění, nikoli jako zdroj správných odpovědí u zkoušky.</p>
+    <ul>
+      <li><a href="https://istqb.org/certifications/gen-ai/" target="_blank" rel="noopener noreferrer">ISTQB — CT-GenAI</a></li>
+      <li><a href="https://glossary.istqb.org" target="_blank" rel="noopener noreferrer">Slovník ISTQB</a></li>
+      <li><a href="https://casqb.org" target="_blank" rel="noopener noreferrer">CaSQB</a></li>
+      <li><a href="../zdroje.html">Zdroje a autorská práva</a></li>
+    </ul>
+  </div>
+</footer>
+<script src="../assets/ucet-konfig.js"></script>
+<script src="../assets/ucet.js"></script>
+<script src="../assets/skript.js"></script>
+</body>
+</html>

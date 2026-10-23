@@ -1,0 +1,900 @@
+<!doctype html>
+<html lang="cs" data-tema="">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>2. Prompt engineering — Plný výklad | ISTQB CT-GenAI</title>
+<meta name="description" content="Plný výklad kapitoly 2 sylabu ISTQB CT-GenAI v1.1: Prompt engineering pro efektivní testování. Souvislý výklad kapitoly s příklady z praxe a doplňky nad rámec sylabu.">
+<meta name="color-scheme" content="light dark">
+<link rel="stylesheet" href="../assets/styl.css">
+<script>
+/* Nastaví uložený režim ještě před vykreslením, aby stránka neproblikla. */
+(function(){try{var t=localStorage.getItem('genai-tema');if(t){document.documentElement.setAttribute('data-tema',t);}}catch(e){}})();
+</script>
+</head>
+<body data-kapitola="2">
+<a class="preskocit" href="#text">Přeskočit na text</a>
+<div class="postup" aria-hidden="true"></div>
+<header class="hlavicka">
+  <div class="hlavicka-vnitrek">
+    <a class="znacka" href="../index.html">ISTQB CT-GenAI <span>česká studijní příručka</span></a>
+    <nav class="navigace" aria-label="Hlavní navigace">
+      <a href="../index.html">Úvod</a>
+      <span class="skupina" data-skupina>
+        <a href="../kapitoly.html" class="zvyraznit" aria-current="page">Kapitoly</a>
+        <ul class="podmenu" id="podmenu-kapitoly" aria-label="Seznam kapitol"><li><a href="../kapitola-1/vyklad.html"><b>1</b> Úvod do generativní AI</a></li><li><a href="../kapitola-2/vyklad.html" aria-current="page"><b>2</b> Prompt engineering</a></li><li><a href="../kapitola-3/vyklad.html"><b>3</b> Rizika generativní AI</a></li><li><a href="../kapitola-4/vyklad.html"><b>4</b> Infrastruktura s LLM</a></li><li><a href="../kapitola-5/vyklad.html"><b>5</b> Zavedení GenAI v organizaci</a></li></ul>
+      </span>
+      <a href="../slovnik.html">Slovník</a>
+      <a href="../karticky.html">Kartičky</a>
+      <a href="../prirazovani.html">Přiřazování</a>
+      <a href="../cviceni.html">Cvičení</a>
+      <a href="../praxe.html">Praxe</a>
+      <a href="../cile.html">Cíle</a>
+      <a href="../zkouska.html">Zkouška</a>
+      <a href="../lokalni/index.html" class="lokalni-odkaz">Lokální testy</a>
+      <button type="button" class="prepinac-tema" data-prepinac-tema>Tmavý režim</button>
+      <button type="button" class="ucet-tlacitko" data-ucet hidden>Přihlásit</button>
+    </nav>
+  </div>
+</header>
+<div class="stranka">
+<div class="layout">
+<main>
+<div class="zahlavi">
+  <p class="drobky">Kapitola 2 · Plný výklad</p>
+  <h1>Prompt engineering pro efektivní testování</h1>
+  <p class="podtitul">Jak sestavit prompt, kterou techniku zvolit pro kterou testovací činnost a jak výsledek změřit a prompt vylepšit.</p>
+  <ul class="meta"><li>14 048 slov</li><li>≈ 83 min čtení</li><li>≈ 97 min poslechu</li><li>3 oddíly</li><li>365 min výuky podle sylabu</li></ul>
+</div>
+<nav class="varianty" aria-label="Varianta zpracování kapitoly 2"><a href="vyklad.html" aria-current="page">Plný výklad</a><a href="zkracena.html">Zkrácená verze</a></nav>
+<article class="text" id="text">
+<p>Druhá kapitola je jádrem celého sylabu CT-GenAI. Sylabus jí přiděluje 365 minut výuky, víc než kterékoli jiné kapitole. Ve zkoušce z ní je 11 otázek za 16 bodů ze 46. Pět z těch otázek je na úrovni K3 a každá má dva body. Jsou to jediné K3 otázky kapitoly a dohromady dávají deset bodů. Kdo zvládne oddíl 2.2, má skoro třetinu bodů potřebných k úspěchu.</p>
+<p>Kapitola má tři části. Oddíl 2.1 vysvětluje, z čeho se skládá dobrý prompt, jaké jsou základní techniky promptování a čím se liší systémový prompt od uživatelského. Oddíl 2.2 ukazuje, jak se tyto znalosti použijí v konkrétních testovacích činnostech: v testovací analýze, v návrhu a implementaci testů, v automatizovaném regresním testování a v monitoringu a řízení testování. Na konci oddílu 2.2 je návod, jak vybrat vhodnou techniku. Oddíl 2.3 se věnuje tomu, jak výsledky generativní AI měřit a jak prompt postupně vylepšovat.</p>
+<p>Sylabus uvádí dvě skupiny klíčových slov. Obecné testovací pojmy jsou <strong>acceptance criteria</strong> (akceptační kritéria), <strong>test script</strong> (testovací skript), <strong>test case</strong> (testovací případ), <strong>test condition</strong> (testovací podmínka), <strong>test data</strong> (testovací data), <strong>test design</strong> (návrh testů) a <strong>test report</strong> (report z testování). Pojmy specifické pro GenAI jsou <strong>few-shot prompting</strong>, <strong>meta prompting</strong>, <strong>natural language processing</strong> (zpracování přirozeného jazyka), <strong>one-shot prompting</strong>, <strong>prompt</strong>, <strong>prompt chaining</strong> (řetězení promptů), <strong>prompt engineering</strong>, <strong>system prompt</strong> (systémový prompt), <strong>user prompt</strong> (uživatelský prompt) a <strong>zero-shot prompting</strong>. Všechny je třeba umět poznat v anglickém textu otázky.</p>
+<p>Kapitola obsahuje i čtrnáct praktických cílů (hands-on objectives, HO). Ve zkoušce se přímo nezkoušejí, ale K3 otázky jsou z nich odvozené. Typická K3 otázka popíše situaci z některého cvičení a chce, abyste vybrali nejlepší prompt, nejlepší úpravu promptu nebo nejlepší pořadí kroků. Proto výklad u každého cvičení ukazuje, jak by prompt mohl vypadat.</p>
+<p>Ukázkové prompty jsou většinou česky, aby se daly rovnou vyzkoušet. Názvy komponent promptu (Role, Context, Instruction…) nechávám anglicky, protože přesně tak je uvidíte ve zkoušce. Zkouška ukazuje prompty jen anglicky.</p>
+<h2 id="oddil-2-1">2.1 Tvorba účinných promptů<a class="kotva" href="#oddil-2-1" aria-label="Odkaz na tento oddíl"></a></h2>
+<aside class="lo-blok" data-stitek="Studijní cíle (learning objectives)" aria-label="Studijní cíle (learning objectives)"><ul><li class="lo k2" id="lo-2-1-1"><span class="lo-id">GenAI-2.1.1</span> <span class="lo-k" data-k="K2">K2</span> <span class="lo-text">Give examples of the structure of prompts used in generative AI for software testing</span></li><li class="lo k2" id="lo-2-1-2"><span class="lo-id">GenAI-2.1.2</span> <span class="lo-k" data-k="K2">K2</span> <span class="lo-text">Differentiate core prompting techniques for software testing</span></li><li class="lo k2" id="lo-2-1-3"><span class="lo-id">GenAI-2.1.3</span> <span class="lo-k" data-k="K2">K2</span> <span class="lo-text">Distinguish between system prompts and user prompts</span></li></ul></aside>
+<p>Oddíl 2.1 odpovídá anglickému názvu <strong>Effective Prompt Development</strong>. Sylabus v něm skládá dohromady tři věci. Strukturovaný prompt dává požadavku jasný tvar. Techniky promptování určují, jak s modelem pracovat (s příklady, po krocích, nebo tak, že model pomáhá prompt napsat). A rozdělení na systémový a uživatelský prompt říká, co platí pro celou konverzaci a co jen pro jeden dotaz. Teprve kombinace všech tří dává dobré výsledky.</p>
+<h3 id="prompt-a-prompt-engineering">Prompt a prompt engineering<a class="kotva" href="#prompt-a-prompt-engineering" aria-label="Odkaz na tento oddíl"></a></h3>
+<p><strong>Prompt</strong> je vstup, kterým uživatel nebo aplikace zadává velkému jazykovému modelu (LLM) úlohu. Může to být otázka, pokyn, text k analýze, obrázek nebo kombinace těchto prvků. Model z promptu odvodí, co má udělat, a vygeneruje odpověď.</p>
+<aside class="vsuvka vsuvka--pojem" id="pojem-prompt" data-stitek="Pojem" aria-label="Pojem"><p class="pojem-term">prompt</p><p>Vstup pro LLM, kterým zadáváme úlohu. Obsahuje pokyn a podle potřeby kontext, data, příklady a požadavky na tvar odpovědi.</p></aside>
+<p><strong>Prompt engineering</strong> (tvorba promptů) je disciplína, která se zabývá tím, jak prompty navrhovat, zkoušet a vylepšovat, aby model vracel přesné a použitelné výsledky. Pro testera to není nová profese. Je to dovednost podobná psaní dobrého testovacího případu. Nejasný testovací případ provede každý jinak. Nejasný prompt dá pokaždé jiný a často nepoužitelný výsledek.</p>
+<aside class="vsuvka vsuvka--pojem" id="pojem-prompt-engineering" data-stitek="Pojem" aria-label="Pojem"><p class="pojem-term">prompt engineering</p><p>Návrh, zkoušení a postupné vylepšování promptů tak, aby LLM vracel přesné, relevantní a konzistentní výstupy pro danou úlohu.</p></aside>
+<p>Model rozumí textu díky <strong>natural language processing</strong> (NLP, zpracování přirozeného jazyka). Je to obor AI, který se zabývá porozuměním lidskému jazyku a jeho generováním. Sylabus pojem zmiňuje u dvou úloh. V testovací analýze model díky NLP interpretuje význam požadavků a rozkládá je na testovatelná tvrzení. V návrhu testů díky NLP vytváří z požadavků návrhy testovacích případů. Ve zkoušce stačí vědět, že NLP je schopnost, která modelu umožňuje pracovat s požadavky psanými běžným jazykem.</p>
+<aside class="vsuvka vsuvka--pojem" id="pojem-natural-language-processing-nlp" data-stitek="Pojem" aria-label="Pojem"><p class="pojem-term">natural language processing (NLP)</p><p>Zpracování přirozeného jazyka. Obor AI, díky kterému model rozumí textu psanému běžným jazykem a umí jej vytvářet. V testování umožňuje převést slovní požadavky na testovací podmínky a testovací případy.</p></aside>
+<p>Rozdíl mezi slabým a dobrým promptem je vidět na jednoduchém příkladu. Slabý prompt zní takto:</p>
+<div class="kod" data-jazyk="text"><pre><code>Napiš testy na převod peněz.</code></pre></div>
+<p>Model neví, o jakou aplikaci jde, jaká pravidla platí, kolik testů chcete ani v jakém tvaru. Vrátí obecný seznam, který by se hodil na jakoukoli banku na světě. Lepší prompt říká, kdo má odpovídat, o jaký systém jde, co přesně udělat, z jakých podkladů vyjít, čeho se držet a jak má výsledek vypadat. Přesně to popisuje struktura promptu v oddílu 2.1.1.</p>
+<h3 id="oddil-2-1-1">2.1.1 Struktura promptu pro testování<a class="kotva" href="#oddil-2-1-1" aria-label="Odkaz na tento oddíl"></a></h3>
+<p>Sylabus popisuje strukturovaný prompt pro testování jako skladbu šesti komponent. Pořadí je v sylabu vždy stejné a vyplatí se ho naučit: <strong>role</strong>, <strong>context</strong>, <strong>instruction</strong>, <strong>input data</strong>, <strong>constraints</strong>, <strong>output format</strong>. Každá komponenta odpovídá na jinou otázku.</p>
+<div class="tabulka-obal"><table><thead><tr><th>Komponenta</th><th>Česky</th><th>Na jakou otázku odpovídá</th></tr></thead><tbody><tr><td>Role</td><td>role</td><td>Z jakého pohledu má model odpovídat?</td></tr><tr><td>Context</td><td>kontext</td><td>O jaký systém, funkci a situaci jde?</td></tr><tr><td>Instruction</td><td>instrukce, pokyn</td><td>Co přesně má model udělat?</td></tr><tr><td>Input data</td><td>vstupní data</td><td>S jakými podklady má pracovat?</td></tr><tr><td>Constraints</td><td>omezení</td><td>Jakých pravidel a hranic se má držet?</td></tr><tr><td>Output format</td><td>formát výstupu</td><td>Jak má výsledek vypadat?</td></tr></tbody></table></div>
+<p>Tabulka slouží jako tahák. Následuje rozbor každé komponenty.</p>
+<h4 id="role">Role</h4>
+<p><strong>Role</strong> určuje perspektivu nebo personu, kterou má model zaujmout. Typicky je to tester, test analytik, test manažer nebo inženýr automatizace testů. Role pomáhá modelu odhadnout, za co odpovídá a jakým tónem a přístupem má psát. Test manažer bude psát o rizicích, termínech a zdrojích. Inženýr automatizace bude psát o lokátorech, frameworku a stabilitě skriptů.</p>
+<div class="kod" data-jazyk="text"><pre><code>Jsi zkušený test analytik se zaměřením na platební systémy v bankovnictví.</code></pre></div>
+<p>Role nemá být přehnaně úzká ani nesmyslně obecná. „Jsi tester“ je slabé, ale použitelné. „Jsi nejlepší tester na světě s 30 lety praxe“ nepřidává žádnou informaci. Dobrá role popisuje odbornost, která je pro úlohu potřeba.</p>
+<h4 id="context">Context</h4>
+<p><strong>Context</strong> (kontext) dává modelu informace o pozadí, které potřebuje, aby určil testovací podmínky. Patří sem popis testovaného objektu, konkrétní testované funkce a dalších okolností: typ aplikace, uživatelé, prostředí, fáze projektu, regulatorní rámec.</p>
+<div class="kod" data-jazyk="text"><pre><code>Testujeme mobilní bankovnictví pro fyzické osoby. Nová verze přidává okamžité
+platby do 400 000 Kč. Aplikace běží na Androidu a iOS, platby se autorizují
+biometrií nebo PINem.</code></pre></div>
+<p>Kontext odpovídá na otázku „o čem to je“. Nejde o data, se kterými má model přímo pracovat. To je nejčastější záměna, ke které se ještě vrátíme.</p>
+<h4 id="instruction">Instruction</h4>
+<p><strong>Instruction</strong> (instrukce) je samotný pokyn. Říká, jakou úlohu má model provést. Sylabus chce, aby instrukce byla jasná, v rozkazovacím způsobu a stručná. Obsahuje popis úlohy a podstatné požadavky na ni.</p>
+<div class="kod" data-jazyk="text"><pre><code>Navrhni testovací podmínky pro okamžitou platbu podle níže uvedeného
+uživatelského scénáře a akceptačních kritérií.</code></pre></div>
+<p>Instrukce začíná slovesem: navrhni, analyzuj, porovnej, seřaď, najdi, převeď. „Mohl bys se podívat na…“ je slabší, protože nedává jasný úkol.</p>
+<h4 id="input-data">Input data</h4>
+<p><strong>Input data</strong> (vstupní data) jsou všechny informace, které model potřebuje k provedení úlohy. Sylabus jmenuje uživatelské scénáře, akceptační kritéria, snímky obrazovky, kód, existující testovací případy a ukázky výstupu. Čím podrobnější a lépe strukturovaná vstupní data, tím přesnější a lépe zasazený výsledek.</p>
+<div class="kod" data-jazyk="text"><pre><code>Uživatelský scénář:
+Jako klient banky chci odeslat okamžitou platbu, aby peníze dorazily příjemci
+do několika sekund.
+
+Akceptační kritéria:
+AC1: Okamžitou platbu lze odeslat jen na účet banky zapojené do systému
+     okamžitých plateb.
+AC2: Maximální částka jedné platby je 400 000 Kč.
+AC3: Pokud banka příjemce platbu nepřijme do 10 sekund, klient uvidí chybové
+     hlášení a peníze se mu vrátí na účet.</code></pre></div>
+<p>Vstupní data je dobré v promptu jasně oddělit, třeba nadpisem, odrážkou nebo oddělovačem. Model pak ví, co je pokyn a co materiál k zpracování.</p>
+<h4 id="constraints">Constraints</h4>
+<p><strong>Constraints</strong> (omezení) popisují omezení nebo zvláštní pravidla, která má model dodržet. Sylabus říká, že omezení určují, <em>jak</em> se mají instrukce použít na vstupní data. Typická omezení v testování jsou rozsah (jen funkční testy, jen negativní případy), použitá technika (analýza hraničních hodnot), terminologie (podle ISTQB), zakázané věci (nevymýšlej chování, které není v podkladech) a priorita zdrojů (při rozporu mezi wireframem a požadavkem platí požadavek).</p>
+<div class="kod" data-jazyk="text"><pre><code>Zaměř se jen na funkční chování, ne na vzhled obrazovky. Pro AC2 použij analýzu
+hraničních hodnot. Pokud v podkladech něco chybí, nevymýšlej to, ale uveď to
+jako otevřenou otázku.</code></pre></div>
+<h4 id="output-format">Output format</h4>
+<p><strong>Output format</strong> (formát výstupu) říká, jakou podobu, strukturu nebo vlastnosti má mít odpověď: tabulka, seznam, JSON, Gherkin, Markdown, počet položek, sloupce, jazyk, délka.</p>
+<div class="kod" data-jazyk="text"><pre><code>Výstup vrať jako tabulku Markdown se sloupci: ID, testovací podmínka,
+vazba na AC, priorita (vysoká/střední/nízká). Pod tabulku napiš seznam
+otevřených otázek.</code></pre></div>
+<h4 id="cely-strukturovany-prompt">Celý strukturovaný prompt</h4>
+<p>Když komponenty složíme, vznikne prompt, se kterým model nemusí nic hádat. Popisky komponent v promptu psát nemusíte. Pomáhají ale čitelnosti a usnadňují kontrolu, jestli nic nechybí. Ve zkoušce bývají prompty s popisky, aby šlo o jednotlivých částech mluvit.</p>
+<div class="kod" data-jazyk="text"><pre><code>Role: Jsi zkušený test analytik se zaměřením na platební systémy v bankovnictví.
+
+Context: Testujeme mobilní bankovnictví pro fyzické osoby. Nová verze přidává
+okamžité platby do 400 000 Kč. Platby se autorizují biometrií nebo PINem.
+
+Instruction: Navrhni testovací podmínky pro okamžitou platbu podle uživatelského
+scénáře a akceptačních kritérií níže.
+
+Input data:
+&lt;uživatelský scénář a AC1 až AC3 z předchozí ukázky&gt;
+
+Constraints: Jen funkční chování. Pro AC2 použij analýzu hraničních hodnot.
+Nevymýšlej chování, které v podkladech není; chybějící informace uveď jako
+otevřené otázky.
+
+Output format: Tabulka Markdown se sloupci ID, testovací podmínka, vazba na AC,
+priorita. Pod tabulkou seznam otevřených otázek.</code></pre></div>
+<p>Sylabus dodává, že struktura je jen základ. Kombinuje se s technikami promptování z oddílu 2.1.2 podle toho, o jakou úlohu jde a jaký model se používá.</p>
+<aside class="vsuvka vsuvka--praxe" data-stitek="Příklad z praxe" aria-label="Příklad z praxe"><p>Stejná struktura funguje i nad projektem <code>uctenky</code> (fakturační systém v Djangu a Reactu). Prompt pro test analýzu filtru faktur by mohl vypadat takto:</p>
+<div class="kod" data-jazyk="text"><pre><code>Role: Jsi test analytik webových aplikací.
+Context: Aplikace eviduje osoby a faktury. Stránka Faktury má filtr podle
+odběratele, dodavatele, produktu, minimální a maximální ceny a limitu počtu
+záznamů. API endpoint je GET /api/invoices/filter.
+Instruction: Navrhni testovací podmínky pro filtr faktur.
+Input data: Popis parametrů filtru (viz níže) a model Invoice: price je
+DecimalField(max_digits=10, decimal_places=2).
+Constraints: Jen funkční testy filtru, ne vzhled. Pro cenu a limit použij
+hraniční hodnoty. Kombinace filtrů omez na páry.
+Output format: Tabulka: ID, podmínka, parametry, typ (pozitivní/negativní).</code></pre></div>
+<p>Model díky informaci o <code>DecimalField</code> sám navrhne hranici dvou desetinných míst a maximální hodnotu 99 999 999,99. Bez té informace by ji neměl odkud vzít.</p></aside>
+<h4 id="jak-komponenty-rozlisit">Jak komponenty rozlišit</h4>
+<p>Ve zkoušce dostanete jeden řádek promptu a máte určit, do které komponenty patří. Nejčastěji se pletou tři dvojice.</p>
+<p><strong>Context × Input data.</strong> Kontext popisuje svět kolem úlohy: systém, funkci, uživatele, prostředí. Vstupní data jsou konkrétní materiál, se kterým model pracuje: text požadavku, log, report z nástroje, snímek obrazovky, existující testy. Pomůcka: kdyby šlo materiál přiložit jako soubor, jsou to vstupní data. Věta „testujeme pojišťovací portál pro zprostředkovatele“ je kontext. Věta „použij přiložený export 120 testovacích případů z Jira“ jsou vstupní data.</p>
+<p><strong>Constraints × Output format.</strong> Omezení říkají, jakých pravidel se držet při práci. Formát výstupu říká, jak má vypadat výsledek. „Vrať tabulku se sloupci ID, popis, závažnost“ je formát. „Ber v úvahu jen požadavky označené jako schválené“ je omezení. Pozor na hraniční případ: „použij syntaxi Given-When-Then“ může být v různých promptech uvedeno jako omezení i jako formát. Rozhoduje, jestli věta mluví o pravidle pro tvorbu (omezení), nebo o podobě odevzdaného výsledku (formát).</p>
+<p><strong>Instruction × Constraints.</strong> Instrukce říká <em>co</em> dělat, omezení <em>jak</em> nebo <em>v jakých mezích</em>. „Najdi nejednoznačnosti v požadavcích“ je instrukce. „Posuzuj jen požadavky v kapitole 3“ je omezení.</p>
+<aside class="vsuvka vsuvka--zkouska" data-stitek="Pozor u zkoušky" aria-label="Pozor u zkoušky"><p>LO 2.1.1 má ve zkoušce dvě otázky, víc než ostatní K2 cíle v kapitole. Typicky dostanete popis jedné části promptu a čtyři komponenty na výběr. Hledejte sloveso a předmět věty. Rozkaz s úlohou je instrukce. Popis systému je kontext. Konkrétní soubory, texty a data jsou vstupní data. Pravidla a zákazy jsou omezení. Tvar výsledku je formát výstupu. Pamatujte také, že komponent je šest. Teplota (temperature), velikost modelu nebo seed nejsou komponenty promptu, jsou to parametry modelu.</p></aside>
+<h4 id="jak-poznat-slabou-komponentu">Jak poznat slabou komponentu</h4>
+<p>K3 otázky v oddílu 2.2 často ukazují rozepsaný prompt, ve kterém je jedna komponenta slabá. Prompt má všech šest částí, ale jedna z nich nic neříká. Typické slabiny:</p>
+<ul><li>Role je tak obecná, že nic neurčuje, nebo tak úzká, že model odvádí od cíle.</li><li>Instrukce je vágní („analyzuj výsledky“), takže model neví, jaký výstup má vzniknout.</li><li>Omezení odkazuje na nic neříkající „osvědčené postupy“ (best practices) místo konkrétního pravidla.</li><li>Omezení je v rozporu s cílem, například „vygeneruj nejvýš dva testovací případy“, když se chce pokrytí všech akceptačních kritérií.</li><li>Formát výstupu neodpovídá čtenáři, například technická tabulka pro vedení firmy.</li><li>Vstupní data chybí nebo nejsou ta, která úloha potřebuje.</li></ul>
+<p>Při řešení takové otázky se ptejte: která změna nejvíc přiblíží výsledek k cíli popsanému v zadání? Nejlepší úprava bývá konkrétní a míří přesně na slabé místo. Úprava, která jen přidává slova bez nové informace, bývá distraktor.</p>
+<p>Praktický cíl <strong>HO-2.1.1 (H0)</strong> je pozorovací. Ve výuce se ukáže několik strukturovaných promptů pro různé testovací úlohy a účastníci v nich hledají šest komponent a sledují, jak každá ovlivní výsledek. Cvičení najdete v datech kapitoly.</p>
+<h3 id="oddil-2-1-2">2.1.2 Základní techniky promptování<a class="kotva" href="#oddil-2-1-2" aria-label="Odkaz na tento oddíl"></a></h3>
+<p>Sylabus odkazuje na přehledovou práci Schulhoff (2024), která popisuje desítky technik promptování. Pro testování z nich vybírá tři <strong>core prompting techniques</strong> (základní techniky promptování): <strong>prompt chaining</strong>, <strong>few-shot prompting</strong> a <strong>meta prompting</strong>. Všechny tři se kombinují se šestisložkovou strukturou z oddílu 2.1.1. Do výkladu few-shot promptingu sylabus zahrnuje i <strong>zero-shot</strong> a <strong>one-shot prompting</strong>. Ve zkoušce se tedy počítá s pěti názvy, ale za „tři základní techniky“ se považují chaining, few-shot a meta prompting.</p>
+<h4 id="zero-shot-prompting">Zero-shot prompting</h4>
+<p><strong>Zero-shot prompting</strong> znamená, že prompt neobsahuje žádný příklad požadovaného výstupu. Model se opírá jen o znalosti, které získal při tréninku. Hodí se pro jednoduché a běžné úlohy, kde je jasné, co se chce, a na přesném tvaru výsledku tolik nezáleží.</p>
+<div class="kod" data-jazyk="text"><pre><code>Vysvětli rozdíl mezi konfirmačním a regresním testováním. Uveď ke každému
+jeden příklad z webového e-shopu.</code></pre></div>
+<p>Zero-shot neznamená špatný prompt. Může být plně strukturovaný, se všemi šesti komponentami. Jen v něm není ukázka. Když je výsledek nekonzistentní v tvaru nebo stylu, je to signál přejít na one-shot nebo few-shot.</p>
+<aside class="vsuvka vsuvka--pojem" id="pojem-zero-shot-prompting" data-stitek="Pojem" aria-label="Pojem"><p class="pojem-term">zero-shot prompting</p><p>Prompt bez jakéhokoli příkladu výstupu. Model se opírá jen o znalosti z tréninku.</p></aside>
+<h4 id="one-shot-prompting">One-shot prompting</h4>
+<p><strong>One-shot prompting</strong> přidává do promptu právě jeden příklad. Příklad ukazuje, jaký výsledek se očekává pro daný vstup.</p>
+<div class="kod" data-jazyk="text"><pre><code>Převeď akceptační kritérium na testovací případ ve stejném tvaru jako v příkladu.
+
+Příklad:
+Kritérium: Slevový kód SLEVA10 sníží cenu košíku o 10 %.
+Testovací případ:
+  ID: TC-01
+  Předpoklad: Košík obsahuje zboží za 1 000 Kč.
+  Kroky: Zadej kód SLEVA10 a potvrď.
+  Očekávaný výsledek: Cena košíku je 900 Kč.
+
+Kritérium: Doprava je zdarma pro objednávky od 1 500 Kč.
+Testovací případ:</code></pre></div>
+<aside class="vsuvka vsuvka--pojem" id="pojem-one-shot-prompting" data-stitek="Pojem" aria-label="Pojem"><p class="pojem-term">one-shot prompting</p><p>Prompt s právě jedním příkladem, který ukazuje očekávaný výstup pro daný vstup.</p></aside>
+<h4 id="few-shot-prompting">Few-shot prompting</h4>
+<p><strong>Few-shot prompting</strong> obsahuje víc než jeden příklad, tedy „několik“. Víc příkladů pevněji ukotví požadované chování modelu. Model z nich odvodí vzor a použije ho na nový vstup. Sylabus říká, že technika je zvlášť účinná u úloh, kde příklady umí ukázat požadované chování. Model pak dobře zobecňuje a výsledky jsou konzistentní.</p>
+<div class="kod" data-jazyk="text"><pre><code>Role: Jsi test analytik pojišťovny.
+Instruction: Pro nový uživatelský scénář napiš testovací scénáře v Gherkinu
+stejně jako v příkladech.
+
+Příklad 1
+Scénář: Jako klient chci vidět výši pojistného před uzavřením smlouvy.
+Gherkin:
+  Scenario: Zobrazení pojistného pro standardní vozidlo
+    Given klient zadal vozidlo s objemem motoru 1 400 cm3
+    When klient přejde na shrnutí nabídky
+    Then vidí roční pojistné a měsíční splátku
+
+Příklad 2
+Scénář: Jako klient chci nahlásit škodu online.
+Gherkin:
+  Scenario: Nahlášení škody s fotografií
+    Given klient je přihlášen a má aktivní smlouvu
+    When klient vyplní popis škody a přiloží fotografii
+    Then systém založí škodní událost a zobrazí její číslo
+
+Nový scénář: Jako klient chci změnit frekvenci placení z ročního na čtvrtletní.
+Gherkin:</code></pre></div>
+<p>Kolik příkladů použít, sylabus neurčuje. V praxi se začíná dvěma až pěti. Příklady mají být rozmanité, aby model nepřevzal náhodnou vlastnost jednoho z nich. Když budou všechny tři příklady o přihlášeném klientovi, model začne každý scénář přihlášením, i když to nový scénář nepotřebuje.</p>
+<aside class="vsuvka vsuvka--pojem" id="pojem-few-shot-prompting" data-stitek="Pojem" aria-label="Pojem"><p class="pojem-term">few-shot prompting</p><p>Prompt s několika (víc než jedním) příklady vstupu a očekávaného výstupu. Příklady ukotví tvar a styl výsledku a model je zobecní na nový vstup.</p></aside>
+<aside class="vsuvka vsuvka--zkouska" data-stitek="Pozor u zkoušky" aria-label="Pozor u zkoušky"><p>Zero-shot, one-shot a few-shot se liší jen počtem příkladů v promptu: žádný, jeden, několik. Nezáleží na tom, kolikrát s modelem mluvíte. Pět zpráv bez příkladu není few-shot, ale nejspíš prompt chaining. Jeden prompt se třemi ukázkami je few-shot. Pozor i na to, že „shot“ znamená příklad, ne pokus.</p></aside>
+<h4 id="prompt-chaining">Prompt chaining</h4>
+<p><strong>Prompt chaining</strong> (řetězení promptů) rozkládá úlohu na řadu mezikroků. Každý krok má vlastní prompt. Výsledek každého kroku se ručně nebo automaticky zkontroluje a případně opraví, než se pokračuje dalším krokem. Protože každá odpověď ovlivňuje další prompt, je výsledek přesnější. Sylabus doporučuje řetězení pro testovací úlohy, které jsou složité, potřebují rozklad na dílčí úlohy a systematickou kontrolu mezivýsledků. Řetězení navíc umožňuje dynamickou interakci: podle výsledku kroku se můžete rozhodnout, co dál.</p>
+<p>Příklad: analýza požadavků na kalkulačku pojistného ve třech krocích.</p>
+<div class="kod" data-jazyk="text"><pre><code>Krok 1
+Role: Jsi test analytik pojišťovny.
+Instruction: Projdi požadavky na kalkulačku pojistného níže a vypiš všechna
+místa, která jsou nejednoznačná, neúplná nebo si odporují.
+Input data: &lt;požadavky REQ-01 až REQ-14&gt;
+Output format: Tabulka: ID požadavku, problém, návrh otázky pro analytika.</code></pre></div>
+<p>Tester výsledek projde. Dvě nalezené „nejednoznačnosti“ jsou ve skutečnosti v pořádku, a tak je vyškrtne. Ke třem dalším doplní odpověď od business analytika. Teprve potom pokračuje.</p>
+<div class="kod" data-jazyk="text"><pre><code>Krok 2
+Instruction: Zde jsou požadavky doplněné o odpovědi analytika. Navrhni
+z nich testovací podmínky.
+Input data: &lt;opravené požadavky a odpovědi&gt;
+Output format: Tabulka: ID podmínky, popis, vazba na požadavek.</code></pre></div>
+<div class="kod" data-jazyk="text"><pre><code>Krok 3
+Instruction: Zkontroluj, zda testovací podmínky pokrývají všechny požadavky
+REQ-01 až REQ-14. Vypiš požadavky bez pokrytí a navrhni pro ně chybějící
+podmínky.
+Input data: &lt;podmínky z kroku 2 po kontrole testerem&gt;</code></pre></div>
+<p>Řetězení má dvě podstatné vlastnosti. Úloha je rozdělená na kroky, a mezi kroky je ověření. Bez ověření jde jen o dlouhý rozhovor. Sylabus výslovně mluví o kontrole výsledku před dalším krokem, buď ruční, nebo automatické (například skript, který zkontroluje, že JSON z kroku 1 má všechna povinná pole).</p>
+<aside class="vsuvka vsuvka--pojem" id="pojem-prompt-chaining" data-stitek="Pojem" aria-label="Pojem"><p class="pojem-term">prompt chaining</p><p>Řetězení promptů. Úloha se rozloží na posloupnost dílčích promptů. Výstup každého kroku se zkontroluje a upraví a teprve pak slouží jako vstup dalšího kroku.</p></aside>
+<h4 id="meta-prompting">Meta prompting</h4>
+<p><strong>Meta prompting</strong> využívá schopnost modelu vytvořit nebo vylepšit vlastní prompty. V opakovaném cyklu model navrhne prompt, tester ho posoudí a upraví a model ho podle toho dál zpřesní. Technika těží z toho, že model „ví“, jak vypadají dobře optimalizované prompty. Sylabus uvádí dvě výhody. Šetří ruční práci při návrhu promptů, takže se hodí, když záleží na efektivitě a optimalizaci promptu. A pomáhá testerovi, který si neví rady, jak účinný prompt napsat, protože ho může s modelem vytvořit společně.</p>
+<div class="kod" data-jazyk="text"><pre><code>Potřebuji prompt pro analýzu reportu z regresního testování. Report je export
+z nástroje pro správu testů (CSV, asi 800 řádků). Chci z něj získat seskupení
+podobných selhání, porovnání se seznamem známých anomálií a návrh, co reportovat
+jako nový defekt.
+
+Napiš mi pro to strukturovaný prompt se šesti částmi: role, kontext, instrukce,
+vstupní data, omezení, formát výstupu. Než ho napíšeš, polož mi otázky na
+informace, které ti chybí.</code></pre></div>
+<p>Model se zeptá třeba na sloupce CSV, na formát seznamu známých anomálií a na to, kdo bude výstup číst. Po odpovědích navrhne prompt. Tester ho vyzkouší, výsledek posoudí a vrátí modelu připomínky. Cyklus se opakuje, dokud prompt nedává dobré výsledky.</p>
+<p>Sylabus tuto spolupráci popisuje jako formu <strong>pairing</strong> (párové práce) s nástrojem GenAI. Tester a AI interaktivně pracují na společném cíli, podobně jako dva lidé při párovém programování nebo párovém testování. Přínosem je nejen produktivita, ale i učení: tester vidí, jak model prompt staví, a příště ho napíše lépe sám.</p>
+<aside class="vsuvka vsuvka--pojem" id="pojem-meta-prompting" data-stitek="Pojem" aria-label="Pojem"><p class="pojem-term">meta prompting</p><p>Technika, při které LLM navrhuje nebo vylepšuje prompt a tester ho posuzuje a upravuje. Probíhá v opakovaném cyklu. Je to forma párové práce testera s AI.</p></aside>
+<aside class="vsuvka vsuvka--nad-ramec" data-stitek="Nad rámec sylabu" aria-label="Nad rámec sylabu"><p>Kurz Podraza v jedné lekci popisuje meta prompting jako „instrukce, jak má model přemýšlet, než odpoví“. To je jiná technika, blízká <strong>chain-of-thought</strong> (řetězec úvah), kdy model požádáte, aby postupoval krok za krokem. Pro zkoušku platí definice ze sylabu: meta prompting je tvorba nebo vylepšení promptu pomocí modelu. Chain-of-thought sylabus nezmiňuje a kurz Shetty AI Tools ji ukazuje jako samostatnou techniku. Pokud ji ve zkoušce uvidíte jako možnost, nebude to správná odpověď na otázku o meta promptingu.</p></aside>
+<h4 id="kombinace-technik">Kombinace technik</h4>
+<p>Techniky se nevylučují. Sylabus uvádí, že je lze s výhodou kombinovat, a v oddílu 2.2.5 dává příklad. Meta promptingem vznikne první verze promptu. Ta obsahuje příklady, které tester upraví a doplní, takže se prompt mění ve few-shot. Úlohu nakonec rozdělí na menší kroky, aby mohl mezivýsledky ověřit, a tím použije prompt chaining.</p>
+<h4 id="jak-techniky-rozpoznat">Jak techniky rozpoznat</h4>
+<p>Praktický cíl <strong>HO-2.1.2b (H1)</strong> chce, abyste v daném promptu poznali použitou techniku. Stačí hledat několik znaků.</p>
+<div class="tabulka-obal"><table><thead><tr><th>Co v zadání vidíte</th><th>Technika</th></tr></thead><tbody><tr><td>Prompt bez ukázky výstupu</td><td>zero-shot</td></tr><tr><td>Právě jedna ukázka vstupu a výstupu</td><td>one-shot</td></tr><tr><td>Dvě a víc ukázek, nový vstup na konci</td><td>few-shot</td></tr><tr><td>Řada promptů, výstup jednoho je vstupem dalšího, mezi nimi kontrola</td><td>prompt chaining</td></tr><tr><td>Model píše nebo vylepšuje prompt, tester ho posuzuje</td><td>meta prompting</td></tr></tbody></table></div>
+<p>Tabulka shrnuje jen rozpoznávací znaky. Kdy kterou techniku použít, řeší oddíl 2.2.5.</p>
+<p>Praktický cíl <strong>HO-2.1.2a (H0)</strong> je ukázka všech tří základních technik na testovacích úlohách a diskuse o tom, jak každá přispívá k přesnosti a úplnosti výstupu.</p>
+<aside class="vsuvka vsuvka--zkouska" data-stitek="Pozor u zkoušky" aria-label="Pozor u zkoušky"><p>Distraktory v otázkách k 2.1.2 obvykle prohodí definice. „Few-shot rozkládá úlohu na kroky“ patří k řetězení. „Prompt chaining poskytuje příklady“ patří k few-shot. „Meta prompting ladí prompty ručně bez modelu“ je špatně, podstatou je, že prompt navrhuje nebo vylepšuje model. „Meta prompting spoléhá jen na prompty napsané testerem“ je také špatně. Správná možnost bývá ta, kde sedí všechny tři definice zároveň.</p></aside>
+<h3 id="oddil-2-1-3">2.1.3 Systémový prompt a uživatelský prompt<a class="kotva" href="#oddil-2-1-3" aria-label="Odkaz na tento oddíl"></a></h3>
+<p>Při práci s LLM se uplatňují dva druhy promptů. Každý má jiný účel a jinak tvaruje konverzaci.</p>
+<p><strong>System prompt</strong> (systémový prompt) obvykle definuje vývojář nebo tester, který nástroj staví. Určuje celkové chování modelu. Ve většině rozhraní ho uživatel chatbota nevidí a nemůže ho měnit. Sylabus ho popisuje jako předem definovanou sadu pokynů, která určuje chování modelu, jeho „osobnost“ a <strong>operational parameters</strong> (provozní parametry). Provozní parametry říkají, jak má model odpovídat: formálním tónem, stručně, podle pravidel dané domény, nebo bez určitého chování. Systémový prompt platí pro celou konverzaci a během ní se nemění. Může obsahovat části strukturovaného promptu, nejčastěji roli, kontext a omezení.</p>
+<aside class="vsuvka vsuvka--pojem" id="pojem-system-prompt" data-stitek="Pojem" aria-label="Pojem"><p class="pojem-term">system prompt</p><p>Systémový prompt. Pokyny, které nastavuje vývojář nebo tester nástroje. Platí po celou konverzaci, určují roli, tón, pravidla a omezení modelu a uživatel je obvykle nevidí.</p></aside>
+<p>Příklad systémového promptu pro interního asistenta testerů v bance:</p>
+<div class="kod" data-jazyk="text"><pre><code>Jsi asistent testerů v bance. Odpovídej česky, věcně a formálně.
+Používej terminologii ISTQB (testovací podmínka, testovací případ, defekt,
+selhání). Když si nejsi jistý, řekni to a nic nedomýšlej.
+Nepracuj s osobními údaji klientů. Pokud je uživatel vloží, upozorni ho
+a dál s nimi nepracuj.
+Testovací případy vždy vracej ve formátu: ID, předpoklady, kroky,
+očekávaný výsledek.</code></pre></div>
+<p><strong>User prompt</strong> (uživatelský prompt) je skutečný vstup nebo otázka uživatele chatbota. Mění se s každou interakcí. Obsahuje konkrétní instrukce, otázky nebo úlohy, které má model právě vyřešit. Na rozdíl od systémového promptu ho uživatel vidí a tvoří bezprostřední kontext každé odpovědi.</p>
+<aside class="vsuvka vsuvka--pojem" id="pojem-user-prompt" data-stitek="Pojem" aria-label="Pojem"><p class="pojem-term">user prompt</p><p>Uživatelský prompt. Konkrétní dotaz nebo úloha, kterou uživatel zadává v dané interakci. Mění se s každou zprávou a je viditelný.</p></aside>
+<p>Uživatelské prompty ve stejné konverzaci mohou vypadat takto:</p>
+<div class="kod" data-jazyk="text"><pre><code>Navrhni testovací případy pro změnu limitu platební karty. Limit lze nastavit
+od 0 do 200 000 Kč po tisících.</code></pre></div>
+<div class="kod" data-jazyk="text"><pre><code>Teď ke stejné funkci přidej negativní testovací případy pro nečíselné vstupy.</code></pre></div>
+<p>Model při každé odpovědi bere v úvahu oba prompty zároveň: neměnný systémový a aktuální uživatelský. Proto asistent výše vrátí testovací případy ve formátu ID, předpoklady, kroky, očekávaný výsledek, i když o to uživatel v dotazu nežádá.</p>
+<p>Typický postup je tento: systémový prompt se nastaví jednou na začátku konverzace a pak přicházejí jednotlivé uživatelské prompty. Sylabus k tomu dává dvě doporučení. Systémový prompt má být jasný a konkrétní, pokud jde o roli modelu a omezení. Může obsahovat i kontext a obecné pokyny, například k očekávanému výstupu. Uživatelské prompty mají být zaměřené a dobře strukturované, s explicitní instrukcí, dalším relevantním kontextem a pokyny k formátu výstupu.</p>
+<div class="tabulka-obal"><table><thead><tr><th>Vlastnost</th><th>System prompt</th><th>User prompt</th></tr></thead><tbody><tr><td>Kdo ho píše</td><td>vývojář nebo tester nástroje</td><td>uživatel chatbota</td></tr><tr><td>Platnost</td><td>celá konverzace, nemění se</td><td>jedna interakce, mění se</td></tr><tr><td>Viditelnost pro uživatele</td><td>obvykle skrytý</td><td>viditelný</td></tr><tr><td>Typický obsah</td><td>role, kontext, omezení, tón, obecná pravidla výstupu</td><td>konkrétní úloha, vstupní data, upřesnění formátu</td></tr><tr><td>Funkce</td><td>rámec pro celou konverzaci</td><td>bezprostřední zadání odpovědi</td></tr></tbody></table></div>
+<p>Tabulka ukazuje, že komponenty strukturovaného promptu se mezi oba druhy dělí. Co platí pořád, patří do systémového promptu. Co se mění s úlohou, patří do uživatelského.</p>
+<aside class="vsuvka vsuvka--praxe" data-stitek="Příklad z praxe" aria-label="Příklad z praxe"><p>Šmoula, Janův agent nad Claude Code, je dobrý příklad rozdělení. Pravidla, která platí pro každou zprávu z Telegramu (kdo je uživatel, v jakém jazyce odpovídat, co agent nesmí dělat), patří do systémového promptu, případně do konfiguračního souboru, který nástroj přidává k systémovému promptu. Text zprávy z Telegramu je uživatelský prompt. Když se agent chová v každé konverzaci stejně špatně, je chyba nejspíš v systémovém promptu. Když selže jen u jednoho dotazu, je chyba spíš v tom dotazu.</p></aside>
+<aside class="vsuvka vsuvka--nad-ramec" data-stitek="Nad rámec sylabu" aria-label="Nad rámec sylabu"><p>V API se systémový prompt předává odděleně od zpráv uživatele. V Anthropic API je to parametr <code>system</code>, v OpenAI API zpráva s rolí <code>system</code> nebo <code>developer</code>. Zjednodušená ukázka v Pythonu:</p>
+<div class="kod" data-jazyk="python"><pre><code>from anthropic import Anthropic
+
+client = Anthropic()  # klíč se čte z proměnné prostředí ANTHROPIC_API_KEY
+odpoved = client.messages.create(
+    model="&lt;název modelu&gt;",
+    max_tokens=1500,
+    system="Jsi asistent testerů. Odpovídej česky a používej terminologii ISTQB.",
+    messages=[{"role": "user", "content": "Navrhni testovací podmínky pro filtr faktur podle ceny."}],
+)
+print(odpoved.content[0].text)</code></pre></div>
+<p>Klíč patří do proměnné prostředí nebo do trezoru, nikdy přímo do kódu.</p></aside>
+<aside class="vsuvka vsuvka--zkouska" data-stitek="Pozor u zkoušky" aria-label="Pozor u zkoušky"><p>Hlavní funkcí systémového promptu je dát rámec chování modelu pro celou konverzaci. Distraktory mu přisuzují vlastnosti uživatelského promptu: že se mění s každou interakcí, že nese konkrétní otázku uživatele nebo že je pro uživatele viditelný. Pozor na slovo „obvykle“: sylabus říká, že uživatel systémový prompt <em>ve většině rozhraní</em> nevidí. Vývojář, který nástroj staví, ho samozřejmě vidí a píše.</p></aside>
+<h2 id="oddil-2-2">2.2 Použití technik prompt engineeringu v testovacích úlohách<a class="kotva" href="#oddil-2-2" aria-label="Odkaz na tento oddíl"></a></h2>
+<aside class="lo-blok" data-stitek="Studijní cíle (learning objectives)" aria-label="Studijní cíle (learning objectives)"><ul><li class="lo k3" id="lo-2-2-1"><span class="lo-id">GenAI-2.2.1</span> <span class="lo-k" data-k="K3">K3</span> <span class="lo-text">Apply generative AI to test analysis tasks</span></li><li class="lo k3" id="lo-2-2-2"><span class="lo-id">GenAI-2.2.2</span> <span class="lo-k" data-k="K3">K3</span> <span class="lo-text">Apply generative AI to test design and test implementation tasks</span></li><li class="lo k3" id="lo-2-2-3"><span class="lo-id">GenAI-2.2.3</span> <span class="lo-k" data-k="K3">K3</span> <span class="lo-text">Apply generative AI to automated regression testing</span></li><li class="lo k3" id="lo-2-2-4"><span class="lo-id">GenAI-2.2.4</span> <span class="lo-k" data-k="K3">K3</span> <span class="lo-text">Apply generative AI to test monitoring and control task</span></li><li class="lo k3" id="lo-2-2-5"><span class="lo-id">GenAI-2.2.5</span> <span class="lo-k" data-k="K3">K3</span> <span class="lo-text">Select and apply appropriate prompting techniques for a given context and test task</span></li></ul></aside>
+<p>Sylabus jmenuje testovací úlohy, se kterými může GenAI pomoci: testovací analýza, návrh testů, automatizace testů, prioritizace testovacích případů, detekce defektů, analýza pokrytí a monitoring a řízení testování. Kombinací technik z oddílu 2.1.2 lze prompty přizpůsobit konkrétním cílům testování, takže výstupy jsou přesnější, relevantnější a účinnější. Sylabus k tomu přidává větu, která se v oddílu 2.2 opakuje v různých podobách: kvalitní vstup je pro smysluplné výsledky GenAI nezbytný.</p>
+<p>Oddíl 2.2 má pět pododdílů a každý má jeden K3 cíl. První čtyři odpovídají testovacím činnostem, které znáte z CTFL. Pátý učí vybrat techniku promptování.</p>
+<h3 id="jak-resit-k3-otazky-v-oddilu-2-2">Jak řešit K3 otázky v oddílu 2.2<a class="kotva" href="#jak-resit-k3-otazky-v-oddilu-2-2" aria-label="Odkaz na tento oddíl"></a></h3>
+<p>K3 znamená aplikovat. Otázka nechce definici, ale rozhodnutí v konkrétní situaci. V CT-GenAI mají K3 otázky několik opakujících se tvarů:</p>
+<ol><li><strong>Vyber nejlepší prompt.</strong> Čtyři varianty strukturovaného promptu se liší v jedné nebo dvou komponentách. Hledáte tu, kde je každá komponenta konkrétní a slouží cíli ze zadání.</li><li><strong>Vyber nejlepší úpravu promptu.</strong> Dostanete návrh promptu a čtyři možné úpravy. Hledáte úpravu, která míří na skutečnou slabinu a přímo podporuje cíl.</li><li><strong>Vyber správné pořadí kroků.</strong> Dostanete seznam kroků řetězení a varianty jejich pořadí nebo výběru. Hledáte posloupnost, kde každý krok staví na ověřeném výsledku předchozího a kde nechybí ani nepřebývá žádný krok podle zadání.</li><li><strong>Vyber techniku.</strong> Popis úlohy a výběr z technik promptování. Hledáte znaky úlohy z tabulky v oddílu 2.2.5.</li></ol>
+<p>Postup řešení je ve všech případech podobný.</p>
+<ol><li>Přečtěte si cíl. Je obvykle v první nebo poslední větě zadání („cílem je, aby metriky byly srozumitelné pro vedení“, „cílem je zajistit pokrytí všech akceptačních kritérií“).</li><li>Určete testovací činnost. Analýza hledá <em>co testovat</em>, návrh testů <em>jak testovat</em>, implementace připravuje testware ke spuštění, monitoring a řízení sleduje postup a reaguje na odchylky.</li><li>Projděte šest komponent. U každé se zeptejte, jestli je konkrétní a jestli slouží cíli.</li><li>Vyřaďte možnosti, které jsou obecné („použij osvědčené postupy“), které cíl rozšiřují nebo zužují („zaměř se jen na hraniční případy“, když se chce úplnost), nebo které přidávají něco, co s úlohou nesouvisí.</li><li>Ze zbylých vyberte tu, která přidává nejvíc konkrétní informace přesně tam, kde prompt selhává.</li></ol>
+<p>Dvě obecné zásady pomáhají skoro vždy. Úprava v instrukci nebo formátu výstupu, která přesně popisuje požadovaný výsledek, bývá silnější než úprava role. A úprava, která jen opakuje to, co už v promptu je, jinými slovy, správná nebývá.</p>
+<h3 id="oddil-2-2-1">2.2.1 Testovací analýza s GenAI<a class="kotva" href="#oddil-2-2-1" aria-label="Odkaz na tento oddíl"></a></h3>
+<p>Testovací analýza (test analysis) odpovídá na otázku <em>co testovat</em>. Tester v ní analyzuje testovací bázi, identifikuje testovací podmínky a určuje jejich prioritu. GenAI může testovací analýzu podpořit tím, že generuje a prioritizuje testovací podmínky, hledá defekty v testovací bázi a pomáhá s analýzou pokrytí.</p>
+<p>Vstupní data pro tyto úlohy jsou požadavky, uživatelské scénáře, technické specifikace, wireframy uživatelského rozhraní a další relevantní informace. Výstupem jsou typické pracovní produkty testovací analýzy, například prioritizované testovací podmínky. Sylabus jako příklad testovacích podmínek uvádí akceptační kritéria.</p>
+<aside class="vsuvka vsuvka--pojem" id="pojem-test-condition" data-stitek="Pojem" aria-label="Pojem"><p class="pojem-term">test condition</p><p>Testovací podmínka. Testovatelný aspekt komponenty nebo systému, který je cílem testování. Vzniká v testovací analýze z testovací báze.</p></aside>
+<aside class="vsuvka vsuvka--pojem" id="pojem-acceptance-criteria" data-stitek="Pojem" aria-label="Pojem"><p class="pojem-term">acceptance criteria</p><p>Akceptační kritéria. Podmínky, které musí výsledek implementace uživatelského scénáře splnit, aby jej zainteresované strany přijaly. V CT-GenAI je sylabus uvádí jako příklad testovacích podmínek, které GenAI pomáhá vytvořit.</p></aside>
+<p>Sylabus popisuje pět typických úloh. Ke každé následuje ukázkový prompt.</p>
+<h4 id="hledani-potencialnich-defektu-v-testovaci-bazi">Hledání potenciálních defektů v testovací bázi</h4>
+<p>GenAI umí analyzovat testovací bázi a hledat nekonzistence, nejednoznačnosti a neúplné informace, které by mohly vést k defektům. Porovnává podobné vzory požadavků nebo využívá znalosti z dřívějších reportů o defektech. Na tomto základě označí možné anomálie a navrhne zlepšení. Je to obdoba revize, kterou znáte ze statického testování v CTFL.</p>
+<div class="kod" data-jazyk="text"><pre><code>Role: Jsi test analytik pojišťovny se zkušeností s revizemi požadavků.
+Context: Pojišťovna připravuje online kalkulačku povinného ručení. Požadavky
+napsal produktový tým a projdou revizí před začátkem vývoje.
+Instruction: Najdi v požadavcích nejednoznačnosti, rozpory a chybějící
+informace, které by mohly vést k defektům.
+Input data:
+REQ-01 Pojistné se počítá z objemu motoru a věku řidiče.
+REQ-02 Řidiči do 25 let mají přirážku.
+REQ-03 Řidiči nad 25 let mají základní sazbu.
+REQ-04 Výsledek se zobrazí rychle.
+Constraints: U každého nálezu uveď, proč může vést k defektu. Nehodnoť styl
+textu, jen obsah.
+Output format: Tabulka: ID požadavku, typ problému (nejednoznačnost /
+rozpor / neúplnost), popis, otázka pro autora.</code></pre></div>
+<p>Dobrý model najde aspoň tyto věci. Řidič přesně 25letý nespadá ani pod REQ-02, ani pod REQ-03. REQ-02 neříká, jak velká je přirážka. REQ-04 nemá měřitelné kritérium („rychle“). REQ-01 neříká nic o elektromobilech, které objem motoru nemají. Tester každý nález posoudí. Model může označit i věc, která problémem není, a výsledek proto nesmí jít autorovi požadavků bez kontroly.</p>
+<h4 id="generovani-testovacich-podminek-z-testovaci-baze">Generování testovacích podmínek z testovací báze</h4>
+<p>LLM umí analyzovat požadavky a uživatelské scénáře a generovat z nich testovací podmínky. Díky zpracování přirozeného jazyka interpretuje význam požadavku a rozloží ho na měřitelná, testovatelná tvrzení.</p>
+<div class="kod" data-jazyk="text"><pre><code>Role: Jsi test analytik e-shopu.
+Context: E-shop s elektronikou zavádí doručení na výdejní místo.
+Instruction: Z uživatelského scénáře a akceptačních kritérií odvoď testovací
+podmínky. Každá podmínka musí být samostatně ověřitelná.
+Input data:
+Jako zákazník chci vybrat výdejní místo na mapě, abych si zásilku vyzvedl
+v blízkosti domova.
+AC1: Zákazník vidí výdejní místa do 10 km od zadané adresy.
+AC2: Výdejní místo nelze vybrat pro zásilku těžší než 15 kg.
+AC3: Vybrané místo se zobrazí v rekapitulaci objednávky.
+Constraints: Ke každému AC aspoň jedna pozitivní a jedna negativní podmínka.
+Output format: Seznam: TP-xx, popis, vazba na AC.</code></pre></div>
+<h4 id="prioritizace-testovacich-podminek-podle-rizika">Prioritizace testovacích podmínek podle rizika</h4>
+<p>Když má model informaci o pravděpodobnosti a dopadu selhání u každé testovací podmínky, pomůže prioritizovat testovací úsilí. Sylabus zdůrazňuje, že model má vzít v úvahu regulatorní požadavky, funkce, se kterými přichází do styku uživatel (přihlášení, platby), a historická data o defektech. Bez těchto informací model prioritu jen odhaduje podle obecných zkušeností.</p>
+<div class="kod" data-jazyk="text"><pre><code>Role: Jsi test manažer v bance.
+Context: Release mobilního bankovnictví za 3 týdny. Regulátor vyžaduje silné
+ověření klienta u plateb.
+Instruction: Seřaď testovací podmínky podle úrovně rizika a navrhni prioritu.
+Input data: Tabulka 18 testovacích podmínek se sloupci ID, popis,
+pravděpodobnost selhání (1–5), dopad (1–5), počet defektů v posledních
+třech releasech.
+Constraints: Úroveň rizika = pravděpodobnost × dopad. Podmínky související
+s regulatorními požadavky dostanou nejméně prioritu „vysoká“ bez ohledu
+na výpočet. U každé priority uveď jednu větu zdůvodnění.
+Output format: Tabulka: pořadí, ID, úroveň rizika, priorita, zdůvodnění.</code></pre></div>
+<p>Prompt dává modelu přesné pravidlo výpočtu. Model tedy nemusí hádat, co je riziko, a tester může každý řádek přepočítat. To je důležité, protože modely se při počítání mohou splést (chyby v uvažování řeší kapitola 3).</p>
+<h4 id="podpora-analyzy-pokryti">Podpora analýzy pokrytí</h4>
+<p>Mapováním požadavků a uživatelských scénářů na testovací podmínky může LLM provést analýzu pokrytí (coverage analysis) a zjistit, zda jsou pokryty všechny aspekty testovací báze. Sylabus to doporučuje hlavně u projektů se složitými požadavky, kde mezery v pokrytí vedou k defektům, které uniknou do produkce.</p>
+<div class="kod" data-jazyk="text"><pre><code>Instruction: Porovnej seznam požadavků a seznam testovacích podmínek.
+Pro každý požadavek uveď, které podmínky ho pokrývají. Vypiš požadavky
+bez pokrytí a části požadavků, které pokryté nejsou.
+Input data: &lt;42 požadavků na modul pojistných událostí&gt; &lt;96 testovacích podmínek&gt;
+Constraints: Za pokrytí považuj jen přímou vazbu na obsah požadavku, ne
+podobnost slov. Když si nejsi jistý, označ vazbu jako „k ověření“.
+Output format: Matice trasovatelnosti: požadavek × podmínky, poslední sloupec
+stav (pokryto / částečně / nepokryto / k ověření).</code></pre></div>
+<h4 id="navrh-technik-testovani">Návrh technik testování</h4>
+<p>GenAI může podle typu požadavku navrhnout vhodné techniky testování, například analýzu hraničních hodnot nebo rozdělení tříd ekvivalence. Testerovi to pomáhá použít pro konkrétní testovací podmínky nejúčinnější techniku.</p>
+<div class="kod" data-jazyk="text"><pre><code>Instruction: Pro každý z následujících požadavků navrhni nejvhodnější techniku
+testování černé skříňky a krátce zdůvodni proč.
+Input data:
+R1 Splatnost faktury je 7 až 90 dní od data vystavení.
+R2 Sazba DPH je 0 %, 12 % nebo 21 %.
+R3 Sleva závisí na kombinaci věrnostního programu, výše objednávky
+   a typu zákazníka.
+R4 Objednávka prochází stavy nová, zaplacená, odeslaná, doručená, stornovaná.
+Output format: Tabulka: požadavek, technika, zdůvodnění.</code></pre></div>
+<p>Očekávaná odpověď: R1 analýza hraničních hodnot, R2 rozdělení tříd ekvivalence, R3 rozhodovací tabulka, R4 testování přechodů stavů. Pokud model navrhne něco jiného, je to dobrá příležitost zkontrolovat, jestli se nemýlí model, nebo jestli není požadavek napsaný nejasně.</p>
+<h4 id="kvalita-vstupu-rozhoduje">Kvalita vstupu rozhoduje</h4>
+<p>Sylabus uzavírá výčet větou, kterou se vyplatí znát: kvalita a relevance vstupů, které model dostane, přímo ovlivňuje správnost a přesnost výstupu. Model, který nedostane informaci o riziku, nemůže dobře prioritizovat. Model, který nevidí wireframe, neodhalí rozpor mezi wireframem a textem požadavku.</p>
+<aside class="vsuvka vsuvka--praxe" data-stitek="Příklad z praxe" aria-label="Příklad z praxe"><p>V projektu <code>uctenky</code> platí pravidlo, že se osoby nemažou: <code>DELETE</code> osobu jen skryje a <code>PUT</code> skryje původní záznam a založí nový. Kdo dá modelu jen text uživatelského scénáře „jako uživatel chci upravit údaje osoby“, dostane podmínky pro obyčejnou editaci. Kdo do vstupních dat přidá i toto pravidlo, dostane podmínky, které skutečně testují riziko: stará faktura dál ukazuje původní údaje, upravená osoba má nové ID a v seznamu se přesune na konec, skrytá osoba se ve výpisu neobjeví. Tady je přímo vidět, jak kvalita vstupu mění výstup.</p></aside>
+<h4 id="ho-2-2-1a-multimodalni-prompt-s-wireframem">HO-2.2.1a: multimodální prompt s wireframem</h4>
+<p>Praktický cíl <strong>HO-2.2.1a (H2)</strong> je cvičení, ve kterém se píše strukturovaný <strong>multimodal prompt</strong> (multimodální prompt), tedy prompt s textem i obrázkem. Cílem je vygenerovat kvalitní akceptační kritéria, tedy dobře formulovaná, jasná a úplná, z uživatelského scénáře a wireframu obrazovky. Do promptu lze přidat další text, například omezení vstupních polí nebo obchodní pravidla pro zpracování dat. Výsledky se porovnávají, aby bylo vidět, jak různé formulace komponent ovlivní výsledek.</p>
+<div class="kod" data-jazyk="text"><pre><code>Role: Jsi test analytik internetového bankovnictví.
+Context: Banka přidává obrazovku pro nastavení trvalého příkazu.
+Instruction: Napiš akceptační kritéria pro uživatelský scénář. Využij
+přiložený wireframe obrazovky a obchodní pravidla.
+Input data:
+- Uživatelský scénář: Jako klient chci založit trvalý příkaz, abych
+  nemusel každý měsíc ručně platit nájem.
+- Obrázek: wireframe-trvaly-prikaz.png (pole účet příjemce, částka,
+  frekvence, den splatnosti, datum první a poslední platby, tlačítko Uložit)
+- Pravidla: částka 1 až 1 000 000 Kč; den splatnosti 1 až 28; datum první
+  platby nejdříve zítra.
+Constraints: Kritéria piš jen pro prvky, které jsou na wireframu nebo
+v pravidlech. Pokud wireframe a pravidla nesouhlasí, platí pravidla
+a rozpor vypiš zvlášť.
+Output format: Akceptační kritéria ve tvaru Given-When-Then, číslovaná AC1,
+AC2…; pod nimi seznam rozporů a nejasností.</code></pre></div>
+<p>Na wireframu může být například pole „datum poslední platby“, o kterém pravidla nic neříkají. Dobrý výsledek ho vypíše jako nejasnost a nevymyslí pro něj pravidlo. Omezení o prioritě zdrojů je přesně ten typ informace, který model sám nezná.</p>
+<h4 id="ho-2-2-1b-retezeni-a-lidske-overeni-pri-zpresnovani-akceptacnich-kriterii">HO-2.2.1b: řetězení a lidské ověření při zpřesňování akceptačních kritérií</h4>
+<p>Praktický cíl <strong>HO-2.2.1b (H2)</strong> procvičuje řetězení promptů při analýze uživatelského scénáře a zpřesňování akceptačních kritérií. Sylabus určuje tři kroky v pevném pořadí: nejprve identifikovat nejednoznačnosti, pak posoudit testovatelnost a nakonec posoudit úplnost. Po každém kroku tester výsledek ručně ověří a podle potřeby opraví, buď přímo, nebo dalším promptem. Další krok tak pracuje s „čistým“ výsledkem předchozího.</p>
+<div class="kod" data-jazyk="text"><pre><code>Krok 1 (nejednoznačnosti)
+Role: Jsi test analytik e-shopu.
+Instruction: Najdi v uživatelském scénáři a akceptačních kritériích
+nejednoznačné formulace. U každé navrhni jednoznačnou variantu.
+Input data:
+Jako registrovaný zákazník chci uložit košík na později, abych mohl nákup
+dokončit jindy.
+AC1: Uložený košík se zákazníkovi zobrazí po přihlášení.
+AC2: Uložený košík vyprší po nějaké době.
+AC3: Ceny v uloženém košíku jsou aktuální.
+Output format: Tabulka: AC, problém, návrh nové formulace.</code></pre></div>
+<p>Tester z výsledku převezme formulace, se kterými souhlasí („košík vyprší po 30 dnech“ potvrdí product owner), a zbytek opraví.</p>
+<div class="kod" data-jazyk="text"><pre><code>Krok 2 (testovatelnost)
+Instruction: Zde jsou upravená akceptační kritéria. U každého posuď, zda je
+testovatelné: má jasný předpoklad, akci a ověřitelný výsledek? Netestovatelná
+kritéria přepiš.
+Input data: &lt;kritéria po kontrole z kroku 1&gt;
+Output format: Tabulka: AC, testovatelné ano/ne, důvod, přepis.</code></pre></div>
+<div class="kod" data-jazyk="text"><pre><code>Krok 3 (úplnost)
+Instruction: Posuď, zda upravená kritéria pokrývají scénář úplně. Navrhni
+chybějící kritéria, například pro zboží, které mezitím zmizelo ze skladu,
+nebo pro zákazníka s více zařízeními.
+Input data: &lt;kritéria po kontrole z kroku 2&gt;
+Output format: Seznam nových AC s krátkým zdůvodněním.</code></pre></div>
+<p>Cvičení ukazuje hlavní výhodu řetězení: složitá úloha se rozdělí na menší, a člověk ověří každý mezivýsledek. Kdyby všechny tři kroky byly v jediném promptu, chyba z prvního kroku by se tiše přenesla do dalších.</p>
+<h4 id="reseny-priklad-k3-testovaci-analyza">Řešený příklad K3: testovací analýza</h4>
+<p>Zadání (vlastní, ve stylu zkoušky): Tým e-shopu dostal nové požadavky na věrnostní program. Požadavky zatím nikdo nerevidoval a product owner sám říká, že v nich jsou nejasnosti. Úkolem je s pomocí GenAI a řetězení promptů připravit prioritizované testovací podmínky. Která posloupnost je nejvhodnější?</p>
+<ul><li>A: Prompt 1 odvodí testovací podmínky z požadavků. Prompt 2 podmínky seřadí podle rizika. Výsledek se předá týmu.</li><li>B: Prompt 1 najde v požadavcích nejednoznačnosti a rozpory. Tester nálezy ověří a vyjasní s product ownerem. Prompt 2 odvodí testovací podmínky z opravených požadavků. Tester je zkontroluje. Prompt 3 je seřadí podle rizika s využitím dodaných údajů o pravděpodobnosti a dopadu.</li><li>C: Jeden prompt požádá o nalezení nejasností, odvození testovacích podmínek a jejich seřazení podle rizika najednou.</li><li>D: Prompt 1 najde nejednoznačnosti. Prompt 2 z původních, neopravených požadavků vygeneruje testovací případy s kroky. Prompt 3 je seřadí podle rizika.</li></ul>
+<p>Správná je B. Začíná krokem, který situace vyžaduje (požadavky obsahují nejasnosti), a mezi kroky je lidské ověření. A vynechá hledání defektů v testovací bázi, takže nejasnosti se přenesou do podmínek. C není řetězení, všechno je v jednom promptu bez kontroly mezivýsledků. D sice nejasnosti najde, ale nepoužije je a navíc přeskočí od analýzy rovnou k testovacím případům, což je návrh testů. Kdyby zadání naopak říkalo, že požadavky už revizí prošly, první krok by byl zbytečný.</p>
+<aside class="vsuvka vsuvka--zkouska" data-stitek="Pozor u zkoušky" aria-label="Pozor u zkoušky"><p>U otázek k 2.2.1 si hlídejte hranici mezi testovací analýzou a návrhem testů. Testovací analýza vytváří testovací podmínky, prioritizuje je, hledá defekty v testovací bázi a kontroluje pokrytí. Testovací případy s kroky a očekávanými výsledky už jsou návrh testů. Pokud zadání říká, že něco už bylo uděláno (revize požadavků, prioritizace), správná odpověď tento krok neopakuje.</p></aside>
+<h3 id="oddil-2-2-2">2.2.2 Návrh testů a implementace testování s GenAI<a class="kotva" href="#oddil-2-2-2" aria-label="Odkaz na tento oddíl"></a></h3>
+<p>Sylabus odkazuje na definice z CTFL. Návrh testů (test design) zahrnuje rozpracování a zpřesnění testovacích podmínek do testovacích případů a dalšího testwaru. Implementace testování (test implementation) zahrnuje vytvoření nebo získání testwaru potřebného pro provedení testů.</p>
+<aside class="vsuvka vsuvka--pojem" id="pojem-test-design" data-stitek="Pojem" aria-label="Pojem"><p class="pojem-term">test design</p><p>Návrh testů. Činnost, ve které se testovací podmínky rozpracují do testovacích případů a dalšího testwaru. Odpovídá na otázku „jak testovat“.</p></aside>
+<aside class="vsuvka vsuvka--pojem" id="pojem-test-case" data-stitek="Pojem" aria-label="Pojem"><p class="pojem-term">test case</p><p>Testovací případ. Sada předpokladů, vstupů, akcí, očekávaných výsledků a následných podmínek vytvořená na základě testovacích podmínek.</p></aside>
+<p>S podporou GenAI lze vytvářet, prioritizovat a řadit do harmonogramu provedení testů manuální testy i automatizované testovací skripty. GenAI může tuto velkou skupinu činností výrazně podpořit, protože pomáhá vytvářet a hodnotit různý testware: testovací případy, testovací data, testovací skripty a testovací prostředí. Sylabus uvádí čtyři typické úlohy.</p>
+<h4 id="generovani-testovacich-pripadu">Generování testovacích případů</h4>
+<p>Díky zpracování přirozeného jazyka vytváří GenAI návrhy testovacích případů z funkčních i nefunkčních požadavků. Když model dostane vhodné informace, navrhne předpoklady, vstupy, očekávané výsledky a kritéria pokrytí. Vzniknou testovací případy pro různé cíle testování, od základního ověření funkce po složité end-to-end testy. Sylabus mluví o „draft test cases“, tedy o návrzích. Tester je musí projít.</p>
+<div class="kod" data-jazyk="text"><pre><code>Role: Jsi test analytik webových aplikací.
+Context: Aplikace uctenky eviduje osoby a faktury. Faktura má pole
+invoiceNumber (unikátní), seller, buyer, issued, dueDate, product,
+price (max 10 číslic, 2 desetinná místa) a vat.
+Instruction: Navrhni testovací případy pro založení faktury přes formulář.
+Input data:
+TP-01 Fakturu s vyplněnými povinnými poli lze uložit.
+TP-02 Duplicitní číslo faktury se odmítne.
+TP-03 Cena se ukládá na dvě desetinná místa.
+TP-04 Odběratel a dodavatel se vybírají z existujících osob.
+Constraints: Ke každé testovací podmínce aspoň jeden pozitivní a jeden
+negativní testovací případ. Nevymýšlej validace, které nejsou v podkladech;
+pokud by validace dávala smysl a chybí, uveď ji jako otázku.
+Output format: Tabulka: ID, vazba na TP, předpoklady, kroky, vstupní data,
+očekávaný výsledek.</code></pre></div>
+<h4 id="synteza-testovacich-dat">Syntéza testovacích dat</h4>
+<p>GenAI umí vytvořit reprezentativní syntetická testovací data, která chrání soukromí a podobají se produkčním datům. Pokrývají i extrémní situace a různé testovací podmínky. Hodí se pro funkční i nefunkční testování. Data lze přizpůsobit požadavkům aplikace a simulovat realistické situace bez odhalení citlivých informací.</p>
+<aside class="vsuvka vsuvka--pojem" id="pojem-test-data" data-stitek="Pojem" aria-label="Pojem"><p class="pojem-term">test data</p><p>Testovací data. Data potřebná k provedení testů. GenAI je umí syntetizovat tak, aby připomínala produkční data, ale neobsahovala skutečné osobní údaje.</p></aside>
+<div class="kod" data-jazyk="text"><pre><code>Role: Jsi specialista na testovací data v bance.
+Instruction: Vygeneruj 30 syntetických záznamů klientů pro testování
+registrace do internetového bankovnictví.
+Constraints:
+- Žádné skutečné osoby. Jména kombinuj náhodně. Rodná čísla nepoužívej,
+  místo nich vygeneruj fiktivní identifikátor klienta ve tvaru TST-000001.
+- 20 platných záznamů, 10 neplatných: prázdné povinné pole, e-mail bez
+  zavináče, telefon s písmeny, jméno o délce 101 znaků, věk 17 let.
+- U neplatných záznamů uveď, kterou validaci mají spustit.
+Output format: CSV se sloupci: id, jmeno, prijmeni, datum_narozeni, id_klienta, email,
+telefon, ocekavany_vysledek.</code></pre></div>
+<p>Do promptu nikdy nevkládejte skutečná data klientů, ani „jen jako vzor“. Ochranou dat se podrobně zabývá kapitola 3.</p>
+<h4 id="generovani-automatizovanych-testovacich-skriptu">Generování automatizovaných testovacích skriptů</h4>
+<p>GenAI umí ze strukturovaných testovacích případů vytvořit manuální testovací procedury i automatizované testovací skripty. Interpretuje kroky testu a převede je do kódu pro různé frameworky automatizace testů. Skripty lze později aktualizovat nebo rozšířit podle nových požadavků.</p>
+<aside class="vsuvka vsuvka--pojem" id="pojem-test-script" data-stitek="Pojem" aria-label="Pojem"><p class="pojem-term">test script</p><p>Testovací skript. Posloupnost instrukcí pro provedení testu, obvykle automatizovaná. GenAI ji umí vytvořit ze strukturovaného testovacího případu.</p></aside>
+<div class="kod" data-jazyk="text"><pre><code>Role: Jsi inženýr automatizace testů, pracuješ s Playwrightem v TypeScriptu.
+Context: E2E testy aplikace uctenky používají Page Object Model. Existují
+stránkové objekty InvoicesPage a StatisticsPage. Lokátory jsou jen
+ve stránkových objektech, testy volají pojmenované metody.
+Instruction: Převeď testovací případ níže na test v Playwrightu.
+Input data:
+TC-07 Filtr minimální ceny
+Předpoklad: databáze obsahuje faktury s cenou 500, 1 500 a 3 000 Kč.
+Kroky: otevři Faktury, zadej minimální cenu 1 000, potvrď filtr.
+Očekávaný výsledek: zobrazí se jen faktury s cenou 1 500 a 3 000 Kč.
+Ukázka existujícího testu: &lt;obsah tests/invoices.spec.ts&gt;
+Constraints: Nepoužívej lokátory přímo v testu. Pokud metoda ve stránkovém
+objektu chybí, napiš ji zvlášť a označ ji. Nepoužívej pevné čekání
+(waitForTimeout).
+Output format: Kód testu v jednom bloku, pod ním seznam nových metod
+stránkového objektu.</code></pre></div>
+<p>Tento prompt je mimochodem malý few-shot: ukázka existujícího testu slouží jako příklad stylu. Vygenerovaný kód se musí spustit a projít revizí jako kód od kolegy.</p>
+<h4 id="planovani-a-prioritizace-provedeni-testu">Plánování a prioritizace provedení testů</h4>
+<p>GenAI umí analyzovat testovací případy a jejich vzájemné závislosti a optimalizovat harmonogram provedení testů podle priority, souvisejících rizik, dostupnosti zdrojů a cílů testování.</p>
+<div class="kod" data-jazyk="text"><pre><code>Instruction: Sestav pořadí provedení testovacích případů pro dnešní den.
+Input data: Tabulka 40 testovacích případů: ID, priorita, riziko,
+závislost na jiném TC, potřebné prostředí, odhad času.
+Constraints: TC se nesmí spustit dřív než TC, na kterém závisí. Prostředí
+UAT je dostupné jen 9:00–13:00. Kapacita dva testeři po 6 hodinách.
+Output format: Harmonogram: pořadí, ID, tester, čas začátku. Pod ním seznam
+TC, které se nevešly, s důvodem.</code></pre></div>
+<p>Výstup je návrh. Tester ho zkontroluje, protože model se při kombinaci závislostí, časů a kapacity snadno splete.</p>
+<h4 id="ho-2-2-2a-testovaci-pripady-retezenim-strukturovanym-promptem-a-meta-promptingem">HO-2.2.2a: testovací případy řetězením, strukturovaným promptem a meta promptingem</h4>
+<p>Praktický cíl <strong>HO-2.2.2a (H2)</strong> kombinuje tři postupy ve třech krocích. Nejprve strukturovaný prompt vytvoří funkční testovací případy z akceptačních kritérií v zadaném formátu. Ve druhém kroku se ověří úplnost: model vytvoří tabulku, která ukáže, které akceptační kritérium je kterým testovacím případem pokryto. Ve třetím kroku vznikne meta prompt, který pomůže vytvořit end-to-end testovací procedury a postupně se zlepšuje.</p>
+<div class="kod" data-jazyk="text"><pre><code>Krok 1 (strukturovaný prompt)
+Role: Jsi test analytik e-shopu.
+Context: Funkce „uložit košík na později“.
+Instruction: Vytvoř funkční testovací případy pro akceptační kritéria AC1–AC5.
+Input data: &lt;AC1–AC5 z HO-2.2.1b po úpravách&gt;
+Output format: ID, název, předpoklady, kroky, očekávaný výsledek, vazba na AC.</code></pre></div>
+<div class="kod" data-jazyk="text"><pre><code>Krok 2 (kontrola pokrytí)
+Instruction: Vytvoř tabulku pokrytí: řádky jsou AC1–AC5, sloupce testovací
+případy z předchozí odpovědi. Označ, které AC není pokryto, nebo je pokryto
+jen pozitivním případem.</code></pre></div>
+<div class="kod" data-jazyk="text"><pre><code>Krok 3 (meta prompt)
+Chci vytvořit end-to-end testovací procedury, které spojí uložení košíku,
+přihlášení z jiného zařízení a dokončení objednávky. Navrhni mi prompt, který
+z testovacích případů výše sestaví takové procedury. Prompt by měl obsahovat
+všech šest částí struktury. Po mém hodnocení ho uprav.</code></pre></div>
+<h4 id="ho-2-2-2b-few-shot-pro-testovaci-pripady-v-gherkinu">HO-2.2.2b: few-shot pro testovací případy v Gherkinu</h4>
+<p>Praktický cíl <strong>HO-2.2.2b (H2)</strong> používá few-shot prompting pro testovací podmínky a testovací případy ve stylu Gherkin. Postup je tento. Nejprve si projdete připravené příklady a syntaxi Gherkinu. Pak vyberete <em>n</em> příkladů, které vložíte do promptu. Každý příklad obsahuje uživatelský scénář, testovací podmínky a očekávané testovací případy ve tvaru given-when-then. Prompt se použije na nový uživatelský scénář. Pokud výsledky nejsou přesné, upraví se prompt nebo příklady.</p>
+<p><strong>Gherkin</strong> je jednoduchý strukturovaný jazyk pro popis scénářů chování. Používá klíčová slova <code>Feature</code>, <code>Scenario</code>, <code>Given</code> (výchozí stav), <code>When</code> (akce), <code>Then</code> (očekávaný výsledek), případně <code>And</code> a <code>But</code>.</p>
+<div class="kod" data-jazyk="text"><pre><code>Role: Jsi test analytik ve finančním týmu.
+Instruction: Pro nový uživatelský scénář napiš testovací podmínky a scénáře
+v Gherkinu přesně ve stylu příkladů.
+Constraints: Jedna testovací podmínka = jeden Scenario. Kroky piš z pohledu
+uživatele, ne implementace. Konkrétní hodnoty uváděj v uvozovkách.
+
+Příklad 1
+Uživatelský scénář: Jako účetní chci filtrovat faktury podle odběratele.
+Testovací podmínky:
+  TP1 Filtr vrátí jen faktury vybraného odběratele.
+  TP2 Odběratel bez faktur vrátí prázdný seznam.
+Gherkin:
+  Feature: Filtr faktur podle odběratele
+    Scenario: Filtr vrátí faktury vybraného odběratele
+      Given existují faktury pro odběratele "Alfa s.r.o." a "Beta a.s."
+      When filtruji faktury podle odběratele "Alfa s.r.o."
+      Then vidím jen faktury odběratele "Alfa s.r.o."
+    Scenario: Odběratel bez faktur
+      Given odběratel "Gama s.r.o." nemá žádnou fakturu
+      When filtruji faktury podle odběratele "Gama s.r.o."
+      Then vidím hlášení "Žádné faktury"
+
+Příklad 2
+Uživatelský scénář: Jako účetní chci omezit počet zobrazených faktur.
+Testovací podmínky:
+  TP1 Limit zobrazí nejvýš zadaný počet faktur.
+  TP2 Limit 0 se odmítne.
+Gherkin:
+  Feature: Limit počtu faktur
+    Scenario: Limit omezí počet řádků
+      Given existuje 25 faktur
+      When nastavím limit "10"
+      Then vidím 10 faktur
+    Scenario: Nulový limit
+      When nastavím limit "0"
+      Then vidím chybu "Limit musí být alespoň 1"
+
+Nový uživatelský scénář: Jako účetní chci filtrovat faktury podle rozsahu ceny.</code></pre></div>
+<p>Z praxe: pokud model v odpovědi vynechává negativní scénáře, nestačí ho o ně požádat v instrukci. Je lepší přidat negativní scénář do každého příkladu. Few-shot model napodobuje hlavně to, co vidí v příkladech.</p>
+<aside class="vsuvka vsuvka--nad-ramec" data-stitek="Nad rámec sylabu" aria-label="Nad rámec sylabu"><p>Hodnoty v příkladu (hlášení „Žádné faktury“, chyba „Limit musí být alespoň 1“) jsou vymyšlené pro ilustraci. Skutečné texty v aplikaci <code>uctenky</code> mohou být jiné. Přesně tohle je riziko few-shot promptu: model převezme i vymyšlené detaily z příkladů a vydává je za fakta. Příklady proto berte ze skutečných, ověřených testů.</p></aside>
+<h4 id="ho-2-2-2c-retezeni-pro-prioritizaci-testovaci-sady">HO-2.2.2c: řetězení pro prioritizaci testovací sady</h4>
+<p>Praktický cíl <strong>HO-2.2.2c (H2)</strong> se týká prioritizace testovacích případů v dané testovací sadě s ohledem na analýzu rizik a závislosti mezi testovacími případy. Cvičení začíná krátkým přehledem přístupů k testování: založeného na rizicích, na pokrytí a na požadavcích. Pak účastníci píší prompty, které z dané sady vytvoří proveditelné plány prioritizace podle různých strategií. Výsledek modelu je třeba ručně ověřit, aby se odhalily chyby v jeho uvažování. Jde o úlohu, která vyžaduje uvažování nad více kritérii současně.</p>
+<div class="kod" data-jazyk="text"><pre><code>Krok 1
+Instruction: Z testovací sady vypiš všechny závislosti mezi testovacími
+případy jako seznam „TC-A musí proběhnout před TC-B“.
+Input data: &lt;testovací sada 30 TC s popisem předpokladů&gt;</code></pre></div>
+<p>Tester ověří, že model nevynechal žádnou závislost a žádnou si nevymyslel.</p>
+<div class="kod" data-jazyk="text"><pre><code>Krok 2
+Instruction: Seřaď testovací případy podle rizika (pravděpodobnost × dopad)
+od nejvyššího. Dodrž ověřené závislosti z kroku 1.
+Input data: &lt;ověřený seznam závislostí&gt; &lt;rizika ke každému TC&gt;
+Output format: pořadí, ID, riziko, poznámka, pokud závislost posunula TC
+dopředu nebo dozadu.</code></pre></div>
+<div class="kod" data-jazyk="text"><pre><code>Krok 3
+Instruction: Vytvoř alternativní pořadí podle pokrytí požadavků: nejdřív TC,
+které pokrývají nejvíc dosud nepokrytých požadavků. Porovnej obě pořadí
+a popiš rozdíly.</code></pre></div>
+<p>Typická chyba modelu v tomto cvičení: seřadí sadu podle rizika a závislost poruší, protože vysoce rizikový test postaví před test, který pro něj připravuje data. Proto je ověření po kroku 1 a po kroku 2 nutné.</p>
+<h4 id="reseny-priklad-k3-vyber-promptu-pro-navrh-testu">Řešený příklad K3: výběr promptu pro návrh testů</h4>
+<p>Zadání (vlastní): Tester chce pro uživatelský scénář „Jako klient chci změnit PIN k platební kartě“ a jeho čtyři akceptační kritéria vygenerovat testovací případy. Firma má jednotný formát testovacích případů a tester má k dispozici tři schválené testovací případy z jiného projektu v tomto formátu. Cílem je, aby každé akceptační kritérium bylo pokryté a aby výstup šel rovnou importovat do nástroje pro správu testů. Který prompt je nejvhodnější?</p>
+<ul><li>A: Role tester. Instrukce: vygeneruj testovací případy pro scénář. Vstupní data: scénář a kritéria. Omezení: drž se osvědčených postupů. Formát: tabulka.</li><li>B: Role test analytik platebních karet. Instrukce: vygeneruj testovací případy pro scénář tak, aby každé AC pokrýval aspoň jeden pozitivní a jeden negativní případ. Vstupní data: scénář, kritéria a tři schválené testovací případy jako vzor. Omezení: formát přesně podle vzorů, nevymýšlej pravidla mimo kritéria. Formát: CSV se sloupci podle vzorů a sloupec s vazbou na AC.</li><li>C: Role test analytik platebních karet. Instrukce: vygeneruj tři testovací případy zaměřené na hraniční hodnoty PINu. Vstupní data: scénář a tři vzory. Formát: CSV.</li><li>D: Role test analytik platebních karet. Instrukce: navrhni prompt, který by vygeneroval testovací případy. Vstupní data: scénář a kritéria.</li></ul>
+<p>Správná je B. Používá few-shot (tři schválené vzory), vyžaduje pokrytí každého kritéria a formát odpovídá importu. A má vágní omezení a nevyužívá vzory. C omezí počet a zaměření tak, že pokrytí všech kritérií nezajistí. D je meta prompting, který by se hodil, kdyby tester nevěděl, jak prompt sestavit. Tady to ví a má vzory.</p>
+<aside class="vsuvka vsuvka--zkouska" data-stitek="Pozor u zkoušky" aria-label="Pozor u zkoušky"><p>U 2.2.2 hledejte, jestli zadání zmiňuje existující příklady (pak few-shot), požadavek na kontrolu po krocích (pak řetězení) nebo nejistotu, jak prompt napsat (pak meta prompting). Hlídejte také slova, která pokrytí nenápadně omezují: „nejvýše dva“, „jen hraniční případy“, „zaměř se na okrajové situace“. Pokud je cílem úplnost, takové omezení dělá z možnosti distraktor.</p></aside>
+<h3 id="oddil-2-2-3">2.2.3 Automatizované regresní testování s GenAI<a class="kotva" href="#oddil-2-2-3" aria-label="Odkaz na tento oddíl"></a></h3>
+<p>S každou novou iterací nebo vydáním obvykle roste počet regresních testů. Proto jsou vhodným kandidátem na automatizaci, hlavně v CI/CD pipeline, kde se testy spouštějí velmi často. GenAI může tento proces zjednodušit tím, že pomáhá vytvářet, udržovat a optimalizovat sady automatizovaných regresních testů. Dokáže se přizpůsobit změnám v kódu a provést <strong>impact analysis</strong> (analýzu dopadu), tedy určit, které části softwaru nejspíš ovlivnily poslední změny. Regresní testování se pak soustředí tam, kde je nejvíc potřeba.</p>
+<aside class="vsuvka vsuvka--pojem" id="pojem-regression-testing" data-stitek="Pojem" aria-label="Pojem"><p class="pojem-term">regression testing</p><p>Regresní testování. Testování, které ověřuje, že změna (oprava, nová funkce, změna prostředí) nezpůsobila nežádoucí dopady v dříve fungujících částech systému.</p></aside>
+<p>Sylabus uvádí pět činností, které lze podpořit promptováním.</p>
+<h4 id="implementace-skriptu-pro-testovani-rizene-klicovymi-slovy">Implementace skriptů pro testování řízené klíčovými slovy</h4>
+<p>V <strong>keyword-driven testing</strong> (testování řízeném klíčovými slovy) představují předem definovaná klíčová slova běžné kroky testu, například <code>Přihlas uživatele</code> nebo <code>Ověř text na stránce</code>. Testovací skript se skládá z klíčových slov a jejich parametrů. Implementace každého klíčového slova je v knihovně. LLM může klíčová slova namapovat na konkrétní testovací případy, vygenerovat testovací skripty a pomáhat testerům a inženýrům automatizace.</p>
+<aside class="vsuvka vsuvka--pojem" id="pojem-keyword-driven-testing" data-stitek="Pojem" aria-label="Pojem"><p class="pojem-term">keyword-driven testing</p><p>Testování řízené klíčovými slovy. Skriptovací technika, při které testovací skripty obsahují klíčová slova vyšší úrovně a jejich implementace je v samostatné knihovně.</p></aside>
+<p>Úloha je typicky few-shot: model dostane popis knihovny klíčových slov a dva nebo tři hotové skripty a podle nich napíše další.</p>
+<div class="kod" data-jazyk="text"><pre><code>Role: Jsi inženýr automatizace testů, pracuješ s Robot Frameworkem.
+Context: Regresní sada pro internetové bankovnictví. Používáme jen klíčová
+slova z naší knihovny.
+Instruction: Napiš testovací skript pro nový testovací případ podle vzorů.
+Input data:
+Knihovna klíčových slov:
+  Přihlas Klienta    ${uživatel}    ${heslo}
+  Otevři Sekci    ${název}
+  Zadej Platbu    ${účet}    ${částka}    ${zpráva}
+  Potvrď Platbu PINem    ${pin}
+  Ověř Hlášení    ${text}
+  Odhlas Klienta
+
+Vzor 1:
+*** Test Cases ***
+Platba Na Vlastní Účet
+    Přihlas Klienta    test_klient_01    ${HESLO}
+    Otevři Sekci    Platby
+    Zadej Platbu    2001234567/2010    500    test vlastní
+    Potvrď Platbu PINem    ${PIN}
+    Ověř Hlášení    Platba byla odeslána
+    Odhlas Klienta
+
+Vzor 2:
+*** Test Cases ***
+Platba Nad Limit
+    Přihlas Klienta    test_klient_01    ${HESLO}
+    Otevři Sekci    Platby
+    Zadej Platbu    2001234567/2010    500001    nad limit
+    Ověř Hlášení    Částka překračuje denní limit
+    Odhlas Klienta
+
+Nový testovací případ: Platba s prázdným číslem účtu se nesmí odeslat.
+Constraints: Používej jen klíčová slova z knihovny. Pokud žádné nevyhovuje,
+nevymýšlej ho a napiš, jaké klíčové slovo chybí. Hesla a PIN jen jako proměnné.
+Output format: Jeden blok Robot Framework.</code></pre></div>
+<h4 id="analyza-dopadu-a-optimalizace-testu">Analýza dopadu a optimalizace testů</h4>
+<p>GenAI může analyzovat změny v kódu a určit oblasti s vysokým rizikem. Regresní testy pak cílí tam, kde jsou nejvíc potřeba.</p>
+<div class="kod" data-jazyk="text"><pre><code>Role: Jsi test analytik regresního testování.
+Context: Aplikace uctenky, backend Django REST Framework. Plná regresní sada
+trvá 40 minut, po každém commitu chceme pustit jen relevantní část.
+Instruction: Podle změn v kódu urči ovlivněné oblasti a vyber regresní testy,
+které je třeba spustit.
+Input data:
+- git diff posledního commitu (soubor invoices/views/invoice_views.py,
+  funkce monthly_summary)
+- Mapa testů: tabulka test → endpoint → soubor
+Constraints: Vyber testy jen podle mapy. Pokud změna zasahuje soubor, který
+v mapě není, uveď to jako riziko. Vždy přidej smoke testy.
+Output format: Seznam vybraných testů se zdůvodněním, pod ním seznam rizik.</code></pre></div>
+<p>Mapa testů je podstatná část vstupu. Bez ní model jen hádá podle názvů testů.</p>
+<h4 id="samoopravne-a-adaptivni-testy">Samoopravné a adaptivní testy</h4>
+<p>GenAI lze použít k automatické úpravě testovacích skriptů tak, aby zvládly drobné změny uživatelského rozhraní nebo API. Testy pak nepadají zbytečně kvůli malým úpravám a testovací sady zůstávají dlouhodobě stabilní. Tomuto přístupu se říká <strong>self-healing tests</strong> (samoopravné testy).</p>
+<aside class="vsuvka vsuvka--pojem" id="pojem-self-healing-test" data-stitek="Pojem" aria-label="Pojem"><p class="pojem-term">self-healing test</p><p>Samoopravný test. Automatizovaný test, jehož skript se při drobné změně UI nebo API (jiný lokátor, přejmenované pole) automaticky přizpůsobí, aby test zbytečně nepadal.</p></aside>
+<p>Samooprava má i rizikovou stránku. Pokud se tlačítko „Odeslat platbu“ změnilo na „Smazat účet“ a test se „opraví“ tak, že klikne na nové tlačítko, test projde a skutečný defekt zůstane skrytý. Každá automatická úprava skriptu proto musí být viditelná a schválená člověkem.</p>
+<h4 id="automatizovane-reportovani-a-prehledy">Automatizované reportování a přehledy</h4>
+<p>GenAI umožňuje generovat podrobné a včas dostupné reporty z testování s metrikami úspěšnosti, selháními a hlavními zjištěními. Zainteresované strany dostanou dashboardy, které ukazují trendy testování a nabízejí předpověď míst, kde může dojít k selhání.</p>
+<aside class="vsuvka vsuvka--pojem" id="pojem-test-report" data-stitek="Pojem" aria-label="Pojem"><p class="pojem-term">test report</p><p>Report z testování. Dokument nebo přehled s výsledky a hodnocením testování. Patří sem report o postupu prací při testování i souhrnný report z testování.</p></aside>
+<h4 id="lepsi-reporty-o-defektech-a-analyza-korenove-priciny">Lepší reporty o defektech a analýza kořenové příčiny</h4>
+<p>GenAI může automaticky sestavit úplný report o defektu s testovacími logy, snímky obrazovky a údaji o testovacím prostředí. Sylabus v nadpisu zmiňuje i analýzu kořenové příčiny (root cause analysis). Model z logů a stack trace navrhne pravděpodobnou příčinu, kterou pak ověří vývojář.</p>
+<div class="kod" data-jazyk="text"><pre><code>Instruction: Z logu selhaného testu a snímku obrazovky sestav report
+o defektu podle naší šablony a navrhni pravděpodobnou kořenovou příčinu.
+Input data: &lt;log z Playwrightu&gt; &lt;stack trace serveru&gt; &lt;snímek&gt;
+&lt;šablona reportu o defektu&gt;
+Constraints: Odděl fakta z logu od domněnek. Domněnky označ slovem
+„hypotéza“.
+Output format: Pole šablony: název, prostředí, kroky, očekávaný výsledek,
+skutečný výsledek, závažnost, hypotéza kořenové příčiny.</code></pre></div>
+<aside class="vsuvka vsuvka--praxe" data-stitek="Příklad z praxe" aria-label="Příklad z praxe"><p>V projektu <code>uctenky</code> se graf tržeb nikdy nevykreslil. Klient volal adresu <code>/api/invoices/monthly-summary?year=2025</code> a funkce <code>apiGet</code> k ní připojila další otazník. Server dostal rok <code>"2025?"</code> a vracel chybu 500. Kdyby model dostal jen hlášku z klienta („Nepodařilo se načíst data pro graf“), mohl by hádat donekonečna. S logem serveru, kde je vidět hodnota <code>"2025?"</code>, najde příčinu během chvíle. Regresní test, který hlídá, že se graf vykreslí, je pak přesně ten typ testu, který patří do automatizované regresní sady.</p></aside>
+<h4 id="gui-a-api-regresni-testy">GUI a API regresní testy</h4>
+<p>Tyto činnosti se uplatní u funkčních i nefunkčních regresních testů. Sylabus ale připomíná, že GenAI dělá chyby. Vygenerovaný výstup je třeba pečlivě kontrolovat, a to tím důkladněji, čím vyšší je související riziko (podrobně kapitola 3).</p>
+<p>GenAI pomáhá i u automatizovaných end-to-end regresních testů přes GUI a přes API. Každý typ má jiné potíže. GUI testy bývají nestabilní, protože se uživatelské rozhraní často mění. GenAI umí skripty přizpůsobit dynamickým lokátorům a změněným interakcím a omezit ruční zásahy. API regresní testy řeší měnící se formáty požadavků a odpovědí, endpointy a autentizaci. GenAI umí skripty přizpůsobit vyvíjející se specifikaci API a vygenerovat různorodá testovací data, takže pokrytí zůstává úplné a ruční aktualizace ubývají.</p>
+<h4 id="ho-2-2-3a-few-shot-pro-skripty-rizene-klicovymi-slovy">HO-2.2.3a: few-shot pro skripty řízené klíčovými slovy</h4>
+<p>Praktický cíl <strong>HO-2.2.3a (H2)</strong> procvičuje few-shot prompting při tvorbě a správě testovacích skriptů řízených klíčovými slovy pro webovou aplikaci s frameworkem pro automatizaci GUI testů. Cvičení má dvě části. První se věnuje automatizaci: vytvoření dokumentace knihovny klíčových slov, generování prvních skriptů, jejich validaci pomocí AI a rozšíření pokrytí o další skripty. Druhá část se věnuje ladění: pomocí systémového promptu se vytvoří AI asistent, který kontroluje a opravuje testovací skripty.</p>
+<p>Systémový prompt takového asistenta může vypadat takto:</p>
+<div class="kod" data-jazyk="text"><pre><code>Jsi asistent pro kontrolu testovacích skriptů v Robot Frameworku.
+Znáš knihovnu klíčových slov uvedenou níže a nic jiného nepoužíváš.
+U každého skriptu, který dostaneš:
+1. Ověř, že používá jen klíčová slova z knihovny a správný počet argumentů.
+2. Ověř, že hesla a PIN jsou jen v proměnných.
+3. Najdi kroky bez ověření výsledku.
+Vrať seznam nálezů (řádek, problém, oprava) a pod ním opravený skript.
+Pokud je skript v pořádku, napiš jen „Bez nálezů“.
+
+Knihovna klíčových slov:
+&lt;dokumentace knihovny&gt;</code></pre></div>
+<p>Uživatelský prompt pak obsahuje jen skript ke kontrole. Systémový prompt se nemění, dokud se nezmění knihovna.</p>
+<h4 id="ho-2-2-3b-strukturovane-prompty-pro-analyzu-reportu-z-regresniho-testovani">HO-2.2.3b: strukturované prompty pro analýzu reportu z regresního testování</h4>
+<p>Praktický cíl <strong>HO-2.2.3b (H2)</strong> ukazuje metodický postup analýzy reportů z regresního testování pomocí strukturovaných promptů. Postup začíná analýzou výsledků testů a jejich porovnáním se specifikací testů. Pokračuje seskupením (clustering) podobných defektů, údržbou seznamu známých anomálií (known anomalies list) a křížovou kontrolou zjištění. Všechny kroky jsou propojené v jedné konverzaci s LLM.</p>
+<div class="kod" data-jazyk="text"><pre><code>Krok 1
+Role: Jsi test analytik regresního testování v pojišťovně.
+Context: Noční regresní běh modulu pojistných smluv, 640 automatizovaných testů.
+Instruction: Projdi výsledky běhu a porovnej je se specifikací testů. Pro každý
+neúspěšný test odděl očekávaný a skutečný výsledek a urči, zda jde o selhání
+aplikace, chybu testu, nebo problém prostředí.
+Input data: &lt;export výsledků CSV&gt; &lt;specifikace testů&gt;
+Output format: Tabulka: test, očekávaný výsledek, skutečný výsledek,
+kategorie, krátké zdůvodnění.</code></pre></div>
+<div class="kod" data-jazyk="text"><pre><code>Krok 2
+Instruction: Seskup neúspěšné testy z kroku 1 podle pravděpodobné společné
+příčiny (stejná chybová hláška, stejný endpoint, stejný krok). U každé skupiny
+uveď počet testů a jednu větu, co mají společného.</code></pre></div>
+<div class="kod" data-jazyk="text"><pre><code>Krok 3
+Instruction: Porovnej skupiny se seznamem známých anomálií. Označ, které
+skupiny odpovídají známé anomálii, které jsou nové a které známé anomálie
+se v tomto běhu neobjevily (mohly být opraveny).
+Input data: &lt;seznam známých anomálií s ID a popisem&gt;</code></pre></div>
+<div class="kod" data-jazyk="text"><pre><code>Krok 4
+Instruction: Pro nové skupiny navrhni text reportu o defektu. Aktualizuj
+seznam známých anomálií: nové položky přidej, opravené označ k uzavření.
+Nakonec křížově zkontroluj, že každý neúspěšný test z kroku 1 je přiřazen
+k právě jedné skupině.
+Output format: 1) návrhy reportů, 2) aktualizovaný seznam anomálií,
+3) výsledek křížové kontroly.</code></pre></div>
+<p>Krok 4 končí křížovou kontrolou. Ta odhalí, jestli model nějaký test „ztratil“, což se u dlouhých vstupů stává.</p>
+<h4 id="reseny-priklad-k3-vyber-regresnich-testu">Řešený příklad K3: výběr regresních testů</h4>
+<p>Zadání (vlastní): Regresní sada aplikace pro správu pojistných smluv má 1 200 automatizovaných testů a běží čtyři hodiny. Tým chce, aby GenAI po každém merge requestu vybral jen testy relevantní pro změnu. První verze promptu:</p>
+<div class="kod" data-jazyk="text"><pre><code>Role: Jsi test analytik.
+Context: Regresní sada aplikace pro správu pojistných smluv.
+Instruction: Vyber regresní testy, které je třeba spustit po této změně.
+Input data: git diff merge requestu.
+Constraints: Vyber jen relevantní testy.
+Output format: Seznam ID testů.</code></pre></div>
+<p>Výsledky jsou nespolehlivé, model vybírá testy podle podobnosti názvů. Která úprava nejlépe zlepší schopnost modelu vybrat správné testy?</p>
+<ul><li>A: Změnit roli na „senior test analytik se zkušeností s pojišťovnictvím“.</li><li>B: Přidat do vstupních dat mapu, která ke každému testu uvádí pokryté moduly a soubory, a do instrukce požadavek vybrat testy podle průniku změněných souborů s mapou.</li><li>C: Doplnit do omezení „vyber nejvýše 100 testů, aby běh netrval déle než 20 minut“.</li><li>D: Změnit formát výstupu na tabulku s ID testu, názvem a odhadovanou dobou běhu.</li></ul>
+<p>Správná je B. Problém je v chybějícím vstupu: model nemá z čeho analýzu dopadu udělat. A mění perspektivu, ale nedodá informaci. C omezí počet, ale výběr zůstane stejně náhodný a může vypustit potřebné testy. D změní jen vzhled výsledku.</p>
+<aside class="vsuvka vsuvka--zkouska" data-stitek="Pozor u zkoušky" aria-label="Pozor u zkoušky"><p>K 2.2.3 si pamatujte pět činností: skripty řízené klíčovými slovy, analýza dopadu a optimalizace, samoopravné testy, automatizované reportování a lepší reporty o defektech s analýzou kořenové příčiny. Few-shot je typická technika pro skripty řízené klíčovými slovy, protože jde o opakující se vzor. U otázek na vylepšení promptu pro analýzu reportu hledejte úpravu, která konkretizuje instrukci (co přesně s výsledky udělat), ne úpravu, která jen přejmenuje roli nebo přidá nesouvisející pojmy, třeba Gherkin do analýzy reportu.</p></aside>
+<h3 id="oddil-2-2-4">2.2.4 Monitoring testování a řízení testování s GenAI<a class="kotva" href="#oddil-2-2-4" aria-label="Odkaz na tento oddíl"></a></h3>
+<p>Monitoring testování vyžaduje získat velké množství dat, často nestrukturovaných. Data už obvykle leží v nástrojích pro správu testů a GenAI je pomůže analyzovat a syntetizovat. Sylabus uvádí čtyři skupiny úloh.</p>
+<aside class="vsuvka vsuvka--pojem" id="pojem-test-monitoring" data-stitek="Pojem" aria-label="Pojem"><p class="pojem-term">test monitoring</p><p>Monitoring testování. Průběžné sledování testovacích činností a porovnávání skutečného postupu s plánem pomocí metrik.</p></aside>
+<aside class="vsuvka vsuvka--pojem" id="pojem-test-control" data-stitek="Pojem" aria-label="Pojem"><p class="pojem-term">test control</p><p>Řízení testování. Opatření, která se přijímají na základě monitoringu, aby testování dosáhlo cílů, například změna priorit, harmonogramu nebo zdrojů.</p></aside>
+<p><strong>Monitoring testování a analýza metrik.</strong> GenAI usnadňuje automatizaci monitoringu a analýzu trendů. Umí předpovídat možná rizika a upozornit tým na odchylky od plánu. Tým tak má aktuální informace a může jednat dřív.</p>
+<p><strong>Řízení testování.</strong> GenAI pomáhá s řízením testování tím, že dává podklady pro změnu priorit testů, úpravu harmonogramu a přerozdělení zdrojů. Testování tak zůstává pružné a soustředí se na oblasti s vysokou prioritou.</p>
+<p><strong>Přehledy z dokončení testování a průběžné učení.</strong> GenAI pomáhá vytvářet souhrnné reporty z testování, které zdůrazní úspěchy a poučení. Tým podle nich upraví strategii testování a zlepší další testovací procesy.</p>
+<p><strong>Lepší vizualizace metrik a reportování.</strong> GenAI pomáhá vytvářet dynamické dashboardy a souhrny v přirozeném jazyce. Všechny zainteresované strany tak mají přístup k metrikám, které potřebují, mohou se rychle rozhodnout a vidí jasně postup testování.</p>
+<h4 id="priklad-metriky-z-exportu">Příklad: metriky z exportu</h4>
+<p>Tester má export z nástroje pro správu testů za druhý týden systémového testování bankovní aplikace. Plán na tento týden je 300 testovacích případů, tedy 60 denně. Sloupce s příponou <code>_kumul</code> jsou součty od pondělí, sloupce s příponou <code>_den</code> jsou denní hodnoty.</p>
+<div class="kod" data-jazyk="text"><pre><code>den,plán_kumul,provedeno_kumul,prošlo_kumul,selhalo_kumul,blokováno_kumul,nové_defekty_den,uzavřené_defekty_den
+po,60,58,50,6,2,5,1
+út,120,110,93,12,5,7,3
+st,180,151,128,16,7,9,4
+čt,240,183,154,19,10,8,6
+pá,300,212,177,23,12,6,5</code></pre></div>
+<p>Prompt pro monitoring:</p>
+<div class="kod" data-jazyk="text"><pre><code>Role: Jsi test manažer.
+Context: Systémové testování mobilního bankovnictví, druhý týden ze tří.
+Plán na tento týden je 300 provedených testovacích případů (60 denně).
+Instruction: Spočítej z dat metriky postupu a trend defektů. Porovnej
+skutečný postup s plánem, popiš odchylky a navrhni opatření pro řízení
+testování.
+Input data: &lt;CSV výše&gt;
+Constraints: U každého čísla ukaž výpočet. Opatření navrhuj jen na základě
+dat; co z dat nevyplývá, označ jako předpoklad.
+Output format:
+1) tabulka metrik,
+2) tři věty pro vedení bez odborného žargonu,
+3) seznam navržených opatření s prioritou.</code></pre></div>
+<p>Správné výpočty, které by měl model vrátit a tester ověřit:</p>
+<div class="tabulka-obal"><table><thead><tr><th>Metrika</th><th>Výpočet</th><th>Výsledek</th></tr></thead><tbody><tr><td>Plnění plánu provedení k pátku</td><td>212 / 300</td><td>70,7 %</td></tr><tr><td>Podíl prošlých z provedených</td><td>177 / 212</td><td>83,5 %</td></tr><tr><td>Podíl blokovaných z provedených</td><td>12 / 212</td><td>5,7 %</td></tr><tr><td>Nové defekty za týden</td><td>5 + 7 + 9 + 8 + 6</td><td>35</td></tr><tr><td>Uzavřené defekty za týden</td><td>1 + 3 + 4 + 6 + 5</td><td>19</td></tr><tr><td>Přírůstek otevřených defektů</td><td>35 − 19</td><td>+16</td></tr></tbody></table></div>
+<p>Trend je čitelný. Provádění zaostává za plánem a mezera se každý den zvětšuje (−2, −10, −29, −57, −88). Blokovaných testů přibývá. Defekty se otevírají rychleji, než se zavírají. Rozumná opatření pro řízení testování jsou například vyjasnit příčinu blokovaných testů, přesunout kapacitu na oblasti s vysokým rizikem a s vedením projektu probrat posun termínu nebo zúžení rozsahu.</p>
+<p>Tabulka slouží ke kontrole. Jazykové modely se při aritmetice umí splést, proto má prompt požadavek „ukaž výpočet“. Ve výuce k tomu slouží praktický cíl <strong>HO-2.2.4 (H0)</strong>: ukázka, jak LLM z dat z testovacích nástrojů vytvoří metriky postupu, trendy defektů a pokrytí, upozorní na rizika a shrne je přirozeným jazykem pro všechny zainteresované strany.</p>
+<aside class="vsuvka vsuvka--nad-ramec" data-stitek="Nad rámec sylabu" aria-label="Nad rámec sylabu"><p>U větších exportů je spolehlivější nechat model napsat skript (například v Pythonu s knihovnou pandas), který metriky spočítá, než ho nechat počítat přímo v textu. Model pak dělá to, v čem je dobrý (napsat kód a interpretovat výsledek), a čísla počítá program.</p></aside>
+<h4 id="reseny-priklad-k3-monitoring">Řešený příklad K3: monitoring</h4>
+<p>Zadání (vlastní): Test manažerka e-shopu chce, aby LLM každé ráno z exportu výsledků upozornil na odchylky od plánu testování dřív, než se z nich stane problém. Návrh promptu:</p>
+<div class="kod" data-jazyk="text"><pre><code>Role: Jsi test manažer.
+Context: Akceptační testování nové verze e-shopu, 4 týdny.
+Instruction: Shrň výsledky testování za včerejšek.
+Input data: Export výsledků testů za včerejšek.
+Constraints: Stručně a srozumitelně.
+Output format: Odstavec textu.</code></pre></div>
+<p>Která úprava nejlépe pomůže dosáhnout cíle?</p>
+<ul><li>A: Přidat do vstupních dat plán testování (plánovaný počet provedených testů a vyřešených defektů po dnech) a do instrukce porovnání skutečnosti s plánem a označení odchylek nad 10 %.</li><li>B: Změnit roli na „zkušený test manažer s 15 lety praxe“.</li><li>C: Přidat do formátu výstupu graf s počtem prošlých testů.</li><li>D: Rozšířit omezení na „piš stručně, srozumitelně a profesionálně“.</li></ul>
+<p>Správná je A. Odchylku od plánu nelze zjistit bez plánu. Jde o chybějící vstupní data a o instrukci, která neodpovídá cíli (shrnutí ≠ porovnání s plánem). B nepřidává informaci. C zlepší vizualizaci, ale bez plánu stále neukáže odchylku. D jen opakuje existující omezení jinými slovy.</p>
+<aside class="vsuvka vsuvka--zkouska" data-stitek="Pozor u zkoušky" aria-label="Pozor u zkoušky"><p>U 2.2.4 se ptejte, kdo výstup čte a co s ním má udělat. Když je cílem srozumitelnost pro vedení, pomůže úprava formátu výstupu, například souhrn v běžném jazyce s doporučeným dalším postupem. Když je cílem odhalit odchylky, pomůže dodat plán a požádat o porovnání. Úprava, která přidá hodně technických podrobností, může cíl „snadno pochopitelné pro vedení“ naopak zhoršit.</p></aside>
+<h3 id="oddil-2-2-5">2.2.5 Výběr techniky promptování<a class="kotva" href="#oddil-2-2-5" aria-label="Odkaz na tento oddíl"></a></h3>
+<p>Sylabus shrnuje, kdy se která ze tří základních technik hodí. Tabulka je převyprávěná vlastními slovy.</p>
+<div class="tabulka-obal"><table><thead><tr><th>Technika</th><th>Doporučené použití</th><th>Typické testovací úlohy</th></tr></thead><tbody><tr><td>Prompt chaining</td><td>složité úlohy, které vyžadují přesnost a lidské ověření po každém kroku</td><td>testovací analýza, návrh testů a automatizace, kde se kontroluje funkční správnost každého kroku</td></tr><tr><td>Few-shot prompting</td><td>opakující se úlohy nebo úlohy s konkrétním, omezeným formátem výstupu</td><td>testovací případy v Gherkinu, testování řízené klíčovými slovy, reporty z testování s pevným formátem</td></tr><tr><td>Meta prompting</td><td>pružné a dynamické úlohy, tvorba promptů pro nové úlohy</td><td>obecný popis cíle a úlohy, podle kterého LLM vytvoří prompt; složité úlohy jako analýza reportů z testování a detekce anomálií</td></tr></tbody></table></div>
+<p>Tabulka říká, že rozhoduje povaha úlohy. Praktický cíl <strong>HO-2.2.5 (H1)</strong> to formuluje jako otázku: vyžaduje úloha přesnost, nebo opakující se strukturu?</p>
+<p>Z tabulky plynou rozpoznávací znaky pro zkoušku:</p>
+<ul><li><strong>Prompt chaining</strong> poznáte podle slov jako „po krocích“, „ověřit mezivýsledek“, „každý krok zkontrolovat“, „složitá úloha“, „rozdělit na dílčí úlohy“, „výsledek jednoho kroku použít v dalším“.</li><li><strong>Few-shot</strong> poznáte podle slov „máme vzory“, „existující testovací případy“, „jednotný formát“, „stejný styl“, „opakovaně“, „šablona“, „Gherkin“, „klíčová slova“.</li><li><strong>Meta prompting</strong> poznáte podle slov „nová úloha“, „nevíme, jak prompt napsat“, „optimalizovat prompt“, „ušetřit čas při návrhu promptu“, „nechat model navrhnout prompt“.</li><li><strong>Zero-shot</strong> se hodí, když je úloha jednoduchá a běžná a na přesném tvaru nezáleží. Ve výběrových otázkách bývá spíš distraktorem, protože scénáře obvykle obsahují příklady, kroky nebo nejistotu.</li></ul>
+<p>Sylabus výslovně uvádí, že pro jeden případ užití lze použít více technik. Meta promptingem vznikne první prompt. Ten může obsahovat příklady, které je třeba upravit a doplnit (few-shot). Nakonec je užitečné rozdělit úlohu na menší dílčí úlohy, aby šlo ověřit mezikroky (prompt chaining).</p>
+<h4 id="procviceni-osm-situaci">Procvičení: osm situací</h4>
+<p>Následující situace jsou krátké. U každé je nejvhodnější technika a zdůvodnění.</p>
+<ol><li>Tým píše každý sprint přes sto reportů o defektech a chce, aby všechny měly stejnou strukturu jako tři vzorové reporty od vedoucí testů. <strong>Few-shot.</strong> Opakující se úloha s pevným formátem a hotové vzory.</li><li>Tester má poprvé analyzovat logy z nového platebního modulu, neví, jak úlohu modelu popsat, a chce, aby mu model pomohl prompt sestavit. <strong>Meta prompting.</strong> Nová úloha a nejistota, jak prompt napsat.</li><li>Analýza rozsáhlé specifikace úvěrového procesu: nejdřív najít nejasnosti, pak po vyjasnění odvodit testovací podmínky, pak zkontrolovat pokrytí. Po každém kroku musí výsledek schválit analytik. <strong>Prompt chaining.</strong> Složitá úloha s lidským ověřením mezi kroky.</li><li>Převod 300 manuálních testovacích případů do skriptů v existujícím frameworku klíčových slov, ve kterém už je 50 hotových skriptů. <strong>Few-shot.</strong> Opakující se vzor, vzory existují.</li><li>Test manažer chce jednorázově vysvětlit, co znamená metrika hustota defektů. <strong>Zero-shot.</strong> Jednoduchý dotaz, model to zná, tvar nehraje roli.</li><li>Detekce anomálií v nočních výsledcích výkonnostních testů. Tým zatím neví, jaké anomálie hledat a jak úlohu nejlépe zadat. <strong>Meta prompting.</strong> Pružná úloha, nový typ, prompt teprve vzniká.</li><li>Vytvoření end-to-end testovacích procedur pro pojistnou událost, kde se nejdřív vygenerují testovací případy pro jednotlivé kroky procesu, tester je ověří a pak se z nich sestaví procedury. <strong>Prompt chaining.</strong> Výsledek jednoho kroku slouží jako ověřený vstup dalšího.</li><li>Nový interní nástroj má generovat testovací případy pro desítky týmů. Vedoucí chce nejdřív s modelem připravit dobrý prompt, doplnit do něj firemní vzory testovacích případů a pak úlohu rozdělit na generování a kontrolu pokrytí. <strong>Kombinace: meta prompting, few-shot a prompt chaining.</strong> Přesně podle vzoru kombinace ze sylabu.</li></ol>
+<aside class="vsuvka vsuvka--praxe" data-stitek="Příklad z praxe" aria-label="Příklad z praxe"><p>Pro <code>uctenky</code> se kombinace hodí třeba při rozšíření E2E testů. Meta promptingem vznikne prompt pro generování Playwright testů. Do promptu se jako příklady vloží dva existující testy z <code>tests/invoices.spec.ts</code> (few-shot), aby model dodržel Page Object Model. Úloha se rozdělí: nejdřív testovací případy v textu, kontrola, pak teprve kód, spuštění a oprava (prompt chaining).</p></aside>
+<aside class="vsuvka vsuvka--zkouska" data-stitek="Pozor u zkoušky" aria-label="Pozor u zkoušky"><p>Otázka k 2.2.5 je K3 za dva body. Vypadá jako scénář s popisem úlohy a čtyřmi technikami na výběr. Rozhodují tři otázky. Jsou v zadání hotové příklady, které se mají napodobit? Pak few-shot. Je úloha rozdělená na kroky s ověřováním? Pak řetězení. Má model pomoci vytvořit nebo vylepšit prompt? Pak meta prompting. Pokud zadání obsahuje víc znaků najednou, hledejte ten, který je pro úspěch úlohy rozhodující. Když scénář popisuje, že model z dodaných příkladů a jasných pravidel přímo vygeneruje další položky stejného druhu, jde o few-shot, i když se v zadání objeví slovo „analýza“.</p></aside>
+<h2 id="oddil-2-3">2.3 Hodnocení výsledků GenAI a ladění promptů<a class="kotva" href="#oddil-2-3" aria-label="Odkaz na tento oddíl"></a></h2>
+<aside class="lo-blok" data-stitek="Studijní cíle (learning objectives)" aria-label="Studijní cíle (learning objectives)"><ul><li class="lo k2" id="lo-2-3-1"><span class="lo-id">GenAI-2.3.1</span> <span class="lo-k" data-k="K2">K2</span> <span class="lo-text">Understand the metrics for evaluating the results of generative AI on test tasks</span></li><li class="lo k2" id="lo-2-3-2"><span class="lo-id">GenAI-2.3.2</span> <span class="lo-k" data-k="K2">K2</span> <span class="lo-text">Give examples of techniques for evaluating and iteratively refining prompts</span></li></ul></aside>
+<p>Výstup GenAI nelze přebírat bez kontroly. Sylabus proto chce, aby hodnocení probíhalo podle jasné sady metrik, které posoudí kvalitu, relevanci a účinnost vygenerovaných výstupů. Sylabus odkazuje na práci Li (2024). Metriky mohou být obecné nebo specifické pro úlohu a pomáhají prompty optimalizovat. Oddíl 2.3.1 popisuje metriky, oddíl 2.3.2 techniky, jak prompt na jejich základě vylepšit.</p>
+<h3 id="oddil-2-3-1">2.3.1 Metriky pro hodnocení výsledků GenAI v testovacích úlohách<a class="kotva" href="#oddil-2-3-1" aria-label="Odkaz na tento oddíl"></a></h3>
+<p>Sylabus uvádí sedm metrik. Všechny vysvětlím na jednom příkladu, aby bylo vidět, jak se liší.</p>
+<p><strong>Příklad pro celý oddíl.</strong> Tester nechal LLM vygenerovat testovací případy pro filtr faktur v projektu <code>uctenky</code>. Testovací báze má 12 požadavků (R1 až R12). Pro filtr ceny určil tester předem 8 tříd ekvivalence: čtyři platné (jen minimum, jen maximum, minimum i maximum, minimum rovné maximu) a čtyři neplatné (záporná cena, nečíselný vstup, minimum větší než maximum, víc než dvě desetinná místa). Model vrátil 40 testovacích případů. Tester je zkontroloval a z testovacích případů nechal vygenerovat Playwright testy.</p>
+<h4 id="accuracy-spravnost">Accuracy (správnost)</h4>
+<p><strong>Accuracy</strong> měří celkovou správnost výstupu vůči testovacím případům napsaným odborníkem, vůči požadavkům nebo jinému standardu. Příklad ze sylabu: do jaké míry vygenerované testovací případy pokrývají všechny specifikované požadavky.</p>
+<p>V příkladu pokrývají vygenerované testovací případy 10 z 12 požadavků. Accuracy z pohledu pokrytí požadavků je 10 / 12 = 83 %. Tester může accuracy měřit i jinak, například porovnáním s referenční sadou od zkušeného kolegy, nebo podílem testovacích případů se správným očekávaným výsledkem. Vždy jde o srovnání s nějakým standardem.</p>
+<aside class="vsuvka vsuvka--pojem" id="pojem-accuracy" data-stitek="Pojem" aria-label="Pojem"><p class="pojem-term">accuracy</p><p>Správnost. Celková korektnost výstupu GenAI vůči standardu: testovacím případům od odborníka, požadavkům nebo jiné referenci. Například podíl požadavků, které vygenerované testy pokrývají.</p></aside>
+<h4 id="precision-presnost">Precision (přesnost)</h4>
+<p><strong>Precision</strong> hodnotí správnost výstupu vzhledem ke konkrétnímu cíli. Příklad ze sylabu: do jaké míry vygenerované testovací případy správně identifikují anomálie.</p>
+<p>V příkladu model označil 16 testovacích případů jako „negativní, odhalí neplatné chování“. Tester zjistil, že skutečně neplatné chování testuje 12 z nich. Zbylé čtyři jsou ve skutečnosti pozitivní testy s jiným popisem. Precision vůči cíli „odhalit anomálie“ je 12 / 16 = 75 %.</p>
+<aside class="vsuvka vsuvka--pojem" id="pojem-precision" data-stitek="Pojem" aria-label="Pojem"><p class="pojem-term">precision</p><p>Přesnost. Správnost výstupu vzhledem ke konkrétnímu cíli. Například jaký podíl testovacích případů, které mají odhalit anomálii, ji opravdu cílí.</p></aside>
+<h4 id="recall-uplnost">Recall (úplnost)</h4>
+<p><strong>Recall</strong> měří schopnost modelu najít všechny relevantní případy v daném souboru. Příklad ze sylabu: do jaké míry vygenerované testovací případy pokrývají platné a neplatné třídy ekvivalence datové třídy.</p>
+<p>V příkladu pokrývají testovací případy 5 z 8 tříd ekvivalence: všechny čtyři platné a jen jednu neplatnou (zápornou cenu). Recall je 5 / 8 = 62,5 %. Chybí nečíselný vstup, minimum větší než maximum a víc než dvě desetinná místa.</p>
+<aside class="vsuvka vsuvka--pojem" id="pojem-recall" data-stitek="Pojem" aria-label="Pojem"><p class="pojem-term">recall</p><p>Úplnost. Schopnost modelu zachytit všechny relevantní případy. Například podíl tříd ekvivalence, které vygenerované testy pokrývají.</p></aside>
+<p>Precision a recall se doplňují. Model může mít vysokou precision (co označil jako negativní test, opravdu je negativní test) a nízký recall (většinu neplatných tříd vůbec nenašel). Proto se hodnotí obě.</p>
+<aside class="vsuvka vsuvka--nad-ramec" data-stitek="Nad rámec sylabu" aria-label="Nad rámec sylabu"><p>Kdo zná strojové učení, zná precision a recall jako vzorce nad maticí záměn: precision = TP / (TP + FP), recall = TP / (TP + FN). Výpočty v příkladu jsou s tím v souladu. Sylabus CT-GenAI ale metriky definuje slovně a šířeji. Accuracy tu například neznamená podíl správných klasifikací, ale celkovou správnost vůči standardu. Kurz Roshdy na tento rozdíl výslovně upozorňuje. Ve zkoušce platí definice ze sylabu.</p></aside>
+<h4 id="relevance-and-contextual-fit-relevance-a-soulad-s-kontextem">Relevance and contextual fit (relevance a soulad s kontextem)</h4>
+<p><strong>Relevance and contextual fit</strong> určuje, zda je výstup použitelný a vhodný pro daný kontext. Příklad ze sylabu: do jaké míry jsou vygenerované testovací případy v souladu s testovací bází a zahrnují požadavky specifické pro doménu.</p>
+<p>V příkladu tři testovací případy testují filtrování podle měny EUR a export do PDF. Nic z toho aplikace nemá ani to není v testovací bázi. Dva další testovací případy ignorují pravidlo, že skryté osoby se ve výpisu nezobrazují. Relevance je tedy narušená u 5 ze 40 případů. Testovací případy mimo testovací bázi mohou vypadat věrohodně, ale jsou signálem halucinace, ne bonusem.</p>
+<aside class="vsuvka vsuvka--pojem" id="pojem-relevance-and-contextual-fit" data-stitek="Pojem" aria-label="Pojem"><p class="pojem-term">relevance and contextual fit</p><p>Relevance a soulad s kontextem. Zda je výstup použitelný v daném projektu: odpovídá testovací bázi, doméně a potřebám čtenáře.</p></aside>
+<h4 id="diversity-rozmanitost">Diversity (rozmanitost)</h4>
+<p><strong>Diversity</strong> hodnotí, zda výstup pokrývá širokou škálu vstupů a situací a vyhýbá se opakování. Příklad ze sylabu: do jaké míry vygenerované testovací případy pokrývají různé chování uživatelů a zkoumají okrajové případy.</p>
+<p>V příkladu je 9 ze 40 testovacích případů téměř stejných: liší se jen hodnotou ceny ve stejné třídě ekvivalence. Unikátních testovacích případů je 31. Hraniční hodnoty (například cena přesně na minimu) testují jen dva případy. Rozmanitost je nízká, i když počet testů vypadá velkoryse.</p>
+<aside class="vsuvka vsuvka--pojem" id="pojem-diversity" data-stitek="Pojem" aria-label="Pojem"><p class="pojem-term">diversity</p><p>Rozmanitost. Míra, do jaké výstup pokrývá různé vstupy, chování uživatelů a okrajové případy bez zbytečného opakování.</p></aside>
+<h4 id="execution-success-rate-mira-uspesneho-spusteni">Execution success rate (míra úspěšného spuštění)</h4>
+<p><strong>Execution success rate</strong> měří podíl vygenerovaných testovacích artefaktů, které lze v testovacím prostředí úspěšně spustit tak, jak jsou. Příklad ze sylabu: kolik vygenerovaných testovacích skriptů lze spustit bez syntaktických chyb a bez problémů s formátem výstupu.</p>
+<p>V příkladu vzniklo ze 40 testovacích případů 40 Playwright testů. 31 z nich šlo spustit bez úprav. Devět mělo chybu: neexistující metodu stránkového objektu, překlep v importu, nebo pevné čekání, které neprošlo lintem. Execution success rate je 31 / 40 = 77,5 %.</p>
+<p>Pozor na rozdíl mezi „spustit“ a „projít“. Test, který se spustí a selže, protože našel defekt, se počítá jako úspěšně spuštěný. Metrika hodnotí použitelnost artefaktu, ne kvalitu testovaného systému.</p>
+<aside class="vsuvka vsuvka--pojem" id="pojem-execution-success-rate" data-stitek="Pojem" aria-label="Pojem"><p class="pojem-term">execution success rate</p><p>Míra úspěšného spuštění. Podíl vygenerovaných artefaktů (skriptů, testů), které lze spustit v testovacím prostředí bez úprav, tedy bez syntaktických chyb a problémů s formátem.</p></aside>
+<h4 id="time-efficiency-casova-efektivita">Time efficiency (časová efektivita)</h4>
+<p><strong>Time efficiency</strong> hodnotí ušetřený čas ve srovnání s ruční prací. Příklad ze sylabu: čas, který AI potřebuje k vygenerování testovacích případů, oproti času, který by člověk potřeboval na ruční vytvoření ekvivalentních testů.</p>
+<p>V příkladu by tester psal testovací případy i skripty ručně asi 6 hodin. Generování trvalo 5 minut, kontrola a opravy 1 hodinu 30 minut. Celkem 1 hodina 35 minut. Úspora je 4 hodiny 25 minut, tedy asi 74 %. Doporučuji do výpočtu vždy zahrnout čas kontroly. Bez něj by úspora vyšla skoro 99 % a nebyla by pravdivá.</p>
+<aside class="vsuvka vsuvka--pojem" id="pojem-time-efficiency" data-stitek="Pojem" aria-label="Pojem"><p class="pojem-term">time efficiency</p><p>Časová efektivita. Ušetřený čas při použití GenAI ve srovnání s ruční prací na stejném výsledku.</p></aside>
+<h4 id="souhrn-metrik-a-jak-je-merit">Souhrn metrik a jak je měřit</h4>
+<div class="tabulka-obal"><table><thead><tr><th>Metrika</th><th>Otázka, na kterou odpovídá</th><th>Hodnota v příkladu</th></tr></thead><tbody><tr><td>Accuracy</td><td>Je výstup správný vůči standardu?</td><td>10 / 12 požadavků = 83 %</td></tr><tr><td>Precision</td><td>Je správný vzhledem ke konkrétnímu cíli?</td><td>12 / 16 = 75 %</td></tr><tr><td>Recall</td><td>Našel všechno relevantní?</td><td>5 / 8 tříd = 62,5 %</td></tr><tr><td>Relevance and contextual fit</td><td>Hodí se do kontextu projektu?</td><td>5 ze 40 mimo testovací bázi nebo pravidla</td></tr><tr><td>Diversity</td><td>Je výstup rozmanitý a bez opakování?</td><td>31 unikátních ze 40, 2 hraniční</td></tr><tr><td>Execution success rate</td><td>Dá se spustit, jak je?</td><td>31 / 40 = 77,5 %</td></tr><tr><td>Time efficiency</td><td>Kolik času to ušetřilo?</td><td>asi 74 %</td></tr></tbody></table></div>
+<p>Tabulka ukazuje, že jedno číslo nestačí. Výstup s vysokou time efficiency a nízkým recallem šetří čas tím, že vynechává testy.</p>
+<p>Sylabus doplňuje tři věci. Kromě obecných metrik lze definovat <strong>task-specific metrics</strong> (metriky specifické pro úlohu), například u reportů o defektech podíl reportů, které vývojáři vrátí kvůli chybějícím informacím. Metriky lze vyhodnocovat ručně revizí, nebo automaticky, například porovnáním výstupu LLM s předem připravenou referencí. A protože je GenAI nedeterministická, musí metriky vycházet ze statisticky relevantních dat.</p>
+<p>V praxi to znamená spustit stejný prompt vícekrát a hodnotit průměr a rozptyl, ne jeden výsledek. Pokud deset běhů dá recall mezi 50 a 75 % s průměrem 64 %, je to užitečnější informace než jeden běh se 75 %.</p>
+<p>Praktický cíl <strong>HO-2.3.1 (H0)</strong> ukazuje na konkrétní testovací úloze, jak se metriky přizpůsobí úloze a jak se použijí na výsledky z LLM.</p>
+<aside class="vsuvka vsuvka--zkouska" data-stitek="Pozor u zkoušky" aria-label="Pozor u zkoušky"><p>Nejčastěji se pletou accuracy, relevance a diversity. Accuracy je správnost vůči standardu. Relevance je vhodnost pro kontext a doménu. Diversity je šíře bez opakování. Precision se ptá „je správně to, co model vrátil vzhledem k cíli“, recall „vrátil model všechno, co měl“. Execution success rate se týká spustitelnosti, ne výsledku testu. Time efficiency sama nestačí: rychle vygenerované nepoužitelné skripty nejsou úspěch. Pokud otázka popisuje kombinaci výstupů (testovací případy, skripty a testovací data), správná odpověď obvykle kombinuje metriku pro šíři pokrytí s metrikou pro spustitelnost skriptů.</p></aside>
+<h3 id="oddil-2-3-2">2.3.2 Techniky hodnocení a iterativního ladění promptů<a class="kotva" href="#oddil-2-3-2" aria-label="Odkaz na tento oddíl"></a></h3>
+<p>Na metriky navazuje pět technik, které sylabus uvádí pro hodnocení a vylepšování promptů.</p>
+<h4 id="iterative-prompt-modification-iterativni-uprava-promptu">Iterative prompt modification (iterativní úprava promptu)</h4>
+<p>Začnete základním promptem a podle skutečných výsledků ho postupně upravujete. Přidáváte kontext nebo měníte formulace, například terminologii, aby byl prompt konkrétnější a výsledek relevantnější. Je to výchozí technika, ostatní ji doplňují.</p>
+<h4 id="a-b-testing-of-prompts-a-b-testovani-promptu">A/B testing of prompts (A/B testování promptů)</h4>
+<p>Vytvoříte několik verzí promptu a podle předem stanovených metrik vyhodnotíte, která dává lepší výsledky. Technika pomáhá zjistit, která formulace nebo struktura promptu vede k nejpřesnějším a nejrelevantnějším výsledkům. Podmínkou jsou metriky stanovené předem a dost běhů na každou verzi.</p>
+<h4 id="output-analysis-analyza-vystupu">Output analysis (analýza výstupu)</h4>
+<p>Zkoumáte výstup AI a hledáte nepřesnosti a nekonzistence, například vůči testovací bázi. Když pochopíte, jaké typy chyb model dělá, upravíte prompt tak, aby se podobné chyby v dalších iteracích neopakovaly. Hodí se tam, kde výstup soustavně obsahuje stejný druh chyby a potřebujete zjistit proč.</p>
+<h4 id="integrate-user-feedback-zapracovani-zpetne-vazby-uzivatelu">Integrate user feedback (zapracování zpětné vazby uživatelů)</h4>
+<p>Sbíráte od testerů názory na užitečnost a srozumitelnost výstupu, například na úroveň podrobnosti vygenerovaných testů. Jejich postřehy analyzujete a podle nich prompt upravíte, aby lépe odpovídal skutečným potřebám. Uživateli výstupu mohou být i vývojáři, kteří čtou reporty o defektech, nebo vedení, které čte souhrny.</p>
+<h4 id="adjust-prompt-length-and-specificity-uprava-delky-a-konkretnosti-promptu">Adjust prompt length and specificity (úprava délky a konkrétnosti promptu)</h4>
+<p>Zkoušíte různou délku promptu a různou úroveň podrobnosti. Někdy víc kontextu zlepší kvalitu odpovědi. Jindy kratší prompt lépe zobecňuje. Dlouhý prompt plný nesouvisejících informací může odvést pozornost modelu od podstaty úlohy.</p>
+<h4 id="reseny-priklad-verze-1-verze-2-verze-3">Řešený příklad: verze 1 → verze 2 → verze 3</h4>
+<p>Úloha: testovací případy pro filtr ceny faktur v <code>uctenky</code>. Každou verzi tester spustil pětkrát a metriky zprůměroval.</p>
+<p><strong>Verze 1</strong> je zero-shot bez struktury.</p>
+<div class="kod" data-jazyk="text"><pre><code>Napiš testovací případy pro filtr faktur podle ceny.</code></pre></div>
+<p>Výsledek: obecné testovací případy, kroky popisují neexistující tlačítka, polovina testů je o řazení, ne o filtru. Žádné neplatné třídy kromě záporné ceny.</p>
+<p>Tester provedl <strong>output analysis</strong>. Zjistil tři typy chyb. Model nezná rozhraní aplikace, a tak vymýšlí prvky. Model neví, jaké hodnoty jsou neplatné. A model neví, zda je hranice minima včetně, nebo bez, takže očekávané výsledky si odporují.</p>
+<p><strong>Verze 2</strong> přidává kontext, vstupní data a omezení.</p>
+<div class="kod" data-jazyk="text"><pre><code>Role: Jsi test analytik webových aplikací.
+Context: Aplikace uctenky, stránka Faktury, filtr podle minimální a maximální
+ceny. Cena je kladné číslo s nejvýše dvěma desetinnými místy, max 99 999 999,99.
+Instruction: Navrhni testovací případy pro filtr ceny.
+Input data: Popis filtru: pole „Min. cena“ a „Max. cena“, tlačítko „Filtrovat“.
+Hranice jsou včetně (faktura s cenou rovnou minimu se zobrazí).
+Constraints: Pokryj všechny platné a neplatné třídy ekvivalence a hraniční
+hodnoty. Nevymýšlej prvky rozhraní, které nejsou v popisu.
+Output format: Tabulka: ID, třída/hranice, vstup, očekávaný výsledek.</code></pre></div>
+<p>Výsledek: kroky odpovídají aplikaci, recall vzrostl, očekávané výsledky už si neodporují. Testeři ale v <strong>zpětné vazbě</strong> uvedli, že tabulka nejde přímo převést na Playwright testy, protože chybí předpoklady (jaká data jsou v databázi). A testovací případy se mezi běhy výrazně liší v podrobnosti.</p>
+<p><strong>Verze 3</strong> přidává dva příklady (few-shot) a přesný formát.</p>
+<div class="kod" data-jazyk="text"><pre><code>&lt;vše z verze 2&gt;
+
+Output format: Pro každý testovací případ blok přesně podle příkladů:
+
+Příklad 1
+ID: TC-F01
+Třída: platná, minimum i maximum
+Předpoklad: faktury s cenou 500, 1 500 a 3 000 Kč
+Kroky: Min. cena = 1 000; Max. cena = 2 000; Filtrovat
+Očekávaný výsledek: zobrazí se jen faktura s cenou 1 500 Kč
+
+Příklad 2
+ID: TC-F02
+Třída: neplatná, minimum větší než maximum
+Předpoklad: faktury s cenou 500, 1 500 a 3 000 Kč
+Kroky: Min. cena = 2 000; Max. cena = 1 000; Filtrovat
+Očekávaný výsledek: &lt;doplní tester podle skutečného chování aplikace&gt;</code></pre></div>
+<p>V příkladu 2 tester záměrně nenechal očekávaný výsledek vymyslet. Chování aplikace pro minimum větší než maximum nezná, a tak ho nejdřív ověří. Kdyby do příkladu napsal smyšlenou chybovou hlášku, model by ji opakoval ve všech podobných testech.</p>
+<p>Výsledky pěti běhů každé verze:</p>
+<div class="tabulka-obal"><table><thead><tr><th>Metrika</th><th>Verze 1</th><th>Verze 2</th><th>Verze 3</th></tr></thead><tbody><tr><td>Recall (8 tříd)</td><td>2,4 / 8 = 30 %</td><td>6,6 / 8 = 83 %</td><td>7,6 / 8 = 95 %</td></tr><tr><td>Relevance (případy v souladu s testovací bází)</td><td>55 %</td><td>92 %</td><td>97 %</td></tr><tr><td>Execution success rate skriptů</td><td>20 %</td><td>61 %</td><td>88 %</td></tr><tr><td>Rozdíl v počtu testů mezi běhy</td><td>6 až 21</td><td>11 až 17</td><td>13 až 15</td></tr></tbody></table></div>
+<p>Tabulka ukazuje, že každá iterace řešila jiný problém. Verze 2 řešila chybějící kontext, verze 3 chybějící vzor formátu. Čísla jsou ilustrační, ne naměřená. Postup je ale přesně ten, který sylabus popisuje: základní prompt, výsledky, analýza, úprava, nové vyhodnocení.</p>
+<h4 id="reseny-priklad-a-b-test">Řešený příklad: A/B test</h4>
+<p>Tým váhá mezi dvěma formulacemi instrukce ve verzi 3.</p>
+<ul><li><strong>A:</strong> „Navrhni testovací případy pro filtr ceny.“</li><li><strong>B:</strong> „Nejdřív vypiš všechny třídy ekvivalence a hraniční hodnoty filtru ceny. Pak ke každé napiš jeden testovací případ.“</li></ul>
+<p>Každou verzi spustí desetkrát a porovná předem dané metriky: recall tříd a execution success rate. Pokud B dává recall 96 % proti 88 % u A a execution success rate je u obou stejný, vybere B a uloží ji do sdílené knihovny promptů. Pokud se výsledky liší jen o jednotky procent a rozptyl je velký, rozdíl může být jen náhoda. Pak je potřeba víc běhů, nebo verze považovat za rovnocenné.</p>
+<h4 id="jak-techniku-vybrat-podle-situace">Jak techniku vybrat podle situace</h4>
+<div class="tabulka-obal"><table><thead><tr><th>Situace</th><th>Vhodná technika</th></tr></thead><tbody><tr><td>Model opakovaně generuje testy s chybným očekávaným výsledkem, který odporuje požadavkům, a chcete zjistit proč</td><td>output analysis</td></tr><tr><td>Máte dvě formulace promptu a chcete objektivně vybrat lepší</td><td>A/B testing of prompts</td></tr><tr><td>Testeři říkají, že vygenerované testy jsou příliš podrobné a nečitelné</td><td>integrate user feedback</td></tr><tr><td>První prompt dává obecné výsledky a chcete ho postupně zpřesňovat</td><td>iterative prompt modification</td></tr><tr><td>Dlouhý prompt s mnoha detaily dává úzké výsledky, které nepokrývají nové situace</td><td>adjust prompt length and specificity</td></tr></tbody></table></div>
+<p>Tabulka je pomůcka pro zkoušku. V praxi se techniky prolínají a jedna ladicí session obvykle použije několik z nich.</p>
+<aside class="vsuvka vsuvka--praxe" data-stitek="Příklad z praxe" aria-label="Příklad z praxe"><p>Ne každá změna výstupu znamená, že je prompt špatný. Když stejný prompt dá jednou „Ověř, že se zobrazí faktura“ a podruhé „Zkontroluj zobrazení faktury“, je to běžné nedeterministické chování. Prompt je potřeba upravit, když se mění <em>obsah</em>: chybí požadované detaily, objevují se funkce mimo testovací bázi nebo si odporují očekávané výsledky.</p></aside>
+<h4 id="sdileni-v-tymu">Sdílení v týmu</h4>
+<p>Sylabus doporučuje, aby týmy pořádaly session pro hodnocení a optimalizaci promptů a sdílely postupy v rámci týmu nebo celé testovací organizace. Sdílení pomáhá standardizovat techniky a udržet stejnou kvalitu. Podporuje kulturu učení a postupného zlepšování. Tým staví na společných zkušenostech, neopakuje stejné chyby a postupně používá GenAI nástroje účinněji. Sylabus jako příklad uvádí sdílení <strong>prompt libraries</strong> (knihoven promptů).</p>
+<aside class="vsuvka vsuvka--pojem" id="pojem-prompt-library" data-stitek="Pojem" aria-label="Pojem"><p class="pojem-term">prompt library</p><p>Knihovna promptů. Sdílená sbírka ověřených promptů pro opakované testovací úlohy, často s výsledky hodnocení a poznámkami, kdy prompt použít.</p></aside>
+<p>Praktický cíl <strong>HO-2.3.2 (H1)</strong> je cvičení optimalizace promptu pro danou testovací úlohu. Účastníci začnou počátečním promptem, iterativně ho upravují a každou iteraci vyhodnotí metrikami z oddílu 2.3.1. Používají A/B testování a lidské ověření. Na konci mají za sebou několik iterací a vidí, jak ladění vede k účinnějšímu a kontextu lépe odpovídajícímu generování testovacích případů.</p>
+<aside class="vsuvka vsuvka--zkouska" data-stitek="Pozor u zkoušky" aria-label="Pozor u zkoušky"><p>Otázky k 2.3.2 obvykle popíšou problém a ptají se, která technika se na něj hodí nejlépe. Když model soustavně dělá stejný typ chyby a jde o pochopení příčiny, je to output analysis. A/B testing předpokládá, že máte víc verzí promptu a srovnáváte je metrikami. Zpětná vazba uživatelů se hodí, když problém vidí čtenáři výstupu a vy ho zatím neznáte. Úprava délky a konkrétnosti se hodí, když prompt vede k příliš úzkým nebo příliš obecným výsledkům. Variabilita formulací mezi běhy sama o sobě není důvod prompt měnit.</p></aside>
+</article>
+<div class="splneno-radek" data-nepocitat><button type="button" class="tlacitko splneno" data-splneno="kapitola-2-vyklad" data-text-ne="Označit jako prostudované" data-text-ano="✓ Prostudováno" aria-pressed="false">Označit jako prostudované</button></div>
+<nav class="naradi sousede" aria-label="Sousední kapitoly"><a href="../kapitola-1/vyklad.html">← 1. Úvod do generativní AI</a><a href="../kapitola-3/vyklad.html">3. Rizika generativní AI →</a></nav>
+</main>
+<aside class="strom" aria-label="Obsah kapitoly"><h2>V této kapitole</h2><ol><li><a href="#oddil-2-1">2.1 Tvorba účinných promptů</a><ol><li><a href="#prompt-a-prompt-engineering">Prompt a prompt engineering</a></li><li><a href="#oddil-2-1-1">2.1.1 Struktura promptu pro testování</a></li><li><a href="#oddil-2-1-2">2.1.2 Základní techniky promptování</a></li><li><a href="#oddil-2-1-3">2.1.3 Systémový prompt a uživatelský prompt</a></li></ol></li><li><a href="#oddil-2-2">2.2 Použití technik prompt engineeringu v testovacích úlohách</a><ol><li><a href="#jak-resit-k3-otazky-v-oddilu-2-2">Jak řešit K3 otázky v oddílu 2.2</a></li><li><a href="#oddil-2-2-1">2.2.1 Testovací analýza s GenAI</a></li><li><a href="#oddil-2-2-2">2.2.2 Návrh testů a implementace testování s GenAI</a></li><li><a href="#oddil-2-2-3">2.2.3 Automatizované regresní testování s GenAI</a></li><li><a href="#oddil-2-2-4">2.2.4 Monitoring testování a řízení testování s GenAI</a></li><li><a href="#oddil-2-2-5">2.2.5 Výběr techniky promptování</a></li></ol></li><li><a href="#oddil-2-3">2.3 Hodnocení výsledků GenAI a ladění promptů</a><ol><li><a href="#oddil-2-3-1">2.3.1 Metriky pro hodnocení výsledků GenAI v testovacích úlohách</a></li><li><a href="#oddil-2-3-2">2.3.2 Techniky hodnocení a iterativního ladění promptů</a></li></ol></li></ol></aside>
+</div>
+</div>
+<footer class="paticka">
+  <div class="paticka-vnitrek">
+    <p><strong>Neoficiální studijní materiál.</strong> Tento web není produktem ani publikací ISTQB®.
+    ISTQB® je registrovaná ochranná známka International Software Testing Qualifications Board.
+    Texty jsou vlastním zpracováním autora vytvořeným při přípravě na zkoušku CT-GenAI; oficiální sylabus
+    a vzorovou zkoušku si stáhněte přímo na istqb.org.</p>
+    <p>Ke zkoušce vždy platí znění oficiálního sylabu CT-GenAI v1.1. Doplněné informace a příklady z praxe
+    slouží k porozumění, nikoli jako zdroj správných odpovědí u zkoušky.</p>
+    <ul>
+      <li><a href="https://istqb.org/certifications/gen-ai/" target="_blank" rel="noopener noreferrer">ISTQB — CT-GenAI</a></li>
+      <li><a href="https://glossary.istqb.org" target="_blank" rel="noopener noreferrer">Slovník ISTQB</a></li>
+      <li><a href="https://casqb.org" target="_blank" rel="noopener noreferrer">CaSQB</a></li>
+      <li><a href="../zdroje.html">Zdroje a autorská práva</a></li>
+    </ul>
+  </div>
+</footer>
+<script src="../assets/ucet-konfig.js"></script>
+<script src="../assets/ucet.js"></script>
+<script src="../assets/skript.js"></script>
+</body>
+</html>

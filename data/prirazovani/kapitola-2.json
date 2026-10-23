@@ -1,0 +1,1013 @@
+[
+ {
+  "id": "komponenty-promptu",
+  "sek": "2.1.1",
+  "nazev": "Která komponenta promptu to je?",
+  "zdroj": "Sylabus 2.1.1.",
+  "otazka": "Zařaď řádek promptu ke komponentě strukturovaného promptu.",
+  "kat": [
+   [
+    "role",
+    "Role",
+    "role",
+    "Perspektiva nebo persona, kterou má model zaujmout."
+   ],
+   [
+    "ctx",
+    "Kontext",
+    "context",
+    "Pozadí: testovaný objekt, funkce, okolnosti."
+   ],
+   [
+    "ins",
+    "Instrukce",
+    "instruction",
+    "Samotná úloha v rozkazovacím způsobu."
+   ],
+   [
+    "inp",
+    "Vstupní data",
+    "input data",
+    "Konkrétní materiál, se kterým model pracuje."
+   ],
+   [
+    "con",
+    "Omezení",
+    "constraints",
+    "Pravidla a meze, jak instrukci použít na data."
+   ],
+   [
+    "out",
+    "Formát výstupu",
+    "output format",
+    "Podoba a struktura odpovědi."
+   ]
+  ],
+  "pol": [
+   [
+    "Jednej jako inženýr automatizace testů se zkušeností s Playwrightem.",
+    "role",
+    "Určuje, z jakého pohledu a s jakou odborností má model odpovídat."
+   ],
+   [
+    "Testujeme portál pojišťovny pro zprostředkovatele, který běží jen na desktopu.",
+    "ctx",
+    "Popisuje systém a okolnosti, ne materiál k práci."
+   ],
+   [
+    "Najdi v požadavcích rozpory a nejednoznačnosti.",
+    "ins",
+    "Rozkaz s úlohou."
+   ],
+   [
+    "Přiložený export 120 testovacích případů z nástroje pro správu testů.",
+    "inp",
+    "Konkrétní soubor, se kterým má model pracovat."
+   ],
+   [
+    "Zohledni jen požadavky ve stavu Schváleno.",
+    "con",
+    "Pravidlo, které omezuje, na co se instrukce použije."
+   ],
+   [
+    "Výsledek vrať jako tabulku se sloupci ID, popis, závažnost.",
+    "out",
+    "Popisuje podobu výsledku."
+   ],
+   [
+    "Nová verze e-shopu zavádí platbu na splátky pro objednávky nad 5 000 Kč.",
+    "ctx",
+    "Pozadí funkce, kterou testujeme."
+   ],
+   [
+    "Snímek obrazovky formuláře pro změnu adresy.",
+    "inp",
+    "Obrázek je vstupní materiál; v multimodálním promptu patří k vstupním datům."
+   ],
+   [
+    "Pokud v podkladech něco chybí, nevymýšlej to a uveď to jako otevřenou otázku.",
+    "con",
+    "Zákaz a pravidlo chování při práci."
+   ],
+   [
+    "Odpověz v JSON se seznamem objektů {id, podminka, ac}.",
+    "out",
+    "Struktura odpovědi."
+   ],
+   [
+    "Seřaď testovací případy podle rizika.",
+    "ins",
+    "Úloha, kterou má model provést."
+   ],
+   [
+    "Jsi test manažer odpovědný za release mobilního bankovnictví.",
+    "role",
+    "Persona s odpovědností."
+   ],
+   [
+    "Pro pole Věk použij analýzu hraničních hodnot.",
+    "con",
+    "Určuje, jak má model úlohu provést (technika)."
+   ],
+   [
+    "Uživatelský scénář a akceptační kritéria AC1 až AC4.",
+    "inp",
+    "Materiál, ze kterého se má vycházet."
+   ],
+   [
+    "Výstup napiš česky, nejvýše jednu stranu, s nadpisy podle oblastí.",
+    "out",
+    "Vlastnosti odpovědi (jazyk, délka, struktura)."
+   ]
+  ]
+ },
+ {
+  "id": "techniky-promptu",
+  "sek": "2.1.2",
+  "nazev": "Která technika promptování to je?",
+  "zdroj": "Sylabus 2.1.2.",
+  "otazka": "Zařaď popsaný prompt nebo postup k technice.",
+  "kat": [
+   [
+    "zero",
+    "Zero-shot",
+    "zero-shot prompting",
+    "Bez příkladu."
+   ],
+   [
+    "one",
+    "One-shot",
+    "one-shot prompting",
+    "Právě jeden příklad."
+   ],
+   [
+    "few",
+    "Few-shot",
+    "few-shot prompting",
+    "Několik příkladů."
+   ],
+   [
+    "chain",
+    "Řetězení promptů",
+    "prompt chaining",
+    "Řada kroků s ověřením mezivýsledků."
+   ],
+   [
+    "meta",
+    "Meta prompting",
+    "meta prompting",
+    "Model navrhuje nebo vylepšuje prompt."
+   ]
+  ],
+  "pol": [
+   [
+    "„Vysvětli rozdíl mezi smoke testem a regresním testem.“ Bez další ukázky.",
+    "zero",
+    "Žádný příklad výstupu."
+   ],
+   [
+    "Prompt obsahuje jeden vzorový report o defektu a žádá stejný report pro nové selhání.",
+    "one",
+    "Právě jeden příklad."
+   ],
+   [
+    "Prompt obsahuje tři uživatelské scénáře s hotovými Gherkin scénáři a čtvrtý scénář bez nich.",
+    "few",
+    "Několik příkladů a nový vstup."
+   ],
+   [
+    "Tester nechá model najít nejasnosti, výsledek opraví a teprve pak z něj nechá odvodit testovací podmínky.",
+    "chain",
+    "Krok, ověření, další krok."
+   ],
+   [
+    "„Napiš mi prompt, kterým budu analyzovat logy z výkonnostních testů. Nejdřív se zeptej, co ti chybí.“",
+    "meta",
+    "Model tvoří prompt."
+   ],
+   [
+    "Model navrhl prompt, tester ho vyzkoušel a vrátil modelu připomínky k vylepšení.",
+    "meta",
+    "Iterativní cyklus tvorby promptu s testerem."
+   ],
+   [
+    "Skript ověří, že JSON z prvního promptu má všechna pole, a teprve pak se pošle druhý prompt.",
+    "chain",
+    "Automatická kontrola mezivýsledku mezi kroky."
+   ],
+   [
+    "Prompt s pěti hotovými skripty v Robot Frameworku jako vzorem pro nový skript.",
+    "few",
+    "Víc příkladů k napodobení."
+   ],
+   [
+    "Strukturovaný prompt se všemi šesti komponentami, ale bez ukázky výstupu.",
+    "zero",
+    "Struktura neznamená příklad; bez ukázky jde o zero-shot."
+   ],
+   [
+    "Prompt ukazuje jednu dvojici „akceptační kritérium → testovací případ“ a žádá převod dalšího kritéria.",
+    "one",
+    "Jedna ukázka."
+   ]
+  ]
+ },
+ {
+  "id": "system-user",
+  "sek": "2.1.3",
+  "nazev": "Systémový, nebo uživatelský prompt?",
+  "zdroj": "Sylabus 2.1.3.",
+  "otazka": "Zařaď tvrzení nebo text k druhu promptu.",
+  "kat": [
+   [
+    "sys",
+    "Systémový prompt",
+    "system prompt",
+    "Rámec pro celou konverzaci, obvykle skrytý."
+   ],
+   [
+    "usr",
+    "Uživatelský prompt",
+    "user prompt",
+    "Konkrétní vstup v jedné interakci."
+   ]
+  ],
+  "pol": [
+   [
+    "Platí po celou konverzaci a nemění se.",
+    "sys",
+    "Systémový prompt je konstantní."
+   ],
+   [
+    "Mění se s každou interakcí.",
+    "usr",
+    "Každá zpráva uživatele je nový uživatelský prompt."
+   ],
+   [
+    "Obvykle ho píše vývojář nebo tester nástroje.",
+    "sys",
+    "Sylabus: definuje ho typicky vývojář nebo tester."
+   ],
+   [
+    "„Navrhni testovací případy pro změnu PINu karty.“",
+    "usr",
+    "Konkrétní úloha uživatele."
+   ],
+   [
+    "„Vždy odpovídej formálně a podle terminologie ISTQB.“",
+    "sys",
+    "Provozní parametr pro celou konverzaci."
+   ],
+   [
+    "Uživatel chatbota ho ve většině rozhraní nevidí.",
+    "sys",
+    "Skrytý rámec."
+   ],
+   [
+    "Tvoří bezprostřední kontext pro konkrétní odpověď.",
+    "usr",
+    "Sylabus: přímo viditelný a bezprostřední kontext."
+   ],
+   [
+    "Může obsahovat roli, kontext a omezení platné pro všechny dotazy.",
+    "sys",
+    "Trvalé části strukturovaného promptu."
+   ],
+   [
+    "„Ke stejné funkci přidej negativní testy pro nečíselné vstupy.“",
+    "usr",
+    "Navazující dotaz v konverzaci."
+   ],
+   [
+    "Má být zaměřený a dobře strukturovaný, s explicitní instrukcí a formátem výstupu.",
+    "usr",
+    "Doporučení sylabu pro uživatelské prompty."
+   ]
+  ]
+ },
+ {
+  "id": "testovaci-cinnosti",
+  "sek": "2.2",
+  "nazev": "Ke které testovací činnosti úloha patří?",
+  "zdroj": "Sylabus 2.2.1 až 2.2.4.",
+  "otazka": "Zařaď úlohu, kterou má GenAI podpořit, k oddílu sylabu.",
+  "kat": [
+   [
+    "an",
+    "Testovací analýza",
+    "test analysis (2.2.1)",
+    "Co testovat: podmínky, priority, defekty v bázi, pokrytí."
+   ],
+   [
+    "nav",
+    "Návrh a implementace testů",
+    "test design and implementation (2.2.2)",
+    "Jak testovat: případy, data, skripty, harmonogram."
+   ],
+   [
+    "reg",
+    "Automatizované regresní testování",
+    "automated regression testing (2.2.3)",
+    "Regresní sady, dopad změn, samooprava, reporty."
+   ],
+   [
+    "mon",
+    "Monitoring a řízení testování",
+    "test monitoring and control (2.2.4)",
+    "Metriky, trendy, opatření, dashboardy."
+   ]
+  ],
+  "pol": [
+   [
+    "Najít nejednoznačnosti v uživatelských scénářích.",
+    "an",
+    "Defekty v testovací bázi."
+   ],
+   [
+    "Odvodit testovací podmínky z požadavků.",
+    "an",
+    "Typická úloha analýzy."
+   ],
+   [
+    "Navrhnout techniku testování pro požadavek na rozsah hodnot.",
+    "an",
+    "Sylabus řadí návrh technik do 2.2.1."
+   ],
+   [
+    "Vytvořit testovací případy s předpoklady a očekávanými výsledky.",
+    "nav",
+    "Generování testovacích případů."
+   ],
+   [
+    "Vygenerovat syntetická data 500 klientů pro zátěžový test.",
+    "nav",
+    "Syntéza testovacích dat."
+   ],
+   [
+    "Sestavit pořadí provedení testů podle závislostí a dostupnosti prostředí.",
+    "nav",
+    "Plánování a prioritizace provedení."
+   ],
+   [
+    "Podle git diffu vybrat testy, které je třeba po změně spustit.",
+    "reg",
+    "Analýza dopadu."
+   ],
+   [
+    "Upravit lokátor ve skriptu po přejmenování tlačítka.",
+    "reg",
+    "Samoopravné testy."
+   ],
+   [
+    "Napsat skript z klíčových slov existující knihovny.",
+    "reg",
+    "Keyword-driven automatizace."
+   ],
+   [
+    "Upozornit na odchylku postupu testování od plánu.",
+    "mon",
+    "Monitoring a analýza metrik."
+   ],
+   [
+    "Navrhnout přesun testerů na oblast s rostoucím počtem defektů.",
+    "mon",
+    "Řízení testování: přerozdělení zdrojů."
+   ],
+   [
+    "Shrnout poučení z testovacího cyklu do souhrnného reportu.",
+    "mon",
+    "Přehledy z dokončení testování."
+   ],
+   [
+    "Ověřit, které požadavky nemají žádnou testovací podmínku.",
+    "an",
+    "Analýza pokrytí."
+   ],
+   [
+    "Sestavit report o defektu s logy a snímky a navrhnout kořenovou příčinu.",
+    "reg",
+    "Sylabus to řadí do 2.2.3."
+   ]
+  ]
+ },
+ {
+  "id": "ulohy-analyzy",
+  "sek": "2.2.1",
+  "nazev": "Která úloha testovací analýzy to je?",
+  "zdroj": "Sylabus 2.2.1.",
+  "otazka": "Zařaď prompt k jedné z pěti úloh testovací analýzy.",
+  "kat": [
+   [
+    "def",
+    "Defekty v testovací bázi",
+    "identify potential defects in the test basis",
+    "Nejasnosti, rozpory, neúplnost."
+   ],
+   [
+    "gen",
+    "Generování podmínek",
+    "generating test conditions",
+    "Převod požadavků na testovatelná tvrzení."
+   ],
+   [
+    "pri",
+    "Prioritizace podle rizika",
+    "prioritize test conditions based on risk level",
+    "Pořadí podle pravděpodobnosti a dopadu."
+   ],
+   [
+    "cov",
+    "Analýza pokrytí",
+    "support coverage analysis",
+    "Mapování požadavků na podmínky a mezery."
+   ],
+   [
+    "tech",
+    "Návrh technik",
+    "suggest test techniques",
+    "Vhodná technika podle typu požadavku."
+   ]
+  ],
+  "pol": [
+   [
+    "Označ požadavky, které obsahují slova bez měřitelného kritéria („rychle“, „uživatelsky přívětivě“).",
+    "def",
+    "Nejednoznačnost v bázi."
+   ],
+   [
+    "Pro požadavek na splatnost 7–90 dní urči, zda použít hraniční hodnoty, nebo rozhodovací tabulku.",
+    "tech",
+    "Výběr techniky."
+   ],
+   [
+    "Vytvoř matici požadavek × testovací podmínka a vyznač prázdné řádky.",
+    "cov",
+    "Hledání mezer v pokrytí."
+   ],
+   [
+    "Ze scénáře „uložení košíku na později“ odvoď samostatně ověřitelná tvrzení.",
+    "gen",
+    "Generování podmínek."
+   ],
+   [
+    "Seřaď 30 podmínek podle součinu pravděpodobnosti a dopadu; regulatorní podmínky dej nahoru.",
+    "pri",
+    "Riziková prioritizace."
+   ],
+   [
+    "Porovnej požadavky REQ-07 a REQ-12, které popisují stejnou slevu jinak.",
+    "def",
+    "Rozpor v bázi."
+   ],
+   [
+    "Navrhni, jakou techniku použít pro objednávku procházející pěti stavy.",
+    "tech",
+    "Přechody stavů."
+   ],
+   [
+    "Urči, které části požadavku na hlášení škody nejsou pokryté žádnou podmínkou.",
+    "cov",
+    "Částečné pokrytí."
+   ],
+   [
+    "Ke každému akceptačnímu kritériu napiš pozitivní a negativní testovací podmínku.",
+    "gen",
+    "Odvození podmínek."
+   ],
+   [
+    "Podle historie defektů z posledních tří releasů urči, které podmínky testovat první.",
+    "pri",
+    "Historická data o defektech jako vstup prioritizace."
+   ]
+  ]
+ },
+ {
+  "id": "ulohy-navrhu",
+  "sek": "2.2.2",
+  "nazev": "Která úloha návrhu a implementace testů to je?",
+  "zdroj": "Sylabus 2.2.2.",
+  "otazka": "Zařaď prompt k úloze z oddílu 2.2.2.",
+  "kat": [
+   [
+    "tc",
+    "Generování testovacích případů",
+    "test case generation",
+    "Předpoklady, vstupy, očekávané výsledky."
+   ],
+   [
+    "data",
+    "Syntéza testovacích dat",
+    "test data synthesis",
+    "Syntetická data bez citlivých údajů."
+   ],
+   [
+    "skr",
+    "Generování skriptů",
+    "automated test script generation",
+    "Převod testů na kód nebo procedury."
+   ],
+   [
+    "plan",
+    "Plánování provedení",
+    "test execution scheduling and prioritization",
+    "Pořadí podle závislostí, rizik, zdrojů."
+   ]
+  ],
+  "pol": [
+   [
+    "Vygeneruj CSV s 200 fiktivními pojistníky včetně neplatných e-mailů.",
+    "data",
+    "Syntetická data s extrémy."
+   ],
+   [
+    "Převeď testovací případ TC-07 na test v Playwrightu podle Page Object Modelu.",
+    "skr",
+    "Automatizovaný skript."
+   ],
+   [
+    "Ke každé testovací podmínce napiš testovací případ s kroky a očekávaným výsledkem.",
+    "tc",
+    "Generování případů."
+   ],
+   [
+    "Navrhni pořadí 40 testů tak, aby se nespustil test před testem, na kterém závisí.",
+    "plan",
+    "Plánování provedení."
+   ],
+   [
+    "Z testovacích případů vytvoř manuální testovací proceduru pro akceptační testování.",
+    "skr",
+    "Sylabus zahrnuje i manuální procedury."
+   ],
+   [
+    "Vytvoř data s maximální délkou jména a hraničními daty narození.",
+    "data",
+    "Extrémní situace."
+   ],
+   [
+    "Navrhni end-to-end testovací případ od registrace po první platbu.",
+    "tc",
+    "Složitý end-to-end případ."
+   ],
+   [
+    "Rozděl testy mezi dva testery tak, aby se vešly do okna dostupnosti prostředí UAT.",
+    "plan",
+    "Dostupnost zdrojů."
+   ],
+   [
+    "Aktualizuj existující skripty podle nového požadavku na dvoufázové ověření.",
+    "skr",
+    "Skripty lze rozšířit podle nových požadavků."
+   ]
+  ]
+ },
+ {
+  "id": "regrese-cinnosti",
+  "sek": "2.2.3",
+  "nazev": "Která činnost automatizovaného regresního testování to je?",
+  "zdroj": "Sylabus 2.2.3.",
+  "otazka": "Zařaď situaci k činnosti z oddílu 2.2.3.",
+  "kat": [
+   [
+    "kw",
+    "Skripty řízené klíčovými slovy",
+    "keyword-driven test script implementation",
+    "Mapování klíčových slov na testy."
+   ],
+   [
+    "imp",
+    "Analýza dopadu a optimalizace",
+    "impact analysis and test optimization",
+    "Vysoce rizikové oblasti podle změn kódu."
+   ],
+   [
+    "heal",
+    "Samoopravné testy",
+    "self-healing and adaptive tests",
+    "Přizpůsobení drobným změnám UI a API."
+   ],
+   [
+    "rep",
+    "Reportování a přehledy",
+    "automated test reporting and insights",
+    "Reporty, dashboardy, trendy."
+   ],
+   [
+    "def",
+    "Reporty o defektech a kořenová příčina",
+    "enhanced defect reporting and root cause analysis",
+    "Report s logy, snímky, prostředím."
+   ]
+  ],
+  "pol": [
+   [
+    "Po změně v modulu plateb vyber regresní testy, které modul pokrývají.",
+    "imp",
+    "Cílení podle změny."
+   ],
+   [
+    "Lokátor tlačítka se změnil z #submit na [data-testid=send]; skript se upraví sám.",
+    "heal",
+    "Drobná změna UI."
+   ],
+   [
+    "Z knihovny klíčových slov vytvoř skript pro nový testovací případ.",
+    "kw",
+    "Keyword-driven."
+   ],
+   [
+    "Dashboard ukazuje trend selhání v posledních deseti bězích a místa s rizikem selhání.",
+    "rep",
+    "Přehledy a předpověď."
+   ],
+   [
+    "Ze selhaného testu sestav report s logem, snímkem a verzí prostředí.",
+    "def",
+    "Report o defektu."
+   ],
+   [
+    "API přejmenovalo pole customerId na clientId; testy se přizpůsobí nové specifikaci.",
+    "heal",
+    "Adaptace na změnu API."
+   ],
+   [
+    "Ze stack trace navrhni pravděpodobnou příčinu chyby 500.",
+    "def",
+    "Analýza kořenové příčiny."
+   ],
+   [
+    "Odstraň z noční sady duplicitní testy, které pokrývají stejné oblasti.",
+    "imp",
+    "Optimalizace sady."
+   ],
+   [
+    "Ke každému testovacímu případu přiřaď klíčová slova z existující knihovny.",
+    "kw",
+    "Mapování klíčových slov."
+   ],
+   [
+    "Ráno pošli týmu souhrn nočního regresního běhu s metrikami úspěšnosti.",
+    "rep",
+    "Automatizovaný report."
+   ]
+  ]
+ },
+ {
+  "id": "monitoring-ulohy",
+  "sek": "2.2.4",
+  "nazev": "Která úloha monitoringu a řízení testování to je?",
+  "zdroj": "Sylabus 2.2.4.",
+  "otazka": "Zařaď situaci k úloze z oddílu 2.2.4.",
+  "kat": [
+   [
+    "met",
+    "Monitoring a analýza metrik",
+    "test monitoring and metrics analysis",
+    "Trendy, rizika, odchylky od plánu."
+   ],
+   [
+    "ctrl",
+    "Řízení testování",
+    "test control",
+    "Priority, harmonogram, zdroje."
+   ],
+   [
+    "compl",
+    "Přehledy z dokončení a učení",
+    "test completion insights and continuous learning",
+    "Souhrnné reporty, poučení."
+   ],
+   [
+    "vis",
+    "Vizualizace a reportování",
+    "enhanced test metrics visualization and reporting",
+    "Dashboardy, souhrny v přirozeném jazyce."
+   ]
+  ],
+  "pol": [
+   [
+    "Model upozorní, že počet otevřených defektů roste třetí den po sobě.",
+    "met",
+    "Trend a odchylka."
+   ],
+   [
+    "Model navrhne odložit testy nízké priority a přesunout testera na platby.",
+    "ctrl",
+    "Opatření řízení."
+   ],
+   [
+    "Model po skončení releasu shrne, co fungovalo a co příště změnit.",
+    "compl",
+    "Poučení."
+   ],
+   [
+    "Model připraví pro ředitele tři věty o stavu testování bez žargonu.",
+    "vis",
+    "Souhrn v přirozeném jazyce."
+   ],
+   [
+    "Model předpoví, že při současném tempu se plán nestihne o dva dny.",
+    "met",
+    "Předpověď rizika."
+   ],
+   [
+    "Model navrhne posunout harmonogram regresních testů kvůli zpožděnému prostředí.",
+    "ctrl",
+    "Úprava harmonogramu."
+   ],
+   [
+    "Model vytvoří dashboard s postupem testování podle modulů.",
+    "vis",
+    "Dynamický dashboard."
+   ],
+   [
+    "Model porovná tři souhrnné reporty a navrhne změny strategie testování.",
+    "compl",
+    "Průběžné učení."
+   ]
+  ]
+ },
+ {
+  "id": "vyber-techniky",
+  "sek": "2.2.5",
+  "nazev": "Kterou techniku zvolit?",
+  "zdroj": "Sylabus 2.2.5 (tabulka technik).",
+  "otazka": "Přiřaď situaci nejvhodnější techniku promptování.",
+  "kat": [
+   [
+    "chain",
+    "Řetězení promptů",
+    "prompt chaining",
+    "Složité úlohy, přesnost, lidské ověření po krocích."
+   ],
+   [
+    "few",
+    "Few-shot",
+    "few-shot prompting",
+    "Opakující se úlohy, pevný formát, vzory."
+   ],
+   [
+    "meta",
+    "Meta prompting",
+    "meta prompting",
+    "Pružné a nové úlohy, tvorba promptu."
+   ]
+  ],
+  "pol": [
+   [
+    "Tým chce, aby všech 80 reportů o defektech mělo stejnou strukturu jako vzorové reporty.",
+    "few",
+    "Opakování a pevný formát."
+   ],
+   [
+    "Analýza specifikace ve třech krocích, každý schvaluje analytik.",
+    "chain",
+    "Kroky s ověřením."
+   ],
+   [
+    "Tester neví, jak zadat analýzu anomálií v nových výkonnostních datech.",
+    "meta",
+    "Nová úloha, prompt neexistuje."
+   ],
+   [
+    "Převod stovek testů do Gherkinu podle existujících scénářů.",
+    "few",
+    "Vzor Gherkin."
+   ],
+   [
+    "Generování testovacích případů, kontrola, pak teprve generování skriptů a jejich spuštění.",
+    "chain",
+    "Postup po ověřených krocích."
+   ],
+   [
+    "Chceme ušetřit čas při návrhu promptů pro nový typ testovací úlohy.",
+    "meta",
+    "Efektivita návrhu promptu."
+   ],
+   [
+    "Nové skripty mají odpovídat stylu existující knihovny klíčových slov.",
+    "few",
+    "Keyword-driven se vzory."
+   ],
+   [
+    "Analýza reportu z testování, jejíž ideální zadání zatím nikdo nezná.",
+    "meta",
+    "Sylabus uvádí analýzu reportů a detekci anomálií u meta promptingu."
+   ],
+   [
+    "Prioritizace sady s riziky a závislostmi, výsledek každého kroku je třeba zkontrolovat kvůli chybám v uvažování.",
+    "chain",
+    "Multikriteriální úloha s ověřováním."
+   ],
+   [
+    "Z existujících testů se známými výsledky a pravidly vygenerovat další testy stejného druhu.",
+    "few",
+    "Příklady a vzor generování."
+   ]
+  ]
+ },
+ {
+  "id": "metriky",
+  "sek": "2.3.1",
+  "nazev": "Která metrika to je?",
+  "zdroj": "Sylabus 2.3.1.",
+  "otazka": "Zařaď popis měření k metrice.",
+  "kat": [
+   [
+    "acc",
+    "Accuracy",
+    "accuracy",
+    "Správnost vůči standardu."
+   ],
+   [
+    "prec",
+    "Precision",
+    "precision",
+    "Správnost vůči konkrétnímu cíli."
+   ],
+   [
+    "rec",
+    "Recall",
+    "recall",
+    "Zachycení všech relevantních případů."
+   ],
+   [
+    "rel",
+    "Relevance a soulad s kontextem",
+    "relevance and contextual fit",
+    "Vhodnost pro kontext a doménu."
+   ],
+   [
+    "div",
+    "Diversity",
+    "diversity",
+    "Šíře bez opakování."
+   ],
+   [
+    "exec",
+    "Execution success rate",
+    "execution success rate",
+    "Spustitelnost bez úprav."
+   ],
+   [
+    "time",
+    "Time efficiency",
+    "time efficiency",
+    "Ušetřený čas."
+   ]
+  ],
+  "pol": [
+   [
+    "Vygenerované testy pokrývají 18 z 20 specifikovaných požadavků.",
+    "acc",
+    "Pokrytí požadavků vůči standardu."
+   ],
+   [
+    "Z 25 testů označených „odhalí anomálii“ jich 20 opravdu cílí na neplatné chování.",
+    "prec",
+    "Správnost vůči cíli."
+   ],
+   [
+    "Testy pokrývají 6 z 9 tříd ekvivalence pole Věk.",
+    "rec",
+    "Úplnost relevantních případů."
+   ],
+   [
+    "Tři testy se týkají funkce, kterou aplikace nemá.",
+    "rel",
+    "Nesoulad s testovací bází."
+   ],
+   [
+    "Polovina testů je jen variací téhož scénáře s jinou hodnotou.",
+    "div",
+    "Opakování."
+   ],
+   [
+    "35 ze 40 skriptů se spustí bez syntaktické chyby.",
+    "exec",
+    "Spustitelnost."
+   ],
+   [
+    "Generování a kontrola trvaly 2 h místo 8 h ruční práce.",
+    "time",
+    "Úspora času."
+   ],
+   [
+    "Testovací případy používají terminologii a pravidla pojišťovnictví podle zadání.",
+    "rel",
+    "Doménový soulad."
+   ],
+   [
+    "Testy zkoumají různé chování uživatelů včetně okrajových případů.",
+    "div",
+    "Šíře scénářů."
+   ],
+   [
+    "Výstup se porovná s referenční sadou od zkušeného test analytika.",
+    "acc",
+    "Srovnání s testy od odborníka."
+   ],
+   [
+    "Skript se spustí a selže, protože našel defekt; počítá se jako úspěšně spuštěný.",
+    "exec",
+    "Metrika měří spustitelnost, ne výsledek."
+   ],
+   [
+    "Model našel všechny hraniční hodnoty uvedené v požadavcích.",
+    "rec",
+    "Všechny relevantní případy."
+   ]
+  ]
+ },
+ {
+  "id": "ladeni-promptu",
+  "sek": "2.3.2",
+  "nazev": "Která technika ladění promptu se hodí?",
+  "zdroj": "Sylabus 2.3.2.",
+  "otazka": "Zařaď situaci k technice hodnocení a ladění promptů.",
+  "kat": [
+   [
+    "iter",
+    "Iterativní úprava",
+    "iterative prompt modification",
+    "Postupné doplňování kontextu a úprava formulací."
+   ],
+   [
+    "ab",
+    "A/B testování",
+    "A/B testing of prompts",
+    "Porovnání verzí podle metrik."
+   ],
+   [
+    "out",
+    "Analýza výstupu",
+    "output analysis",
+    "Hledání typu chyby ve výstupu."
+   ],
+   [
+    "fb",
+    "Zpětná vazba uživatelů",
+    "integrate user feedback",
+    "Názory čtenářů výstupu."
+   ],
+   [
+    "len",
+    "Délka a konkrétnost",
+    "adjust prompt length and specificity",
+    "Experiment s rozsahem promptu."
+   ]
+  ],
+  "pol": [
+   [
+    "Model soustavně uvádí očekávané výsledky v rozporu s požadavky a chcete zjistit proč.",
+    "out",
+    "Pochopení typu chyby."
+   ],
+   [
+    "Máte dvě formulace instrukce a chcete vybrat lepší podle recallu.",
+    "ab",
+    "Srovnání verzí metrikou."
+   ],
+   [
+    "Vývojáři říkají, že reporty o defektech jsou zbytečně dlouhé.",
+    "fb",
+    "Postřeh čtenářů."
+   ],
+   [
+    "Začali jste jednou větou a postupně přidáváte kontext podle výsledků.",
+    "iter",
+    "Iterativní úprava."
+   ],
+   [
+    "Velmi podrobný prompt dává jen úzké výsledky a nepokrývá nové situace.",
+    "len",
+    "Kratší prompt může lépe zobecnit."
+   ],
+   [
+    "Model nerozumí firemnímu termínu „storno“, tak ho v promptu nahradíte vysvětlením.",
+    "iter",
+    "Úprava terminologie."
+   ],
+   [
+    "Testeři chtějí v testovacích případech méně kroků a víc předpokladů.",
+    "fb",
+    "Úroveň detailu podle uživatelů."
+   ],
+   [
+    "Tři verze promptu spustíte každou desetkrát a porovnáte execution success rate.",
+    "ab",
+    "A/B (A/B/C) s metrikou."
+   ],
+   [
+    "Ve výstupu se opakovaně objevují testy na funkce mimo testovací bázi.",
+    "out",
+    "Nekonzistence vůči bázi."
+   ],
+   [
+    "Krátký prompt dává obecné výsledky, zkusíte přidat popis domény a pravidel.",
+    "len",
+    "Víc kontextu může pomoci."
+   ]
+  ]
+ }
+]

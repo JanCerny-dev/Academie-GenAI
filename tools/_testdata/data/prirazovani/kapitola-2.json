@@ -1,0 +1,35 @@
+[
+ {
+  "id": "typy",
+  "sek": "2.1",
+  "nazev": "Který typ AI to je?",
+  "zdroj": "Sylabus 1.1.1.",
+  "otazka": "Zařaď příklad.",
+  "kat": [
+   [
+    "sym",
+    "Symbolická AI",
+    "symbolic AI",
+    "Pravidla."
+   ],
+   [
+    "ml",
+    "Strojové učení",
+    "machine learning",
+    "Data."
+   ]
+  ],
+  "pol": [
+   [
+    "Pravidla napsaná expertem",
+    "sym",
+    "Pravidla zapsal člověk."
+   ],
+   [
+    "Model naučený z historie",
+    "ml",
+    "Učí se z dat."
+   ]
+  ]
+ }
+]

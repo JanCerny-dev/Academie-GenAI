@@ -1,0 +1,1675 @@
+/* ==========================================================================
+   ISTQB CT-GenAI — česká studijní příručka (styl převzatý z webu CTFL)
+   Klidná studijní typografie: dlouhý text na prvním místě, barva jen tam,
+   kde nese význam. Světlý i tmavý režim.
+   ========================================================================== */
+
+/* --- barevné tokeny ------------------------------------------------------ */
+
+:root {
+  color-scheme: light;
+
+  --papir: #fbfaf7;
+  --plocha: #ffffff;
+  --plocha-tlumena: #f4f2ec;
+  --text: #1a1a1a;
+  --text-tlumeny: #5c5952;
+  /* Nejtlumenější odstín nese drobný text (meta, nápovědy, patička),
+     proto musí i on splnit WCAG AA 4,5:1 proti papíru. */
+  --text-jemny: #736d60;
+  --linka: #e3ded3;
+  --linka-silna: #cec7b8;
+
+  --modra: #0b5394;
+  --modra-pozadi: #eef4fb;
+  --zelena: #1b6e3c;
+  --zelena-pozadi: #edf6f0;
+  --cervena: #c0392b;
+  --cervena-pozadi: #fdf0ee;
+
+  --akcent: #6d28d9;
+  --akcent-pozadi: #f1ecfd;
+
+  --stin: 0 1px 2px rgba(26, 26, 26, .04), 0 8px 24px rgba(26, 26, 26, .05);
+
+  --pismo-text: Georgia, "Iowan Old Style", "Palatino Linotype", "Book Antiqua", serif;
+  --pismo-ui: "Segoe UI Variable Text", "Segoe UI", system-ui, -apple-system, sans-serif;
+
+  --sirka-textu: 40rem;
+  --sirka-stranky: 78rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-tema="svetly"]) {
+    color-scheme: dark;
+
+    --papir: #14161a;
+    --plocha: #1b1e24;
+    --plocha-tlumena: #21252c;
+    --text: #e7e4dd;
+    --text-tlumeny: #a5a9b2;
+    --text-jemny: #868c96;
+    --linka: #2b303a;
+    --linka-silna: #3b424e;
+
+    --modra: #8fbeef;
+    --modra-pozadi: #17222e;
+    --zelena: #74c99a;
+    --zelena-pozadi: #16251d;
+    --cervena: #ef9a8e;
+    --cervena-pozadi: #2a1c1a;
+
+    /* Výchozí akcent i pro stránky bez kapitoly (úvod, zdroje, zkouška). */
+    --akcent: #a78bfa;
+    --akcent-pozadi: #221c33;
+
+    --stin: 0 1px 2px rgba(0, 0, 0, .3), 0 8px 24px rgba(0, 0, 0, .3);
+  }
+}
+
+:root[data-tema="tmavy"] {
+  color-scheme: dark;
+
+  --papir: #14161a;
+  --plocha: #1b1e24;
+  --plocha-tlumena: #21252c;
+  --text: #e7e4dd;
+  --text-tlumeny: #a5a9b2;
+  --text-jemny: #868c96;
+  --linka: #2b303a;
+  --linka-silna: #3b424e;
+
+  --modra: #8fbeef;
+  --modra-pozadi: #17222e;
+  --zelena: #74c99a;
+  --zelena-pozadi: #16251d;
+  --cervena: #ef9a8e;
+  --cervena-pozadi: #2a1c1a;
+
+  --akcent: #a78bfa;
+  --akcent-pozadi: #221c33;
+
+  --stin: 0 1px 2px rgba(0, 0, 0, .3), 0 8px 24px rgba(0, 0, 0, .3);
+}
+
+/* Akcent kapitoly. Záměrně jiné odstíny než modrá/zelená/červená,
+   které nesou význam v textu. Akcent je vždy jen dekorace. */
+[data-kapitola="1"] { --akcent: #6d28d9; --akcent-pozadi: #f1ecfd; }
+[data-kapitola="2"] { --akcent: #be185d; --akcent-pozadi: #fceef4; }
+[data-kapitola="3"] { --akcent: #b53b0a; --akcent-pozadi: #fdf0e8; }
+[data-kapitola="4"] { --akcent: #0f766e; --akcent-pozadi: #e9f6f4; }
+[data-kapitola="5"] { --akcent: #96590a; --akcent-pozadi: #fbf3e2; }
+[data-kapitola="6"] { --akcent: #4338ca; --akcent-pozadi: #eeeefc; }
+
+:root[data-tema="tmavy"] [data-kapitola="1"] { --akcent: #a78bfa; --akcent-pozadi: #211c33; }
+:root[data-tema="tmavy"] [data-kapitola="2"] { --akcent: #f472b6; --akcent-pozadi: #2e1826; }
+:root[data-tema="tmavy"] [data-kapitola="3"] { --akcent: #fb923c; --akcent-pozadi: #2c1d12; }
+:root[data-tema="tmavy"] [data-kapitola="4"] { --akcent: #2dd4bf; --akcent-pozadi: #10262a; }
+:root[data-tema="tmavy"] [data-kapitola="5"] { --akcent: #fbbf24; --akcent-pozadi: #2a2211; }
+:root[data-tema="tmavy"] [data-kapitola="6"] { --akcent: #818cf8; --akcent-pozadi: #1c1e35; }
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-tema="svetly"]) [data-kapitola="1"] { --akcent: #a78bfa; --akcent-pozadi: #211c33; }
+  :root:not([data-tema="svetly"]) [data-kapitola="2"] { --akcent: #f472b6; --akcent-pozadi: #2e1826; }
+  :root:not([data-tema="svetly"]) [data-kapitola="3"] { --akcent: #fb923c; --akcent-pozadi: #2c1d12; }
+  :root:not([data-tema="svetly"]) [data-kapitola="4"] { --akcent: #2dd4bf; --akcent-pozadi: #10262a; }
+  :root:not([data-tema="svetly"]) [data-kapitola="5"] { --akcent: #fbbf24; --akcent-pozadi: #2a2211; }
+  :root:not([data-tema="svetly"]) [data-kapitola="6"] { --akcent: #818cf8; --akcent-pozadi: #1c1e35; }
+}
+
+/* --- základ -------------------------------------------------------------- */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; scroll-padding-top: 5rem; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+}
+
+body {
+  margin: 0;
+  background: var(--papir);
+  color: var(--text);
+  font-family: var(--pismo-text);
+  font-size: 1.1875rem;
+  line-height: 1.75;
+  text-rendering: optimizeLegibility;
+}
+
+a { color: inherit; text-decoration-color: var(--linka-silna); text-underline-offset: .18em; }
+a:hover { text-decoration-color: currentColor; }
+
+:focus-visible {
+  outline: 2px solid var(--akcent);
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+
+.preskocit {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 100;
+  background: var(--plocha);
+  color: var(--text);
+  padding: .6rem 1rem;
+  border: 1px solid var(--linka-silna);
+  border-radius: 6px;
+  font-family: var(--pismo-ui);
+  font-size: .95rem;
+}
+.preskocit:focus { left: 1rem; top: 1rem; }
+
+/* --- hlavička ------------------------------------------------------------ */
+
+.postup {
+  position: fixed;
+  inset: 0 auto auto 0;
+  height: 2px;
+  width: 0;
+  background: var(--akcent);
+  z-index: 60;
+  transition: width .1s linear;
+}
+
+.hlavicka {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: color-mix(in srgb, var(--papir) 88%, transparent);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--linka);
+  font-family: var(--pismo-ui);
+}
+
+.hlavicka-vnitrek {
+  max-width: var(--sirka-stranky);
+  margin: 0 auto;
+  padding: .7rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.znacka {
+  font-weight: 600;
+  font-size: .95rem;
+  letter-spacing: .01em;
+  text-decoration: none;
+  display: flex;
+  align-items: baseline;
+  gap: .5rem;
+}
+.znacka span { color: var(--text-jemny); font-weight: 400; font-size: .82rem; }
+
+.navigace { display: flex; align-items: center; gap: .25rem; margin-left: auto; flex-wrap: wrap; }
+
+.navigace a, .navigace .brzy {
+  font-size: .9rem;
+  padding: .35rem .7rem;
+  border-radius: 6px;
+  text-decoration: none;
+  color: var(--text-tlumeny);
+}
+.navigace a:hover { background: var(--plocha-tlumena); color: var(--text); }
+.navigace a[aria-current="page"] { color: var(--text); background: var(--plocha-tlumena); font-weight: 600; }
+
+.navigace .brzy {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+}
+.navigace .brzy em {
+  font-style: normal;
+  font-size: .68rem;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  border: 1px solid var(--linka-silna);
+  border-radius: 99px;
+  padding: .05rem .4rem;
+}
+
+/* --- podmenu kapitol ----------------------------------------------------- */
+
+.skupina { position: relative; display: inline-flex; align-items: center; }
+
+/* Zvýrazněná položka menu — kapitoly jsou to hlavní, kvůli čemu sem lidé chodí. */
+.navigace a.zvyraznit {
+  color: var(--akcent);
+  background: var(--akcent-pozadi);
+  border: 1px solid color-mix(in srgb, var(--akcent) 32%, transparent);
+  font-weight: 600;
+}
+.navigace a.zvyraznit:hover,
+.skupina:hover > a.zvyraznit {
+  background: color-mix(in srgb, var(--akcent) 14%, var(--akcent-pozadi));
+  border-color: var(--akcent);
+  color: var(--akcent);
+}
+.navigace a.zvyraznit[aria-current="page"] {
+  background: color-mix(in srgb, var(--akcent) 14%, var(--akcent-pozadi));
+  border-color: var(--akcent);
+}
+
+.podmenu {
+  position: absolute;
+  top: calc(100% + .45rem);
+  left: 0;
+  z-index: 40;
+  min-width: 17rem;
+  margin: 0;
+  padding: .35rem;
+  list-style: none;
+  background: var(--plocha);
+  border: 1px solid var(--linka-silna);
+  border-radius: 10px;
+  box-shadow: var(--stin);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(-.25rem);
+  /* Skrytí až po dojetí animace, zobrazení okamžitě — jinak by podmenu
+     bylo prvních pár desetin sekundy neklikatelné. */
+  transition: opacity .13s ease, transform .13s ease, visibility 0s linear .13s;
+}
+
+/* Otevírá se najetím myší; :focus-within je tu kvůli průchodu klávesnicí. */
+.skupina:focus-within .podmenu {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: none;
+  transition: opacity .13s ease, transform .13s ease, visibility 0s;
+}
+
+/* Jen tam, kde je skutečná myš. Na dotyku by první ťuknutí místo přechodu
+   na stránku Kapitoly jen otevřelo menu. */
+@media (hover: hover) and (pointer: fine) {
+  .skupina:hover .podmenu {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: none;
+    transition: opacity .13s ease, transform .13s ease, visibility 0s;
+  }
+}
+
+/* Můstek přes mezeru mezi odkazem a podmenu — bez něj myš cestou dolů
+   opustí oblast hoveru a menu se zavře. */
+.podmenu::before {
+  content: "";
+  position: absolute;
+  top: -.5rem;
+  left: 0;
+  right: 0;
+  height: .5rem;
+}
+
+.podmenu li { margin: 0; }
+
+.podmenu a {
+  display: flex;
+  align-items: baseline;
+  gap: .6rem;
+  padding: .45rem .65rem;
+  border-radius: 6px;
+  font-size: .9rem;
+  color: var(--text-tlumeny);
+  text-decoration: none;
+}
+.podmenu a b {
+  flex: none;
+  min-width: 1.1rem;
+  font-weight: 700;
+  font-size: .78rem;
+  color: var(--text-jemny);
+}
+.podmenu a:hover { background: var(--plocha-tlumena); color: var(--text); }
+.podmenu a[aria-current="page"] { color: var(--text); font-weight: 600; background: var(--plocha-tlumena); }
+.podmenu a[aria-current="page"] b { color: var(--text); }
+
+/* Na úzké obrazovce se podmenu chová jako blok pod odkazem, ne jako plovoucí panel. */
+@media (max-width: 40rem) {
+  .skupina { position: static; }
+  .podmenu { left: 1rem; right: 1rem; min-width: 0; }
+}
+
+.prepinac-tema {
+  font: inherit;
+  font-size: .9rem;
+  background: none;
+  border: 1px solid var(--linka);
+  color: var(--text-tlumeny);
+  border-radius: 6px;
+  padding: .3rem .6rem;
+  cursor: pointer;
+  line-height: 1.4;
+}
+.prepinac-tema:hover { border-color: var(--linka-silna); color: var(--text); }
+
+/* --- rozvržení stránky --------------------------------------------------- */
+
+.stranka {
+  max-width: var(--sirka-stranky);
+  margin: 0 auto;
+  padding: 0 1.5rem 6rem;
+}
+
+/* Na úzké obrazovce je obsah kapitoly nad textem, ne pod ním.
+   Mění se jen vizuální pořadí — v DOM zůstává text první, aby ho
+   předčítání začalo číst hned a nepředčítalo nejdřív celý rozcestník. */
+.layout { display: flex; flex-direction: column; }
+.layout > .strom { order: -1; }
+
+main { min-width: 0; }
+
+@media (min-width: 64rem) {
+  .layout {
+    display: grid;
+    grid-template-columns: 15rem minmax(0, 1fr);
+    gap: 3.5rem;
+    align-items: start;
+  }
+  /* Pořadí v DOM je text -> obsah, aby předčítání začínalo textem.
+     Vizuálně je obsah vlevo. */
+  .layout > main { grid-column: 2; grid-row: 1; }
+  .layout > .strom { grid-column: 1; grid-row: 1; }
+}
+
+/* --- záhlaví kapitoly ---------------------------------------------------- */
+
+.zahlavi { padding: 3rem 0 0; max-width: var(--sirka-textu); }
+
+.drobky {
+  font-family: var(--pismo-ui);
+  font-size: .82rem;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--akcent);
+  font-weight: 600;
+  margin: 0 0 .75rem;
+}
+
+h1 {
+  font-family: var(--pismo-ui);
+  font-size: clamp(1.85rem, 1.3rem + 1.9vw, 2.6rem);
+  line-height: 1.15;
+  letter-spacing: -.02em;
+  font-weight: 650;
+  margin: 0 0 .6rem;
+  text-wrap: balance;
+}
+
+.podtitul {
+  color: var(--text-tlumeny);
+  font-size: 1.02rem;
+  font-style: italic;
+  margin: 0 0 1.5rem;
+}
+
+.meta {
+  font-family: var(--pismo-ui);
+  font-size: .85rem;
+  color: var(--text-jemny);
+  display: flex;
+  flex-wrap: wrap;
+  gap: .4rem 1.1rem;
+  margin: 0 0 2rem;
+  padding: 0;
+  list-style: none;
+}
+
+/* --- přepínač variant ---------------------------------------------------- */
+
+.varianty {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .4rem;
+  margin: 0 0 1.75rem;
+  padding: .3rem;
+  background: var(--plocha-tlumena);
+  border-radius: 10px;
+  font-family: var(--pismo-ui);
+  border: 1px solid var(--linka);
+}
+
+.varianty a {
+  flex: 1 1 8rem;
+  text-align: center;
+  padding: .5rem .8rem;
+  border-radius: 7px;
+  font-size: .92rem;
+  text-decoration: none;
+  color: var(--text-tlumeny);
+}
+.varianty a:hover { color: var(--text); }
+.varianty a[aria-current="page"] {
+  background: var(--plocha);
+  color: var(--text);
+  font-weight: 600;
+  box-shadow: var(--stin);
+}
+
+.naradi {
+  display: flex;
+  gap: .6rem;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: 0 0 2rem;
+  font-family: var(--pismo-ui);
+}
+
+.tlacitko {
+  font: inherit;
+  font-size: .9rem;
+  background: var(--plocha);
+  border: 1px solid var(--linka-silna);
+  color: var(--text);
+  border-radius: 7px;
+  padding: .45rem .85rem;
+  cursor: pointer;
+}
+.tlacitko:hover { background: var(--plocha-tlumena); }
+.tlacitko[aria-pressed="true"] {
+  background: var(--akcent);
+  border-color: var(--akcent);
+  color: #fff;
+}
+:root[data-tema="tmavy"] .tlacitko[aria-pressed="true"] { color: #14161a; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-tema="svetly"]) .tlacitko[aria-pressed="true"] { color: #14161a; }
+}
+
+.napoveda { font-size: .84rem; color: var(--text-jemny); }
+
+/* --- text ---------------------------------------------------------------- */
+
+.text { max-width: var(--sirka-textu); }
+
+.text h2 {
+  font-family: var(--pismo-ui);
+  font-size: 1.35rem;
+  line-height: 1.3;
+  letter-spacing: -.01em;
+  font-weight: 650;
+  margin: 3.25rem 0 1rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--linka);
+  scroll-margin-top: 5rem;
+  text-wrap: balance;
+}
+.text h2:first-child { margin-top: 1rem; border-top: 0; padding-top: 0; }
+
+.text p { margin: 0 0 1.35rem; hyphens: auto; }
+
+/* Značka odkazu je v CSS, ne v textu — předčítání ji tak nepřečte
+   a kontrola počtu slov ji nezapočítá. */
+.kotva::before { content: "#"; }
+
+.kotva {
+  font-family: var(--pismo-ui);
+  font-size: .8em;
+  color: var(--text-jemny);
+  text-decoration: none;
+  opacity: 0;
+  margin-left: .5rem;
+  vertical-align: .1em;
+  transition: opacity .15s;
+}
+h2:hover .kotva, .kotva:focus-visible { opacity: 1; }
+
+/* --- vsuvky (nad rámec sylabu / příklad z praxe) -------------------------- */
+
+.vsuvka {
+  margin: 2rem 0;
+  padding: 1.15rem 1.35rem .3rem;
+  border-left: 3px solid var(--barva);
+  border-radius: 0 8px 8px 0;
+  background: var(--pozadi);
+  color: var(--barva);
+}
+
+.vsuvka::before {
+  content: attr(data-stitek);
+  display: block;
+  font-family: var(--pismo-ui);
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+  margin-bottom: .6rem;
+  opacity: .85;
+}
+
+.vsuvka p { margin: 0 0 1.15rem; }
+
+.vsuvka--nad-ramec { --barva: var(--modra); --pozadi: var(--modra-pozadi); }
+.vsuvka--praxe { --barva: var(--zelena); --pozadi: var(--zelena-pozadi); }
+
+/* --- otázky a odpovědi --------------------------------------------------- */
+
+.legenda {
+  display: grid;
+  gap: .5rem;
+  margin: 0 0 2rem;
+  padding: 1.1rem 1.25rem;
+  background: var(--plocha);
+  border: 1px solid var(--linka);
+  border-radius: 10px;
+  list-style: none;
+}
+.legenda li { margin: 0; font-size: .95rem; }
+.legenda li::before {
+  content: attr(data-uroven);
+  display: inline-block;
+  min-width: 2.1rem;
+  margin-right: .6rem;
+  padding: .05rem .4rem;
+  border-radius: 5px;
+  font-family: var(--pismo-ui);
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .05em;
+  text-align: center;
+  color: var(--barva);
+  background: var(--pozadi);
+  border: 1px solid currentColor;
+  vertical-align: .12em;
+}
+.legenda li.k1, .otazka.k1 { --barva: var(--modra); --pozadi: var(--modra-pozadi); }
+.legenda li.k2, .otazka.k2 { --barva: var(--cervena); --pozadi: var(--cervena-pozadi); }
+.legenda li.k3, .otazka.k3 { --barva: var(--zelena); --pozadi: var(--zelena-pozadi); }
+
+.otazka {
+  margin: 0 0 1.6rem;
+  padding: 0 0 0 .1rem;
+  scroll-margin-top: 5rem;
+}
+
+.otazka .dotaz {
+  margin: 0;
+  font-family: var(--pismo-ui);
+  font-size: 1.02rem;
+  font-weight: 600;
+  line-height: 1.5;
+  color: var(--barva);
+  display: flex;
+  gap: .65rem;
+  align-items: flex-start;
+}
+
+.otazka .dotaz::before {
+  content: attr(data-uroven);
+  flex: none;
+  margin-top: .18em;
+  padding: .05rem .4rem;
+  border-radius: 5px;
+  font-size: .68rem;
+  font-weight: 700;
+  letter-spacing: .05em;
+  background: var(--pozadi);
+  border: 1px solid currentColor;
+}
+
+.otazka .odpoved {
+  margin: .55rem 0 0 3rem;
+  padding-left: 1rem;
+  border-left: 2px solid var(--linka);
+  color: var(--text);
+}
+
+[data-odpovedi="skryte"] .otazka:not(.odhalena) .odpoved { display: none; }
+
+[data-odpovedi="skryte"] .otazka:not(.odhalena) .dotaz {
+  cursor: pointer;
+}
+[data-odpovedi="skryte"] .otazka:not(.odhalena) .dotaz::after {
+  content: "ukázat odpověď";
+  font-family: var(--pismo-ui);
+  font-size: .72rem;
+  font-weight: 500;
+  letter-spacing: .04em;
+  color: var(--text-jemny);
+  border: 1px dashed var(--linka-silna);
+  border-radius: 5px;
+  padding: .05rem .45rem;
+  margin-left: .3rem;
+  align-self: center;
+  white-space: nowrap;
+}
+
+/* --- boční obsah --------------------------------------------------------- */
+
+.strom {
+  font-family: var(--pismo-ui);
+  font-size: .87rem;
+  line-height: 1.45;
+}
+
+@media (min-width: 64rem) {
+  .strom {
+    position: sticky;
+    top: 4.5rem;
+    max-height: calc(100vh - 6rem);
+    overflow-y: auto;
+    padding: 3rem .5rem 2rem 0;
+  }
+}
+
+@media (max-width: 63.999rem) {
+  .strom {
+    margin: 0 0 2rem;
+    padding: 1.1rem 1.25rem;
+    background: var(--plocha);
+    border: 1px solid var(--linka);
+    border-radius: 10px;
+  }
+}
+
+.strom h2 {
+  font-size: .72rem;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+  color: var(--text-jemny);
+  margin: 0 0 .8rem;
+  font-weight: 700;
+}
+
+.strom ol { list-style: none; margin: 0; padding: 0; }
+.strom li { margin: 0; }
+
+.strom a {
+  display: block;
+  padding: .3rem .7rem;
+  color: var(--text-tlumeny);
+  text-decoration: none;
+  border-left: 2px solid var(--linka);
+}
+.strom a:hover { color: var(--text); border-left-color: var(--linka-silna); }
+.strom a.aktivni {
+  color: var(--akcent);
+  border-left-color: var(--akcent);
+  font-weight: 600;
+  background: var(--akcent-pozadi);
+}
+
+/* --- úvodní stránka ------------------------------------------------------ */
+
+.uvod { max-width: var(--sirka-stranky); padding-top: 3.5rem; }
+
+.uvod-hlava { max-width: 44rem; margin-bottom: 3.5rem; }
+.uvod-hlava--strucna { margin-bottom: 2.5rem; }
+.uvod-hlava .perex {
+  font-size: 1.22rem;
+  line-height: 1.65;
+  color: var(--text-tlumeny);
+  margin: 0 0 1.5rem;
+}
+
+/* Úvod ve dvou sloupcích. V DOM je návod první a předčítání druhé,
+   takže na telefonu (jeden sloupec) skončí předčítání dole — tam ho stejně
+   nikdo nepoužije. */
+.uvod-sloupce { display: grid; gap: 3rem; }
+
+@media (min-width: 64rem) {
+  .uvod-sloupce {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 4.5rem;
+  }
+}
+
+.uvod-sloupce .sekce { margin: 0; }
+.uvod-sloupce .sekce > p,
+.uvod-sloupce .sekce > ul,
+.uvod-sloupce .poznamka { max-width: none; }
+
+.sekce { margin: 0 0 4rem; }
+.sekce > h2 {
+  font-family: var(--pismo-ui);
+  font-size: 1.4rem;
+  font-weight: 650;
+  letter-spacing: -.01em;
+  margin: 0 0 1.25rem;
+  scroll-margin-top: 5rem;
+}
+.sekce > p, .sekce > ul { max-width: var(--sirka-textu); }
+.sekce > ul { padding-left: 1.2rem; }
+.sekce > ul li { margin: 0 0 .6rem; }
+
+.mrizka {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+  gap: 1.25rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.karta {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: var(--plocha);
+  border: 1px solid var(--linka);
+  border-top: 3px solid var(--akcent);
+  border-radius: 12px;
+  padding: 1.45rem 1.5rem 1.2rem;
+  box-shadow: var(--stin);
+  scroll-margin-top: 5.5rem;
+  transition: background-color .15s ease, border-color .15s ease, transform .15s ease;
+}
+
+/* Najetí kamkoli na dlaždici. Podbarvení je jen jemné — silný signál nese
+   zvýrazněný řádek Plný výklad, protože to je cíl kliknutí. */
+.karta:hover {
+  background: color-mix(in srgb, var(--akcent) 5%, var(--plocha));
+  border-color: var(--akcent);
+  transform: translateY(-2px);
+}
+
+.karta-cislo {
+  font-family: var(--pismo-ui);
+  font-size: .92rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--akcent);
+  margin: 0 0 .45rem;
+}
+
+.karta h3 {
+  font-family: var(--pismo-ui);
+  font-size: 1.28rem;
+  font-weight: 650;
+  line-height: 1.28;
+  margin: 0 0 .5rem;
+  text-wrap: balance;
+}
+
+.karta .karta-meta {
+  font-family: var(--pismo-ui);
+  font-size: .82rem;
+  color: var(--text-jemny);
+  margin: 0 0 1.1rem;
+}
+.karta:hover .karta-meta { color: var(--text-tlumeny); }
+
+/* Výsledek zkoušky na rozcestníku (vyplňuje skript.js z localStorage). */
+.karta--splneno { border-top-color: var(--zelena); }
+.karta-vysledek {
+  display: flex; flex-direction: column; gap: .3rem;
+  font-family: var(--pismo-ui); font-size: .82rem; color: var(--text-tlumeny);
+  margin: -.5rem 0 1.1rem;
+}
+.karta-vysledek-stitek { font-weight: 700; }
+.karta-vysledek-stitek.uspech { color: var(--zelena); }
+.karta-vysledek-stitek.neuspech { color: var(--cervena); }
+
+/* Nulová mezera záměrně: každý pixel mezi odkazy by patřil roztaženému
+   odkazu na plný výklad a při přejíždění myší by problikával. Odstup mezi
+   řádky proto dělá odsazení uvnitř odkazů, ne gap. */
+.karta ul { list-style: none; margin: auto 0 0; padding: 0; display: grid; gap: 0; }
+.karta ul li { margin: 0; }
+
+.karta ul a {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: baseline;
+  font-family: var(--pismo-ui);
+  font-size: .92rem;
+  text-decoration: none;
+  padding: .55rem .6rem;
+  border-radius: 6px;
+  border: 1px solid transparent;
+}
+.karta ul a:hover { background: var(--akcent-pozadi); border-color: var(--akcent); }
+.karta ul a span { color: var(--text-jemny); font-size: .8rem; flex: none; }
+.karta ul a:hover span { color: var(--text-tlumeny); }
+
+/* Odkaz na plný výklad se roztáhne přes celou dlaždici. Musí zůstat
+   nepozicovaný, aby se jeho ::after ukotvilo k dlaždici, ne k odkazu.
+   Ostatní dva odkazy mají z-index 1, takže si kliknutí vezmou samy. */
+.karta ul a.hlavni { position: static; }
+
+.karta ul a.hlavni::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border-radius: 12px;
+}
+
+/* Najetí na dlaždici zvýrazní Plný výklad, protože ten se kliknutím otevře.
+   Jakmile ale myš stojí na jiné variantě, zvýrazněná je jen ta — proto
+   :not(:has(...)). Bez toho by svítily dva odkazy naráz. */
+.karta:hover:not(:has(ul a:not(.hlavni):hover)) ul a.hlavni {
+  background: var(--akcent-pozadi);
+  border-color: var(--akcent);
+}
+.karta:hover:not(:has(ul a:not(.hlavni):hover)) ul a.hlavni span {
+  color: var(--text-tlumeny);
+}
+
+.zkratky {
+  display: grid;
+  gap: .8rem;
+  max-width: var(--sirka-textu);
+  margin: 0;
+  padding: 0;
+}
+/* Zkratka nad popisem, ne vedle — vejde se to i do úzkého sloupce. */
+.zkratky div {
+  padding: .85rem 1.1rem;
+  background: var(--plocha);
+  border: 1px solid var(--linka);
+  border-radius: 9px;
+}
+.zkratky dt {
+  font-family: var(--pismo-ui);
+  font-weight: 700;
+  font-size: .82rem;
+  letter-spacing: .04em;
+  color: var(--akcent);
+  margin-bottom: .25rem;
+}
+.zkratky dd { margin: 0; font-size: .98rem; }
+
+.poznamka {
+  max-width: var(--sirka-textu);
+  margin: 0;
+  padding: 1.15rem 1.35rem;
+  background: var(--plocha-tlumena);
+  border-left: 3px solid var(--linka-silna);
+  border-radius: 0 8px 8px 0;
+  font-size: 1rem;
+  color: var(--text-tlumeny);
+}
+.poznamka strong { color: var(--text); }
+.poznamka p { margin: 0 0 .9rem; }
+.poznamka p:last-child { margin: 0; }
+
+/* --- stránka Zdroje ------------------------------------------------------ */
+
+.md { max-width: 48rem; }
+.md h2 {
+  font-family: var(--pismo-ui);
+  font-size: 1.45rem;
+  font-weight: 650;
+  margin: 3rem 0 1rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--linka);
+  scroll-margin-top: 5rem;
+}
+.md h3 { font-family: var(--pismo-ui); font-size: 1.15rem; font-weight: 650; margin: 2.25rem 0 .75rem; }
+.md h4 { font-family: var(--pismo-ui); font-size: 1rem; font-weight: 650; margin: 1.75rem 0 .6rem; color: var(--akcent); }
+.md p { margin: 0 0 1.15rem; }
+.md ul, .md ol { padding-left: 1.3rem; margin: 0 0 1.25rem; }
+.md li { margin: 0 0 .5rem; }
+.md hr { border: 0; border-top: 1px solid var(--linka); margin: 2.5rem 0; }
+/* Nadpis oddílu si nese vlastní linku, druhá hned nad ním by byla navíc. */
+.md hr:has(+ h2) { display: none; }
+.md blockquote {
+  margin: 1.5rem 0;
+  padding: 1rem 1.25rem;
+  background: var(--plocha-tlumena);
+  border-left: 3px solid var(--linka-silna);
+  border-radius: 0 8px 8px 0;
+}
+.md blockquote p { margin: 0; }
+.md code {
+  font-family: "Cascadia Mono", Consolas, "SF Mono", monospace;
+  font-size: .86em;
+  background: var(--plocha-tlumena);
+  border: 1px solid var(--linka);
+  border-radius: 4px;
+  padding: .05em .35em;
+}
+
+.tabulka-obal { overflow-x: auto; margin: 0 0 1.5rem; }
+.md table { border-collapse: collapse; width: 100%; font-size: .95rem; font-family: var(--pismo-ui); }
+.md th, .md td { padding: .55rem .8rem; border-bottom: 1px solid var(--linka); text-align: left; vertical-align: top; }
+.md th { font-weight: 650; color: var(--text); border-bottom-color: var(--linka-silna); }
+.md tbody tr:hover { background: var(--plocha-tlumena); }
+
+/* --- patička ------------------------------------------------------------- */
+
+.paticka {
+  border-top: 1px solid var(--linka);
+  margin-top: 4rem;
+  font-family: var(--pismo-ui);
+  font-size: .87rem;
+  color: var(--text-jemny);
+  line-height: 1.6;
+}
+
+.paticka-vnitrek {
+  max-width: var(--sirka-stranky);
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 4rem;
+  display: grid;
+  gap: 1.25rem;
+}
+.paticka p { margin: 0; max-width: 46rem; }
+.paticka a { color: var(--text-tlumeny); }
+.paticka ul { display: flex; flex-wrap: wrap; gap: 1.25rem; list-style: none; margin: 0; padding: 0; }
+
+/* --- tisk ---------------------------------------------------------------- */
+
+@media print {
+  .hlavicka, .strom, .naradi, .varianty, .postup, .paticka, .preskocit { display: none !important; }
+  body { background: #fff; color: #000; font-size: 11pt; }
+  .stranka { max-width: none; padding: 0; }
+  .text { max-width: none; }
+  .text h2 { break-after: avoid; }
+  .vsuvka, .otazka { break-inside: avoid; }
+  [data-odpovedi="skryte"] .otazka .odpoved { display: block !important; }
+}
+
+/* --- simulace zkoušky (zkouska-*.html, řídí assets/zkouska.js) ---------- */
+
+#zkouska { max-width: 46rem; font-family: var(--pismo-ui); margin: 0 0 3rem; }
+
+.zk-karta {
+  background: var(--plocha);
+  border: 1px solid var(--linka);
+  border-radius: 12px;
+  padding: 1.4rem 1.5rem;
+  box-shadow: var(--stin);
+  margin: 0 0 1.25rem;
+}
+.zk-karta h2 { font-size: 1.2rem; margin: 0 0 .75rem; }
+.zk-karta h3 { font-size: 1rem; margin: 1.5rem 0 .6rem; }
+.zk-uvod ul { padding-left: 1.2rem; margin: 0 0 1.25rem; }
+.zk-uvod li { margin: 0 0 .5rem; }
+.zk-volba { display: flex; gap: .55rem; align-items: flex-start; margin: 0 0 1.25rem; cursor: pointer; }
+.zk-volba input { margin-top: .3rem; accent-color: var(--akcent); }
+
+.zk-tlacitka { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 1rem; }
+.zk-btn {
+  font: inherit;
+  font-size: .92rem;
+  background: var(--plocha);
+  border: 1px solid var(--linka-silna);
+  color: var(--text);
+  border-radius: 8px;
+  padding: .55rem 1rem;
+  cursor: pointer;
+}
+.zk-btn:hover:not(:disabled) { background: var(--plocha-tlumena); }
+.zk-btn:disabled { opacity: .45; cursor: default; }
+.zk-btn--hlavni { background: var(--akcent); border-color: var(--akcent); color: #fff; }
+.zk-btn--hlavni:hover:not(:disabled) { background: color-mix(in srgb, var(--akcent) 85%, #000); }
+.zk-btn--oznacena { border-color: var(--modra); color: var(--modra); background: var(--modra-pozadi); }
+.zk-btn[aria-pressed="true"]:not(.zk-btn--oznacena) { border-color: var(--akcent); color: var(--akcent); background: var(--akcent-pozadi); }
+:root[data-tema="tmavy"] .zk-btn--hlavni { color: #14161a; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-tema="svetly"]) .zk-btn--hlavni { color: #14161a; }
+}
+
+.zk-banner {
+  background: var(--modra-pozadi);
+  border: 1px solid var(--modra);
+  color: var(--text);
+  border-radius: 10px;
+  padding: .75rem 1rem;
+  margin: 0 0 1rem;
+}
+.zk-lista {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: .5rem 1.25rem;
+  font-size: .9rem;
+  color: var(--text-tlumeny);
+  margin: 0 0 .75rem;
+}
+.zk-cas strong { font-variant-numeric: tabular-nums; color: var(--text); }
+.zk-cas .dochazi { color: var(--cervena); }
+
+.zk-zadani { font-family: var(--pismo-text); font-size: 1.06rem; line-height: 1.6; }
+.zk-zadani p { margin: 0 0 .7rem; }
+.zk-zadani ol, .zk-zadani ul { margin: 0 0 .8rem; padding-left: 1.6rem; }
+.zk-zadani img { display: block; max-width: 100%; height: auto; margin: .75rem 0; border: 1px solid var(--linka); border-radius: 6px; background: #fff; }
+.zk-zadani table, .zk-obecne table { border-collapse: collapse; margin: .75rem 0; font-family: var(--pismo-ui); font-size: .9rem; display: block; overflow-x: auto; max-width: 100%; }
+.zk-zadani th, .zk-zadani td, .zk-obecne th, .zk-obecne td { border: 1px solid var(--linka-silna); padding: .35rem .6rem; text-align: left; vertical-align: top; }
+.zk-zadani th, .zk-obecne th { background: var(--plocha-tlumena); }
+.zk-zadani svg { display: block; width: 100%; max-width: 640px; height: auto; margin: .75rem 0; color: var(--text); }
+.zk-zadani pre, .zk-obecne pre { background: var(--plocha-tlumena); padding: .75rem 1rem; border-radius: 8px; overflow-x: auto; font-size: .88rem; }
+.zk-pokyn { font-size: .88rem; color: var(--text-jemny); margin: .25rem 0 .75rem; }
+
+.zk-moznosti { list-style: none; padding: 0; margin: 0 0 1rem; display: grid; gap: .55rem; }
+.zk-moznost {
+  display: flex;
+  gap: .6rem;
+  align-items: flex-start;
+  padding: .7rem .9rem;
+  border: 1px solid var(--linka);
+  border-radius: 10px;
+  cursor: pointer;
+  line-height: 1.45;
+}
+.zk-moznost:hover { border-color: var(--linka-silna); background: var(--plocha-tlumena); }
+.zk-moznost:has(input:checked) { border-color: var(--akcent); background: var(--akcent-pozadi); }
+.zk-moznost input { margin-top: .25rem; accent-color: var(--akcent); flex: none; }
+.zk-pismeno { font-weight: 650; flex: none; }
+
+.zk-ovladani { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .6rem; }
+
+.zk-mrizka { display: grid; grid-template-columns: repeat(auto-fill, minmax(2.4rem, 1fr)); gap: .35rem; margin: 0 0 .5rem; }
+.zk-mrizka button {
+  font: inherit;
+  font-size: .82rem;
+  height: 2.4rem;
+  border: 1px solid var(--linka-silna);
+  border-radius: 7px;
+  background: var(--plocha);
+  color: var(--text);
+  cursor: pointer;
+  position: relative;
+}
+.zk-mrizka .zodpovezena, .zk-tecka.zodpovezena { background: var(--akcent-pozadi); border-color: var(--akcent); }
+.zk-mrizka .oznacena::after {
+  content: "";
+  position: absolute;
+  top: 3px;
+  right: 3px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--modra);
+}
+.zk-mrizka .aktualni { outline: 2px solid var(--text); outline-offset: 1px; }
+.zk-legenda { font-size: .82rem; color: var(--text-jemny); display: flex; gap: .4rem; align-items: center; flex-wrap: wrap; margin: 0 0 1.25rem; }
+.zk-tecka { display: inline-block; width: .9rem; height: .9rem; border-radius: 4px; border: 1px solid var(--linka-silna); }
+.zk-tecka.oznacena { background: var(--modra); border-color: var(--modra); border-radius: 50%; margin-left: .6rem; }
+.zk-odevzdat { text-align: right; }
+.zk-potvrzeni {
+  text-align: left;
+  background: var(--plocha);
+  border: 1px solid var(--akcent);
+  border-radius: 12px;
+  padding: 1rem 1.25rem;
+}
+.zk-potvrzeni p { margin: 0 0 .5rem; }
+
+.zk-vysledek, .zk-souhrn { text-align: left; }
+.zk-skore { font-size: 3.2rem; font-weight: 700; line-height: 1; margin: 0 0 .5rem; font-variant-numeric: tabular-nums; }
+.zk-skore span { font-size: 1.4rem; color: var(--text-jemny); font-weight: 500; }
+.zk-skore.uspech, .zk-verdikt.uspech { color: var(--zelena); }
+.zk-skore.neuspech, .zk-verdikt.neuspech { color: var(--cervena); }
+.zk-verdikt { font-weight: 650; margin: 0 0 .75rem; }
+.zk-hranice { color: var(--text-tlumeny); margin: 0 0 .75rem; }
+
+.zk-kapitoly { list-style: none; padding: 0; margin: 0; display: grid; gap: .4rem; }
+.zk-kapitoly li { display: grid; grid-template-columns: 6.5rem 1fr 3.5rem; gap: .75rem; align-items: center; font-size: .9rem; }
+.zk-kapitoly strong { text-align: right; font-variant-numeric: tabular-nums; }
+.zk-pruh { height: .5rem; background: var(--plocha-tlumena); border-radius: 4px; overflow: hidden; }
+.zk-pruh i { display: block; height: 100%; background: var(--akcent); border-radius: 4px; }
+
+.zk-rozbor-otazka { border-left: 4px solid var(--zelena); }
+.zk-rozbor-otazka.chybne { border-left-color: var(--cervena); }
+.zk-rozbor-hlava { display: flex; flex-wrap: wrap; gap: .4rem .8rem; align-items: center; margin: 0 0 .9rem; }
+.zk-stitek { font-size: .78rem; font-weight: 650; padding: .15rem .55rem; border-radius: 999px; }
+.zk-stitek.uspech { background: var(--zelena-pozadi); color: var(--zelena); }
+.zk-stitek.neuspech { background: var(--cervena-pozadi); color: var(--cervena); }
+.zk-meta { font-size: .82rem; color: var(--text-jemny); }
+
+.zk-moznosti--rozbor li { border: 1px solid var(--linka); border-radius: 10px; padding: .65rem .9rem; }
+.zk-moznosti--rozbor li.spravna { border-color: var(--zelena); background: var(--zelena-pozadi); }
+.zk-moznosti--rozbor li.chybna { border-color: var(--cervena); background: var(--cervena-pozadi); }
+.zk-moznost-text { line-height: 1.45; }
+.zk-vase { font-size: .78rem; font-style: normal; font-weight: 650; color: var(--text-tlumeny); margin-left: .35rem; white-space: nowrap; }
+.zk-zduvodneni { font-size: .9rem; color: var(--text-tlumeny); margin: .35rem 0 0 1.4rem; }
+.zk-obecne { font-size: .92rem; background: var(--plocha-tlumena); border-radius: 10px; padding: .75rem 1rem; margin: 0 0 1rem; }
+.zk-obecne p { margin: 0 0 .5rem; }
+.zk-obecne img { max-width: 100%; height: auto; }
+.zk-odkaz { font-size: .9rem; margin: 0; }
+.zk-zdroj { font-size: .82rem; color: var(--text-jemny); max-width: 46rem; }
+
+@media (max-width: 40rem) {
+  .zk-karta { padding: 1.1rem 1rem; }
+  .zk-ovladani .zk-btn { flex: 1 1 auto; }
+  .zk-kapitoly li { grid-template-columns: 5.5rem 1fr 3rem; }
+}
+.zk-poznamka { font-size: .85rem; color: var(--text-tlumeny); background: var(--modra-pozadi); border-left: 3px solid var(--modra); padding: .5rem .75rem; border-radius: 6px; margin: 0 0 .75rem; }
+.sekce > ul.mrizka { padding-left: 0; max-width: none; }
+
+/* --- přiřazovací cvičení (prirazovani.html) -------------------------------
+   Kapitola nese vlastní akcent přes data-kapitola. Položky převzaté ze
+   vzorových zkoušek se zvýrazňují modrou, aby se odlišily od rozšíření. */
+
+.pr-souhrn { color: var(--text-tlumeny); font-family: var(--pismo-ui); font-size: .95rem; line-height: 1.6; }
+.pr-napoveda { color: var(--text-jemny); font-family: var(--pismo-ui); font-size: .82rem; }
+.pr-akce { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1rem; }
+.pr-tl {
+  font: inherit; font-family: var(--pismo-ui); font-size: .92rem; cursor: pointer;
+  padding: .55rem 1rem; border-radius: 8px; border: 1px solid var(--linka-silna);
+  background: var(--plocha); color: var(--text);
+}
+.pr-tl:hover { border-color: var(--akcent); }
+.pr-tl--hlavni { background: var(--akcent); border-color: var(--akcent); color: var(--plocha); }
+.pr-vzor-znacka {
+  display: inline-block; font-family: var(--pismo-ui); font-size: .76rem; font-weight: 600;
+  color: var(--modra); background: var(--modra-pozadi); border: 1px solid var(--modra);
+  border-radius: 4px; padding: .05rem .45rem; line-height: 1.5; white-space: nowrap;
+}
+
+.pr-kapitola { margin: 0 0 3.5rem; }
+.pr-kapitola-nadpis { display: flex; align-items: baseline; gap: .6rem; }
+.pr-kapitola-cislo {
+  font-family: var(--pismo-ui); font-size: .9rem; font-weight: 700; color: var(--akcent);
+  background: var(--akcent-pozadi); border-radius: 6px; padding: .1rem .55rem;
+}
+.pr-mrizka { display: grid; gap: .75rem; grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr)); margin-top: 1.25rem; }
+.pr-karta {
+  display: flex; flex-direction: column; align-items: flex-start; gap: .35rem; text-align: left; cursor: pointer;
+  font: inherit; font-family: var(--pismo-ui); color: var(--text);
+  background: var(--plocha); border: 1px solid var(--linka); border-top: 3px solid var(--akcent);
+  border-radius: 10px; padding: .9rem 1rem; box-shadow: var(--stin); transition: border-color .15s, transform .15s;
+}
+.pr-karta:hover, .pr-karta:focus-visible { border-color: var(--akcent); transform: translateY(-1px); }
+.pr-karta b { font-size: 1rem; line-height: 1.3; }
+.pr-karta small { color: var(--text-jemny); font-size: .8rem; }
+.pr-puvod { color: var(--text-tlumeny); font-size: .85rem; line-height: 1.4; }
+.pr-stav { font-size: .8rem; font-weight: 600; }
+.pr-stav--ok { color: var(--zelena); }
+.pr-stav--slabe { color: var(--cervena); }
+
+.pr-cviceni { max-width: 52rem; font-family: var(--pismo-ui); }
+.pr-horni { display: flex; flex-wrap: wrap; align-items: center; gap: .75rem 1.25rem; margin-bottom: 1rem; }
+.pr-horni h1 { font-size: 1.5rem; margin: 0; flex: 1 1 18rem; }
+.pr-pocitadlo { color: var(--text-tlumeny); font-size: .9rem; white-space: nowrap; }
+.pr-lista { height: 4px; background: var(--plocha-tlumena); border-radius: 2px; overflow: hidden; margin-bottom: 1.5rem; }
+.pr-lista span { display: block; width: 0; height: 100%; background: var(--akcent); transition: width .2s; }
+.pr-stitky { display: flex; flex-wrap: wrap; gap: .4rem; margin: 0 0 .6rem; min-height: 1.3rem; }
+.pr-stitek { font-size: .78rem; color: var(--akcent); background: var(--akcent-pozadi); border-radius: 4px; padding: .1rem .45rem; }
+.pr-otazka { color: var(--text-tlumeny); font-size: .9rem; margin: 0 0 .6rem; }
+.pr-polozka {
+  font-family: var(--pismo-text); font-size: 1.3rem; line-height: 1.45;
+  background: var(--plocha); border: 1px solid var(--linka); border-radius: 12px;
+  padding: 1.4rem 1.5rem; margin-bottom: 1.25rem; box-shadow: var(--stin);
+}
+.pr-polozka--vzor { border: 2px solid var(--modra); background: var(--modra-pozadi); }
+.pr-volby { display: grid; gap: .5rem; grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr)); }
+.pr-volba {
+  display: flex; gap: .6rem; align-items: flex-start; text-align: left; cursor: pointer;
+  font: inherit; font-size: .95rem; line-height: 1.35; color: var(--text);
+  background: var(--plocha); border: 1px solid var(--linka-silna); border-radius: 9px; padding: .7rem .85rem;
+}
+.pr-volba:hover:not([disabled]) { border-color: var(--akcent); background: var(--akcent-pozadi); }
+.pr-volba kbd {
+  flex: none; font: inherit; font-size: .75rem; font-weight: 700; color: var(--text-jemny);
+  border: 1px solid var(--linka-silna); border-radius: 4px; min-width: 1.4rem; text-align: center; padding: .05rem .25rem;
+}
+.pr-volba em { display: block; font-style: normal; font-size: .78rem; color: var(--text-jemny); margin-top: .15rem; }
+.pr-volba[disabled] { cursor: default; }
+.pr-volba--spravne { border-color: var(--zelena); background: var(--zelena-pozadi); }
+.pr-volba--spatne { border-color: var(--cervena); background: var(--cervena-pozadi); }
+.pr-volba--tlumit { opacity: .5; }
+.pr-zpetna { margin-top: 1.25rem; padding: 1rem 1.15rem; border-radius: 10px; border-left: 4px solid; line-height: 1.5; }
+.pr-zpetna strong { display: block; margin-bottom: .3rem; }
+.pr-zpetna--ok { border-color: var(--zelena); background: var(--zelena-pozadi); }
+.pr-zpetna--chyba { border-color: var(--cervena); background: var(--cervena-pozadi); }
+.pr-dalsi { margin-top: 1rem; display: flex; gap: .75rem; align-items: center; flex-wrap: wrap; }
+.pr-tahak { margin-top: 2rem; border-top: 1px solid var(--linka); padding-top: 1rem; }
+.pr-tahak summary { cursor: pointer; color: var(--text-tlumeny); font-size: .92rem; }
+.pr-tahak dl { margin: .75rem 0 0; }
+.pr-tahak dt { font-weight: 600; margin-top: .6rem; }
+.pr-tahak dt span { font-weight: 400; color: var(--text-jemny); font-size: .85rem; }
+.pr-tahak dd { margin: .1rem 0 0; color: var(--text-tlumeny); font-size: .92rem; line-height: 1.45; }
+
+.pr-vysledek-cislo { font-size: 3rem; font-weight: 700; line-height: 1; margin: .5rem 0; }
+.pr-vysledek--ok { color: var(--zelena); }
+.pr-vysledek--slabe { color: var(--cervena); }
+.pr-chyby { list-style: none; padding: 0; margin: 1.5rem 0 0; display: grid; gap: .75rem; }
+.pr-chyby li { background: var(--plocha); border: 1px solid var(--linka); border-radius: 10px; padding: .9rem 1rem; line-height: 1.45; }
+.pr-chyby .pr-chyba--vzor { border-color: var(--modra); }
+.pr-text { font-family: var(--pismo-text); font-size: 1.05rem; margin: .3rem 0 .35rem; }
+.pr-tvoje { color: var(--cervena); font-size: .9rem; }
+.pr-spr { color: var(--zelena); font-size: .9rem; font-weight: 600; }
+.pr-proc { color: var(--text-tlumeny); font-size: .9rem; margin-top: .3rem; }
+
+@media (max-width: 40rem) {
+  .pr-polozka { font-size: 1.12rem; padding: 1.1rem; }
+  .pr-volby { grid-template-columns: 1fr; }
+}
+
+/* ==========================================================================
+   Doplňky pro CT-GenAI
+   ========================================================================== */
+
+/* --- výklad z Markdownu ---------------------------------------------------- */
+
+.text h3 {
+  font-family: var(--pismo-ui);
+  font-size: 1.12rem;
+  font-weight: 650;
+  line-height: 1.35;
+  margin: 2.25rem 0 .75rem;
+  scroll-margin-top: 5rem;
+}
+.text h4 { font-family: var(--pismo-ui); font-size: 1rem; margin: 1.75rem 0 .5rem; }
+h3:hover .kotva { opacity: 1; }
+.text ul, .text ol { margin: 0 0 1.35rem; padding-left: 1.4rem; }
+.text li { margin: 0 0 .45rem; }
+.text li > ul, .text li > ol { margin: .45rem 0 0; }
+.text blockquote {
+  margin: 1.5rem 0; padding: 1rem 1.25rem; background: var(--plocha-tlumena);
+  border-left: 3px solid var(--linka-silna); border-radius: 0 8px 8px 0;
+}
+.text blockquote p { margin: 0; }
+.text hr { border: 0; border-top: 1px solid var(--linka); margin: 2.5rem 0; }
+.text code, .cv-karta code, .pojem-def code {
+  font-family: "Cascadia Mono", Consolas, "SF Mono", monospace;
+  font-size: .86em; background: var(--plocha-tlumena); border: 1px solid var(--linka);
+  border-radius: 4px; padding: .05em .35em;
+}
+.text table { border-collapse: collapse; width: 100%; font-size: .95rem; font-family: var(--pismo-ui); line-height: 1.5; }
+.text th, .text td { padding: .55rem .8rem; border-bottom: 1px solid var(--linka); text-align: left; vertical-align: top; }
+.text th { font-weight: 650; border-bottom-color: var(--linka-silna); background: var(--plocha-tlumena); }
+
+/* bloky kódu (prompty) s tlačítkem Kopírovat (přidává skript.js) */
+.kod {
+  position: relative;
+  margin: 1.5rem 0;
+  background: var(--plocha-tlumena);
+  border: 1px solid var(--linka);
+  border-radius: 10px;
+}
+.kod::before {
+  content: attr(data-jazyk);
+  position: absolute; top: .45rem; left: .9rem;
+  font-family: var(--pismo-ui); font-size: .68rem; font-weight: 700;
+  letter-spacing: .08em; text-transform: uppercase; color: var(--text-jemny);
+}
+.kod pre {
+  margin: 0; padding: 2rem 1rem 1rem; overflow-x: auto;
+  font-family: "Cascadia Mono", Consolas, "SF Mono", monospace; font-size: .86rem; line-height: 1.55;
+  white-space: pre-wrap; word-break: break-word;
+}
+.kod pre code { background: none; border: 0; padding: 0; font-size: inherit; }
+.kod-kopirovat {
+  position: absolute; top: .35rem; right: .45rem;
+  font: inherit; font-family: var(--pismo-ui); font-size: .78rem; cursor: pointer;
+  padding: .2rem .6rem; border-radius: 6px; border: 1px solid var(--linka-silna);
+  background: var(--plocha); color: var(--text-tlumeny);
+}
+.kod-kopirovat:hover { color: var(--text); border-color: var(--akcent); }
+
+/* studijní cíle v textu, barva podle K-úrovně jako u otázek CTFL */
+.lo-blok {
+  margin: 1.5rem 0 2rem;
+  padding: 1rem 1.2rem .6rem;
+  border: 1px solid var(--linka-silna);
+  border-left: 4px solid var(--akcent);
+  border-radius: 0 10px 10px 0;
+  background: var(--plocha);
+  font-family: var(--pismo-ui);
+  font-size: .95rem;
+  line-height: 1.5;
+}
+.lo-blok::before {
+  content: attr(data-stitek);
+  display: block; font-size: .72rem; font-weight: 700; letter-spacing: .09em;
+  text-transform: uppercase; color: var(--akcent); margin-bottom: .6rem;
+}
+.lo-blok ul { list-style: none; margin: 0; padding: 0; }
+.lo-blok li.lo { margin: 0 0 .6rem; padding: 0; scroll-margin-top: 5rem; }
+.lo-id { font-weight: 700; white-space: nowrap; }
+.lo-k {
+  display: inline-block; font-family: var(--pismo-ui); font-size: .7rem; font-weight: 700;
+  letter-spacing: .05em; padding: .02rem .4rem; border-radius: 5px; border: 1px solid currentColor;
+  vertical-align: .1em;
+}
+.lo-k[data-k="K1"] { color: var(--modra); background: var(--modra-pozadi); }
+.lo-k[data-k="K2"] { color: var(--cervena); background: var(--cervena-pozadi); }
+.lo-k[data-k="K3"] { color: var(--zelena); background: var(--zelena-pozadi); }
+.lo-text { color: var(--text-tlumeny); }
+
+.vsuvka--zkouska { --barva: var(--cervena); --pozadi: var(--cervena-pozadi); }
+.vsuvka--pojem { --barva: var(--text); --pozadi: var(--akcent-pozadi); border-left-color: var(--akcent); }
+.vsuvka--pojem::before { color: var(--akcent); }
+.vsuvka ul, .vsuvka ol { margin: 0 0 1.15rem; padding-left: 1.3rem; }
+.vsuvka .kod { color: var(--text); }
+.pojem-term { font-family: var(--pismo-ui); font-weight: 700; font-size: 1.05rem; color: var(--akcent); }
+
+/* boční obsah s podnadpisy */
+.strom ol ol a { padding-left: 1.5rem; font-size: .8rem; }
+.varianta-chybi {
+  flex: 1 1 8rem; text-align: center; padding: .5rem .8rem; font-size: .92rem;
+  color: var(--text-jemny); font-style: italic;
+}
+.sousede { margin-top: 3.5rem; justify-content: space-between; }
+.sousede a {
+  font-size: .92rem; text-decoration: none; padding: .55rem .9rem;
+  border: 1px solid var(--linka-silna); border-radius: 8px; background: var(--plocha);
+}
+.sousede a:hover { border-color: var(--akcent); }
+
+/* --- úvod a kapitoly --------------------------------------------------------- */
+
+.karta-en { font-family: var(--pismo-ui); font-size: .85rem; color: var(--text-tlumeny); margin: 0 0 .5rem; }
+.karta-pripravuje { display: block; font-family: var(--pismo-ui); font-size: .9rem; color: var(--text-jemny); padding: .55rem .6rem; font-style: italic; }
+.uvod-stav { font-family: var(--pismo-ui); font-size: .9rem; color: var(--text-jemny); }
+.postup-studia { padding-left: 1.4rem; }
+.postup-studia li { margin: 0 0 .6rem; }
+.plan { max-width: 48rem; }
+.plan h3 { color: var(--akcent); }
+
+/* --- slovník ----------------------------------------------------------------- */
+
+.slovnik-filtr { font-family: var(--pismo-ui); margin: 0 0 2rem; max-width: 52rem; }
+.slovnik-hledat { display: grid; gap: .35rem; font-size: .9rem; color: var(--text-tlumeny); }
+.slovnik-hledat input, .pr-lo-volba select {
+  font: inherit; font-size: 1rem; padding: .6rem .8rem; border-radius: 8px;
+  border: 1px solid var(--linka-silna); background: var(--plocha); color: var(--text); max-width: 100%;
+}
+.slovnik { list-style: none; margin: 0; padding: 0; display: grid; gap: .9rem; max-width: 52rem; }
+.pojem-polozka {
+  background: var(--plocha); border: 1px solid var(--linka); border-radius: 10px;
+  padding: 1rem 1.2rem; scroll-margin-top: 5rem;
+}
+.pojem-polozka:target { border-color: var(--akcent); box-shadow: 0 0 0 2px var(--akcent-pozadi); }
+.pojem-hlava { display: flex; flex-wrap: wrap; align-items: baseline; gap: .3rem .7rem; font-family: var(--pismo-ui); margin-bottom: .35rem; }
+.pojem-en { font-weight: 700; font-size: 1.1rem; }
+.pojem-cz { color: var(--text-tlumeny); }
+.pojem-alt { color: var(--text-jemny); font-size: .9rem; }
+.pojem-klic {
+  font-family: var(--pismo-ui); font-size: .68rem; font-weight: 700; color: var(--modra);
+  background: var(--modra-pozadi); border: 1px solid var(--modra); border-radius: 5px; padding: 0 .35rem;
+}
+.pojem-def { margin: 0 0 .4rem; font-size: 1rem; line-height: 1.6; }
+.pojem-def--dalsi { color: var(--text-tlumeny); font-size: .95rem; }
+.pojem-pozn { margin: 0 0 .4rem; font-size: .9rem; color: var(--text-tlumeny); font-style: italic; }
+.pojem-odkazy { margin: 0; font-family: var(--pismo-ui); font-size: .82rem; color: var(--text-jemny); }
+.pojem-odkazy a { margin-right: .6rem; }
+
+/* --- kartičky ---------------------------------------------------------------- */
+
+#karticky { max-width: 46rem; font-family: var(--pismo-ui); }
+.kt-prihradky { list-style: none; padding: 0; margin: 1rem 0; display: grid; grid-template-columns: repeat(5, 1fr); gap: .4rem; }
+.kt-prihradky li { background: var(--plocha-tlumena); border-radius: 8px; padding: .5rem; text-align: center; font-size: .78rem; color: var(--text-jemny); }
+.kt-prihradky strong { display: block; font-size: 1.3rem; color: var(--text); }
+.kt-karta {
+  display: block; width: 100%; min-height: 15rem; margin: 0 0 1rem; cursor: pointer; text-align: center;
+  font: inherit; color: var(--text); background: var(--plocha); border: 1px solid var(--linka-silna);
+  border-top: 4px solid var(--akcent); border-radius: 14px; padding: 2rem 1.5rem; box-shadow: var(--stin);
+}
+.kt-karta--rub { border-top-color: var(--zelena); }
+.kt-strana { display: block; font-size: .7rem; letter-spacing: .1em; text-transform: uppercase; color: var(--text-jemny); margin-bottom: 1rem; }
+.kt-en, .kt-cz { font-size: 1.6rem; font-weight: 650; margin: 0 0 .5rem; line-height: 1.25; }
+.kt-rub { border-top: 1px solid var(--linka); margin-top: 1rem; padding-top: 1rem; }
+.kt-rub .kt-en, .kt-rub .kt-cz { font-size: 1.25rem; color: var(--zelena); }
+.kt-def { font-family: var(--pismo-text); font-size: 1.05rem; line-height: 1.6; margin: .5rem 0; }
+.kt-meta { font-size: .82rem; color: var(--text-jemny); margin: .5rem 0 0; }
+.kt-neumim { border-color: var(--cervena); color: var(--cervena); }
+
+/* --- praktická cvičení --------------------------------------------------------- */
+
+.cv-seznam { list-style: none; padding: 0; margin: 0; display: grid; gap: 1.25rem; max-width: 52rem; }
+.cv-karta { font-family: var(--pismo-text); }
+.cv-karta:hover { transform: none; background: var(--plocha); }
+.cv-karta--hotovo { border-top-color: var(--zelena); opacity: .85; }
+.cv-karta h4 { font-family: var(--pismo-ui); font-size: .95rem; margin: 1.25rem 0 .4rem; }
+.cv-karta ol, .cv-karta ul { padding-left: 1.3rem; margin: 0 0 .5rem; }
+.cv-karta li { margin: 0 0 .35rem; }
+.cv-hlava { display: flex; flex-wrap: wrap; gap: .35rem .6rem; align-items: center; font-family: var(--pismo-ui); font-size: .82rem; margin: 0 0 .5rem; }
+.cv-id { font-weight: 700; color: var(--akcent); }
+.cv-uroven { font-family: var(--pismo-ui); font-size: .72rem; font-weight: 700; padding: .05rem .45rem; border-radius: 5px; border: 1px solid currentColor; }
+.cv-h0 { color: var(--modra); background: var(--modra-pozadi); }
+.cv-h1 { color: var(--akcent); background: var(--akcent-pozadi); }
+.cv-h2 { color: var(--zelena); background: var(--zelena-pozadi); }
+.cv-lo, .cv-cas, .cv-projekt { color: var(--text-jemny); }
+.cv-cil { margin: 0 0 .75rem; }
+.cv-zadani p { margin: 0 0 .75rem; }
+.cv-pata { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: .5rem 1rem; margin: 1rem 0 0; font-family: var(--pismo-ui); font-size: .9rem; }
+.cv-hotovo { margin: 0; }
+.cv-legenda { list-style: none; padding: 0; margin: 0 0 1.25rem; display: grid; gap: .35rem; font-family: var(--pismo-ui); font-size: .9rem; }
+
+/* --- studijní cíle --------------------------------------------------------------- */
+
+.cile-oddil { font-family: var(--pismo-ui); font-size: 1rem; margin: 1.75rem 0 .75rem; color: var(--text-tlumeny); }
+.cile-oddil span:first-child { color: var(--akcent); margin-right: .3rem; }
+.cile { list-style: none; padding: 0; margin: 0; display: grid; gap: .7rem; max-width: 56rem; }
+.cil {
+  background: var(--plocha); border: 1px solid var(--linka); border-left: 4px solid var(--linka-silna);
+  border-radius: 0 10px 10px 0; padding: .85rem 1.1rem; font-family: var(--pismo-ui); scroll-margin-top: 5rem;
+}
+.cil:target { box-shadow: 0 0 0 2px var(--akcent); }
+.cil--0 { border-left-color: var(--cervena); }
+.cil--1 { border-left-color: #c58a10; }
+.cil--2 { border-left-color: var(--zelena); }
+.cil-hlava { display: flex; flex-wrap: wrap; align-items: center; gap: .3rem .6rem; font-size: .9rem; }
+.cil-zkouska { color: var(--text-jemny); font-size: .82rem; }
+.cil-text { margin: .35rem 0 .6rem; font-size: .98rem; line-height: 1.5; }
+.cil-pata { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem 1rem; font-size: .85rem; }
+.cil-hodnoceni { display: inline-flex; border: 1px solid var(--linka-silna); border-radius: 8px; overflow: hidden; }
+.cil-hodnoceni button {
+  font: inherit; font-size: .82rem; cursor: pointer; padding: .3rem .7rem; border: 0;
+  background: var(--plocha); color: var(--text-tlumeny);
+}
+.cil-hodnoceni button + button { border-left: 1px solid var(--linka-silna); }
+.cil-hodnoceni button[data-hodnoceni="0"][aria-pressed="true"] { background: var(--cervena-pozadi); color: var(--cervena); font-weight: 700; }
+.cil-hodnoceni button[data-hodnoceni="1"][aria-pressed="true"] { background: var(--plocha-tlumena); color: var(--text); font-weight: 700; }
+.cil-hodnoceni button[data-hodnoceni="2"][aria-pressed="true"] { background: var(--zelena-pozadi); color: var(--zelena); font-weight: 700; }
+.cil-stat { color: var(--text-jemny); }
+.cil-stat--ok { color: var(--zelena); }
+.cil-stat--slabe { color: var(--cervena); }
+.cil-akce { margin-left: auto; display: inline-flex; gap: .9rem; flex-wrap: wrap; }
+.cile-souhrn { font-family: var(--pismo-ui); font-size: .9rem; color: var(--text-tlumeny); }
+
+/* --- zkouška: jazyk, překlad, historie ------------------------------------------- */
+
+.zk-jazyk { border: 1px solid var(--linka); border-radius: 10px; padding: .75rem 1rem .25rem; margin: 0 0 1.25rem; }
+.zk-jazyk legend { font-weight: 650; font-size: .9rem; padding: 0 .3rem; }
+.zk-jazyk .zk-volba { margin-bottom: .55rem; }
+.zk-preklad-obal { margin: 0 0 1rem; }
+.zk-btn--preklad { font-size: .85rem; padding: .35rem .8rem; }
+.zk-preklad {
+  margin-top: .75rem; padding: .85rem 1rem; border-radius: 10px;
+  background: var(--plocha-tlumena); border: 1px dashed var(--linka-silna);
+}
+.zk-preklad .zk-zadani { font-size: 1rem; }
+.zk-preklad-moznosti { margin: .25rem 0 0; padding-left: 1.6rem; font-family: var(--pismo-text); }
+.zk-preklad-moznosti li { margin: 0 0 .35rem; }
+.zk-preklad-det { margin: 0 0 1rem; border: 1px dashed var(--linka-silna); border-radius: 10px; padding: .6rem .9rem; }
+.zk-preklad-det summary { cursor: pointer; color: var(--text-tlumeny); font-size: .9rem; }
+.zk-preklad-det[open] summary { margin-bottom: .75rem; }
+.zk-historie { list-style: none; padding: 0; margin: 0; display: grid; gap: .3rem; font-size: .88rem; }
+.zk-historie li { display: grid; grid-template-columns: 9rem 1fr auto; gap: .75rem; color: var(--text-tlumeny); }
+.zk-historie .uspech { color: var(--zelena); }
+.zk-historie .neuspech { color: var(--cervena); }
+.zk-lo-det { margin-top: 1rem; }
+.zk-lo-det summary { cursor: pointer; font-weight: 650; font-size: .95rem; }
+.zk-kapitoly--lo { margin-top: .6rem; }
+.zk-kapitoly--lo li { grid-template-columns: 4rem 1fr 3rem; }
+.pr-lo-volba { display: grid; gap: .3rem; font-size: .88rem; color: var(--text-tlumeny); margin: 1rem 0 .5rem; }
+.pr-lo-volba select { font-size: .9rem; }
+
+/* --- lokální část (Udemy) --------------------------------------------------------- */
+
+.navigace a.lokalni-odkaz { color: var(--cervena); }
+.lokalni-varovani {
+  max-width: 52rem; margin: 0 0 2rem; padding: .9rem 1.15rem; border-radius: 10px;
+  background: var(--cervena-pozadi); border: 2px solid var(--cervena); color: var(--text);
+  font-family: var(--pismo-ui); font-size: .95rem; line-height: 1.5;
+}
+.lokalni-varovani strong { color: var(--cervena); }
+
+@media (max-width: 40rem) {
+  .kt-prihradky { grid-template-columns: repeat(3, 1fr); }
+  .zk-historie li { grid-template-columns: 1fr auto; }
+  .zk-historie li span:nth-child(2) { display: none; }
+  .cil-akce { margin-left: 0; }
+  .navigace { gap: .1rem; }
+  .navigace a { padding: .3rem .5rem; font-size: .85rem; }
+  .hlavicka-vnitrek { padding: .6rem 1rem; gap: .5rem 1rem; }
+  .stranka { padding: 0 1rem 4rem; }
+}
+/* dodatkové otázky (řazení / přiřazení) */
+.zk-skupiny { font-family: var(--pismo-text); padding-left: 1.6rem; margin: 0 0 1rem; }
+.zk-skupiny li { margin: 0 0 .35rem; }
+.zk-dd-volba { display: flex; gap: .5rem; align-items: center; margin-top: .45rem; font-size: .85rem; color: var(--text-tlumeny); }
+.zk-dd-volba select { font: inherit; font-size: .88rem; padding: .3rem .5rem; border-radius: 6px; border: 1px solid var(--linka-silna); background: var(--plocha); color: var(--text); max-width: 100%; }
+#dodatkove { max-width: 46rem; font-family: var(--pismo-ui); }
+.cv-kroky li::marker { font-family: var(--pismo-ui); font-weight: 700; color: var(--akcent); }
+.cv-sledovat li::marker { color: var(--akcent); }
+.pr-lo-volba select { width: 100%; min-width: 0; }
+#procvicovani { max-width: 46rem; font-family: var(--pismo-ui); }
+.zk-dd-volba { flex-wrap: wrap; }
+.zk-dd-volba select { flex: 1 1 12rem; min-width: 0; width: 100%; }
+.zk-moznosti--rozbor li { min-width: 0; overflow-wrap: anywhere; }
+
+/* --- Praxe: moduly, bloky pozor / krok / cvičení, rozcestník ------------- */
+
+.vsuvka--pozor {
+  --barva: var(--cervena); --pozadi: var(--cervena-pozadi);
+  border: 2px solid var(--cervena); border-left-width: 6px; border-radius: 8px;
+}
+.vsuvka--pozor::before { opacity: 1; }
+.text { counter-reset: praxe-krok; }
+.vsuvka--krok { --barva: var(--text); --pozadi: var(--plocha-tlumena); counter-increment: praxe-krok; }
+.vsuvka--krok::before { content: "Krok " counter(praxe-krok); color: var(--akcent); }
+.vsuvka--cviceni {
+  --barva: var(--text); --pozadi: var(--akcent-pozadi);
+  border-left-color: var(--akcent); scroll-margin-top: 5rem;
+}
+.vsuvka--cviceni::before { color: var(--akcent); }
+.praxe-cviceni--hotovo { border-left-color: var(--zelena); }
+.praxe-cviceni--hotovo::before { content: "Cvičení · hotovo"; color: var(--zelena); }
+.praxe-blok-nazev { font-family: var(--pismo-ui); font-weight: 650; font-size: 1.02rem; }
+.praxe-cviceni-pata { font-family: var(--pismo-ui); font-size: .92rem; border-top: 1px solid var(--linka); padding-top: .75rem; }
+.praxe-hotovo { margin: 0; font-weight: 600; }
+.praxe-souvislosti {
+  display: flex; flex-direction: column; gap: .3rem; margin: -1rem 0 1.5rem;
+  font-family: var(--pismo-ui); font-size: .85rem; color: var(--text-tlumeny);
+}
+.praxe-pripravuje { color: var(--text-tlumeny); border-bottom: 1px dotted var(--linka-silna); cursor: help; }
+.praxe-karta .praxe-podtitul { font-size: .95rem; color: var(--text-tlumeny); margin: 0 0 .6rem; }
+.praxe-nastroje { font-family: var(--pismo-ui); font-size: .82rem; color: var(--text-tlumeny); margin: 0 0 .5rem; }
+.praxe-postup { font-family: var(--pismo-ui); font-size: .82rem; font-weight: 600; color: var(--akcent); margin: 0 0 1rem; }
+.praxe-karta--hotovo { border-top-color: var(--zelena); }
+.praxe-karta--hotovo .praxe-postup { color: var(--zelena); }
+.praxe-skupina-popis { color: var(--text-tlumeny); }
+.drobky a { color: inherit; }
+/* Tahák: široké srovnávací tabulky. Na úzkém displeji se tabulka posouvá do strany. */
+.praxe-siroky { max-width: none; }
+.praxe-siroky > p, .praxe-siroky > aside { max-width: var(--sirka-textu); }
+.praxe-siroky table { min-width: 56rem; font-size: .86rem; line-height: 1.5; }
+.praxe-siroky td:first-child { font-weight: 650; min-width: 8rem; }
+
+/* --- přihlášení Google účtem (ucet.js) ------------------------------------ */
+
+.ucet-tlacitko {
+  font: inherit;
+  font-size: .9rem;
+  background: var(--plocha);
+  border: 1px solid var(--linka-silna);
+  color: var(--text);
+  border-radius: 6px;
+  padding: .3rem .7rem;
+  cursor: pointer;
+  line-height: 1.4;
+}
+.ucet-tlacitko:hover { background: var(--plocha-tlumena); }
+.ucet-tlacitko[hidden] { display: none; }
+.ucet-tlacitko--prihlasen { color: var(--zelena); border-color: var(--zelena); font-weight: 600; }
+
+.ucet-panel {
+  position: absolute;
+  top: calc(100% + .4rem);
+  right: 1.5rem;
+  z-index: 60;
+  width: min(22rem, calc(100vw - 2rem));
+  background: var(--plocha);
+  border: 1px solid var(--linka-silna);
+  border-radius: 10px;
+  box-shadow: var(--stin);
+  padding: 1rem 1.1rem;
+  font-size: .88rem;
+}
+.ucet-panel[hidden] { display: none; }
+.ucet-panel p { margin: 0 0 .7rem; }
+.ucet-kdo { display: flex; flex-direction: column; gap: .1rem; }
+.ucet-kdo span { color: var(--text-jemny); overflow-wrap: anywhere; }
+.ucet-stav { color: var(--text-tlumeny); }
+.ucet-akce { display: flex; flex-wrap: wrap; gap: .5rem; margin: 0 0 .8rem; }
+.ucet-smazat { color: var(--cervena); }
+.ucet-pozn { font-size: .78rem; color: var(--text-jemny); }
+.hlavicka-vnitrek { position: relative; }
+
+.ucet-zprava {
+  position: fixed;
+  left: 50%;
+  bottom: 1.2rem;
+  transform: translateX(-50%);
+  z-index: 70;
+  display: flex;
+  align-items: center;
+  gap: .8rem;
+  max-width: calc(100vw - 2rem);
+  background: var(--plocha);
+  border: 1px solid var(--linka-silna);
+  border-radius: 10px;
+  box-shadow: var(--stin);
+  padding: .7rem .9rem;
+  font-family: var(--pismo-ui);
+  font-size: .88rem;
+}
+.ucet-zprava[hidden] { display: none; }
+.ucet-zavrit {
+  font: inherit;
+  font-size: 1.1rem;
+  line-height: 1;
+  background: none;
+  border: 0;
+  color: var(--text-jemny);
+  cursor: pointer;
+  padding: .1rem .3rem;
+}
+
+/* --- ruční „splněno“ a přehled postupu ------------------------------------ */
+
+.splneno-radek { max-width: var(--sirka-textu); margin: 2.5rem 0 1rem; font-family: var(--pismo-ui); }
+.splneno[aria-pressed="true"] { background: var(--zelena); border-color: var(--zelena); }
+.splneno-odkaz--ano::before { content: "✓ "; color: var(--zelena); font-weight: 700; }
+
+.prehled {
+  list-style: none;
+  margin: 0 0 1rem;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+  gap: .6rem 1.5rem;
+  font-family: var(--pismo-ui);
+  font-size: .9rem;
+}
+.prehled li {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: .25rem .8rem;
+  align-items: baseline;
+}
+.prehled a { text-decoration: none; }
+.prehled a:hover { text-decoration: underline; }
+.prehled-hodnota { color: var(--text-tlumeny); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.prehled-pruh {
+  grid-column: 1 / -1;
+  height: 4px;
+  border-radius: 99px;
+  background: var(--plocha-tlumena);
+  overflow: hidden;
+}
+.prehled-pruh span { display: block; height: 100%; width: 0; background: var(--modra); }
+.prehled--hotovo .prehled-hodnota { color: var(--zelena); font-weight: 600; }
+.prehled--hotovo .prehled-pruh span { background: var(--zelena); }
+
+@media (max-width: 40rem) {
+  .ucet-panel { right: 1rem; }
+}

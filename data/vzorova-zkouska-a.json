@@ -1,0 +1,2009 @@
+{
+ "popis": "ISTQB CT-GenAI Sample Exam A v1.1 (27. 4. 2026): 40 otázek (46 bodů) a 3 dodatkové otázky (drag & drop, navic: true). Originál EN přesně podle dokumentu ISTQB, český překlad a vysvětlení z dokumentu Answers. Dodatkové otázky: typ \"razeni\" = spravne je pořadí písmen; typ \"prirazeni\" = spravne[i] je číslo skupiny (1–n) pro možnost i, skupiny jsou v en/cz.skupiny. © ISTQB, použití s uvedením zdroje.",
+ "sada": "A",
+ "verze": "1.1",
+ "zdroj": "ISTQB CT-GenAI Sample Exam A v1.1 (https://istqb.org/certifications/gen-ai/)",
+ "otazky": [
+  {
+   "id": "A-01",
+   "zdroj": "sample-a",
+   "lo": "GenAI-1.1.1",
+   "k": "K1",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Match each type of AI technology (1-4) with its CORRECT description (A-D):</p><ul><li>1. Symbolic AI</li><li>2. Classical machine learning</li><li>3. Deep learning</li><li>4. Generative AI</li></ul><ul><li>A. Uses neural networks to automatically learn features from data.</li><li>B. Uses rule-based systems to mimic human decision-making.</li><li>C. Uses deep learning to create new data by learning from its training data.</li><li>D. Uses a data-driven approach that requires feature selection.</li></ul>",
+    "moznosti": [
+     "1D, 2B, 3A, 4C",
+     "1D, 2C, 3B, 4A",
+     "1C, 2B, 3D, 4A",
+     "1B, 2D, 3A, 4C"
+    ],
+    "vysvetleni": {
+     "a": "Is not correct.",
+     "b": "Is not correct.",
+     "c": "Is not correct.",
+     "d": "Is correct."
+    },
+    "vysvetleni_obecne": "<p>Considering:</p><ul><li>Symbolic AI uses a rule-based system to mimic human decision-making, representing knowledge using symbols and logical rules (1B).</li><li>Classical machine learning uses a data-driven approach that requires data preparation, feature selection and model training (2D).</li><li>Deep learning uses neural networks (machine learning structures) to automatically learn features from data (3A).</li><li>Generative AI uses deep learning techniques to create new data by learning and mimicking patterns from its training data (4C).</li></ul>"
+   },
+   "cz": {
+    "q": "<p>Přiřaď každý typ AI technologie (1–4) k jeho SPRÁVNÉMU popisu (A–D):</p><ul><li>1. Symbolická AI (symbolic AI)</li><li>2. Klasické strojové učení (classical machine learning)</li><li>3. Hluboké učení (deep learning)</li><li>4. Generativní AI (generative AI)</li></ul><ul><li>A. Používá neuronové sítě k automatickému učení příznaků (features) z dat.</li><li>B. Používá systémy založené na pravidlech k napodobení lidského rozhodování.</li><li>C. Používá hluboké učení k vytváření nových dat učením se z trénovacích dat.</li><li>D. Používá přístup řízený daty, který vyžaduje výběr příznaků (feature selection).</li></ul>",
+    "moznosti": [
+     "1D, 2B, 3A, 4C",
+     "1D, 2C, 3B, 4A",
+     "1C, 2B, 3D, 4A",
+     "1B, 2D, 3A, 4C"
+    ],
+    "vysvetleni": {
+     "a": "Není správně.",
+     "b": "Není správně.",
+     "c": "Není správně.",
+     "d": "Je správně."
+    },
+    "vysvetleni_obecne": "<p>Platí:</p><ul><li>Symbolická AI používá systém pravidel k napodobení lidského rozhodování; znalosti reprezentuje symboly a logickými pravidly (1B).</li><li>Klasické strojové učení je přístup řízený daty, který vyžaduje přípravu dat, výběr příznaků a trénování modelu (2D).</li><li>Hluboké učení používá neuronové sítě (struktury strojového učení) k automatickému učení příznaků z dat (3A).</li><li>Generativní AI používá techniky hlubokého učení k vytváření nových dat tím, že se učí a napodobuje vzory z trénovacích dat (4C).</li></ul>"
+   },
+   "spravne": [
+    "d"
+   ],
+   "oddil": "1.1.1",
+   "poznamka": ""
+  },
+  {
+   "id": "A-02",
+   "zdroj": "sample-a",
+   "lo": "GenAI-1.1.2",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Consider the realm of Large Language Models (LLMs). Which of the following options BEST explains why context window limitations affect LLM’s text processing capabilities?</p>",
+    "moznosti": [
+     "Because context windows restrict temporal processing sequences, preventing LLMs from maintaining chronological consistency across extended text analysis.",
+     "Because context windows prevent cross-referencing capabilities, limiting LLMs’ ability to connect information across different document sources simultaneously.",
+     "Because context windows force LLMs to discard earlier information, which may contain relevant details needed for understanding later content.",
+     "Because context windows constrain parsing granularity levels, restricting LLMs from adjusting between character-level and document-level analysis approaches."
+    ],
+    "vysvetleni": {
+     "a": "Is not correct because context windows do not control temporal sequencing but limit the scope of text that can be simultaneously considered.",
+     "b": "Is not correct because context windows affect scope within the current input, not cross-document referencing capabilities.",
+     "c": "Is correct. When text exceeds the context window size, the model cannot simultaneously consider all parts of the document. As the model processes new tokens, it must effectively “forget” or discard tokens that fall outside its context window boundary.",
+     "d": "Is not correct because context windows do not determine parsing approaches but limit the amount of text that can be processed simultaneously."
+    },
+    "vysvetleni_obecne": ""
+   },
+   "cz": {
+    "q": "<p>Uvažujme o oblasti velkých jazykových modelů (LLM). Která z následujících možností NEJLÉPE vysvětluje, proč omezení kontextového okna (context window) ovlivňuje schopnost LLM zpracovávat text?</p>",
+    "moznosti": [
+     "Protože kontextová okna omezují časové sekvence zpracování, a LLM tak nedokáže udržet chronologickou konzistenci při rozsáhlé analýze textu.",
+     "Protože kontextová okna znemožňují křížové odkazování, a omezují tak schopnost LLM propojovat informace z různých zdrojových dokumentů současně.",
+     "Protože kontextová okna nutí LLM zahodit dřívější informace, které mohou obsahovat podstatné detaily potřebné k pochopení pozdějšího obsahu.",
+     "Protože kontextová okna omezují úroveň granularity parsování, a LLM tak nemůže přepínat mezi analýzou na úrovni znaků a na úrovni dokumentu."
+    ],
+    "vysvetleni": {
+     "a": "Není správně, protože kontextové okno neřídí časové pořadí, ale omezuje rozsah textu, který model může vzít v úvahu najednou.",
+     "b": "Není správně, protože kontextové okno ovlivňuje rozsah v rámci aktuálního vstupu, ne schopnost odkazovat mezi dokumenty.",
+     "c": "Je správně. Když text přesáhne velikost kontextového okna, model nemůže vzít v úvahu všechny části dokumentu současně. Při zpracování nových tokenů musí tokeny za hranicí okna v podstatě „zapomenout“ neboli zahodit.",
+     "d": "Není správně, protože kontextové okno neurčuje způsob parsování, ale omezuje množství textu, které lze zpracovat najednou."
+    },
+    "vysvetleni_obecne": ""
+   },
+   "spravne": [
+    "c"
+   ],
+   "oddil": "1.1.2",
+   "poznamka": ""
+  },
+  {
+   "id": "A-03",
+   "zdroj": "sample-a",
+   "lo": "GenAI-1.1.2",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Which of the following statements BEST describes tokenization in processing text for LLMs?</p>",
+    "moznosti": [
+     "Tokenization converts tokens into high-dimensional vectors to capture their meaning.",
+     "Tokenization creates the building blocks used to understand and generate text.",
+     "Tokenization generates contextually appropriate responses using neural networks.",
+     "Tokenization predicts the next token in a sequence based on learned relationships."
+    ],
+    "vysvetleni": {
+     "a": "Is not correct. This describes embeddings, not tokenization.",
+     "b": "Is correct. Tokenization involves splitting text into smaller units (tokens) that represent the building blocks of natural language generation tasks and enable LLMs to understand and generate text. See also the definition of “Tokenization” in the syllabus (see “Appendix D – Generative AI Specific Terms”).",
+     "c": "Is not correct. This describes the general function of LLMs, not tokenization.",
+     "d": "Is not correct. This refers to how LLMs generate text, not tokenization."
+    },
+    "vysvetleni_obecne": ""
+   },
+   "cz": {
+    "q": "<p>Které z následujících tvrzení NEJLÉPE popisuje tokenizaci (tokenization) při zpracování textu v LLM?</p>",
+    "moznosti": [
+     "Tokenizace převádí tokeny na vysokorozměrné vektory, které zachycují jejich význam.",
+     "Tokenizace vytváří stavební bloky, pomocí kterých model text chápe a generuje.",
+     "Tokenizace generuje kontextově vhodné odpovědi pomocí neuronových sítí.",
+     "Tokenizace předpovídá další token v sekvenci na základě naučených vztahů."
+    ],
+    "vysvetleni": {
+     "a": "Není správně. To popisuje embeddingy (embeddings), ne tokenizaci.",
+     "b": "Je správně. Tokenizace rozděluje text na menší jednotky (tokeny), které jsou stavebními bloky při generování přirozeného jazyka a umožňují LLM text chápat a generovat. Viz také definici „Tokenization“ v sylabu (Appendix D – Generative AI Specific Terms).",
+     "c": "Není správně. To popisuje obecnou funkci LLM, ne tokenizaci.",
+     "d": "Není správně. To se týká způsobu, jakým LLM generuje text, ne tokenizace."
+    },
+    "vysvetleni_obecne": ""
+   },
+   "spravne": [
+    "b"
+   ],
+   "oddil": "1.1.2",
+   "poznamka": ""
+  },
+  {
+   "id": "A-04",
+   "zdroj": "sample-a",
+   "lo": "GenAI-1.1.3",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>In the context of software testing, which of the following statements (i-v) about foundation, instruction-tuned, and reasoning LLMs are CORRECT?</p><ul><li>i. Foundation LLMs excel at generating test cases from high-level requirements without structured input.</li><li>ii. Reasoning LLMs excel at creating test scripts that strictly follow predefined organizational templates.</li><li>iii. Instruction-tuned LLMs excel at autonomously prioritizing test execution based on real-time user feedback.</li><li>iv. Reasoning LLMs excel at synthesizing data from defect reports to detect trends and prioritize test efforts.</li><li>v. Instruction-tuned LLMs excel at generating test cases that adhere to Gherkin language syntax.</li></ul>",
+    "moznosti": [
+     "i, ii, and iii",
+     "ii, iii, and iv",
+     "i, ii, and v",
+     "iv, and v"
+    ],
+    "vysvetleni": {
+     "a": "Is not correct.",
+     "b": "Is not correct.",
+     "c": "Is not correct.",
+     "d": "Is correct."
+    },
+    "vysvetleni_obecne": "<p>Considering:</p><ul><li>i. Is not correct. While foundation LLMs can generate test cases, they do not inherently “excel” at this task without structured input. Generating test cases without structured input misrepresents their capabilities.</li><li>ii. Is not correct. Creating template-based test scripts requires executing explicit instructions, which is the role of instruction-tuned LLMs, not reasoning LLMs. Reasoning LLMs specialize in logical inference and problem-solving, not rigid template adherence.</li><li>iii. Is not correct. Instruction-tuned LLMs are designed to follow structured prompts, not make autonomous decisions. Prioritizing tests based on feedback requires reasoning, which is beyond their scope.</li><li>iv. Is correct. Reasoning LLMs are explicitly designed for synthesizing multiple data sources and performing logical inference, problem-solving, and decision-making. Detecting trends and prioritizing test efforts aligns with their role in contextual analysis and the description provided.</li><li>v. Is correct. Instruction-tuned LLMs are specifically trained to follow instructions, including adhering to requested formats, styles, and syntax rules. Generating test cases conforming to Gherkin language syntax, is a task well-suited to their capabilities.</li></ul>"
+   },
+   "cz": {
+    "q": "<p>Která z následujících tvrzení (i–v) o základních (foundation), na instrukce vyladěných (instruction-tuned) a uvažujících (reasoning) LLM jsou v kontextu testování softwaru SPRÁVNÁ?</p><ul><li>i. Základní LLM vynikají v generování testovacích případů z vysokoúrovňových požadavků bez strukturovaného vstupu.</li><li>ii. Uvažující LLM vynikají ve vytváření testovacích skriptů, které striktně dodržují předem definované šablony organizace.</li><li>iii. LLM vyladěné na instrukce vynikají v autonomní prioritizaci provádění testů na základě zpětné vazby uživatelů v reálném čase.</li><li>iv. Uvažující LLM vynikají ve slučování dat z reportů o defektech, v odhalování trendů a v prioritizaci testovacího úsilí.</li><li>v. LLM vyladěné na instrukce vynikají v generování testovacích případů, které dodržují syntaxi jazyka Gherkin.</li></ul>",
+    "moznosti": [
+     "i, ii a iii",
+     "ii, iii a iv",
+     "i, ii a v",
+     "iv a v"
+    ],
+    "vysvetleni": {
+     "a": "Není správně.",
+     "b": "Není správně.",
+     "c": "Není správně.",
+     "d": "Je správně."
+    },
+    "vysvetleni_obecne": "<p>Platí:</p><ul><li>i. Není správně. Základní LLM sice testovací případy generovat umí, ale bez strukturovaného vstupu v tom „nevynikají“. Tvrzení jejich schopnosti zkresluje.</li><li>ii. Není správně. Skripty podle šablony vyžadují plnění explicitních instrukcí, a to je úloha LLM vyladěných na instrukce, ne uvažujících LLM. Uvažující LLM se specializují na logické vyvozování a řešení problémů, ne na striktní dodržení šablony.</li><li>iii. Není správně. LLM vyladěné na instrukce jsou navržené k plnění strukturovaných promptů, ne k autonomnímu rozhodování. Prioritizace testů podle zpětné vazby vyžaduje uvažování, což je nad jejich rámec.</li><li>iv. Je správně. Uvažující LLM jsou navržené ke slučování více zdrojů dat, logickému vyvozování, řešení problémů a rozhodování. Odhalování trendů a prioritizace testovacího úsilí odpovídá jejich roli při kontextové analýze.</li><li>v. Je správně. LLM vyladěné na instrukce jsou trénované k plnění instrukcí včetně požadovaného formátu, stylu a syntaxe. Generování testovacích případů v syntaxi Gherkin jim dobře odpovídá.</li></ul>"
+   },
+   "spravne": [
+    "d"
+   ],
+   "oddil": "1.1.3",
+   "poznamka": ""
+  },
+  {
+   "id": "A-05",
+   "zdroj": "sample-a",
+   "lo": "GenAI-1.1.4",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Which of the following statements BEST describes the relation between multimodal LLMs and vision-language models?</p>",
+    "moznosti": [
+     "Multimodal LLMs are a subset of vision-language models designed to handle diverse inputs.",
+     "Vision-language models are a subset of multimodal LLMs focusing on visual and textual data.",
+     "Vision-language models are unrelated to multimodal LLMs and focus only on the user interface.",
+     "Multimodal LLMs and vision-language models are interchangeable terms."
+    ],
+    "vysvetleni": {
+     "a": "Is not correct. Vision-language models are a subset of multimodal LLMs, not the reverse.",
+     "b": "Is correct. Vision-language models specifically integrate visual and textual data, making them a subset of multimodal LLMs.",
+     "c": "Is not correct. Vision-language models are closely related to multimodal LLMs and focus on both visual and textual data.",
+     "d": "Is not correct. Multimodal LLMs and vision-language models have distinct scopes and are not interchangeable."
+    },
+    "vysvetleni_obecne": ""
+   },
+   "cz": {
+    "q": "<p>Které z následujících tvrzení NEJLÉPE popisuje vztah mezi multimodálními LLM (multimodal LLMs) a modely pro obraz a jazyk (vision-language models)?</p>",
+    "moznosti": [
+     "Multimodální LLM jsou podmnožinou modelů pro obraz a jazyk, navrženou pro zpracování různorodých vstupů.",
+     "Modely pro obraz a jazyk jsou podmnožinou multimodálních LLM a zaměřují se na obrazová a textová data.",
+     "Modely pro obraz a jazyk nemají s multimodálními LLM nic společného a zaměřují se jen na uživatelské rozhraní.",
+     "Multimodální LLM a modely pro obraz a jazyk jsou zaměnitelné pojmy."
+    ],
+    "vysvetleni": {
+     "a": "Není správně. Modely pro obraz a jazyk jsou podmnožinou multimodálních LLM, ne naopak.",
+     "b": "Je správně. Modely pro obraz a jazyk spojují obrazová a textová data, a jsou proto podmnožinou multimodálních LLM.",
+     "c": "Není správně. Modely pro obraz a jazyk s multimodálními LLM úzce souvisejí a zaměřují se na obrazová i textová data.",
+     "d": "Není správně. Oba pojmy mají jiný rozsah a nejsou zaměnitelné."
+    },
+    "vysvetleni_obecne": ""
+   },
+   "spravne": [
+    "b"
+   ],
+   "oddil": "1.1.4",
+   "poznamka": "LO GenAI-1.1.4 má v sylabu v1.1 v seznamu LO kapitoly 1 omylem text hands-on cvičení („Write and execute a given prompt…“); matice LO v příloze uvádí „Summarize the basic principles of multimodal LLMs and vision-language models“ (K2)."
+  },
+  {
+   "id": "A-06",
+   "zdroj": "sample-a",
+   "lo": "GenAI-1.2.1",
+   "k": "K2",
+   "body": 1,
+   "vyber": 2,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Which TWO of the following options represent key capabilities of LLMs in test tasks?</p>",
+    "moznosti": [
+     "Identifying ambiguities and inconsistencies in requirements.",
+     "Generating complete application code for deployment.",
+     "Automating the execution of all test scripts without human intervention.",
+     "Performing exploratory testing on software applications.",
+     "Creating diverse test data with various combinations and boundary values."
+    ],
+    "vysvetleni": {
+     "a": "Is correct. LLMs can analyze and clarify requirements by identifying ambiguities and inconsistencies.",
+     "b": "Is not correct. Generating complete application code is not a key capability of LLMs in test tasks.",
+     "c": "Is not correct. LLMs can support test automation by suggesting improvements to test scripts and identifying design patterns but do not directly execute test scripts or fully automate test scripts without human oversight.",
+     "d": "Is not correct. LLMs cannot perform manual exploratory testing because it is an intuitive and adaptive process that requires human creativity, experience, and decision-making.",
+     "e": "Is correct. LLMs can generate diverse test data, including combinations and boundaries."
+    },
+    "vysvetleni_obecne": ""
+   },
+   "cz": {
+    "q": "<p>Které DVĚ z následujících možností představují klíčové schopnosti LLM při testovacích úlohách?</p>",
+    "moznosti": [
+     "Identifikace nejednoznačností a nekonzistencí v požadavcích.",
+     "Generování kompletního kódu aplikace k nasazení.",
+     "Automatizace provádění všech testovacích skriptů bez lidského zásahu.",
+     "Provádění exploratorního testování softwarových aplikací.",
+     "Vytváření různorodých testovacích dat s různými kombinacemi a hraničními hodnotami."
+    ],
+    "vysvetleni": {
+     "a": "Je správně. LLM umí analyzovat a zpřesňovat požadavky tím, že v nich najde nejednoznačnosti a nekonzistence.",
+     "b": "Není správně. Generování kompletního kódu aplikace není klíčovou schopností LLM v testovacích úlohách.",
+     "c": "Není správně. LLM mohou podporovat automatizaci testů návrhy na zlepšení skriptů a identifikací návrhových vzorů, ale skripty přímo neprovádějí ani je plně neautomatizují bez lidského dohledu.",
+     "d": "Není správně. LLM nemohou provádět manuální exploratorní testování, protože je to intuitivní a adaptivní proces, který vyžaduje lidskou kreativitu, zkušenost a rozhodování.",
+     "e": "Je správně. LLM umí generovat různorodá testovací data včetně kombinací a hraničních hodnot."
+    },
+    "vysvetleni_obecne": ""
+   },
+   "spravne": [
+    "a",
+    "e"
+   ],
+   "oddil": "1.2.1",
+   "poznamka": "Pozor na chyták: podle 1.2.2 jsou AI chatboti užiteční i pro exploratorní testování (podporují testera), ale samotné exploratorní testování LLM neprovádí – proto je d nesprávně."
+  },
+  {
+   "id": "A-07",
+   "zdroj": "sample-a",
+   "lo": "GenAI-1.2.2",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Which of the following statements BEST explains the difference between AI chatbots and LLM-powered testing applications in the context of software testing?</p>",
+    "moznosti": [
+     "AI chatbots are more suited for specific test tasks, while LLM-powered testing applications focus on ad hoc interactions.",
+     "Both AI chatbots and LLM-powered testing applications are designed to perform identical tasks without any configuration differences.",
+     "LLM-powered testing applications rely on conversational prompts, while AI chatbots require integration into test tools and test processes.",
+     "AI chatbots offer conversational interfaces for ad hoc test tasks, while LLM-powered testing applications provide customized solutions for specific test tasks."
+    ],
+    "vysvetleni": {
+     "a": "Is not correct. AI chatbots are best suited for ad hoc interactions, not specific test tasks.",
+     "b": "Is not correct. AI chatbots and LLM-powered testing applications have distinct purposes and are not identical in functionality or configurability.",
+     "c": "Is not correct. LLM-powered testing applications focus on integration into test processes, not conversational prompts. AI chatbots do not require integration into test tools and into test processes because their primary function is to facilitate ad hoc interactions rather than performing specific test tasks.",
+     "d": "Is correct. AI chatbots provide conversational interfaces for ad hoc tasks, while LLM-powered testing applications deliver customized solutions for specific needs."
+    },
+    "vysvetleni_obecne": ""
+   },
+   "cz": {
+    "q": "<p>Které z následujících tvrzení NEJLÉPE vysvětluje rozdíl mezi AI chatboty a testovacími aplikacemi postavenými na LLM (LLM-powered testing applications) v kontextu testování softwaru?</p>",
+    "moznosti": [
+     "AI chatboti se lépe hodí pro konkrétní testovací úlohy, zatímco testovací aplikace postavené na LLM se zaměřují na ad hoc interakce.",
+     "AI chatboti i testovací aplikace postavené na LLM jsou navrženi k plnění stejných úloh bez jakýchkoli rozdílů v konfiguraci.",
+     "Testovací aplikace postavené na LLM spoléhají na konverzační prompty, zatímco AI chatboti vyžadují integraci do testovacích nástrojů a procesů testování.",
+     "AI chatboti nabízejí konverzační rozhraní pro ad hoc testovací úlohy, zatímco testovací aplikace postavené na LLM poskytují řešení přizpůsobená konkrétním testovacím úlohám."
+    ],
+    "vysvetleni": {
+     "a": "Není správně. AI chatboti se nejlépe hodí pro ad hoc interakce, ne pro konkrétní testovací úlohy.",
+     "b": "Není správně. AI chatboti a testovací aplikace postavené na LLM mají odlišný účel a neshodují se ve funkcích ani v možnostech konfigurace.",
+     "c": "Není správně. Testovací aplikace postavené na LLM se zaměřují na integraci do procesů testování, ne na konverzační prompty. AI chatboti integraci do testovacích nástrojů a procesů nepotřebují, protože jejich hlavní funkcí jsou ad hoc interakce, ne plnění konkrétních testovacích úloh.",
+     "d": "Je správně. AI chatboti poskytují konverzační rozhraní pro ad hoc úlohy, zatímco testovací aplikace postavené na LLM dodávají řešení přizpůsobená konkrétním potřebám."
+    },
+    "vysvetleni_obecne": ""
+   },
+   "spravne": [
+    "d"
+   ],
+   "oddil": "1.2.2",
+   "poznamka": ""
+  },
+  {
+   "id": "A-08",
+   "zdroj": "sample-a",
+   "lo": "GenAI-2.1.1",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>A tester is examining a structured prompt used to obtain LLM assistance for performance test analysis. One of the components of this prompt reads: “Test reports from performance testing tools, system monitoring logs during peak usage periods, and application performance benchmarks from previous releases”.</p><p>In which component of the six-part prompt structure would this description MOST LIKELY appear?</p>",
+    "moznosti": [
+     "Context",
+     "Input data",
+     "Constraints",
+     "Output format"
+    ],
+    "vysvetleni": {
+     "a": "Is not correct. Context provides background information about the test environment or system being tested, not specific (input) data to be analyzed. While this mentions performance testing, it is listing actual data sources rather than providing background information.",
+     "b": "Is correct. The description lists specific data sources (test reports, monitoring logs, performance benchmarks) that will be processed by the LLM to perform the analysis task.",
+     "c": "Is not correct. Constraints outline restrictions or special considerations for how the task should be performed. The description lists actual data sources rather than restrictions on the analysis approach.",
+     "d": "Is not correct. Output format specifies the expected structure and characteristics of the LLM’s response. The description lists actual data sources, without any reference to how results should be presented."
+    },
+    "vysvetleni_obecne": ""
+   },
+   "cz": {
+    "q": "<p>Tester zkoumá strukturovaný prompt, kterým získává od LLM pomoc s analýzou výkonnostního testování. Jedna ze součástí promptu zní: „Reporty z testování z nástrojů pro výkonnostní testování, logy z monitoringu systému v obdobích špičkového vytížení a výkonnostní benchmarky aplikace z předchozích vydání“.</p><p>Ve které součásti šestidílné struktury promptu by se tento popis NEJPRAVDĚPODOBNĚJI objevil?</p>",
+    "moznosti": [
+     "Kontext (context)",
+     "Vstupní data (input data)",
+     "Omezení (constraints)",
+     "Formát výstupu (output format)"
+    ],
+    "vysvetleni": {
+     "a": "Není správně. Kontext poskytuje podkladové informace o testovacím prostředí nebo testovaném systému, ne konkrétní (vstupní) data k analýze. Popis sice zmiňuje výkonnostní testování, ale vyjmenovává skutečné zdroje dat, ne podkladové informace.",
+     "b": "Je správně. Popis vyjmenovává konkrétní zdroje dat (reporty z testování, logy z monitoringu, výkonnostní benchmarky), které LLM zpracuje při analýze.",
+     "c": "Není správně. Omezení popisují restrikce nebo zvláštní podmínky, jak má být úloha provedena. Popis uvádí skutečné zdroje dat, ne omezení postupu analýzy.",
+     "d": "Není správně. Formát výstupu určuje očekávanou strukturu a vlastnosti odpovědi LLM. Popis uvádí zdroje dat a nijak neříká, jak mají být výsledky prezentovány."
+    },
+    "vysvetleni_obecne": ""
+   },
+   "spravne": [
+    "b"
+   ],
+   "oddil": "2.1.1",
+   "poznamka": ""
+  },
+  {
+   "id": "A-09",
+   "zdroj": "sample-a",
+   "lo": "GenAI-2.1.1",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>A tester wants an LLM to analyze a requirements specification for potential defects. In the structured prompt the tester is using, one line reads: “The potential defects must be provided in a markdown table with the following columns: ID, requirement reference, defect type, description, severity”.</p><p>In which component of the six-part prompt structure would this line MOST LIKELY appear?</p>",
+    "moznosti": [
+     "Instructions",
+     "Constraints",
+     "Output format",
+     "Context"
+    ],
+    "vysvetleni": {
+     "a": "Is not correct. The given line does not describe what task to perform, but rather how to present the results. Instructions tell the LLM what to do, while this line tells the LLM how to format the output.",
+     "b": "Is not correct. The given line is not imposing restrictions or limitations on the analysis process, but rather specifying the desired presentation format. Constraints might include aspects like “exclude cosmetic issues” whereas this line is about formatting the output.",
+     "c": "Is correct. The given line matches the syllabus definition of output format specifications that guide how the LLM should format the output.",
+     "d": "Is not correct. The given line provides no background information such as the context of the requirements specification. Instead, it is about formatting the output."
+    },
+    "vysvetleni_obecne": ""
+   },
+   "cz": {
+    "q": "<p>Tester chce, aby LLM analyzoval specifikaci požadavků a hledal v ní možné defekty. Ve strukturovaném promptu, který tester používá, je řádek: „Možné defekty uveď v tabulce v markdownu s těmito sloupci: ID, odkaz na požadavek, typ defektu, popis, závažnost“.</p><p>Ve které součásti šestidílné struktury promptu by se tento řádek NEJPRAVDĚPODOBNĚJI objevil?</p>",
+    "moznosti": [
+     "Instrukce (instructions)",
+     "Omezení (constraints)",
+     "Formát výstupu (output format)",
+     "Kontext (context)"
+    ],
+    "vysvetleni": {
+     "a": "Není správně. Řádek nepopisuje, jakou úlohu provést, ale jak prezentovat výsledky. Instrukce říkají LLM, co má dělat; tento řádek říká, jak má naformátovat výstup.",
+     "b": "Není správně. Řádek neklade omezení na průběh analýzy, ale určuje požadovaný formát prezentace. Omezením by bylo třeba „vynech kosmetické vady“; tento řádek se týká formátu výstupu.",
+     "c": "Je správně. Řádek odpovídá definici formátu výstupu v sylabu: určuje, jak má LLM výstup naformátovat.",
+     "d": "Není správně. Řádek neposkytuje žádné podkladové informace, například o kontextu specifikace požadavků. Týká se formátu výstupu."
+    },
+    "vysvetleni_obecne": ""
+   },
+   "spravne": [
+    "c"
+   ],
+   "oddil": "2.1.1",
+   "poznamka": ""
+  },
+  {
+   "id": "A-10",
+   "zdroj": "sample-a",
+   "lo": "GenAI-2.1.2",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Which of the following BEST differentiates prompt chaining, few-shot prompting, and meta prompting techniques?</p>",
+    "moznosti": [
+     "Prompt chaining focuses on providing examples, few-shot prompting breaks tasks into subtasks, and meta prompting refines prompts manually.",
+     "Few-shot prompting provides guidance with examples, prompt chaining breaks tasks into multiple prompts, and meta prompting allows the model to iteratively refine its own prompts.",
+     "Meta prompting emphasizes breaking down tasks into steps, prompt chaining uses examples, and few-shot prompting focuses on manual optimization of prompts.",
+     "Prompt chaining provides guidance without examples, few-shot provides guidance with examples, and meta prompting relies on tester-defined prompts."
+    ],
+    "vysvetleni": {
+     "a": "Is not correct. Prompt chaining is actually defined by decomposing a task into sequential prompts, not by “providing examples”. Few-shot prompting is the technique that supplies examples, not the one that “breaks tasks into subtasks”. Meta prompting relies on the LLM to revise prompts by itself, not on the tester “refining prompts manually”.",
+     "b": "Is correct. Few-shot prompting provides guidance with examples, prompt chaining decomposes tasks into intermediate steps (multiple prompts), and meta prompting uses AI to refine its own prompts iteratively.",
+     "c": "Is not correct. Meta prompting’s core purpose is automatic prompt refinement by the LLM, not “breaking tasks into steps”. Prompt chaining is characterized by step-by-step decomposition, not by “using examples” as stated. Few-shot prompting is the method that supplies examples to the model and it is not centered on “manual optimization of prompts”.",
+     "d": "Is not correct. Prompt chaining is defined by stepwise decomposition, not “guidance without examples”. Meta prompting relies on the LLM to generate/refine prompts, not solely on tester-defined wording."
+    },
+    "vysvetleni_obecne": ""
+   },
+   "cz": {
+    "q": "<p>Co NEJLÉPE rozlišuje techniky řetězení promptů (prompt chaining), few-shot prompting a meta prompting?</p>",
+    "moznosti": [
+     "Řetězení promptů se zaměřuje na poskytování příkladů, few-shot prompting rozkládá úlohy na dílčí úlohy a meta prompting zdokonaluje prompty ručně.",
+     "Few-shot prompting navádí model pomocí příkladů, řetězení promptů rozkládá úlohy do více promptů a meta prompting umožňuje modelu iterativně zdokonalovat vlastní prompty.",
+     "Meta prompting klade důraz na rozklad úloh do kroků, řetězení promptů používá příklady a few-shot prompting se zaměřuje na ruční optimalizaci promptů.",
+     "Řetězení promptů navádí model bez příkladů, few-shot navádí s příklady a meta prompting spoléhá na prompty definované testerem."
+    ],
+    "vysvetleni": {
+     "a": "Není správně. Řetězení promptů je definováno rozkladem úlohy do po sobě jdoucích promptů, ne „poskytováním příkladů“. Příklady dodává few-shot prompting, který úlohy „nerozkládá na dílčí úlohy“. Meta prompting spoléhá na to, že prompty upraví sám LLM, ne na „ruční zdokonalování“ testerem.",
+     "b": "Je správně. Few-shot prompting navádí příklady, řetězení promptů rozkládá úlohu do mezikroků (více promptů) a meta prompting využívá AI k iterativnímu zdokonalování vlastních promptů.",
+     "c": "Není správně. Hlavním účelem meta promptingu je automatické zdokonalení promptu samotným LLM, ne „rozklad úloh do kroků“. Řetězení promptů je charakteristické rozkladem krok za krokem, ne „používáním příkladů“. Příklady modelu dodává few-shot prompting a ten není zaměřen na „ruční optimalizaci promptů“.",
+     "d": "Není správně. Řetězení promptů je definováno postupným rozkladem, ne „navedením bez příkladů“. Meta prompting spoléhá na to, že prompty generuje nebo upravuje LLM, ne jen na formulace testera."
+    },
+    "vysvetleni_obecne": ""
+   },
+   "spravne": [
+    "b"
+   ],
+   "oddil": "2.1.2",
+   "poznamka": ""
+  },
+  {
+   "id": "A-11",
+   "zdroj": "sample-a",
+   "lo": "GenAI-2.1.3",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>What is the primary function of a system prompt in interactions with LLMs?</p>",
+    "moznosti": [
+     "To provide a framework for the LLM behavior for the entire conversation.",
+     "To provide specific questions or instructions from the user to the LLM.",
+     "To adjust dynamically with each user interaction and set the conversation's context.",
+     "To include visible input from the user and set rules for the conversation."
+    ],
+    "vysvetleni": {
+     "a": "Is correct. The system prompt stays constant throughout the interaction session and establishes the fundamental framework for how the LLM should respond.",
+     "b": "Is not correct. This describes the function of a user prompt, not a system prompt.",
+     "c": "Is not correct. The system prompt does not adjust dynamically; it remains constant.",
+     "d": "Is not correct. The system prompt is hidden and does not include visible input from the user."
+    },
+    "vysvetleni_obecne": ""
+   },
+   "cz": {
+    "q": "<p>Jaká je hlavní funkce systémového promptu (system prompt) při interakci s LLM?</p>",
+    "moznosti": [
+     "Poskytnout rámec chování LLM pro celou konverzaci.",
+     "Předat LLM konkrétní otázky nebo instrukce od uživatele.",
+     "Dynamicky se měnit s každou interakcí uživatele a nastavovat kontext konverzace.",
+     "Obsahovat viditelný vstup od uživatele a nastavovat pravidla konverzace."
+    ],
+    "vysvetleni": {
+     "a": "Je správně. Systémový prompt zůstává po celou relaci stejný a vytváří základní rámec toho, jak má LLM odpovídat.",
+     "b": "Není správně. To je funkce uživatelského promptu (user prompt), ne systémového.",
+     "c": "Není správně. Systémový prompt se dynamicky nemění, zůstává stejný.",
+     "d": "Není správně. Systémový prompt je skrytý a neobsahuje viditelný vstup od uživatele."
+    },
+    "vysvetleni_obecne": ""
+   },
+   "spravne": [
+    "a"
+   ],
+   "oddil": "2.1.3",
+   "poznamka": ""
+  },
+  {
+   "id": "A-12",
+   "zdroj": "sample-a",
+   "lo": "GenAI-2.2.1",
+   "k": "K3",
+   "body": 2,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>You are tasked with applying the following test approach to a set of stable requirements for a new project: generate test conditions, prioritize them based on risk level, and identify potential coverage gaps. The requirements have already been thoroughly reviewed for defects.</p><p>Which of the following sequences of steps (i-v) should you follow to effectively apply Generative AI to implement this test approach using a prompt chaining technique to implement this test approach?</p><ul><li>i. Submit the requirements to the LLM and prompt it to produce test conditions based on those requirements.</li><li>ii. Provide the test conditions to the LLM, ensuring it understands the context for prioritization, and prompt it to prioritize those test conditions accordingly.</li><li>iii. Provide the prioritized test conditions to the LLM and prompt it to analyze them to determine whether all aspects of the requirements are addressed in the test conditions.</li><li>iv. Submit the requirements to the LLM and prompt it to produce prioritized test conditions that address all aspects of the requirements.</li><li>v. Submit the requirements to the LLM and prompt it to detect inconsistencies and ambiguities in those requirements.</li></ul>",
+    "moznosti": [
+     "i, ii, and iii",
+     "iv, and ii",
+     "i, iii, and v",
+     "v, and iv"
+    ],
+    "vysvetleni": {
+     "a": "Is correct.",
+     "b": "Is not correct.",
+     "c": "Is not correct.",
+     "d": "Is not correct."
+    },
+    "vysvetleni_obecne": "<p>Considering:</p><ul><li>i. Is correct because it ensures the process begins with generating test conditions from the requirements which aligns with the syllabus description that test analysis with GenAI involves generating test conditions based on the test basis, for example on requirements.</li><li>ii. Is correct because it clarifies the need for acceptance criteria (test conditions) to improve LLM-generated outputs and follows the syllabus guidance that LLMs can prioritize test conditions based on risk level when provided with proper context.</li><li>iii. Is correct because it directs the LLM to perform coverage analysis, addressing all aspects of the requirements, which matches the syllabus statement that LLMs can perform coverage analysis to determine whether all aspects of the test basis are covered.</li><li>iv. Is not correct because relying on minimal input without guidance does not align with the prompt chaining technique or ensure effectiveness. This option attempts to do everything in one step rather than breaking it down.</li><li>v. Is not correct because defect identification is not central to the test objective of generating prioritized test conditions and identifying coverage gaps. The scenario specifically states the requirements are stable and already thoroughly reviewed for defects (which typically include ambiguities and inconsistencies).</li></ul>"
+   },
+   "cz": {
+    "q": "<p>Máš za úkol použít následující testovací přístup na sadu stabilních požadavků nového projektu: vygenerovat testovací podmínky, prioritizovat je podle úrovně rizika a najít možné mezery v pokrytí. Požadavky už byly důkladně zrevidovány na defekty.</p><p>Kterou z následujících posloupností kroků (i–v) bys měl použít, abys tento testovací přístup efektivně realizoval pomocí generativní AI a techniky řetězení promptů (prompt chaining)?</p><ul><li>i. Předej LLM požadavky a nech ho z nich vytvořit testovací podmínky.</li><li>ii. Předej LLM testovací podmínky, zajisti, aby rozuměl kontextu prioritizace, a nech ho podmínky podle toho prioritizovat.</li><li>iii. Předej LLM prioritizované testovací podmínky a nech ho analyzovat, zda pokrývají všechny aspekty požadavků.</li><li>iv. Předej LLM požadavky a nech ho vytvořit prioritizované testovací podmínky, které pokrývají všechny aspekty požadavků.</li><li>v. Předej LLM požadavky a nech ho v nich najít nekonzistence a nejednoznačnosti.</li></ul>",
+    "moznosti": [
+     "i, ii a iii",
+     "iv a ii",
+     "i, iii a v",
+     "v a iv"
+    ],
+    "vysvetleni": {
+     "a": "Je správně.",
+     "b": "Není správně.",
+     "c": "Není správně.",
+     "d": "Není správně."
+    },
+    "vysvetleni_obecne": "<p>Platí:</p><ul><li>i. Je správně, protože proces začíná generováním testovacích podmínek z požadavků. To odpovídá sylabu: testovací analýza s GenAI zahrnuje generování testovacích podmínek z testovací báze, např. z požadavků.</li><li>ii. Je správně, protože zdůrazňuje potřebu akceptačních kritérií (testovacích podmínek) pro lepší výstup LLM a odpovídá sylabu: LLM umí prioritizovat testovací podmínky podle úrovně rizika, když dostane správný kontext.</li><li>iii. Je správně, protože LLM provede analýzu pokrytí všech aspektů požadavků. Sylabus uvádí, že LLM umí analýzou pokrytí zjistit, zda jsou pokryty všechny aspekty testovací báze.</li><li>iv. Není správně, protože minimální vstup bez navedení neodpovídá řetězení promptů a nezajistí efektivitu. Tato možnost se snaží udělat vše v jednom kroku místo rozkladu.</li><li>v. Není správně, protože hledání defektů není hlavním cílem (prioritizované testovací podmínky a mezery v pokrytí). Zadání navíc říká, že požadavky jsou stabilní a už byly důkladně zrevidovány na defekty (což obvykle zahrnuje nejednoznačnosti a nekonzistence).</li></ul>"
+   },
+   "spravne": [
+    "a"
+   ],
+   "oddil": "2.2.1",
+   "poznamka": ""
+  },
+  {
+   "id": "A-13",
+   "zdroj": "sample-a",
+   "lo": "GenAI-2.2.2",
+   "k": "K3",
+   "body": 2,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Consider applying the few-shot structured prompting technique to generate Gherkin-style test cases (i.e., scenario-based) for the following user story and acceptance criterion:</p><ul><li>User story: “As a user, I want to reset my password so that I can regain access to my account if I forget it.”</li><li>Acceptance criterion: “When a user submits a registered email address then they receive a password reset email.”</li></ul><p>You can rely on predefined examples that include user stories, acceptance criteria, and Gherkin-style test cases. Your task is to create a prompt to guide the LLM in generating accurate test cases aligned with the acceptance criterion for the user story above.</p><p>Which one of the following prompts is BEST suited to this task?</p>",
+    "moznosti": [
+     "<b>Prompt A</b><br>Role: Act as a test analyst.<br>Context: You are testing a password reset functionality.<br>Instruction: Generate Gherkin-style test cases for the user story and acceptance criterion. using the following predefined examples as a guide: &lt;&lt; predefined examples &gt;&gt;.<br>Input Data: &lt;&lt;&lt; user story &gt;&gt;&gt; and &lt;&lt;&lt; acceptance criterion &gt;&gt;&gt;.<br>Constraints: Rely on best practices to create test cases.<br>Output Format: Generate test cases with expected results.",
+     "<b>Prompt B</b><br>Role: Act as a test analyst specializing in Gherkin-style test cases.<br>Context: You are testing a password reset functionality.<br>Instruction: Generate Gherkin-style test cases for the user story and acceptance criterion, using the following predefined examples as a guide: &lt;&lt; predefined examples &gt;&gt;.<br>Input Data: &lt;&lt;&lt; user story &gt;&gt;&gt; and &lt;&lt;&lt; acceptance criterion &gt;&gt;&gt;.<br>Constraints: Use \"Given-When-Then\" syntax and ensure alignment with the acceptance criterion.<br>Output Format: Respect the given Gherkin-style test case format.",
+     "<b>Prompt C</b><br>Role: Act as a test analyst.<br>Context: You are testing a password reset functionality.<br>Instruction: Generate Gherkin-style test cases for the user story and acceptance criterion. Rely on best practices to create test cases.<br>Input Data: &lt;&lt;&lt; user story &gt;&gt;&gt; and &lt;&lt;&lt; acceptance criterion &gt;&gt;&gt;.<br>Constraints: Use \"Given-When-Then\" syntax and ensure alignment with the acceptance criterion.<br>Output Format: Respect the given Gherkin-style test case format.",
+     "<b>Prompt D</b><br>Role: Act as a test analyst.<br>Context: You are testing a password reset functionality.<br>Instruction: Generate at least two Gherkin-style test cases for the user story and acceptance criterion. Focus on edge cases.<br>Input Data: &lt;&lt;&lt; user story &gt;&gt;&gt; and &lt;&lt;&lt; acceptance criterion &gt;&gt;&gt;.<br>Constraints: Ensure all test cases follow \"Given-When-Then\" syntax.<br>Output Format: Respect the given Gherkin-style test case format."
+    ],
+    "vysvetleni": {
+     "a": "Is not correct. While it specifies using predefined examples, it does not explicitly require the use of the “Given-When-Then” syntax, which is crucial for Gherkin-style test cases. It also indicates reliance on vague best practices in defining the constraints and does not specifically ensure alignment with the acceptance criterion.",
+     "b": "Is correct. Comprehensive and leverages predefined examples to guide the LLM.",
+     "c": "Is not correct. Lacks emphasis on using predefined examples and indicates reliance on vague best practices in defining the instructions.",
+     "d": "Is not correct. Focuses on edge cases but neglects comprehensive coverage and the use of examples for guidance."
+    },
+    "vysvetleni_obecne": ""
+   },
+   "cz": {
+    "q": "<p>Uvažuj o použití techniky few-shot se strukturovaným promptem ke generování testovacích případů ve stylu Gherkin (tj. založených na scénářích) pro tento uživatelský scénář (user story) a akceptační kritérium:</p><ul><li>Uživatelský scénář: „Jako uživatel chci obnovit své heslo, abych mohl znovu získat přístup ke svému účtu, když ho zapomenu.“</li><li>Akceptační kritérium: „Když uživatel zadá registrovanou e-mailovou adresu, obdrží e-mail pro obnovení hesla.“</li></ul><p>Můžeš použít předem připravené příklady, které obsahují uživatelské scénáře, akceptační kritéria a testovací případy ve stylu Gherkin. Tvým úkolem je vytvořit prompt, který LLM navede k vygenerování přesných testovacích případů v souladu s akceptačním kritériem výše uvedeného uživatelského scénáře.</p><p>Který z následujících promptů se pro tuto úlohu hodí NEJLÉPE?</p>",
+    "moznosti": [
+     "<b>Prompt A</b><br>Role: Jednej jako test analytik.<br>Kontext: Testuješ funkci obnovení hesla.<br>Instrukce: Vygeneruj testovací případy ve stylu Gherkin pro uživatelský scénář a akceptační kritérium. jako vodítko použij tyto předem připravené příklady: &lt;&lt; předem připravené příklady &gt;&gt;.<br>Vstupní data: &lt;&lt;&lt; uživatelský scénář &gt;&gt;&gt; a &lt;&lt;&lt; akceptační kritérium &gt;&gt;&gt;.<br>Omezení: Při tvorbě testovacích případů vycházej z osvědčených postupů.<br>Formát výstupu: Vygeneruj testovací případy s očekávanými výsledky.",
+     "<b>Prompt B</b><br>Role: Jednej jako test analytik specializovaný na testovací případy ve stylu Gherkin.<br>Kontext: Testuješ funkci obnovení hesla.<br>Instrukce: Vygeneruj testovací případy ve stylu Gherkin pro uživatelský scénář a akceptační kritérium, jako vodítko použij tyto předem připravené příklady: &lt;&lt; předem připravené příklady &gt;&gt;.<br>Vstupní data: &lt;&lt;&lt; uživatelský scénář &gt;&gt;&gt; a &lt;&lt;&lt; akceptační kritérium &gt;&gt;&gt;.<br>Omezení: Použij syntaxi „Given-When-Then“ a zajisti soulad s akceptačním kritériem.<br>Formát výstupu: Dodrž zadaný formát testovacích případů ve stylu Gherkin.",
+     "<b>Prompt C</b><br>Role: Jednej jako test analytik.<br>Kontext: Testuješ funkci obnovení hesla.<br>Instrukce: Vygeneruj testovací případy ve stylu Gherkin pro uživatelský scénář a akceptační kritérium. Při tvorbě testovacích případů vycházej z osvědčených postupů.<br>Vstupní data: &lt;&lt;&lt; uživatelský scénář &gt;&gt;&gt; a &lt;&lt;&lt; akceptační kritérium &gt;&gt;&gt;.<br>Omezení: Použij syntaxi „Given-When-Then“ a zajisti soulad s akceptačním kritériem.<br>Formát výstupu: Dodrž zadaný formát testovacích případů ve stylu Gherkin.",
+     "<b>Prompt D</b><br>Role: Jednej jako test analytik.<br>Kontext: Testuješ funkci obnovení hesla.<br>Instrukce: Vygeneruj alespoň dva testovací případy ve stylu Gherkin pro uživatelský scénář a akceptační kritérium. Zaměř se na okrajové případy.<br>Vstupní data: &lt;&lt;&lt; uživatelský scénář &gt;&gt;&gt; a &lt;&lt;&lt; akceptační kritérium &gt;&gt;&gt;.<br>Omezení: Zajisti, aby všechny testovací případy dodržovaly syntaxi „Given-When-Then“.<br>Formát výstupu: Dodrž zadaný formát testovacích případů ve stylu Gherkin."
+    ],
+    "vysvetleni": {
+     "a": "Není správně. Prompt sice předepisuje použití připravených příkladů, ale výslovně nevyžaduje syntaxi „Given-When-Then“, která je pro Gherkin zásadní. V omezeních se navíc odvolává na vágní „osvědčené postupy“ a nezajišťuje soulad s akceptačním kritériem.",
+     "b": "Je správně. Prompt je úplný a k navedení LLM využívá připravené příklady.",
+     "c": "Není správně. Chybí důraz na použití připravených příkladů a instrukce se odvolává na vágní „osvědčené postupy“.",
+     "d": "Není správně. Zaměřuje se na okrajové případy, ale zanedbává úplné pokrytí a navedení pomocí příkladů."
+    },
+    "vysvetleni_obecne": ""
+   },
+   "spravne": [
+    "b"
+   ],
+   "oddil": "2.2.2",
+   "poznamka": ""
+  },
+  {
+   "id": "A-14",
+   "zdroj": "sample-a",
+   "lo": "GenAI-2.2.3",
+   "k": "K3",
+   "body": 2,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>You are tasked with applying structured prompting to analyze regression test results. Here is an initial draft of the prompt:</p><p>Role: Act as a test analyst.<br>Context: Analyze raw regression test results from a recent test execution cycle.<br>Instruction: Identify discrepancies in the test results.<br>Input Data: Use the attached file containing raw test results.<br>Constraints: Use the known anomalies list for cross-checking.<br>Output Format: Provide a list of discrepancies using a table format.</p><p>You are asked to improve this prompt. Which of the following improvements would BEST align the prompt with structured prompt engineering best practices for comprehensive regression test report analysis?</p>",
+    "moznosti": [
+     "Add a step to cluster similar issues and cross-check findings against the known anomalies list.",
+     "Specify that the role is a regression test analyst specializing in actionable insights.",
+     "Expand the instruction to include separating expected results and actual results, clustering issues, and highlighting discrepancies.",
+     "Include references to regression testing principles such as \"Given-When-Then\" in the constraints."
+    ],
+    "vysvetleni": {
+     "a": "Is not correct. Addresses clustering and cross-checking but misses other critical steps like separating test results.",
+     "b": "Is not correct. Improves role clarity but does not expand instructions or address structured steps.",
+     "c": "Is correct. Expands instructions to include all critical structured analysis steps. Separating expected results and actual results helps to pinpoint mismatches effectively, clustering issues facilitates better prioritization and reduces redundancy, and highlighting discrepancies helps to focus attention on the most important findings.",
+     "d": "Is not correct. Introduces irrelevant constraints, misaligning the prompt with the task requirements."
+    },
+    "vysvetleni_obecne": ""
+   },
+   "cz": {
+    "q": "<p>Máš za úkol použít strukturovaný prompt k analýze výsledků regresních testů. Toto je první návrh promptu:</p><p>Role: Jednej jako test analytik.<br>Kontext: Analyzuj surové výsledky regresních testů z nedávného cyklu provádění testů.<br>Instrukce: Najdi nesrovnalosti ve výsledcích testů.<br>Vstupní data: Použij přiložený soubor se surovými výsledky testů.<br>Omezení: Ke křížové kontrole použij seznam známých anomálií.<br>Formát výstupu: Uveď seznam nesrovnalostí ve formě tabulky.</p><p>Máš tento prompt vylepšit. Které z následujících vylepšení NEJLÉPE sladí prompt s osvědčenými postupy strukturovaného prompt engineeringu pro úplnou analýzu reportu z regresního testování?</p>",
+    "moznosti": [
+     "Přidat krok, který seskupí podobné problémy a zjištění zkontroluje proti seznamu známých anomálií.",
+     "Upřesnit roli na analytika regresních testů specializovaného na využitelné poznatky.",
+     "Rozšířit instrukci o oddělení očekávaných a skutečných výsledků, seskupení problémů a zvýraznění nesrovnalostí.",
+     "Doplnit do omezení odkazy na principy regresního testování, jako je „Given-When-Then“."
+    ],
+    "vysvetleni": {
+     "a": "Není správně. Řeší seskupení a křížovou kontrolu, ale chybí další důležité kroky, např. oddělení výsledků testů.",
+     "b": "Není správně. Zpřesní roli, ale nerozšíří instrukce ani nedoplní strukturované kroky.",
+     "c": "Je správně. Rozšiřuje instrukce o všechny důležité kroky strukturované analýzy. Oddělení očekávaných a skutečných výsledků pomáhá přesně najít neshody, seskupení problémů usnadní prioritizaci a omezí duplicity a zvýraznění nesrovnalostí soustředí pozornost na nejdůležitější zjištění.",
+     "d": "Není správně. Přidává nesouvisející omezení, takže prompt přestane odpovídat požadavkům úlohy."
+    },
+    "vysvetleni_obecne": ""
+   },
+   "spravne": [
+    "c"
+   ],
+   "oddil": "2.2.3",
+   "poznamka": ""
+  },
+  {
+   "id": "A-15",
+   "zdroj": "sample-a",
+   "lo": "GenAI-2.2.4",
+   "k": "K3",
+   "body": 2,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>You are using an LLM to assist in preparing actionable test metrics from raw data. The metrics include test progress, defect trends, and coverage, which are graphically displayed and explained with text. Your goal is to improve the test process to ensure the generated metrics are accurate, actionable, and easily interpretable by stakeholders.</p><p>Here is an initial draft of a prompt used to instruct the AI:</p><p>Role: Act as a test manager.<br>Context: You are provided with raw data from test tools.<br>Instruction: Generate test progress metrics, defect trend metrics, and coverage metrics from the raw data.<br>Input Data: Use the attached file containing raw test results.<br>Constraints: Ensure that the output is concise and understandable.<br>Output Format: Display metrics on a dashboard.</p><p>You are asked to improve this prompt. Which of the following improvements would BEST enhance the LLM’s ability to produce accurate and actionable metrics?</p>",
+    "moznosti": [
+     "Specify that the role is a test manager focusing on actionable insights and decision support, ensuring comprehensive analysis of test data.",
+     "Add an instruction to include potential risks identified from the trends in the generated metrics, along with their impact assessment and priority levels.",
+     "Expand the output format to include a plain-language summary that interprets the metrics and outlines next steps for stakeholders.",
+     "Emphasize constraints that the output is also easily interpretable by stakeholders, using clear language and avoiding technical jargon throughout the response."
+    ],
+    "vysvetleni": {
+     "a": "Is not correct. Clarifies the role but does not add any concrete instruction that improves accuracy, actionability, or interpretability of the delivered metrics.",
+     "b": "Is not correct. Adds a risk-analysis task that could distract the model from the core metrics and still offers no mechanism for making results clear to stakeholders.",
+     "c": "Is correct. Expanding the output format with a plain-language summary that interprets the metrics and outlines next steps directly supports stakeholder understanding and actionability (see also the syllabus in section 2.2.4: “Enhanced test metrics visualization and reporting”).",
+     "d": "Is not correct. Merely re-states an existing constraint and gives no specific guidance on how the LLM should achieve stakeholder-level interpretability."
+    },
+    "vysvetleni_obecne": ""
+   },
+   "cz": {
+    "q": "<p>Používáš LLM jako pomoc při přípravě využitelných metrik testování ze surových dat. Metriky zahrnují postup testování, trendy defektů a pokrytí; zobrazují se graficky a vysvětlují textem. Tvým cílem je zlepšit proces testování tak, aby vygenerované metriky byly přesné, využitelné a snadno srozumitelné pro zainteresované strany.</p><p>Toto je první návrh promptu pro AI:</p><p>Role: Jednej jako test manažer.<br>Kontext: Máš k dispozici surová data z testovacích nástrojů.<br>Instrukce: Ze surových dat vygeneruj metriky postupu testování, metriky trendů defektů a metriky pokrytí.<br>Vstupní data: Použij přiložený soubor se surovými výsledky testů.<br>Omezení: Zajisti, aby výstup byl stručný a srozumitelný.<br>Formát výstupu: Zobraz metriky na dashboardu.</p><p>Máš tento prompt vylepšit. Které z následujících vylepšení NEJLÉPE zlepší schopnost LLM vytvořit přesné a využitelné metriky?</p>",
+    "moznosti": [
+     "Upřesnit roli na test manažera zaměřeného na využitelné poznatky a podporu rozhodování, který zajistí úplnou analýzu testovacích dat.",
+     "Přidat instrukci, aby výstup obsahoval možná rizika zjištěná z trendů ve vygenerovaných metrikách, včetně posouzení dopadu a úrovně priority.",
+     "Rozšířit formát výstupu o shrnutí srozumitelným jazykem, které metriky vyloží a navrhne další kroky pro zainteresované strany.",
+     "Zdůraznit v omezeních, že výstup má být srozumitelný i pro zainteresované strany, psaný jasným jazykem a bez technického žargonu."
+    ],
+    "vysvetleni": {
+     "a": "Není správně. Zpřesní roli, ale nepřidá žádnou konkrétní instrukci, která by zlepšila přesnost, využitelnost nebo srozumitelnost metrik.",
+     "b": "Není správně. Přidává úlohu analýzy rizik, která může model odvést od hlavních metrik, a pořád nijak nezajišťuje srozumitelnost výsledků pro zainteresované strany.",
+     "c": "Je správně. Rozšíření formátu výstupu o shrnutí srozumitelným jazykem, které metriky vyloží a navrhne další kroky, přímo podporuje porozumění zainteresovaných stran a využitelnost (viz sylabus 2.2.4: „Enhanced test metrics visualization and reporting“).",
+     "d": "Není správně. Jen opakuje existující omezení a nedává LLM konkrétní vodítko, jak srozumitelnosti pro zainteresované strany dosáhnout."
+    },
+    "vysvetleni_obecne": ""
+   },
+   "spravne": [
+    "c"
+   ],
+   "oddil": "2.2.4",
+   "poznamka": ""
+  },
+  {
+   "id": "A-16",
+   "zdroj": "sample-a",
+   "lo": "GenAI-2.2.5",
+   "k": "K3",
+   "body": 2,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Your goal is to create test cases for an AI-based system that suffers from the test oracle problem, preventing you from determining expected results. You can only count on a few existing test cases with known expected results. Through appropriate analysis, you have identified a set of well-defined transformation rules that specify how changes to inputs affect expected results. These rules can be applied to all existing test cases. You have decided to rely on Generative AI, providing a given LLM with the following information: the existing test cases with their inputs and expected results, a clear description of the transformation rules, and guidelines for generating additional test cases by precisely applying these rules to the relevant existing test cases. With the specified information, the chosen LLM can directly generate additional test cases in line with your expectations.</p><p>Which of the following prompting techniques is BEST suited to achieve your goal in this scenario?</p>",
+    "moznosti": [
+     "Few-shot prompting",
+     "Prompt chaining",
+     "Meta prompting",
+     "Zero-shot prompting"
+    ],
+    "vysvetleni": {
+     "a": "Is correct. Few-shot prompting is ideal in this scenario because it allows you to provide some examples (the existing test cases with inputs and expected results) to guide the LLM. By illustrating how these transformation rules are applied to generate new test cases, few-shot prompting can help the LLM understand and replicate the process to generate additional test cases.",
+     "b": "Is not correct. While prompt chaining could be used, it could unnecessarily complicate this very straightforward task.",
+     "c": "Is not correct. While meta-prompting could be used, it is not as direct and specific as few-shot prompting to address this very straightforward task.",
+     "d": "Is not correct. Zero-shot prompting would not be effective since it would not leverage existing test cases as examples."
+    },
+    "vysvetleni_obecne": ""
+   },
+   "cz": {
+    "q": "<p>Tvým cílem je vytvořit testovací případy pro systém založený na AI, který trpí problémem testovacího orákula (test oracle problem), takže nedokážeš určit očekávané výsledky. Můžeš se spolehnout jen na několik existujících testovacích případů se známými očekávanými výsledky. Vhodnou analýzou jsi našel sadu přesně definovaných transformačních pravidel, která určují, jak změny vstupů ovlivní očekávané výsledky. Pravidla lze použít na všechny existující testovací případy. Rozhodl ses použít generativní AI a dát zvolenému LLM tyto informace: existující testovací případy s jejich vstupy a očekávanými výsledky, jasný popis transformačních pravidel a pokyny, jak generovat další testovací případy přesným použitím pravidel na příslušné existující testovací případy. S těmito informacemi zvolený LLM dokáže přímo vygenerovat další testovací případy podle tvých očekávání.</p><p>Která z následujících technik promptování se k dosažení cíle v tomto scénáři hodí NEJLÉPE?</p>",
+    "moznosti": [
+     "Few-shot prompting",
+     "Řetězení promptů (prompt chaining)",
+     "Meta prompting",
+     "Zero-shot prompting"
+    ],
+    "vysvetleni": {
+     "a": "Je správně. Few-shot prompting je zde ideální, protože LLM navede několika příklady (existující testovací případy se vstupy a očekávanými výsledky). Příklady ukazují, jak se transformační pravidla používají k tvorbě nových testovacích případů, a LLM tak postup pochopí a zopakuje.",
+     "b": "Není správně. Řetězení promptů by použít šlo, ale tuto velmi přímočarou úlohu by zbytečně komplikovalo.",
+     "c": "Není správně. Meta prompting by použít šel, ale pro tuto velmi přímočarou úlohu není tak přímý a konkrétní jako few-shot prompting.",
+     "d": "Není správně. Zero-shot prompting by nebyl účinný, protože by nevyužil existující testovací případy jako příklady."
+    },
+    "vysvetleni_obecne": ""
+   },
+   "spravne": [
+    "a"
+   ],
+   "oddil": "2.2.5",
+   "poznamka": ""
+  },
+  {
+   "id": "A-17",
+   "zdroj": "sample-a",
+   "lo": "GenAI-2.3.1",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>You are leveraging Generative AI to assist in testing an entertainment software application. The Generative AI model generates test cases for user interaction scenarios, test scripts for API interactions, and synthetic test data to address edge cases.</p><p>To effectively evaluate the Generative AI model’s performance and to refine prompts, which combination of metrics and actions BEST ensures comprehensive assessment and improvement?</p>",
+    "moznosti": [
+     "Evaluate the diversity of test cases to ensure varied input scenarios and use test execution success rate to validate the functionality of generated API test scripts.",
+     "Apply accuracy and completeness metrics to validate test cases against entertainment software requirements and rely on time efficiency to compare AI-generated test scripts with manual test efforts.",
+     "Focus on precision to ensure generated test data meets entertainment software compliance standards, while contextual fit and test execution success rate assesses the alignment and usability of test scripts.",
+     "Prioritize relevance and contextual fit for all outputs to maintain consistency with entertainment software requirements and include diversity metrics to expand edge case coverage."
+    ],
+    "vysvetleni": {
+     "a": "Is correct. Diversity ensures comprehensive coverage of edge cases, and test execution success rate evaluates the reliability of API test scripts (see the description and example for the \"diversity\" metric provided by the syllabus within the table in section 2.3.1).",
+     "b": "Is not correct. While accuracy and completeness are important, relying primarily on time efficiency does not fully evaluate coverage or test execution reliability.",
+     "c": "Is not correct. Precision and contextual fit are valuable but do not address diversity or thoroughly evaluate test execution success for API test scripts.",
+     "d": "Is not correct. Relevance and contextual fit are crucial, but without considering metrics like test execution success rate or accuracy, critical aspects of evaluation are missed."
+    },
+    "vysvetleni_obecne": ""
+   },
+   "cz": {
+    "q": "<p>Využíváš generativní AI jako pomoc při testování zábavní softwarové aplikace. Model generativní AI vytváří testovací případy pro scénáře interakce uživatele, testovací skripty pro API interakce a syntetická testovací data pro okrajové případy.</p><p>Která kombinace metrik a činností NEJLÉPE zajistí úplné vyhodnocení výkonu modelu generativní AI a zdokonalení promptů?</p>",
+    "moznosti": [
+     "Hodnotit rozmanitost (diversity) testovacích případů kvůli různorodým vstupním scénářům a míru úspěšnosti provedení (execution success rate) použít k ověření funkčnosti vygenerovaných API testovacích skriptů.",
+     "Použít metriky přesnosti (accuracy) a úplnosti k ověření testovacích případů vůči požadavkům zábavního softwaru a pro srovnání AI skriptů s ruční prací spoléhat na časovou efektivitu (time efficiency).",
+     "Zaměřit se na preciznost (precision), aby testovací data splňovala standardy shody pro zábavní software, a kontextovou vhodnost a míru úspěšnosti provedení použít k posouzení souladu a použitelnosti testovacích skriptů.",
+     "U všech výstupů upřednostnit relevanci a kontextovou vhodnost (relevance and contextual fit) kvůli souladu s požadavky zábavního softwaru a přidat metriky rozmanitosti pro rozšíření pokrytí okrajových případů."
+    ],
+    "vysvetleni": {
+     "a": "Je správně. Rozmanitost zajišťuje úplné pokrytí okrajových případů a míra úspěšnosti provedení hodnotí spolehlivost API testovacích skriptů (viz popis a příklad metriky „diversity“ v tabulce v sylabu 2.3.1).",
+     "b": "Není správně. Přesnost a úplnost jsou důležité, ale spoléhání hlavně na časovou efektivitu nevyhodnotí pokrytí ani spolehlivost provedení testů.",
+     "c": "Není správně. Preciznost a kontextová vhodnost jsou užitečné, ale neřeší rozmanitost ani důkladně nevyhodnotí úspěšnost provedení API testovacích skriptů.",
+     "d": "Není správně. Relevance a kontextová vhodnost jsou zásadní, ale bez metrik jako míra úspěšnosti provedení nebo přesnost chybí důležité stránky vyhodnocení."
+    },
+    "vysvetleni_obecne": ""
+   },
+   "spravne": [
+    "a"
+   ],
+   "oddil": "2.3.1",
+   "poznamka": ""
+  },
+  {
+   "id": "A-18",
+   "zdroj": "sample-a",
+   "lo": "GenAI-2.3.2",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Which of the following techniques for evaluating and iteratively refining prompts is BEST suited for determining why an LLM consistently generates test cases with wrong expected results that contradict the input requirements, thereby providing insights to optimize the prompt and prevent similar errors?</p>",
+    "moznosti": [
+     "Output analysis",
+     "A/B testing of prompts",
+     "Adjusting prompt length and specificity",
+     "Integrating user feedback"
+    ],
+    "vysvetleni": {
+     "a": "Is correct. Output analysis examines LLM outputs for inaccuracies or inconsistencies. By classifying the wrong expected results that contradict the requirements, it reveals why the prompt misled the LLM and provides concrete insights for prompt refinement.",
+     "b": "Is not correct. A/B testing of prompts is better suited for comparing different prompt versions than for diagnosing the cause of wrong expected results.",
+     "c": "Is not correct. While adjusting the length and specificity of prompts can improve the quality of responses by adding or reducing context, it does not directly address the cause of wrong expected results.",
+     "d": "Is not correct. While using the insights gathered from testers about the usefulness and clarity of generated output can help refine prompts to better meet real-world testing needs, it does not directly address the cause of wrong expected results."
+    },
+    "vysvetleni_obecne": ""
+   },
+   "cz": {
+    "q": "<p>Která z následujících technik pro vyhodnocování a iterativní zdokonalování promptů se NEJLÉPE hodí ke zjištění, proč LLM soustavně generuje testovací případy s chybnými očekávanými výsledky, které odporují vstupním požadavkům, a tím poskytne poznatky pro optimalizaci promptu a prevenci podobných chyb?</p>",
+    "moznosti": [
+     "Analýza výstupu (output analysis)",
+     "A/B testování promptů (A/B testing of prompts)",
+     "Úprava délky a konkrétnosti promptu (adjusting prompt length and specificity)",
+     "Zapojení zpětné vazby uživatelů (integrating user feedback)"
+    ],
+    "vysvetleni": {
+     "a": "Je správně. Analýza výstupu zkoumá výstupy LLM z hlediska nepřesností a nekonzistencí. Roztřídění chybných očekávaných výsledků, které odporují požadavkům, ukáže, proč prompt LLM zavedl, a dá konkrétní podněty ke zdokonalení promptu.",
+     "b": "Není správně. A/B testování promptů se hodí spíš ke srovnání různých verzí promptu než k diagnostice příčiny chybných očekávaných výsledků.",
+     "c": "Není správně. Úprava délky a konkrétnosti promptu může zlepšit kvalitu odpovědí přidáním nebo ubráním kontextu, ale přímo neřeší příčinu chybných očekávaných výsledků.",
+     "d": "Není správně. Poznatky testerů o užitečnosti a srozumitelnosti výstupu pomáhají prompty přizpůsobit reálným potřebám testování, ale přímo neřeší příčinu chybných očekávaných výsledků."
+    },
+    "vysvetleni_obecne": ""
+   },
+   "spravne": [
+    "a"
+   ],
+   "oddil": "2.3.2",
+   "poznamka": ""
+  },
+  {
+   "id": "A-19",
+   "zdroj": "sample-a",
+   "lo": "GenAI-3.1.1",
+   "k": "K1",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>What is a hallucination in the context of LLM outputs?</p>",
+    "moznosti": [
+     "A logical error where the LLM fails to follow a multi-step reasoning process accurately.",
+     "A bias in the LLM output caused by the training data favoring certain perspectives.",
+     "A generation of irrelevant or factually incorrect output by the LLM for a given task.",
+     "A limitation of the LLM to understand non-English perspectives in test generation tasks."
+    ],
+    "vysvetleni": {
+     "a": "Is not correct. This describes reasoning errors, not hallucinations.",
+     "b": "Is not correct. This describes biases in AI output, not hallucinations.",
+     "c": "Is correct. Hallucinations occur when the LLM generates output that is factually incorrect or irrelevant to a given task. See the syllabus in section 3.1.1.",
+     "d": "Is not correct. This describes biases due to underrepresentation in training data, not hallucinations."
+    },
+    "vysvetleni_obecne": ""
+   },
+   "cz": {
+    "q": "<p>Co je halucinace (hallucination) v kontextu výstupů LLM?</p>",
+    "moznosti": [
+     "Logická chyba, kdy LLM nedokáže přesně projít vícekrokovým procesem uvažování.",
+     "Zkreslení (bias) ve výstupu LLM způsobené tím, že trénovací data upřednostňují určité pohledy.",
+     "Vygenerování nerelevantního nebo fakticky nesprávného výstupu LLM pro danou úlohu.",
+     "Omezení LLM v chápání neanglických pohledů při úlohách generování testů."
+    ],
+    "vysvetleni": {
+     "a": "Není správně. To popisuje chyby v uvažování (reasoning errors), ne halucinace.",
+     "b": "Není správně. To popisuje zkreslení (biases) ve výstupu AI, ne halucinace.",
+     "c": "Je správně. Halucinace nastává, když LLM vygeneruje výstup, který je pro danou úlohu fakticky nesprávný nebo nerelevantní. Viz sylabus 3.1.1.",
+     "d": "Není správně. To popisuje zkreslení kvůli nedostatečnému zastoupení v trénovacích datech, ne halucinace."
+    },
+    "vysvetleni_obecne": ""
+   },
+   "spravne": [
+    "c"
+   ],
+   "oddil": "3.1.1",
+   "poznamka": ""
+  },
+  {
+   "id": "A-20",
+   "zdroj": "sample-a",
+   "lo": "GenAI-3.1.2",
+   "k": "K3",
+   "body": 2,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>You are using Generative AI to create test cases for an e-commerce (e-shop) application. The following features have been explicitly mentioned in the project briefing:</p><ul><li>cart management</li><li>discount code application</li><li>order confirmation email generation</li></ul><p>Based on these details, which of the following AI-generated test cases MOST LIKELY represents a hallucination?</p>",
+    "moznosti": [
+     "Verify that a user can add multiple items to their cart and proceed to checkout.",
+     "Verify that a user cannot apply an expired discount code during checkout.",
+     "Verify that a user receives a confirmation email after successfully placing an order.",
+     "Verify that a user can create a wishlist to save favorite items for later."
+    ],
+    "vysvetleni": {
+     "a": "Is not correct. Cart management is explicitly mentioned in the project briefing, making this test case relevant.",
+     "b": "Is not correct. Discount code application is explicitly mentioned in the project briefing, making this test case relevant.",
+     "c": "Is not correct. Order confirmation emails are explicitly mentioned in the project briefing, so this test case is valid.",
+     "d": "Is correct. Wishlist management is not mentioned in the project briefing, making this the most likely hallucinated test case."
+    },
+    "vysvetleni_obecne": ""
+   },
+   "cz": {
+    "q": "<p>Pomocí generativní AI vytváříš testovací případy pro aplikaci e-shopu. V zadání projektu jsou výslovně uvedeny tyto funkce:</p><ul><li>správa košíku</li><li>uplatnění slevového kódu</li><li>generování e-mailu s potvrzením objednávky</li></ul><p>Který z následujících testovacích případů vygenerovaných AI NEJPRAVDĚPODOBNĚJI představuje halucinaci (hallucination)?</p>",
+    "moznosti": [
+     "Ověř, že uživatel může přidat do košíku více položek a pokračovat k pokladně.",
+     "Ověř, že uživatel nemůže při placení uplatnit slevový kód s prošlou platností.",
+     "Ověř, že uživatel po úspěšném odeslání objednávky obdrží potvrzovací e-mail.",
+     "Ověř, že uživatel může vytvořit seznam přání (wishlist) a uložit si oblíbené položky na později."
+    ],
+    "vysvetleni": {
+     "a": "Není správně. Správa košíku je v zadání projektu výslovně uvedena, testovací případ je tedy relevantní.",
+     "b": "Není správně. Uplatnění slevového kódu je v zadání výslovně uvedeno, testovací případ je tedy relevantní.",
+     "c": "Není správně. E-maily s potvrzením objednávky jsou v zadání výslovně uvedeny, testovací případ je tedy platný.",
+     "d": "Je správně. Seznam přání v zadání projektu uveden není, proto jde nejspíš o halucinovaný testovací případ."
+    },
+    "vysvetleni_obecne": ""
+   },
+   "spravne": [
+    "d"
+   ],
+   "oddil": "3.1.2",
+   "poznamka": ""
+  },
+  {
+   "id": "A-21",
+   "zdroj": "sample-a",
+   "lo": "GenAI-3.1.3",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Which of the following options refers to a benefit that is MOST directly associated with using clear and structured input data formats when working with LLMs for test tasks?</p>",
+    "moznosti": [
+     "Helps reduce the effort to fine-tune the LLMs for test tasks.",
+     "Helps LLMs generate less ambiguous outputs for test tasks.",
+     "Helps LLMs generate more context-relevant outputs for test tasks.",
+     "Helps LLMs generate more creative outputs for test tasks."
+    ],
+    "vysvetleni": {
+     "a": "Is not correct. The effort to fine-tune LLMs for test tasks is associated with further training of these models on a targeted dataset, enabling them to learn the domain-specific knowledge and nuances needed to perform those test tasks. The use of clear and structured input data formats does not affect this effort.",
+     "b": "Is correct. When input data is presented in a clear and structured way, potential misunderstandings are minimized. Ambiguity often arises from unclear and poorly structured data.",
+     "c": "Is not correct. Context relevance is more dependent on providing the right contextual information rather than just using clear and structured input data formats.",
+     "d": "Is not correct. The use of clear and structured input data formats does not increase the creativity of LLMs in generating outputs. In particular, the use of these formats does not encourage novel responses, as it requires LLMs to generate responses that adhere to the specified formats."
+    },
+    "vysvetleni_obecne": ""
+   },
+   "cz": {
+    "q": "<p>Která z následujících možností uvádí přínos, který NEJPŘÍMĚJI souvisí s používáním jasných a strukturovaných formátů vstupních dat při práci s LLM na testovacích úlohách?</p>",
+    "moznosti": [
+     "Pomáhá snížit úsilí potřebné k fine-tuningu (doladění) LLM pro testovací úlohy.",
+     "Pomáhá LLM generovat pro testovací úlohy méně nejednoznačné výstupy.",
+     "Pomáhá LLM generovat pro testovací úlohy kontextově relevantnější výstupy.",
+     "Pomáhá LLM generovat pro testovací úlohy kreativnější výstupy."
+    ],
+    "vysvetleni": {
+     "a": "Není správně. Úsilí na fine-tuning souvisí s dalším trénováním modelu na cílené datové sadě, aby se naučil doménové znalosti a nuance potřebné pro testovací úlohy. Jasné a strukturované formáty vstupních dat toto úsilí neovlivní.",
+     "b": "Je správně. Když jsou vstupní data podána jasně a strukturovaně, omezí se možná nedorozumění. Nejednoznačnost často vzniká z nejasných a špatně strukturovaných dat.",
+     "c": "Není správně. Kontextová relevance závisí spíš na dodání správných kontextových informací než jen na jasném a strukturovaném formátu vstupních dat.",
+     "d": "Není správně. Jasné a strukturované formáty kreativitu LLM nezvyšují. Nepodporují nové, neotřelé odpovědi, protože od LLM vyžadují dodržení zadaného formátu."
+    },
+    "vysvetleni_obecne": ""
+   },
+   "spravne": [
+    "b"
+   ],
+   "oddil": "3.1.3",
+   "poznamka": ""
+  },
+  {
+   "id": "A-22",
+   "zdroj": "sample-a",
+   "lo": "GenAI-3.1.4",
+   "k": "K1",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Which strategy can help reduce variability in LLM outputs by narrowing the probability distribution during inference?</p>",
+    "moznosti": [
+     "Increasing the learning rate.",
+     "Lowering the temperature setting.",
+     "Increasing the random seed.",
+     "Lowering the random seed."
+    ],
+    "vysvetleni": {
+     "a": "Is not correct. Learning rate is a setting (chosen before training begins) that controls the learning process of neural networks. This setting determines how much to change the model's weights during training. It is not related to inference variability. Increasing it can lead to faster convergence during training but does not affect the variability of outputs during inference.",
+     "b": "Is correct. Temperature is a parameter that controls the randomness of the output by acting on the probability distribution during inference. Lowering the temperature reduces randomness, leading to more consistent outputs.",
+     "c": "Is not correct. While setting a random seed can improve reproducibility, it does not in itself narrow the probability distribution during inference. Moreover, whether its value is high or low is irrelevant.",
+     "d": "Is not correct. While setting a random seed can improve reproducibility, it does not in itself narrow the probability distribution during inference. Moreover, whether its value is high or low is irrelevant."
+    },
+    "vysvetleni_obecne": ""
+   },
+   "cz": {
+    "q": "<p>Která strategie pomáhá snížit variabilitu výstupů LLM tím, že během inference zužuje rozdělení pravděpodobnosti?</p>",
+    "moznosti": [
+     "Zvýšení rychlosti učení (learning rate).",
+     "Snížení nastavení teploty (temperature).",
+     "Zvýšení hodnoty náhodného semínka (random seed).",
+     "Snížení hodnoty náhodného semínka (random seed)."
+    ],
+    "vysvetleni": {
+     "a": "Není správně. Rychlost učení je nastavení (volí se před začátkem trénování), které řídí proces učení neuronové sítě: určuje, jak moc se během trénování mění váhy modelu. S variabilitou při inferenci nesouvisí. Její zvýšení může urychlit konvergenci při trénování, ale variabilitu výstupů při inferenci neovlivní.",
+     "b": "Je správně. Teplota je parametr, který řídí náhodnost výstupu tím, že během inference působí na rozdělení pravděpodobnosti. Nižší teplota snižuje náhodnost a výstupy jsou konzistentnější.",
+     "c": "Není správně. Nastavení náhodného semínka může zlepšit reprodukovatelnost, ale samo o sobě rozdělení pravděpodobnosti při inferenci nezužuje. Navíc nezáleží na tom, zda je jeho hodnota vysoká, nebo nízká.",
+     "d": "Není správně. Nastavení náhodného semínka může zlepšit reprodukovatelnost, ale samo o sobě rozdělení pravděpodobnosti při inferenci nezužuje. Navíc nezáleží na tom, zda je jeho hodnota vysoká, nebo nízká."
+    },
+    "vysvetleni_obecne": ""
+   },
+   "spravne": [
+    "b"
+   ],
+   "oddil": "3.1.4",
+   "poznamka": ""
+  },
+  {
+   "id": "A-23",
+   "zdroj": "sample-a",
+   "lo": "GenAI-3.2.1",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Which of the following statements about data privacy concerns related to using Generative AI for software testing is INCORRECT?</p>",
+    "moznosti": [
+     "Generative AI can unintentionally expose sensitive data through its outputs.",
+     "Generative AI tools may store and process sensitive data without explicit user consent, leading to misuse.",
+     "Using Generative AI tools without adhering to data protection regulations, such as General Data Protection Regulation (GDPR), can lead to legal disputes.",
+     "An LLM is likely to expose real sensitive data if it hallucinates while generating synthetic test data, regardless of the data it was trained on."
+    ],
+    "vysvetleni": {
+     "a": "Is not correct. This is a privacy concern, as “Unintentional data exposure” relates to generative AI (GenAI) outputs revealing sensitive information accidentally.",
+     "b": "Is not correct. This is a privacy concern, as it involves the lack of control over how sensitive data is stored or processed.",
+     "c": "Is not correct. This is a privacy concern related to non-compliance with regulations such as the General Data Protection Regulation (GDPR), leading to legal risks.",
+     "d": "Is correct. An LLM does not expose real sensitive data if it hallucinates when generating synthetic test data, as long as it was not trained on real sensitive data. In this case hallucinations would be purely synthetic and based on patterns and structures the model learned during training. The LLM could unintentionally generate synthetic test data that matches real sensitive data (and this is definitely a concern) but it would not be exposing real sensitive data. However, this unintentional generation is very unlikely."
+    },
+    "vysvetleni_obecne": ""
+   },
+   "cz": {
+    "q": "<p>Které z následujících tvrzení o rizicích pro ochranu dat a soukromí (data privacy) při použití generativní AI v testování softwaru je NESPRÁVNÉ?</p>",
+    "moznosti": [
+     "Generativní AI může svými výstupy neúmyslně odhalit citlivá data.",
+     "Nástroje generativní AI mohou ukládat a zpracovávat citlivá data bez výslovného souhlasu uživatele, což vede ke zneužití.",
+     "Používání nástrojů generativní AI bez dodržení předpisů na ochranu dat, jako je obecné nařízení o ochraně osobních údajů (GDPR), může vést k právním sporům.",
+     "LLM pravděpodobně odhalí skutečná citlivá data, když při generování syntetických testovacích dat halucinuje, bez ohledu na to, na jakých datech byl trénován."
+    ],
+    "vysvetleni": {
+     "a": "Není správně (tvrzení platí). Jde o riziko pro soukromí: „neúmyslné odhalení dat“ (unintentional data exposure) znamená, že výstupy GenAI omylem prozradí citlivé informace.",
+     "b": "Není správně (tvrzení platí). Jde o riziko pro soukromí: chybí kontrola nad tím, jak se citlivá data ukládají a zpracovávají.",
+     "c": "Není správně (tvrzení platí). Jde o riziko nesouladu s předpisy, jako je GDPR, s právními důsledky.",
+     "d": "Je správně (tvrzení je nesprávné). LLM při halucinaci během generování syntetických dat skutečná citlivá data neodhalí, pokud na nich nebyl trénován. Halucinace by byly čistě syntetické, založené na vzorech a strukturách naučených při trénování. LLM by sice mohl náhodou vygenerovat data shodná se skutečnými citlivými daty (a to je opravdu problém), ale skutečná data by tím neodhaloval. Taková shoda je navíc velmi nepravděpodobná."
+    },
+    "vysvetleni_obecne": ""
+   },
+   "spravne": [
+    "d"
+   ],
+   "oddil": "3.2.1",
+   "poznamka": ""
+  },
+  {
+   "id": "A-24",
+   "zdroj": "sample-a",
+   "lo": "GenAI-3.2.2",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>An attacker injects falsified test results into the training dataset of an LLM intended to recommend optimal test coverage strategies. What type of attack vector does this description BEST refer to?</p>",
+    "moznosti": [
+     "Malicious code generation",
+     "Context Manipulation",
+     "Request manipulation",
+     "Data poisoning"
+    ],
+    "vysvetleni": {
+     "a": "Is not correct. Malicious code generation involves “manipulating an LLM to generate backdoors (e.g., external command calls) during use”, not injecting false data into training datasets.",
+     "b": "Is not correct. Context Manipulation involves “sending requests designed to extract confidential training data”, not injecting false data into training datasets.",
+     "c": "Is not correct. Request manipulation involves “introducing data that disrupts the AI’s output” during runtime use, not injecting false data into training datasets.",
+     "d": "Is correct. According to the syllabus in section 3.2.2, data poisoning involves “manipulating training data” with the specific example of “providing fake evaluations when rating the results of an AI-generated test report”. The question describes this attack vector: an attacker is injecting falsified test (execution) results into the training dataset, which directly manipulates the training data to compromise the LLM’s ability to accurately recommend optimal test coverage strategies."
+    },
+    "vysvetleni_obecne": ""
+   },
+   "cz": {
+    "q": "<p>Útočník vloží zfalšované výsledky testů do trénovací datové sady LLM, který má doporučovat optimální strategie pokrytí testy. Na jaký typ vektoru útoku tento popis NEJLÉPE odkazuje?</p>",
+    "moznosti": [
+     "Generování škodlivého kódu (malicious code generation)",
+     "Manipulace s kontextem (context manipulation)",
+     "Manipulace s požadavkem (request manipulation)",
+     "Otrávení dat (data poisoning)"
+    ],
+    "vysvetleni": {
+     "a": "Není správně. Generování škodlivého kódu znamená „přimět LLM, aby během používání generoval zadní vrátka (např. volání externích příkazů)“, ne vkládat falešná data do trénovací sady.",
+     "b": "Není správně. Manipulace s kontextem znamená „posílat požadavky, jejichž cílem je vytáhnout důvěrná trénovací data“, ne vkládat falešná data do trénovací sady.",
+     "c": "Není správně. Manipulace s požadavkem znamená „vložit data, která naruší výstup AI“ během používání, ne vkládat falešná data do trénovací sady.",
+     "d": "Je správně. Podle sylabu 3.2.2 je otrávení dat „manipulace s trénovacími daty“; sylabus uvádí příklad „falešné hodnocení při hodnocení výsledků reportu z testování vygenerovaného AI“. Otázka popisuje přesně tento vektor: útočník vkládá zfalšované výsledky (provedení) testů do trénovací sady, a tím přímo manipuluje trénovací data a narušuje schopnost LLM správně doporučovat strategie pokrytí."
+    },
+    "vysvetleni_obecne": ""
+   },
+   "spravne": [
+    "d"
+   ],
+   "oddil": "3.2.2",
+   "poznamka": "Ve v1.1 byl vektor útoku „Data exfiltration“ přejmenován na „Context Manipulation“ (sylabus 3.2.2 i otázky 24 a 25). Starší materiály a kurzy podle v1.0 používají „data exfiltration“."
+  },
+  {
+   "id": "A-25",
+   "zdroj": "sample-a",
+   "lo": "GenAI-3.2.2",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Match each type of attack vector against an LLM (1-4) with the corresponding example (A-D):</p><ul><li>1. Context Manipulation</li><li>2. Request manipulation</li><li>3. Data poisoning</li><li>4. Malicious code generation</li></ul><ul><li>A. An attacker maliciously modifies the data associated with traceability links between requirements and test cases into the dataset used for fine-tuning an LLM, compromising its accuracy in generating test cases from requirements.</li><li>B. An attacker maliciously crafts and provides deceptive prompts that induce an LLM, fine-tuned to assist testers in automated test script generation, to produce vulnerable test scripts with hidden security flaws.</li><li>C. An attacker maliciously provides large specially crafted prompts that induce an LLM, fine-tuned to assist testers in generating test cases, to accidentally reveal confidential API keys inherited from past test projects.</li><li>D. An attacker maliciously submits carefully modified reference screenshots into a visual testing framework that uses an LLM for comparative visual analysis, to trick the LLM into systematically ignoring genuine UI issues during regression testing.</li></ul>",
+    "moznosti": [
+     "1C, 2D, 3A, 4B",
+     "1B, 2D, 3A, 4C",
+     "1D, 2C, 3B, 4A",
+     "1C, 2B, 3D, 4A"
+    ],
+    "vysvetleni": {
+     "a": "Is correct.",
+     "b": "Is not correct.",
+     "c": "Is not correct.",
+     "d": "Is not correct."
+    },
+    "vysvetleni_obecne": "<p>Considering:</p><ul><li>Context Manipulation is based on sending requests designed to extract confidential training data. (1C)</li><li>Request manipulation is based on introducing an image that disrupts the LLM output. (2D)</li><li>Data poisoning is based on manipulating recommendations through fake evaluations used in training. (3A)</li><li>Malicious code generation is based on manipulating a LLM to generate backdoors (e.g., external command calls) during use. (4B)</li></ul>"
+   },
+   "cz": {
+    "q": "<p>Přiřaď každý typ vektoru útoku na LLM (1–4) k odpovídajícímu příkladu (A–D):</p><ul><li>1. Manipulace s kontextem (context manipulation)</li><li>2. Manipulace s požadavkem (request manipulation)</li><li>3. Otrávení dat (data poisoning)</li><li>4. Generování škodlivého kódu (malicious code generation)</li></ul><ul><li>A. Útočník záměrně upraví data o vazbách trasovatelnosti mezi požadavky a testovacími případy v datové sadě pro fine-tuning LLM, a naruší tak jeho přesnost při generování testovacích případů z požadavků.</li><li>B. Útočník záměrně vytvoří a podstrčí klamavé prompty, které LLM doladěný pro pomoc testerům s generováním automatizovaných testovacích skriptů přimějí vytvořit zranitelné skripty se skrytými bezpečnostními chybami.</li><li>C. Útočník záměrně posílá velké, speciálně vytvořené prompty, které LLM doladěný pro pomoc testerům s generováním testovacích případů přimějí omylem prozradit důvěrné API klíče zděděné z minulých testovacích projektů.</li><li>D. Útočník záměrně nahraje pečlivě upravené referenční snímky obrazovky do frameworku pro vizuální testování, který používá LLM ke srovnávací vizuální analýze, aby LLM při regresním testování soustavně přehlížel skutečné vady UI.</li></ul>",
+    "moznosti": [
+     "1C, 2D, 3A, 4B",
+     "1B, 2D, 3A, 4C",
+     "1D, 2C, 3B, 4A",
+     "1C, 2B, 3D, 4A"
+    ],
+    "vysvetleni": {
+     "a": "Je správně.",
+     "b": "Není správně.",
+     "c": "Není správně.",
+     "d": "Není správně."
+    },
+    "vysvetleni_obecne": "<p>Platí:</p><ul><li>Manipulace s kontextem spočívá v posílání požadavků, jejichž cílem je vytáhnout důvěrná trénovací data. (1C)</li><li>Manipulace s požadavkem spočívá ve vložení obrázku, který naruší výstup LLM. (2D)</li><li>Otrávení dat spočívá v manipulaci doporučení pomocí falešných hodnocení použitých při trénování. (3A)</li><li>Generování škodlivého kódu spočívá v tom, že LLM je během používání přiměn generovat zadní vrátka (např. volání externích příkazů). (4B)</li></ul>"
+   },
+   "spravne": [
+    "a"
+   ],
+   "oddil": "3.2.2",
+   "poznamka": "Ve v1.1 nahradil pojem „Context Manipulation“ dřívější „Data exfiltration“ (viz Release Notes v1.1)."
+  },
+  {
+   "id": "A-26",
+   "zdroj": "sample-a",
+   "lo": "GenAI-3.2.3",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Which of the following strategies BEST addresses data privacy risks in the context of Generative AI-powered software testing?</p>",
+    "moznosti": [
+     "Using multiple LLMs to evaluate and compare test results for improved accuracy.",
+     "Replacing sensitive test data with an anonymized version of the same.",
+     "Allowing unrestricted access to sensitive test data to improve Generative AI model training.",
+     "Disabling encryption of sensitive test data to streamline data storage and transmission processes."
+    ],
+    "vysvetleni": {
+     "a": "Is not correct. While evaluating outputs by comparing multiple LLMs is a useful practice, in this case it focuses on output quality in terms of accuracy without addressing data privacy risks.",
+     "b": "Is correct. Anonymization is an effective strategy to mitigate data privacy risks.",
+     "c": "Is not correct. Unrestricted access to sensitive data increases the risk of sensitive data breach.",
+     "d": "Is not correct. Disabling encryption of sensitive data weakens security and increases the risk of sensitive data theft."
+    },
+    "vysvetleni_obecne": ""
+   },
+   "cz": {
+    "q": "<p>Která z následujících strategií NEJLÉPE řeší rizika pro ochranu dat a soukromí (data privacy) při testování softwaru s pomocí generativní AI?</p>",
+    "moznosti": [
+     "Použití více LLM k vyhodnocení a porovnání výsledků testů kvůli vyšší přesnosti.",
+     "Nahrazení citlivých testovacích dat jejich anonymizovanou verzí.",
+     "Povolení neomezeného přístupu k citlivým testovacím datům kvůli lepšímu trénování modelu generativní AI.",
+     "Vypnutí šifrování citlivých testovacích dat kvůli zjednodušení jejich ukládání a přenosu."
+    ],
+    "vysvetleni": {
+     "a": "Není správně. Porovnání výstupů více LLM je užitečná praxe, ale zde řeší kvalitu (přesnost) výstupu, ne rizika pro ochranu dat.",
+     "b": "Je správně. Anonymizace je účinná strategie ke zmírnění rizik pro ochranu dat a soukromí.",
+     "c": "Není správně. Neomezený přístup k citlivým datům zvyšuje riziko jejich úniku.",
+     "d": "Není správně. Vypnutí šifrování citlivých dat oslabuje bezpečnost a zvyšuje riziko jejich krádeže."
+    },
+    "vysvetleni_obecne": ""
+   },
+   "spravne": [
+    "b"
+   ],
+   "oddil": "3.2.3",
+   "poznamka": ""
+  },
+  {
+   "id": "A-27",
+   "zdroj": "sample-a",
+   "lo": "GenAI-3.3.1",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Which of the following options about the impact of LLM usage on energy consumption and CO₂ emission is CORRECT?</p>",
+    "moznosti": [
+     "Image generation tasks consume substantially more energy than text generation tasks, but produce fewer CO₂ emissions.",
+     "Generative AI-powered searches consume significantly less energy than traditional web searches due to their optimized algorithms.",
+     "Image generation tasks consume substantially more energy than text generation tasks due to their higher computational complexity.",
+     "Text generation tasks consume very little energy, allowing them to be performed by millions of users without significant energy consumption."
+    ],
+    "vysvetleni": {
+     "a": "Is not correct. Image generation is by far much more energy- and CO₂-intensive than text generation. Energy consumption and CO₂ emissions are typically correlated unless a key factor (like energy source differences) is specified.",
+     "b": "Is not correct. On the contrary, GenAI-powered searches consume considerably more energy than traditional web searches.",
+     "c": "Is correct. Image generation requires significantly more computational resources than text generation, making it much more energy intensive.",
+     "d": "Is not correct. The cumulative impact of text generation across millions of users is not negligible."
+    },
+    "vysvetleni_obecne": ""
+   },
+   "cz": {
+    "q": "<p>Která z následujících možností o dopadu používání LLM na spotřebu energie a emise CO₂ je SPRÁVNÁ?</p>",
+    "moznosti": [
+     "Generování obrázků spotřebuje podstatně více energie než generování textu, ale produkuje méně emisí CO₂.",
+     "Vyhledávání pomocí generativní AI spotřebuje díky optimalizovaným algoritmům výrazně méně energie než tradiční webové vyhledávání.",
+     "Generování obrázků spotřebuje podstatně více energie než generování textu kvůli vyšší výpočetní náročnosti.",
+     "Generování textu spotřebuje velmi málo energie, takže ho mohou využívat miliony uživatelů bez významné spotřeby energie."
+    ],
+    "vysvetleni": {
+     "a": "Není správně. Generování obrázků je energeticky i emisně mnohem náročnější než generování textu. Spotřeba energie a emise CO₂ spolu obvykle souvisejí, pokud není uveden zásadní rozdíl (např. jiný zdroj energie).",
+     "b": "Není správně. Naopak, vyhledávání s generativní AI spotřebuje výrazně více energie než tradiční webové vyhledávání.",
+     "c": "Je správně. Generování obrázků vyžaduje výrazně více výpočetních prostředků než generování textu, a je proto energeticky mnohem náročnější.",
+     "d": "Není správně. Souhrnný dopad generování textu u milionů uživatelů není zanedbatelný."
+    },
+    "vysvetleni_obecne": ""
+   },
+   "spravne": [
+    "c"
+   ],
+   "oddil": "3.3.1",
+   "poznamka": ""
+  },
+  {
+   "id": "A-28",
+   "zdroj": "sample-a",
+   "lo": "GenAI-3.4.1",
+   "k": "K1",
+   "body": 1,
+   "vyber": 2,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Which TWO of the following standards, or parts of them, are MOST relevant to the use of Generative AI in software testing?</p>",
+    "moznosti": [
+     "ISO/IEC 25010:2023",
+     "ISO/IEC 23053:2022",
+     "ISO/IEC/IEEE 29119-2:2021",
+     "ISO/IEC 42001:2023",
+     "ISO/IEC/IEEE 29119-3:2021"
+    ],
+    "vysvetleni": {
+     "a": "Is not correct. ISO/IEC 25010:2023 is a standard (not mentioned in the syllabus, but mentioned in the CTFL syllabus) that defines a product quality model that relate to quality properties of ICT/software products. It does not address the use of GenAI in software testing.",
+     "b": "Is correct. ISO/IEC 23053:2022 is a standard (mentioned in section 3.4.1 of the syllabus) that provides a framework for data quality, transparency, and fault tolerance when using GenAI for testing.",
+     "c": "Is not correct. ISO/IEC/IEEE 29119-2:2021 is a part (volume) of the standard (not mentioned in the syllabus, but mentioned in the CTFL syllabus) that deals with test processes. It does not address the use of GenAI in software testing.",
+     "d": "Is correct. ISO/IEC 42001:2023 is a standard (mentioned in section 3.4.1 of the syllabus) that specifies requirements for managing AI-based systems within an organization, providing best practices for GenAI in software testing and promoting consistency and reliability.",
+     "e": "Is not correct. ISO/IEC/IEEE 29119-3:2021 is a part (volume) of the standard (not mentioned in the syllabus, but mentioned in the CTFL syllabus) that deals with test documentation. It does not address the use of GenAI in software testing."
+    },
+    "vysvetleni_obecne": ""
+   },
+   "cz": {
+    "q": "<p>Které DVA z následujících standardů (nebo jejich částí) jsou pro použití generativní AI v testování softwaru NEJRELEVANTNĚJŠÍ?</p>",
+    "moznosti": [
+     "ISO/IEC 25010:2023",
+     "ISO/IEC 23053:2022",
+     "ISO/IEC/IEEE 29119-2:2021",
+     "ISO/IEC 42001:2023",
+     "ISO/IEC/IEEE 29119-3:2021"
+    ],
+    "vysvetleni": {
+     "a": "Není správně. ISO/IEC 25010:2023 je standard (v tomto sylabu neuvedený, zmiňuje ho sylabus CTFL), který definuje model kvality produktu, tj. charakteristiky kvality ICT a softwarových produktů. Použitím GenAI v testování se nezabývá.",
+     "b": "Je správně. ISO/IEC 23053:2022 je standard (uvedený v sylabu 3.4.1), který poskytuje rámec pro kvalitu dat, transparentnost a odolnost vůči chybám při použití GenAI v testování.",
+     "c": "Není správně. ISO/IEC/IEEE 29119-2:2021 je část standardu (v tomto sylabu neuvedená, zmiňuje ji sylabus CTFL), která se týká procesů testování. Použitím GenAI v testování se nezabývá.",
+     "d": "Je správně. ISO/IEC 42001:2023 je standard (uvedený v sylabu 3.4.1), který stanoví požadavky na řízení systémů AI v organizaci; poskytuje osvědčené postupy pro GenAI v testování a podporuje konzistenci a spolehlivost.",
+     "e": "Není správně. ISO/IEC/IEEE 29119-3:2021 je část standardu (v tomto sylabu neuvedená, zmiňuje ji sylabus CTFL), která se týká testovací dokumentace. Použitím GenAI v testování se nezabývá."
+    },
+    "vysvetleni_obecne": ""
+   },
+   "spravne": [
+    "b",
+    "d"
+   ],
+   "oddil": "3.4.1",
+   "poznamka": "Vysvětlení u b uvádí u ISO/IEC 23053 „fault tolerance“; tabulka v sylabu 3.4.1 uvádí „data quality, transparency, and safety“. Na klíč to vliv nemá."
+  },
+  {
+   "id": "A-29",
+   "zdroj": "sample-a",
+   "lo": "GenAI-4.1.1",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Which of the following components of an LLM-powered testing application is responsible for combining user input with structured and semantically similar data to prepare a prompt for the LLM?</p>",
+    "moznosti": [
+     "Back-end",
+     "Front-end",
+     "Authentication component",
+     "Post-processing component"
+    ],
+    "vysvetleni": {
+     "a": "Is correct. The back-end is responsible for retrieving data from relational and vector databases, combining it with user input, and preparing the prompt tailored for the LLM.",
+     "b": "Is not correct. The front-end serves as the user interface for submitting input, but it does not prepare the prompt for the LLM.",
+     "c": "Is not correct. The authentication component ensures secure access but is unrelated to data retrieval or prompt preparation.",
+     "d": "Is not correct. The post-processing component refines the output generated by the LLM but does not handle prompt preparation."
+    },
+    "vysvetleni_obecne": ""
+   },
+   "cz": {
+    "q": "<p>Která z následujících součástí testovací aplikace postavené na LLM odpovídá za spojení vstupu uživatele se strukturovanými a sémanticky podobnými daty a za přípravu promptu pro LLM?</p>",
+    "moznosti": [
+     "Back-end",
+     "Front-end",
+     "Autentizační komponenta",
+     "Komponenta pro následné zpracování (post-processing)"
+    ],
+    "vysvetleni": {
+     "a": "Je správně. Back-end načítá data z relačních a vektorových databází, spojuje je se vstupem uživatele a připravuje prompt pro LLM.",
+     "b": "Není správně. Front-end slouží jako uživatelské rozhraní pro zadání vstupu, prompt pro LLM ale nepřipravuje.",
+     "c": "Není správně. Autentizační komponenta zajišťuje bezpečný přístup, s načítáním dat ani přípravou promptu nesouvisí.",
+     "d": "Není správně. Komponenta pro následné zpracování upravuje výstup vygenerovaný LLM, přípravu promptu neřeší."
+    },
+    "vysvetleni_obecne": ""
+   },
+   "spravne": [
+    "a"
+   ],
+   "oddil": "4.1.1",
+   "poznamka": ""
+  },
+  {
+   "id": "A-30",
+   "zdroj": "sample-a",
+   "lo": "GenAI-4.1.2",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>You are a tester working on a banking application that includes features such as user login, account management, and secure transactions. The system documentation, including API specifications and security requirements, is stored in a vector database, while historical test cases are stored in a relational database. Your task is to generate test cases using a Retrieval-Augmented Generation (RAG) framework to ensure alignment with the latest specifications and requirements.</p><p>Which of the following options represents the MOST appropriate use of the RAG framework in this scenario?</p>",
+    "moznosti": [
+     "Submit a query specifying one function to be tested. The RAG framework will retrieve relevant specifications and requirements from the vector database, combine them with historical test cases, and automatically generate accurate and context-aware test cases through the LLM.",
+     "Submit a query specifying all functions to be tested. The RAG framework will retrieve relevant specifications and requirements from the vector database, combine them with historical test cases, and automatically generate accurate and context-aware test cases through the LLM.",
+     "Use the RAG framework to retrieve historical test cases from the relational database and security requirements from the vector database. Manually review the retrieved information before refining the query for the LLM to generate targeted test cases.",
+     "Rely on the LLM’s internal training data to generate test cases while using the RAG framework or reference retrieval without directly integrating retrieved information into the generation process."
+    ],
+    "vysvetleni": {
+     "a": "Is correct. RAG automatically retrieves the relevant specifications and historical test-case chunks and feeds them to the LLM, which then generates accurate, context-aware test cases.",
+     "b": "Is not correct. RAG is better used when asked to retrieve specific targeted information from the vector database and not the whole dataset.",
+     "c": "Is not correct. Manually reviewing and refining the query adds unnecessary effort, which contradicts RAG’s design to automate retrieval and use retrieved data dynamically in the LLM’s response generation.",
+     "d": "Is not correct. Relying on the LLM’s internal data ignores RAG’s core capability of enhancing responses by integrating external, up-to-date information."
+    },
+    "vysvetleni_obecne": ""
+   },
+   "cz": {
+    "q": "<p>Jsi tester bankovní aplikace s funkcemi jako přihlášení uživatele, správa účtu a zabezpečené transakce. Systémová dokumentace včetně specifikací API a bezpečnostních požadavků je uložena ve vektorové databázi (vector database), historické testovací případy v relační databázi. Tvým úkolem je vygenerovat testovací případy pomocí frameworku RAG (generování rozšířené o vyhledávání, retrieval-augmented generation) tak, aby odpovídaly nejnovějším specifikacím a požadavkům.</p><p>Která z následujících možností představuje NEJVHODNĚJŠÍ použití frameworku RAG v tomto scénáři?</p>",
+    "moznosti": [
+     "Zadat dotaz na jednu testovanou funkci. Framework RAG načte z vektorové databáze relevantní specifikace a požadavky, spojí je s historickými testovacími případy a prostřednictvím LLM automaticky vygeneruje přesné testovací případy s ohledem na kontext.",
+     "Zadat dotaz na všechny testované funkce. Framework RAG načte z vektorové databáze relevantní specifikace a požadavky, spojí je s historickými testovacími případy a prostřednictvím LLM automaticky vygeneruje přesné testovací případy s ohledem na kontext.",
+     "Pomocí frameworku RAG načíst historické testovací případy z relační databáze a bezpečnostní požadavky z vektorové databáze. Načtené informace ručně zrevidovat a teprve potom upřesnit dotaz pro LLM, aby vygeneroval cílené testovací případy.",
+     "Spolehnout se při generování testovacích případů na interní trénovací data LLM a framework RAG nebo vyhledávání referencí použít bez přímého zapojení načtených informací do generování."
+    ],
+    "vysvetleni": {
+     "a": "Je správně. RAG automaticky načte relevantní části specifikací a historických testovacích případů a předá je LLM, který pak vygeneruje přesné testovací případy s ohledem na kontext.",
+     "b": "Není správně. RAG se lépe uplatní při načítání konkrétních cílených informací z vektorové databáze, ne celé datové sady.",
+     "c": "Není správně. Ruční revize a upřesňování dotazu přidává zbytečnou práci a odporuje principu RAG, který vyhledávání automatizuje a načtená data dynamicky použije při generování odpovědi.",
+     "d": "Není správně. Spoléhání na interní data LLM ignoruje hlavní přínos RAG: obohacení odpovědí o externí aktuální informace."
+    },
+    "vysvetleni_obecne": ""
+   },
+   "spravne": [
+    "a"
+   ],
+   "oddil": "4.1.2",
+   "poznamka": ""
+  },
+  {
+   "id": "A-31",
+   "zdroj": "sample-a",
+   "lo": "GenAI-4.1.3",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Which of the following options BEST describes the enhancements that autonomous and semi-autonomous LLM-powered agents bring to automating test processes?</p>",
+    "moznosti": [
+     "They can enhance both efficiency and quality in automating test processes through a balanced use of single-agent and multi-agent systems.",
+     "They can enhance quality in automating test processes by adding complex verification checks although at the expense of efficiency.",
+     "They can enhance both efficiency and quality in automating test processes by leveraging their ability to operate with varying levels of human interaction.",
+     "They can enhance both efficiency and quality in automating test processes while eliminating the need for verification within these test processes."
+    ],
+    "vysvetleni": {
+     "a": "Is not correct. Autonomous and semi-autonomous agents can be implemented as single-agent and/or multi-agent systems to improve both efficiency and quality in test processes. However, the key enhancements that these agents bring refer to increased efficiency and quality in test processes due to their ability to balance autonomy with human oversight.",
+     "b": "Is not correct. While autonomous and semi-autonomous agents incorporate verifications to ensure quality, these verifications are also designed to be efficient. The use of automated checks actually aims to streamline the test processes and enhance quality without sacrificing efficiency (and vice versa) which, in turn, is also enhanced.",
+     "c": "Is correct. Autonomous agents increase efficiency by executing test tasks within the test processes with minimal human intervention and by using automated checks designed to be efficient. Semi-autonomous agents involve strategic human oversight, which ensures the quality of test results. These two types of agents allow implementing a balanced approach to achieve both efficiency and quality by leveraging their ability to operate with varying levels of human interaction.",
+     "d": "Is not correct. The complete elimination of verification is neither realistic nor desirable. Verification remains crucial even when using advanced technologies like autonomous and semi-autonomous LLM-powered agents."
+    },
+    "vysvetleni_obecne": ""
+   },
+   "cz": {
+    "q": "<p>Která z následujících možností NEJLÉPE popisuje zlepšení, která do automatizace procesů testování přinášejí autonomní a poloautonomní agenti postavení na LLM (LLM-powered agents)?</p>",
+    "moznosti": [
+     "Mohou zvýšit efektivitu i kvalitu automatizace procesů testování vyváženým využitím jednoagentních a multiagentních systémů.",
+     "Mohou zvýšit kvalitu automatizace procesů testování přidáním složitých ověřovacích kontrol, i když na úkor efektivity.",
+     "Mohou zvýšit efektivitu i kvalitu automatizace procesů testování díky schopnosti fungovat s různou mírou lidské interakce.",
+     "Mohou zvýšit efektivitu i kvalitu automatizace procesů testování a zároveň v nich odstranit potřebu ověřování."
+    ],
+    "vysvetleni": {
+     "a": "Není správně. Autonomní i poloautonomní agenti mohou být realizováni jako jednoagentní nebo multiagentní systémy a zlepšit efektivitu i kvalitu. Hlavní přínos ale plyne z toho, že vyvažují autonomii s lidským dohledem.",
+     "b": "Není správně. Agenti sice obsahují ověřování kvůli kvalitě, ale i to je navrženo efektivně. Automatické kontroly mají procesy testování zefektivnit a zlepšit kvalitu bez obětování efektivity (a naopak), takže roste i efektivita.",
+     "c": "Je správně. Autonomní agenti zvyšují efektivitu tím, že provádějí testovací úlohy s minimálním lidským zásahem a s efektivními automatickými kontrolami. Poloautonomní agenti zahrnují strategický lidský dohled, který zajišťuje kvalitu výsledků. Oba typy umožňují vyvážený přístup, který díky různé míře lidské interakce dosáhne efektivity i kvality.",
+     "d": "Není správně. Úplné odstranění ověřování není realistické ani žádoucí. Ověřování zůstává zásadní i u pokročilých technologií, jako jsou autonomní a poloautonomní agenti postavení na LLM."
+    },
+    "vysvetleni_obecne": ""
+   },
+   "spravne": [
+    "c"
+   ],
+   "oddil": "4.1.3",
+   "poznamka": ""
+  },
+  {
+   "id": "A-32",
+   "zdroj": "sample-a",
+   "lo": "GenAI-4.2.1",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Which of the following statements about fine-tuning language models for specific test tasks is INCORRECT?</p>",
+    "moznosti": [
+     "Fine-tuning involves training a pre-trained model on task-specific data to enhance its performance and domain knowledge.",
+     "Fine-tuning equips a language model with new capabilities by replacing its general knowledge with task-specific reasoning, ensuring the absence of overfitting.",
+     "Fine-tuning modifies a pre-trained model’s parameters using a targeted dataset to adapt it for a specific domain or task.",
+     "Fine-tuning requires high-quality, task-specific datasets to avoid biased or inaccurate results."
+    ],
+    "vysvetleni": {
+     "a": "Is not correct. This is a correct description of fine-tuning, which enhances a model’s performance in a specific domain through task-specific training.",
+     "b": "Is correct. This statement is incorrect because fine-tuning does not replace the model's general knowledge, and overfitting remains a potential challenge.",
+     "c": "Is not correct. This is a correct description, as fine-tuning involves parameter adjustment using targeted datasets.",
+     "d": "Is not correct. This is a correct description of the challenges associated with fine-tuning, as high-quality datasets are crucial for effective adaptation."
+    },
+    "vysvetleni_obecne": ""
+   },
+   "cz": {
+    "q": "<p>Které z následujících tvrzení o fine-tuningu (doladění) jazykových modelů pro konkrétní testovací úlohy je NESPRÁVNÉ?</p>",
+    "moznosti": [
+     "Fine-tuning znamená trénování předtrénovaného modelu na datech specifických pro úlohu, aby se zlepšil jeho výkon a doménové znalosti.",
+     "Fine-tuning dává jazykovému modelu nové schopnosti tím, že nahradí jeho obecné znalosti uvažováním specifickým pro úlohu, a zaručí tak, že nedojde k přeučení (overfitting).",
+     "Fine-tuning mění parametry předtrénovaného modelu pomocí cílené datové sady, aby se model přizpůsobil konkrétní doméně nebo úloze.",
+     "Fine-tuning vyžaduje kvalitní datové sady specifické pro úlohu, aby se předešlo zkresleným nebo nepřesným výsledkům."
+    ],
+    "vysvetleni": {
+     "a": "Není správně (tvrzení platí). Je to správný popis fine-tuningu, který zlepšuje výkon modelu v konkrétní doméně trénováním na úloze.",
+     "b": "Je správně (tvrzení je nesprávné). Fine-tuning nenahrazuje obecné znalosti modelu a přeučení zůstává možným problémem.",
+     "c": "Není správně (tvrzení platí). Je to správný popis: fine-tuning upravuje parametry pomocí cílených datových sad.",
+     "d": "Není správně (tvrzení platí). Je to správný popis výzev fine-tuningu: pro účinné přizpůsobení jsou kvalitní datové sady zásadní."
+    },
+    "vysvetleni_obecne": ""
+   },
+   "spravne": [
+    "b"
+   ],
+   "oddil": "4.2.1",
+   "poznamka": ""
+  },
+  {
+   "id": "A-33",
+   "zdroj": "sample-a",
+   "lo": "GenAI-4.2.2",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Which of the following BEST describes the primary focus of Large Language Model Operations (LLMOps) when deploying and managing LLMs for test tasks?</p>",
+    "moznosti": [
+     "Preventing reliance on Generative AI in test processes.",
+     "Managing LLMs effectively across their lifecycle, including privacy, security, and cost considerations.",
+     "Limiting LLM usage to chatbot-based testing solutions to reduce complexity.",
+     "Fully automating all test tasks without requiring human oversight."
+    ],
+    "vysvetleni": {
+     "a": "Is not correct. Large Language Model Operations (LLMOps) focuses on managing LLMs, not preventing their use.",
+     "b": "Is correct. LLMOps manages LLMs across their lifecycle, addressing privacy, security, and cost for testing.",
+     "c": "Is not correct. LLMOps applies to various applications, not just chatbot-based solutions.",
+     "d": "Is not correct. LLMOps does not aim to fully automate all test tasks or eliminate human oversight."
+    },
+    "vysvetleni_obecne": ""
+   },
+   "cz": {
+    "q": "<p>Co NEJLÉPE popisuje hlavní zaměření LLMOps (Large Language Model Operations) při nasazování a správě LLM pro testovací úlohy?</p>",
+    "moznosti": [
+     "Zabránit spoléhání na generativní AI v procesech testování.",
+     "Efektivně spravovat LLM během celého životního cyklu, včetně ohledů na ochranu dat, bezpečnost a náklady.",
+     "Omezit použití LLM na testovací řešení založená na chatbotech kvůli nižší složitosti.",
+     "Plně automatizovat všechny testovací úlohy bez potřeby lidského dohledu."
+    ],
+    "vysvetleni": {
+     "a": "Není správně. LLMOps se zaměřuje na správu LLM, ne na zabránění jejich použití.",
+     "b": "Je správně. LLMOps spravuje LLM během celého životního cyklu a řeší ochranu dat, bezpečnost a náklady při testování.",
+     "c": "Není správně. LLMOps se týká různých aplikací, nejen řešení založených na chatbotech.",
+     "d": "Není správně. Cílem LLMOps není plně automatizovat všechny testovací úlohy ani odstranit lidský dohled."
+    },
+    "vysvetleni_obecne": ""
+   },
+   "spravne": [
+    "b"
+   ],
+   "oddil": "4.2.2",
+   "poznamka": ""
+  },
+  {
+   "id": "A-34",
+   "zdroj": "sample-a",
+   "lo": "GenAI-5.1.1",
+   "k": "K1",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Which of the following statements about shadow AI is CORRECT?</p>",
+    "moznosti": [
+     "Shadow AI enforces compliance with organizational data policies and general AI regulations.",
+     "Shadow AI eliminates the need for clear licensing agreements in AI tools.",
+     "Shadow AI reduces the risk of intellectual property disputes.",
+     "Shadow AI may lead to unauthorized accesses to sensitive information."
+    ],
+    "vysvetleni": {
+     "a": "Is not correct. Using unapproved GenAI tools does not enforce organizational data policies.",
+     "b": "Is not correct. Shadow AI introduces risks related to unclear licensing agreements, which can lead to intellectual property disputes.",
+     "c": "Is not correct. Shadow AI increases, rather than reduces, the risk of intellectual property disputes.",
+     "d": "Is correct. Unapproved AI tools often lack robust security measures, increasing the risk of data breaches or unauthorized access."
+    },
+    "vysvetleni_obecne": ""
+   },
+   "cz": {
+    "q": "<p>Které z následujících tvrzení o stínové AI (shadow AI) je SPRÁVNÉ?</p>",
+    "moznosti": [
+     "Stínová AI vynucuje dodržování datových politik organizace a obecných předpisů pro AI.",
+     "Stínová AI odstraňuje potřebu jasných licenčních ujednání u nástrojů AI.",
+     "Stínová AI snižuje riziko sporů o duševní vlastnictví.",
+     "Stínová AI může vést k neoprávněnému přístupu k citlivým informacím."
+    ],
+    "vysvetleni": {
+     "a": "Není správně. Používání neschválených nástrojů GenAI datové politiky organizace nevynucuje.",
+     "b": "Není správně. Stínová AI přináší rizika nejasných licenčních ujednání, která mohou vést ke sporům o duševní vlastnictví.",
+     "c": "Není správně. Stínová AI riziko sporů o duševní vlastnictví zvyšuje, ne snižuje.",
+     "d": "Je správně. Neschválené nástroje AI často nemají dostatečné zabezpečení, a zvyšují tak riziko úniku dat nebo neoprávněného přístupu."
+    },
+    "vysvetleni_obecne": ""
+   },
+   "spravne": [
+    "d"
+   ],
+   "oddil": "5.1.1",
+   "poznamka": ""
+  },
+  {
+   "id": "A-35",
+   "zdroj": "sample-a",
+   "lo": "GenAI-5.1.2",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>What is a key aspect to consider when defining a Generative AI strategy for software testing?</p>",
+    "moznosti": [
+     "Prepare training programs designed to ensure that team members obtain certifications specific to each LLM they use.",
+     "Select LLMs that can be integrated appropriately with existing test environments and test tools.",
+     "Ensure that as much input data as possible is available to increase the likelihood of obtaining effective LLM outputs.",
+     "Collect standard supervised machine learning metrics to evaluate the effectiveness of LLM outputs."
+    ],
+    "vysvetleni": {
+     "a": "Is not correct. While certifications for specific LLMs could be useful (and more available in the future), training programs should be designed to ensure that test team members have the technical skills necessary to use GenAI tools effectively.",
+     "b": "Is correct. Selecting LLMs that are compatible with existing test infrastructure and scalability requirements is a critical aspect of a GenAI strategy. Test tools and test environments are fundamental elements of test infrastructure.",
+     "c": "Is not correct. Data quality and structured, secure input are crucial for achieving reliable results with GenAI. It is necessary to have an adequate amount of high-quality input data (according to the test objectives), not as much data as possible.",
+     "d": "Is not correct. Section 5.1.2 states that a GenAI strategy for software testing must collect task-specific metrics to measure the effectiveness of LLM outputs. The metrics listed in section 2.3.1 (e.g., relevance, execution-success rate, time efficiency) are tailored to test tasks rather than borrowed wholesale from classical supervised-machine learning."
+    },
+    "vysvetleni_obecne": ""
+   },
+   "cz": {
+    "q": "<p>Jaký je klíčový aspekt, který je třeba zvážit při definování strategie generativní AI pro testování softwaru?</p>",
+    "moznosti": [
+     "Připravit školicí programy, které zajistí, že členové týmu získají certifikace pro každý LLM, který používají.",
+     "Vybrat LLM, které lze vhodně integrovat se stávajícími testovacími prostředími a testovacími nástroji.",
+     "Zajistit co nejvíce vstupních dat, aby byla větší šance na účinné výstupy LLM.",
+     "Sbírat standardní metriky strojového učení s učitelem (supervised learning) k vyhodnocení účinnosti výstupů LLM."
+    ],
+    "vysvetleni": {
+     "a": "Není správně. Certifikace pro konkrétní LLM by mohly být užitečné (a v budoucnu dostupnější), ale školicí programy mají zajistit, aby členové týmu měli technické dovednosti potřebné k efektivnímu používání nástrojů GenAI.",
+     "b": "Je správně. Výběr LLM kompatibilních se stávající testovací infrastrukturou a s požadavky na škálovatelnost je zásadní součástí strategie GenAI. Testovací nástroje a testovací prostředí jsou základními prvky testovací infrastruktury.",
+     "c": "Není správně. Pro spolehlivé výsledky GenAI je zásadní kvalita dat a strukturovaný, zabezpečený vstup. Potřeba je přiměřené množství kvalitních vstupních dat (podle cílů testování), ne co nejvíce dat.",
+     "d": "Není správně. Oddíl 5.1.2 uvádí, že strategie GenAI má sbírat metriky specifické pro úlohy, které měří účinnost výstupů LLM. Metriky z oddílu 2.3.1 (např. relevance, míra úspěšnosti provedení, časová efektivita) jsou šité na testovací úlohy, nejsou převzaté z klasického strojového učení s učitelem."
+    },
+    "vysvetleni_obecne": ""
+   },
+   "spravne": [
+    "b"
+   ],
+   "oddil": "5.1.2",
+   "poznamka": ""
+  },
+  {
+   "id": "A-36",
+   "zdroj": "sample-a",
+   "lo": "GenAI-5.1.3",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Which of the following statements BEST describes one of the key criteria to select an appropriate LLM for specific test tasks within a test organization?</p>",
+    "moznosti": [
+     "A key selection criterion involves evaluating the LLM’s performance for the test tasks against the publicly available benchmarks for LLMs in code generation.",
+     "A key selection criterion involves evaluating recurring costs such as those associated with the computational resources required to run the LLM.",
+     "A key selection criterion involves evaluating the LLM against the publicly available community benchmarks to ensure full compatibility with them.",
+     "A key selection criterion involves evaluating recurring costs such as those associated with a proof of concept aimed at demonstrating the suitability of an LLM for the test tasks."
+    ],
+    "vysvetleni": {
+     "a": "Is not correct. A key selection criterion involves evaluating the model’s performance for the test tasks against the organization's benchmarks using metrics such as those presented in the syllabus itself (see the syllabus in section 5.1.3). The specified criterion may be relevant if the test tasks involve code generation. However, it is not applicable for other types of test tasks.",
+     "b": "Is correct. A key selection criterion involves evaluating recurring costs (see the syllabus in section 5.1.3), and this answer refers to a typical example of a recurring cost.",
+     "c": "Is not correct. Evaluating the LLM against the publicly available community benchmarks to ensure full compatibility with them is not one of the key criteria mentioned in the syllabus (in section 5.1.3) for selecting an appropriate LLM for specific test tasks.",
+     "d": "Is not correct. A key selection criterion involves evaluating recurring costs (see the syllabus in section 5.1.3), but this answer refers to a typical example of a non-recurring cost."
+    },
+    "vysvetleni_obecne": ""
+   },
+   "cz": {
+    "q": "<p>Které z následujících tvrzení NEJLÉPE popisuje jedno z klíčových kritérií pro výběr vhodného LLM pro konkrétní testovací úlohy v testovací organizaci?</p>",
+    "moznosti": [
+     "Klíčovým kritériem je vyhodnocení výkonu LLM pro testovací úlohy vůči veřejně dostupným benchmarkům LLM pro generování kódu.",
+     "Klíčovým kritériem je vyhodnocení opakovaných nákladů, například nákladů na výpočetní prostředky potřebné k provozu LLM.",
+     "Klíčovým kritériem je vyhodnocení LLM vůči veřejně dostupným komunitním benchmarkům, aby s nimi byl plně kompatibilní.",
+     "Klíčovým kritériem je vyhodnocení opakovaných nákladů, například nákladů na proof of concept, který má prokázat vhodnost LLM pro testovací úlohy."
+    ],
+    "vysvetleni": {
+     "a": "Není správně. Klíčovým kritériem je vyhodnocení výkonu modelu pro testovací úlohy vůči benchmarkům organizace s metrikami, jaké uvádí sám sylabus (viz 5.1.3). Uvedené kritérium může být relevantní, pokud testovací úlohy zahrnují generování kódu, pro jiné typy úloh ale neplatí.",
+     "b": "Je správně. Klíčovým kritériem je vyhodnocení opakovaných nákladů (recurring cost, viz sylabus 5.1.3) a tato odpověď uvádí typický příklad opakovaného nákladu.",
+     "c": "Není správně. Vyhodnocení vůči veřejným komunitním benchmarkům kvůli plné kompatibilitě s nimi nepatří mezi klíčová kritéria, která sylabus v 5.1.3 uvádí.",
+     "d": "Není správně. Klíčovým kritériem je sice vyhodnocení opakovaných nákladů (viz 5.1.3), ale tato odpověď uvádí typický příklad jednorázového nákladu."
+    },
+    "vysvetleni_obecne": ""
+   },
+   "spravne": [
+    "b"
+   ],
+   "oddil": "5.1.3",
+   "poznamka": ""
+  },
+  {
+   "id": "A-37",
+   "zdroj": "sample-a",
+   "lo": "GenAI-5.1.4",
+   "k": "K1",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>What are the key phases in the adoption of Generative AI in a test organization?</p>",
+    "moznosti": [
+     "Discovery, initiation and usage definition, utilization and iteration",
+     "Awareness, usage prioritization, performance monitoring",
+     "Planning, experimentation, evaluation and refinement",
+     "Training, testing, implementation, and scaling"
+    ],
+    "vysvetleni": {
+     "a": "Is correct: explicitly mentions all these 3 key phases.",
+     "b": "Is not correct: does not explicitly mention any of these 3 phases (only mentions some objectives and/or activities associated with these phases).",
+     "c": "Is not correct: does not explicitly mention any of these 3 phases (only mentions some objectives and/or activities associated with these phases).",
+     "d": "Is not correct: does not explicitly mention any of these 3 phases (only mentions some objectives and/or activities associated with these phases)."
+    },
+    "vysvetleni_obecne": "<p>The syllabus describes the following 3 key phases:</p><ul><li>Discovery</li><li>Initiation and usage definition</li><li>Utilization and iteration</li></ul>"
+   },
+   "cz": {
+    "q": "<p>Jaké jsou klíčové fáze zavádění generativní AI v testovací organizaci?</p>",
+    "moznosti": [
+     "Objevování (discovery), zahájení a definice použití (initiation and usage definition), využití a iterace (utilization and iteration)",
+     "Povědomí, prioritizace použití, monitorování výkonu",
+     "Plánování, experimentování, vyhodnocení a zdokonalení",
+     "Školení, testování, implementace a škálování"
+    ],
+    "vysvetleni": {
+     "a": "Je správně: výslovně uvádí všechny 3 klíčové fáze.",
+     "b": "Není správně: neuvádí výslovně žádnou ze 3 fází (zmiňuje jen některé cíle nebo činnosti, které k fázím patří).",
+     "c": "Není správně: neuvádí výslovně žádnou ze 3 fází (zmiňuje jen některé cíle nebo činnosti, které k fázím patří).",
+     "d": "Není správně: neuvádí výslovně žádnou ze 3 fází (zmiňuje jen některé cíle nebo činnosti, které k fázím patří)."
+    },
+    "vysvetleni_obecne": "<p>Sylabus popisuje tyto 3 klíčové fáze:</p><ul><li>Objevování (discovery)</li><li>Zahájení a definice použití (initiation and usage definition)</li><li>Využití a iterace (utilization and iteration)</li></ul>"
+   },
+   "spravne": [
+    "a"
+   ],
+   "oddil": "5.1.4",
+   "poznamka": ""
+  },
+  {
+   "id": "A-38",
+   "zdroj": "sample-a",
+   "lo": "GenAI-5.2.1",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Which of the following options BEST refers to an example of knowledge and/or skills required for testers to work effectively with LLMs in test processes?</p>",
+    "moznosti": [
+     "Mastering techniques specifically aimed at preventing LLMs from hallucinating and incurring reasoning errors when performing specific test tasks.",
+     "Selecting and implementing suitable test automation approaches, such as keyword-driven test automation, for automating test processes.",
+     "Choosing the most appropriate LLM based on criteria such as its capability to be adapted or customized to perform specific test tasks.",
+     "Ensuring the validation and test data used in the development of the LLMs are of the highest quality."
+    ],
+    "vysvetleni": {
+     "a": "Is not correct. Hallucinations in LLMs are intrinsic challenges with current AI technologies, and testers cannot prevent hallucinations and reasoning errors from occurring. Instead, testers should be able to (identify and) mitigate the risks of hallucinations and reasoning errors (and also biases) when testing with GenAI.",
+     "b": "Is not correct. While proficiency in test automation is valuable, it does not specifically address the integration of GenAI into test processes.",
+     "c": "Is correct. The syllabus names “assessing LLM capabilities” as a key competency. This naturally entails comparing candidate models and selecting the one that can be adapted or fine-tuned for particular test tasks. That is a direct example of knowledge/skills testers need to work effectively with LLMs.",
+     "d": "Is not correct. It refers to skills that are required for developing the LLMs such as AI researchers and data scientists, not testers using GenAI for test tasks. These testers focus on ensuring the quality of the test data they directly use when interacting with LLMs."
+    },
+    "vysvetleni_obecne": ""
+   },
+   "cz": {
+    "q": "<p>Která z následujících možností NEJLÉPE uvádí příklad znalostí nebo dovedností, které testeři potřebují k efektivní práci s LLM v procesech testování?</p>",
+    "moznosti": [
+     "Zvládnutí technik, které mají zabránit tomu, aby LLM při konkrétních testovacích úlohách halucinovaly a dělaly chyby v uvažování.",
+     "Výběr a zavedení vhodných přístupů k automatizaci testů, například automatizace testů řízené klíčovými slovy (keyword-driven), pro automatizaci procesů testování.",
+     "Výběr nejvhodnějšího LLM podle kritérií, jako je možnost ho přizpůsobit pro konkrétní testovací úlohy.",
+     "Zajištění nejvyšší kvality validačních a testovacích dat použitých při vývoji LLM."
+    ],
+    "vysvetleni": {
+     "a": "Není správně. Halucinace jsou vlastní dnešním technologiím AI a testeři jejich vzniku ani chybám v uvažování zabránit nemohou. Mají umět rizika halucinací, chyb v uvažování (a také zkreslení) při testování s GenAI rozpoznat a zmírnit.",
+     "b": "Není správně. Znalost automatizace testů je cenná, ale netýká se konkrétně začlenění GenAI do procesů testování.",
+     "c": "Je správně. Sylabus uvádí „posuzování schopností LLM“ (assessing LLM capabilities) jako klíčovou kompetenci. K tomu přirozeně patří porovnání kandidátních modelů a výběr toho, který lze přizpůsobit nebo doladit (fine-tuning) pro konkrétní testovací úlohy. To je přímý příklad znalostí a dovedností pro efektivní práci s LLM.",
+     "d": "Není správně. Jde o dovednosti potřebné při vývoji LLM (výzkumníci AI, datoví vědci), ne pro testery, kteří GenAI používají k testovacím úlohám. Ti dbají na kvalitu testovacích dat, která sami při práci s LLM používají."
+    },
+    "vysvetleni_obecne": ""
+   },
+   "spravne": [
+    "c"
+   ],
+   "oddil": "5.2.1",
+   "poznamka": ""
+  },
+  {
+   "id": "A-39",
+   "zdroj": "sample-a",
+   "lo": "GenAI-5.2.2",
+   "k": "K1",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>What is the BEST approach for cultivating skills within test teams to specifically support the adoption of Generative AI?</p>",
+    "moznosti": [
+     "Rely mainly on external expert courses with hands-on practice, aiming to integrate AI into all daily test tasks at once.",
+     "Encourage independent experimentation with various LLMs without following a structured process.",
+     "Adopt a hands-on, gradual learning process supported by guided exercises, peer learning, and knowledge-sharing communities.",
+     "Rely mainly on theoretical courses from external experts, aiming to gradually integrate AI into daily test tasks in line with actual learning."
+    ],
+    "vysvetleni": {
+     "a": "Is not correct. While external expert courses with hands-on practice can be beneficial, mainly relying on them diminishes the importance of internal practice and community building. Moreover, integrating AI into all daily test tasks in a ‘big-bang’ fashion is not recommended.",
+     "b": "Is not correct. While experimentation is part of the learning process, independent experimentation without structure may not lead to consistent or effective skill development.",
+     "c": "Is correct. Focusing on developing practical skills through structured activities, peer learning, and knowledge-sharing communities is a recommended approach.",
+     "d": "Is not correct. Mainly relying on theoretical courses from external experts diminishes the importance of developing practical skills and know-how through sharing within the organization."
+    },
+    "vysvetleni_obecne": ""
+   },
+   "cz": {
+    "q": "<p>Jaký je NEJLEPŠÍ přístup k rozvoji dovedností v testovacích týmech, který konkrétně podpoří zavádění generativní AI?</p>",
+    "moznosti": [
+     "Spoléhat hlavně na externí odborné kurzy s praktickým cvičením a zavést AI do všech každodenních testovacích úloh najednou.",
+     "Podporovat samostatné experimentování s různými LLM bez strukturovaného postupu.",
+     "Zvolit praktický, postupný proces učení podpořený řízenými cvičeními, učením od kolegů a komunitami pro sdílení znalostí.",
+     "Spoléhat hlavně na teoretické kurzy externích odborníků a zavádět AI do každodenních testovacích úloh postupně podle skutečného pokroku v učení."
+    ],
+    "vysvetleni": {
+     "a": "Není správně. Externí kurzy s praktickým cvičením mohou být přínosné, ale spoléhání hlavně na ně snižuje význam interní praxe a budování komunity. Zavedení AI do všech každodenních úloh najednou („big bang“) se navíc nedoporučuje.",
+     "b": "Není správně. Experimentování k učení patří, ale samostatné experimentování bez struktury nemusí vést ke konzistentnímu ani účinnému rozvoji dovedností.",
+     "c": "Je správně. Doporučeným přístupem je rozvoj praktických dovedností pomocí strukturovaných činností, učení od kolegů a komunit pro sdílení znalostí.",
+     "d": "Není správně. Spoléhání hlavně na teoretické kurzy externích odborníků snižuje význam praktických dovedností a know-how, které vzniká sdílením uvnitř organizace."
+    },
+    "vysvetleni_obecne": ""
+   },
+   "spravne": [
+    "c"
+   ],
+   "oddil": "5.2.2",
+   "poznamka": ""
+  },
+  {
+   "id": "A-40",
+   "zdroj": "sample-a",
+   "lo": "GenAI-5.2.3",
+   "k": "K1",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Which of the following answers BEST describes how the roles and responsibilities of testers and test managers within a test organization are impacted by the adoption of Generative AI for software testing?</p>",
+    "moznosti": [
+     "Testers shift their focus from manually designing test cases to guiding and verifying AI-generated testware.",
+     "Test managers shift their focus from managing test projects to understanding the inner working of Generative AI technologies.",
+     "Testers shift their focus from manually designing test cases to overseeing AI-based test processes.",
+     "Test managers shift their focus from relying on people to relying solely on Generative AI to boost productivity in test tasks."
+    ],
+    "vysvetleni": {
+     "a": "Is correct. Testers evolve into AI-assisted testing specialists, refining prompts and verifying AI outputs.",
+     "b": "Is not correct. The responsibilities of the test managers are updated to include the development of an AI-based test strategy, AI-based risk management, and oversight of AI-based test processes. Thus, their focus is still on test management and not on understanding the (technically complex) inner workings of GenAI technologies.",
+     "c": "Is not correct. Testers do not shift their focus to overseeing AI-based test processes. This oversight is the responsibility of test managers.",
+     "d": "Is not correct. Test managers must balance human and AI capabilities to achieve efficient results."
+    },
+    "vysvetleni_obecne": ""
+   },
+   "cz": {
+    "q": "<p>Která z následujících odpovědí NEJLÉPE popisuje, jak zavedení generativní AI do testování softwaru ovlivní role a odpovědnosti testerů a test manažerů v testovací organizaci?</p>",
+    "moznosti": [
+     "Testeři přesouvají pozornost od ručního návrhu testovacích případů k navádění a ověřování testwaru vygenerovaného AI.",
+     "Test manažeři přesouvají pozornost od řízení testovacích projektů k pochopení vnitřního fungování technologií generativní AI.",
+     "Testeři přesouvají pozornost od ručního návrhu testovacích případů k dohledu nad procesy testování založenými na AI.",
+     "Test manažeři přesouvají pozornost od spoléhání na lidi ke spoléhání výhradně na generativní AI kvůli vyšší produktivitě testovacích úloh."
+    ],
+    "vysvetleni": {
+     "a": "Je správně. Testeři se mění ve specialisty na testování s podporou AI: zdokonalují prompty a ověřují výstupy AI.",
+     "b": "Není správně. Odpovědnosti test manažerů se rozšiřují o tvorbu testovací strategie s AI, řízení rizik s AI a dohled nad procesy testování založenými na AI. Jejich pozornost tedy zůstává u řízení testování, ne u (technicky složitého) vnitřního fungování technologií GenAI.",
+     "c": "Není správně. Testeři nepřesouvají pozornost k dohledu nad procesy testování založenými na AI. Tento dohled je odpovědností test manažerů.",
+     "d": "Není správně. Test manažeři musejí vyvažovat lidské schopnosti a schopnosti AI, aby dosáhli efektivních výsledků."
+    },
+    "vysvetleni_obecne": ""
+   },
+   "spravne": [
+    "a"
+   ],
+   "oddil": "5.2.3",
+   "poznamka": ""
+  },
+  {
+   "id": "A-A1",
+   "zdroj": "sample-a",
+   "lo": "GenAI-4.1.2",
+   "k": "K2",
+   "body": 1,
+   "vyber": 5,
+   "keep_order": true,
+   "typ": "razeni",
+   "en": {
+    "q": "<p>Consider the following steps involved in implementing RAG (Retrieval-Augmented Generation):</p><p>Order these steps in sequence from the first to the last.</p>",
+    "moznosti": [
+     "Clean and process document chunks",
+     "Generate a response using retrieved chunks and the LLM",
+     "Break large documents into smaller chunks",
+     "Store embeddings in a vector database",
+     "Retrieve relevant chunks based on semantic similarity"
+    ],
+    "vysvetleni": {},
+    "vysvetleni_obecne": "<p>The RAG process can be summarized as follows:</p><ul><li>1. Breaking documents into chunks for focused retrieval.</li><li>2. Cleaning and processing chunks for consistency.</li><li>3. Encoding chunks into embeddings and storing them in a vector database.</li><li>4. Retrieving relevant chunks during user query processing.</li><li>5. Generating responses by combining retrieved data with the LLM’s knowledge.</li></ul><p>Thus, the correct order is: Break large documents into smaller chunks → Clean and process document chunks → Store embeddings in a vector database → Retrieve relevant chunks based on semantic similarity → Generate a response using retrieved chunks and the LLM.</p>"
+   },
+   "cz": {
+    "q": "<p>Uvažuj o následujících krocích při implementaci RAG (generování rozšířené o vyhledávání, retrieval-augmented generation):</p><p>Seřaď kroky od prvního po poslední.</p>",
+    "moznosti": [
+     "Vyčistit a zpracovat části (chunks) dokumentů",
+     "Vygenerovat odpověď pomocí načtených částí a LLM",
+     "Rozdělit velké dokumenty na menší části (chunks)",
+     "Uložit embeddingy do vektorové databáze",
+     "Načíst relevantní části podle sémantické podobnosti"
+    ],
+    "vysvetleni": {},
+    "vysvetleni_obecne": "<p>Proces RAG lze shrnout takto:</p><ul><li>1. Rozdělení dokumentů na části kvůli cílenému vyhledávání.</li><li>2. Vyčištění a zpracování částí kvůli konzistenci.</li><li>3. Zakódování částí do embeddingů a jejich uložení do vektorové databáze.</li><li>4. Načtení relevantních částí při zpracování dotazu uživatele.</li><li>5. Generování odpovědí spojením načtených dat se znalostmi LLM.</li></ul><p>Správné pořadí tedy je: rozdělit dokumenty → vyčistit a zpracovat části → uložit embeddingy do vektorové databáze → načíst relevantní části → vygenerovat odpověď.</p>"
+   },
+   "spravne": [
+    "c",
+    "a",
+    "d",
+    "e",
+    "b"
+   ],
+   "oddil": "4.1.2",
+   "poznamka": "",
+   "navic": true
+  },
+  {
+   "id": "A-A2",
+   "zdroj": "sample-a",
+   "lo": "GenAI-2.1.2",
+   "k": "K2",
+   "body": 1,
+   "vyber": 4,
+   "keep_order": true,
+   "typ": "prirazeni",
+   "en": {
+    "q": "<p>Match each prompting technique (a–d) to an appropriate example of its application in software testing (1–4).</p><p>Assign each individual prompting technique with an appropriate example of its application in software testing. No item may be left unpaired or paired with more than one other item.</p>",
+    "moznosti": [
+     "Prompt Chaining",
+     "Few-Shot Prompting",
+     "Meta Prompting",
+     "Zero-Shot Prompting"
+    ],
+    "skupiny": [
+     "Breaking down test analysis tasks into smaller steps requiring iterative LLM interactions and human verification",
+     "Generating Gherkin-style test cases from user stories using the LLM with pre-defined examples",
+     "Prioritizing test cases based on risk by leveraging the LLM’s inherent reasoning without examples",
+     "Interacting with the LLM to iteratively refine prompts for creating test oracles from ambiguous requirements"
+    ],
+    "vysvetleni": {},
+    "vysvetleni_obecne": "<p>Considering:</p><ul><li>Prompt Chaining – 1st item on the right: Directly references iterative LLM use for test analysis tasks (Section 2.2.1).</li><li>Few-Shot Prompting – 2nd item on the right: Explicitly ties to LLM-generated test cases with examples (Section 2.2.2b).</li><li>Meta Prompting – 4th item on the right: Highlights LLM collaboration for prompt refinement (Section 2.1.2).</li><li>Zero-Shot Prompting – 3rd item on the right: Emphasizes LLM’s intrinsic reasoning for prioritization (Section 2.1.2).</li></ul>"
+   },
+   "cz": {
+    "q": "<p>Přiřaď každou techniku promptování (a–d) k vhodnému příkladu jejího použití v testování softwaru (1–4).</p><p>Každé technice přiřaď právě jeden příklad. Žádná položka nesmí zůstat bez páru ani být spárována s více než jednou jinou položkou.</p>",
+    "moznosti": [
+     "Řetězení promptů (prompt chaining)",
+     "Few-shot prompting",
+     "Meta prompting",
+     "Zero-shot prompting"
+    ],
+    "skupiny": [
+     "Rozklad úloh testovací analýzy na menší kroky s opakovanou interakcí s LLM a lidským ověřením",
+     "Generování testovacích případů ve stylu Gherkin z uživatelských scénářů pomocí LLM a předem připravených příkladů",
+     "Prioritizace testovacích případů podle rizika s využitím vlastního uvažování LLM bez příkladů",
+     "Interakce s LLM za účelem iterativního zdokonalení promptů pro tvorbu testovacích orákul z nejednoznačných požadavků"
+    ],
+    "vysvetleni": {},
+    "vysvetleni_obecne": "<p>Platí:</p><ul><li>Řetězení promptů – 1. položka vpravo: přímo odkazuje na opakované použití LLM při testovací analýze (oddíl 2.2.1).</li><li>Few-shot prompting – 2. položka vpravo: výslovně spojuje testovací případy generované LLM s příklady (oddíl 2.2.2, HO-2.2.2b).</li><li>Meta prompting – 4. položka vpravo: zdůrazňuje spolupráci s LLM při zdokonalování promptu (oddíl 2.1.2).</li><li>Zero-shot prompting – 3. položka vpravo: zdůrazňuje vlastní uvažování LLM při prioritizaci (oddíl 2.1.2).</li></ul>"
+   },
+   "spravne": [
+    "1",
+    "2",
+    "4",
+    "3"
+   ],
+   "oddil": "2.1.2",
+   "poznamka": "",
+   "navic": true
+  },
+  {
+   "id": "A-A3",
+   "zdroj": "sample-a",
+   "lo": "GenAI-5.1.4",
+   "k": "K1",
+   "body": 1,
+   "vyber": 5,
+   "keep_order": true,
+   "typ": "prirazeni",
+   "en": {
+    "q": "<p>Consider the following activities (a–e) and key phases (1–3) involved in the adoption of Generative AI within a test organization.</p><p>Assign each activity (item) to a key phase (group). No group can be left empty and no item can be assigned to more than one group.</p>",
+    "moznosti": [
+     "Identifying and prioritizing practical use cases",
+     "Training testers on Generative AI",
+     "Providing testers access to LLMs",
+     "Experimenting with initial use cases to familiarize testers with Generative AI",
+     "Managing the evolution of test processes following the full integration of Generative AI"
+    ],
+    "skupiny": [
+     "Discovery",
+     "Initiation and Usage Definition",
+     "Utilization and Iteration"
+    ],
+    "vysvetleni": {},
+    "vysvetleni_obecne": "<p>Considering:</p><ul><li>Discovery – Activities include training test teams on GenAI concepts, providing access to LLMs/SLMs, and experimenting with initial use cases to familiarize testers with GenAI and build confidence</li><li>Initiation and Usage Definition – Focuses on identifying and prioritizing practical use cases for GenAI in software testing</li><li>Utilization and Iteration – Continuous monitoring of the progress of GenAI for software testing and related tools is in place, as well as measurement and management of the transformation to ensure sustainable benefits and scalability</li></ul>"
+   },
+   "cz": {
+    "q": "<p>Uvažuj o následujících činnostech (a–e) a klíčových fázích (1–3) zavádění generativní AI v testovací organizaci.</p><p>Přiřaď každou činnost (položku) ke klíčové fázi (skupině). Žádná skupina nesmí zůstat prázdná a žádná položka nesmí patřit do více skupin.</p>",
+    "moznosti": [
+     "Identifikace a prioritizace praktických případů použití",
+     "Školení testerů v generativní AI",
+     "Zpřístupnění LLM testerům",
+     "Experimentování s prvními případy použití, aby se testeři s generativní AI seznámili",
+     "Řízení vývoje procesů testování po plném začlenění generativní AI"
+    ],
+    "skupiny": [
+     "Objevování (discovery)",
+     "Zahájení a definice použití (initiation and usage definition)",
+     "Využití a iterace (utilization and iteration)"
+    ],
+    "vysvetleni": {},
+    "vysvetleni_obecne": "<p>Platí:</p><ul><li>Objevování – činnosti zahrnují školení týmů v konceptech GenAI, zpřístupnění LLM/SLM a experimentování s prvními případy použití, aby se testeři s GenAI seznámili a získali jistotu.</li><li>Zahájení a definice použití – zaměřuje se na identifikaci a prioritizaci praktických případů použití GenAI v testování softwaru.</li><li>Využití a iterace – probíhá průběžné sledování pokroku GenAI v testování a souvisejících nástrojů a měření a řízení transformace, aby byly přínosy udržitelné a škálovatelné.</li></ul>"
+   },
+   "spravne": [
+    "2",
+    "1",
+    "1",
+    "1",
+    "3"
+   ],
+   "oddil": "5.1.4",
+   "poznamka": "",
+   "navic": true
+  }
+ ]
+}

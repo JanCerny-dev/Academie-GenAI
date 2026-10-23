@@ -1,0 +1,155 @@
+[
+ {"id":"HO-4.1.2","uroven":"H1","lo":"GenAI-4.1.2",
+  "nazev":"RAG proti čistému LLM u testovací úlohy",
+  "cil":"Vyzkoušet si RAG na testovací úloze, porovnat odpovědi s RAG a bez něj a pojmenovat silné stránky a omezení RAG.",
+  "zadani":"Vezmi veřejný nebo vlastní smyšlený dokument, který model nemůže znát: například specifikaci aplikace uctenky, kterou si sám napíšeš (5–10 stran, požadavky s identifikátory, mezní hodnoty, pravidla). Polož modelu deset testovacích otázek dvakrát: jednou bez dokumentu, jednou přes RAG (nástroj s nahráním dokumentů nebo vlastní skript z cvičení CV-4-01). Výsledky porovnej v tabulce. Žádná firemní ani klientská data.",
+  "kroky":[
+   "Napiš nebo vyber dokument a připrav deset otázek: pět na konkrétní fakt (mezní hodnota, pravidlo), dvě na návrh testů k jednomu požadavku, dvě formulované jinými slovy, než používá dokument, a jednu, která vyžaduje přehled přes celý dokument (například kolik požadavků se týká exportu).",
+   "Ke každé otázce si předem zapiš správnou odpověď a číslo oddílu dokumentu.",
+   "Polož otázky modelu bez dokumentu. Zapiš odpověď a označ halucinace.",
+   "Nahraj dokument do RAG nástroje nebo spusť vlastní skript. Polož stejné otázky. U každé zkontroluj zvlášť vyhledání (byla mezi nalezenými částmi ta správná?) a generování (odpověděl model správně a jen z podkladů?).",
+   "Sestav tabulku: otázka, správně bez RAG, správně s RAG, správná část nalezena, poznámka.",
+   "Změň v dokumentu jednu mezní hodnotu, index nepřegeneruj a otázku zopakuj. Pak index přegeneruj a zopakuj znovu.",
+   "Sepiš tři silné stránky a tři omezení RAG, které jsi viděl."
+  ],
+  "prompt":"Jsi testovací analytik. Odpovídej jen z podkladů níže. U každého tvrzení uveď identifikátor požadavku nebo číslo oddílu, ze kterého vychází. Když podklady odpověď neobsahují, napiš: V podkladech není.\n\nPODKLADY:\n{nalezene_casti}\n\nOTÁZKA: {otazka}",
+  "co_sledovat":[
+   "Bez RAG model u faktických otázek hádá nebo přizná neznalost, s RAG odpovídá podle dokumentu.",
+   "Otázky formulované jinými slovy ukazují sílu sémantického vyhledávání.",
+   "Otázka na přehled přes celý dokument ukazuje limit RAG: pár nalezených částí nestačí.",
+   "Zastaralý index vede k přesvědčivé, ale chybné odpovědi.",
+   "Chyba může být ve vyhledání, nebo v generování. Rozlišuj je."
+  ],
+  "projekt":"uctenky","cas_min":60},
+
+ {"id":"HO-4.1.3","uroven":"H0","lo":"GenAI-4.1.3",
+  "nazev":"Agent automatizuje opakovanou testovací úlohu",
+  "cil":"Sledovat, jaká data agent dostane, jak postupuje a co jeho akce způsobí, a popsat to pojmy ze sylabu.",
+  "zadani":"Sleduj ukázku agenta (vlastní nebo z kurzu, například Claude Code nebo uzel AI Agent v n8n), který řeší opakovanou úlohu: triáž selhaných testů z nočního běhu Playwright testů aplikace uctenky. Agent dostane report z běhu a přístup k repozitáři, seskupí selhání, najde pravděpodobné příčiny a připraví návrhy defektů. Zakládání defektů nech na schválení člověkem.",
+  "kroky":[
+   "Zapiš vstupy agenta: zadání (cíl), report z běhu, přístup k repozitáři, dostupné nástroje.",
+   "Sleduj log běhu a zapiš každý krok: co agent naplánoval, který nástroj zavolal a co se vrátilo.",
+   "Označ, kde agent použil paměť (kontext běhu, poznámky z dřívějška).",
+   "Označ kontrolní bod člověka a případné automatické kontroly výsledků.",
+   "Porovnej výsledek se svou ruční triáží stejného běhu. Zapiš, kde agent chyboval (halucinace, chyba v uvažování).",
+   "Rozhodni, zda by úloha měla běžet autonomně, nebo poloautonomně, a zdůvodni to rizikem."
+  ],
+  "prompt":"Cíl: roztřiď selhání z reportu test-results.xml. Seskup je podle příčiny, u každé skupiny najdi v gitu změny od posledního zeleného běhu a navrhni, zda jde o defekt aplikace, chybu testu, nebo problém prostředí. Defekty nezakládej. Připrav návrhy a počkej na moje potvrzení.",
+  "co_sledovat":[
+   "Rozdíl proti chatbotu: agent sám čte soubory a spouští příkazy přes nástroje.",
+   "Smyčka plánování, akce a pozorování v logu.",
+   "Kde by plná autonomie byla riskantní.",
+   "Které automatické kontroly by zachytily chyby agenta."
+  ],
+  "projekt":"uctenky","cas_min":30},
+
+ {"id":"HO-4.2.1","uroven":"H0","lo":"GenAI-4.2.1",
+  "nazev":"Ukázka fine-tuningu malého modelu pro testovací úlohu",
+  "cil":"Projít kroky fine-tuningu podle sylabu a zaměřit se na kvalitu trénovacích dat.",
+  "zadani":"Sleduj ukázku (návod Hugging Face, video z kurzu nebo notebook v Google Colab), kde se doladí malý jazykový model na úlohu převodu uživatelského scénáře na testovací případy v pevném formátu. Data musí být smyšlená nebo veřejná. Zapiš si jednotlivé kroky a odpověz na otázky ke kvalitě dat.",
+  "kroky":[
+   "Výběr modelu: zapiš, jaký LLM nebo SLM byl zvolen a proč (velikost, licence, nároky).",
+   "Datová sada: prohlédni si 10 příkladů. Posuď, zda jsou správné, jednotné, pokrývají negativní scénáře a neobsahují osobní údaje.",
+   "Rozdělení dat na trénovací, validační a testovací část.",
+   "Doladění: zapiš knihovnu (například Transformers a PEFT), dobu běhu a hardware.",
+   "Prompt doladěnému modelu: stejný uživatelský scénář pošli původnímu i doladěnému modelu a porovnej formát a obsah.",
+   "Zkus scénář z úplně jiné oblasti a sleduj známky přeučení.",
+   "Zapiš, které ze čtyř výzev sylabu (zkreslení, přeučení, neprůhlednost, výpočetní zdroje) se v ukázce projevily."
+  ],
+  "prompt":"{\"vstup\": \"Jako uživatel chci nahrát fotku účtenky, aby se z ní vyčetla částka a datum.\", \"vystup\": \"TC-UCT-001 | Nahrání čitelné účtenky | Předpoklad: přihlášený uživatel | Kroky: 1. Otevřít Nová účtenka 2. Nahrát JPG 3. Potvrdit | Očekávaný výsledek: částka a datum jsou vyplněné a editovatelné | Ref: US-07\"}",
+  "co_sledovat":[
+   "Kvalita dat rozhoduje o výsledku víc než nastavení tréninku.",
+   "Doladěný model drží formát bez dlouhého promptu.",
+   "Na jiné doméně výkon klesá.",
+   "Ani doladěný model neumí říct, odkud informaci má."
+  ],
+  "projekt":"obecné","cas_min":40},
+
+ {"id":"CV-4-01","uroven":"H2","lo":"GenAI-4.1.2",
+  "nazev":"Malý RAG nad sylabem CT-GenAI v Pythonu",
+  "cil":"Postavit vlastní RAG nad veřejným sylabem a otestovat zvlášť vyhledání a generování.",
+  "zadani":"V Pythonu postav minimální RAG nad textem sylabu CT-GenAI v1.1. Použij lokální model pro embeddingy (sentence-transformers) a jednoduché vyhledávání v numpy, případně ChromaDB. Prompt pošli modelu, který máš schválený pro osobní použití. Klíč k API měj v proměnné prostředí, nikdy v kódu. Výsledek otestuj sadou otázek se známou odpovědí.",
+  "kroky":[
+   "Vytvoř virtuální prostředí a nainstaluj sentence-transformers a numpy (volitelně chromadb).",
+   "Načti textovou verzi sylabu a odstraň opakovaná záhlaví stránek.",
+   "Rozděl text na části po 300 slovech s překryvem 50 slov (funkce rozdel ze skriptu ve výkladu 4.1.2).",
+   "Spočítej normované embeddingy všech částí a ulož je (np.save), aby se nemusely počítat znovu.",
+   "Napiš funkci najdi(dotaz, k=4), která vrátí části s nejvyšší kosinovou podobností a jejich skóre.",
+   "Připrav 15 otázek se správným oddílem sylabu. Změř, u kolika je správná část mezi top 4 (míra úspěšnosti vyhledání).",
+   "Vyzkoušej velikost části 150 a 600 slov a porovnej míru úspěšnosti.",
+   "Vyzkoušej české dotazy s anglickým modelem a s vícejazyčným modelem (například paraphrase-multilingual-MiniLM-L12-v2).",
+   "Teprve potom připoj generování a zkontroluj, zda model odpovídá jen z podkladů."
+  ],
+  "prompt":"import numpy as np\nfrom sentence_transformers import SentenceTransformer\n\nmodel = SentenceTransformer('sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2')\ncasti = rozdel(text, velikost=300, prekryv=50)\nvektory = model.encode(casti, normalize_embeddings=True)\n\ndef najdi(dotaz, k=4):\n    v = model.encode([dotaz], normalize_embeddings=True)[0]\n    skore = vektory @ v\n    return [(float(skore[i]), casti[i]) for i in np.argsort(skore)[::-1][:k]]\n\notazky = [('Jaké výzvy fine-tuningu uvádí sylabus?', '4.2.1'), ('Co dělá back-end?', '4.1.1')]\nfor q, oddil in otazky:\n    print(q, oddil, [round(s, 2) for s, _ in najdi(q)])",
+  "co_sledovat":[
+   "Vyhledání testuj odděleně od generování.",
+   "Velikost části mění, co se najde: malé části ztrácejí souvislosti, velké ředí podobnost.",
+   "Jazyk dotazu a modelu pro embeddingy musí sedět.",
+   "Do takového RAG nikdy nevkládat firemní ani klientské dokumenty."
+  ],
+  "projekt":"obecné","cas_min":120},
+
+ {"id":"CV-4-02","uroven":"H1","lo":"GenAI-4.1.3",
+  "nazev":"Šmoula popsaný pojmy ze sylabu",
+  "cil":"Popsat vlastního agenta jako infrastrukturu testování s LLM i jako agenta postaveného na LLM a najít slabá místa.",
+  "zadani":"Nakresli textový diagram Šmouly (Telegram ⇄ Oracle Cloud ⇄ Claude Code headless, paměť v markdownu v privátním GitHub repozitáři, plánované úlohy) a ke každé části přiřaď pojem ze sylabu. Pak u každé úlohy Šmouly urči úroveň autonomie a navrhni kontrolní body.",
+  "kroky":[
+   "Přiřaď části: front-end, back-end (autentizace, vyhledání dat, příprava promptu, volání LLM, post-processing), LLM (hostování), zdroje dat.",
+   "Popiš smyčku agenta: kdo plánuje, jaké má nástroje, kde je krátkodobá a dlouhodobá paměť.",
+   "Vypiš pět úloh, které Šmoula dělá, a u každé urči, zda běží autonomně, nebo poloautonomně.",
+   "U každé akce s vedlejším efektem mimo repozitář navrhni potvrzení v Telegramu (člověk ve smyčce).",
+   "Navrhni dvě automatické verifikace výsledků, například kontrolu, že nová poznámka v paměti má zdroj.",
+   "Zhodnoť, zda by se hodilo vektorové vyhledávání v paměti (RAG), a od jakého objemu poznámek."
+  ],
+  "prompt":"Tady je popis architektury mého agenta: {popis}. Přiřaď každou část k pojmům ze sylabu ISTQB CT-GenAI kapitola 4.1 (front-end, back-end, LLM, relační a vektorová databáze, nástroje, paměť, autonomní a poloautonomní agent). Kde si nejsi jistý, napiš to a zeptej se.",
+  "co_sledovat":[
+   "Šmoula nemá vektorovou databázi, paměť je v souborech.",
+   "Plánované úlohy jsou autonomní, konverzace poloautonomní.",
+   "Rizika ze sylabu platí: halucinace se mohou uložit do paměti a vracet se.",
+   "Do popisu nedávat přístupové údaje ani obsah paměti."
+  ],
+  "projekt":"Šmoula","cas_min":45},
+
+ {"id":"CV-4-03","uroven":"H2","lo":"GenAI-4.2.2",
+  "nazev":"Monitoring a verzování promptů pro Šmoulu (LLMOps)",
+  "cil":"Navrhnout a zavést minimální LLMOps pro vlastního agenta: verzování, log běhů, evaluační sadu a upozornění.",
+  "zadani":"Navrhni a zaveď pro Šmoulu jednoduchý provozní rámec. Instrukce a šablony promptů verzuj v gitu. Každý běh zapisuj do logu ve formátu JSON Lines. Připrav evaluační sadu deseti zadání a pravidlo, kdy ji pustit. Navrhni upozornění do Telegramu. Tajné údaje patří do proměnných prostředí na serveru.",
+  "kroky":[
+   "Urči, který přístup ze sylabu 4.2.2 Šmoula je (vlastní vývoj) a co z toho plyne.",
+   "Definuj záznam logu: čas, typ úlohy, verze instrukcí (hash commitu), doba trvání, výsledek (ok/chyba), délka vstupu a výstupu, případně cena.",
+   "Do logu nezapisuj obsah zpráv ani citlivá data, jen metadata.",
+   "Napiš deset evaluačních zadání s popsaným očekávaným výsledkem a kritériem úspěchu.",
+   "Napiš skript, který evaluační sadu pustí a výsledek porovná s předchozím během. Každé zadání pusť třikrát kvůli nedeterminismu.",
+   "Nastav upozornění: selhaná plánovaná úloha, tři chyby za sebou, růst průměrné doby běhu o 50 procent.",
+   "Jednou týdně vytvoř souhrn z logu a pošli ho do Telegramu."
+  ],
+  "prompt":"{\"cas\": \"2026-10-22T06:00:03Z\", \"uloha\": \"planovana:ranni-souhrn\", \"instrukce_commit\": \"a1b2c3d\", \"trvani_s\": 41.2, \"vysledek\": \"ok\", \"vstup_znaku\": 5320, \"vystup_znaku\": 812}",
+  "co_sledovat":[
+   "Každou změnu chování jde dohledat ke konkrétnímu commitu instrukcí.",
+   "Evaluační sada je regresní test agenta.",
+   "Log neobsahuje citlivý obsah.",
+   "Aktualizace Claude Code nebo modelu je změna, po které se má pustit evaluace."
+  ],
+  "projekt":"Šmoula","cas_min":120},
+
+ {"id":"CV-4-04","uroven":"H1","lo":"GenAI-4.2.1",
+  "nazev":"Prompt, RAG, nebo fine-tuning: tři scénáře",
+  "cil":"Rozhodnout a zdůvodnit volbu techniky podle povahy úlohy, dat a nákladů.",
+  "zadani":"Pro každý ze tří scénářů rozhodni, zda stačí prompt engineering, zda je potřeba RAG, nebo zda dává smysl fine-tuning (případně kombinace). Zdůvodni volbu podle sylabu 4.1.2 a 4.2.1 a napiš, co by tvé rozhodnutí změnilo. Scénáře jsou smyšlené.",
+  "kroky":[
+   "Scénář A: aplikace uctenky. Chceš, aby LLM navrhovalo testy k novým uživatelským scénářům. Scénářů je zatím 30 a mění se každý sprint.",
+   "Scénář B: pojišťovna (smyšlená). Tým má 8 000 dvojic uživatelský scénář a schválené testovací případy v jednotném formátu a chce generovat testy ve velkém objemu modelem, který poběží ve vlastním datovém centru.",
+   "Scénář C: automotive (smyšlený). Testeři potřebují odpovědi na dotazy k 1 500 stranám norem a interních směrnic, které se mění čtvrtletně, a u každé odpovědi odkaz na zdroj.",
+   "Ke každému scénáři vyplň: co se mění (prompt, data za běhu, váhy), náklady na začátek, jak se řeší změna podkladů, dohledatelnost zdroje.",
+   "Rozhodni a zdůvodni ve třech větách.",
+   "Napiš, jaká změna zadání by tvé rozhodnutí obrátila."
+  ],
+  "prompt":"",
+  "co_sledovat":[
+   "Často se měnící fakta a požadavek na zdroj ukazují na RAG.",
+   "Stálý formát, velký objem, kvalitní označená data a vlastní provoz ukazují na fine-tuning, typicky SLM.",
+   "Malý rozsah a rychlé změny ukazují na prompt engineering.",
+   "Techniky se dají kombinovat."
+  ],
+  "projekt":"obecné","cas_min":30}
+]

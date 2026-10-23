@@ -1,0 +1,1271 @@
+{
+ "popis": "Vlastní cvičné otázky ke kapitole 5 sylabu CT-GenAI v1.1 (Deploying and Integrating Generative AI in Test Organizations). Pět otázek na každý LO, EN a CZ. Napsáno nově podle learning objectives, nejde o parafráze Sample Exam A ani otázek z Udemy.",
+ "otazky": [
+  {
+   "id": "CG-5.1.1-01", "zdroj": "vlastni", "lo": "GenAI-5.1.1", "k": "K1", "body": 1, "vyber": 1, "keep_order": false,
+   "en": {
+    "q": "<p>Which of the following is identified in the syllabus as a risk of shadow AI?</p>",
+    "moznosti": [
+     "Unclear licensing terms of AI tools may expose users to intellectual property disputes",
+     "Approved enterprise AI tools may produce more hallucinations than personal AI tools",
+     "Shadow AI increases the energy consumption of the organization's approved LLMs",
+     "Testers using shadow AI may lose the ability to apply traditional test techniques"
+    ],
+    "vysvetleni": {
+     "a": "Correct. Vague intellectual property is one of the three risks of shadow AI listed in section 5.1.1.",
+     "b": "Incorrect. The syllabus does not compare hallucination rates of approved and personal tools. Hallucinations are covered in section 3.1, not as a shadow AI risk.",
+     "c": "Incorrect. Energy consumption is discussed in section 3.3.1, not as a risk of shadow AI in section 5.1.1.",
+     "d": "Incorrect. Loss of test skills is not one of the shadow AI risks in section 5.1.1."
+    },
+    "vysvetleni_obecne": "Section 5.1.1 lists three risks of shadow AI: information security and data privacy weaknesses, compliance and regulatory issues, and vague intellectual property."
+   },
+   "cz": {
+    "q": "<p>Které z následujících tvrzení sylabus uvádí jako riziko stínové AI?</p>",
+    "moznosti": [
+     "Nejasné licenční podmínky AI nástrojů mohou uživatele vystavit sporům o duševní vlastnictví",
+     "Schválené firemní AI nástroje mohou halucinovat víc než osobní AI nástroje",
+     "Stínová AI zvyšuje spotřebu energie schválených LLM v organizaci",
+     "Testeři, kteří používají stínovou AI, mohou ztratit schopnost používat tradiční testovací techniky"
+    ],
+    "vysvetleni": {
+     "a": "Správně. Nejasné duševní vlastnictví je jedno ze tří rizik stínové AI v oddílu 5.1.1.",
+     "b": "Špatně. Sylabus míru halucinací schválených a osobních nástrojů neporovnává. Halucinace řeší oddíl 3.1, ne jako riziko stínové AI.",
+     "c": "Špatně. Spotřebu energie řeší oddíl 3.3.1, ne oddíl 5.1.1 o stínové AI.",
+     "d": "Špatně. Ztráta testovacích dovedností mezi riziky stínové AI v 5.1.1 není."
+    },
+    "vysvetleni_obecne": "Oddíl 5.1.1 uvádí tři rizika stínové AI: slabiny v informační bezpečnosti a ochraně dat, problémy s compliance a regulací a nejasné duševní vlastnictví."
+   },
+   "spravne": ["a"], "oddil": "5.1.1", "poznamka": ""
+  },
+  {
+   "id": "CG-5.1.1-02", "zdroj": "vlastni", "lo": "GenAI-5.1.1", "k": "K1", "body": 1, "vyber": 1, "keep_order": false,
+   "en": {
+    "q": "<p>A tester copies extracts from a customer database into a free online chatbot using a personal account to get help with a data conversion defect. The tool has not been reviewed by the organization.</p><p>Which risk of shadow AI does this situation MOST directly illustrate?</p>",
+    "moznosti": [
+     "Vague intellectual property, because the chatbot output may be protected by copyright",
+     "Reasoning errors, because the chatbot may misunderstand the conversion logic",
+     "Information security and data privacy weaknesses, because personal tools may lack robust security and lead to data breaches",
+     "Non-deterministic behavior, because the chatbot may give different answers each time"
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. Intellectual property may also be a concern, but the most direct risk here is that customer data leaves the protected environment.",
+     "b": "Incorrect. Reasoning errors are a general GenAI risk from section 3.1, not one of the shadow AI risks in section 5.1.1.",
+     "c": "Correct. Section 5.1.1 states that personal AI tools may lack robust security, leading to potential data breaches. Customer data in a personal account is the typical example.",
+     "d": "Incorrect. Non-deterministic behavior is a property of LLMs in general, not a shadow AI risk listed in section 5.1.1."
+    },
+    "vysvetleni_obecne": "When sensitive data is entered into an unapproved personal tool, the main shadow AI risk is the information security and data privacy weakness (section 5.1.1)."
+   },
+   "cz": {
+    "q": "<p>Tester zkopíruje výňatky ze zákaznické databáze do volného online chatbotu přes osobní účet, aby mu pomohl s defektem při konverzi dat. Organizace nástroj neprověřila.</p><p>Které riziko stínové AI tato situace ilustruje NEJPŘÍMĚJI?</p>",
+    "moznosti": [
+     "Nejasné duševní vlastnictví, protože výstup chatbotu může být chráněn autorským právem",
+     "Chyby v uvažování, protože chatbot může logice konverze špatně porozumět",
+     "Slabiny v informační bezpečnosti a ochraně dat, protože osobní nástroje nemusí být dobře zabezpečené a hrozí únik dat",
+     "Nedeterministické chování, protože chatbot může pokaždé odpovědět jinak"
+    ],
+    "vysvetleni": {
+     "a": "Špatně. Duševní vlastnictví může hrát roli, ale nejpřímějším rizikem je, že zákaznická data opustila chráněné prostředí.",
+     "b": "Špatně. Chyby v uvažování jsou obecné riziko GenAI z oddílu 3.1, ne riziko stínové AI z 5.1.1.",
+     "c": "Správně. Oddíl 5.1.1 uvádí, že osobní AI nástroje nemusí mít dostatečné zabezpečení a hrozí únik dat. Zákaznická data v osobním účtu jsou typický příklad.",
+     "d": "Špatně. Nedeterministické chování je obecná vlastnost LLM, ne riziko stínové AI z 5.1.1."
+    },
+    "vysvetleni_obecne": "Když se citlivá data vloží do neschváleného osobního nástroje, hlavním rizikem stínové AI je slabina v informační bezpečnosti a ochraně dat (5.1.1)."
+   },
+   "spravne": ["c"], "oddil": "5.1.1", "poznamka": ""
+  },
+  {
+   "id": "CG-5.1.1-03", "zdroj": "vlastni", "lo": "GenAI-5.1.1", "k": "K1", "body": 1, "vyber": 1, "keep_order": false,
+   "en": {
+    "q": "<p>Which of the following is NOT one of the risks of shadow AI described in the syllabus?</p>",
+    "moznosti": [
+     "Potential legal consequences due to non-compliance with industry standards and regulations",
+     "Potential data breaches because personal AI tools may lack robust security",
+     "Potential intellectual property disputes when copyrighted data is processed without proper authorization",
+     "Potential degradation of LLM performance caused by too many simultaneous users"
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. This is the compliance and regulatory risk of shadow AI from section 5.1.1.",
+     "b": "Incorrect. This is the information security and data privacy risk of shadow AI from section 5.1.1.",
+     "c": "Incorrect. This is the vague intellectual property risk of shadow AI from section 5.1.1.",
+     "d": "Correct. Performance degradation due to load is not mentioned as a shadow AI risk in section 5.1.1."
+    },
+    "vysvetleni_obecne": "The three shadow AI risks are security and data privacy, compliance and regulatory issues, and vague intellectual property (section 5.1.1)."
+   },
+   "cz": {
+    "q": "<p>Které z následujících NENÍ jedním z rizik stínové AI popsaných v sylabu?</p>",
+    "moznosti": [
+     "Možné právní následky kvůli nesouladu s oborovými normami a předpisy",
+     "Možný únik dat, protože osobní AI nástroje nemusí být dobře zabezpečené",
+     "Možné spory o duševní vlastnictví, když se bez oprávnění zpracovávají data chráněná autorským právem",
+     "Možné zhoršení výkonu LLM kvůli příliš mnoha souběžným uživatelům"
+    ],
+    "vysvetleni": {
+     "a": "Špatně. Jde o riziko compliance a regulace z oddílu 5.1.1.",
+     "b": "Špatně. Jde o riziko bezpečnosti a ochrany dat z oddílu 5.1.1.",
+     "c": "Špatně. Jde o riziko nejasného duševního vlastnictví z oddílu 5.1.1.",
+     "d": "Správně. Zhoršení výkonu kvůli zátěži oddíl 5.1.1 jako riziko stínové AI neuvádí."
+    },
+    "vysvetleni_obecne": "Tři rizika stínové AI jsou bezpečnost a ochrana dat, compliance a regulace a nejasné duševní vlastnictví (5.1.1)."
+   },
+   "spravne": ["d"], "oddil": "5.1.1", "poznamka": ""
+  },
+  {
+   "id": "CG-5.1.1-04", "zdroj": "vlastni", "lo": "GenAI-5.1.1", "k": "K1", "body": 1, "vyber": 1, "keep_order": false,
+   "en": {
+    "q": "<p>According to the syllabus, which risk of shadow AI is MOST closely associated with AI tools whose licensing agreements are unclear?</p>",
+    "moznosti": [
+     "Information security weaknesses",
+     "Vague intellectual property",
+     "Data poisoning",
+     "Compliance with transparency obligations"
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. Security weaknesses relate to the lack of robust security in personal tools, not to licensing.",
+     "b": "Correct. Section 5.1.1 links unclear licensing agreements to intellectual property disputes.",
+     "c": "Incorrect. Data poisoning is a security attack described in section 3.2, not a shadow AI risk tied to licensing.",
+     "d": "Incorrect. Transparency obligations are part of process guidelines in section 5.1.2, not a shadow AI risk."
+    },
+    "vysvetleni_obecne": "Licensing is the key word for the intellectual property risk of shadow AI (section 5.1.1)."
+   },
+   "cz": {
+    "q": "<p>Které riziko stínové AI sylabus NEJVÍC spojuje s AI nástroji, jejichž licenční podmínky jsou nejasné?</p>",
+    "moznosti": [
+     "Slabiny v informační bezpečnosti",
+     "Nejasné duševní vlastnictví",
+     "Otrávení dat (data poisoning)",
+     "Dodržení povinností transparentnosti"
+    ],
+    "vysvetleni": {
+     "a": "Špatně. Slabiny v bezpečnosti souvisejí s nedostatečným zabezpečením osobních nástrojů, ne s licencemi.",
+     "b": "Správně. Oddíl 5.1.1 spojuje nejasné licenční podmínky se spory o duševní vlastnictví.",
+     "c": "Špatně. Data poisoning je bezpečnostní útok z oddílu 3.2, ne riziko stínové AI spojené s licencemi.",
+     "d": "Špatně. Povinnosti transparentnosti jsou součást procesních pravidel z 5.1.2, ne riziko stínové AI."
+    },
+    "vysvetleni_obecne": "Licence jsou poznávací znamení rizika duševního vlastnictví u stínové AI (5.1.1)."
+   },
+   "spravne": ["b"], "oddil": "5.1.1", "poznamka": ""
+  },
+  {
+   "id": "CG-5.1.1-05", "zdroj": "vlastni", "lo": "GenAI-5.1.1", "k": "K1", "body": 1, "vyber": 1, "keep_order": false,
+   "en": {
+    "q": "<p>Which statement BEST describes what the syllabus recommends to help test organizations avoid the risks of shadow AI?</p>",
+    "moznosti": [
+     "Define a strategy and steps for integrating and deploying GenAI in the organization",
+     "Prohibit all use of GenAI tools in test activities until regulations are final",
+     "Allow each tester to choose their preferred AI tool as long as outputs are reviewed",
+     "Use only open source LLMs because they have no licensing restrictions"
+    ],
+    "vysvetleni": {
+     "a": "Correct. Section 5.1.1 ends by stating that a strategy and steps for integrating and deploying GenAI help test organizations avoid the risk of shadow AI.",
+     "b": "Incorrect. The syllabus does not recommend a ban. A complete ban tends to push people towards unapproved tools.",
+     "c": "Incorrect. Reviewing outputs does not remove the security, compliance or IP risks of using unapproved tools.",
+     "d": "Incorrect. Open source models also have licenses, and the syllabus does not recommend restricting the choice to open source."
+    },
+    "vysvetleni_obecne": "The answer to shadow AI in the syllabus is a managed adoption: strategy and steps for integrating and deploying GenAI (section 5.1.1)."
+   },
+   "cz": {
+    "q": "<p>Které tvrzení NEJLÉPE popisuje, co sylabus doporučuje, aby se testovací organizace vyhnuly rizikům stínové AI?</p>",
+    "moznosti": [
+     "Definovat strategii a kroky pro integraci a nasazení GenAI v organizaci",
+     "Zakázat jakékoli použití nástrojů GenAI v testování, dokud nebudou předpisy hotové",
+     "Dovolit každému testerovi vybrat si oblíbený AI nástroj, pokud se výstupy revidují",
+     "Používat jen open source LLM, protože nemají licenční omezení"
+    ],
+    "vysvetleni": {
+     "a": "Správně. Oddíl 5.1.1 končí tím, že strategie a kroky pro integraci a nasazení GenAI pomáhají riziku stínové AI předejít.",
+     "b": "Špatně. Sylabus zákaz nedoporučuje. Plošný zákaz spíš tlačí lidi k neschváleným nástrojům.",
+     "c": "Špatně. Revize výstupů neodstraní bezpečnostní, regulatorní ani licenční rizika neschválených nástrojů.",
+     "d": "Špatně. I open source modely mají licence a sylabus výběr na open source neomezuje."
+    },
+    "vysvetleni_obecne": "Odpovědí sylabu na stínovou AI je řízené zavedení: strategie a kroky pro integraci a nasazení GenAI (5.1.1)."
+   },
+   "spravne": ["a"], "oddil": "5.1.1", "poznamka": ""
+  },
+
+  {
+   "id": "CG-5.1.2-01", "zdroj": "vlastni", "lo": "GenAI-5.1.2", "k": "K2", "body": 1, "vyber": 1, "keep_order": false,
+   "en": {
+    "q": "<p>A test manager writes the following objective for a GenAI initiative: 'Use GenAI wherever possible to make testing more modern.'</p><p>Why is this objective weak from the perspective of a GenAI strategy for software testing?</p>",
+    "moznosti": [
+     "Because the objective does not name the specific LLM that will be used",
+     "Because the objective is not measurable, so it is not possible to evaluate whether GenAI brings the intended benefit",
+     "Because the objective should be defined only after the GenAI tools are fully integrated",
+     "Because objectives for GenAI should focus on reducing the number of testers"
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. LLM selection should follow from the objectives, not be part of them (section 5.1.2).",
+     "b": "Correct. Section 5.1.2 starts with defining measurable test objectives such as increased productivity, shorter test cycles and improved test quality. 'More modern' cannot be measured.",
+     "c": "Incorrect. Objectives come first; the strategy begins with them (section 5.1.2).",
+     "d": "Incorrect. The syllabus examples are productivity, shorter test cycles and quality, not headcount reduction."
+    },
+    "vysvetleni_obecne": "A GenAI strategy begins with measurable test objectives; without them metrics cannot show whether the strategy works (section 5.1.2)."
+   },
+   "cz": {
+    "q": "<p>Test manažer napíše pro iniciativu s GenAI tento cíl: „Používat GenAI všude, kde to jde, aby testování bylo modernější.“</p><p>Proč je tento cíl z pohledu strategie GenAI pro testování slabý?</p>",
+    "moznosti": [
+     "Protože cíl neuvádí konkrétní LLM, který se použije",
+     "Protože cíl není měřitelný, takže nejde vyhodnotit, jestli GenAI přináší zamýšlený přínos",
+     "Protože cíl se má stanovit až poté, co jsou nástroje GenAI plně integrované",
+     "Protože cíle pro GenAI se mají zaměřit na snížení počtu testerů"
+    ],
+    "vysvetleni": {
+     "a": "Špatně. Výběr LLM má vycházet z cílů, není jejich součástí (5.1.2).",
+     "b": "Správně. Oddíl 5.1.2 začíná definicí měřitelných cílů testování, například vyšší produktivity, kratších cyklů a vyšší kvality. „Modernější“ změřit nejde.",
+     "c": "Špatně. Cíle jsou první, strategie jimi začíná (5.1.2).",
+     "d": "Špatně. Příklady v sylabu jsou produktivita, kratší cykly a kvalita, ne snižování počtu lidí."
+    },
+    "vysvetleni_obecne": "Strategie GenAI začíná měřitelnými cíli testování, bez nich metriky neukážou, jestli strategie funguje (5.1.2)."
+   },
+   "spravne": ["b"], "oddil": "5.1.2", "poznamka": ""
+  },
+  {
+   "id": "CG-5.1.2-02", "zdroj": "vlastni", "lo": "GenAI-5.1.2", "k": "K2", "body": 1, "vyber": 1, "keep_order": false,
+   "en": {
+    "q": "<p>A test organization plans to feed requirements into an LLM to generate test cases. The requirements repository contains outdated, contradictory and duplicated items.</p><p>Which aspect of a GenAI strategy addresses this issue MOST directly, and why?</p>",
+    "moznosti": [
+     "Training programs, because testers must learn ethical skills before using requirements",
+     "Metrics, because time efficiency will show that the requirements are of poor quality",
+     "LLM selection, because a larger model can resolve contradictions in the input automatically",
+     "Data quality, because the effectiveness of LLM-powered testing depends on accurate and relevant input data"
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. Training is important, but ethical skills do not fix poor input data.",
+     "b": "Incorrect. Metrics may reveal poor results later, but they do not address the quality of the input itself.",
+     "c": "Incorrect. A larger model cannot reliably fix contradictory input; the syllabus links trustworthy results to input data quality.",
+     "d": "Correct. Section 5.1.2 states that LLM-powered testing depends on accurate, relevant input data and that high-quality input is key to trustworthy results."
+    },
+    "vysvetleni_obecne": "Inaccurate or irrelevant input leads to untrustworthy output. Data quality is an explicit aspect of a GenAI strategy (section 5.1.2)."
+   },
+   "cz": {
+    "q": "<p>Testovací organizace chce vkládat požadavky do LLM a generovat z nich testovací případy. Úložiště požadavků obsahuje zastaralé, rozporné a duplicitní položky.</p><p>Který aspekt strategie GenAI tento problém řeší NEJPŘÍMĚJI a proč?</p>",
+    "moznosti": [
+     "Školení, protože testeři se musí naučit etické dovednosti, než použijí požadavky",
+     "Metriky, protože time efficiency ukáže, že požadavky jsou nekvalitní",
+     "Výběr LLM, protože větší model rozpory ve vstupu vyřeší automaticky",
+     "Kvalita dat, protože účinnost testování s LLM závisí na přesných a relevantních vstupních datech"
+    ],
+    "vysvetleni": {
+     "a": "Špatně. Školení je důležité, ale etické dovednosti nekvalitní vstupní data neopraví.",
+     "b": "Špatně. Metriky mohou později ukázat špatné výsledky, ale kvalitu samotného vstupu neřeší.",
+     "c": "Špatně. Větší model rozporný vstup spolehlivě neopraví. Sylabus spojuje důvěryhodné výsledky s kvalitou vstupních dat.",
+     "d": "Správně. Oddíl 5.1.2 říká, že testování s LLM závisí na přesných a relevantních vstupních datech a že kvalitní vstup je podmínkou důvěryhodných výsledků."
+    },
+    "vysvetleni_obecne": "Nepřesný nebo nerelevantní vstup dává nedůvěryhodný výstup. Kvalita dat je výslovný aspekt strategie GenAI (5.1.2)."
+   },
+   "spravne": ["d"], "oddil": "5.1.2", "poznamka": ""
+  },
+  {
+   "id": "CG-5.1.2-03", "zdroj": "vlastni", "lo": "GenAI-5.1.2", "k": "K2", "body": 1, "vyber": 1, "keep_order": false,
+   "en": {
+    "q": "<p>Which of the following is an example of a process guideline that a GenAI strategy for software testing should include?</p>",
+    "moznosti": [
+     "Test cases generated by GenAI are labelled as such and pass a review before being added to the regression test suite",
+     "Each tester may decide individually whether generated testware needs to be reviewed",
+     "All available project data is sent to the LLM to maximize the context for each prompt",
+     "Generated test scripts are executed directly in production to save time"
+    ],
+    "vysvetleni": {
+     "a": "Correct. Section 5.1.2 mentions transparency obligations (what was generated using GenAI) and quality gates with review of generated testware.",
+     "b": "Incorrect. Quality gates with review should be defined as an organizational rule, not left to individual choice.",
+     "c": "Incorrect. Guidelines should include rules for the use of sensitive data; sending all data contradicts this and data quality means relevant data, not maximum data.",
+     "d": "Incorrect. Skipping review and testing in production contradicts the quality gates described in section 5.1.2."
+    },
+    "vysvetleni_obecne": "Process guidelines in section 5.1.2 cover sensitive data rules, transparency obligations and quality gates with review of generated testware."
+   },
+   "cz": {
+    "q": "<p>Které z následujících je příkladem procesního pravidla, které má strategie GenAI pro testování obsahovat?</p>",
+    "moznosti": [
+     "Testovací případy vygenerované GenAI se tak označí a před zařazením do regresní sady projdou revizí",
+     "Každý tester se sám rozhodne, jestli vygenerovaný testware potřebuje revizi",
+     "Do LLM se posílají všechna dostupná data projektu, aby každý prompt měl co největší kontext",
+     "Vygenerované testovací skripty se kvůli úspoře času spouštějí rovnou v produkci"
+    ],
+    "vysvetleni": {
+     "a": "Správně. Oddíl 5.1.2 uvádí povinnosti transparentnosti (co vzniklo pomocí GenAI) a quality gates s revizí vygenerovaného testwaru.",
+     "b": "Špatně. Quality gates s revizí mají být pravidlem organizace, ne volbou jednotlivce.",
+     "c": "Špatně. Pravidla mají obsahovat zásady pro citlivá data. Posílat všechno jim odporuje a kvalita dat znamená relevantní data, ne co nejvíc dat.",
+     "d": "Špatně. Vynechat revizi a testovat v produkci odporuje quality gates z 5.1.2."
+    },
+    "vysvetleni_obecne": "Procesní pravidla v 5.1.2 zahrnují pravidla pro citlivá data, povinnosti transparentnosti a quality gates s revizí vygenerovaného testwaru."
+   },
+   "spravne": ["a"], "oddil": "5.1.2", "poznamka": ""
+  },
+  {
+   "id": "CG-5.1.2-04", "zdroj": "vlastni", "lo": "GenAI-5.1.2", "k": "K2", "body": 1, "vyber": 1, "keep_order": false,
+   "en": {
+    "q": "<p>An organization has trained its testers and introduced an LLM for test case generation. After six months, management asks whether the investment has improved test productivity, but nobody can answer.</p><p>Which aspect of the GenAI strategy was MOST likely neglected?</p>",
+    "moznosti": [
+     "Ensuring compatibility of the LLM with existing test infrastructure",
+     "Establishing transparency obligations for generated testware",
+     "Collecting specific metrics to measure the effectiveness of GenAI results",
+     "Selecting an LLM that supports multimodal input"
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. Infrastructure compatibility affects whether the LLM can be integrated, not whether the benefit can be shown.",
+     "b": "Incorrect. Transparency tells readers what was AI-generated but does not measure effectiveness.",
+     "c": "Correct. Section 5.1.2 requires collecting specific metrics (see 2.3.1) to measure the effectiveness of GenAI results. Without them the question about productivity cannot be answered.",
+     "d": "Incorrect. Multimodal input is a functional capability considered in model selection (5.1.3), not a way to evaluate benefits."
+    },
+    "vysvetleni_obecne": "Measurable objectives need metrics; otherwise the organization cannot tell whether GenAI adds value (section 5.1.2)."
+   },
+   "cz": {
+    "q": "<p>Organizace proškolila testery a zavedla LLM pro generování testovacích případů. Po půl roce se vedení ptá, jestli investice zvýšila produktivitu testování, ale nikdo neumí odpovědět.</p><p>Který aspekt strategie GenAI byl NEJSPÍŠ zanedbán?</p>",
+    "moznosti": [
+     "Zajištění kompatibility LLM se stávající testovací infrastrukturou",
+     "Zavedení povinností transparentnosti pro vygenerovaný testware",
+     "Sběr konkrétních metrik, které měří účinnost výsledků GenAI",
+     "Výběr LLM, který podporuje multimodální vstup"
+    ],
+    "vysvetleni": {
+     "a": "Špatně. Kompatibilita s infrastrukturou ovlivňuje, jestli jde LLM zapojit, ne jestli jde přínos prokázat.",
+     "b": "Špatně. Transparentnost říká čtenáři, co vytvořila AI, ale účinnost neměří.",
+     "c": "Správně. Oddíl 5.1.2 požaduje sbírat konkrétní metriky (viz 2.3.1), které měří účinnost výsledků GenAI. Bez nich nejde na otázku o produktivitě odpovědět.",
+     "d": "Špatně. Multimodální vstup je funkční schopnost posuzovaná při výběru modelu (5.1.3), ne způsob vyhodnocení přínosu."
+    },
+    "vysvetleni_obecne": "Měřitelné cíle potřebují metriky, jinak organizace nepozná, jestli GenAI přináší hodnotu (5.1.2)."
+   },
+   "spravne": ["c"], "oddil": "5.1.2", "poznamka": ""
+  },
+  {
+   "id": "CG-5.1.2-05", "zdroj": "vlastni", "lo": "GenAI-5.1.2", "k": "K2", "body": 1, "vyber": 1, "keep_order": false,
+   "en": {
+    "q": "<p>Which statement BEST explains why training programs are part of a GenAI strategy for software testing?</p>",
+    "moznosti": [
+     "Training ensures that each tester obtains a vendor certification for every LLM in use",
+     "Training gives test teams the technical and ethical skills needed to use GenAI tools effectively",
+     "Training replaces the need for process guidelines, because skilled testers do not need rules",
+     "Training is needed mainly so that testers can fine-tune the LLMs themselves"
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. The syllabus does not mention vendor certifications; it focuses on technical and ethical skills.",
+     "b": "Correct. Section 5.1.2 says comprehensive training programs should ensure that test teams have the technical and ethical skills necessary to use GenAI tools effectively.",
+     "c": "Incorrect. Training and process guidelines are separate aspects; both are needed (section 5.1.2).",
+     "d": "Incorrect. Fine-tuning is not the purpose of training in section 5.1.2."
+    },
+    "vysvetleni_obecne": "Training in a GenAI strategy covers both technical skills (prompting, evaluating outputs) and ethical skills (bias, transparency, data privacy) (section 5.1.2)."
+   },
+   "cz": {
+    "q": "<p>Které tvrzení NEJLÉPE vysvětluje, proč jsou vzdělávací programy součástí strategie GenAI pro testování?</p>",
+    "moznosti": [
+     "Školení zajistí, že každý tester získá certifikát dodavatele pro každý používaný LLM",
+     "Školení dá testovacím týmům technické a etické dovednosti potřebné k efektivnímu používání nástrojů GenAI",
+     "Školení nahrazuje procesní pravidla, protože zkušení testeři pravidla nepotřebují",
+     "Školení je potřeba hlavně proto, aby testeři mohli LLM sami dolaďovat"
+    ],
+    "vysvetleni": {
+     "a": "Špatně. Sylabus certifikace dodavatelů nezmiňuje, zaměřuje se na technické a etické dovednosti.",
+     "b": "Správně. Oddíl 5.1.2 říká, že vzdělávací programy mají zajistit technické a etické dovednosti pro efektivní používání nástrojů GenAI.",
+     "c": "Špatně. Školení a procesní pravidla jsou samostatné aspekty a potřeba jsou oba (5.1.2).",
+     "d": "Špatně. Doladění modelu není účelem školení podle 5.1.2."
+    },
+    "vysvetleni_obecne": "Školení ve strategii GenAI pokrývá technické dovednosti (prompty, hodnocení výstupů) i etické (zkreslení, transparentnost, ochrana dat) (5.1.2)."
+   },
+   "spravne": ["b"], "oddil": "5.1.2", "poznamka": ""
+  },
+
+  {
+   "id": "CG-5.1.3-01", "zdroj": "vlastni", "lo": "GenAI-5.1.3", "k": "K2", "body": 1, "vyber": 1, "keep_order": false,
+   "en": {
+    "q": "<p>A test organization compares two LLMs for generating test cases from user stories. Model X ranks higher on a popular public leaderboard for general language tasks. Model Y achieved higher accuracy and relevance on a set of 60 of the organization's own user stories reviewed by senior testers.</p><p>Based on the model performance criterion, which conclusion is BEST?</p>",
+    "moznosti": [
+     "Model X should be preferred, because public leaderboards are the most objective source for test tasks",
+     "Neither model can be evaluated, because there are no benchmarks specific to software testing",
+     "Model Y should be preferred, because performance should be evaluated on the targeted test tasks against the organization's benchmarks",
+     "Both models are equivalent, because performance is not a relevant criterion for SLM/LLM selection"
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. Section 5.1.3 notes that few public benchmarks focus on test tasks; general leaderboards do not show performance on the targeted test task.",
+     "b": "Incorrect. Few public test-specific benchmarks exist, but the organization can use its own benchmarks and the metrics from section 2.3.1.",
+     "c": "Correct. Section 5.1.3 says to evaluate model performance for the targeted test tasks against the organization's benchmarks, using metrics such as those in section 2.3.1.",
+     "d": "Incorrect. Model performance is the first of the four selection criteria in section 5.1.3."
+    },
+    "vysvetleni_obecne": "Model performance means quality on your own test tasks measured against your own benchmarks, not a position on a public leaderboard (section 5.1.3)."
+   },
+   "cz": {
+    "q": "<p>Testovací organizace porovnává dva LLM pro generování testovacích případů z uživatelských scénářů. Model X je výš na populárním veřejném žebříčku pro obecné jazykové úlohy. Model Y dosáhl vyšší přesnosti a relevance na 60 vlastních uživatelských scénářích organizace, které hodnotili seniorní testeři.</p><p>Jaký závěr je podle kritéria výkonu modelu NEJLEPŠÍ?</p>",
+    "moznosti": [
+     "Přednost má model X, protože veřejné žebříčky jsou pro testovací úlohy nejobjektivnějším zdrojem",
+     "Žádný model nejde posoudit, protože neexistují benchmarky specifické pro testování",
+     "Přednost má model Y, protože výkon se má hodnotit na cílových testovacích úlohách proti benchmarkům organizace",
+     "Oba modely jsou rovnocenné, protože výkon není pro výběr LLM/SLM relevantní kritérium"
+    ],
+    "vysvetleni": {
+     "a": "Špatně. Oddíl 5.1.3 upozorňuje, že veřejných benchmarků pro testovací úlohy je málo. Obecné žebříčky výkon na cílové úloze neukazují.",
+     "b": "Špatně. Veřejných benchmarků pro testování je málo, ale organizace může použít vlastní benchmarky a metriky z 2.3.1.",
+     "c": "Správně. Oddíl 5.1.3 říká, že výkon se hodnotí pro cílové testovací úlohy proti benchmarkům organizace metrikami z 2.3.1.",
+     "d": "Špatně. Výkon modelu je první ze čtyř kritérií výběru v 5.1.3."
+    },
+    "vysvetleni_obecne": "Výkon modelu znamená kvalitu na vlastních testovacích úlohách měřenou proti vlastním benchmarkům, ne pořadí ve veřejném žebříčku (5.1.3)."
+   },
+   "spravne": ["c"], "oddil": "5.1.3", "poznamka": ""
+  },
+  {
+   "id": "CG-5.1.3-02", "zdroj": "vlastni", "lo": "GenAI-5.1.3", "k": "K2", "body": 1, "vyber": 1, "keep_order": false,
+   "en": {
+    "q": "<p>A team wants an LLM to produce test cases in the organization's specific format and terminology. The team has several thousand historical user stories with matching approved test cases.</p><p>Which selection criterion is MOST relevant to this need?</p>",
+    "moznosti": [
+     "Fine-tuning potential, because it should be evaluated whether the model can usefully be fine-tuned with domain-specific data",
+     "Community and support, because an active community will provide the organization's test case format",
+     "Recurring cost, because historical data reduces licensing fees",
+     "Context window size, because a larger window removes the need for domain-specific data"
+    ],
+    "vysvetleni": {
+     "a": "Correct. Section 5.1.3 describes fine-tuning potential as evaluating whether it is possible and useful to fine-tune the model with domain-specific data to increase accuracy and relevance in specialized contexts.",
+     "b": "Incorrect. Community and support help with implementation and troubleshooting, not with the organization's own format.",
+     "c": "Incorrect. Historical data does not reduce licensing fees; recurring cost is a different criterion.",
+     "d": "Incorrect. Context window size is a technical feature, not one of the four criteria, and it does not replace domain adaptation."
+    },
+    "vysvetleni_obecne": "Organization-specific format and terminology with available domain data point to the fine-tuning potential criterion (sections 5.1.3 and 4.2.1)."
+   },
+   "cz": {
+    "q": "<p>Tým chce, aby LLM vytvářel testovací případy ve specifickém formátu a terminologii organizace. Tým má několik tisíc historických uživatelských scénářů s odpovídajícími schválenými testovacími případy.</p><p>Které kritérium výběru je pro tuto potřebu NEJVÍC relevantní?</p>",
+    "moznosti": [
+     "Potenciál pro doladění, protože je třeba posoudit, jestli model jde užitečně doladit na doménových datech",
+     "Komunita a podpora, protože aktivní komunita dodá formát testovacích případů organizace",
+     "Opakované náklady, protože historická data snižují licenční poplatky",
+     "Velikost kontextového okna, protože větší okno odstraní potřebu doménových dat"
+    ],
+    "vysvetleni": {
+     "a": "Správně. Oddíl 5.1.3 popisuje potenciál pro doladění jako posouzení, jestli je možné a užitečné model doladit na doménových datech kvůli přesnosti a relevanci ve specializovaném kontextu.",
+     "b": "Špatně. Komunita a podpora pomáhají s nasazením a řešením problémů, ne s vlastním formátem organizace.",
+     "c": "Špatně. Historická data licenční poplatky nesnižují, opakované náklady jsou jiné kritérium.",
+     "d": "Špatně. Velikost kontextového okna je technická vlastnost, ne jedno ze čtyř kritérií, a doménové přizpůsobení nenahradí."
+    },
+    "vysvetleni_obecne": "Specifický formát a terminologie organizace spolu s dostupnými doménovými daty ukazují na kritérium potenciálu pro doladění (5.1.3, 4.2.1)."
+   },
+   "spravne": ["a"], "oddil": "5.1.3", "poznamka": ""
+  },
+  {
+   "id": "CG-5.1.3-03", "zdroj": "vlastni", "lo": "GenAI-5.1.3", "k": "K2", "body": 1, "vyber": 1, "keep_order": false,
+   "en": {
+    "q": "<p>When evaluating the recurring cost criterion for an LLM that will summarize nightly regression test results, which item should be included?</p>",
+    "moznosti": [
+     "The one-time effort to migrate existing test cases into a new test management tool",
+     "The cost of the initial training workshop for testers",
+     "The purchase price of laptops for new team members",
+     "Usage-based fees for input and output tokens multiplied by the expected frequency of the task"
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. A one-time migration is not a recurring cost of using the LLM.",
+     "b": "Incorrect. An initial workshop is a one-time cost, not a recurring cost of the LLM.",
+     "c": "Incorrect. Laptops are not an operational expense of using the LLM for the task.",
+     "d": "Correct. Section 5.1.3 includes licensing fees and operational expenses in recurring cost; HO-5.1.3 estimates them from tokens, prompts and task frequency."
+    },
+    "vysvetleni_obecne": "Recurring cost covers expenses that repeat while the model is used: licensing, token-based fees and operational costs such as compute (section 5.1.3, HO-5.1.3)."
+   },
+   "cz": {
+    "q": "<p>Při posouzení kritéria opakovaných nákladů pro LLM, který bude shrnovat noční výsledky regresních testů, co je třeba započítat?</p>",
+    "moznosti": [
+     "Jednorázovou práci na migraci stávajících testovacích případů do nového nástroje pro správu testů",
+     "Cenu úvodního školicího workshopu pro testery",
+     "Pořizovací cenu notebooků pro nové členy týmu",
+     "Poplatky za vstupní a výstupní tokeny vynásobené očekávanou četností úlohy"
+    ],
+    "vysvetleni": {
+     "a": "Špatně. Jednorázová migrace není opakovaný náklad na používání LLM.",
+     "b": "Špatně. Úvodní workshop je jednorázový náklad, ne opakovaný náklad modelu.",
+     "c": "Špatně. Notebooky nejsou provozním nákladem používání LLM pro úlohu.",
+     "d": "Správně. Oddíl 5.1.3 řadí do opakovaných nákladů licenční poplatky a provozní náklady. HO-5.1.3 je odhaduje z tokenů, promptů a četnosti úlohy."
+    },
+    "vysvetleni_obecne": "Opakované náklady jsou výdaje, které se opakují po dobu používání modelu: licence, poplatky za tokeny a provoz, třeba výpočetní výkon (5.1.3, HO-5.1.3)."
+   },
+   "spravne": ["d"], "oddil": "5.1.3", "poznamka": ""
+  },
+  {
+   "id": "CG-5.1.3-04", "zdroj": "vlastni", "lo": "GenAI-5.1.3", "k": "K2", "body": 1, "vyber": 1, "keep_order": false,
+   "en": {
+    "q": "<p>A team is choosing between two open source SLMs with similar results on the team's own test benchmark. One has detailed documentation and an active user forum; the other has almost no documentation.</p><p>Which selection criterion favors the first model, and why?</p>",
+    "moznosti": [
+     "Model performance, because documentation improves the accuracy of generated test cases",
+     "Community and support, because active community support and detailed documentation aid implementation and troubleshooting",
+     "Fine-tuning potential, because only documented models can be fine-tuned",
+     "Recurring cost, because documented models never have operational expenses"
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. Documentation does not change the model's results; both models performed similarly on the benchmark.",
+     "b": "Correct. Section 5.1.3 recommends choosing models with active community support and detailed documentation to aid implementation and troubleshooting.",
+     "c": "Incorrect. Fine-tuning possibility depends on the model and its license, not on whether it is documented.",
+     "d": "Incorrect. Any self-hosted model has operational expenses, regardless of documentation."
+    },
+    "vysvetleni_obecne": "When performance is comparable, community and support can decide; they reduce implementation and troubleshooting effort (section 5.1.3)."
+   },
+   "cz": {
+    "q": "<p>Tým vybírá mezi dvěma open source SLM s podobnými výsledky na vlastním testovacím benchmarku. Jeden má podrobnou dokumentaci a aktivní uživatelské fórum, druhý skoro žádnou dokumentaci.</p><p>Které kritérium výběru zvýhodňuje první model a proč?</p>",
+    "moznosti": [
+     "Výkon modelu, protože dokumentace zvyšuje přesnost vygenerovaných testovacích případů",
+     "Komunita a podpora, protože aktivní komunita a podrobná dokumentace usnadňují nasazení a řešení problémů",
+     "Potenciál pro doladění, protože doladit jdou jen zdokumentované modely",
+     "Opakované náklady, protože zdokumentované modely nemají provozní náklady"
+    ],
+    "vysvetleni": {
+     "a": "Špatně. Dokumentace výsledky modelu nemění, oba modely měly na benchmarku podobné výsledky.",
+     "b": "Správně. Oddíl 5.1.3 doporučuje modely s aktivní komunitou a podrobnou dokumentací, které usnadní nasazení a řešení problémů.",
+     "c": "Špatně. Možnost doladění závisí na modelu a licenci, ne na dokumentaci.",
+     "d": "Špatně. Každý model provozovaný ve vlastním prostředí má provozní náklady bez ohledu na dokumentaci."
+    },
+    "vysvetleni_obecne": "Při srovnatelném výkonu může rozhodnout komunita a podpora, protože snižují práci s nasazením a řešením problémů (5.1.3)."
+   },
+   "spravne": ["b"], "oddil": "5.1.3", "poznamka": ""
+  },
+  {
+   "id": "CG-5.1.3-05", "zdroj": "vlastni", "lo": "GenAI-5.1.3", "k": "K2", "body": 1, "vyber": 1, "keep_order": false,
+   "en": {
+    "q": "<p>A bank's test team needs to classify about 400 incoming defect reports per day into components. The reports may contain account numbers and must not leave the bank's environment. The budget for the task is limited.</p><p>Which approach is MOST consistent with the syllabus guidance on selecting LLMs/SLMs?</p>",
+    "moznosti": [
+     "Select the largest commercial LLM available, because the most capable model always gives the best value",
+     "Avoid language models altogether, because no benchmarks exist for defect classification",
+     "Evaluate a smaller, self-hosted SLM against the team's own classification benchmark, considering fine-tuning potential and recurring cost",
+     "Select the model with the largest context window, because context window size is the main selection criterion"
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. The syllabus asks to weigh performance on the targeted task, fine-tuning potential, recurring cost and support; the largest model is not automatically the best fit, and right-sized models are recommended in section 5.2.1.",
+     "b": "Incorrect. Lack of public test-specific benchmarks means the organization should use its own benchmarks, not avoid models.",
+     "c": "Correct. The task is narrow and frequent, data must stay internal and budget is limited. Evaluating an SLM on the team's own benchmark while weighing fine-tuning potential and recurring cost follows sections 5.1.3 and 5.2.1.",
+     "d": "Incorrect. Context window size is a technical feature that differentiates models, not the main criterion; short defect reports do not need a large window."
+    },
+    "vysvetleni_obecne": "Selection depends on context: performance on your task, fine-tuning potential, recurring cost and support. Narrow, high-volume, internal tasks often suit a right-sized SLM (sections 5.1.3, 4.2.1, 5.2.1)."
+   },
+   "cz": {
+    "q": "<p>Testovací tým banky potřebuje denně zatřídit asi 400 nových reportů o defektech podle komponent. Reporty mohou obsahovat čísla účtů a nesmí opustit prostředí banky. Rozpočet na úlohu je omezený.</p><p>Který přístup NEJVÍC odpovídá doporučením sylabu pro výběr LLM/SLM?</p>",
+    "moznosti": [
+     "Vybrat největší dostupný komerční LLM, protože nejschopnější model má vždy nejlepší poměr cena a přínos",
+     "Jazykové modely vůbec nepoužít, protože pro klasifikaci defektů neexistují benchmarky",
+     "Vyhodnotit menší SLM provozovaný ve vlastním prostředí na vlastním benchmarku klasifikace a zvážit potenciál pro doladění a opakované náklady",
+     "Vybrat model s největším kontextovým oknem, protože velikost kontextového okna je hlavní kritérium výběru"
+    ],
+    "vysvetleni": {
+     "a": "Špatně. Sylabus chce zvážit výkon na cílové úloze, potenciál pro doladění, opakované náklady a podporu. Největší model není automaticky nejvhodnější a 5.2.1 doporučuje modely přiměřené velikosti.",
+     "b": "Špatně. Chybějící veřejné benchmarky pro testování znamenají použít vlastní benchmarky, ne vzdát se modelů.",
+     "c": "Správně. Úloha je úzká a častá, data musí zůstat uvnitř a rozpočet je omezený. Vyhodnotit SLM na vlastním benchmarku se zvážením doladění a opakovaných nákladů odpovídá 5.1.3 a 5.2.1.",
+     "d": "Špatně. Velikost kontextového okna je technická vlastnost, podle které se modely liší, ne hlavní kritérium. Krátké reporty velké okno nepotřebují."
+    },
+    "vysvetleni_obecne": "Výběr závisí na kontextu: výkon na vlastní úloze, potenciál pro doladění, opakované náklady a podpora. Úzké, časté a interní úlohy často vyhovují SLM přiměřené velikosti (5.1.3, 4.2.1, 5.2.1)."
+   },
+   "spravne": ["c"], "oddil": "5.1.3", "poznamka": "Závěr SLM pro úzkou úlohu je odvozený z 1.1.2, 4.2.1 a 5.2.1, sylabus ho v 5.1.3 výslovně neuvádí."
+  },
+
+  {
+   "id": "CG-5.1.4-01", "zdroj": "vlastni", "lo": "GenAI-5.1.4", "k": "K1", "body": 1, "vyber": 1, "keep_order": false,
+   "en": {
+    "q": "<p>In which phase of GenAI adoption does a test organization primarily train test teams on GenAI concepts, provide access to LLMs/SLMs and experiment with initial use cases?</p>",
+    "moznosti": [
+     "Utilization and iteration",
+     "Initiation and usage definition",
+     "Planning and preparation",
+     "Discovery"
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. Utilization and iteration is the advanced phase with full integration, continuous monitoring and measurement of the transformation.",
+     "b": "Incorrect. Initiation and usage definition focuses on identifying and prioritizing practical use cases.",
+     "c": "Incorrect. 'Planning and preparation' is not one of the phases in section 5.1.4.",
+     "d": "Correct. Discovery focuses on awareness and capability building through training, access to LLMs/SLMs and initial experiments (section 5.1.4)."
+    },
+    "vysvetleni_obecne": "The three phases are Discovery, Initiation and usage definition, and Utilization and iteration (section 5.1.4)."
+   },
+   "cz": {
+    "q": "<p>Ve které fázi zavedení GenAI testovací organizace hlavně školí týmy o konceptech GenAI, zpřístupňuje LLM/SLM a experimentuje s prvními případy použití?</p>",
+    "moznosti": [
+     "Utilization and iteration (využívání a iterace)",
+     "Initiation and usage definition (zahájení a definice použití)",
+     "Planning and preparation (plánování a příprava)",
+     "Discovery (objevování)"
+    ],
+    "vysvetleni": {
+     "a": "Špatně. Utilization and iteration je pokročilá fáze s plnou integrací, průběžným monitoringem a měřením transformace.",
+     "b": "Špatně. Initiation and usage definition se zaměřuje na identifikaci a prioritizaci praktických případů použití.",
+     "c": "Špatně. „Planning and preparation“ mezi fázemi v 5.1.4 není.",
+     "d": "Správně. Discovery se zaměřuje na povědomí a budování schopností přes školení, přístup k LLM/SLM a první experimenty (5.1.4)."
+    },
+    "vysvetleni_obecne": "Tři fáze jsou Discovery, Initiation and usage definition a Utilization and iteration (5.1.4)."
+   },
+   "spravne": ["d"], "oddil": "5.1.4", "poznamka": ""
+  },
+  {
+   "id": "CG-5.1.4-02", "zdroj": "vlastni", "lo": "GenAI-5.1.4", "k": "K1", "body": 1, "vyber": 1, "keep_order": false,
+   "en": {
+    "q": "<p>A test organization's testers are familiar with GenAI. The organization now evaluates which use cases bring the most value, assesses LLM-powered test infrastructure and checks alignment with organizational needs.</p><p>Which adoption phase is this?</p>",
+    "moznosti": [
+     "Discovery",
+     "Initiation and usage definition",
+     "Utilization and iteration",
+     "Scaling and optimization"
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. Discovery is about awareness, training and initial experiments.",
+     "b": "Correct. Identifying and prioritizing use cases, evaluating LLM-powered test infrastructure, developing expertise and aligning with organizational needs describe Initiation and usage definition (section 5.1.4).",
+     "c": "Incorrect. Utilization and iteration means full integration with continuous monitoring and measurement.",
+     "d": "Incorrect. 'Scaling and optimization' is not a phase name in the syllabus."
+    },
+    "vysvetleni_obecne": "Second phase: after basic understanding exists, the organization selects and prioritizes practical use cases (section 5.1.4)."
+   },
+   "cz": {
+    "q": "<p>Testeři organizace už GenAI znají. Organizace teď posuzuje, které případy použití přinesou nejvíc, hodnotí testovací infrastrukturu s LLM a ověřuje soulad s potřebami organizace.</p><p>O kterou fázi zavedení jde?</p>",
+    "moznosti": [
+     "Discovery (objevování)",
+     "Initiation and usage definition (zahájení a definice použití)",
+     "Utilization and iteration (využívání a iterace)",
+     "Scaling and optimization (škálování a optimalizace)"
+    ],
+    "vysvetleni": {
+     "a": "Špatně. Discovery je o povědomí, školení a prvních pokusech.",
+     "b": "Správně. Identifikace a prioritizace případů použití, posouzení infrastruktury s LLM, rozvoj odbornosti a sladění s potřebami organizace popisují fázi Initiation and usage definition (5.1.4).",
+     "c": "Špatně. Utilization and iteration znamená plnou integraci s průběžným monitoringem a měřením.",
+     "d": "Špatně. „Scaling and optimization“ není název fáze v sylabu."
+    },
+    "vysvetleni_obecne": "Druhá fáze: po získání základního porozumění organizace vybírá a prioritizuje praktické případy použití (5.1.4)."
+   },
+   "spravne": ["b"], "oddil": "5.1.4", "poznamka": ""
+  },
+  {
+   "id": "CG-5.1.4-03", "zdroj": "vlastni", "lo": "GenAI-5.1.4", "k": "K1", "body": 1, "vyber": 1, "keep_order": false,
+   "en": {
+    "q": "<p>Which statement about the phases of GenAI adoption is consistent with the syllabus?</p>",
+    "moznosti": [
+     "Different use cases can be in different phases at the same time",
+     "All use cases must complete Discovery before any use case can enter the next phase",
+     "The adoption is complete when the Initiation and usage definition phase ends",
+     "The phases apply only to test automation, not to other test activities"
+    ],
+    "vysvetleni": {
+     "a": "Correct. Section 5.1.4 states that the phases can run in parallel for different use cases, for example test report analysis may be further along than test automation.",
+     "b": "Incorrect. The syllabus explicitly allows parallel phases for different use cases.",
+     "c": "Incorrect. The third phase, Utilization and iteration, follows and includes continuous monitoring and measurement.",
+     "d": "Incorrect. The phases apply to GenAI adoption in the test organization in general; the syllabus example compares test report analysis with test automation."
+    },
+    "vysvetleni_obecne": "Phases belong to use cases, not to the whole organization at once; they can run in parallel (section 5.1.4)."
+   },
+   "cz": {
+    "q": "<p>Které tvrzení o fázích zavedení GenAI odpovídá sylabu?</p>",
+    "moznosti": [
+     "Různé případy použití mohou být současně v různých fázích",
+     "Všechny případy použití musí dokončit Discovery, než kterýkoli z nich postoupí do další fáze",
+     "Zavedení je dokončeno koncem fáze Initiation and usage definition",
+     "Fáze se týkají jen automatizace testů, ne jiných testovacích činností"
+    ],
+    "vysvetleni": {
+     "a": "Správně. Oddíl 5.1.4 říká, že fáze mohou běžet souběžně pro různé případy použití, například analýza reportů z testování může být dál než automatizace testů.",
+     "b": "Špatně. Sylabus souběh fází pro různé případy použití výslovně připouští.",
+     "c": "Špatně. Následuje třetí fáze Utilization and iteration s průběžným monitoringem a měřením.",
+     "d": "Špatně. Fáze se týkají zavedení GenAI v testovací organizaci obecně. Příklad v sylabu porovnává analýzu reportů z testování s automatizací testů."
+    },
+    "vysvetleni_obecne": "Fáze patří případům použití, ne celé organizaci najednou, a mohou běžet souběžně (5.1.4)."
+   },
+   "spravne": ["a"], "oddil": "5.1.4", "poznamka": ""
+  },
+  {
+   "id": "CG-5.1.4-04", "zdroj": "vlastni", "lo": "GenAI-5.1.4", "k": "K1", "body": 1, "vyber": 1, "keep_order": false,
+   "en": {
+    "q": "<p>Which human factor does the syllabus specifically mention as something to recognize and address early when adopting GenAI in a test organization?</p>",
+    "moznosti": [
+     "Overconfidence of testers in their manual test design skills",
+     "Lack of interest of developers in AI-generated test cases",
+     "Fear of job displacement, which can impact adoption and team morale",
+     "Resistance of customers to receiving AI-generated test reports"
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. Overconfidence in manual skills is not mentioned in section 5.1.4.",
+     "b": "Incorrect. The syllabus does not discuss developers' interest in AI-generated test cases here.",
+     "c": "Correct. Section 5.1.4 mentions early concerns such as fear of job displacement, which can impact adoption and team morale.",
+     "d": "Incorrect. Customer resistance is not mentioned in section 5.1.4."
+    },
+    "vysvetleni_obecne": "Besides the three phases, section 5.1.4 highlights fear of job displacement as an early concern to address."
+   },
+   "cz": {
+    "q": "<p>Který lidský faktor sylabus výslovně uvádí jako věc, kterou je třeba při zavádění GenAI v testovací organizaci včas rozpoznat a řešit?</p>",
+    "moznosti": [
+     "Přehnanou důvěru testerů v jejich dovednosti ručního návrhu testů",
+     "Nezájem vývojářů o testovací případy vygenerované AI",
+     "Strach ze ztráty práce, který může ovlivnit zavádění i náladu v týmu",
+     "Odpor zákazníků k reportům z testování vytvořeným AI"
+    ],
+    "vysvetleni": {
+     "a": "Špatně. Přehnaná důvěra v ruční dovednosti v 5.1.4 zmíněná není.",
+     "b": "Špatně. Zájem vývojářů o AI testovací případy sylabus na tomto místě neřeší.",
+     "c": "Správně. Oddíl 5.1.4 zmiňuje včasné obavy, například strach ze ztráty práce, který může ovlivnit zavádění a náladu v týmu.",
+     "d": "Špatně. Odpor zákazníků v 5.1.4 zmíněný není."
+    },
+    "vysvetleni_obecne": "Kromě tří fází oddíl 5.1.4 upozorňuje na strach ze ztráty práce jako obavu, kterou je třeba řešit včas."
+   },
+   "spravne": ["c"], "oddil": "5.1.4", "poznamka": ""
+  },
+  {
+   "id": "CG-5.1.4-05", "zdroj": "vlastni", "lo": "GenAI-5.1.4", "k": "K1", "body": 1, "vyber": 1, "keep_order": false,
+   "en": {
+    "q": "<p>Which activity is MOST characteristic of the Utilization and iteration phase of GenAI adoption?</p>",
+    "moznosti": [
+     "Giving testers first access to an LLM so they can try generating test data",
+     "Creating a list of candidate use cases and ranking them by expected value",
+     "Running an introductory workshop on GenAI concepts and limitations",
+     "Continuously monitoring the progress of GenAI and related tools and measuring the transformation to ensure sustainable benefits"
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. First access and experimentation belong to Discovery.",
+     "b": "Incorrect. Identifying and prioritizing use cases belongs to Initiation and usage definition.",
+     "c": "Incorrect. Training on GenAI concepts belongs to Discovery.",
+     "d": "Correct. Section 5.1.4 describes Utilization and iteration as full integration with continuous monitoring and measurement and management of the transformation for sustainable benefits and scalability."
+    },
+    "vysvetleni_obecne": "Phase 3 is about full integration, monitoring, measurement and scaling (section 5.1.4)."
+   },
+   "cz": {
+    "q": "<p>Která činnost je NEJVÍC typická pro fázi Utilization and iteration?</p>",
+    "moznosti": [
+     "Dát testerům první přístup k LLM, aby si zkusili generovat testovací data",
+     "Sestavit seznam kandidátních případů použití a seřadit je podle očekávaného přínosu",
+     "Uspořádat úvodní workshop o konceptech a omezeních GenAI",
+     "Průběžně sledovat vývoj GenAI a souvisejících nástrojů a měřit transformaci kvůli udržitelným přínosům"
+    ],
+    "vysvetleni": {
+     "a": "Špatně. První přístup a experimenty patří do Discovery.",
+     "b": "Špatně. Identifikace a prioritizace případů použití patří do Initiation and usage definition.",
+     "c": "Špatně. Školení o konceptech GenAI patří do Discovery.",
+     "d": "Správně. Oddíl 5.1.4 popisuje Utilization and iteration jako plnou integraci s průběžným monitoringem a s měřením a řízením transformace kvůli udržitelným přínosům a škálovatelnosti."
+    },
+    "vysvetleni_obecne": "Třetí fáze je o plné integraci, monitoringu, měření a škálování (5.1.4)."
+   },
+   "spravne": ["d"], "oddil": "5.1.4", "poznamka": ""
+  },
+
+  {
+   "id": "CG-5.2.1-01", "zdroj": "vlastni", "lo": "GenAI-5.2.1", "k": "K2", "body": 1, "vyber": 1, "keep_order": false,
+   "en": {
+    "q": "<p>A tester with strong prompt engineering skills but no knowledge of insurance products uses an LLM to generate test cases for premium calculation. Several generated test cases contain incorrect expected results that the tester does not notice.</p><p>Which skill area from the syllabus would MOST directly have prevented this?</p>",
+    "moznosti": [
+     "Combining domain and test expertise with AI skills to evaluate LLM-driven test case generation",
+     "Understanding the context window size of the LLM",
+     "Selecting right-sized models to reduce energy consumption",
+     "Following privacy-preserving prompt engineering practices"
+    ],
+    "vysvetleni": {
+     "a": "Correct. Section 5.2.1 states that testers must combine domain and test expertise with AI skills to evaluate LLM-driven testing, including test case generation. Without domain knowledge, wrong expected results go unnoticed.",
+     "b": "Incorrect. Context window understanding helps with large inputs but does not let the tester judge whether expected results are correct.",
+     "c": "Incorrect. Right-sized models address cost and energy, not the correctness of expected results.",
+     "d": "Incorrect. Privacy-preserving prompting protects data, but it does not help detect incorrect expected results."
+    },
+    "vysvetleni_obecne": "AI skills alone are not enough; domain and test expertise are needed to evaluate AI-generated testware (section 5.2.1)."
+   },
+   "cz": {
+    "q": "<p>Tester s dobrými dovednostmi v prompt engineeringu, ale bez znalosti pojistných produktů, generuje pomocí LLM testovací případy pro výpočet pojistného. Několik případů má špatně očekávané výsledky, kterých si tester nevšimne.</p><p>Která oblast dovedností ze sylabu by tomu NEJPŘÍMĚJI zabránila?</p>",
+    "moznosti": [
+     "Spojení doménové a testovací odbornosti s AI dovednostmi při posouzení testovacích případů generovaných LLM",
+     "Porozumění velikosti kontextového okna LLM",
+     "Výběr modelů přiměřené velikosti kvůli nižší spotřebě energie",
+     "Dodržování postupů tvorby promptů šetrné k soukromí"
+    ],
+    "vysvetleni": {
+     "a": "Správně. Oddíl 5.2.1 říká, že testeři musí spojit doménovou a testovací odbornost s AI dovednostmi, aby posoudili testování řízené LLM včetně generování testovacích případů. Bez znalosti domény špatné očekávané výsledky projdou.",
+     "b": "Špatně. Porozumění kontextovému oknu pomáhá s velkými vstupy, ale nedovolí posoudit správnost očekávaných výsledků.",
+     "c": "Špatně. Modely přiměřené velikosti řeší náklady a energii, ne správnost očekávaných výsledků.",
+     "d": "Špatně. Prompty šetrné k soukromí chrání data, ale špatné očekávané výsledky neodhalí."
+    },
+    "vysvetleni_obecne": "Samotné AI dovednosti nestačí. K posouzení testwaru od AI je potřeba doménová a testovací odbornost (5.2.1)."
+   },
+   "spravne": ["a"], "oddil": "5.2.1", "poznamka": ""
+  },
+  {
+   "id": "CG-5.2.1-02", "zdroj": "vlastni", "lo": "GenAI-5.2.1", "k": "K2", "body": 1, "vyber": 1, "keep_order": false,
+   "en": {
+    "q": "<p>Before using an approved LLM to analyze a batch of production-like logs, a tester replaces customer names, account numbers and e-mail addresses with placeholders.</p><p>Which knowledge area from the syllabus does this activity demonstrate, and why is it important?</p>",
+    "moznosti": [
+     "Prompt refinement, because placeholders make the prompt shorter and more precise",
+     "Assessing LLM capabilities, because placeholders test whether the model understands masked data",
+     "Data sanitization, because testers should understand the data security implications of sharing testware with LLMs and remove or mask sensitive information",
+     "Environmental considerations, because masked data requires fewer tokens and less energy"
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. Prompt refinement is about iteratively improving instructions, not about protecting data.",
+     "b": "Incorrect. The purpose of masking is protection of sensitive data, not capability assessment.",
+     "c": "Correct. Section 5.2.1 says testers should understand the data security implications of sharing testware with LLMs and implement data sanitization, removing or masking sensitive, personal or confidential information.",
+     "d": "Incorrect. Any token savings are a side effect; the reason for masking is data protection."
+    },
+    "vysvetleni_obecne": "Data sanitization and privacy-preserving prompt engineering are essential knowledge for testers working with GenAI, even with approved tools (section 5.2.1)."
+   },
+   "cz": {
+    "q": "<p>Než tester použije schválený LLM k analýze dávky logů podobných produkčním, nahradí jména zákazníků, čísla účtů a e-mailové adresy zástupnými hodnotami.</p><p>Kterou oblast znalostí ze sylabu tato činnost ukazuje a proč je důležitá?</p>",
+    "moznosti": [
+     "Zpřesňování promptů, protože zástupné hodnoty prompt zkrátí a zpřesní",
+     "Posouzení schopností LLM, protože zástupné hodnoty ověří, jestli model rozumí maskovaným datům",
+     "Sanitizaci dat, protože tester má rozumět dopadům sdílení testwaru s LLM na bezpečnost dat a citlivé informace odstranit nebo zamaskovat",
+     "Environmentální hledisko, protože maskovaná data potřebují méně tokenů a energie"
+    ],
+    "vysvetleni": {
+     "a": "Špatně. Zpřesňování promptů je postupné zlepšování zadání, ne ochrana dat.",
+     "b": "Špatně. Účelem maskování je ochrana citlivých dat, ne posouzení schopností.",
+     "c": "Správně. Oddíl 5.2.1 říká, že tester má rozumět dopadům sdílení testwaru s LLM na bezpečnost dat a provádět sanitizaci, tedy odstranit nebo zamaskovat citlivé, osobní a důvěrné informace.",
+     "d": "Špatně. Případná úspora tokenů je vedlejší efekt, důvodem maskování je ochrana dat."
+    },
+    "vysvetleni_obecne": "Sanitizace dat a prompty šetrné k soukromí jsou nutná znalost testera při práci s GenAI, i se schválenými nástroji (5.2.1)."
+   },
+   "spravne": ["c"], "oddil": "5.2.1", "poznamka": ""
+  },
+  {
+   "id": "CG-5.2.1-03", "zdroj": "vlastni", "lo": "GenAI-5.2.1", "k": "K2", "body": 1, "vyber": 1, "keep_order": false,
+   "en": {
+    "q": "<p>A team uses the most powerful available LLM for every task, including reformatting short test step descriptions. Which essential consideration from the syllabus is the team MOST likely ignoring?</p>",
+    "moznosti": [
+     "Maintaining test-specific prompt libraries",
+     "Selecting right-sized models for test tasks and balancing the benefits of GenAI automation with cost and energy consumption",
+     "Defining transparency obligations for generated testware",
+     "Understanding inherent risks such as hallucinations"
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. Prompt libraries are a tester task in section 5.2.3 and do not address the choice of model size.",
+     "b": "Correct. Section 5.2.1 lists environmental considerations: optimizing model selection and usage patterns, selecting right-sized models and balancing benefits with cost and energy consumption.",
+     "c": "Incorrect. Transparency obligations are part of process guidelines in 5.1.2 and are unrelated to model size.",
+     "d": "Incorrect. Risk awareness is important, but the situation describes over-sizing the model, which is an environmental and cost issue."
+    },
+    "vysvetleni_obecne": "Simple tasks do not need the largest model; right-sized models reduce computational overhead, cost and energy (section 5.2.1, linked to 3.3.1)."
+   },
+   "cz": {
+    "q": "<p>Tým používá na každou úlohu nejsilnější dostupný LLM, včetně přeformátování krátkých popisů testovacích kroků. Které hledisko ze sylabu tým NEJSPÍŠ přehlíží?</p>",
+    "moznosti": [
+     "Údržbu knihoven promptů specifických pro testování",
+     "Výběr modelů přiměřené velikosti pro testovací úlohy a vyvážení přínosů automatizace s náklady a spotřebou energie",
+     "Definici povinností transparentnosti pro vygenerovaný testware",
+     "Porozumění neoddělitelným rizikům, například halucinacím"
+    ],
+    "vysvetleni": {
+     "a": "Špatně. Knihovny promptů jsou úloha testera z 5.2.3 a volbu velikosti modelu neřeší.",
+     "b": "Správně. Oddíl 5.2.1 uvádí environmentální hlediska: optimalizovat výběr a používání modelu, volit modely přiměřené velikosti a vyvažovat přínosy s náklady a spotřebou energie.",
+     "c": "Špatně. Povinnosti transparentnosti patří k procesním pravidlům z 5.1.2 a s velikostí modelu nesouvisejí.",
+     "d": "Špatně. Znalost rizik je důležitá, ale situace popisuje předimenzovaný model, což je otázka nákladů a energie."
+    },
+    "vysvetleni_obecne": "Jednoduché úlohy nepotřebují největší model. Modely přiměřené velikosti snižují výpočetní zátěž, náklady i energii (5.2.1, navazuje na 3.3.1)."
+   },
+   "spravne": ["b"], "oddil": "5.2.1", "poznamka": ""
+  },
+  {
+   "id": "CG-5.2.1-04", "zdroj": "vlastni", "lo": "GenAI-5.2.1", "k": "K2", "body": 1, "vyber": 1, "keep_order": false,
+   "en": {
+    "q": "<p>Which of the following is an essential skill or knowledge area for testers working with GenAI according to the syllabus?</p>",
+    "moznosti": [
+     "Designing the neural network architecture of the LLM used by the team",
+     "Guaranteeing that the LLM never produces reasoning errors in test tasks",
+     "Validating the training data that the LLM vendor used to build the model",
+     "Understanding the model's context window and developing methods to review AI-generated testware"
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. Designing model architecture is the work of model developers, not a tester skill in section 5.2.1.",
+     "b": "Incorrect. Reasoning errors cannot be fully eliminated; the syllabus expects testers to know the risks and common mitigation strategies.",
+     "c": "Incorrect. Testers usually have no access to the vendor's training data; section 5.2.1 focuses on assessing model capabilities and outputs.",
+     "d": "Correct. Section 5.2.1 names mastering prompt engineering, understanding model context windows and developing test review methods."
+    },
+    "vysvetleni_obecne": "Tester skills in 5.2.1 are about using models and judging their outputs: prompting, context windows, review methods, capability assessment, risk and data awareness, right-sized models."
+   },
+   "cz": {
+    "q": "<p>Která z následujících možností je podle sylabu nutnou dovedností nebo oblastí znalostí testera pracujícího s GenAI?</p>",
+    "moznosti": [
+     "Navrhnout architekturu neuronové sítě LLM, který tým používá",
+     "Zaručit, že LLM v testovacích úlohách nikdy neudělá chybu v uvažování",
+     "Ověřit trénovací data, která dodavatel LLM použil při tvorbě modelu",
+     "Rozumět kontextovému oknu modelu a vytvořit si metody revize testwaru od AI"
+    ],
+    "vysvetleni": {
+     "a": "Špatně. Návrh architektury modelu je práce vývojářů modelu, ne dovednost testera podle 5.2.1.",
+     "b": "Špatně. Chyby v uvažování nelze úplně odstranit. Sylabus chce, aby tester znal rizika a běžné způsoby zmírnění.",
+     "c": "Špatně. Tester k trénovacím datům dodavatele obvykle nemá přístup. Oddíl 5.2.1 se zaměřuje na posouzení schopností a výstupů modelu.",
+     "d": "Správně. Oddíl 5.2.1 jmenuje ovládání prompt engineeringu, porozumění kontextovému oknu a vytvoření metod revize testů."
+    },
+    "vysvetleni_obecne": "Dovednosti testera v 5.2.1 se týkají používání modelů a posuzování výstupů: prompty, kontextové okno, metody revize, posouzení schopností, rizika a data, modely přiměřené velikosti."
+   },
+   "spravne": ["d"], "oddil": "5.2.1", "poznamka": ""
+  },
+  {
+   "id": "CG-5.2.1-05", "zdroj": "vlastni", "lo": "GenAI-5.2.1", "k": "K2", "body": 1, "vyber": 1, "keep_order": false,
+   "en": {
+    "q": "<p>A tester's first prompt produces test cases that miss negative scenarios. The tester adds examples of invalid inputs and an explicit instruction to include boundary values, then compares the new output with the previous one.</p><p>Which key competency from the syllabus is the tester applying?</p>",
+    "moznosti": [
+     "Prompt refinement",
+     "Data sanitization",
+     "Selecting right-sized models",
+     "Establishing AI governance frameworks"
+    ],
+    "vysvetleni": {
+     "a": "Correct. Section 5.2.1 lists understanding prompt refinement techniques as a key competency; improving the prompt step by step based on the output is exactly that.",
+     "b": "Incorrect. No sensitive data is being removed or masked.",
+     "c": "Incorrect. The tester is not changing the model, only the prompt.",
+     "d": "Incorrect. AI governance frameworks are a test manager responsibility in section 5.2.3."
+    },
+    "vysvetleni_obecne": "Key competencies in 5.2.1: assessing LLM capabilities, prompt refinement and evaluation of AI-generated testware."
+   },
+   "cz": {
+    "q": "<p>První prompt testera dá testovací případy bez negativních scénářů. Tester doplní příklady neplatných vstupů a výslovný pokyn zahrnout hraniční hodnoty. Pak porovná nový výstup s předchozím.</p><p>Kterou hlavní kompetenci ze sylabu tester uplatňuje?</p>",
+    "moznosti": [
+     "Zpřesňování promptů (prompt refinement)",
+     "Sanitizaci dat",
+     "Výběr modelů přiměřené velikosti",
+     "Zavádění rámců pro správu a řízení AI"
+    ],
+    "vysvetleni": {
+     "a": "Správně. Oddíl 5.2.1 uvádí porozumění technikám zpřesňování promptů jako hlavní kompetenci. Postupné vylepšování promptu podle výstupu je přesně to.",
+     "b": "Špatně. Žádná citlivá data se neodstraňují ani nemaskují.",
+     "c": "Špatně. Tester nemění model, jen prompt.",
+     "d": "Špatně. Rámce pro správu a řízení AI jsou podle 5.2.3 odpovědnost test manažera."
+    },
+    "vysvetleni_obecne": "Hlavní kompetence v 5.2.1: posouzení schopností LLM, zpřesňování promptů a hodnocení testwaru od AI."
+   },
+   "spravne": ["a"], "oddil": "5.2.1", "poznamka": ""
+  },
+
+  {
+   "id": "CG-5.2.2-01", "zdroj": "vlastni", "lo": "GenAI-5.2.2", "k": "K1", "body": 1, "vyber": 1, "keep_order": false,
+   "en": {
+    "q": "<p>Which of the following does the syllabus describe as a prompt pattern?</p>",
+    "moznosti": [
+     "A log of all prompts sent by the team, kept for audit purposes",
+     "A reusable template for crafting effective prompts to guide GenAI toward consistent and reliable outputs",
+     "A hidden system prompt that the LLM vendor uses to set the model's behavior",
+     "A sequence of prompts where each output becomes the next input"
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. A prompt log may be useful for auditing, but it is not the definition of a prompt pattern.",
+     "b": "Correct. Section 5.2.2 defines a prompt pattern as a reusable template for crafting effective prompts to guide GenAI toward consistent and reliable outputs.",
+     "c": "Incorrect. This describes a system prompt (chapter 2), not a prompt pattern.",
+     "d": "Incorrect. This describes prompt chaining (section 2.1.2)."
+    },
+    "vysvetleni_obecne": "Prompt patterns are part of building GenAI capabilities in test teams and are shared through prompt pattern libraries (section 5.2.2)."
+   },
+   "cz": {
+    "q": "<p>Co z následujícího sylabus popisuje jako prompt pattern (vzor promptu)?</p>",
+    "moznosti": [
+     "Záznam všech promptů, které tým poslal, uchovávaný pro audit",
+     "Znovupoužitelnou šablonu pro tvorbu účinných promptů, která vede GenAI ke konzistentním a spolehlivým výstupům",
+     "Skrytý systémový prompt, kterým dodavatel LLM nastavuje chování modelu",
+     "Posloupnost promptů, kde výstup jednoho je vstupem dalšího"
+    ],
+    "vysvetleni": {
+     "a": "Špatně. Záznam promptů se hodí pro audit, ale není definicí vzoru promptu.",
+     "b": "Správně. Oddíl 5.2.2 definuje vzor promptu jako znovupoužitelnou šablonu pro tvorbu účinných promptů, která vede GenAI ke konzistentním a spolehlivým výstupům.",
+     "c": "Špatně. To je popis systémového promptu (kapitola 2), ne vzoru promptu.",
+     "d": "Špatně. To je popis řetězení promptů (2.1.2)."
+    },
+    "vysvetleni_obecne": "Vzory promptů jsou součást budování GenAI schopností v týmu a sdílejí se v knihovnách vzorů promptů (5.2.2)."
+   },
+   "spravne": ["b"], "oddil": "5.2.2", "poznamka": ""
+  },
+  {
+   "id": "CG-5.2.2-02", "zdroj": "vlastni", "lo": "GenAI-5.2.2", "k": "K1", "body": 1, "vyber": 1, "keep_order": false,
+   "en": {
+    "q": "<p>Which of the following activities is typical of an internal community of practice for GenAI in testing, as described in the syllabus?</p>",
+    "moznosti": [
+     "Approving the purchase of LLM licenses for each project",
+     "Replacing structured learning paths with informal discussions",
+     "Defining the legal requirements of the EU AI Act for the organization",
+     "Holding regular meetings to highlight successful GenAI applications, discuss challenges and share prompt pattern libraries"
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. License approval is a management or procurement decision, not a community of practice activity in section 5.2.2.",
+     "b": "Incorrect. Communities of practice complement structured learning paths; they do not replace them.",
+     "c": "Incorrect. Defining legal requirements is not a task of a community of practice.",
+     "d": "Correct. Section 5.2.2 describes regular meetings to highlight successful GenAI applications, discuss challenges, refine best practices, share prompt pattern libraries and document lessons learned."
+    },
+    "vysvetleni_obecne": "Communities of practice support ongoing knowledge sharing and continuous improvement across projects and domains (section 5.2.2)."
+   },
+   "cz": {
+    "q": "<p>Která z následujících činností je podle sylabu typická pro interní komunitu praxe pro GenAI v testování?</p>",
+    "moznosti": [
+     "Schvalování nákupu licencí LLM pro jednotlivé projekty",
+     "Nahrazení strukturovaných vzdělávacích cest neformálními diskusemi",
+     "Definice právních požadavků EU AI Act pro organizaci",
+     "Pravidelná setkání, kde se ukazují úspěšná použití GenAI, probírají potíže a sdílejí knihovny vzorů promptů"
+    ],
+    "vysvetleni": {
+     "a": "Špatně. Schválení licencí je rozhodnutí vedení nebo nákupu, ne činnost komunity praxe podle 5.2.2.",
+     "b": "Špatně. Komunity praxe strukturované vzdělávací cesty doplňují, nenahrazují.",
+     "c": "Špatně. Definice právních požadavků není úkol komunity praxe.",
+     "d": "Správně. Oddíl 5.2.2 popisuje pravidelná setkání, kde se ukazují úspěšná použití, probírají potíže, zpřesňují osvědčené postupy, sdílejí knihovny vzorů promptů a dokumentují poučení."
+    },
+    "vysvetleni_obecne": "Komunity praxe podporují průběžné sdílení znalostí a neustálé zlepšování napříč projekty a doménami (5.2.2)."
+   },
+   "spravne": ["d"], "oddil": "5.2.2", "poznamka": ""
+  },
+  {
+   "id": "CG-5.2.2-03", "zdroj": "vlastni", "lo": "GenAI-5.2.2", "k": "K1", "body": 1, "vyber": 1, "keep_order": false,
+   "en": {
+    "q": "<p>According to the syllabus, how do test team members typically progress when building GenAI skills?</p>",
+    "moznosti": [
+     "From fine-tuning LLMs to writing basic prompts",
+     "From fully autonomous AI agents to supervised AI assistants",
+     "From mastering basic prompt creation to using more focused techniques such as test-specific prompts",
+     "From test-specific prompts to general-purpose chat conversations"
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. The direction is reversed and fine-tuning is not described as the starting point.",
+     "b": "Incorrect. Section 5.2.2 describes progression in prompting skills, not in agent autonomy.",
+     "c": "Correct. Section 5.2.2 states that team members progress from mastering basic prompt creation to more focused techniques, such as test-specific prompts.",
+     "d": "Incorrect. The direction is reversed; progression goes towards test-specific prompts."
+    },
+    "vysvetleni_obecne": "Skill progression goes from basic prompts to test-specific prompts, supported by prompt patterns (section 5.2.2)."
+   },
+   "cz": {
+    "q": "<p>Jak se podle sylabu členové testovacího týmu typicky posouvají při budování GenAI dovedností?</p>",
+    "moznosti": [
+     "Od dolaďování LLM k psaní základních promptů",
+     "Od plně autonomních AI agentů k AI asistentům pod dohledem",
+     "Od zvládnutí základní tvorby promptů k cílenějším technikám, jako jsou prompty specifické pro testování",
+     "Od promptů specifických pro testování k obecným konverzacím v chatu"
+    ],
+    "vysvetleni": {
+     "a": "Špatně. Směr je obrácený a doladění se jako výchozí bod nepopisuje.",
+     "b": "Špatně. Oddíl 5.2.2 popisuje posun v dovednostech promptování, ne v autonomii agentů.",
+     "c": "Správně. Oddíl 5.2.2 říká, že členové týmu postupují od zvládnutí základní tvorby promptů k cílenějším technikám, například promptům specifickým pro testování.",
+     "d": "Špatně. Směr je obrácený, postup vede k promptům specifickým pro testování."
+    },
+    "vysvetleni_obecne": "Dovednosti rostou od základních promptů k promptům specifickým pro testování, s oporou ve vzorech promptů (5.2.2)."
+   },
+   "spravne": ["c"], "oddil": "5.2.2", "poznamka": ""
+  },
+  {
+   "id": "CG-5.2.2-04", "zdroj": "vlastni", "lo": "GenAI-5.2.2", "k": "K1", "body": 1, "vyber": 1, "keep_order": false,
+   "en": {
+    "q": "<p>Which of the following is a strategy for cultivating GenAI skills in test teams that is described in the syllabus?</p>",
+    "moznosti": [
+     "Practicing with various LLMs/SLMs as part of a hands-on approach",
+     "Standardizing on a single LLM and training testers only on its user interface",
+     "Delaying any practical use until all testers have passed a theoretical exam",
+     "Assigning all GenAI work to one expert so that others do not need training"
+    ],
+    "vysvetleni": {
+     "a": "Correct. Section 5.2.2 says a hands-on approach is essential and includes practicing with various LLMs/SLMs.",
+     "b": "Incorrect. The syllabus recommends practicing with various LLMs/SLMs, not training on a single tool's interface.",
+     "c": "Incorrect. The syllabus emphasizes practical skills and gradual integration into daily work, not theory first.",
+     "d": "Incorrect. The syllabus emphasizes sharing know-how within the organization and peer learning."
+    },
+    "vysvetleni_obecne": "Section 5.2.2: hands-on approach, various LLMs/SLMs, structured learning paths, sharing, guided exercises, peer learning, gradual integration, prompt patterns, communities of practice."
+   },
+   "cz": {
+    "q": "<p>Která z následujících možností je strategií pro pěstování GenAI dovedností v testovacích týmech popsanou v sylabu?</p>",
+    "moznosti": [
+     "Praxe s různými LLM/SLM jako součást praktického přístupu",
+     "Standardizace na jeden LLM a školení testerů jen na jeho uživatelské rozhraní",
+     "Odložení praktického použití, dokud všichni testeři nesloží teoretickou zkoušku",
+     "Přidělení veškeré práce s GenAI jednomu expertovi, aby ostatní nepotřebovali školení"
+    ],
+    "vysvetleni": {
+     "a": "Správně. Oddíl 5.2.2 říká, že praktický přístup je nezbytný a zahrnuje praxi s různými LLM/SLM.",
+     "b": "Špatně. Sylabus doporučuje praxi s různými modely, ne školení na rozhraní jednoho nástroje.",
+     "c": "Špatně. Sylabus zdůrazňuje praktické dovednosti a postupné zapojení do každodenní práce, ne nejdřív teorii.",
+     "d": "Špatně. Sylabus zdůrazňuje sdílení know-how v organizaci a učení od kolegů."
+    },
+    "vysvetleni_obecne": "Oddíl 5.2.2: praktický přístup, různé LLM/SLM, strukturované vzdělávací cesty, sdílení, řízená cvičení, peer learning, postupné zapojení, vzory promptů, komunity praxe."
+   },
+   "spravne": ["a"], "oddil": "5.2.2", "poznamka": ""
+  },
+  {
+   "id": "CG-5.2.2-05", "zdroj": "vlastni", "lo": "GenAI-5.2.2", "k": "K1", "body": 1, "vyber": 1, "keep_order": false,
+   "en": {
+    "q": "<p>A test lead wants to develop GenAI skills in a team of twelve testers. Which plan BEST reflects the strategies recalled in the syllabus?</p>",
+    "moznosti": [
+     "Introduce GenAI into all test tasks on the same day so that the team learns under real pressure",
+     "Let each tester experiment freely with any public tool and keep successful prompts private",
+     "Follow a structured learning path with guided exercises and peer learning, and integrate AI into daily test tasks gradually",
+     "Send the team to a single theory lecture and then measure productivity"
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. The syllabus calls for gradual integration of AI into daily test tasks, not all at once.",
+     "b": "Incorrect. Unstructured experimenting with public tools risks shadow AI, and keeping prompts private contradicts knowledge sharing.",
+     "c": "Correct. Section 5.2.2 lists structured learning paths, guided exercises, peer learning and gradual integration of AI into daily test tasks.",
+     "d": "Incorrect. A single theory lecture does not provide the hands-on practice that section 5.2.2 calls essential."
+    },
+    "vysvetleni_obecne": "Capability building is hands-on, structured, gradual and shared (section 5.2.2)."
+   },
+   "cz": {
+    "q": "<p>Vedoucí testů chce rozvinout GenAI dovednosti v týmu dvanácti testerů. Který plán NEJLÉPE odpovídá strategiím ze sylabu?</p>",
+    "moznosti": [
+     "Zavést GenAI do všech testovacích úloh ve stejný den, aby se tým učil pod skutečným tlakem",
+     "Nechat každého testera volně experimentovat s libovolným veřejným nástrojem a úspěšné prompty si nechat pro sebe",
+     "Postupovat podle strukturované vzdělávací cesty s řízenými cvičeními a učením od kolegů a zapojovat AI do každodenních úloh postupně",
+     "Poslat tým na jednu teoretickou přednášku a pak měřit produktivitu"
+    ],
+    "vysvetleni": {
+     "a": "Špatně. Sylabus chce postupné zapojení AI do každodenních úloh, ne všechno najednou.",
+     "b": "Špatně. Nestrukturované experimenty s veřejnými nástroji vedou ke stínové AI a nesdílení promptů odporuje sdílení znalostí.",
+     "c": "Správně. Oddíl 5.2.2 uvádí strukturované vzdělávací cesty, řízená cvičení, učení od kolegů a postupné zapojení AI do každodenních úloh.",
+     "d": "Špatně. Jedna teoretická přednáška neposkytne praktickou zkušenost, kterou 5.2.2 označuje za nezbytnou."
+    },
+    "vysvetleni_obecne": "Budování schopností je praktické, strukturované, postupné a sdílené (5.2.2)."
+   },
+   "spravne": ["c"], "oddil": "5.2.2", "poznamka": ""
+  },
+
+  {
+   "id": "CG-5.2.3-01", "zdroj": "vlastni", "lo": "GenAI-5.2.3", "k": "K1", "body": 1, "vyber": 1, "keep_order": false,
+   "en": {
+    "q": "<p>Which of the following is identified in the syllabus as an expanded task of testers in an AI-enabled test organization?</p>",
+    "moznosti": [
+     "Establishing AI governance frameworks for use cases",
+     "Developing an AI-based test strategy for the organization",
+     "Coordinating GenAI-powered test agents in hybrid teams",
+     "Maintaining test-specific prompt libraries"
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. Establishing AI governance frameworks is a test manager responsibility in section 5.2.3.",
+     "b": "Incorrect. Developing an AI-based test strategy is a test manager responsibility in section 5.2.3.",
+     "c": "Incorrect. Coordinating GenAI-powered test agents and hybrid teams is described for test managers in section 5.2.3.",
+     "d": "Correct. Section 5.2.3 states that testers' tasks expand to include review of the overall AI-based output, prompt refinement and maintenance of test-specific prompt libraries."
+    },
+    "vysvetleni_obecne": "Testers: review AI output, refine prompts, maintain prompt libraries. Test managers: strategy, risk management, monitoring and control, governance, hybrid teams (section 5.2.3)."
+   },
+   "cz": {
+    "q": "<p>Která z následujících možností je podle sylabu rozšířenou úlohou testerů v testovací organizaci podporované AI?</p>",
+    "moznosti": [
+     "Zavádění rámců pro správu a řízení AI pro jednotlivé případy použití",
+     "Vytvoření testovací strategie organizace založené na AI",
+     "Koordinace testovacích agentů poháněných GenAI v hybridních týmech",
+     "Údržba knihoven promptů specifických pro testování"
+    ],
+    "vysvetleni": {
+     "a": "Špatně. Zavádění rámců pro správu AI je podle 5.2.3 odpovědnost test manažera.",
+     "b": "Špatně. Vytvoření testovací strategie založené na AI je podle 5.2.3 odpovědnost test manažera.",
+     "c": "Špatně. Koordinace GenAI agentů a hybridních týmů je v 5.2.3 popsaná u test manažerů.",
+     "d": "Správně. Oddíl 5.2.3 říká, že úlohy testerů se rozšiřují o revizi celkového AI výstupu, zpřesňování promptů a údržbu knihoven promptů specifických pro testování."
+    },
+    "vysvetleni_obecne": "Testeři: revize AI výstupu, zpřesňování promptů, knihovny promptů. Test manažeři: strategie, řízení rizik, monitoring a řízení, governance, hybridní týmy (5.2.3)."
+   },
+   "spravne": ["d"], "oddil": "5.2.3", "poznamka": ""
+  },
+  {
+   "id": "CG-5.2.3-02", "zdroj": "vlastni", "lo": "GenAI-5.2.3", "k": "K1", "body": 1, "vyber": 1, "keep_order": false,
+   "en": {
+    "q": "<p>Which of the following is a new responsibility of test managers when a test organization adopts GenAI, according to the syllabus?</p>",
+    "moznosti": [
+     "AI-based risk management",
+     "Writing all prompts for the test team personally",
+     "Replacing human test reviews with automated AI reviews",
+     "Retraining the foundation model on the organization's data"
+    ],
+    "vysvetleni": {
+     "a": "Correct. Section 5.2.3 lists the development of an AI-based test strategy, AI-based risk management, and monitoring and control of AI-based test processes as updated test manager responsibilities.",
+     "b": "Incorrect. Prompt refinement and prompt libraries are tester tasks; the manager does not write all prompts.",
+     "c": "Incorrect. The syllabus emphasizes balancing human and AI capabilities and review of AI output, not replacing human review.",
+     "d": "Incorrect. Retraining a foundation model is not a test manager responsibility in section 5.2.3."
+    },
+    "vysvetleni_obecne": "Test manager additions: AI-based test strategy, AI-based risk management, monitoring and control of AI-based test processes (section 5.2.3)."
+   },
+   "cz": {
+    "q": "<p>Která z následujících možností je podle sylabu novou odpovědností test manažera, když testovací organizace zavádí GenAI?</p>",
+    "moznosti": [
+     "Řízení rizik spojených s AI (AI-based risk management)",
+     "Osobně psát všechny prompty pro testovací tým",
+     "Nahradit lidské revize testů automatickými revizemi AI",
+     "Přetrénovat základní model na datech organizace"
+    ],
+    "vysvetleni": {
+     "a": "Správně. Oddíl 5.2.3 uvádí jako rozšířené odpovědnosti test manažera vytvoření testovací strategie založené na AI, řízení rizik spojených s AI a monitoring a řízení testovacích procesů založených na AI.",
+     "b": "Špatně. Zpřesňování promptů a knihovny promptů jsou úlohy testerů, manažer nepíše všechny prompty.",
+     "c": "Špatně. Sylabus zdůrazňuje rovnováhu lidí a AI a revizi AI výstupu, ne nahrazení lidské revize.",
+     "d": "Špatně. Přetrénování základního modelu není podle 5.2.3 odpovědnost test manažera."
+    },
+    "vysvetleni_obecne": "Nové u test manažera: strategie založená na AI, řízení rizik AI, monitoring a řízení AI procesů (5.2.3)."
+   },
+   "spravne": ["a"], "oddil": "5.2.3", "poznamka": ""
+  },
+  {
+   "id": "CG-5.2.3-03", "zdroj": "vlastni", "lo": "GenAI-5.2.3", "k": "K1", "body": 1, "vyber": 1, "keep_order": false,
+   "en": {
+    "q": "<p>How does the syllabus describe the evolution of the tester role in an AI-enabled test organization?</p>",
+    "moznosti": [
+     "Testers evolve into LLM developers who train models for test tasks",
+     "Testers evolve from test design and test execution specialists into AI-assisted test specialists",
+     "Testers evolve into test managers responsible for hybrid teams",
+     "Testers evolve from AI-assisted test specialists back into manual test execution specialists"
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. Training models is not described as the new tester role.",
+     "b": "Correct. Section 5.2.3 states that testers evolve from test design and test execution specialists to AI-assisted test specialists, combining test technique expertise with skills to guide and verify AI-generated testware.",
+     "c": "Incorrect. Leading hybrid teams is described as a test manager responsibility.",
+     "d": "Incorrect. The direction is reversed."
+    },
+    "vysvetleni_obecne": "The tester becomes an AI-assisted test specialist who still needs test techniques (section 5.2.3)."
+   },
+   "cz": {
+    "q": "<p>Jak sylabus popisuje vývoj role testera v testovací organizaci podporované AI?</p>",
+    "moznosti": [
+     "Testeři se stávají vývojáři LLM, kteří trénují modely pro testovací úlohy",
+     "Testeři se mění ze specialistů na návrh a provádění testů na specialisty na testování s podporou AI",
+     "Testeři se stávají test manažery odpovědnými za hybridní týmy",
+     "Testeři se mění ze specialistů na testování s podporou AI zpět na specialisty na ruční provádění testů"
+    ],
+    "vysvetleni": {
+     "a": "Špatně. Trénování modelů se jako nová role testera nepopisuje.",
+     "b": "Správně. Oddíl 5.2.3 říká, že testeři se mění ze specialistů na návrh a provádění testů na specialisty na testování s podporou AI, kteří spojují testovací techniky s vedením a ověřováním testwaru od AI.",
+     "c": "Špatně. Vedení hybridních týmů je popsané jako odpovědnost test manažera.",
+     "d": "Špatně. Směr je obrácený."
+    },
+    "vysvetleni_obecne": "Tester se stává specialistou na testování s podporou AI, testovací techniky přitom dál potřebuje (5.2.3)."
+   },
+   "spravne": ["b"], "oddil": "5.2.3", "poznamka": ""
+  },
+  {
+   "id": "CG-5.2.3-04", "zdroj": "vlastni", "lo": "GenAI-5.2.3", "k": "K1", "body": 1, "vyber": 1, "keep_order": false,
+   "en": {
+    "q": "<p>Which of the following BEST reflects what the syllabus says test managers must ensure about the competencies of their test teams?</p>",
+    "moznosti": [
+     "Teams focus exclusively on AI literacy, because traditional testing competencies become obsolete",
+     "Teams focus exclusively on traditional testing competencies, because AI tools are managed by vendors",
+     "Teams maintain both traditional testing competencies and AI literacy",
+     "Teams delegate AI literacy to a separate data science department"
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. The syllabus does not say traditional competencies become obsolete; testers still need test techniques.",
+     "b": "Incorrect. The syllabus explicitly requires AI literacy as well.",
+     "c": "Correct. Section 5.2.3 states that test managers ensure their teams maintain both traditional testing competencies and AI literacy.",
+     "d": "Incorrect. AI literacy is expected within the test team, not delegated elsewhere."
+    },
+    "vysvetleni_obecne": "Balance is the theme of 5.2.3: human and AI capabilities, traditional competencies and AI literacy."
+   },
+   "cz": {
+    "q": "<p>Co NEJLÉPE vystihuje, co má podle sylabu test manažer zajistit ohledně kompetencí svého týmu?</p>",
+    "moznosti": [
+     "Tým se zaměří jen na AI gramotnost, protože tradiční testovací kompetence zastarávají",
+     "Tým se zaměří jen na tradiční testovací kompetence, protože AI nástroje spravují dodavatelé",
+     "Tým si udrží tradiční testovací kompetence i AI gramotnost",
+     "Tým přenechá AI gramotnost samostatnému oddělení datové vědy"
+    ],
+    "vysvetleni": {
+     "a": "Špatně. Sylabus netvrdí, že tradiční kompetence zastarávají, testeři testovací techniky dál potřebují.",
+     "b": "Špatně. Sylabus výslovně požaduje i AI gramotnost.",
+     "c": "Správně. Oddíl 5.2.3 říká, že test manažer zajišťuje, aby tým měl tradiční testovací kompetence i AI gramotnost.",
+     "d": "Špatně. AI gramotnost se očekává přímo v testovacím týmu, ne jinde."
+    },
+    "vysvetleni_obecne": "Tématem 5.2.3 je rovnováha: schopnosti lidí a AI, tradiční kompetence a AI gramotnost."
+   },
+   "spravne": ["c"], "oddil": "5.2.3", "poznamka": ""
+  },
+  {
+   "id": "CG-5.2.3-05", "zdroj": "vlastni", "lo": "GenAI-5.2.3", "k": "K1", "body": 1, "vyber": 1, "keep_order": false,
+   "en": {
+    "q": "<p>According to the syllabus, why will test managers need new management skills in AI-enabled test organizations?</p>",
+    "moznosti": [
+     "Because test managers will be replaced by GenAI-powered test agents",
+     "Because test managers will lead not only human testers but also coordinate GenAI-powered test agents in hybrid teams",
+     "Because test managers will have to understand the internal mathematics of transformer models",
+     "Because test managers will no longer be responsible for monitoring and control"
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. The syllabus describes coordination of agents by managers, not replacement of managers.",
+     "b": "Correct. Section 5.2.3 states that test managers will lead human testers and coordinate GenAI-powered test agents, requiring new skills for overseeing hybrid teams of people and GenAI tools.",
+     "c": "Incorrect. Understanding the internal mathematics of models is not described as a test manager need.",
+     "d": "Incorrect. Monitoring and control of AI-based test processes is explicitly added to test manager responsibilities."
+    },
+    "vysvetleni_obecne": "Hybrid teams of people and GenAI tools require new management skills (section 5.2.3)."
+   },
+   "cz": {
+    "q": "<p>Proč budou test manažeři v testovacích organizacích podporovaných AI podle sylabu potřebovat nové manažerské dovednosti?</p>",
+    "moznosti": [
+     "Protože test manažery nahradí testovací agenti pohánění GenAI",
+     "Protože test manažeři budou vést nejen lidské testery, ale budou i koordinovat testovací agenty poháněné GenAI v hybridních týmech",
+     "Protože test manažeři budou muset rozumět vnitřní matematice transformerových modelů",
+     "Protože test manažeři už nebudou odpovídat za monitoring a řízení"
+    ],
+    "vysvetleni": {
+     "a": "Špatně. Sylabus popisuje, že manažeři agenty koordinují, ne že je agenti nahradí.",
+     "b": "Správně. Oddíl 5.2.3 říká, že test manažeři povedou lidi a budou koordinovat testovací agenty poháněné GenAI, což vyžaduje nové dovednosti pro hybridní týmy lidí a nástrojů GenAI.",
+     "c": "Špatně. Porozumění vnitřní matematice modelů se jako potřeba test manažera nepopisuje.",
+     "d": "Špatně. Monitoring a řízení testovacích procesů založených na AI do odpovědností test manažera výslovně přibývá."
+    },
+    "vysvetleni_obecne": "Hybridní týmy lidí a nástrojů GenAI vyžadují nové manažerské dovednosti (5.2.3)."
+   },
+   "spravne": ["b"], "oddil": "5.2.3", "poznamka": ""
+  }
+ ]
+}

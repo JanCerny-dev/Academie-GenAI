@@ -1,0 +1,524 @@
+[
+ {
+  "en": "acceptance criteria",
+  "cz": "akceptační kritéria",
+  "def": "Podmínky, které musí implementace uživatelského scénáře splnit, aby ji zainteresované strany přijaly. Sylabus je v oddílu 2.2.1 uvádí jako příklad testovacích podmínek, které pomáhá vytvořit GenAI.",
+  "kap": 2,
+  "oddil": "2.2.1",
+  "klicove": true,
+  "poznamka": "V HO-2.2.1a vznikají z uživatelského scénáře a wireframu, v HO-2.2.1b se zpřesňují řetězením."
+ },
+ {
+  "en": "test script",
+  "cz": "testovací skript",
+  "def": "Posloupnost instrukcí pro provedení testu, obvykle automatizovaná. GenAI ji umí vytvořit ze strukturovaného testovacího případu pro různé frameworky.",
+  "kap": 2,
+  "oddil": "2.2.2",
+  "klicove": true,
+  "poznamka": ""
+ },
+ {
+  "en": "test case",
+  "cz": "testovací případ",
+  "def": "Sada předpokladů, vstupů, akcí, očekávaných výsledků a následných podmínek vytvořená z testovacích podmínek. GenAI vytváří jejich návrhy, které musí tester zkontrolovat.",
+  "kap": 2,
+  "oddil": "2.2.2",
+  "klicove": true,
+  "poznamka": "Vzniká v návrhu testů, ne v testovací analýze."
+ },
+ {
+  "en": "test condition",
+  "cz": "testovací podmínka",
+  "def": "Testovatelný aspekt komponenty nebo systému, který je cílem testování. Vzniká v testovací analýze; GenAI ji umí odvodit z požadavků díky NLP.",
+  "kap": 2,
+  "oddil": "2.2.1",
+  "klicove": true,
+  "poznamka": "Záměna s testovacím případem: podmínka říká co testovat, případ jak."
+ },
+ {
+  "en": "test data",
+  "cz": "testovací data",
+  "def": "Data potřebná k provedení testů. GenAI umí vytvořit syntetická data podobná produkčním, včetně extrémních hodnot, bez skutečných osobních údajů.",
+  "kap": 2,
+  "oddil": "2.2.2",
+  "klicove": true,
+  "poznamka": ""
+ },
+ {
+  "en": "test design",
+  "cz": "návrh testů",
+  "def": "Činnost, ve které se testovací podmínky rozpracují do testovacích případů a dalšího testwaru. Odpovídá na otázku jak testovat.",
+  "kap": 2,
+  "oddil": "2.2.2",
+  "klicove": true,
+  "poznamka": ""
+ },
+ {
+  "en": "test report",
+  "cz": "report z testování",
+  "def": "Přehled výsledků a hodnocení testování, například report o postupu prací při testování nebo souhrnný report z testování. GenAI ho umí sestavit i analyzovat.",
+  "kap": 2,
+  "oddil": "2.2.3",
+  "klicove": true,
+  "poznamka": ""
+ },
+ {
+  "en": "few-shot prompting",
+  "cz": "few-shot prompting",
+  "def": "Prompt s několika (víc než jedním) příklady vstupu a očekávaného výstupu. Příklady ukotví tvar a styl výsledku; hodí se pro opakující se úlohy s pevným formátem.",
+  "kap": 2,
+  "oddil": "2.1.2",
+  "klicove": true,
+  "poznamka": "Liší se od zero-shot a one-shot jen počtem příkladů."
+ },
+ {
+  "en": "meta prompting",
+  "cz": "meta prompting",
+  "def": "Technika, při které LLM vytváří nebo vylepšuje prompt a tester ho v opakovaném cyklu posuzuje a upravuje. Je to forma párové práce testera s AI.",
+  "kap": 2,
+  "oddil": "2.1.2",
+  "klicove": true,
+  "poznamka": "Nezaměňovat s chain-of-thought („přemýšlej krok za krokem“)."
+ },
+ {
+  "en": "natural language processing (NLP)",
+  "cz": "zpracování přirozeného jazyka",
+  "def": "Obor AI, díky kterému model rozumí textu v běžném jazyce a umí ho tvořit. V testování umožňuje převádět požadavky na testovací podmínky a testovací případy.",
+  "kap": 2,
+  "oddil": "2.2.1",
+  "klicove": true,
+  "poznamka": ""
+ },
+ {
+  "en": "one-shot prompting",
+  "cz": "one-shot prompting",
+  "def": "Prompt s právě jedním příkladem, který ukazuje očekávaný výstup pro daný vstup.",
+  "kap": 2,
+  "oddil": "2.1.2",
+  "klicove": true,
+  "poznamka": ""
+ },
+ {
+  "en": "prompt",
+  "cz": "prompt",
+  "def": "Vstup, kterým se LLM zadává úloha: pokyn a podle potřeby kontext, data, příklady a požadavky na tvar odpovědi.",
+  "kap": 2,
+  "oddil": "2.1",
+  "klicove": true,
+  "poznamka": ""
+ },
+ {
+  "en": "prompt chaining",
+  "cz": "řetězení promptů",
+  "def": "Rozklad úlohy na posloupnost dílčích promptů. Výstup každého kroku se ručně nebo automaticky zkontroluje a upraví, než slouží jako vstup dalšího kroku.",
+  "kap": 2,
+  "oddil": "2.1.2",
+  "klicove": true,
+  "poznamka": "Bez ověření mezi kroky nejde o řetězení ve smyslu sylabu."
+ },
+ {
+  "en": "prompt engineering",
+  "cz": "prompt engineering (tvorba promptů)",
+  "def": "Návrh, zkoušení a postupné vylepšování promptů, aby LLM vracel přesné, relevantní a konzistentní výstupy.",
+  "kap": 2,
+  "oddil": "2.1",
+  "klicove": true,
+  "poznamka": ""
+ },
+ {
+  "en": "system prompt",
+  "cz": "systémový prompt",
+  "def": "Pokyny, které nastavuje vývojář nebo tester nástroje. Platí po celou konverzaci, určují roli, chování, provozní parametry a omezení a uživatel je obvykle nevidí.",
+  "kap": 2,
+  "oddil": "2.1.3",
+  "klicove": true,
+  "poznamka": "Nemění se s každou interakcí – to dělá uživatelský prompt."
+ },
+ {
+  "en": "user prompt",
+  "cz": "uživatelský prompt",
+  "def": "Konkrétní dotaz nebo úloha uživatele v dané interakci. Mění se s každou zprávou, je viditelný a tvoří bezprostřední kontext odpovědi.",
+  "kap": 2,
+  "oddil": "2.1.3",
+  "klicove": true,
+  "poznamka": ""
+ },
+ {
+  "en": "zero-shot prompting",
+  "cz": "zero-shot prompting",
+  "def": "Prompt bez příkladu výstupu; model se opírá jen o znalosti z tréninku. Hodí se pro jednoduché a běžné úlohy.",
+  "kap": 2,
+  "oddil": "2.1.2",
+  "klicove": true,
+  "poznamka": ""
+ },
+ {
+  "en": "structured prompt",
+  "cz": "strukturovaný prompt",
+  "def": "Prompt složený ze šesti komponent: role, context, instruction, input data, constraints, output format.",
+  "kap": 2,
+  "oddil": "2.1.1",
+  "klicove": false,
+  "poznamka": ""
+ },
+ {
+  "en": "role",
+  "cz": "role",
+  "def": "Komponenta promptu, která určuje perspektivu nebo personu modelu (tester, test manažer, inženýr automatizace) a tím odpovědnost, tón a přístup.",
+  "kap": 2,
+  "oddil": "2.1.1",
+  "klicove": false,
+  "poznamka": ""
+ },
+ {
+  "en": "context",
+  "cz": "kontext",
+  "def": "Komponenta promptu s informacemi o pozadí: testovaný objekt, testovaná funkce, okolnosti. Pomáhá modelu určit testovací podmínky.",
+  "kap": 2,
+  "oddil": "2.1.1",
+  "klicove": false,
+  "poznamka": "Záměna se vstupními daty: kontext popisuje situaci, vstupní data jsou materiál k práci."
+ },
+ {
+  "en": "instruction",
+  "cz": "instrukce",
+  "def": "Komponenta promptu se samotnou úlohou: jasně, v rozkazovacím způsobu, stručně, s podstatnými požadavky.",
+  "kap": 2,
+  "oddil": "2.1.1",
+  "klicove": false,
+  "poznamka": ""
+ },
+ {
+  "en": "input data",
+  "cz": "vstupní data",
+  "def": "Komponenta promptu s materiálem potřebným k úloze: uživatelské scénáře, akceptační kritéria, snímky, kód, existující testy, ukázky výstupu, logy.",
+  "kap": 2,
+  "oddil": "2.1.1",
+  "klicove": false,
+  "poznamka": ""
+ },
+ {
+  "en": "constraints",
+  "cz": "omezení",
+  "def": "Komponenta promptu s pravidly a omezeními, která určují, jak se instrukce použije na vstupní data (rozsah, technika, zákazy, priorita zdrojů).",
+  "kap": 2,
+  "oddil": "2.1.1",
+  "klicove": false,
+  "poznamka": "Záměna s formátem výstupu: omezení je pravidlo pro práci, formát je podoba výsledku."
+ },
+ {
+  "en": "output format",
+  "cz": "formát výstupu",
+  "def": "Komponenta promptu, která určuje podobu, strukturu a vlastnosti odpovědi: tabulka, sloupce, JSON, Gherkin, délka.",
+  "kap": 2,
+  "oddil": "2.1.1",
+  "klicove": false,
+  "poznamka": ""
+ },
+ {
+  "en": "core prompting techniques",
+  "cz": "základní techniky promptování",
+  "def": "Tři techniky, které sylabus vybírá pro testování: prompt chaining, few-shot prompting a meta prompting.",
+  "kap": 2,
+  "oddil": "2.1.2",
+  "klicove": false,
+  "poznamka": ""
+ },
+ {
+  "en": "pairing (with GenAI)",
+  "cz": "párová práce s GenAI",
+  "def": "Interaktivní spolupráce testera a AI na společném cíli, podobná párovému programování nebo testování. Sylabus ji uvádí u meta promptingu.",
+  "kap": 2,
+  "oddil": "2.1.2",
+  "klicove": false,
+  "poznamka": ""
+ },
+ {
+  "en": "operational parameters",
+  "cz": "provozní parametry",
+  "def": "Část systémového promptu, která určuje, jak model odpovídá: tón, stručnost, pravidla domény, zakázané chování.",
+  "kap": 2,
+  "oddil": "2.1.3",
+  "klicove": false,
+  "poznamka": ""
+ },
+ {
+  "en": "multimodal prompt",
+  "cz": "multimodální prompt",
+  "def": "Prompt, který kombinuje víc druhů vstupu, například text a obrázek (wireframe GUI).",
+  "kap": 2,
+  "oddil": "2.2.1",
+  "klicove": false,
+  "poznamka": ""
+ },
+ {
+  "en": "test analysis",
+  "cz": "testovací analýza",
+  "def": "Činnost, ve které se analyzuje testovací báze a určují a prioritizují testovací podmínky. Odpovídá na otázku co testovat.",
+  "kap": 2,
+  "oddil": "2.2.1",
+  "klicove": false,
+  "poznamka": ""
+ },
+ {
+  "en": "test basis",
+  "cz": "testovací báze",
+  "def": "Podklady, ze kterých se odvozují testy: požadavky, uživatelské scénáře, specifikace, wireframy.",
+  "kap": 2,
+  "oddil": "2.2.1",
+  "klicove": false,
+  "poznamka": ""
+ },
+ {
+  "en": "coverage analysis",
+  "cz": "analýza pokrytí",
+  "def": "Mapování požadavků a uživatelských scénářů na testovací podmínky s cílem najít nepokryté části testovací báze.",
+  "kap": 2,
+  "oddil": "2.2.1",
+  "klicove": false,
+  "poznamka": ""
+ },
+ {
+  "en": "test implementation",
+  "cz": "implementace testování",
+  "def": "Činnost, ve které se vytvoří nebo získá testware potřebný k provedení testů: procedury, skripty, data, harmonogram provedení.",
+  "kap": 2,
+  "oddil": "2.2.2",
+  "klicove": false,
+  "poznamka": ""
+ },
+ {
+  "en": "synthetic test data",
+  "cz": "syntetická testovací data",
+  "def": "Vygenerovaná data, která připomínají produkční, pokrývají i extrémní situace a neobsahují skutečné citlivé údaje.",
+  "kap": 2,
+  "oddil": "2.2.2",
+  "klicove": false,
+  "poznamka": ""
+ },
+ {
+  "en": "test execution schedule",
+  "cz": "harmonogram provedení testů",
+  "def": "Pořadí a časový plán spouštění testů. GenAI ho umí navrhnout podle závislostí, priorit, rizik a zdrojů.",
+  "kap": 2,
+  "oddil": "2.2.2",
+  "klicove": false,
+  "poznamka": ""
+ },
+ {
+  "en": "Gherkin",
+  "cz": "Gherkin",
+  "def": "Strukturovaný jazyk pro popis scénářů chování s klíčovými slovy Feature, Scenario, Given, When, Then. Typický cíl few-shot promptu.",
+  "kap": 2,
+  "oddil": "2.2.2",
+  "klicove": false,
+  "poznamka": ""
+ },
+ {
+  "en": "regression testing",
+  "cz": "regresní testování",
+  "def": "Testování, které ověřuje, že změna nezpůsobila nežádoucí dopady v dříve fungujících částech. Kvůli růstu sady vhodné k automatizaci v CI/CD.",
+  "kap": 2,
+  "oddil": "2.2.3",
+  "klicove": false,
+  "poznamka": ""
+ },
+ {
+  "en": "impact analysis",
+  "cz": "analýza dopadu",
+  "def": "Určení částí softwaru, které může změna ovlivnit. GenAI ji umí udělat z analýzy změn v kódu a zacílit regresní testy.",
+  "kap": 2,
+  "oddil": "2.2.3",
+  "klicove": false,
+  "poznamka": ""
+ },
+ {
+  "en": "keyword-driven testing",
+  "cz": "testování řízené klíčovými slovy",
+  "def": "Skriptovací technika, kde testovací skripty obsahují klíčová slova a jejich implementace je v knihovně. Pro generování skriptů se hodí few-shot.",
+  "kap": 2,
+  "oddil": "2.2.3",
+  "klicove": false,
+  "poznamka": ""
+ },
+ {
+  "en": "self-healing test",
+  "cz": "samoopravný test",
+  "def": "Automatizovaný test, jehož skript se při drobné změně UI nebo API automaticky přizpůsobí, aby zbytečně nepadal.",
+  "kap": 2,
+  "oddil": "2.2.3",
+  "klicove": false,
+  "poznamka": "Automatické opravy musí být viditelné a schválené, jinak mohou zakrýt defekt."
+ },
+ {
+  "en": "root cause analysis",
+  "cz": "analýza kořenové příčiny",
+  "def": "Hledání skutečné příčiny selhání. GenAI ji podporuje sestavením reportu o defektu s logy, snímky a údaji o prostředí.",
+  "kap": 2,
+  "oddil": "2.2.3",
+  "klicove": false,
+  "poznamka": ""
+ },
+ {
+  "en": "known anomalies list",
+  "cz": "seznam známých anomálií",
+  "def": "Udržovaný seznam již známých problémů, se kterým se při analýze regresního reportu porovnávají nová selhání (HO-2.2.3b).",
+  "kap": 2,
+  "oddil": "2.2.3",
+  "klicove": false,
+  "poznamka": ""
+ },
+ {
+  "en": "test monitoring",
+  "cz": "monitoring testování",
+  "def": "Průběžné sledování testovacích činností a porovnávání postupu s plánem pomocí metrik. GenAI pomáhá s analýzou dat a trendů.",
+  "kap": 2,
+  "oddil": "2.2.4",
+  "klicove": false,
+  "poznamka": ""
+ },
+ {
+  "en": "test control",
+  "cz": "řízení testování",
+  "def": "Opatření přijatá na základě monitoringu: změna priorit, harmonogramu nebo zdrojů. GenAI k nim dává podklady.",
+  "kap": 2,
+  "oddil": "2.2.4",
+  "klicove": false,
+  "poznamka": ""
+ },
+ {
+  "en": "test completion report",
+  "cz": "souhrnný report z testování",
+  "def": "Report na konci testovací činnosti s výsledky, úspěchy a poučením. GenAI ho pomáhá sestavit.",
+  "kap": 2,
+  "oddil": "2.2.4",
+  "klicove": false,
+  "poznamka": ""
+ },
+ {
+  "en": "accuracy",
+  "cz": "správnost (accuracy)",
+  "def": "Celková správnost výstupu GenAI vůči standardu: testům od odborníka, požadavkům. Příklad: podíl pokrytých specifikovaných požadavků.",
+  "kap": 2,
+  "oddil": "2.3.1",
+  "klicove": false,
+  "poznamka": "Neplést s definicí z klasifikace ve strojovém učení."
+ },
+ {
+  "en": "precision",
+  "cz": "přesnost (precision)",
+  "def": "Správnost výstupu vzhledem ke konkrétnímu cíli. Příklad: do jaké míry vygenerované testy správně identifikují anomálie.",
+  "kap": 2,
+  "oddil": "2.3.1",
+  "klicove": false,
+  "poznamka": ""
+ },
+ {
+  "en": "recall",
+  "cz": "úplnost (recall)",
+  "def": "Schopnost modelu zachytit všechny relevantní případy. Příklad: pokrytí platných i neplatných tříd ekvivalence.",
+  "kap": 2,
+  "oddil": "2.3.1",
+  "klicove": false,
+  "poznamka": ""
+ },
+ {
+  "en": "relevance and contextual fit",
+  "cz": "relevance a soulad s kontextem",
+  "def": "Zda je výstup použitelný a vhodný pro daný kontext: soulad s testovací bází a doménovými požadavky.",
+  "kap": 2,
+  "oddil": "2.3.1",
+  "klicove": false,
+  "poznamka": ""
+ },
+ {
+  "en": "diversity",
+  "cz": "rozmanitost (diversity)",
+  "def": "Šíře pokrytých vstupů, chování uživatelů a okrajových případů bez zbytečného opakování.",
+  "kap": 2,
+  "oddil": "2.3.1",
+  "klicove": false,
+  "poznamka": ""
+ },
+ {
+  "en": "execution success rate",
+  "cz": "míra úspěšného spuštění",
+  "def": "Podíl vygenerovaných artefaktů, které lze v testovacím prostředí spustit bez úprav (bez syntaktických chyb a problémů s formátem).",
+  "kap": 2,
+  "oddil": "2.3.1",
+  "klicove": false,
+  "poznamka": "Měří spustitelnost, ne to, zda test prošel."
+ },
+ {
+  "en": "time efficiency",
+  "cz": "časová efektivita",
+  "def": "Ušetřený čas ve srovnání s ruční prací na stejném výsledku.",
+  "kap": 2,
+  "oddil": "2.3.1",
+  "klicove": false,
+  "poznamka": ""
+ },
+ {
+  "en": "task-specific metrics",
+  "cz": "metriky specifické pro úlohu",
+  "def": "Metriky přizpůsobené konkrétní testovací činnosti, které doplňují sedm obecných metrik.",
+  "kap": 2,
+  "oddil": "2.3.1",
+  "klicove": false,
+  "poznamka": ""
+ },
+ {
+  "en": "iterative prompt modification",
+  "cz": "iterativní úprava promptu",
+  "def": "Postupné vylepšování základního promptu podle skutečných výsledků: doplnění kontextu, úprava formulací a terminologie.",
+  "kap": 2,
+  "oddil": "2.3.2",
+  "klicove": false,
+  "poznamka": ""
+ },
+ {
+  "en": "A/B testing of prompts",
+  "cz": "A/B testování promptů",
+  "def": "Porovnání víc verzí promptu podle předem stanovených metrik s cílem vybrat tu lepší.",
+  "kap": 2,
+  "oddil": "2.3.2",
+  "klicove": false,
+  "poznamka": ""
+ },
+ {
+  "en": "output analysis",
+  "cz": "analýza výstupu",
+  "def": "Zkoumání výstupu AI kvůli nepřesnostem a nekonzistencím (např. vůči testovací bázi), aby šlo prompt upravit a chyby se neopakovaly.",
+  "kap": 2,
+  "oddil": "2.3.2",
+  "klicove": false,
+  "poznamka": ""
+ },
+ {
+  "en": "integrate user feedback",
+  "cz": "zapracování zpětné vazby uživatelů",
+  "def": "Sběr názorů testerů a dalších čtenářů na užitečnost, srozumitelnost a podrobnost výstupu a úprava promptu podle nich.",
+  "kap": 2,
+  "oddil": "2.3.2",
+  "klicove": false,
+  "poznamka": ""
+ },
+ {
+  "en": "adjust prompt length and specificity",
+  "cz": "úprava délky a konkrétnosti promptu",
+  "def": "Experimentování s délkou a podrobností promptu; víc kontextu někdy pomůže, kratší prompt jindy lépe zobecní.",
+  "kap": 2,
+  "oddil": "2.3.2",
+  "klicove": false,
+  "poznamka": ""
+ },
+ {
+  "en": "prompt library",
+  "cz": "knihovna promptů",
+  "def": "Sdílená sbírka ověřených promptů pro opakované testovací úlohy. Podporuje standardizaci a učení v týmu.",
+  "kap": 2,
+  "oddil": "2.3.2",
+  "klicove": false,
+  "poznamka": ""
+ }
+]

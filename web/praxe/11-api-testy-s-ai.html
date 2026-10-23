@@ -1,0 +1,366 @@
+<!doctype html>
+<html lang="cs" data-tema="">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Testy API s AI | Praxe | ISTQB CT-GenAI</title>
+<meta name="description" content="Praxe CT-GenAI: Testy API s AI. Přidáš do BDD frameworku testy API, necháš AI navrhnout scénáře z dokumentace a kontraktu a ověříš odpovědi i data v databázi.">
+<meta name="color-scheme" content="light dark">
+<link rel="stylesheet" href="../assets/styl.css">
+<script>
+/* Nastaví uložený režim ještě před vykreslením, aby stránka neproblikla. */
+(function(){try{var t=localStorage.getItem('genai-tema');if(t){document.documentElement.setAttribute('data-tema',t);}}catch(e){}})();
+</script>
+</head>
+<body data-kapitola="6">
+<a class="preskocit" href="#text">Přeskočit na text</a>
+<div class="postup" aria-hidden="true"></div>
+<header class="hlavicka">
+  <div class="hlavicka-vnitrek">
+    <a class="znacka" href="../index.html">ISTQB CT-GenAI <span>česká studijní příručka</span></a>
+    <nav class="navigace" aria-label="Hlavní navigace">
+      <a href="../index.html">Úvod</a>
+      <span class="skupina" data-skupina>
+        <a href="../kapitoly.html" class="zvyraznit">Kapitoly</a>
+        <ul class="podmenu" id="podmenu-kapitoly" aria-label="Seznam kapitol"><li><a href="../kapitola-1/vyklad.html"><b>1</b> Úvod do generativní AI</a></li><li><a href="../kapitola-2/vyklad.html"><b>2</b> Prompt engineering</a></li><li><a href="../kapitola-3/vyklad.html"><b>3</b> Rizika generativní AI</a></li><li><a href="../kapitola-4/vyklad.html"><b>4</b> Infrastruktura s LLM</a></li><li><a href="../kapitola-5/vyklad.html"><b>5</b> Zavedení GenAI v organizaci</a></li></ul>
+      </span>
+      <a href="../slovnik.html">Slovník</a>
+      <a href="../karticky.html">Kartičky</a>
+      <a href="../prirazovani.html">Přiřazování</a>
+      <a href="../cviceni.html">Cvičení</a>
+      <a href="../praxe.html" aria-current="page">Praxe</a>
+      <a href="../cile.html">Cíle</a>
+      <a href="../zkouska.html">Zkouška</a>
+      <a href="../lokalni/index.html" class="lokalni-odkaz">Lokální testy</a>
+      <button type="button" class="prepinac-tema" data-prepinac-tema>Tmavý režim</button>
+      <button type="button" class="ucet-tlacitko" data-ucet hidden>Přihlásit</button>
+    </nav>
+  </div>
+</header>
+<div class="stranka">
+<div class="layout">
+<main>
+<div class="zahlavi">
+  <p class="drobky"><a href="../praxe.html">Praxe</a> · Modul 11</p>
+  <h1>Testy API s AI</h1>
+  <p class="podtitul">Přidáš do BDD frameworku testy API, necháš AI navrhnout scénáře z dokumentace a kontraktu a ověříš odpovědi i data v databázi.</p>
+  <ul class="meta"><li>Čas: 4–5 h</li><li>Úroveň: pokročilý</li><li>Nástroje: Python 3.12, Behave, requests, Playwright (APIRequestContext), openai, SQLite</li><li>3 810 slov</li><li>≈ 22 min čtení</li><li>3 cvičení</li></ul>
+  <p class="praxe-souvislosti"><span>Souvisí s kapitolami CT-GenAI: <a href="../kapitola-2/vyklad.html">2. Prompt engineering</a> · <a href="../kapitola-3/vyklad.html">3. Rizika generativní AI</a></span><span>Zdroje: Bruno L69–L74; Shetty L57–L60</span></p>
+  <p class="napoveda" id="praxe-souhrn" aria-live="polite" data-praxe-cviceni="praxe-11-api-testy-s-ai-scenare-z-dokumentace-goal-trackeru praxe-11-api-testy-s-ai-porovnani-odpovedi-se-snapshotem praxe-11-api-testy-s-ai-sql-dotazy-se-zmenenym-schematem"><span data-praxe-postup>3 cvičení</span>. Hotová cvičení si odškrtni, stav se ukládá v tomto prohlížeči, po přihlášení i v účtu.</p>
+</div>
+<article class="text" id="text">
+<h2 id="co-postavis">Co postavíš<a class="kotva" href="#co-postavis" aria-label="Odkaz na tento oddíl"></a></h2>
+<p>Testy přes uživatelské rozhraní jsou pomalé a křehké. Každá změna rozložení stránky může rozbít selektor. Většina logiky aplikace ale leží za <strong>API</strong> (application programming interface, aplikační rozhraní). Test, který pošle požadavek přímo na server a zkontroluje odpověď, je rychlejší a spolehlivější. Proto se v testovací pyramidě testů API píše víc než testů UI.</p>
+<p>V tomto modulu rozšíříš framework z modulu 10 o čtyři věci:</p>
+<ol><li>Generátor scénářů pro API, který z popisu endpointu vytvoří soubor <code>.feature</code> (Bruno L70).</li><li>Kroky v Behave, které posílají požadavky knihovnou <code>requests</code> a kontrolují odpovědi (Bruno L71–L72).</li><li>Úpravu <code>environment.py</code>, aby testy API neotevíraly prohlížeč (Bruno L73–L74).</li><li>Pomocné funkce a prompty pro práci s JSON, testy z kontraktu API a SQL dotazy pro kontrolu dat v databázi (Shetty L57–L60).</li></ol>
+<p>Jako cvičné API slouží Brunovo veřejné Goal Tracker API na <code>goal-tracker-api.onrender.com</code>. Endpoint <code>/api/v1/status</code> vrací stav služby. Pro SQL část použiješ ukázkové tabulky ze Shettyho kurzu (<code>DBTables.xlsx</code>) nahrané do lokální databáze SQLite.</p>
+<p>Nové soubory ve frameworku:</p>
+<div class="kod" data-jazyk="text"><pre><code>ai_bdd_test_framework/
+├── features/
+│   ├── environment.py              upraveno: prohlížeč jen pro UI scénáře
+│   ├── goal_tracker_api.feature    nový, tag @api
+│   └── steps/
+│       └── goal_tracker_api_steps.py
+└── utils/
+    ├── api_test_generator.py       AI generuje scénáře pro API
+    └── json_utils.py               hledání v JSON, porovnání s ignorovanými klíči</code></pre></div>
+<h2 id="predpoklady">Předpoklady<a class="kotva" href="#predpoklady" aria-label="Odkaz na tento oddíl"></a></h2>
+<ul><li>Hotový framework z modulu 10 (stačí kroky 1 až 14, Allure není nutný).</li><li>Balíček <code>requests</code>: <code>pip install requests</code> a znovu <code>pip freeze &gt; requirements.txt</code>. Kurz verzi neuvádí. Playwright už máš, jeho <code>APIRequestContext</code> použiješ v kroku 7.</li><li>Základní představa o HTTP: metody GET, POST, PUT, DELETE, stavové kódy (200 OK, 201 Created, 400, 401, 404, 500), formát JSON. Bruno to v L69 vysvětluje přirovnáním k číšníkovi, který odnese objednávku do kuchyně a přinese jídlo.</li><li>Volitelně Postman nebo jiný klient pro ruční průzkum API. Stačí i prohlížeč nebo PowerShell.</li></ul>
+<aside class="vsuvka vsuvka--pozor" data-stitek="Pozor" aria-label="Pozor"><p>Odpovědi skutečných API a schémata databází obsahují osobní údaje, čísla účtů a interní názvy. Do cloudového modelu z nich neposílej nic. Shetty v L60 ukazuje bezpečnější postup: modelu dáš jen schéma s pozměněnými názvy a vymyšlená data. To je minimum. U klientských systémů (banka, pojišťovna) se nesmí ven dostat ani schéma bez schváleného nástroje.</p></aside>
+<h2 id="postup">Postup<a class="kotva" href="#postup" aria-label="Odkaz na tento oddíl"></a></h2>
+<h3 id="krok-1-prozkoumej-endpoint-rucne-l69-l70">Krok 1: Prozkoumej endpoint ručně (L69–L70)<a class="kotva" href="#krok-1-prozkoumej-endpoint-rucne-l69-l70" aria-label="Odkaz na tento oddíl"></a></h3>
+<p>Než napíšeš první test, podívej se, co API skutečně vrací. Bruno otevře adresu v prohlížeči a v Postmanu. Stejně dobře poslouží PowerShell:</p>
+<div class="kod" data-jazyk="powershell"><pre><code>Invoke-RestMethod https://goal-tracker-api.onrender.com/api/v1/status</code></pre></div>
+<p>Podle kurzu vrací endpoint stav 200 a JSON se stavem <code>OPERATIONAL</code>. Přesnou podobu odpovědi si zapiš, budeš ji potřebovat do promptu i do asercí. Dokumentace dalších endpointů je podle Bruna na úvodní stránce API (<code>goal-tracker-api.onrender.com</code>).</p>
+<p>Služby na Render.com v bezplatném režimu se po nečinnosti uspávají. První požadavek po delší pauze pak může trvat desítky sekund. Pro toto API jsem to neověřoval, ale počítej s tím při nastavení timeoutu.</p>
+<p>Tento krok je <strong>test analysis</strong> (testovací analýza) v malém. Zjišťuješ, co je testovací báze (dokumentace a skutečné chování), jaké jsou testovací podmínky (služba odpovídá, odpověď má správný tvar a hodnotu) a co nevíš (chování při výpadku, hlavičky, rychlost).</p>
+<h3 id="krok-2-ai-vygeneruje-scenar-pro-api-l70">Krok 2: AI vygeneruje scénář pro API (L70)<a class="kotva" href="#krok-2-ai-vygeneruje-scenar-pro-api-l70" aria-label="Odkaz na tento oddíl"></a></h3>
+<p>Bruno vytvoří <code>utils/api_test_generator.py</code>. Znovu používá funkci <code>generate_text</code> z modulu 10, jen s novým promptem:</p>
+<div class="kod" data-jazyk="python"><pre><code>def generate_api_tests(api_name):
+    prompt = f"""
+    Generate a Gherkin scenario for testing the {api_name} API. The scenarios should:
+    - Be concise and focus only on the API status
+    - Include minimal steps.
+    - Base URL is: https://goal-tracker-api.onrender.com/
+    - The end point is /status
+
+    Example cases to consider:
+    - Successful request; reponse will contain 'OPERATIONAL'
+    """
+    return generate_text(prompt)</code></pre></div>
+<p>Spuštění <code>python -m utils.api_test_generator</code> vypíše scénář. Bruno ho zkopíruje do <code>features/goal_tracker_api.feature</code> a ručně opraví adresu:</p>
+<div class="kod" data-jazyk="gherkin"><pre><code>Feature: Check API status
+
+Scenario: Check API status
+    Given the base URL is "https://goal-tracker-api.onrender.com/api/v1/"
+    When I send a GET request to "status" endpoint
+    Then the response should contain "OPERATIONAL"</code></pre></div>
+<p>Oprava byla nutná, protože prompt uváděl základní adresu bez <code>/api/v1/</code> a endpoint s lomítkem na začátku. Model nemůže vědět, jak API skutečně vypadá. Pracuje jen s tím, co dostane. Chyba v zadání se tak propsala do testu.</p>
+<p>Vlastní varianta promptu dává modelu úplné informace a pravidla pro kroky. Přidává i ukázku odpovědi z kroku 1 a seznam kroků, které už ve frameworku existují. Model je pak použije místo vymýšlení nových formulací (neověřeno spuštěním):</p>
+<div class="kod" data-jazyk="python"><pre><code>PROMPT_API = """You write Gherkin scenarios for a Behave framework.
+
+API under test: {nazev}
+Full URL of the endpoint: {url}   (method GET, no authentication)
+Example of a real response (status 200):
+{ukazka}
+
+Existing step phrases. Reuse them exactly, do not invent new wording for the same action:
+- Given the base URL is "&lt;url&gt;"
+- When I send a GET request to "&lt;endpoint&gt;" endpoint
+- Then the response status code should be &lt;code&gt;
+- Then the JSON field "&lt;path&gt;" should be "&lt;value&gt;"
+
+Write 1 to 3 scenarios. Tag every scenario with @api.
+If something cannot be tested from the information above, add it as a Gherkin comment starting with "# OPEN:".
+Output plain Gherkin only."""</code></pre></div>
+<p>Tag <code>@api</code> už musí být u každého scénáře, protože ho v kroku 5 bude číst <code>environment.py</code>. Komentáře <code># OPEN:</code> zachytí otázky, na které dokumentace neodpovídá. Je to stejný princip jako pole <code>otazky</code> v modulu 9.</p>
+<p>Komentář v Gherkinu musí stát na samostatném řádku. Pokud ho model napíše za krok na stejný řádek, Behave ho vezme jako součást textu kroku a krok pak nenajde definici.</p>
+<h3 id="krok-3-kroky-pro-api-v-behave-a-requests-l71-l72">Krok 3: Kroky pro API v Behave a requests (L71–L72)<a class="kotva" href="#krok-3-kroky-pro-api-v-behave-a-requests-l71-l72" aria-label="Odkaz na tento oddíl"></a></h3>
+<p>Bruno vygeneruje šablony kroků přes <code>python -m behave --dry-run</code> (stejně jako v modulu 10) a implementuje je v <code>features/steps/goal_tracker_api_steps.py</code>:</p>
+<div class="kod" data-jazyk="python"><pre><code>import requests
+
+@given('the base URL is "{base_url}"')
+def step_impl(context, base_url):
+    context.base_url = base_url
+
+@when('I send a GET request to "{end_point}" endpoint')
+def step_impl(context, end_point):
+    endpoint = f"{context.base_url}{end_point}"
+    response = requests.get(endpoint)
+    context.reponse = response              # L71: překlep, L72 opraveno na context.response
+
+@then('the response should contain "{expected_text}"')
+def step_impl(context, expected_text):
+    assert context.response.status_code == 200, f"Expected status code 200 but got {context.response.status_code}"
+    assert expected_text in context.response.text, f"Response text does not contain {expected_text}"</code></pre></div>
+<p>Princip je stejný jako u UI. Krok <code>When</code> provede akci a výsledek uloží do <code>context</code>. Krok <code>Then</code> ho odtud vezme a ověří. Kroky si tak předávají data jen přes kontext, ne přes globální proměnné.</p>
+<p>V příloze L71 je překlep <code>context.reponse</code>. Krok <code>Then</code> pak hledá <code>context.response</code> a spadne na <code>AttributeError</code>. Bruno to opravuje v L72. Takový překlep neodhalí ani editor, protože <code>context</code> přijme jakýkoli atribut. Proto je užitečná třída <code>CustomContext</code> z modulu 10. Když do ní doplníš <code>response: requests.Response</code>, editor na neznámý atribut upozorní.</p>
+<p>Kód z kurzu má ještě dvě slabiny, které v testech API potkáš často.</p>
+<p><strong>Chybí timeout.</strong> Funkce <code>requests.get</code> bez parametru <code>timeout</code> čeká na odpověď neomezeně dlouho. Když server neodpoví, test visí a v Jenkinsu blokuje celý build. Vždy uváděj <code>timeout=</code> v sekundách.</p>
+<p><strong>Kontrola podřetězcem.</strong> Aserce <code>"OPERATIONAL" in response.text</code> projde i pro odpověď <code>{"status": "NOT OPERATIONAL"}</code>. Ověřil jsem to v <code>zdroje/_pracovni/bruno/over_offline.py</code>. Text odpovědi je JSON, tak ho jako JSON rozparsuj a porovnej konkrétní pole.</p>
+<p>Vlastní varianta kroků (neověřeno spuštěním, název pole <code>status</code> v odpovědi ověř v kroku 1):</p>
+<div class="kod" data-jazyk="python"><pre><code>import requests
+from behave import given, when, then
+from utils.json_utils import najdi
+
+TIMEOUT_S = 60          # bezplatný hosting se po nečinnosti probouzí pomalu
+
+@given('the base URL is "{base_url}"')
+def nastav_url(context, base_url):
+    context.api_url = base_url.rstrip("/") + "/"
+
+@when('I send a GET request to "{end_point}" endpoint')
+def posli_get(context, end_point):
+    context.response = requests.get(context.api_url + end_point.lstrip("/"), timeout=TIMEOUT_S)
+
+@then("the response status code should be {code:d}")
+def over_kod(context, code):
+    assert context.response.status_code == code, (
+        f"Čekal jsem {code}, přišlo {context.response.status_code}: {context.response.text[:300]}")
+
+@then('the JSON field "{cesta}" should be "{hodnota}"')
+def over_pole(context, cesta, hodnota):
+    skutecna = najdi(context.response.json(), cesta)
+    assert str(skutecna) == hodnota, f"{cesta}: čekal jsem {hodnota!r}, přišlo {skutecna!r}"</code></pre></div>
+<p>Vzor <code>{code:d}</code> řekne Behave, že parametr je celé číslo. Hodnota pak přijde jako <code>int</code> a porovnání se <code>status_code</code> funguje bez převodu. V aserci vypisuji začátek odpovědi. Když test v CI selže, hned vidíš, co server poslal, a nemusíš ho spouštět znovu.</p>
+<p>Nepojmenoval jsem atribut <code>context.base_url</code>. Ten už používají UI kroky z modulu 10 pro adresu webu. Kdyby scénář API přepsal stejný atribut, mohl by tím rozbít UI scénář, který poběží po něm.</p>
+<h3 id="krok-4-pomocne-funkce-pro-json-shetty-l57-l59">Krok 4: Pomocné funkce pro JSON (Shetty L57, L59)<a class="kotva" href="#krok-4-pomocne-funkce-pro-json-shetty-l57-l59" aria-label="Odkaz na tento oddíl"></a></h3>
+<p>Shetty ukazuje na složité vnořené odpovědi, jak s JSON pomáhá AI. Postup má tři kroky. Nejdřív požádá model, ať ze vzorové odpovědi vytvoří <strong>JSON Schema</strong> (popis struktury: jaká pole, jakého typu, která povinná). Pak nechá ze schématu vygenerovat testovací případy: chybějící povinná pole, špatné datové typy, neplatný formát URL, prázdné seznamy. Nakonec chce kód, který odpověď projde a spočítá něco napříč vnořenými poli, například součet cen všech kurzů.</p>
+<p>Schéma je užitečné i bez AI. Pokud vývojáři API teprve připravují, schéma existuje dřív než skutečná odpověď. Testovací případy pak můžeš navrhnout předem. Odpověď se dá proti schématu validovat knihovnou <code>jsonschema</code> (neověřeno, <code>pip install jsonschema</code>, funkce <code>jsonschema.validate(instance, schema)</code>).</p>
+<p>Shetty generuje kód v Javě a v L58 pro odpovědi vytváří třídy POJO. To je postup typický pro Javu, kde se JSON převádí na objekty s pevnými typy. V Pythonu stačí slovníky a seznamy z <code>response.json()</code>, případně <code>dataclasses</code> nebo knihovna Pydantic, pokud chceš typovou kontrolu. Lekci L58 proto vynechávám.</p>
+<p>Shettyho poznámka k tomu stojí za zapamatování. Model napoprvé použil jinou knihovnu na čtení JSON, než má projekt. Kód fungoval, ale v code review by neprošel. Do promptu proto patří i to, jaké knihovny a konvence projekt používá.</p>
+<p>Do <code>utils/json_utils.py</code> dej tři malé funkce. Kód je ověřený spuštěním na ukázkových datech v <code>zdroje/_pracovni/bruno/over_offline.py</code>:</p>
+<div class="kod" data-jazyk="python"><pre><code>def najdi(data, cesta: str):
+    """Hodnota podle cesty s tečkami, čísla jsou indexy seznamu: 'goals.0.title'."""
+    for kus in cesta.split("."):
+        data = data[int(kus)] if isinstance(data, list) else data[kus]
+    return data
+
+def hodnoty_klice(data, klic: str):
+    """Všechny hodnoty daného klíče v libovolně vnořeném JSON (např. všechny ceny)."""
+    if isinstance(data, dict):
+        for k, v in data.items():
+            if k == klic:
+                yield v
+            else:
+                yield from hodnoty_klice(v, klic)
+    elif isinstance(data, list):
+        for v in data:
+            yield from hodnoty_klice(v, klic)
+
+def porovnej(ocekavane, skutecne, ignoruj=frozenset(), cesta=""):
+    """Seznam rozdílů mezi dvěma JSON strukturami. Klíče z `ignoruj` se přeskočí."""
+    rozdily = []
+    if isinstance(ocekavane, dict) and isinstance(skutecne, dict):
+        for k in (ocekavane.keys() | skutecne.keys()) - ignoruj:
+            if k not in skutecne:
+                rozdily.append(f"{cesta}{k}: chybí ve skutečné odpovědi")
+            elif k not in ocekavane:
+                rozdily.append(f"{cesta}{k}: navíc ve skutečné odpovědi")
+            else:
+                rozdily += porovnej(ocekavane[k], skutecne[k], ignoruj, f"{cesta}{k}.")
+    elif isinstance(ocekavane, list) and isinstance(skutecne, list):
+        if len(ocekavane) != len(skutecne):
+            rozdily.append(f"{cesta}: délka {len(ocekavane)} != {len(skutecne)}")
+        for i, (a, b) in enumerate(zip(ocekavane, skutecne)):
+            rozdily += porovnej(a, b, ignoruj, f"{cesta}{i}.")
+    elif ocekavane != skutecne:
+        rozdily.append(f"{cesta.rstrip('.')}: {ocekavane!r} != {skutecne!r}")
+    return rozdily</code></pre></div>
+<p>Funkce <code>porovnej</code> řeší úlohu ze Shettyho L59. Test má uloženou očekávanou odpověď a porovnává ji se skutečnou. Některá pole se ale mění při každém volání, typicky <code>id</code>, <code>createdAt</code> nebo token. Bez jejich vynechání by test selhal pokaždé. Shetty nechá model funkci nejdřív napsat a pak ji v dalším promptu rozšíří o seznam ignorovaných klíčů. Vrací jen <code>true</code> nebo <code>false</code>. Moje varianta vrací seznam rozdílů, takže chybová hláška rovnou řekne, které pole nesedí:</p>
+<div class="kod" data-jazyk="python"><pre><code>porovnej({"id": 1, "goal": {"title": "Run", "tags": ["a", "b"]}},
+         {"id": 99, "goal": {"title": "Run", "tags": ["a", "c"]}},
+         ignoruj={"id"})
+# ['goal.tags.1: 'b' != 'c'']</code></pre></div>
+<p>Pozor na jednu věc. Funkce ignoruje klíč na všech úrovních. Pokud se pole <code>id</code> vyskytuje i ve vnořených objektech a tam se měnit nemá, potřebuješ ignorovat podle celé cesty. Takové rozšíření je dobrý úkol pro model. Dej mu tuto funkci, popiš požadavek a výsledek ověř na dvou nebo třech příkladech, které si připravíš sám.</p>
+<h3 id="krok-5-jeden-framework-pro-ui-i-api-l73-l74">Krok 5: Jeden framework pro UI i API (L73–L74)<a class="kotva" href="#krok-5-jeden-framework-pro-ui-i-api-l73-l74" aria-label="Odkaz na tento oddíl"></a></h3>
+<p>Po přidání testů API má framework problém. <code>before_all</code> spouští prohlížeč i pro běh, ve kterém jsou jen testy API. To stojí několik sekund a v CI zbytečně zatěžuje stroj. Bruno to v L73 řeší tagem <code>@api</code>. V <code>before_scenario</code> zkontroluje, jestli scénář tag má. Pokud ano, prohlížeč nespouští, jinak ho spustí:</p>
+<div class="kod" data-jazyk="python"><pre><code>def before_scenario(context, scenario):
+    if "api" in scenario.tags:
+        context.is_api_test = True
+    else:
+        context.is_api_test = False
+        context.browser = context.playwright[context.browser_type].launch(headless=context.headless_mode)
+        context.page = context.browser.new_page(no_viewport=True)
+
+def after_all(context):
+    if hasattr(context, 'browser') and not context.is_api_test:
+        context.browser.close()
+        context.playwright.stop()</code></pre></div>
+<p>Myšlenka je správná, provedení má tři chyby. Zkontroluj je sám v příloze L74, než budeš číst dál.</p>
+<p><strong>Prohlížeč pro každý scénář a únik procesů.</strong> Prohlížeč se spouští v <code>before_scenario</code>, tedy pro každý UI scénář znovu. Zavírá se ale jen jednou v <code>after_all</code>. Při pěti UI scénářích zůstanou čtyři prohlížeče otevřené až do konce běhu, protože se na ně ztratí odkaz. Navíc spuštění prohlížeče pro každý scénář zpomalí přesně to, co měl refaktoring zrychlit.</p>
+<p><strong>Úklid závisí na posledním scénáři.</strong> Příznak <code>is_api_test</code> se přepisuje u každého scénáře. V <code>after_all</code> tedy platí hodnota posledního scénáře. Když běh skončí testem API, <code>after_all</code> nezavře prohlížeč ani nezastaví Playwright.</p>
+<p><strong>Tag nad Feature nefunguje.</strong> <code>scenario.tags</code> obsahuje jen tagy napsané přímo nad scénářem. Bruno to v L74 obchází pokynem, že tag <code>@api</code> se musí psát nad každý scénář a nikdy nad Feature. Behave přitom má atribut <code>scenario.effective_tags</code>, který obsahuje i zděděné tagy z Feature.</p>
+<p>Vlastní varianta řeší všechny tři. Prohlížeč se spustí líně, tedy až u prvního UI scénáře, a pak se znovu používá. Úklid kontroluje, co skutečně existuje, ne příznak (neověřeno spuštěním):</p>
+<div class="kod" data-jazyk="python"><pre><code># importy a logging jako v modulu 10 (json, os, Path, sync_playwright, allure, AttachmentType)
+
+def before_all(context):
+    env = json.loads(Path("config/env.json").read_text(encoding="utf-8"))
+    context.env = env
+    context.base_url = env.get("base_url", "https://www.webdriveruniversity.com")
+    context.playwright = None
+    context.browser = None
+
+def _prohlizec(context):
+    if context.browser is None:
+        context.playwright = sync_playwright().start()
+        headless = os.environ.get("HEADLESS", str(context.env.get("headless", True))).lower() == "true"
+        context.browser = context.playwright[context.env.get("browser", "chromium")].launch(headless=headless)
+    return context.browser
+
+def before_scenario(context, scenario):
+    context.is_api_test = "api" in scenario.effective_tags
+    context.page = None if context.is_api_test else _prohlizec(context).new_page()
+
+def after_scenario(context, scenario):
+    if context.page is not None:
+        if scenario.status == "failed":
+            allure.attach(context.page.screenshot(full_page=True), name=scenario.name,
+                          attachment_type=AttachmentType.PNG)
+        context.page.close()
+
+def after_all(context):
+    if context.browser is not None:
+        context.browser.close()
+    if context.playwright is not None:
+        context.playwright.stop()</code></pre></div>
+<p>Ověř to spuštěním s tagem <code>@api</code>. Ve výpisu nesmí být žádná zmínka o spuštění prohlížeče a ve Správci úloh se nesmí objevit proces Chromium. Pak spusť všechno dohromady (<code>python custom_runner.py "@regression,@api"</code> pro Behave 1.2.6). Po skončení běhu nesmí zůstat žádný proces Chromium.</p>
+<p>Pro testy API v Behave bez tagu existuje i druhé řešení. Prohlížeč spouštět jen u scénářů s tagem <code>@ui</code>. Výchozí stav je pak „bez prohlížeče“, což je pro velkou sadu testů API výhodnější. Kurz volí opačnou logiku, protože framework začínal jako čistě UI.</p>
+<h3 id="krok-6-test-api-z-kontraktu-shetty-l59">Krok 6: Test API z kontraktu (Shetty L59)<a class="kotva" href="#krok-6-test-api-z-kontraktu-shetty-l59" aria-label="Odkaz na tento oddíl"></a></h3>
+<p><strong>API contract</strong> (kontrakt API) je formální popis rozhraní: endpointy, metody, parametry, tvar požadavků a odpovědí, stavové kódy. Nejčastěji má podobu specifikace OpenAPI (dříve Swagger) ve formátu YAML nebo JSON. Shetty modelu vloží kontrakt knihovní služby (přidání, načtení a smazání knihy) a nechá vygenerovat testy postupně v Javě, v Cypressu a v Pythonu s knihovnou <code>requests</code>.</p>
+<p>Na lekci je vidět, jak dobře model pracuje s formální specifikací. Kontrakt je přesný, a tak je přesný i vygenerovaný test. Model tu nemusí hádat jako u selektorů na webové stránce. Shetty také ukazuje, že se vyplatí doptat: „Dá se to udělat lépe?“ Model pak u Cypressu sám navrhne fixtures (data v samostatném souboru) a custom commands (znovupoužitelné příkazy).</p>
+<p>Typický test z kontraktu je <strong>end-to-end</strong> scénář nad jedním zdrojem: vytvoř záznam, načti ho, ověř data, smaž ho a ověř, že už neexistuje. Smazání na konci je úklid testovacích dat. Bez něj by se databáze testovacího prostředí plnila záznamy z každého běhu.</p>
+<p>Prompt pro generování z kontraktu (vlastní šablona):</p>
+<div class="kod" data-jazyk="text"><pre><code>Role: Jsi test analytik pro REST API.
+Kontext: Níže je výňatek ze specifikace OpenAPI. Testy poběží v Behave s knihovnou requests.
+Existující kroky ve frameworku: (vlož seznam kroků z goal_tracker_api_steps.py)
+Úkol:
+1. Vypiš testovací podmínky pro každý endpoint: úspěch, chybějící povinné pole, špatný typ, neexistující ID, chybějící autentizace.
+2. Pro každou podmínku napiš scénář v Gherkinu s tagem @api.
+3. Scénáře, které zakládají data, musí data na konci smazat.
+Omezení: Používej jen endpointy, pole a stavové kódy uvedené ve specifikaci. Co ve specifikaci chybí, zapiš jako otázku.
+Specifikace:
+(vlož YAML)</code></pre></div>
+<p>První bod je testovací analýza, druhý návrh testů. Rozdělení do dvou kroků v jednom promptu ti umožní nejdřív zkontrolovat seznam podmínek a teprve pak číst scénáře. Pokud seznam podmínek není úplný, nemá smysl kontrolovat scénáře.</p>
+<p>Shetty v závěru lekce zmiňuje, že stejný test jde napsat i v Playwrightu. Playwright pro Python má na požadavky bez prohlížeče objekt <strong>APIRequestContext</strong>. Hodí se, když chceš v jednom testu kombinovat UI a API. Například přes API připravíš data a přes UI ověříš, že se zobrazují. Krátká ukázka (neověřeno spuštěním):</p>
+<div class="kod" data-jazyk="python"><pre><code>from playwright.sync_api import sync_playwright
+
+with sync_playwright() as p:
+    api = p.request.new_context(base_url="https://goal-tracker-api.onrender.com/api/v1/", timeout=60_000)
+    odpoved = api.get("status")
+    assert odpoved.ok, odpoved.status
+    print(odpoved.json())
+    api.dispose()</code></pre></div>
+<p>Relativní adresa <code>status</code> se připojí k <code>base_url</code>. Pokud <code>base_url</code> nekončí lomítkem, poslední část cesty se nahradí, stejně jako v prohlížeči. Timeout je tu v milisekundách, na rozdíl od <code>requests</code>, kde je v sekundách.</p>
+<h3 id="krok-7-sql-dotazy-s-pomoci-ai-shetty-l60">Krok 7: SQL dotazy s pomocí AI (Shetty L60)<a class="kotva" href="#krok-7-sql-dotazy-s-pomoci-ai-shetty-l60" aria-label="Odkaz na tento oddíl"></a></h3>
+<p>Testy API a UI ověří, co aplikace ukazuje. Občas ale musíš ověřit i to, odkud čísla pocházejí. Shetty uvádí příklad z e-shopu. Web tvrdí, že nejvíc tržeb udělalo město New York. Tester to ověří dotazem do databáze. Když neumíš dobře SQL, může dotaz napsat model.</p>
+<p>Postup ze Shettyho lekce má čtyři kroky:</p>
+<ol><li>Dej modelu <strong>schéma</strong> tabulek (názvy tabulek, sloupců a vazeb), ne skutečná data. Model potřebuje znát strukturu, ne obsah.</li><li>Pokud je i schéma citlivé, přejmenuj sloupce (<code>city</code> na <code>town</code>, <code>country</code> na <code>coun</code>). Ve výsledném dotazu je pak vrátíš zpět.</li><li>Uveď databázový systém (MySQL, SQL Server, PostgreSQL, Oracle). Dialekty se liší, například omezení počtu řádků je <code>LIMIT 1</code> v MySQL, ale <code>TOP 1</code> nebo <code>FETCH FIRST 1 ROWS ONLY</code> jinde.</li><li>Ptej se na dotaz, ne na výsledek. Výsledek musí spočítat databáze, ne model.</li></ol>
+<p>Shettyho příloha <code>DBTables.xlsx</code> obsahuje čtyři malé tabulky: <code>customers</code>, <code>orders</code>, <code>products</code> a <code>order_items</code>. Nahrál jsem je do SQLite a dotazy spustil (ověřeno, viz <code>zdroje/_pracovni/bruno/over_offline.py</code>). Dotaz na město s nejvyššími tržbami:</p>
+<div class="kod" data-jazyk="sql"><pre><code>SELECT c.city, ROUND(SUM(o.total_amount), 2) AS trzby
+FROM customers c
+JOIN orders o ON o.customer_id = c.customer_id
+GROUP BY c.city
+ORDER BY trzby DESC
+LIMIT 1;
+-- výsledek: Mumbai | 420.99</code></pre></div>
+<p>Výsledek není New York. V ukázkových datech má nejvyšší součet objednávek Mumbai (420,99) a New York je druhý (385,75). Shettyho New York byl jen příklad tvrzení z webu. V reálném testu by takový rozdíl znamenal defekt: web ukazuje jiné město, než říkají data.</p>
+<p>Data skrývají ještě jednu past. Částka <code>total_amount</code> v tabulce <code>orders</code> nesedí se součtem položek (<code>quantity × price</code>) u žádné z šesti objednávek. U objednávky 1 je <code>total_amount</code> 250,50, ale položky dávají 255,99. Kontrolní dotaz:</p>
+<div class="kod" data-jazyk="sql"><pre><code>SELECT o.order_id, o.total_amount, ROUND(SUM(oi.quantity * p.price), 2) AS soucet_polozek
+FROM orders o
+JOIN order_items oi ON oi.order_id = o.order_id
+JOIN products p ON p.product_id = oi.product_id
+GROUP BY o.order_id
+HAVING ABS(o.total_amount - SUM(oi.quantity * p.price)) &gt; 0.01;
+-- výsledek: všech 6 objednávek</code></pre></div>
+<p>U vymyšlených dat to nevadí. Ukazuje to ale, proč nestačí mít od modelu syntakticky správný dotaz. Otázka „které město má nejvyšší tržby“ má dvě možné odpovědi podle toho, který sloupec je zdroj pravdy. Model si jeden vybere a obvykle neřekne, že existuje i druhý. V těchto datech vyjde Mumbai oběma cestami (podle položek 750,00). Na skutečných datech se výsledky rozejít mohou. Rozhodnutí, co je zdroj pravdy, patří k testovací analýze a dělá ho člověk, ideálně s analytikem nebo vývojářem.</p>
+<p>Shetty k tomu zmiňuje i generování velkého množství testovacích dat, třeba tisíc unikátních jmen a e-mailů pro zátěžový test. To model zvládne, ale pro tisíc řádků je levnější a opakovatelnější nechat ho napsat skript, který data vygeneruje (například knihovnou Faker se seedem), než si nechat data vypsat do chatu.</p>
+<h2 id="overeni">Ověření<a class="kotva" href="#overeni" aria-label="Odkaz na tento oddíl"></a></h2>
+<ol><li><code>python -m behave --tags=@api</code> spustí scénáře pro Goal Tracker API, projdou a ve výpisu není spuštění prohlížeče.</li><li><code>python -m behave</code> (všechno) projde. Po skončení neběží v systému žádný proces Chromium spuštěný testy.</li><li>Tag <code>@api</code> přesunutý nad Feature (místo nad scénáře) dál funguje. To ověřuje opravu se <code>effective_tags</code>.</li><li>Když v souboru <code>.feature</code> změníš očekávanou hodnotu na <code>NOT OPERATIONAL</code>, test selže se srozumitelnou hláškou, která obsahuje skutečnou hodnotu pole.</li><li>Když dočasně změníš adresu na neexistující doménu, test selže do 60 sekund a nezasekne se.</li><li><code>python -I zdroje/_pracovni/bruno/over_offline.py</code> vypíše výsledky SQL dotazů a „porovnání JSON OK“.</li></ol>
+<p>Kroky 1 až 5 jsem nespouštěl, protože vyžadují síť. Pomocné funkce pro JSON a SQL dotazy jsou ověřené offline na Pythonu 3.12.10 a SQLite 3.49.1.</p>
+<h2 id="caste-chyby">Časté chyby<a class="kotva" href="#caste-chyby" aria-label="Odkaz na tento oddíl"></a></h2>
+<p><strong><code>AttributeError: 'Context' object has no attribute 'response'</code>.</strong> Překlep v názvu atributu (v kurzu <code>reponse</code>), nebo krok <code>When</code> selhal dřív, než odpověď uložil. Podívej se na první chybu ve výpisu, ne na poslední.</p>
+<p><strong>Test API spustil prohlížeč.</strong> Tag je nad Feature a <code>environment.py</code> čte <code>scenario.tags</code>. Použij <code>scenario.effective_tags</code>.</p>
+<p><strong>Test visí.</strong> Chybí <code>timeout</code> u <code>requests.get</code>. Bezplatný hosting se navíc po nečinnosti probouzí pomalu, první požadavek dej s delším timeoutem.</p>
+<p><strong>Adresa se špatně složí.</strong> Dvě lomítka (<code>v1//status</code>) nebo žádné (<code>v1status</code>). Normalizuj lomítka na jednom místě, jako <code>nastav_url</code> v kroku 3.</p>
+<p><strong><code>requests.exceptions.JSONDecodeError</code>.</strong> Server nevrátil JSON, typicky stránku s chybou 502 nebo 503 při probouzení služby. V aserci vypisuj <code>response.status_code</code> a začátek <code>response.text</code>, ať víš, co přišlo.</p>
+<p><strong>Aserce na podřetězec projde, i když nemá.</strong> <code>"OPERATIONAL" in text</code> platí i pro <code>NOT OPERATIONAL</code>. Porovnávej hodnotu konkrétního pole.</p>
+<p><strong>Model vygeneroval endpoint nebo pole, které API nemá.</strong> Prompt neobsahoval dokumentaci, nebo ji model doplnil podle podobných API. V promptu uveď, že smí používat jen to, co je ve specifikaci.</p>
+<p><strong>SQL dotaz funguje v SQLite, ale ne v cílové databázi.</strong> Dialekt. Uveď v promptu přesný databázový systém a verzi.</p>
+<p><strong>Porovnání JSON selže na pořadí prvků v seznamu.</strong> Funkce <code>porovnej</code> bere pořadí jako významné. Pokud API pořadí nezaručuje, seřaď seznamy před porovnáním podle stabilního klíče.</p>
+<h2 id="cviceni">Cvičení<a class="kotva" href="#cviceni" aria-label="Odkaz na tento oddíl"></a></h2>
+<aside class="vsuvka vsuvka--cviceni" id="praxe-11-api-testy-s-ai-scenare-z-dokumentace-goal-trackeru" data-stitek="Cvičení" aria-label="Cvičení"><p class="praxe-blok-nazev">Scénáře z dokumentace Goal Trackeru</p><p>Cíl: projít celý cyklus od dokumentace k testu. Otevři dokumentaci na úvodní stránce Goal Tracker API, vyber dva endpointy kromě <code>/status</code> a vlož jejich popis do promptu z kroku 6. Nech model vypsat testovací podmínky a scénáře. Hotovo: máš soubor <code>.feature</code> se scénáři pro oba endpointy, každý scénář jsi spustil a u každého, který selhal, víš, zda je chyba v testu (model si něco domyslel), nebo v API. Seznam otázek <code># OPEN:</code> má aspoň jednu položku.</p><p class="praxe-cviceni-pata" data-nepocitat><label class="zk-volba praxe-hotovo"><input type="checkbox" data-praxe-hotovo="praxe-11-api-testy-s-ai-scenare-z-dokumentace-goal-trackeru"> Hotovo</label></p></aside>
+<aside class="vsuvka vsuvka--cviceni" id="praxe-11-api-testy-s-ai-porovnani-odpovedi-se-snapshotem" data-stitek="Cvičení" aria-label="Cvičení"><p class="praxe-blok-nazev">Porovnání odpovědi se snapshotem</p><p>Cíl: použít <code>porovnej</code> v Behave kroku. Napiš krok <code>Then the response should match the snapshot "&lt;soubor&gt;" ignoring "&lt;klice&gt;"</code>, který načte očekávaný JSON ze složky <code>features/snapshots/</code> a porovná ho s odpovědí. Klíče k ignorování se zadají čárkami. Hotovo: scénář projde pro skutečnou odpověď a selže se srozumitelným seznamem rozdílů, když ve snapshotu změníš jednu hodnotu. Rozšíření funkce o ignorování podle celé cesty jsi nechal napsat model a ověřil ho na třech vlastních příkladech.</p><p class="praxe-cviceni-pata" data-nepocitat><label class="zk-volba praxe-hotovo"><input type="checkbox" data-praxe-hotovo="praxe-11-api-testy-s-ai-porovnani-odpovedi-se-snapshotem"> Hotovo</label></p></aside>
+<aside class="vsuvka vsuvka--cviceni" id="praxe-11-api-testy-s-ai-sql-dotazy-se-zmenenym-schematem" data-stitek="Cvičení" aria-label="Cvičení"><p class="praxe-blok-nazev">SQL dotazy se změněným schématem</p><p>Cíl: procvičit bezpečný postup ze Shettyho L60. Přejmenuj v popisu schématu <code>DBTables</code> všechny sloupce na neutrální názvy (<code>c1</code>, <code>c2</code> nebo synonyma) a požádej model o dotazy pro zbývající otázky z listu: nejprodávanější kategorie, zákazníci bez nedávné objednávky, průměrná hodnota objednávky u zákazníků s vysokou útratou. Hotovo: dotazy po zpětném přejmenování běží v SQLite (vzor v <code>over_offline.py</code>), výsledky jsi ověřil ručně v Excelu na malých datech a u otázky „bez nedávné objednávky“ jsi rozhodl a zapsal, od jakého data se počítá „nedávno“. Model to sám určit nemůže.</p><p class="praxe-cviceni-pata" data-nepocitat><label class="zk-volba praxe-hotovo"><input type="checkbox" data-praxe-hotovo="praxe-11-api-testy-s-ai-sql-dotazy-se-zmenenym-schematem"> Hotovo</label></p></aside>
+<h2 id="souvislost-se-sylabem-ct-genai">Souvislost se sylabem CT-GenAI<a class="kotva" href="#souvislost-se-sylabem-ct-genai" aria-label="Odkaz na tento oddíl"></a></h2>
+<p>Krok 1 a první polovina promptu v kroku 6 jsou testovací analýza podle oddílu 2.2.1 (testovací analýza s GenAI). Model z dokumentace nebo kontraktu odvozuje testovací podmínky a hlásí mezery v testovací bázi. Generování scénářů a kódu kroků z kontraktu je návrh testů a implementace testování podle oddílu 2.2.2. Úprava <code>environment.py</code> tak, aby jeden framework obsloužil UI i API, a doplnění testů API do existující sady odpovídají oddílu 2.2.3 (automatizované regresní testování s GenAI).</p>
+<p>Opravy v krocích 2, 3 a 5 jsou hodnocení výstupu podle oddílu 2.3. Výstup modelu i kód z kurzu jsou věrohodné, ale obsahují konkrétní chyby: špatnou adresu, aserci na podřetězec, únik procesů prohlížeče. Endpointy nebo pole, která ve specifikaci nejsou, jsou halucinace z oddílu 3.1.1. Výběr zdroje pravdy u SQL dotazu je typ chyby v uvažování, kterou oddíl 3.1.2 doporučuje odhalovat nezávislou kontrolou výsledku.</p>
+<p>Postup se schématem místo dat a s přejmenovanými sloupci je praktické opatření z oddílu 3.2.3 (jak chránit data a posílit bezpečnost). Upozornění na odpovědi API a schémata klientských systémů odpovídá rizikům úniku dat z oddílu 3.2.1.</p>
+</article>
+<div class="splneno-radek" data-nepocitat><button type="button" class="tlacitko splneno" data-splneno="modul-11-api-testy-s-ai" data-text-ne="Označit jako prostudované" data-text-ano="✓ Prostudováno" aria-pressed="false">Označit jako prostudované</button></div>
+<nav class="naradi sousede" aria-label="Sousední moduly"><a href="10-bdd-framework-behave-playwright-ai.html">← 10. BDD framework – Behave, Playwright a AI</a><a href="../praxe.html">Všechny moduly</a><a href="12-jenkins-ci-a-reporty.html">12. Jenkins CI a Allure reporty →</a></nav>
+</main>
+<aside class="strom" aria-label="Obsah stránky"><h2>V tomto modulu</h2><ol><li><a href="#co-postavis">Co postavíš</a></li><li><a href="#predpoklady">Předpoklady</a></li><li><a href="#postup">Postup</a><ol><li><a href="#krok-1-prozkoumej-endpoint-rucne-l69-l70">Krok 1: Prozkoumej endpoint ručně (L69–L70)</a></li><li><a href="#krok-2-ai-vygeneruje-scenar-pro-api-l70">Krok 2: AI vygeneruje scénář pro API (L70)</a></li><li><a href="#krok-3-kroky-pro-api-v-behave-a-requests-l71-l72">Krok 3: Kroky pro API v Behave a requests (L71–L72)</a></li><li><a href="#krok-4-pomocne-funkce-pro-json-shetty-l57-l59">Krok 4: Pomocné funkce pro JSON (Shetty L57, L59)</a></li><li><a href="#krok-5-jeden-framework-pro-ui-i-api-l73-l74">Krok 5: Jeden framework pro UI i API (L73–L74)</a></li><li><a href="#krok-6-test-api-z-kontraktu-shetty-l59">Krok 6: Test API z kontraktu (Shetty L59)</a></li><li><a href="#krok-7-sql-dotazy-s-pomoci-ai-shetty-l60">Krok 7: SQL dotazy s pomocí AI (Shetty L60)</a></li></ol></li><li><a href="#overeni">Ověření</a></li><li><a href="#caste-chyby">Časté chyby</a></li><li><a href="#cviceni">Cvičení</a></li><li><a href="#souvislost-se-sylabem-ct-genai">Souvislost se sylabem CT-GenAI</a></li></ol></aside>
+</div>
+</div>
+<footer class="paticka">
+  <div class="paticka-vnitrek">
+    <p><strong>Neoficiální studijní materiál.</strong> Tento web není produktem ani publikací ISTQB®.
+    ISTQB® je registrovaná ochranná známka International Software Testing Qualifications Board.
+    Texty jsou vlastním zpracováním autora vytvořeným při přípravě na zkoušku CT-GenAI; oficiální sylabus
+    a vzorovou zkoušku si stáhněte přímo na istqb.org.</p>
+    <p>Ke zkoušce vždy platí znění oficiálního sylabu CT-GenAI v1.1. Doplněné informace a příklady z praxe
+    slouží k porozumění, nikoli jako zdroj správných odpovědí u zkoušky.</p>
+    <ul>
+      <li><a href="https://istqb.org/certifications/gen-ai/" target="_blank" rel="noopener noreferrer">ISTQB — CT-GenAI</a></li>
+      <li><a href="https://glossary.istqb.org" target="_blank" rel="noopener noreferrer">Slovník ISTQB</a></li>
+      <li><a href="https://casqb.org" target="_blank" rel="noopener noreferrer">CaSQB</a></li>
+      <li><a href="../zdroje.html">Zdroje a autorská práva</a></li>
+    </ul>
+  </div>
+</footer>
+<script src="../assets/ucet-konfig.js"></script>
+<script src="../assets/ucet.js"></script>
+<script src="../assets/skript.js"></script>
+</body>
+</html>

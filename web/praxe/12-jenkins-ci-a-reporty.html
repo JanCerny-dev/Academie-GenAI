@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="cs" data-tema="">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jenkins CI a Allure reporty | Praxe | ISTQB CT-GenAI</title>
+<meta name="description" content="Praxe CT-GenAI: Jenkins CI a Allure reporty. Spustíš BDD framework z modulů 10 a 11 v Jenkinsu s výběrem tagu a s reportem Allure u každého buildu, a pro srovnání v GitHub Actions.">
+<meta name="color-scheme" content="light dark">
+<link rel="stylesheet" href="../assets/styl.css">
+<script>
+/* Nastaví uložený režim ještě před vykreslením, aby stránka neproblikla. */
+(function(){try{var t=localStorage.getItem('genai-tema');if(t){document.documentElement.setAttribute('data-tema',t);}}catch(e){}})();
+</script>
+</head>
+<body data-kapitola="6">
+<a class="preskocit" href="#text">Přeskočit na text</a>
+<div class="postup" aria-hidden="true"></div>
+<header class="hlavicka">
+  <div class="hlavicka-vnitrek">
+    <a class="znacka" href="../index.html">ISTQB CT-GenAI <span>česká studijní příručka</span></a>
+    <nav class="navigace" aria-label="Hlavní navigace">
+      <a href="../index.html">Úvod</a>
+      <span class="skupina" data-skupina>
+        <a href="../kapitoly.html" class="zvyraznit">Kapitoly</a>
+        <ul class="podmenu" id="podmenu-kapitoly" aria-label="Seznam kapitol"><li><a href="../kapitola-1/vyklad.html"><b>1</b> Úvod do generativní AI</a></li><li><a href="../kapitola-2/vyklad.html"><b>2</b> Prompt engineering</a></li><li><a href="../kapitola-3/vyklad.html"><b>3</b> Rizika generativní AI</a></li><li><a href="../kapitola-4/vyklad.html"><b>4</b> Infrastruktura s LLM</a></li><li><a href="../kapitola-5/vyklad.html"><b>5</b> Zavedení GenAI v organizaci</a></li></ul>
+      </span>
+      <a href="../slovnik.html">Slovník</a>
+      <a href="../karticky.html">Kartičky</a>
+      <a href="../prirazovani.html">Přiřazování</a>
+      <a href="../cviceni.html">Cvičení</a>
+      <a href="../praxe.html" aria-current="page">Praxe</a>
+      <a href="../cile.html">Cíle</a>
+      <a href="../zkouska.html">Zkouška</a>
+      <a href="../lokalni/index.html" class="lokalni-odkaz">Lokální testy</a>
+      <button type="button" class="prepinac-tema" data-prepinac-tema>Tmavý režim</button>
+      <button type="button" class="ucet-tlacitko" data-ucet hidden>Přihlásit</button>
+    </nav>
+  </div>
+</header>
+<div class="stranka">
+<div class="layout">
+<main>
+<div class="zahlavi">
+  <p class="drobky"><a href="../praxe.html">Praxe</a> · Modul 12</p>
+  <h1>Jenkins CI a Allure reporty</h1>
+  <p class="podtitul">Spustíš BDD framework z modulů 10 a 11 v Jenkinsu s výběrem tagu a s reportem Allure u každého buildu, a pro srovnání v GitHub Actions.</p>
+  <ul class="meta"><li>Čas: 3–4 h</li><li>Úroveň: středně pokročilý</li><li>Nástroje: Java JDK 21, Jenkins LTS, Allure Jenkins Plugin, GitHub Actions, Python 3.12</li><li>2 934 slov</li><li>≈ 17 min čtení</li><li>3 cvičení</li></ul>
+  <p class="praxe-souvislosti"><span>Souvisí s kapitolami CT-GenAI: <a href="../kapitola-2/vyklad.html">2. Prompt engineering</a> · <a href="../kapitola-3/vyklad.html">3. Rizika generativní AI</a> · <a href="../kapitola-4/vyklad.html">4. Infrastruktura s LLM</a></span><span>Zdroje: Bruno L75–L81</span></p>
+  <p class="napoveda" id="praxe-souhrn" aria-live="polite" data-praxe-cviceni="praxe-12-jenkins-ci-a-reporty-nocni-regresni-beh praxe-12-jenkins-ci-a-reporty-freestyle-job-prevedeny-na-jenkinsfile praxe-12-jenkins-ci-a-reporty-srovnani-jenkins-a-github-actions"><span data-praxe-postup>3 cvičení</span>. Hotová cvičení si odškrtni, stav se ukládá v tomto prohlížeči, po přihlášení i v účtu.</p>
+</div>
+<article class="text" id="text">
+<h2 id="co-postavis">Co postavíš<a class="kotva" href="#co-postavis" aria-label="Odkaz na tento oddíl"></a></h2>
+<p>Framework z modulů 10 a 11 zatím spouštíš ručně ze svého terminálu. To stačí pro vývoj testů, ne pro tým. Kolega chce testy spustit bez znalosti příkazů, vedoucí chce vidět výsledky včerejšího běhu a regresní sada má běžet po každé změně aplikace. To řeší <strong>CI</strong> (continuous integration, průběžná integrace): server, který testy spouští automaticky nebo na kliknutí, uchovává výstupy a ukazuje historii.</p>
+<p>Bruno v deváté sekci kurzu používá <strong>Jenkins</strong>, nejrozšířenější open-source CI server. Na konci modulu budeš mít:</p>
+<ul><li>Jenkins běžící lokálně na <code>http://localhost:8080</code>,</li><li>job, který spustí framework s tagem vybraným z rozbalovacího seznamu (<code>@regression</code>, <code>@smoke</code>, <code>@api</code>),</li><li>report Allure u každého buildu, včetně screenshotů selhání z modulu 10,</li><li>upravený <code>custom_runner.py</code>, který přijme tag z příkazové řádky i z Jenkinsu,</li><li>pro srovnání minimální workflow v GitHub Actions, který dělá totéž bez vlastního serveru.</li></ul>
+<p>Bruno pracuje na Windows s Freestyle jobem nastaveným v prohlížeči. Postup sleduji stejně. Na konci ukazuji, jak stejný job vypadá jako kód (Jenkinsfile), protože tak se Jenkins v týmech používá častěji.</p>
+<h2 id="predpoklady">Předpoklady<a class="kotva" href="#predpoklady" aria-label="Odkaz na tento oddíl"></a></h2>
+<ul><li>Framework z modulu 10 (a ideálně 11), který lokálně projde příkazem <code>python custom_runner.py @regression</code>.</li><li><strong>Java JDK.</strong> Jenkins je program v Javě. Bruno v L76 instaluje OpenJDK 21, protože to byla v době natáčení nejnovější verze, kterou Jenkins podporoval. Jenkins podporu verzí Javy postupně posouvá. Aktuální stav ověř na stránce <em>Java Support Policy</em> v dokumentaci Jenkinsu.</li><li><strong>Jenkins LTS</strong> jako soubor <code>jenkins.war</code> z jenkins.io (sekce Download, varianta LTS, Generic Java package).</li><li>Zhruba 1 GB místa na disku pro Jenkins, pluginy a historii buildů.</li><li>Pro část s GitHub Actions účet na GitHubu a repozitář s frameworkem.</li></ul>
+<aside class="vsuvka vsuvka--pozor" data-stitek="Pozor" aria-label="Pozor"><p>Jenkins je webový server se správou uživatelů a spouští libovolné příkazy na tvém počítači. Na firemním notebooku ho instaluj jen se souhlasem IT, protože se tím mění bezpečnostní profil stroje. Bruno v L77 musel kvůli Jenkinsu přidat výjimku do firewallu. Firewall ani jiná bezpečnostní nastavení firemního zařízení sám neměň. Na osobním počítači pusť Jenkins jen pro lokální přístup (krok 2) a zvol silné heslo správce.</p></aside>
+<h2 id="postup">Postup<a class="kotva" href="#postup" aria-label="Odkaz na tento oddíl"></a></h2>
+<h3 id="krok-1-java-jdk-a-java-home-l76">Krok 1: Java JDK a JAVA_HOME (L76)<a class="kotva" href="#krok-1-java-jdk-a-java-home-l76" aria-label="Odkaz na tento oddíl"></a></h3>
+<p>Bruno stáhne OpenJDK 21 jako zip z archivu jdk.java.net, rozbalí ho do <code>C:\Program Files (x86)\Java JDK</code> a nastaví dvě proměnné prostředí:</p>
+<ul><li><code>JAVA_HOME</code> = cesta ke složce JDK (ta, ve které je podsložka <code>bin</code>),</li><li>do <code>Path</code> přidá <code>%JAVA_HOME%\bin</code>.</li></ul>
+<p>Nastavení najdeš ve Windows pod <em>Upravit proměnné prostředí</em>. Bruno je zakládá jako systémové proměnné, což vyžaduje práva správce. Pro vlastní účet stačí uživatelské proměnné ve stejném dialogu. Pro Mac a Linux má příloha L76 návod s <code>tar</code> a <code>export JAVA_HOME=...</code>.</p>
+<p>Ověření v novém okně terminálu (staré okno změnu proměnných nevidí):</p>
+<div class="kod" data-jazyk="powershell"><pre><code>java -version</code></pre></div>
+<p>Má vypsat verzi 21. Pokud vypíše jinou verzi, máš v <code>Path</code> dřív jinou Javu. Pořadí v <code>Path</code> rozhoduje.</p>
+<p>Rozbalovat JDK do <code>Program Files (x86)</code> je trochu neobvyklé, ta složka je určená pro 32bitové programy. Funguje to, jen se to později hůř hledá. Instalátory jako Eclipse Temurin nebo Microsoft Build of OpenJDK nastaví <code>JAVA_HOME</code> samy (nad rámec kurzu, neověřeno).</p>
+<h3 id="krok-2-spusteni-jenkinsu-l77">Krok 2: Spuštění Jenkinsu (L77)<a class="kotva" href="#krok-2-spusteni-jenkinsu-l77" aria-label="Odkaz na tento oddíl"></a></h3>
+<p>Jenkins se dá nainstalovat jako služba Windows, ale Bruno volí jednodušší cestu. Soubor <code>jenkins.war</code> spustí přímo Javou:</p>
+<div class="kod" data-jazyk="powershell"><pre><code>java -jar jenkins.war</code></pre></div>
+<p>V logu hledej řádek <code>Jenkins is fully up and running</code>. Výjimky vypsané před ním při prvním startu obvykle nevadí. Potom otevři <code>http://localhost:8080</code>.</p>
+<p>Pokud je port 8080 obsazený, Bruno doporučuje jiný port. V příloze L77 je ale příkaz <code>java -jar jenkins.war --httpsPort=9090</code>. Ten zapíná HTTPS, které potřebuje certifikát. Pro obyčejné HTTP na jiném portu je správná volba <code>--httpPort</code>:</p>
+<div class="kod" data-jazyk="powershell"><pre><code>java -jar jenkins.war --httpPort=9090 --httpListenAddress=127.0.0.1</code></pre></div>
+<p>Volba <code>--httpListenAddress=127.0.0.1</code> je navíc oproti kurzu. Jenkins pak poslouchá jen na tvém počítači a z jiných strojů v síti není dostupný. Bez ní poslouchá na všech síťových rozhraních. Pro cvičení je lokální přístup přesně to, co chceš.</p>
+<p>Při prvním otevření chce Jenkins jednorázové heslo. Najdeš ho v souboru <code>%USERPROFILE%\.jenkins\secrets\initialAdminPassword</code>, cestu ukazuje i úvodní stránka a log. Pak zvol <em>Install suggested plugins</em>, vytvoř účet správce a potvrď adresu Jenkinsu.</p>
+<p>Veškerá data Jenkinsu (joby, buildy, pluginy) leží ve složce <code>%USERPROFILE%\.jenkins</code>. Soubor <code>jenkins.war</code> je jen program. Jenkins zastavíš klávesami Ctrl+C v okně terminálu a znovu spustíš stejným příkazem.</p>
+<h3 id="krok-3-prvni-job-l78">Krok 3: První job (L78)<a class="kotva" href="#krok-3-prvni-job-l78" aria-label="Odkaz na tento oddíl"></a></h3>
+<p><strong>Job</strong> (úloha) je v Jenkinsu pojmenovaná sada kroků: odkud vzít kód, co spustit a co udělat s výsledky. Bruno nejdřív ověří, že Jenkins vidí Python:</p>
+<ol><li><em>New Item</em>, název <code>validate python environment</code>, typ <em>Freestyle project</em>.</li><li>V sekci <em>Build Steps</em> přidej <em>Execute Windows batch command</em> (na Macu a Linuxu <em>Execute shell</em>).</li><li>Příkaz <code>python --version</code>, potom <em>Save</em>.</li><li><em>Build Now</em>. V <em>Build History</em> se objeví build, po kliknutí na něj <em>Console Output</em> ukáže verzi Pythonu.</li></ol>
+<p>Zelená fajfka znamená, že příkaz skončil návratovým kódem 0. Jenkins pozná úspěch a neúspěch jen podle návratového kódu. Proto v modulu 10 runner končí <code>raise SystemExit(behave_main(...))</code>. Bez toho by build mohl být zelený, i když testy selhaly.</p>
+<p>Pokud Jenkins Python nenajde, i když v terminálu funguje, běží Jenkins s jinými proměnnými prostředí. Typicky jsi Python přidal do <code>Path</code> až po spuštění Jenkinsu. Restartuj Jenkins v novém terminálu.</p>
+<p>Testovací job pak Bruno smaže (<em>Delete Project</em>).</p>
+<h3 id="krok-4-job-pro-framework-l79">Krok 4: Job pro framework (L79)<a class="kotva" href="#krok-4-job-pro-framework-l79" aria-label="Odkaz na tento oddíl"></a></h3>
+<p>Druhý job spouští framework. Bruno ho nazve <code>ai-enhanced-test-automation-framework</code> a nastaví dvě věci:</p>
+<ul><li>V sekci <em>General</em>, <em>Advanced</em>, zapne <em>Use custom workspace</em> a zadá cestu ke složce frameworku na disku.</li><li>Jako <em>Execute Windows batch command</em> napíše <code>python -m behave --tags="@regression"</code>.</li></ul>
+<p>Po <em>Build Now</em> v <em>Console Output</em> uvidíš výpis Behave. Na konci 1 feature passed, 5 scenarios passed. Feature s testy API je skipped, protože nemá tag <code>@regression</code>.</p>
+<p><strong>Custom workspace</strong> znamená, že Jenkins pracuje přímo ve tvé pracovní složce. Pro výuku je to nejjednodušší. V praxi to má dvě nevýhody. Jenkins spouští testy nad tím, co máš zrovna rozpracované, ne nad verzí v gitu. A úklid v runneru maže složky <code>reports</code> a <code>screenshots</code> i tobě. Běžné nastavení je <em>Source Code Management: Git</em> s adresou repozitáře. Jenkins si pak kód sám stáhne do vlastní složky. Lokální adresář ale musí být gitový repozitář, který Jenkins umí naklonovat.</p>
+<p>Jedno vylepšení stojí za to hned. Příkaz <code>python</code> spustí ten Python, který je v <code>Path</code> jako první, tedy globální instalaci. Ta nemá balíčky z tvého virtuálního prostředí. Brunovi to funguje, protože má balíčky nainstalované i globálně. Spolehlivější je zavolat Python z virtuálního prostředí přímo:</p>
+<div class="kod" data-jazyk="bat"><pre><code>set HEADLESS=true
+.venv\Scripts\python.exe custom_runner.py @regression</code></pre></div>
+<p>Proměnná <code>HEADLESS</code> přepne prohlížeč do režimu bez okna (modul 10, krok 5). Jenkins na Windows často běží bez přihlášeného uživatele u obrazovky, a pak okno prohlížeče stejně nikdo neuvidí.</p>
+<h3 id="krok-5-vyber-tagu-jako-parametr-buildu-l80">Krok 5: Výběr tagu jako parametr buildu (L80)<a class="kotva" href="#krok-5-vyber-tagu-jako-parametr-buildu-l80" aria-label="Odkaz na tento oddíl"></a></h3>
+<p>Job s napevno zapsaným <code>@regression</code> neumí spustit jen smoke testy nebo jen API. Bruno proto přidá parametr:</p>
+<ol><li><em>Configure</em>, <em>This project is parameterized</em>, <em>Add Parameter</em>, <em>Choice Parameter</em>.</li><li>Název <code>BEHAVE_TAGS</code>, volby na samostatných řádcích: <code>@regression</code>, <code>@smoke</code>, <code>@api</code>.</li><li>Tlačítko <em>Build Now</em> se změní na <em>Build with Parameters</em>.</li></ol>
+<p>Jenkins předá každý parametr buildu jako proměnnou prostředí se stejným názvem. V příkazu pro Windows se na ni odkážeš <code>%BEHAVE_TAGS%</code>, v shellu <code>$BEHAVE_TAGS</code>:</p>
+<div class="kod" data-jazyk="bat"><pre><code>.venv\Scripts\python.exe custom_runner.py --tags "%BEHAVE_TAGS%"</code></pre></div>
+<p>Runner musí tag přijmout. Bruno v L80 přidá do <code>custom_runner.py</code> modul <code>argparse</code> a čtení proměnné prostředí:</p>
+<div class="kod" data-jazyk="python"><pre><code>parser = argparse.ArgumentParser(description="Run Behave tests with specific tags.")
+parser.add_argument("--tags", help="Behave tags to filter scenarios", default="")
+args = parser.parse_args()
+
+tags = args.tags or os.getenv("BEHAVE_TAGS", "")
+
+behave_main(["--tags", tags, "--format", "allure_behave.formatter:AllureFormatter",
+             "--outfile", "reports/allure-results"])</code></pre></div>
+<p>Pořadí <code>args.tags or os.getenv(...)</code> znamená: tag z příkazové řádky má přednost, pak se použije proměnná z Jenkinsu. Runner tak funguje stejně lokálně i v CI.</p>
+<p>Když ale tag nepřijde ani jednou cestou, předá runner Behave volbu <code>--tags ""</code>. Jak se na prázdný výraz Behave zachová, jsem neověřoval. Bezpečnější je volbu <code>--tags</code> vůbec nepřidat a spustit všechno. Vlastní varianta, ve které je logika sestavení argumentů oddělená do funkce, aby se dala otestovat bez spuštění Behave (funkce ověřená v <code>zdroje/_pracovni/bruno/over_offline.py</code>):</p>
+<div class="kod" data-jazyk="python"><pre><code>import argparse, os, shutil
+from behave.__main__ import main as behave_main
+
+def behave_argumenty(tags_cli, env) -&gt; list[str]:
+    tags = tags_cli or env.get("BEHAVE_TAGS", "")
+    args = ["--format", "allure_behave.formatter:AllureFormatter",
+            "--outfile", "reports/allure-results",
+            "--format", "pretty"]
+    return (["--tags", tags] + args) if tags else args
+
+def vycisti(slozka: str) -&gt; None:
+    shutil.rmtree(slozka, ignore_errors=True)
+    os.makedirs(slozka, exist_ok=True)
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Spuštění Behave podle tagů")
+    parser.add_argument("--tags", default="")
+    vycisti("reports")
+    vycisti("screenshots")
+    raise SystemExit(behave_main(behave_argumenty(parser.parse_args().tags, os.environ)))</code></pre></div>
+<p>Runner z modulu 10 bral tag jako první argument (<code>custom_runner.py @smoke</code>). Tato verze ho bere přes <code>--tags</code>, stejně jako Brunova. Uprav podle toho příkaz v jobu z kroku 4. Druhý formát <code>pretty</code> posílá čitelný průběh do konzole, takže ho uvidíš v <em>Console Output</em>. Bez něj je v Jenkinsu konzole skoro prázdná a všechny informace jsou jen v Allure.</p>
+<p>V <em>Build History</em> u každého buildu ukazuje odkaz <em>Parameters</em>, s jakým tagem běžel. Když kolega hlásí, že „testy včera neprošly“, víš hned, kterou sadu spustil.</p>
+<h3 id="krok-6-allure-report-v-jenkinsu-l81">Krok 6: Allure report v Jenkinsu (L81)<a class="kotva" href="#krok-6-allure-report-v-jenkinsu-l81" aria-label="Odkaz na tento oddíl"></a></h3>
+<p>Ručně spouštěné <code>allure generate</code> z modulu 10 nahradí plugin. Bruno postupuje takto:</p>
+<ol><li><em>Manage Jenkins</em>, <em>Plugins</em>. Nejdřív na záložce <em>Updates</em> aktualizuj nainstalované pluginy. Aktualizace často opravují bezpečnostní chyby. Některé vyžadují restart Jenkinsu.</li><li>Na záložce <em>Available plugins</em> vyhledej <code>Allure</code> a nainstaluj <strong>Allure Jenkins Plugin</strong>.</li><li><em>Manage Jenkins</em>, <em>Tools</em>, sekce <em>Allure Commandline</em>: <em>Add Allure Commandline</em>, zadej název (třeba <code>allure</code>) a zapni automatickou instalaci nejnovější verze. Jenkins si nástroj stáhne sám, lokální instalace z modulu 10 tu není potřeba.</li><li>V jobu, sekce <em>Post-build Actions</em>, <em>Allure Report</em>. Do pole s cestou k výsledkům zadej <code>reports/allure-results</code>.</li></ol>
+<p>Pole s cestou je relativní k pracovní složce jobu. Bruno v L81 nastavuje i pole v <em>Advanced</em> a zapisuje cestu se zpětným lomítkem. Jenkins na Windows přijme obě lomítka. Rozhodující je, aby cesta vedla do složky se soubory JSON, ne do vygenerovaného HTML.</p>
+<p>Po dalším buildu se u něj objeví ikona Allure. Report je uložený zvlášť pro každý build. Build s <code>@regression</code> ukáže pět prošlých testů a jeden přeskočený test API. Build s <code>@api</code> ukáže opak. Plugin navíc přenáší složku <code>history</code> mezi buildy, takže report ukazuje trend úspěšnosti. To lokální <code>allure generate --clean</code> z modulu 10 nedělá.</p>
+<p>Bruno na závěr záměrně rozbije tři řádky v Examples (přidá do očekávané hlášky „555“). Build skončí jako neúspěšný a report ukazuje selhané scénáře se screenshoty z <code>after_scenario</code>. Jaký stav dostane build (<em>Failure</em> nebo <em>Unstable</em>), závisí na návratovém kódu runneru a nastavení pluginu (neověřeno).</p>
+<h3 id="krok-7-tajemstvi-v-jenkinsu">Krok 7: Tajemství v Jenkinsu<a class="kotva" href="#krok-7-tajemstvi-v-jenkinsu" aria-label="Odkaz na tento oddíl"></a></h3>
+<p>Testy z modulů 10 a 11 API klíč OpenAI nepotřebují. Volají ho jen generátory scénářů a <code>analyze_steps</code>, které se spouštějí ručně při psaní testů. Do CI je nedávej. Generovat testy při každém buildu znamená platit za každý build a dostávat pokaždé trochu jiné testy. To je opak toho, co od regresní sady chceš.</p>
+<p>Když přesto job klíč potřebuje (třeba noční job, který generuje návrhy scénářů k revizi), nikdy ho nepiš do příkazu jobu ani do souboru v repozitáři. Jenkins má <strong>Credentials</strong> (úložiště přihlašovacích údajů):</p>
+<ol><li><em>Manage Jenkins</em>, <em>Credentials</em>, přidej záznam typu <em>Secret text</em> s ID <code>openai-api-key</code>.</li><li>V jobu zapni <em>Use secret text(s) or file(s)</em> (plugin Credentials Binding je součástí doporučených pluginů) a namapuj ho na proměnnou <code>OPENAI_API_KEY</code>.</li></ol>
+<p>Jenkins pak klíč předá procesu jako proměnnou prostředí a v <em>Console Output</em> ho nahradí hvězdičkami. Knihovna <code>openai</code> si ho z proměnné vezme sama, jak ukazuje modul 9.</p>
+<h3 id="krok-8-stejny-job-jako-jenkinsfile-nad-ramec-kurzu">Krok 8: Stejný job jako Jenkinsfile (nad rámec kurzu)<a class="kotva" href="#krok-8-stejny-job-jako-jenkinsfile-nad-ramec-kurzu" aria-label="Odkaz na tento oddíl"></a></h3>
+<p>Freestyle job je nastavený klikáním a jeho konfigurace žije jen v Jenkinsu. Když Jenkins spadne nebo někdo nastavení změní, nikdo neví, co bylo předtím. <strong>Pipeline</strong> se zapisuje do souboru <code>Jenkinsfile</code> v repozitáři, verzuje se s kódem a prochází code review. Ekvivalent Brunova jobu (neověřeno spuštěním):</p>
+<div class="kod" data-jazyk="groovy"><pre><code>pipeline {
+    agent any
+    parameters {
+        choice(name: 'BEHAVE_TAGS', choices: ['@regression', '@smoke', '@api'], description: 'Které testy spustit')
+    }
+    environment {
+        HEADLESS = 'true'
+    }
+    stages {
+        stage('Příprava') {
+            steps {
+                bat 'python -m venv .venv'
+                bat '.venv\\Scripts\\python.exe -m pip install -r requirements.txt'
+                bat '.venv\\Scripts\\python.exe -m playwright install chromium'
+            }
+        }
+        stage('Testy') {
+            steps {
+                bat '.venv\\Scripts\\python.exe custom_runner.py --tags "%BEHAVE_TAGS%"'
+            }
+        }
+    }
+    post {
+        always {
+            allure results: [[path: 'reports/allure-results']]
+        }
+    }
+}</code></pre></div>
+<p>Job typu <em>Pipeline</em> s volbou <em>Pipeline script from SCM</em> si soubor načte z gitu. Sekce <code>post { always { ... } }</code> zajistí, že se report vytvoří i po neúspěšných testech. Zpětná lomítka jsou v Groovy řetězci zdvojená. Na Linuxu by místo <code>bat</code> byl <code>sh</code> a cesta <code>.venv/bin/python</code>.</p>
+<h3 id="krok-9-github-actions-nad-ramec-kurzu">Krok 9: GitHub Actions (nad rámec kurzu)<a class="kotva" href="#krok-9-github-actions-nad-ramec-kurzu" aria-label="Odkaz na tento oddíl"></a></h3>
+<p>Jenkins vyžaduje vlastní server, jeho údržbu a aktualizace pluginů. Pro projekty na GitHubu je dnes častější volbou <strong>GitHub Actions</strong>: CI přímo v GitHubu, bez vlastního serveru, s konfigurací v repozitáři. Pro GitLab existuje obdoba GitLab CI. Jenkins zůstává běžný ve firmách, které mají CI na vlastní infrastruktuře, například v bankách.</p>
+<p>Minimální workflow <code>.github/workflows/bdd-testy.yml</code> pro stejný framework (neověřeno spuštěním, verze akcí ověř na GitHub Marketplace):</p>
+<div class="kod" data-jazyk="yaml"><pre><code>name: BDD testy
+on:
+  workflow_dispatch:
+    inputs:
+      tags:
+        description: Tag pro Behave
+        type: choice
+        options: ["@regression", "@smoke", "@api"]
+        default: "@regression"
+  push:
+    branches: [main]
+
+jobs:
+  testy:
+    runs-on: ubuntu-latest
+    env:
+      HEADLESS: "true"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt
+      - run: python -m playwright install --with-deps chromium
+      - run: python custom_runner.py --tags "${{ inputs.tags || '@regression' }}"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: allure-results
+          path: reports/allure-results</code></pre></div>
+<p>Workflow se spustí po každém push do větve <code>main</code> s tagem <code>@regression</code>, nebo ručně na záložce <em>Actions</em> s výběrem tagu. Výraz <code>inputs.tags || '@regression'</code> dosadí výchozí tag, když workflow nespustil člověk. Volba <code>--with-deps</code> doinstaluje na Linuxu systémové knihovny, které Chromium potřebuje.</p>
+<p>Výsledky Allure se uloží jako artifact buildu ke stažení. Na stažené výsledky pak lokálně spustíš <code>allure serve</code>. Publikovat HTML report přímo na web (například přes GitHub Pages) jde, ale vyžaduje další kroky a u soukromých projektů pozor na to, kdo report uvidí.</p>
+<p>Klíč by se tu předal přes <em>Settings</em>, <em>Secrets and variables</em>, <em>Actions</em> a v kroku jako <code>env: OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}</code>. Platí stejné pravidlo jako u Jenkinsu: do běžného běhu testů nepatří.</p>
+<p>U firemních repozitářů rozhoduje o CI firemní platforma. Kód klienta nepouštěj do veřejných runnerů ani do osobního účtu GitHub.</p>
+<h2 id="overeni">Ověření<a class="kotva" href="#overeni" aria-label="Odkaz na tento oddíl"></a></h2>
+<ol><li><code>java -version</code> v novém terminálu ukazuje verzi, kterou Jenkins podporuje.</li><li>Jenkins běží na <code>http://localhost:8080</code> (nebo na zvoleném portu). Z jiného počítače v síti dostupný není, pokud jsi použil <code>--httpListenAddress=127.0.0.1</code>.</li><li>Job <em>Build with Parameters</em> s volbou <code>@smoke</code> skončí zeleně. <em>Console Output</em> ukazuje 2 scenarios passed a zbytek skipped.</li><li>Build s <code>@api</code> neotevře prohlížeč a projde (pokud máš modul 11).</li><li>U každého buildu je ikona Allure a report obsahuje jen scénáře s vybraným tagem.</li><li>Po záměrném rozbití očekávané hlášky je build červený, v reportu je selhání se screenshotem. Po vrácení změny je další build zase zelený a graf trendu v Allure ukazuje oba stavy.</li><li>V konfiguraci jobu ani v repozitáři není žádný API klíč.</li></ol>
+<p>Funkce pro sestavení argumentů runneru je ověřená offline. Jenkins, plugin Allure, Jenkinsfile ani workflow GitHub Actions jsem nespouštěl.</p>
+<h2 id="caste-chyby">Časté chyby<a class="kotva" href="#caste-chyby" aria-label="Odkaz na tento oddíl"></a></h2>
+<p><strong>Jenkins nestartuje kvůli verzi Javy.</strong> Novější Java, než Jenkins podporuje, nebo naopak příliš stará. Log na začátku vypíše chybu o nepodporované verzi. Zkontroluj <code>java -version</code> ve stejném terminálu, ze kterého Jenkins spouštíš.</p>
+<p><strong>Port 8080 je obsazený.</strong> Jiná aplikace (často jiný vývojový server) port používá. Spusť Jenkins s <code>--httpPort=9090</code>. Volba <code>--httpsPort</code> z přílohy kurzu je pro HTTPS a bez certifikátu nefunguje.</p>
+<p><strong><code>'python' is not recognized</code> v buildu.</strong> Jenkins běží s proměnnými prostředí z doby svého spuštění. Restartuj ho po změně <code>Path</code>, nebo volej Python plnou cestou (<code>.venv\Scripts\python.exe</code>).</p>
+<p><strong><code>ModuleNotFoundError: No module named 'behave'</code> v buildu.</strong> Jenkins spustil globální Python bez balíčků z virtuálního prostředí. Volej Python z <code>.venv</code>.</p>
+<p><strong>Build je zelený, i když testy selhaly.</strong> Runner nevrací návratový kód z Behave. Použij <code>raise SystemExit(behave_main(...))</code>.</p>
+<p><strong>Parametr se nepropsal, běží všechny testy.</strong> Na Windows je proměnná <code>%BEHAVE_TAGS%</code>, v shellu <code>$BEHAVE_TAGS</code>. Ve Windows batch příkazu <code>$BEHAVE_TAGS</code> nefunguje a předá se doslova.</p>
+<p><strong>Allure report v Jenkinsu je prázdný.</strong> Cesta v <em>Post-build Actions</em> nevede do složky se soubory JSON. Nebo runner složku <code>reports</code> smazal a Behave do ní nic nezapsal, protože spadl dřív. Podívej se do <em>Console Output</em> a do pracovní složky jobu.</p>
+<p><strong>Testy v Jenkinsu padají na timeout, lokálně ne.</strong> Headless prohlížeč na vytíženém stroji je pomalejší a bezplatné API se probouzí. Prodluž timeouty v asercích a u požadavků (moduly 10 a 11).</p>
+<p><strong>Prohlížeč v Jenkinsu nejde spustit.</strong> Jenkins běží jako služba bez grafického prostředí. Zapni <code>HEADLESS=true</code>.</p>
+<h2 id="cviceni">Cvičení<a class="kotva" href="#cviceni" aria-label="Odkaz na tento oddíl"></a></h2>
+<aside class="vsuvka vsuvka--cviceni" id="praxe-12-jenkins-ci-a-reporty-nocni-regresni-beh" data-stitek="Cvičení" aria-label="Cvičení"><p class="praxe-blok-nazev">Noční regresní běh</p><p>Cíl: spouštět regresní sadu automaticky. V jobu zapni <em>Build periodically</em> a nastav plán tak, aby běžel každý pracovní den v noci. Zápis používá syntaxi cron, symbol <code>H</code> rozloží zátěž v rámci hodiny. Hotovo: druhý den ráno vidíš v <em>Build History</em> automaticky spuštěný build s tagem <code>@regression</code> a jeho report Allure. Do poznámky jsi zapsal, jaký výraz jsi použil a co přesně znamená.</p><p class="praxe-cviceni-pata" data-nepocitat><label class="zk-volba praxe-hotovo"><input type="checkbox" data-praxe-hotovo="praxe-12-jenkins-ci-a-reporty-nocni-regresni-beh"> Hotovo</label></p></aside>
+<aside class="vsuvka vsuvka--cviceni" id="praxe-12-jenkins-ci-a-reporty-freestyle-job-prevedeny-na-jenkinsfile" data-stitek="Cvičení" aria-label="Cvičení"><p class="praxe-blok-nazev">Freestyle job převedený na Jenkinsfile</p><p>Cíl: mít konfiguraci CI verzovanou v gitu. Ulož Jenkinsfile z kroku 8 do repozitáře frameworku, založ job typu <em>Pipeline</em> s volbou <em>Pipeline script from SCM</em> a smaž Freestyle job. Hotovo: build s parametrem <code>@smoke</code> projde, report Allure se vytvoří i při záměrně rozbitém testu (díky <code>post { always }</code>) a celá konfigurace je v souboru, který jde ukázat v code review.</p><p class="praxe-cviceni-pata" data-nepocitat><label class="zk-volba praxe-hotovo"><input type="checkbox" data-praxe-hotovo="praxe-12-jenkins-ci-a-reporty-freestyle-job-prevedeny-na-jenkinsfile"> Hotovo</label></p></aside>
+<aside class="vsuvka vsuvka--cviceni" id="praxe-12-jenkins-ci-a-reporty-srovnani-jenkins-a-github-actions" data-stitek="Cvičení" aria-label="Cvičení"><p class="praxe-blok-nazev">Srovnání Jenkins a GitHub Actions</p><p>Cíl: rozhodnout se podle zkušenosti, ne podle článků. Nahraj framework do soukromého repozitáře na GitHubu (bez <code>.env</code>, zkontroluj <code>git status</code>) a přidej workflow z kroku 9. Hotovo: workflow projde, artifact <code>allure-results</code> jde stáhnout a lokálně otevřít přes <code>allure serve</code>. Do krátké tabulky jsi zapsal pro obě varianty dobu běhu, počet kroků nastavení, kde jsou uložené reporty a kdo spravuje server.</p><p class="praxe-cviceni-pata" data-nepocitat><label class="zk-volba praxe-hotovo"><input type="checkbox" data-praxe-hotovo="praxe-12-jenkins-ci-a-reporty-srovnani-jenkins-a-github-actions"> Hotovo</label></p></aside>
+<h2 id="souvislost-se-sylabem-ct-genai">Souvislost se sylabem CT-GenAI<a class="kotva" href="#souvislost-se-sylabem-ct-genai" aria-label="Odkaz na tento oddíl"></a></h2>
+<p>Sylabus jenkinsovou konfiguraci nezkouší. Modul ale ukazuje, co se stane s testy vytvořenými pomocí GenAI, když se z nich stane regresní sada. Oddíl 2.2.3 (automatizované regresní testování s GenAI) mluví o udržování regresních testů a o vyhodnocování výsledků. Pravidelný běh v CI s reportem a historií je místo, kde se ukáže, jestli AI vygenerované testy jsou stabilní, nebo flaky. Report s trendem a screenshoty je také vstup pro monitoring testování z oddílu 2.2.4.</p>
+<p>Rozhodnutí negenerovat testy při každém buildu souvisí s nedeterministickým chováním z oddílu 3.1.4. Regresní sada musí být stabilní, a proto se generuje jednou, reviduje člověkem a verzuje v gitu. Uložení API klíče v Credentials Jenkinsu nebo v Secrets na GitHubu je opatření z oddílu 3.2.3. Varování před osobním účtem a veřejnými runnery pro firemní kód odpovídá rizikům z oddílu 3.2.1.</p>
+<p>Oddíl 4.2.2 o LLMOps popisuje průběžné nasazování a monitorování aplikací postavených na LLM. CI pipeline z tohoto modulu je jeho nejjednodušší stavební kámen: stejný mechanismus by spouštěl i automatické hodnocení kvality promptů, pokud by framework generoval testy pravidelně.</p>
+</article>
+<div class="splneno-radek" data-nepocitat><button type="button" class="tlacitko splneno" data-splneno="modul-12-jenkins-ci-a-reporty" data-text-ne="Označit jako prostudované" data-text-ano="✓ Prostudováno" aria-pressed="false">Označit jako prostudované</button></div>
+<nav class="naradi sousede" aria-label="Sousední moduly"><a href="11-api-testy-s-ai.html">← 11. Testy API s AI</a><a href="../praxe.html">Všechny moduly</a></nav>
+</main>
+<aside class="strom" aria-label="Obsah stránky"><h2>V tomto modulu</h2><ol><li><a href="#co-postavis">Co postavíš</a></li><li><a href="#predpoklady">Předpoklady</a></li><li><a href="#postup">Postup</a><ol><li><a href="#krok-1-java-jdk-a-java-home-l76">Krok 1: Java JDK a JAVA_HOME (L76)</a></li><li><a href="#krok-2-spusteni-jenkinsu-l77">Krok 2: Spuštění Jenkinsu (L77)</a></li><li><a href="#krok-3-prvni-job-l78">Krok 3: První job (L78)</a></li><li><a href="#krok-4-job-pro-framework-l79">Krok 4: Job pro framework (L79)</a></li><li><a href="#krok-5-vyber-tagu-jako-parametr-buildu-l80">Krok 5: Výběr tagu jako parametr buildu (L80)</a></li><li><a href="#krok-6-allure-report-v-jenkinsu-l81">Krok 6: Allure report v Jenkinsu (L81)</a></li><li><a href="#krok-7-tajemstvi-v-jenkinsu">Krok 7: Tajemství v Jenkinsu</a></li><li><a href="#krok-8-stejny-job-jako-jenkinsfile-nad-ramec-kurzu">Krok 8: Stejný job jako Jenkinsfile (nad rámec kurzu)</a></li><li><a href="#krok-9-github-actions-nad-ramec-kurzu">Krok 9: GitHub Actions (nad rámec kurzu)</a></li></ol></li><li><a href="#overeni">Ověření</a></li><li><a href="#caste-chyby">Časté chyby</a></li><li><a href="#cviceni">Cvičení</a></li><li><a href="#souvislost-se-sylabem-ct-genai">Souvislost se sylabem CT-GenAI</a></li></ol></aside>
+</div>
+</div>
+<footer class="paticka">
+  <div class="paticka-vnitrek">
+    <p><strong>Neoficiální studijní materiál.</strong> Tento web není produktem ani publikací ISTQB®.
+    ISTQB® je registrovaná ochranná známka International Software Testing Qualifications Board.
+    Texty jsou vlastním zpracováním autora vytvořeným při přípravě na zkoušku CT-GenAI; oficiální sylabus
+    a vzorovou zkoušku si stáhněte přímo na istqb.org.</p>
+    <p>Ke zkoušce vždy platí znění oficiálního sylabu CT-GenAI v1.1. Doplněné informace a příklady z praxe
+    slouží k porozumění, nikoli jako zdroj správných odpovědí u zkoušky.</p>
+    <ul>
+      <li><a href="https://istqb.org/certifications/gen-ai/" target="_blank" rel="noopener noreferrer">ISTQB — CT-GenAI</a></li>
+      <li><a href="https://glossary.istqb.org" target="_blank" rel="noopener noreferrer">Slovník ISTQB</a></li>
+      <li><a href="https://casqb.org" target="_blank" rel="noopener noreferrer">CaSQB</a></li>
+      <li><a href="../zdroje.html">Zdroje a autorská práva</a></li>
+    </ul>
+  </div>
+</footer>
+<script src="../assets/ucet-konfig.js"></script>
+<script src="../assets/ucet.js"></script>
+<script src="../assets/skript.js"></script>
+</body>
+</html>

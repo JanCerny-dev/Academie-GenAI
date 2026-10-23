@@ -1,0 +1,1947 @@
+{
+ "popis": "Testovací Sample Exam A",
+ "sada": "A",
+ "verze": "1.1",
+ "otazky": [
+  {
+   "id": "A-01",
+   "zdroj": "sample-a",
+   "lo": "GenAI-1.1.1",
+   "k": "K1",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Test question A-01 for GenAI-1.1.1?</p>",
+    "moznosti": [
+     "Answer text 1 of A-01",
+     "Answer text 2 of A-01",
+     "Answer text 3 of A-01",
+     "Answer text 4 of A-01"
+    ],
+    "vysvetleni": {
+     "a": "Correct.",
+     "b": "Incorrect.",
+     "c": "Incorrect.",
+     "d": "Incorrect."
+    },
+    "vysvetleni_obecne": "<p>General explanation.</p>"
+   },
+   "cz": {
+    "q": "<p>Testovací otázka A-01 k GenAI-1.1.1?</p>",
+    "moznosti": [
+     "Text odpovědi 1 otázky A-01",
+     "Text odpovědi 2 otázky A-01",
+     "Text odpovědi 3 otázky A-01",
+     "Text odpovědi 4 otázky A-01"
+    ],
+    "vysvetleni": {
+     "a": "Správně.",
+     "b": "Špatně.",
+     "c": "Špatně.",
+     "d": "Špatně."
+    },
+    "vysvetleni_obecne": "<p>Obecné vysvětlení.</p>"
+   },
+   "spravne": [
+    "a"
+   ],
+   "oddil": "1.1.1",
+   "poznamka": ""
+  },
+  {
+   "id": "A-02",
+   "zdroj": "sample-a",
+   "lo": "GenAI-1.1.2",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Test question A-02 for GenAI-1.1.2?</p>",
+    "moznosti": [
+     "Answer text 1 of A-02",
+     "Answer text 2 of A-02",
+     "Answer text 3 of A-02",
+     "Answer text 4 of A-02"
+    ],
+    "vysvetleni": {
+     "a": "Correct.",
+     "b": "Incorrect.",
+     "c": "Incorrect.",
+     "d": "Incorrect."
+    },
+    "vysvetleni_obecne": "<p>General explanation.</p>"
+   },
+   "cz": {
+    "q": "<p>Testovací otázka A-02 k GenAI-1.1.2?</p>",
+    "moznosti": [
+     "Text odpovědi 1 otázky A-02",
+     "Text odpovědi 2 otázky A-02",
+     "Text odpovědi 3 otázky A-02",
+     "Text odpovědi 4 otázky A-02"
+    ],
+    "vysvetleni": {
+     "a": "Správně.",
+     "b": "Špatně.",
+     "c": "Špatně.",
+     "d": "Špatně."
+    },
+    "vysvetleni_obecne": "<p>Obecné vysvětlení.</p>"
+   },
+   "spravne": [
+    "a"
+   ],
+   "oddil": "1.1.2",
+   "poznamka": ""
+  },
+  {
+   "id": "A-03",
+   "zdroj": "sample-a",
+   "lo": "GenAI-1.1.2",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Test question A-03 for GenAI-1.1.2?</p>",
+    "moznosti": [
+     "Answer text 1 of A-03",
+     "Answer text 2 of A-03",
+     "Answer text 3 of A-03",
+     "Answer text 4 of A-03"
+    ],
+    "vysvetleni": {
+     "a": "Incorrect.",
+     "b": "Correct.",
+     "c": "Incorrect.",
+     "d": "Incorrect."
+    },
+    "vysvetleni_obecne": "<p>General explanation.</p>"
+   },
+   "cz": {
+    "q": "<p>Testovací otázka A-03 k GenAI-1.1.2?</p>",
+    "moznosti": [
+     "Text odpovědi 1 otázky A-03",
+     "Text odpovědi 2 otázky A-03",
+     "Text odpovědi 3 otázky A-03",
+     "Text odpovědi 4 otázky A-03"
+    ],
+    "vysvetleni": {
+     "a": "Špatně.",
+     "b": "Správně.",
+     "c": "Špatně.",
+     "d": "Špatně."
+    },
+    "vysvetleni_obecne": "<p>Obecné vysvětlení.</p>"
+   },
+   "spravne": [
+    "b"
+   ],
+   "oddil": "1.1.2",
+   "poznamka": ""
+  },
+  {
+   "id": "A-04",
+   "zdroj": "sample-a",
+   "lo": "GenAI-1.1.3",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Test question A-04 for GenAI-1.1.3?</p>",
+    "moznosti": [
+     "Answer text 1 of A-04",
+     "Answer text 2 of A-04",
+     "Answer text 3 of A-04",
+     "Answer text 4 of A-04"
+    ],
+    "vysvetleni": {
+     "a": "Correct.",
+     "b": "Incorrect.",
+     "c": "Incorrect.",
+     "d": "Incorrect."
+    },
+    "vysvetleni_obecne": "<p>General explanation.</p>"
+   },
+   "cz": {
+    "q": "<p>Testovací otázka A-04 k GenAI-1.1.3?</p>",
+    "moznosti": [
+     "Text odpovědi 1 otázky A-04",
+     "Text odpovědi 2 otázky A-04",
+     "Text odpovědi 3 otázky A-04",
+     "Text odpovědi 4 otázky A-04"
+    ],
+    "vysvetleni": {
+     "a": "Správně.",
+     "b": "Špatně.",
+     "c": "Špatně.",
+     "d": "Špatně."
+    },
+    "vysvetleni_obecne": "<p>Obecné vysvětlení.</p>"
+   },
+   "spravne": [
+    "a"
+   ],
+   "oddil": "1.1.3",
+   "poznamka": ""
+  },
+  {
+   "id": "A-05",
+   "zdroj": "sample-a",
+   "lo": "GenAI-1.1.4",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Test question A-05 for GenAI-1.1.4?</p>",
+    "moznosti": [
+     "Answer text 1 of A-05",
+     "Answer text 2 of A-05",
+     "Answer text 3 of A-05",
+     "Answer text 4 of A-05"
+    ],
+    "vysvetleni": {
+     "a": "Correct.",
+     "b": "Incorrect.",
+     "c": "Incorrect.",
+     "d": "Incorrect."
+    },
+    "vysvetleni_obecne": "<p>General explanation.</p>"
+   },
+   "cz": {
+    "q": "<p>Testovací otázka A-05 k GenAI-1.1.4?</p>",
+    "moznosti": [
+     "Text odpovědi 1 otázky A-05",
+     "Text odpovědi 2 otázky A-05",
+     "Text odpovědi 3 otázky A-05",
+     "Text odpovědi 4 otázky A-05"
+    ],
+    "vysvetleni": {
+     "a": "Správně.",
+     "b": "Špatně.",
+     "c": "Špatně.",
+     "d": "Špatně."
+    },
+    "vysvetleni_obecne": "<p>Obecné vysvětlení.</p>"
+   },
+   "spravne": [
+    "a"
+   ],
+   "oddil": "1.1.4",
+   "poznamka": ""
+  },
+  {
+   "id": "A-06",
+   "zdroj": "sample-a",
+   "lo": "GenAI-1.2.1",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Test question A-06 for GenAI-1.2.1?</p>",
+    "moznosti": [
+     "Answer text 1 of A-06",
+     "Answer text 2 of A-06",
+     "Answer text 3 of A-06",
+     "Answer text 4 of A-06"
+    ],
+    "vysvetleni": {
+     "a": "Correct.",
+     "b": "Incorrect.",
+     "c": "Incorrect.",
+     "d": "Incorrect."
+    },
+    "vysvetleni_obecne": "<p>General explanation.</p>"
+   },
+   "cz": {
+    "q": "<p>Testovací otázka A-06 k GenAI-1.2.1?</p>",
+    "moznosti": [
+     "Text odpovědi 1 otázky A-06",
+     "Text odpovědi 2 otázky A-06",
+     "Text odpovědi 3 otázky A-06",
+     "Text odpovědi 4 otázky A-06"
+    ],
+    "vysvetleni": {
+     "a": "Správně.",
+     "b": "Špatně.",
+     "c": "Špatně.",
+     "d": "Špatně."
+    },
+    "vysvetleni_obecne": "<p>Obecné vysvětlení.</p>"
+   },
+   "spravne": [
+    "a"
+   ],
+   "oddil": "1.2.1",
+   "poznamka": ""
+  },
+  {
+   "id": "A-07",
+   "zdroj": "sample-a",
+   "lo": "GenAI-1.2.2",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Test question A-07 for GenAI-1.2.2?</p>",
+    "moznosti": [
+     "Answer text 1 of A-07",
+     "Answer text 2 of A-07",
+     "Answer text 3 of A-07",
+     "Answer text 4 of A-07"
+    ],
+    "vysvetleni": {
+     "a": "Correct.",
+     "b": "Incorrect.",
+     "c": "Incorrect.",
+     "d": "Incorrect."
+    },
+    "vysvetleni_obecne": "<p>General explanation.</p>"
+   },
+   "cz": {
+    "q": "<p>Testovací otázka A-07 k GenAI-1.2.2?</p>",
+    "moznosti": [
+     "Text odpovědi 1 otázky A-07",
+     "Text odpovědi 2 otázky A-07",
+     "Text odpovědi 3 otázky A-07",
+     "Text odpovědi 4 otázky A-07"
+    ],
+    "vysvetleni": {
+     "a": "Správně.",
+     "b": "Špatně.",
+     "c": "Špatně.",
+     "d": "Špatně."
+    },
+    "vysvetleni_obecne": "<p>Obecné vysvětlení.</p>"
+   },
+   "spravne": [
+    "a"
+   ],
+   "oddil": "1.2.2",
+   "poznamka": ""
+  },
+  {
+   "id": "A-08",
+   "zdroj": "sample-a",
+   "lo": "GenAI-2.1.1",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Test question A-08 for GenAI-2.1.1?</p>",
+    "moznosti": [
+     "Answer text 1 of A-08",
+     "Answer text 2 of A-08",
+     "Answer text 3 of A-08",
+     "Answer text 4 of A-08"
+    ],
+    "vysvetleni": {
+     "a": "Correct.",
+     "b": "Incorrect.",
+     "c": "Incorrect.",
+     "d": "Incorrect."
+    },
+    "vysvetleni_obecne": "<p>General explanation.</p>"
+   },
+   "cz": {
+    "q": "<p>Testovací otázka A-08 k GenAI-2.1.1?</p>",
+    "moznosti": [
+     "Text odpovědi 1 otázky A-08",
+     "Text odpovědi 2 otázky A-08",
+     "Text odpovědi 3 otázky A-08",
+     "Text odpovědi 4 otázky A-08"
+    ],
+    "vysvetleni": {
+     "a": "Správně.",
+     "b": "Špatně.",
+     "c": "Špatně.",
+     "d": "Špatně."
+    },
+    "vysvetleni_obecne": "<p>Obecné vysvětlení.</p>"
+   },
+   "spravne": [
+    "a"
+   ],
+   "oddil": "2.1.1",
+   "poznamka": ""
+  },
+  {
+   "id": "A-09",
+   "zdroj": "sample-a",
+   "lo": "GenAI-2.1.1",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Test question A-09 for GenAI-2.1.1?</p>",
+    "moznosti": [
+     "Answer text 1 of A-09",
+     "Answer text 2 of A-09",
+     "Answer text 3 of A-09",
+     "Answer text 4 of A-09"
+    ],
+    "vysvetleni": {
+     "a": "Incorrect.",
+     "b": "Correct.",
+     "c": "Incorrect.",
+     "d": "Incorrect."
+    },
+    "vysvetleni_obecne": "<p>General explanation.</p>"
+   },
+   "cz": {
+    "q": "<p>Testovací otázka A-09 k GenAI-2.1.1?</p>",
+    "moznosti": [
+     "Text odpovědi 1 otázky A-09",
+     "Text odpovědi 2 otázky A-09",
+     "Text odpovědi 3 otázky A-09",
+     "Text odpovědi 4 otázky A-09"
+    ],
+    "vysvetleni": {
+     "a": "Špatně.",
+     "b": "Správně.",
+     "c": "Špatně.",
+     "d": "Špatně."
+    },
+    "vysvetleni_obecne": "<p>Obecné vysvětlení.</p>"
+   },
+   "spravne": [
+    "b"
+   ],
+   "oddil": "2.1.1",
+   "poznamka": ""
+  },
+  {
+   "id": "A-10",
+   "zdroj": "sample-a",
+   "lo": "GenAI-2.1.2",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Test question A-10 for GenAI-2.1.2?</p>",
+    "moznosti": [
+     "Answer text 1 of A-10",
+     "Answer text 2 of A-10",
+     "Answer text 3 of A-10",
+     "Answer text 4 of A-10"
+    ],
+    "vysvetleni": {
+     "a": "Correct.",
+     "b": "Incorrect.",
+     "c": "Incorrect.",
+     "d": "Incorrect."
+    },
+    "vysvetleni_obecne": "<p>General explanation.</p>"
+   },
+   "cz": {
+    "q": "<p>Testovací otázka A-10 k GenAI-2.1.2?</p>",
+    "moznosti": [
+     "Text odpovědi 1 otázky A-10",
+     "Text odpovědi 2 otázky A-10",
+     "Text odpovědi 3 otázky A-10",
+     "Text odpovědi 4 otázky A-10"
+    ],
+    "vysvetleni": {
+     "a": "Správně.",
+     "b": "Špatně.",
+     "c": "Špatně.",
+     "d": "Špatně."
+    },
+    "vysvetleni_obecne": "<p>Obecné vysvětlení.</p>"
+   },
+   "spravne": [
+    "a"
+   ],
+   "oddil": "2.1.2",
+   "poznamka": ""
+  },
+  {
+   "id": "A-11",
+   "zdroj": "sample-a",
+   "lo": "GenAI-2.1.3",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Test question A-11 for GenAI-2.1.3?</p>",
+    "moznosti": [
+     "Answer text 1 of A-11",
+     "Answer text 2 of A-11",
+     "Answer text 3 of A-11",
+     "Answer text 4 of A-11"
+    ],
+    "vysvetleni": {
+     "a": "Correct.",
+     "b": "Incorrect.",
+     "c": "Incorrect.",
+     "d": "Incorrect."
+    },
+    "vysvetleni_obecne": "<p>General explanation.</p>"
+   },
+   "cz": {
+    "q": "<p>Testovací otázka A-11 k GenAI-2.1.3?</p>",
+    "moznosti": [
+     "Text odpovědi 1 otázky A-11",
+     "Text odpovědi 2 otázky A-11",
+     "Text odpovědi 3 otázky A-11",
+     "Text odpovědi 4 otázky A-11"
+    ],
+    "vysvetleni": {
+     "a": "Správně.",
+     "b": "Špatně.",
+     "c": "Špatně.",
+     "d": "Špatně."
+    },
+    "vysvetleni_obecne": "<p>Obecné vysvětlení.</p>"
+   },
+   "spravne": [
+    "a"
+   ],
+   "oddil": "2.1.3",
+   "poznamka": ""
+  },
+  {
+   "id": "A-12",
+   "zdroj": "sample-a",
+   "lo": "GenAI-2.2.1",
+   "k": "K3",
+   "body": 2,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Test question A-12 for GenAI-2.2.1?</p>",
+    "moznosti": [
+     "Answer text 1 of A-12",
+     "Answer text 2 of A-12",
+     "Answer text 3 of A-12",
+     "Answer text 4 of A-12"
+    ],
+    "vysvetleni": {
+     "a": "Correct.",
+     "b": "Incorrect.",
+     "c": "Incorrect.",
+     "d": "Incorrect."
+    },
+    "vysvetleni_obecne": "<p>General explanation.</p>"
+   },
+   "cz": {
+    "q": "<p>Testovací otázka A-12 k GenAI-2.2.1?</p>",
+    "moznosti": [
+     "Text odpovědi 1 otázky A-12",
+     "Text odpovědi 2 otázky A-12",
+     "Text odpovědi 3 otázky A-12",
+     "Text odpovědi 4 otázky A-12"
+    ],
+    "vysvetleni": {
+     "a": "Správně.",
+     "b": "Špatně.",
+     "c": "Špatně.",
+     "d": "Špatně."
+    },
+    "vysvetleni_obecne": "<p>Obecné vysvětlení.</p>"
+   },
+   "spravne": [
+    "a"
+   ],
+   "oddil": "2.2.1",
+   "poznamka": ""
+  },
+  {
+   "id": "A-13",
+   "zdroj": "sample-a",
+   "lo": "GenAI-2.2.2",
+   "k": "K3",
+   "body": 2,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Test question A-13 for GenAI-2.2.2?</p>",
+    "moznosti": [
+     "Answer text 1 of A-13",
+     "Answer text 2 of A-13",
+     "Answer text 3 of A-13",
+     "Answer text 4 of A-13"
+    ],
+    "vysvetleni": {
+     "a": "Correct.",
+     "b": "Incorrect.",
+     "c": "Incorrect.",
+     "d": "Incorrect."
+    },
+    "vysvetleni_obecne": "<p>General explanation.</p>"
+   },
+   "cz": {
+    "q": "<p>Testovací otázka A-13 k GenAI-2.2.2?</p>",
+    "moznosti": [
+     "Text odpovědi 1 otázky A-13",
+     "Text odpovědi 2 otázky A-13",
+     "Text odpovědi 3 otázky A-13",
+     "Text odpovědi 4 otázky A-13"
+    ],
+    "vysvetleni": {
+     "a": "Správně.",
+     "b": "Špatně.",
+     "c": "Špatně.",
+     "d": "Špatně."
+    },
+    "vysvetleni_obecne": "<p>Obecné vysvětlení.</p>"
+   },
+   "spravne": [
+    "a"
+   ],
+   "oddil": "2.2.2",
+   "poznamka": ""
+  },
+  {
+   "id": "A-14",
+   "zdroj": "sample-a",
+   "lo": "GenAI-2.2.3",
+   "k": "K3",
+   "body": 2,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Test question A-14 for GenAI-2.2.3?</p>",
+    "moznosti": [
+     "Answer text 1 of A-14",
+     "Answer text 2 of A-14",
+     "Answer text 3 of A-14",
+     "Answer text 4 of A-14"
+    ],
+    "vysvetleni": {
+     "a": "Correct.",
+     "b": "Incorrect.",
+     "c": "Incorrect.",
+     "d": "Incorrect."
+    },
+    "vysvetleni_obecne": "<p>General explanation.</p>"
+   },
+   "cz": {
+    "q": "<p>Testovací otázka A-14 k GenAI-2.2.3?</p>",
+    "moznosti": [
+     "Text odpovědi 1 otázky A-14",
+     "Text odpovědi 2 otázky A-14",
+     "Text odpovědi 3 otázky A-14",
+     "Text odpovědi 4 otázky A-14"
+    ],
+    "vysvetleni": {
+     "a": "Správně.",
+     "b": "Špatně.",
+     "c": "Špatně.",
+     "d": "Špatně."
+    },
+    "vysvetleni_obecne": "<p>Obecné vysvětlení.</p>"
+   },
+   "spravne": [
+    "a"
+   ],
+   "oddil": "2.2.3",
+   "poznamka": ""
+  },
+  {
+   "id": "A-15",
+   "zdroj": "sample-a",
+   "lo": "GenAI-2.2.4",
+   "k": "K3",
+   "body": 2,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Test question A-15 for GenAI-2.2.4?</p>",
+    "moznosti": [
+     "Answer text 1 of A-15",
+     "Answer text 2 of A-15",
+     "Answer text 3 of A-15",
+     "Answer text 4 of A-15"
+    ],
+    "vysvetleni": {
+     "a": "Correct.",
+     "b": "Incorrect.",
+     "c": "Incorrect.",
+     "d": "Incorrect."
+    },
+    "vysvetleni_obecne": "<p>General explanation.</p>"
+   },
+   "cz": {
+    "q": "<p>Testovací otázka A-15 k GenAI-2.2.4?</p>",
+    "moznosti": [
+     "Text odpovědi 1 otázky A-15",
+     "Text odpovědi 2 otázky A-15",
+     "Text odpovědi 3 otázky A-15",
+     "Text odpovědi 4 otázky A-15"
+    ],
+    "vysvetleni": {
+     "a": "Správně.",
+     "b": "Špatně.",
+     "c": "Špatně.",
+     "d": "Špatně."
+    },
+    "vysvetleni_obecne": "<p>Obecné vysvětlení.</p>"
+   },
+   "spravne": [
+    "a"
+   ],
+   "oddil": "2.2.4",
+   "poznamka": ""
+  },
+  {
+   "id": "A-16",
+   "zdroj": "sample-a",
+   "lo": "GenAI-2.2.5",
+   "k": "K3",
+   "body": 2,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Test question A-16 for GenAI-2.2.5?</p>",
+    "moznosti": [
+     "Answer text 1 of A-16",
+     "Answer text 2 of A-16",
+     "Answer text 3 of A-16",
+     "Answer text 4 of A-16"
+    ],
+    "vysvetleni": {
+     "a": "Correct.",
+     "b": "Incorrect.",
+     "c": "Incorrect.",
+     "d": "Incorrect."
+    },
+    "vysvetleni_obecne": "<p>General explanation.</p>"
+   },
+   "cz": {
+    "q": "<p>Testovací otázka A-16 k GenAI-2.2.5?</p>",
+    "moznosti": [
+     "Text odpovědi 1 otázky A-16",
+     "Text odpovědi 2 otázky A-16",
+     "Text odpovědi 3 otázky A-16",
+     "Text odpovědi 4 otázky A-16"
+    ],
+    "vysvetleni": {
+     "a": "Správně.",
+     "b": "Špatně.",
+     "c": "Špatně.",
+     "d": "Špatně."
+    },
+    "vysvetleni_obecne": "<p>Obecné vysvětlení.</p>"
+   },
+   "spravne": [
+    "a"
+   ],
+   "oddil": "2.2.5",
+   "poznamka": ""
+  },
+  {
+   "id": "A-17",
+   "zdroj": "sample-a",
+   "lo": "GenAI-2.3.1",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Test question A-17 for GenAI-2.3.1?</p>",
+    "moznosti": [
+     "Answer text 1 of A-17",
+     "Answer text 2 of A-17",
+     "Answer text 3 of A-17",
+     "Answer text 4 of A-17"
+    ],
+    "vysvetleni": {
+     "a": "Correct.",
+     "b": "Incorrect.",
+     "c": "Incorrect.",
+     "d": "Incorrect."
+    },
+    "vysvetleni_obecne": "<p>General explanation.</p>"
+   },
+   "cz": {
+    "q": "<p>Testovací otázka A-17 k GenAI-2.3.1?</p>",
+    "moznosti": [
+     "Text odpovědi 1 otázky A-17",
+     "Text odpovědi 2 otázky A-17",
+     "Text odpovědi 3 otázky A-17",
+     "Text odpovědi 4 otázky A-17"
+    ],
+    "vysvetleni": {
+     "a": "Správně.",
+     "b": "Špatně.",
+     "c": "Špatně.",
+     "d": "Špatně."
+    },
+    "vysvetleni_obecne": "<p>Obecné vysvětlení.</p>"
+   },
+   "spravne": [
+    "a"
+   ],
+   "oddil": "2.3.1",
+   "poznamka": ""
+  },
+  {
+   "id": "A-18",
+   "zdroj": "sample-a",
+   "lo": "GenAI-2.3.2",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Test question A-18 for GenAI-2.3.2?</p>",
+    "moznosti": [
+     "Answer text 1 of A-18",
+     "Answer text 2 of A-18",
+     "Answer text 3 of A-18",
+     "Answer text 4 of A-18"
+    ],
+    "vysvetleni": {
+     "a": "Correct.",
+     "b": "Incorrect.",
+     "c": "Incorrect.",
+     "d": "Incorrect."
+    },
+    "vysvetleni_obecne": "<p>General explanation.</p>"
+   },
+   "cz": {
+    "q": "<p>Testovací otázka A-18 k GenAI-2.3.2?</p>",
+    "moznosti": [
+     "Text odpovědi 1 otázky A-18",
+     "Text odpovědi 2 otázky A-18",
+     "Text odpovědi 3 otázky A-18",
+     "Text odpovědi 4 otázky A-18"
+    ],
+    "vysvetleni": {
+     "a": "Správně.",
+     "b": "Špatně.",
+     "c": "Špatně.",
+     "d": "Špatně."
+    },
+    "vysvetleni_obecne": "<p>Obecné vysvětlení.</p>"
+   },
+   "spravne": [
+    "a"
+   ],
+   "oddil": "2.3.2",
+   "poznamka": ""
+  },
+  {
+   "id": "A-19",
+   "zdroj": "sample-a",
+   "lo": "GenAI-3.1.1",
+   "k": "K1",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Test question A-19 for GenAI-3.1.1?</p>",
+    "moznosti": [
+     "Answer text 1 of A-19",
+     "Answer text 2 of A-19",
+     "Answer text 3 of A-19",
+     "Answer text 4 of A-19"
+    ],
+    "vysvetleni": {
+     "a": "Correct.",
+     "b": "Incorrect.",
+     "c": "Incorrect.",
+     "d": "Incorrect."
+    },
+    "vysvetleni_obecne": "<p>General explanation.</p>"
+   },
+   "cz": {
+    "q": "<p>Testovací otázka A-19 k GenAI-3.1.1?</p>",
+    "moznosti": [
+     "Text odpovědi 1 otázky A-19",
+     "Text odpovědi 2 otázky A-19",
+     "Text odpovědi 3 otázky A-19",
+     "Text odpovědi 4 otázky A-19"
+    ],
+    "vysvetleni": {
+     "a": "Správně.",
+     "b": "Špatně.",
+     "c": "Špatně.",
+     "d": "Špatně."
+    },
+    "vysvetleni_obecne": "<p>Obecné vysvětlení.</p>"
+   },
+   "spravne": [
+    "a"
+   ],
+   "oddil": "3.1.1",
+   "poznamka": ""
+  },
+  {
+   "id": "A-20",
+   "zdroj": "sample-a",
+   "lo": "GenAI-3.1.2",
+   "k": "K3",
+   "body": 2,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Test question A-20 for GenAI-3.1.2?</p>",
+    "moznosti": [
+     "Answer text 1 of A-20",
+     "Answer text 2 of A-20",
+     "Answer text 3 of A-20",
+     "Answer text 4 of A-20"
+    ],
+    "vysvetleni": {
+     "a": "Correct.",
+     "b": "Incorrect.",
+     "c": "Incorrect.",
+     "d": "Incorrect."
+    },
+    "vysvetleni_obecne": "<p>General explanation.</p>"
+   },
+   "cz": {
+    "q": "<p>Testovací otázka A-20 k GenAI-3.1.2?</p>",
+    "moznosti": [
+     "Text odpovědi 1 otázky A-20",
+     "Text odpovědi 2 otázky A-20",
+     "Text odpovědi 3 otázky A-20",
+     "Text odpovědi 4 otázky A-20"
+    ],
+    "vysvetleni": {
+     "a": "Správně.",
+     "b": "Špatně.",
+     "c": "Špatně.",
+     "d": "Špatně."
+    },
+    "vysvetleni_obecne": "<p>Obecné vysvětlení.</p>"
+   },
+   "spravne": [
+    "a"
+   ],
+   "oddil": "3.1.2",
+   "poznamka": ""
+  },
+  {
+   "id": "A-21",
+   "zdroj": "sample-a",
+   "lo": "GenAI-3.1.3",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Test question A-21 for GenAI-3.1.3?</p>",
+    "moznosti": [
+     "Answer text 1 of A-21",
+     "Answer text 2 of A-21",
+     "Answer text 3 of A-21",
+     "Answer text 4 of A-21"
+    ],
+    "vysvetleni": {
+     "a": "Correct.",
+     "b": "Incorrect.",
+     "c": "Incorrect.",
+     "d": "Incorrect."
+    },
+    "vysvetleni_obecne": "<p>General explanation.</p>"
+   },
+   "cz": {
+    "q": "<p>Testovací otázka A-21 k GenAI-3.1.3?</p>",
+    "moznosti": [
+     "Text odpovědi 1 otázky A-21",
+     "Text odpovědi 2 otázky A-21",
+     "Text odpovědi 3 otázky A-21",
+     "Text odpovědi 4 otázky A-21"
+    ],
+    "vysvetleni": {
+     "a": "Správně.",
+     "b": "Špatně.",
+     "c": "Špatně.",
+     "d": "Špatně."
+    },
+    "vysvetleni_obecne": "<p>Obecné vysvětlení.</p>"
+   },
+   "spravne": [
+    "a"
+   ],
+   "oddil": "3.1.3",
+   "poznamka": ""
+  },
+  {
+   "id": "A-22",
+   "zdroj": "sample-a",
+   "lo": "GenAI-3.1.4",
+   "k": "K1",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Test question A-22 for GenAI-3.1.4?</p>",
+    "moznosti": [
+     "Answer text 1 of A-22",
+     "Answer text 2 of A-22",
+     "Answer text 3 of A-22",
+     "Answer text 4 of A-22"
+    ],
+    "vysvetleni": {
+     "a": "Correct.",
+     "b": "Incorrect.",
+     "c": "Incorrect.",
+     "d": "Incorrect."
+    },
+    "vysvetleni_obecne": "<p>General explanation.</p>"
+   },
+   "cz": {
+    "q": "<p>Testovací otázka A-22 k GenAI-3.1.4?</p>",
+    "moznosti": [
+     "Text odpovědi 1 otázky A-22",
+     "Text odpovědi 2 otázky A-22",
+     "Text odpovědi 3 otázky A-22",
+     "Text odpovědi 4 otázky A-22"
+    ],
+    "vysvetleni": {
+     "a": "Správně.",
+     "b": "Špatně.",
+     "c": "Špatně.",
+     "d": "Špatně."
+    },
+    "vysvetleni_obecne": "<p>Obecné vysvětlení.</p>"
+   },
+   "spravne": [
+    "a"
+   ],
+   "oddil": "3.1.4",
+   "poznamka": ""
+  },
+  {
+   "id": "A-23",
+   "zdroj": "sample-a",
+   "lo": "GenAI-3.2.1",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Test question A-23 for GenAI-3.2.1?</p>",
+    "moznosti": [
+     "Answer text 1 of A-23",
+     "Answer text 2 of A-23",
+     "Answer text 3 of A-23",
+     "Answer text 4 of A-23"
+    ],
+    "vysvetleni": {
+     "a": "Correct.",
+     "b": "Incorrect.",
+     "c": "Incorrect.",
+     "d": "Incorrect."
+    },
+    "vysvetleni_obecne": "<p>General explanation.</p>"
+   },
+   "cz": {
+    "q": "<p>Testovací otázka A-23 k GenAI-3.2.1?</p>",
+    "moznosti": [
+     "Text odpovědi 1 otázky A-23",
+     "Text odpovědi 2 otázky A-23",
+     "Text odpovědi 3 otázky A-23",
+     "Text odpovědi 4 otázky A-23"
+    ],
+    "vysvetleni": {
+     "a": "Správně.",
+     "b": "Špatně.",
+     "c": "Špatně.",
+     "d": "Špatně."
+    },
+    "vysvetleni_obecne": "<p>Obecné vysvětlení.</p>"
+   },
+   "spravne": [
+    "a"
+   ],
+   "oddil": "3.2.1",
+   "poznamka": ""
+  },
+  {
+   "id": "A-24",
+   "zdroj": "sample-a",
+   "lo": "GenAI-3.2.2",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Test question A-24 for GenAI-3.2.2?</p>",
+    "moznosti": [
+     "Answer text 1 of A-24",
+     "Answer text 2 of A-24",
+     "Answer text 3 of A-24",
+     "Answer text 4 of A-24"
+    ],
+    "vysvetleni": {
+     "a": "Correct.",
+     "b": "Incorrect.",
+     "c": "Incorrect.",
+     "d": "Incorrect."
+    },
+    "vysvetleni_obecne": "<p>General explanation.</p>"
+   },
+   "cz": {
+    "q": "<p>Testovací otázka A-24 k GenAI-3.2.2?</p>",
+    "moznosti": [
+     "Text odpovědi 1 otázky A-24",
+     "Text odpovědi 2 otázky A-24",
+     "Text odpovědi 3 otázky A-24",
+     "Text odpovědi 4 otázky A-24"
+    ],
+    "vysvetleni": {
+     "a": "Správně.",
+     "b": "Špatně.",
+     "c": "Špatně.",
+     "d": "Špatně."
+    },
+    "vysvetleni_obecne": "<p>Obecné vysvětlení.</p>"
+   },
+   "spravne": [
+    "a"
+   ],
+   "oddil": "3.2.2",
+   "poznamka": ""
+  },
+  {
+   "id": "A-25",
+   "zdroj": "sample-a",
+   "lo": "GenAI-3.2.2",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Test question A-25 for GenAI-3.2.2?</p>",
+    "moznosti": [
+     "Answer text 1 of A-25",
+     "Answer text 2 of A-25",
+     "Answer text 3 of A-25",
+     "Answer text 4 of A-25"
+    ],
+    "vysvetleni": {
+     "a": "Incorrect.",
+     "b": "Correct.",
+     "c": "Incorrect.",
+     "d": "Incorrect."
+    },
+    "vysvetleni_obecne": "<p>General explanation.</p>"
+   },
+   "cz": {
+    "q": "<p>Testovací otázka A-25 k GenAI-3.2.2?</p>",
+    "moznosti": [
+     "Text odpovědi 1 otázky A-25",
+     "Text odpovědi 2 otázky A-25",
+     "Text odpovědi 3 otázky A-25",
+     "Text odpovědi 4 otázky A-25"
+    ],
+    "vysvetleni": {
+     "a": "Špatně.",
+     "b": "Správně.",
+     "c": "Špatně.",
+     "d": "Špatně."
+    },
+    "vysvetleni_obecne": "<p>Obecné vysvětlení.</p>"
+   },
+   "spravne": [
+    "b"
+   ],
+   "oddil": "3.2.2",
+   "poznamka": ""
+  },
+  {
+   "id": "A-26",
+   "zdroj": "sample-a",
+   "lo": "GenAI-3.2.3",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Test question A-26 for GenAI-3.2.3?</p>",
+    "moznosti": [
+     "Answer text 1 of A-26",
+     "Answer text 2 of A-26",
+     "Answer text 3 of A-26",
+     "Answer text 4 of A-26"
+    ],
+    "vysvetleni": {
+     "a": "Correct.",
+     "b": "Incorrect.",
+     "c": "Incorrect.",
+     "d": "Incorrect."
+    },
+    "vysvetleni_obecne": "<p>General explanation.</p>"
+   },
+   "cz": {
+    "q": "<p>Testovací otázka A-26 k GenAI-3.2.3?</p>",
+    "moznosti": [
+     "Text odpovědi 1 otázky A-26",
+     "Text odpovědi 2 otázky A-26",
+     "Text odpovědi 3 otázky A-26",
+     "Text odpovědi 4 otázky A-26"
+    ],
+    "vysvetleni": {
+     "a": "Správně.",
+     "b": "Špatně.",
+     "c": "Špatně.",
+     "d": "Špatně."
+    },
+    "vysvetleni_obecne": "<p>Obecné vysvětlení.</p>"
+   },
+   "spravne": [
+    "a"
+   ],
+   "oddil": "3.2.3",
+   "poznamka": ""
+  },
+  {
+   "id": "A-27",
+   "zdroj": "sample-a",
+   "lo": "GenAI-3.3.1",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Test question A-27 for GenAI-3.3.1?</p>",
+    "moznosti": [
+     "Answer text 1 of A-27",
+     "Answer text 2 of A-27",
+     "Answer text 3 of A-27",
+     "Answer text 4 of A-27"
+    ],
+    "vysvetleni": {
+     "a": "Correct.",
+     "b": "Incorrect.",
+     "c": "Incorrect.",
+     "d": "Incorrect."
+    },
+    "vysvetleni_obecne": "<p>General explanation.</p>"
+   },
+   "cz": {
+    "q": "<p>Testovací otázka A-27 k GenAI-3.3.1?</p>",
+    "moznosti": [
+     "Text odpovědi 1 otázky A-27",
+     "Text odpovědi 2 otázky A-27",
+     "Text odpovědi 3 otázky A-27",
+     "Text odpovědi 4 otázky A-27"
+    ],
+    "vysvetleni": {
+     "a": "Správně.",
+     "b": "Špatně.",
+     "c": "Špatně.",
+     "d": "Špatně."
+    },
+    "vysvetleni_obecne": "<p>Obecné vysvětlení.</p>"
+   },
+   "spravne": [
+    "a"
+   ],
+   "oddil": "3.3.1",
+   "poznamka": ""
+  },
+  {
+   "id": "A-28",
+   "zdroj": "sample-a",
+   "lo": "GenAI-3.4.1",
+   "k": "K1",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Test question A-28 for GenAI-3.4.1?</p>",
+    "moznosti": [
+     "Answer text 1 of A-28",
+     "Answer text 2 of A-28",
+     "Answer text 3 of A-28",
+     "Answer text 4 of A-28"
+    ],
+    "vysvetleni": {
+     "a": "Correct.",
+     "b": "Incorrect.",
+     "c": "Incorrect.",
+     "d": "Incorrect."
+    },
+    "vysvetleni_obecne": "<p>General explanation.</p>"
+   },
+   "cz": {
+    "q": "<p>Testovací otázka A-28 k GenAI-3.4.1?</p>",
+    "moznosti": [
+     "Text odpovědi 1 otázky A-28",
+     "Text odpovědi 2 otázky A-28",
+     "Text odpovědi 3 otázky A-28",
+     "Text odpovědi 4 otázky A-28"
+    ],
+    "vysvetleni": {
+     "a": "Správně.",
+     "b": "Špatně.",
+     "c": "Špatně.",
+     "d": "Špatně."
+    },
+    "vysvetleni_obecne": "<p>Obecné vysvětlení.</p>"
+   },
+   "spravne": [
+    "a"
+   ],
+   "oddil": "3.4.1",
+   "poznamka": ""
+  },
+  {
+   "id": "A-29",
+   "zdroj": "sample-a",
+   "lo": "GenAI-4.1.1",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Test question A-29 for GenAI-4.1.1?</p>",
+    "moznosti": [
+     "Answer text 1 of A-29",
+     "Answer text 2 of A-29",
+     "Answer text 3 of A-29",
+     "Answer text 4 of A-29"
+    ],
+    "vysvetleni": {
+     "a": "Correct.",
+     "b": "Incorrect.",
+     "c": "Incorrect.",
+     "d": "Incorrect."
+    },
+    "vysvetleni_obecne": "<p>General explanation.</p>"
+   },
+   "cz": {
+    "q": "<p>Testovací otázka A-29 k GenAI-4.1.1?</p>",
+    "moznosti": [
+     "Text odpovědi 1 otázky A-29",
+     "Text odpovědi 2 otázky A-29",
+     "Text odpovědi 3 otázky A-29",
+     "Text odpovědi 4 otázky A-29"
+    ],
+    "vysvetleni": {
+     "a": "Správně.",
+     "b": "Špatně.",
+     "c": "Špatně.",
+     "d": "Špatně."
+    },
+    "vysvetleni_obecne": "<p>Obecné vysvětlení.</p>"
+   },
+   "spravne": [
+    "a"
+   ],
+   "oddil": "4.1.1",
+   "poznamka": ""
+  },
+  {
+   "id": "A-30",
+   "zdroj": "sample-a",
+   "lo": "GenAI-4.1.2",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Test question A-30 for GenAI-4.1.2?</p>",
+    "moznosti": [
+     "Answer text 1 of A-30",
+     "Answer text 2 of A-30",
+     "Answer text 3 of A-30",
+     "Answer text 4 of A-30"
+    ],
+    "vysvetleni": {
+     "a": "Correct.",
+     "b": "Incorrect.",
+     "c": "Incorrect.",
+     "d": "Incorrect."
+    },
+    "vysvetleni_obecne": "<p>General explanation.</p>"
+   },
+   "cz": {
+    "q": "<p>Testovací otázka A-30 k GenAI-4.1.2?</p>",
+    "moznosti": [
+     "Text odpovědi 1 otázky A-30",
+     "Text odpovědi 2 otázky A-30",
+     "Text odpovědi 3 otázky A-30",
+     "Text odpovědi 4 otázky A-30"
+    ],
+    "vysvetleni": {
+     "a": "Správně.",
+     "b": "Špatně.",
+     "c": "Špatně.",
+     "d": "Špatně."
+    },
+    "vysvetleni_obecne": "<p>Obecné vysvětlení.</p>"
+   },
+   "spravne": [
+    "a"
+   ],
+   "oddil": "4.1.2",
+   "poznamka": ""
+  },
+  {
+   "id": "A-31",
+   "zdroj": "sample-a",
+   "lo": "GenAI-4.1.3",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Test question A-31 for GenAI-4.1.3?</p>",
+    "moznosti": [
+     "Answer text 1 of A-31",
+     "Answer text 2 of A-31",
+     "Answer text 3 of A-31",
+     "Answer text 4 of A-31"
+    ],
+    "vysvetleni": {
+     "a": "Correct.",
+     "b": "Incorrect.",
+     "c": "Incorrect.",
+     "d": "Incorrect."
+    },
+    "vysvetleni_obecne": "<p>General explanation.</p>"
+   },
+   "cz": {
+    "q": "<p>Testovací otázka A-31 k GenAI-4.1.3?</p>",
+    "moznosti": [
+     "Text odpovědi 1 otázky A-31",
+     "Text odpovědi 2 otázky A-31",
+     "Text odpovědi 3 otázky A-31",
+     "Text odpovědi 4 otázky A-31"
+    ],
+    "vysvetleni": {
+     "a": "Správně.",
+     "b": "Špatně.",
+     "c": "Špatně.",
+     "d": "Špatně."
+    },
+    "vysvetleni_obecne": "<p>Obecné vysvětlení.</p>"
+   },
+   "spravne": [
+    "a"
+   ],
+   "oddil": "4.1.3",
+   "poznamka": ""
+  },
+  {
+   "id": "A-32",
+   "zdroj": "sample-a",
+   "lo": "GenAI-4.2.1",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Test question A-32 for GenAI-4.2.1?</p>",
+    "moznosti": [
+     "Answer text 1 of A-32",
+     "Answer text 2 of A-32",
+     "Answer text 3 of A-32",
+     "Answer text 4 of A-32"
+    ],
+    "vysvetleni": {
+     "a": "Correct.",
+     "b": "Incorrect.",
+     "c": "Incorrect.",
+     "d": "Incorrect."
+    },
+    "vysvetleni_obecne": "<p>General explanation.</p>"
+   },
+   "cz": {
+    "q": "<p>Testovací otázka A-32 k GenAI-4.2.1?</p>",
+    "moznosti": [
+     "Text odpovědi 1 otázky A-32",
+     "Text odpovědi 2 otázky A-32",
+     "Text odpovědi 3 otázky A-32",
+     "Text odpovědi 4 otázky A-32"
+    ],
+    "vysvetleni": {
+     "a": "Správně.",
+     "b": "Špatně.",
+     "c": "Špatně.",
+     "d": "Špatně."
+    },
+    "vysvetleni_obecne": "<p>Obecné vysvětlení.</p>"
+   },
+   "spravne": [
+    "a"
+   ],
+   "oddil": "4.2.1",
+   "poznamka": ""
+  },
+  {
+   "id": "A-33",
+   "zdroj": "sample-a",
+   "lo": "GenAI-4.2.2",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Test question A-33 for GenAI-4.2.2?</p>",
+    "moznosti": [
+     "Answer text 1 of A-33",
+     "Answer text 2 of A-33",
+     "Answer text 3 of A-33",
+     "Answer text 4 of A-33"
+    ],
+    "vysvetleni": {
+     "a": "Correct.",
+     "b": "Incorrect.",
+     "c": "Incorrect.",
+     "d": "Incorrect."
+    },
+    "vysvetleni_obecne": "<p>General explanation.</p>"
+   },
+   "cz": {
+    "q": "<p>Testovací otázka A-33 k GenAI-4.2.2?</p>",
+    "moznosti": [
+     "Text odpovědi 1 otázky A-33",
+     "Text odpovědi 2 otázky A-33",
+     "Text odpovědi 3 otázky A-33",
+     "Text odpovědi 4 otázky A-33"
+    ],
+    "vysvetleni": {
+     "a": "Správně.",
+     "b": "Špatně.",
+     "c": "Špatně.",
+     "d": "Špatně."
+    },
+    "vysvetleni_obecne": "<p>Obecné vysvětlení.</p>"
+   },
+   "spravne": [
+    "a"
+   ],
+   "oddil": "4.2.2",
+   "poznamka": ""
+  },
+  {
+   "id": "A-34",
+   "zdroj": "sample-a",
+   "lo": "GenAI-5.1.1",
+   "k": "K1",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Test question A-34 for GenAI-5.1.1?</p>",
+    "moznosti": [
+     "Answer text 1 of A-34",
+     "Answer text 2 of A-34",
+     "Answer text 3 of A-34",
+     "Answer text 4 of A-34"
+    ],
+    "vysvetleni": {
+     "a": "Correct.",
+     "b": "Incorrect.",
+     "c": "Incorrect.",
+     "d": "Incorrect."
+    },
+    "vysvetleni_obecne": "<p>General explanation.</p>"
+   },
+   "cz": {
+    "q": "<p>Testovací otázka A-34 k GenAI-5.1.1?</p>",
+    "moznosti": [
+     "Text odpovědi 1 otázky A-34",
+     "Text odpovědi 2 otázky A-34",
+     "Text odpovědi 3 otázky A-34",
+     "Text odpovědi 4 otázky A-34"
+    ],
+    "vysvetleni": {
+     "a": "Správně.",
+     "b": "Špatně.",
+     "c": "Špatně.",
+     "d": "Špatně."
+    },
+    "vysvetleni_obecne": "<p>Obecné vysvětlení.</p>"
+   },
+   "spravne": [
+    "a"
+   ],
+   "oddil": "5.1.1",
+   "poznamka": ""
+  },
+  {
+   "id": "A-35",
+   "zdroj": "sample-a",
+   "lo": "GenAI-5.1.2",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Test question A-35 for GenAI-5.1.2?</p>",
+    "moznosti": [
+     "Answer text 1 of A-35",
+     "Answer text 2 of A-35",
+     "Answer text 3 of A-35",
+     "Answer text 4 of A-35"
+    ],
+    "vysvetleni": {
+     "a": "Correct.",
+     "b": "Incorrect.",
+     "c": "Incorrect.",
+     "d": "Incorrect."
+    },
+    "vysvetleni_obecne": "<p>General explanation.</p>"
+   },
+   "cz": {
+    "q": "<p>Testovací otázka A-35 k GenAI-5.1.2?</p>",
+    "moznosti": [
+     "Text odpovědi 1 otázky A-35",
+     "Text odpovědi 2 otázky A-35",
+     "Text odpovědi 3 otázky A-35",
+     "Text odpovědi 4 otázky A-35"
+    ],
+    "vysvetleni": {
+     "a": "Správně.",
+     "b": "Špatně.",
+     "c": "Špatně.",
+     "d": "Špatně."
+    },
+    "vysvetleni_obecne": "<p>Obecné vysvětlení.</p>"
+   },
+   "spravne": [
+    "a"
+   ],
+   "oddil": "5.1.2",
+   "poznamka": ""
+  },
+  {
+   "id": "A-36",
+   "zdroj": "sample-a",
+   "lo": "GenAI-5.1.3",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Test question A-36 for GenAI-5.1.3?</p>",
+    "moznosti": [
+     "Answer text 1 of A-36",
+     "Answer text 2 of A-36",
+     "Answer text 3 of A-36",
+     "Answer text 4 of A-36"
+    ],
+    "vysvetleni": {
+     "a": "Correct.",
+     "b": "Incorrect.",
+     "c": "Incorrect.",
+     "d": "Incorrect."
+    },
+    "vysvetleni_obecne": "<p>General explanation.</p>"
+   },
+   "cz": {
+    "q": "<p>Testovací otázka A-36 k GenAI-5.1.3?</p>",
+    "moznosti": [
+     "Text odpovědi 1 otázky A-36",
+     "Text odpovědi 2 otázky A-36",
+     "Text odpovědi 3 otázky A-36",
+     "Text odpovědi 4 otázky A-36"
+    ],
+    "vysvetleni": {
+     "a": "Správně.",
+     "b": "Špatně.",
+     "c": "Špatně.",
+     "d": "Špatně."
+    },
+    "vysvetleni_obecne": "<p>Obecné vysvětlení.</p>"
+   },
+   "spravne": [
+    "a"
+   ],
+   "oddil": "5.1.3",
+   "poznamka": ""
+  },
+  {
+   "id": "A-37",
+   "zdroj": "sample-a",
+   "lo": "GenAI-5.1.4",
+   "k": "K1",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Test question A-37 for GenAI-5.1.4?</p>",
+    "moznosti": [
+     "Answer text 1 of A-37",
+     "Answer text 2 of A-37",
+     "Answer text 3 of A-37",
+     "Answer text 4 of A-37"
+    ],
+    "vysvetleni": {
+     "a": "Correct.",
+     "b": "Incorrect.",
+     "c": "Incorrect.",
+     "d": "Incorrect."
+    },
+    "vysvetleni_obecne": "<p>General explanation.</p>"
+   },
+   "cz": {
+    "q": "<p>Testovací otázka A-37 k GenAI-5.1.4?</p>",
+    "moznosti": [
+     "Text odpovědi 1 otázky A-37",
+     "Text odpovědi 2 otázky A-37",
+     "Text odpovědi 3 otázky A-37",
+     "Text odpovědi 4 otázky A-37"
+    ],
+    "vysvetleni": {
+     "a": "Správně.",
+     "b": "Špatně.",
+     "c": "Špatně.",
+     "d": "Špatně."
+    },
+    "vysvetleni_obecne": "<p>Obecné vysvětlení.</p>"
+   },
+   "spravne": [
+    "a"
+   ],
+   "oddil": "5.1.4",
+   "poznamka": ""
+  },
+  {
+   "id": "A-38",
+   "zdroj": "sample-a",
+   "lo": "GenAI-5.2.1",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Test question A-38 for GenAI-5.2.1?</p>",
+    "moznosti": [
+     "Answer text 1 of A-38",
+     "Answer text 2 of A-38",
+     "Answer text 3 of A-38",
+     "Answer text 4 of A-38"
+    ],
+    "vysvetleni": {
+     "a": "Correct.",
+     "b": "Incorrect.",
+     "c": "Incorrect.",
+     "d": "Incorrect."
+    },
+    "vysvetleni_obecne": "<p>General explanation.</p>"
+   },
+   "cz": {
+    "q": "<p>Testovací otázka A-38 k GenAI-5.2.1?</p>",
+    "moznosti": [
+     "Text odpovědi 1 otázky A-38",
+     "Text odpovědi 2 otázky A-38",
+     "Text odpovědi 3 otázky A-38",
+     "Text odpovědi 4 otázky A-38"
+    ],
+    "vysvetleni": {
+     "a": "Správně.",
+     "b": "Špatně.",
+     "c": "Špatně.",
+     "d": "Špatně."
+    },
+    "vysvetleni_obecne": "<p>Obecné vysvětlení.</p>"
+   },
+   "spravne": [
+    "a"
+   ],
+   "oddil": "5.2.1",
+   "poznamka": ""
+  },
+  {
+   "id": "A-39",
+   "zdroj": "sample-a",
+   "lo": "GenAI-5.2.2",
+   "k": "K1",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Test question A-39 for GenAI-5.2.2?</p>",
+    "moznosti": [
+     "Answer text 1 of A-39",
+     "Answer text 2 of A-39",
+     "Answer text 3 of A-39",
+     "Answer text 4 of A-39"
+    ],
+    "vysvetleni": {
+     "a": "Correct.",
+     "b": "Incorrect.",
+     "c": "Incorrect.",
+     "d": "Incorrect."
+    },
+    "vysvetleni_obecne": "<p>General explanation.</p>"
+   },
+   "cz": {
+    "q": "<p>Testovací otázka A-39 k GenAI-5.2.2?</p>",
+    "moznosti": [
+     "Text odpovědi 1 otázky A-39",
+     "Text odpovědi 2 otázky A-39",
+     "Text odpovědi 3 otázky A-39",
+     "Text odpovědi 4 otázky A-39"
+    ],
+    "vysvetleni": {
+     "a": "Správně.",
+     "b": "Špatně.",
+     "c": "Špatně.",
+     "d": "Špatně."
+    },
+    "vysvetleni_obecne": "<p>Obecné vysvětlení.</p>"
+   },
+   "spravne": [
+    "a"
+   ],
+   "oddil": "5.2.2",
+   "poznamka": ""
+  },
+  {
+   "id": "A-40",
+   "zdroj": "sample-a",
+   "lo": "GenAI-5.2.3",
+   "k": "K1",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Test question A-40 for GenAI-5.2.3?</p>",
+    "moznosti": [
+     "Answer text 1 of A-40",
+     "Answer text 2 of A-40",
+     "Answer text 3 of A-40",
+     "Answer text 4 of A-40"
+    ],
+    "vysvetleni": {
+     "a": "Correct.",
+     "b": "Incorrect.",
+     "c": "Incorrect.",
+     "d": "Incorrect."
+    },
+    "vysvetleni_obecne": "<p>General explanation.</p>"
+   },
+   "cz": {
+    "q": "<p>Testovací otázka A-40 k GenAI-5.2.3?</p>",
+    "moznosti": [
+     "Text odpovědi 1 otázky A-40",
+     "Text odpovědi 2 otázky A-40",
+     "Text odpovědi 3 otázky A-40",
+     "Text odpovědi 4 otázky A-40"
+    ],
+    "vysvetleni": {
+     "a": "Správně.",
+     "b": "Špatně.",
+     "c": "Špatně.",
+     "d": "Špatně."
+    },
+    "vysvetleni_obecne": "<p>Obecné vysvětlení.</p>"
+   },
+   "spravne": [
+    "a"
+   ],
+   "oddil": "5.2.3",
+   "poznamka": ""
+  },
+  {
+   "id": "A-A1",
+   "zdroj": "sample-a",
+   "lo": "GenAI-4.1.2",
+   "k": "K2",
+   "body": 1,
+   "vyber": 3,
+   "keep_order": true,
+   "en": {
+    "q": "<p>Test question A-A1 for GenAI-4.1.2?</p>",
+    "moznosti": [
+     "Answer text 1 of A-A1",
+     "Answer text 2 of A-A1",
+     "Answer text 3 of A-A1"
+    ],
+    "vysvetleni": {
+     "a": "Correct.",
+     "b": "Incorrect.",
+     "c": "Incorrect."
+    },
+    "vysvetleni_obecne": "<p>General explanation.</p>"
+   },
+   "cz": {
+    "q": "<p>Testovací otázka A-A1 k GenAI-4.1.2?</p>",
+    "moznosti": [
+     "Text odpovědi 1 otázky A-A1",
+     "Text odpovědi 2 otázky A-A1",
+     "Text odpovědi 3 otázky A-A1"
+    ],
+    "vysvetleni": {
+     "a": "Správně.",
+     "b": "Špatně.",
+     "c": "Špatně."
+    },
+    "vysvetleni_obecne": "<p>Obecné vysvětlení.</p>"
+   },
+   "spravne": [
+    "c",
+    "a",
+    "b"
+   ],
+   "oddil": "4.1.2",
+   "poznamka": "",
+   "typ": "razeni",
+   "navic": true
+  },
+  {
+   "id": "A-A2",
+   "zdroj": "sample-a",
+   "lo": "GenAI-2.1.2",
+   "k": "K2",
+   "body": 1,
+   "vyber": 3,
+   "keep_order": true,
+   "en": {
+    "q": "<p>Test question A-A2 for GenAI-2.1.2?</p>",
+    "moznosti": [
+     "Answer text 1 of A-A2",
+     "Answer text 2 of A-A2",
+     "Answer text 3 of A-A2"
+    ],
+    "vysvetleni": {
+     "a": "Correct.",
+     "b": "Incorrect.",
+     "c": "Incorrect."
+    },
+    "vysvetleni_obecne": "<p>General explanation.</p>",
+    "skupiny": [
+     "Skupina jedna",
+     "Skupina dvě"
+    ]
+   },
+   "cz": {
+    "q": "<p>Testovací otázka A-A2 k GenAI-2.1.2?</p>",
+    "moznosti": [
+     "Text odpovědi 1 otázky A-A2",
+     "Text odpovědi 2 otázky A-A2",
+     "Text odpovědi 3 otázky A-A2"
+    ],
+    "vysvetleni": {
+     "a": "Správně.",
+     "b": "Špatně.",
+     "c": "Špatně."
+    },
+    "vysvetleni_obecne": "<p>Obecné vysvětlení.</p>",
+    "skupiny": [
+     "Skupina jedna",
+     "Skupina dvě"
+    ]
+   },
+   "spravne": [
+    "1",
+    "2",
+    "1"
+   ],
+   "oddil": "2.1.2",
+   "poznamka": "",
+   "typ": "prirazeni",
+   "navic": true
+  }
+ ]
+}

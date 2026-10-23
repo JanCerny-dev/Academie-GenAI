@@ -1,0 +1,380 @@
+<!doctype html>
+<html lang="cs" data-tema="">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Generování testovacích případů z Pythonu přes API LLM | Praxe | ISTQB CT-GenAI</title>
+<meta name="description" content="Praxe CT-GenAI: Generování testovacích případů z Pythonu přes API LLM. Napíšeš skript, který z požadavků vygeneruje testovací případy ve formátu JSON, zkontroluje je a řekne, kolik volání stálo.">
+<meta name="color-scheme" content="light dark">
+<link rel="stylesheet" href="../assets/styl.css">
+<script>
+/* Nastaví uložený režim ještě před vykreslením, aby stránka neproblikla. */
+(function(){try{var t=localStorage.getItem('genai-tema');if(t){document.documentElement.setAttribute('data-tema',t);}}catch(e){}})();
+</script>
+</head>
+<body data-kapitola="6">
+<a class="preskocit" href="#text">Přeskočit na text</a>
+<div class="postup" aria-hidden="true"></div>
+<header class="hlavicka">
+  <div class="hlavicka-vnitrek">
+    <a class="znacka" href="../index.html">ISTQB CT-GenAI <span>česká studijní příručka</span></a>
+    <nav class="navigace" aria-label="Hlavní navigace">
+      <a href="../index.html">Úvod</a>
+      <span class="skupina" data-skupina>
+        <a href="../kapitoly.html" class="zvyraznit">Kapitoly</a>
+        <ul class="podmenu" id="podmenu-kapitoly" aria-label="Seznam kapitol"><li><a href="../kapitola-1/vyklad.html"><b>1</b> Úvod do generativní AI</a></li><li><a href="../kapitola-2/vyklad.html"><b>2</b> Prompt engineering</a></li><li><a href="../kapitola-3/vyklad.html"><b>3</b> Rizika generativní AI</a></li><li><a href="../kapitola-4/vyklad.html"><b>4</b> Infrastruktura s LLM</a></li><li><a href="../kapitola-5/vyklad.html"><b>5</b> Zavedení GenAI v organizaci</a></li></ul>
+      </span>
+      <a href="../slovnik.html">Slovník</a>
+      <a href="../karticky.html">Kartičky</a>
+      <a href="../prirazovani.html">Přiřazování</a>
+      <a href="../cviceni.html">Cvičení</a>
+      <a href="../praxe.html" aria-current="page">Praxe</a>
+      <a href="../cile.html">Cíle</a>
+      <a href="../zkouska.html">Zkouška</a>
+      <a href="../lokalni/index.html" class="lokalni-odkaz">Lokální testy</a>
+      <button type="button" class="prepinac-tema" data-prepinac-tema>Tmavý režim</button>
+      <button type="button" class="ucet-tlacitko" data-ucet hidden>Přihlásit</button>
+    </nav>
+  </div>
+</header>
+<div class="stranka">
+<div class="layout">
+<main>
+<div class="zahlavi">
+  <p class="drobky"><a href="../praxe.html">Praxe</a> · Modul 9</p>
+  <h1>Generování testovacích případů z Pythonu přes API LLM</h1>
+  <p class="podtitul">Napíšeš skript, který z požadavků vygeneruje testovací případy ve formátu JSON, zkontroluje je a řekne, kolik volání stálo.</p>
+  <ul class="meta"><li>Čas: 3–4 h</li><li>Úroveň: středně pokročilý</li><li>Nástroje: Python 3.12, openai (Python SDK), python-dotenv, VS Code</li><li>3 857 slov</li><li>≈ 23 min čtení</li><li>3 cvičení</li></ul>
+  <p class="praxe-souvislosti"><span>Souvisí s kapitolami CT-GenAI: <a href="../kapitola-2/vyklad.html">2. Prompt engineering</a> · <a href="../kapitola-3/vyklad.html">3. Rizika generativní AI</a> · <a href="../kapitola-5/vyklad.html">5. Zavedení GenAI v organizaci</a></span><span>Zdroje: Bruno L15–L16, L30–L37</span></p>
+  <p class="napoveda" id="praxe-souhrn" aria-live="polite" data-praxe-cviceni="praxe-09-python-a-openai-api-login-portal-misto-contact-us praxe-09-python-a-openai-api-zmer-opakovatelnost praxe-09-python-a-openai-api-recenze-vystupu-podle-metrik"><span data-praxe-postup>3 cvičení</span>. Hotová cvičení si odškrtni, stav se ukládá v tomto prohlížeči, po přihlášení i v účtu.</p>
+</div>
+<article class="text" id="text">
+<h2 id="co-postavis">Co postavíš<a class="kotva" href="#co-postavis" aria-label="Odkaz na tento oddíl"></a></h2>
+<p>V chatu ChatGPT nebo Copilot se testovací případy generují ručně: vložíš požadavek, zkopíruješ odpověď. To funguje pro jeden formulář. Když chceš totéž opakovat pro desítky požadavků, porovnávat výsledky mezi verzemi promptu nebo výstup rovnou předat dalšímu nástroji, potřebuješ volat model z kódu. K tomu slouží <strong>API</strong> (application programming interface, aplikační rozhraní) poskytovatele modelu.</p>
+<p>Na konci modulu budeš mít malý projekt <code>genai-tc</code> s jedním hlavním skriptem. Skript načte textový popis požadavků, pošle ho modelu přes OpenAI API, dostane zpět testovací případy jako JSON, zkontroluje jejich strukturu a uloží je do souboru. K tomu vypíše, kolik <strong>tokenů</strong> (token, nejmenší jednotka textu, kterou model zpracovává) volání spotřebovalo a kolik to zhruba stálo.</p>
+<p>Jako testovací bázi použijeme stránku Contact Us na webdriveruniversity.com. Je to veřejná cvičná aplikace, kterou Bruno používá v celém kurzu. Stejná stránka se objeví i v modulu 10, kde nad ní postavíš BDD framework.</p>
+<div class="kod" data-jazyk="text"><pre><code>genai-tc/
+├── .venv/                  virtuální prostředí (není v gitu)
+├── .env                    API klíč (není v gitu)
+├── .gitignore
+├── requirements.txt
+├── pozadavky/
+│   └── contact_us.md       testovací báze: popis formuláře
+├── generuj_tc.py           hlavní skript
+├── porovnej_behy.py        kontrola opakovatelnosti
+└── vystup/                 vygenerované testovací případy (JSON)</code></pre></div>
+<p>Kurz má k tomu tři části. Lekce L15 a L16 ukazují, jak AI rozšíří testovací data v jednoduchém Python programu. Lekce L33 až L35 zakládají účet u OpenAI a posílají první dotaz z kódu. Lekce L36 a L37 srovnávají placené API s lokálními modely. Tento modul jde dál než kurz: přidává strukturovaný výstup, kontrolu výsledku, měření opakovatelnosti a bezpečné uložení klíče.</p>
+<h2 id="predpoklady">Předpoklady<a class="kotva" href="#predpoklady" aria-label="Odkaz na tento oddíl"></a></h2>
+<p>Python a jeho základy (proměnné, funkce, slovníky, práce se soubory, <code>pip</code>) kurz probírá v sekcích 4 a 5. Tady je nevykládám. Potřebuješ:</p>
+<ul><li><strong>Python 3.12</strong> nebo novější (ověřeno na 3.12.10). Kurz natáčel na 3.13.</li><li><strong>VS Code</strong> s rozšířením Python. Kurz ještě používá Code Runner, ten není nutný.</li><li><strong>Účet na platform.openai.com s kreditem.</strong> API je placené odděleně od předplatného ChatGPT. Bruno v L33 uvádí minimální dobití 5 USD a případný zkušební kredit. Podmínky se mění, ověř je na stránce s ceníkem (openai.com/api/pricing).</li><li><strong>Knihovny:</strong> <code>openai</code> a <code>python-dotenv</code>. Kurz má v <code>requirements.txt</code> verzi <code>openai==1.57.0</code> (prosinec 2024). Novější verze existují. Kód v tomto modulu používá rozhraní Chat Completions, které má knihovna od verze 1.0.</li></ul>
+<aside class="vsuvka vsuvka--pozor" data-stitek="Pozor" aria-label="Pozor"><p>Do API nikdy neposílej firemní ani klientská data. Účet na OpenAI je tvůj osobní, data jdou mimo firmu a mimo smluvní ochranu Trasku. Cvičení dělej jen na veřejných demo aplikacích a na vlastních projektech. Pokud chceš LLM používat v práci, schválený přístup zajišťuje AI platform tým. Obcházet ho osobním klíčem je přesně ta <strong>shadow AI</strong> (stínová AI), o které mluví sylabus v oddílu 5.1.1.</p></aside>
+<p>Cena za celé cvičení je v řádu centů. Generování desítky testovacích případů má typicky jednotky tisíc tokenů. Přesné ceny za milion tokenů se liší podle modelu a mění se, proto je v kódu nepíšu napevno.</p>
+<h2 id="postup">Postup<a class="kotva" href="#postup" aria-label="Odkaz na tento oddíl"></a></h2>
+<h3 id="krok-1-projekt-a-virtualni-prostredi">Krok 1: Projekt a virtuální prostředí<a class="kotva" href="#krok-1-projekt-a-virtualni-prostredi" aria-label="Odkaz na tento oddíl"></a></h3>
+<p><strong>Virtual environment</strong> (virtuální prostředí) je samostatná instalace balíčků jen pro jeden projekt. Když v jednom projektu potřebuješ <code>openai</code> 1.57 a v jiném novější verzi, každý má svou kopii a navzájem se neovlivní. Bruno to v L34 ukazuje přes Command Palette ve VS Code (<em>Python: Create Environment</em>). Stejný výsledek dá příkazová řádka:</p>
+<div class="kod" data-jazyk="powershell"><pre><code>mkdir genai-tc
+cd genai-tc
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
+python -m pip install --upgrade pip
+pip install openai python-dotenv
+pip freeze &gt; requirements.txt</code></pre></div>
+<p>Po aktivaci vidíš na začátku řádku <code>(.venv)</code>. Příkaz <code>pip freeze</code> zapíše přesné verze všech nainstalovaných balíčků. Kolega pak projekt obnoví příkazem <code>pip install -r requirements.txt</code> a dostane stejné verze.</p>
+<p>Pokud PowerShell aktivaci odmítne kvůli zásadám spouštění skriptů, nespouštěj nic se zvýšenými právy. Stačí spouštět Python přímo z prostředí: <code>.\.venv\Scripts\python.exe generuj_tc.py</code>. Výsledek je stejný.</p>
+<p>Bruno v L34 narazil na chybu při <code>pip install openai</code> a vyřešil ji smazáním a novým vytvořením prostředí. To je rozumný postup. Prostředí je jednorázové a dá se kdykoli znovu vytvořit z <code>requirements.txt</code>.</p>
+<h3 id="krok-2-api-klic-a-proc-nepatri-do-kodu">Krok 2: API klíč a proč nepatří do kódu<a class="kotva" href="#krok-2-api-klic-a-proc-nepatri-do-kodu" aria-label="Odkaz na tento oddíl"></a></h3>
+<p>API klíč získáš na platform.openai.com v sekci API keys tlačítkem <em>Create new secret key</em>. Klíč se zobrazí jen jednou. Kdo ho má, může tvým jménem volat API a utrácet tvůj kredit.</p>
+<p>Bruno v L35 vkládá klíč přímo do zdrojového kódu jako <code>api_key='...'</code>. V modulu 10 ho pak ukládá do souboru <code>config/openai_key.json</code>. Obojí je pro výuku pohodlné a v praxi nebezpečné. Soubor se zdrojákem nebo konfigurací skončí v gitu, v e-mailu, ve sdíleném adresáři nebo ve screenshotu. Odtud ho najdou automatické skenery, které GitHub prochází nepřetržitě. Klíč v historii gitu nezmizí ani po smazání souboru.</p>
+<p>Bezpečnější varianta: klíč patří do <strong>proměnné prostředí</strong> (environment variable). Knihovna <code>openai</code> ji umí přečíst sama. Pokud v konstruktoru <code>OpenAI()</code> neuvedeš <code>api_key</code>, hledá proměnnou <code>OPENAI_API_KEY</code>.</p>
+<p>Pro lokální vývoj je praktický soubor <code>.env</code>, který se načte při startu skriptu a nikdy se necommituje. Nejdřív vytvoř <code>.gitignore</code>, teprve potom <code>.env</code>:</p>
+<div class="kod" data-jazyk="text"><pre><code># .gitignore
+.venv/
+.env
+__pycache__/
+vystup/</code></pre></div>
+<div class="kod" data-jazyk="text"><pre><code># .env  (jen lokálně, nikdy do gitu ani do chatu)
+OPENAI_API_KEY=sem-vloz-svuj-klic
+OPENAI_MODEL=gpt-4o-mini</code></pre></div>
+<p>Do repozitáře místo toho patří <code>.env.example</code> se stejnými názvy proměnných a prázdnými hodnotami. Kolega z něj pozná, co má nastavit, a žádné tajemství neuvidí.</p>
+<p>Ještě o stupeň lepší je <strong>Windows Credential Manager</strong> (Správce přihlašovacích údajů). Klíč je pak uložený šifrovaně pod tvým uživatelským účtem a není v žádném souboru projektu. Z Pythonu se k němu dostaneš knihovnou <code>keyring</code> (neověřeno):</p>
+<div class="kod" data-jazyk="python"><pre><code># jednorázově: uložení klíče, zadáš ho do skrytého vstupu
+import getpass, keyring
+keyring.set_password("openai", "api_key", getpass.getpass("OpenAI klíč: "))</code></pre></div>
+<div class="kod" data-jazyk="python"><pre><code># ve skriptu: načtení klíče
+import keyring
+from openai import OpenAI
+client = OpenAI(api_key=keyring.get_password("openai", "api_key"))</code></pre></div>
+<p>Ve zbytku modulu používám <code>.env</code>, protože ho uvidíš i v cizích projektech a v CI (modul 12 ukazuje, jak klíč předat Jenkinsu).</p>
+<aside class="vsuvka vsuvka--pozor" data-stitek="Pozor" aria-label="Pozor"><p>Klíč nevkládej do chatu s AI asistentem, do Teams ani do ticketu. Pokud se klíč někam dostal, okamžitě ho na platform.openai.com zruš a vytvoř nový. Zrušení je jediná spolehlivá náprava. V nastavení projektu na OpenAI si navíc nastav limit útraty (usage limit), aby chyba v cyklu nevyčerpala celý kredit.</p></aside>
+<h3 id="krok-3-prvni-volani-api">Krok 3: První volání API<a class="kotva" href="#krok-3-prvni-volani-api" aria-label="Odkaz na tento oddíl"></a></h3>
+<p>Kód z L35 dělá čtyři věci. Vytvoří klienta, sestaví zprávu, pošle požadavek a vypíše odpověď. Podstatná část vypadá takto (klíč v kódu je převzatý z kurzu a je to přesně to, co děláme jinak):</p>
+<div class="kod" data-jazyk="python"><pre><code>from openai import OpenAI
+
+client = OpenAI(api_key='YOUR_API_KEY')      # kurz: klíč přímo v kódu
+
+messages = [{"role": "user", "content": "Generate test cases for a Contact Us Page, based on: ..."}]
+
+response = client.chat.completions.create(
+    model="gpt-3.5-turbo",
+    messages=messages,
+    max_tokens=1500,
+)
+print(response.choices[0].message.content.strip())</code></pre></div>
+<p>Projdi si jednotlivé části:</p>
+<ul><li><code>messages</code> je seznam zpráv konverzace. Každá zpráva má <code>role</code> (kdo mluví) a <code>content</code> (text). Role <code>user</code> je uživatelský prompt. Později přidáme roli <code>system</code>.</li><li><code>client.chat.completions.create</code> je jedno HTTP volání na endpoint Chat Completions. Model nemá paměť mezi voláními. Co chceš, aby věděl, musí být v <code>messages</code>.</li><li><code>model</code> určuje, který model odpoví. Kurz používá <code>gpt-3.5-turbo</code>, starý a dnes nedoporučovaný model. Aktuální názvy a ceny najdeš na stránce Models v dokumentaci OpenAI.</li><li><code>max_tokens</code> je strop délky odpovědi. Když ho model dosáhne, odpověď se uřízne uprostřed. Bruno v L35 zkouší 500, 1500 a 2500 tokenů. Výsledek je pokaždé pět nebo šest podobných testovacích případů. Delší limit tedy neznamená lepší výstup, jen dovoluje delší odpověď.</li><li><code>response.choices[0].message.content</code> je text odpovědi. Seznam <code>choices</code> má víc prvků jen tehdy, když si vyžádáš víc variant odpovědi najednou.</li></ul>
+<p>Vlastní minimální verze s klíčem z <code>.env</code> (soubor <code>prvni_volani.py</code>):</p>
+<div class="kod" data-jazyk="python"><pre><code>import os
+from dotenv import load_dotenv
+from openai import OpenAI
+
+load_dotenv()                                  # načte .env do proměnných prostředí
+client = OpenAI()                              # klíč si vezme z OPENAI_API_KEY
+model = os.environ.get("OPENAI_MODEL", "gpt-4o-mini")
+
+odpoved = client.chat.completions.create(
+    model=model,
+    messages=[{"role": "user", "content": "Napiš tři testovací podmínky pro pole E-mail ve formuláři."}],
+    max_tokens=300,
+)
+print(odpoved.choices[0].message.content)
+print("tokeny:", odpoved.usage.prompt_tokens, "+", odpoved.usage.completion_tokens)</code></pre></div>
+<p>Spusť <code>python prvni_volani.py</code>. Má vyjít krátký seznam podmínek a řádek s počtem tokenů. Pokud dostaneš chybu 401, klíč se nenačetl nebo je neplatný. Chyba 429 znamená vyčerpaný kredit nebo limit požadavků. Výchozí model <code>gpt-4o-mini</code> je jen příklad (neověřeno, zda je v době čtení stále nabízen). Model měň v <code>.env</code>, ne v kódu.</p>
+<h3 id="krok-4-pozadavky-do-souboru-prompt-do-struktury">Krok 4: Požadavky do souboru, prompt do struktury<a class="kotva" href="#krok-4-pozadavky-do-souboru-prompt-do-struktury" aria-label="Odkaz na tento oddíl"></a></h3>
+<p>Bruno má požadavky na formulář napsané přímo v řetězci v kódu. Když je přesuneš do samostatného souboru, oddělíš testovací bázi od logiky. Soubor můžeš verzovat, revidovat a měnit bez zásahu do Pythonu. Vytvoř <code>pozadavky/contact_us.md</code> vlastními slovy podle stránky:</p>
+<div class="kod" data-jazyk="text"><pre><code>Formulář Contact Us (https://webdriveruniversity.com/Contact-Us/contactus.html)
+- Pole: First Name, Last Name, Email Address, Comments. Všechna jsou povinná.
+- Tlačítko SUBMIT odešle formulář.
+- Tlačítko RESET vymaže všechna pole.
+- E-mail musí být ve platném formátu (obsahuje @ a doménu).
+- Po úspěšném odeslání se zobrazí stránka s textem "Thank You for your Message!".
+- Při chybě se zobrazí "Error: all fields are required" nebo "Error: Invalid email address".</code></pre></div>
+<p>Pozor na drobnost, kterou Bruno odhalí až při automatizaci v modulu 10. Jeho prompt uvádí "Thank You for your Message" a "Error: All fields are required". Skutečná stránka ukazuje "Thank You for your Message!" s vykřičníkem a "all" malým písmenem. Model přesné texty zná jen z promptu. Když je v požadavku překlep, model ho věrně zopakuje do každého testovacího případu.</p>
+<p>Teď prompt. Oddíl 2.1.1 sylabu skládá prompt z komponent <strong>Role</strong>, <strong>Context</strong>, <strong>Instruction</strong>, <strong>Input Data</strong>, <strong>Constraints</strong> a <strong>Output Format</strong>. V API se to přirozeně rozdělí do dvou zpráv. <strong>System prompt</strong> (systémový prompt) nese to, co platí pro každé volání: roli, pravidla a tvar výstupu. <strong>User prompt</strong> (uživatelský prompt) nese konkrétní vstup, tedy požadavky jednoho formuláře.</p>
+<div class="kod" data-jazyk="python"><pre><code>SYSTEM = """Jsi zkušený test analytik. Navrhuješ testovací případy pro webové formuláře.
+Pravidla:
+- Vycházej jen z požadavků v uživatelské zprávě. Nic si nedomýšlej.
+- Pokud je požadavek nejasný, zapiš to do pole "otazky", nevymýšlej chování.
+- Použij rozdělení do tříd ekvivalence a testování hraničních hodnot.
+- Očekávaný výsledek piš přesně textem z požadavků.
+Výstup: pouze JSON objekt podle zadaného schématu, bez komentářů."""
+
+def user_prompt(pozadavky: str) -&gt; str:
+    return f"""Navrhni 6 až 10 testovacích případů pro tento formulář.
+Pokryj úspěšné odeslání, každé povinné pole, neplatný e-mail a tlačítko RESET.
+
+Požadavky:
+{pozadavky}"""</code></pre></div>
+<p>Pravidlo "nic si nedomýšlej" a pole pro otázky jsou obrana proti <strong>hallucination</strong> (halucinace), tedy vymyšleným funkcím nebo hláškám. Model, kterému dovolíš říct "nevím", si méně často vymýšlí.</p>
+<h3 id="krok-5-strukturovany-vystup-json">Krok 5: Strukturovaný výstup (JSON)<a class="kotva" href="#krok-5-strukturovany-vystup-json" aria-label="Odkaz na tento oddíl"></a></h3>
+<p>Volný text z L35 se dobře čte, ale špatně zpracovává. Pokud chceš testovací případy nahrát do Jira, Xray nebo předat dalšímu skriptu, potřebuješ pevnou strukturu. OpenAI API nabízí dvě úrovně:</p>
+<div class="tabulka-obal"><table><thead><tr><th>Režim</th><th>Parametr</th><th>Co zaručuje</th></tr></thead><tbody><tr><td>JSON mode</td><td><code>response_format={"type": "json_object"}</code></td><td>Odpověď je platný JSON. Strukturu nehlídá. Prompt musí obsahovat slovo „JSON“.</td></tr><tr><td>Structured Outputs</td><td><code>response_format={"type": "json_schema", ...}</code></td><td>Odpověď odpovídá zadanému JSON Schema, pokud model schéma podporuje.</td></tr></tbody></table></div>
+<p>Tabulka ukazuje, proč je druhý režim lepší: s JSON mode dostaneš syntakticky správný JSON, ale klidně s jinými klíči, než čekáš. Schéma pro náš případ:</p>
+<div class="kod" data-jazyk="python"><pre><code>SCHEMA = {
+    "name": "testovaci_pripady",
+    "strict": True,
+    "schema": {
+        "type": "object",
+        "additionalProperties": False,
+        "required": ["testovaci_pripady", "otazky"],
+        "properties": {
+            "otazky": {"type": "array", "items": {"type": "string"}},
+            "testovaci_pripady": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "additionalProperties": False,
+                    "required": ["id", "nazev", "technika", "kroky", "ocekavany_vysledek", "priorita"],
+                    "properties": {
+                        "id": {"type": "string"},
+                        "nazev": {"type": "string"},
+                        "technika": {"type": "string"},
+                        "kroky": {"type": "array", "items": {"type": "string"}},
+                        "ocekavany_vysledek": {"type": "string"},
+                        "priorita": {"type": "string", "enum": ["vysoka", "stredni", "nizka"]},
+                    },
+                },
+            },
+        },
+    },
+}</code></pre></div>
+<p>V režimu <code>strict</code> musí mít každý objekt <code>additionalProperties: false</code> a v <code>required</code> všechna pole. Jinak API požadavek odmítne. Pole <code>technika</code> nutí model napsat, jakou techniku návrhu testů použil. Recenzent pak rychle vidí, jestli jsou hraniční hodnoty opravdu hraniční.</p>
+<p>Ani schéma nenahradí kontrolu. Model může vrátit prázdný seznam kroků, dvakrát stejné ID nebo uříznutý JSON, když narazí na <code>max_tokens</code>. Proto výstup vždy ověř vlastní funkcí. Následující validace používá jen standardní knihovnu (ověřeno spuštěním na ukázkových datech, viz <code>zdroje/_pracovni/bruno/over_offline.py</code>):</p>
+<div class="kod" data-jazyk="python"><pre><code>import json
+
+POVINNE = {"id", "nazev", "kroky", "ocekavany_vysledek", "priorita"}
+PRIORITY = {"vysoka", "stredni", "nizka"}
+
+def ocisti(text: str) -&gt; str:
+    """Odstraní obal ```json ... ```, pokud ho model přidal (v JSON režimu se to nestává)."""
+    t = text.strip()
+    if t.startswith("```"):
+        t = t.split("\n", 1)[1] if "\n" in t else ""
+        if t.rstrip().endswith("```"):
+            t = t.rstrip()[:-3]
+    return t.strip()
+
+def validuj(text: str) -&gt; list[dict]:
+    data = json.loads(ocisti(text))
+    chyby, videna_id = [], set()
+    for i, tc in enumerate(data["testovaci_pripady"], 1):
+        if chybi := POVINNE - tc.keys():
+            chyby.append(f"#{i}: chybí {sorted(chybi)}")
+        if tc.get("priorita") not in PRIORITY:
+            chyby.append(f"#{i}: neplatná priorita {tc.get('priorita')!r}")
+        if not tc.get("kroky"):
+            chyby.append(f"#{i}: žádné kroky")
+        if tc.get("id") in videna_id:
+            chyby.append(f"#{i}: duplicitní id {tc.get('id')}")
+        videna_id.add(tc.get("id"))
+    if chyby:
+        raise ValueError("; ".join(chyby))
+    return data["testovaci_pripady"]</code></pre></div>
+<p>Funkce <code>ocisti</code> řeší zvyk, který Bruno potkal v L42. Model rád obalí odpověď do markdownového bloku kódu se značkou <code>gherkin</code> nebo <code>json</code>, i když to nechceš. Bruno to řeší větou v promptu. Kód, který obal odstraní, je spolehlivější.</p>
+<p>Hlavní skript <code>generuj_tc.py</code> vše spojí (neověřeno spuštěním, vyžaduje klíč):</p>
+<div class="kod" data-jazyk="python"><pre><code>import json, os, sys
+from pathlib import Path
+from dotenv import load_dotenv
+from openai import OpenAI
+# SYSTEM, user_prompt, SCHEMA, validuj: z předchozích kroků (vlož je sem nebo do modulu prompty.py)
+
+load_dotenv()
+client = OpenAI()
+MODEL = os.environ.get("OPENAI_MODEL", "gpt-4o-mini")
+
+def generuj(soubor_pozadavku: str, teplota: float = 0.2) -&gt; dict:
+    pozadavky = Path(soubor_pozadavku).read_text(encoding="utf-8")
+    odpoved = client.chat.completions.create(
+        model=MODEL,
+        messages=[
+            {"role": "system", "content": SYSTEM},
+            {"role": "user", "content": user_prompt(pozadavky)},
+        ],
+        response_format={"type": "json_schema", "json_schema": SCHEMA},
+        temperature=teplota,
+        max_tokens=3000,
+    )
+    volba = odpoved.choices[0]
+    if volba.finish_reason == "length":
+        sys.exit("Odpověď se uřízla na max_tokens. Zvyš limit nebo zmenši zadání.")
+    pripady = validuj(volba.message.content)
+    return {"model": odpoved.model, "usage": odpoved.usage.model_dump(), "pripady": pripady,
+            "otazky": json.loads(volba.message.content)["otazky"]}
+
+if __name__ == "__main__":
+    vysledek = generuj(sys.argv[1] if len(sys.argv) &gt; 1 else "pozadavky/contact_us.md")
+    Path("vystup").mkdir(exist_ok=True)
+    cil = Path("vystup/contact_us.json")
+    cil.write_text(json.dumps(vysledek, ensure_ascii=False, indent=2), encoding="utf-8")
+    print(f"{len(vysledek['pripady'])} testovacích případů uloženo do {cil}")
+    for o in vysledek["otazky"]:
+        print("Otázka k požadavkům:", o)</code></pre></div>
+<p>Kontrola <code>finish_reason == "length"</code> je důležitá. Bez ní dostaneš uříznutý JSON a <code>json.loads</code> spadne s nesrozumitelnou chybou. Klíč <code>ensure_ascii=False</code> zachová v souboru českou diakritiku.</p>
+<p>Co má vyjít: šest až deset testovacích případů v <code>vystup/contact_us.json</code> a případně pár otázek. Typická otázka je třeba „Jaká je maximální délka pole Comments?“. Požadavky ji neuvádějí, a model si ji tedy nemá vymýšlet.</p>
+<h3 id="krok-6-teplota-a-opakovatelnost">Krok 6: Teplota a opakovatelnost<a class="kotva" href="#krok-6-teplota-a-opakovatelnost" aria-label="Odkaz na tento oddíl"></a></h3>
+<p><strong>Temperature</strong> (teplota) řídí, jak náhodně model vybírá další token. Při nízké teplotě volí téměř vždy nejpravděpodobnější pokračování. Při vysoké teplotě zkouší i méně pravděpodobná slova, takže je výstup pestřejší a méně předvídatelný. Parametr <strong>top_p</strong> omezuje výběr jen na nejpravděpodobnější tokeny, jejichž pravděpodobnosti dají dohromady hodnotu <code>top_p</code>.</p>
+<p>Bruno v L52 nastaví <code>temperature=0.1</code> a <code>top_p=1.0</code>, aby AI návrhy kódu vycházely konzistentně. Pro generování testovacích případů do regresní sady chceš totéž. Pro brainstorming neobvyklých scénářů naopak může vyšší teplota pomoct.</p>
+<p>Nízká teplota ale nezaručuje stejný výsledek. Sylabus v oddílu 3.1.4 mluví o <strong>non-deterministic behaviour</strong> (nedeterministické chování). I při teplotě 0 se odpovědi mezi voláními mohou lišit, protože výpočty na serveru nejsou bit po bitu stejné a poskytovatel model průběžně aktualizuje. OpenAI k tomu nabízí parametr <code>seed</code>, který opakovatelnost zlepšuje, ale také ji nezaručuje (neověřeno).</p>
+<p>Některé novější modely teplotu vůbec nepřijímají. U OpenAI to platí pro část uvažujících (reasoning) modelů. U aktuálních modelů Claude od Anthropicu vrací API od 21. 10. 2026 chybu, pokud <code>temperature</code> nebo <code>top_p</code> pošleš. Opakovatelnost se tam řeší jinak: přesným promptem, strukturovaným výstupem a kontrolou výsledku.</p>
+<p>Vyzkoušej to měřením. Skript <code>porovnej_behy.py</code> spustí generování třikrát a porovná, které testovací případy se objevily ve všech bězích (neověřeno spuštěním):</p>
+<div class="kod" data-jazyk="python"><pre><code>from generuj_tc import generuj
+
+def otisk(pripady):
+    """Porovnáváme očekávané výsledky a techniky, ne přesné formulace kroků."""
+    return {(tc["technika"].lower(), tc["ocekavany_vysledek"]) for tc in pripady}
+
+for teplota in (0.0, 1.0):
+    behy = [otisk(generuj("pozadavky/contact_us.md", teplota)["pripady"]) for _ in range(3)]
+    spolecne = set.intersection(*behy)
+    vsechny = set.union(*behy)
+    print(f"teplota {teplota}: počty {[len(b) for b in behy]}, ve všech bězích {len(spolecne)} z {len(vsechny)}")</code></pre></div>
+<p>Při teplotě 0 by měl být podíl společných případů výrazně vyšší než při teplotě 1. Šest volání stojí jednotky centů. Výsledek si zapiš, použiješ ho ve cvičení 2.</p>
+<h3 id="krok-7-tokeny-max-tokens-a-cena">Krok 7: Tokeny, <code>max_tokens</code> a cena<a class="kotva" href="#krok-7-tokeny-max-tokens-a-cena" aria-label="Odkaz na tento oddíl"></a></h3>
+<p>Každá odpověď nese objekt <code>usage</code> se třemi čísly. <code>prompt_tokens</code> je počet tokenů na vstupu, tedy systémový prompt, uživatelský prompt a schéma. <code>completion_tokens</code> je počet tokenů odpovědi. <code>total_tokens</code> je jejich součet. Platíš za obojí, výstupní tokeny bývají několikanásobně dražší než vstupní.</p>
+<p>Cenu spočítáš jednoduchou funkcí. Ceny za milion tokenů si vezmi z ceníku a ulož do <code>.env</code> nebo konfigurace, protože se mění častěji než kód:</p>
+<div class="kod" data-jazyk="python"><pre><code>def cena(input_tokens: int, output_tokens: int, cena_in_1m: float, cena_out_1m: float) -&gt; float:
+    return input_tokens / 1_000_000 * cena_in_1m + output_tokens / 1_000_000 * cena_out_1m
+
+# příklad s fiktivními cenami 1 USD / 4 USD za milion: 1 000 + 1 500 tokenů = 0,007 USD</code></pre></div>
+<p>Pro odhad velikosti: česky psaný text má víc tokenů na slovo než anglický. Diakritika a dlouhá slova se dělí na víc kusů. Systémový prompt a schéma posíláš s každým voláním znovu. Když generuješ testovací případy pro sto formulářů, zaplatíš je stokrát.</p>
+<p>Tři pravidla pro rozumnou cenu:</p>
+<ol><li><code>max_tokens</code> nastav podle očekávané délky odpovědi s rezervou. Je to pojistka proti zacyklení, ne nástroj kvality.</li><li>Na hromadné generování zkus nejdřív menší a levnější model a porovnej kvalitu na vzorku. Oddíl 5.1.3 sylabu popisuje výběr modelu přesně tímto způsobem.</li><li>Sleduj útratu v přehledu Usage na platform.openai.com. Bruno v L35 ukazuje, že pár desítek volání sníží kredit jen nepatrně. Chyba v cyklu ho ale vyčerpá rychle.</li></ol>
+<h3 id="krok-8-ai-jako-pomocnik-pro-testovaci-data-l15-l16">Krok 8: AI jako pomocník pro testovací data (L15–L16)<a class="kotva" href="#krok-8-ai-jako-pomocnik-pro-testovaci-data-l15-l16" aria-label="Odkaz na tento oddíl"></a></h3>
+<p>Bruno začíná jednodušší úlohou. Má program <code>login_test.py</code> se třemi napevno zapsanými kombinacemi jména a hesla. V ChatGPT se zeptá, jak automaticky generovat pestřejší případy, a vloží svůj kód. AI vrátí funkci <code>generate_test_cases()</code>, která přidá prázdná pole, příliš dlouhé řetězce, speciální znaky a hodnoty <code>None</code>. Podstatný kus:</p>
+<div class="kod" data-jazyk="python"><pre><code>def generate_random_string(length, include_special_chars=False):
+    characters = string.ascii_letters + string.digits
+    if include_special_chars:
+        characters += string.punctuation
+    return ''.join(random.choice(characters) for _ in range(length))
+
+test_cases.append({"username": generate_random_string(100), "password": "securePass123"})  # dlouhé jméno
+test_cases.append({"username": None, "password": None})                                    # None hodnoty</code></pre></div>
+<p>Při revizi takového kódu hledej tři věci. Za prvé, náhodná data bez <code>random.seed(...)</code> dávají při každém běhu jiný vstup. Když test jednou selže, chybu nezopakuješ. Za druhé, AI přidala případy, ale k nim žádný očekávaný výsledek. Program jen vypisuje „Login failed“. Bez očekávaného výsledku to není test, ale ukázka. Za třetí, Bruno správně upozorňuje, že do chatu vložil kód bez skutečných přihlašovacích údajů. Kód s reálnými hesly nebo připojovacími řetězci do veřejného modelu nepatří.</p>
+<p>Vlastní vylepšení: místo náhodných dat ať model vygeneruje tabulku vstupů a očekávaných výsledků jako JSON se schématem podobným kroku 5. Tabulku pak čte parametrizovaný test (<code>pytest.mark.parametrize</code> nebo Scenario Outline v modulu 10). Data jsou pak opakovatelná, revidovatelná a verzovaná v gitu.</p>
+<h3 id="krok-9-alternativy-lokalni-model-a-anthropic-api">Krok 9: Alternativy – lokální model a Anthropic API<a class="kotva" href="#krok-9-alternativy-lokalni-model-a-anthropic-api" aria-label="Odkaz na tento oddíl"></a></h3>
+<p>Bruno v L36 zkouší open-source model GPT-Neo 2.7B přes knihovny <code>transformers</code> a <code>torch</code>. Ukázka sama varuje, ať ji nikdo neopakuje. Model má ke stažení přes 10 GB, kurz musel kvůli kompatibilitě snížit Python z 3.13 na starší verzi a doinstalovat Rust a Visual Studio. Odpověď trvala minuty a byla výrazně horší než z OpenAI. L37 to shrnuje srovnáním:</p>
+<div class="tabulka-obal"><table><thead><tr><th>Varianta</th><th>Výhody</th><th>Nevýhody</th></tr></thead><tbody><tr><td>Cloudové API (OpenAI, Anthropic)</td><td>rychlé, kvalitní, bez nároků na hardware</td><td>platí se za tokeny, data opouštějí počítač</td></tr><tr><td>Lokální model přes aplikaci (GPT4All, Ollama)</td><td>data zůstávají na počítači, zdarma</td><td>slabší kvalita menších modelů, nároky na RAM</td></tr><tr><td>Lokální model přímo v Pythonu (transformers)</td><td>plná kontrola</td><td>složitá instalace, velmi pomalé bez GPU</td></tr></tbody></table></div>
+<p>Tabulka platí i dnes, jen lokální nástroje mezitím zjednodušily integraci. Nad rámec kurzu: <strong>Ollama</strong> a GPT4All umí spustit lokální server s rozhraním kompatibilním s OpenAI API. Stejný kód z kroku 5 pak stačí přesměrovat (neověřeno, <code>json_schema</code> nemusí lokální server podporovat, začni s <code>json_object</code>):</p>
+<div class="kod" data-jazyk="python"><pre><code>client = OpenAI(base_url="http://localhost:11434/v1", api_key="ollama")   # Ollama, klíč se nekontroluje</code></pre></div>
+<p>Lokální model je jediná z těchto variant, u které data neopouštějí počítač. Podrobně se lokálním modelům věnuje modul 2. Ani tak do něj ale nevkládej klientská data bez schválení. Licence modelu, umístění a ochrana dat jsou pořád věcí firmy.</p>
+<p>Druhá alternativa je <strong>Anthropic API</strong> s modely Claude. Princip je stejný, liší se názvy parametrů. Knihovna se jmenuje <code>anthropic</code>, klíč čte z proměnné <code>ANTHROPIC_API_KEY</code> a systémový prompt je samostatný parametr <code>system</code> (neověřeno spuštěním):</p>
+<div class="kod" data-jazyk="python"><pre><code>import anthropic
+
+client = anthropic.Anthropic()                       # klíč z ANTHROPIC_API_KEY
+zprava = client.messages.create(
+    model="claude-opus-5-5",                         # levnější varianta: claude-haiku-5-5
+    max_tokens=4000,
+    system=SYSTEM,
+    messages=[{"role": "user", "content": user_prompt(pozadavky)}],
+)
+text = "".join(b.text for b in zprava.content if b.type == "text")
+print(zprava.usage.input_tokens, zprava.usage.output_tokens)</code></pre></div>
+<p>Odpověď je seznam bloků, ne jeden řetězec. Proto se text skládá z bloků typu <code>text</code>. Strukturovaný výstup nabízí metoda <code>client.messages.parse()</code> s modelem Pydantic. <code>temperature</code> u aktuálních modelů Claude neposílej, API ji odmítne. Ceník k říjnu 2026 uvádí pro Claude Opus 5.5 4 USD za milion vstupních a 20 USD za milion výstupních tokenů, pro Claude Haiku 5.5 0,10 a 0,50 USD. Před použitím ceny ověř.</p>
+<h2 id="overeni">Ověření<a class="kotva" href="#overeni" aria-label="Odkaz na tento oddíl"></a></h2>
+<p>Hotovo máš, když platí všechny body:</p>
+<ol><li><code>git status</code> ani <code>git check-ignore -v .env</code> neukazuje <code>.env</code> jako soubor k commitu. Příkaz <code>git check-ignore</code> má vypsat řádek z <code>.gitignore</code>.</li><li><code>python prvni_volani.py</code> vypíše odpověď a počet tokenů. V kódu nikde není řetězec klíče. Ověříš to vyhledáním začátku klíče v projektu: <code>Select-String -Path *.py -Pattern "sk-"</code> nesmí nic najít.</li><li><code>python generuj_tc.py</code> vytvoří <code>vystup/contact_us.json</code> a funkce <code>validuj</code> neohlásí chybu.</li><li>Ve výstupu je aspoň jeden případ pro každé povinné pole, jeden pro neplatný e-mail a jeden pro RESET. To zkontroluj ručně. Validace hlídá strukturu, ne pokrytí.</li><li>Očekávané výsledky obsahují přesné texty z požadavků („Thank You for your Message!“). Pokud model napsal jiný text, je to halucinace a prompt potřebuje úpravu.</li><li><code>python porovnej_behy.py</code> vypíše pro teplotu 0 vyšší podíl společných případů než pro teplotu 1.</li></ol>
+<p>Část bez sítě (validace, výpočet ceny) je ověřená skriptem <code>zdroje/_pracovni/bruno/over_offline.py</code> na Pythonu 3.12.10. Volání API v tomto modulu jsem nespouštěl.</p>
+<h2 id="caste-chyby">Časté chyby<a class="kotva" href="#caste-chyby" aria-label="Odkaz na tento oddíl"></a></h2>
+<p><strong><code>AuthenticationError</code> (401).</strong> Skript nenačetl <code>.env</code>, protože běží z jiného adresáře, nebo chybí <code>load_dotenv()</code>. Funkce <code>load_dotenv()</code> hledá <code>.env</code> od aktuálního pracovního adresáře výš. Spouštěj skripty z kořene projektu.</p>
+<p><strong><code>RateLimitError</code> (429) hned při prvním volání.</strong> Na účtu není kredit. Předplatné ChatGPT Plus se na API nepřenáší.</p>
+<p><strong>Model neexistuje (404).</strong> Starý název z kurzu (<code>gpt-3.5-turbo</code>) nebo překlep. Seznam dostupných modelů vypíše <code>client.models.list()</code>.</p>
+<p><strong><code>json.JSONDecodeError</code>.</strong> Odpověď se uřízla (<code>finish_reason == "length"</code>), nebo model přidal text kolem JSON. Použij <code>response_format</code> a kontrolu <code>finish_reason</code>.</p>
+<p><strong>Výstup se mezi běhy liší, i když se prompt nezměnil.</strong> To je nedeterminismus, ne chyba kódu. Sniž teplotu, zpřesni prompt a porovnávej obsah testovacích případů, ne jejich formulace.</p>
+<p><strong>Model vrací hlášky, které na stránce nejsou.</strong> Model nezná stránku, zná jen prompt. Do požadavků zapiš přesné texty a v systémovém promptu zakaž domýšlení.</p>
+<p><strong>Klíč v historii gitu.</strong> Smazání souboru nestačí, historie ho dál obsahuje. Klíč okamžitě zruš na platform.openai.com.</p>
+<p><strong>Commitnutý <code>.venv</code>.</strong> Repozitář má stovky megabajtů a na jiném počítači stejně nefunguje. Přidej <code>.venv/</code> do <code>.gitignore</code> dřív, než poprvé spustíš <code>git add</code>.</p>
+<h2 id="cviceni">Cvičení<a class="kotva" href="#cviceni" aria-label="Odkaz na tento oddíl"></a></h2>
+<aside class="vsuvka vsuvka--cviceni" id="praxe-09-python-a-openai-api-login-portal-misto-contact-us" data-stitek="Cvičení" aria-label="Cvičení"><p class="praxe-blok-nazev">Login Portal místo Contact Us</p><p>Cíl: ověřit, že skript funguje pro jinou testovací bázi beze změny kódu. Napiš <code>pozadavky/login.md</code> pro stránku Login Portal na webdriveruniversity.com (Bruno ji používá v L7 a L8). Spusť <code>python generuj_tc.py pozadavky/login.md</code>. Hotovo: soubor s testovacími případy projde validací, kód skriptu ses nedotkl a aspoň jedna položka v <code>otazky</code> upozorňuje na něco, co požadavky neříkají (například blokace účtu po opakovaných pokusech).</p><p class="praxe-cviceni-pata" data-nepocitat><label class="zk-volba praxe-hotovo"><input type="checkbox" data-praxe-hotovo="praxe-09-python-a-openai-api-login-portal-misto-contact-us"> Hotovo</label></p></aside>
+<aside class="vsuvka vsuvka--cviceni" id="praxe-09-python-a-openai-api-zmer-opakovatelnost" data-stitek="Cvičení" aria-label="Cvičení"><p class="praxe-blok-nazev">Změř opakovatelnost</p><p>Cíl: mít čísla místo dojmu. Spusť <code>porovnej_behy.py</code> pro teploty 0, 0,7 a 1,2, vždy pětkrát. Zapiš do tabulky počet případů v každém běhu a podíl případů společných všem během. Hotovo: tabulka se třemi řádky a jednou větou závěru, jakou teplotu použiješ pro regresní sadu a proč. Celková cena pokusu (součet z <code>usage</code>) je pod 0,20 USD.</p><p class="praxe-cviceni-pata" data-nepocitat><label class="zk-volba praxe-hotovo"><input type="checkbox" data-praxe-hotovo="praxe-09-python-a-openai-api-zmer-opakovatelnost"> Hotovo</label></p></aside>
+<aside class="vsuvka vsuvka--cviceni" id="praxe-09-python-a-openai-api-recenze-vystupu-podle-metrik" data-stitek="Cvičení" aria-label="Cvičení"><p class="praxe-blok-nazev">Recenze výstupu podle metrik</p><p>Cíl: procvičit hodnocení výstupu z oddílu 2.3. Vezmi jeden vygenerovaný soubor a ke každému testovacímu případu ručně zapiš, zda je správný (odpovídá požadavkům), relevantní (testuje něco z požadavků) a nový (neopakuje jiný případ). Hotovo: máš podíl správných, relevantních a duplicitních případů. Podle nejčastější chyby jsi upravil systémový prompt, spustil generování znovu a čísla se zlepšila.</p><p class="praxe-cviceni-pata" data-nepocitat><label class="zk-volba praxe-hotovo"><input type="checkbox" data-praxe-hotovo="praxe-09-python-a-openai-api-recenze-vystupu-podle-metrik"> Hotovo</label></p></aside>
+<h2 id="souvislost-se-sylabem-ct-genai">Souvislost se sylabem CT-GenAI<a class="kotva" href="#souvislost-se-sylabem-ct-genai" aria-label="Odkaz na tento oddíl"></a></h2>
+<p>Modul převádí do kódu to, co kapitola 2 popisuje jako práci s promptem. Rozdělení na systémovou a uživatelskou zprávu odpovídá oddílu 2.1.3 (systémový a uživatelský prompt). Struktura systémového promptu s rolí, pravidly a tvarem výstupu odpovídá komponentám z oddílu 2.1.1. Generování testovacích případů z požadavků je přímo úloha z oddílu 2.2.2 (návrh testů a implementace testování s GenAI). Ruční recenze v cvičení 3 používá metriky z oddílu 2.3.1 a postupné ladění promptu z oddílu 2.3.2.</p>
+<p>Kapitola 3 je ve skriptu všude. Pravidlo „nedomýšlej si“, pole <code>otazky</code> a kontrola přesných hlášek míří na halucinace z oddílu 3.1.1 a jejich odhalování z oddílu 3.1.2. Pokus s teplotou je praktická ukázka nedeterministického chování z oddílu 3.1.4. Uložení klíče mimo kód a zákaz klientských dat odpovídají rizikům a opatřením z oddílů 3.2.1 a 3.2.3.</p>
+<p>Srovnání cloudového API, lokálního modelu a různě velkých modelů podle ceny a kvality je praktická verze výběru LLM nebo SLM z oddílu 5.1.3. Varování před osobním klíčem pro firemní práci odpovídá oddílu 5.1.1 o stínové AI.</p>
+</article>
+<div class="splneno-radek" data-nepocitat><button type="button" class="tlacitko splneno" data-splneno="modul-09-python-a-openai-api" data-text-ne="Označit jako prostudované" data-text-ano="✓ Prostudováno" aria-pressed="false">Označit jako prostudované</button></div>
+<nav class="naradi sousede" aria-label="Sousední moduly"><a href="08-nastroje-postavene-na-llm.html">← 8. Testovací nástroje postavené na LLM</a><a href="../praxe.html">Všechny moduly</a><a href="10-bdd-framework-behave-playwright-ai.html">10. BDD framework – Behave, Playwright a AI →</a></nav>
+</main>
+<aside class="strom" aria-label="Obsah stránky"><h2>V tomto modulu</h2><ol><li><a href="#co-postavis">Co postavíš</a></li><li><a href="#predpoklady">Předpoklady</a></li><li><a href="#postup">Postup</a><ol><li><a href="#krok-1-projekt-a-virtualni-prostredi">Krok 1: Projekt a virtuální prostředí</a></li><li><a href="#krok-2-api-klic-a-proc-nepatri-do-kodu">Krok 2: API klíč a proč nepatří do kódu</a></li><li><a href="#krok-3-prvni-volani-api">Krok 3: První volání API</a></li><li><a href="#krok-4-pozadavky-do-souboru-prompt-do-struktury">Krok 4: Požadavky do souboru, prompt do struktury</a></li><li><a href="#krok-5-strukturovany-vystup-json">Krok 5: Strukturovaný výstup (JSON)</a></li><li><a href="#krok-6-teplota-a-opakovatelnost">Krok 6: Teplota a opakovatelnost</a></li><li><a href="#krok-7-tokeny-max-tokens-a-cena">Krok 7: Tokeny, <code>max_tokens</code> a cena</a></li><li><a href="#krok-8-ai-jako-pomocnik-pro-testovaci-data-l15-l16">Krok 8: AI jako pomocník pro testovací data (L15–L16)</a></li><li><a href="#krok-9-alternativy-lokalni-model-a-anthropic-api">Krok 9: Alternativy – lokální model a Anthropic API</a></li></ol></li><li><a href="#overeni">Ověření</a></li><li><a href="#caste-chyby">Časté chyby</a></li><li><a href="#cviceni">Cvičení</a></li><li><a href="#souvislost-se-sylabem-ct-genai">Souvislost se sylabem CT-GenAI</a></li></ol></aside>
+</div>
+</div>
+<footer class="paticka">
+  <div class="paticka-vnitrek">
+    <p><strong>Neoficiální studijní materiál.</strong> Tento web není produktem ani publikací ISTQB®.
+    ISTQB® je registrovaná ochranná známka International Software Testing Qualifications Board.
+    Texty jsou vlastním zpracováním autora vytvořeným při přípravě na zkoušku CT-GenAI; oficiální sylabus
+    a vzorovou zkoušku si stáhněte přímo na istqb.org.</p>
+    <p>Ke zkoušce vždy platí znění oficiálního sylabu CT-GenAI v1.1. Doplněné informace a příklady z praxe
+    slouží k porozumění, nikoli jako zdroj správných odpovědí u zkoušky.</p>
+    <ul>
+      <li><a href="https://istqb.org/certifications/gen-ai/" target="_blank" rel="noopener noreferrer">ISTQB — CT-GenAI</a></li>
+      <li><a href="https://glossary.istqb.org" target="_blank" rel="noopener noreferrer">Slovník ISTQB</a></li>
+      <li><a href="https://casqb.org" target="_blank" rel="noopener noreferrer">CaSQB</a></li>
+      <li><a href="../zdroje.html">Zdroje a autorská práva</a></li>
+    </ul>
+  </div>
+</footer>
+<script src="../assets/ucet-konfig.js"></script>
+<script src="../assets/ucet.js"></script>
+<script src="../assets/skript.js"></script>
+</body>
+</html>

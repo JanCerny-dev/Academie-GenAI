@@ -1,0 +1,399 @@
+[
+ {
+  "id": "HO-2.1.1",
+  "uroven": "H0",
+  "lo": "GenAI-2.1.1",
+  "nazev": "Šest komponent v hotových promptech",
+  "cil": "Umět v promptu pro testovací úlohu najít roli, kontext, instrukci, vstupní data, omezení a formát výstupu a vidět, jak každá ovlivní výsledek.",
+  "zadani": "Vezmi tři strukturované prompty (níže je jeden, další dva napiš podle něj pro analýzu reportu a pro testovací data). V každém označ šest komponent. Pak pokaždé jednu komponentu vynech a porovnej výstup s plnou verzí. Používej jen vlastní nebo smyšlená data a veřejné ukázkové aplikace, nikdy firemní ani klientská data.",
+  "kroky": [
+   "Prompt vlož do chatbota tak, jak je, a ulož výstup.",
+   "Ke každé větě promptu napiš, do které komponenty patří.",
+   "Postupně vynech roli, kontext, omezení a formát výstupu a pokaždé ulož výstup.",
+   "Porovnej výstupy a zapiš, co se změnilo bez každé komponenty."
+  ],
+  "prompt": "Role: Jsi test analytik webových aplikací.\nContext: Aplikace uctenky eviduje osoby a faktury. Osoby se nemažou: DELETE osobu\njen skryje a PUT skryje původní záznam a založí nový.\nInstruction: Navrhni testovací podmínky pro úpravu údajů osoby.\nInput data: Model Person (name, identificationNumber, mail, city, country CZECHIA/SLOVAKIA,\nhidden) a popis chování výše.\nConstraints: Jen funkční chování. Nevymýšlej validace, které nejsou v podkladech;\nchybějící informace uveď jako otázky.\nOutput format: Tabulka: ID, podmínka, typ (pozitivní/negativní), otevřená otázka.",
+  "co_sledovat": [
+   "Bez kontextu model netestuje skrývání osob a novou verzi záznamu.",
+   "Bez omezení si model vymýšlí validace (např. formát IČO), které v podkladech nejsou.",
+   "Bez formátu výstupu se mění struktura odpovědi mezi běhy.",
+   "Které věty šly zařadit do dvou komponent a proč."
+  ],
+  "projekt": "uctenky",
+  "cas_min": 20
+ },
+ {
+  "id": "HO-2.1.2a",
+  "uroven": "H0",
+  "lo": "GenAI-2.1.2",
+  "nazev": "Řetězení, few-shot a meta prompting na jedné úloze",
+  "cil": "Vidět na stejné testovací úloze rozdíl mezi prompt chainingem, few-shot promptingem a meta promptingem a jejich přínos pro přesnost a úplnost.",
+  "zadani": "Úloha: testovací případy pro filtr faktur podle ceny v aplikaci uctenky. Proveď ji třikrát: (1) jako řetěz tří promptů s kontrolou mezi kroky, (2) jako few-shot se dvěma vzorovými testovacími případy, (3) meta promptingem, kdy prompt nejdřív navrhne model. Používej jen vlastní nebo smyšlená data a veřejné ukázkové aplikace, nikdy firemní ani klientská data.",
+  "kroky": [
+   "Řetěz: třídy ekvivalence a hranice → kontrola → testovací případy → kontrola → tabulka pokrytí.",
+   "Few-shot: vlož dva hotové testovací případy jako vzor a požádej o další.",
+   "Meta: popiš cíl a nech model navrhnout prompt; ten spusť.",
+   "Výsledky porovnej podle recallu tříd a relevance."
+  ],
+  "prompt": "Meta prompt:\nChci od tebe testovací případy pro filtr faktur podle minimální a maximální ceny\n(pole Min. cena a Max. cena, cena je kladné číslo s nejvýše dvěma desetinnými místy).\nNapiš mi nejdřív prompt se šesti částmi (role, kontext, instrukce, vstupní data,\nomezení, formát výstupu), kterým bych o ně měl požádat. Zeptej se na údaje, které ti chybí.",
+  "co_sledovat": [
+   "Kde technika nejvíc pomohla: řetěz zachytí chyby mezi kroky, few-shot sjednotí formát, meta pomůže s formulací.",
+   "Kolik tříd ekvivalence pokryla každá varianta.",
+   "Kolik času stála každá varianta včetně kontroly."
+  ],
+  "projekt": "uctenky",
+  "cas_min": 40
+ },
+ {
+  "id": "HO-2.1.2b",
+  "uroven": "H1",
+  "lo": "GenAI-2.1.2",
+  "nazev": "Poznej techniku v příkladu",
+  "cil": "Umět podle znaků v promptu určit, zda jde o zero-shot, one-shot, few-shot, prompt chaining nebo meta prompting.",
+  "zadani": "Napiš si (nebo si nech od kolegy připravit) deset krátkých ukázek promptů pro testovací úlohy z bankovnictví, pojišťovnictví a e-shopu. U každé urči techniku a zdůvodni ji jedním znakem z promptu. Pak si ověř řešení s přiřazovacím cvičením „Která technika promptování to je?“.",
+  "kroky": [
+   "Připrav deset ukázek, aspoň dvě pro každou techniku.",
+   "U každé zapiš techniku a rozhodující znak (počet příkladů, kroky s kontrolou, model píše prompt).",
+   "Najdi ukázky, kde se techniky kombinují, a pojmenuj všechny."
+  ],
+  "prompt": "Ukázka k určení:\nKrok 1: Vypiš z požadavků na výpočet pojistného všechny nejasnosti.\n(tester výsledek opraví)\nKrok 2: Z opravených požadavků odvoď testovací podmínky.",
+  "co_sledovat": [
+   "Few-shot = víc příkladů, ne víc zpráv.",
+   "Chaining bez kontroly mezi kroky není chaining ve smyslu sylabu.",
+   "Meta prompting = model tvoří nebo vylepšuje prompt, ne „přemýšlej krok za krokem“."
+  ],
+  "projekt": "obecné",
+  "cas_min": 20
+ },
+ {
+  "id": "HO-2.2.1a",
+  "uroven": "H2",
+  "lo": "GenAI-2.2.1",
+  "nazev": "Akceptační kritéria z uživatelského scénáře a wireframu",
+  "cil": "Procvičit strukturovaný multimodální prompt (text + obrázek) a porovnat, jak různé formulace komponent ovlivní kvalitu akceptačních kritérií.",
+  "zadani": "Nakresli jednoduchý wireframe obrazovky (třeba formulář pro založení faktury v uctenky: odběratel, dodavatel, číslo faktury, datum vystavení, splatnost, produkt, cena, DPH, tlačítko Uložit). Vyfoť nebo exportuj ho jako obrázek. Napiš uživatelský scénář a několik pravidel. Spusť tři varianty promptu a porovnej výsledky. Používej jen vlastní nebo smyšlená data a veřejné ukázkové aplikace, nikdy firemní ani klientská data.",
+  "kroky": [
+   "Varianta A: jen text scénáře, bez obrázku.",
+   "Varianta B: scénář + wireframe, bez pravidel.",
+   "Varianta C: scénář + wireframe + pravidla + omezení priority zdrojů.",
+   "Porovnej úplnost, jasnost a správnost kritérií; najdi rozpory, které odhalila jen varianta C."
+  ],
+  "prompt": "Role: Jsi test analytik webových aplikací.\nContext: Aplikace uctenky, nový formulář pro založení faktury.\nInstruction: Napiš akceptační kritéria pro uživatelský scénář. Využij přiložený\nwireframe a pravidla.\nInput data:\n- Scénář: Jako účetní chci založit fakturu, abych ji měl v evidenci.\n- Obrázek: wireframe-faktura.png\n- Pravidla: číslo faktury je unikátní; cena má nejvýše 2 desetinná místa;\n  odběratel a dodavatel se vybírají z existujících osob.\nConstraints: Kritéria jen pro prvky na wireframu nebo v pravidlech. Při rozporu\nplatí pravidla a rozpor vypiš zvlášť.\nOutput format: AC1, AC2… ve tvaru Given-When-Then; pod nimi rozpory a nejasnosti.",
+  "co_sledovat": [
+   "Zda model popsal pole, která na wireframu nejsou (halucinace).",
+   "Zda našel nejasnosti, například vztah splatnosti a data vystavení.",
+   "Zda je každé kritérium testovatelné.",
+   "Rozdíl mezi variantami A, B a C."
+  ],
+  "projekt": "uctenky",
+  "cas_min": 45
+ },
+ {
+  "id": "HO-2.2.1b",
+  "uroven": "H2",
+  "lo": "GenAI-2.2.1",
+  "nazev": "Řetězení a lidské ověření akceptačních kritérií",
+  "cil": "Procvičit řetězení promptů v pořadí nejednoznačnosti → testovatelnost → úplnost s ruční kontrolou po každém kroku.",
+  "zadani": "Vezmi uživatelský scénář s vágními kritérii (níže) pro e-shop. Proveď tři kroky řetězu. Po každém kroku výsledek ručně oprav a do dalšího kroku pošli jen opravenou verzi. Používej jen vlastní nebo smyšlená data a veřejné ukázkové aplikace, nikdy firemní ani klientská data.",
+  "kroky": [
+   "Krok 1: najdi nejednoznačné formulace a navrhni jednoznačné.",
+   "Ruční kontrola: rozhodni, které návrhy přijmeš.",
+   "Krok 2: posuď testovatelnost a přepiš netestovatelná kritéria.",
+   "Ruční kontrola.",
+   "Krok 3: posuď úplnost a navrhni chybějící kritéria.",
+   "Porovnej s výsledkem jediného promptu, který dělá všechny tři kroky najednou."
+  ],
+  "prompt": "Krok 1\nRole: Jsi test analytik e-shopu.\nInstruction: Najdi v uživatelském scénáři a akceptačních kritériích nejednoznačné\nformulace a ke každé navrhni jednoznačnou.\nInput data:\nJako registrovaný zákazník chci uložit košík na později.\nAC1: Uložený košík se zobrazí po přihlášení.\nAC2: Uložený košík po nějaké době vyprší.\nAC3: Ceny v uloženém košíku jsou aktuální.\nOutput format: Tabulka: AC, problém, návrh nové formulace.",
+  "co_sledovat": [
+   "Kolik chyb z kroku 1 by bez kontroly prošlo do kroku 2.",
+   "Zda krok 3 navrhl situace jako zboží mimo sklad nebo více zařízení.",
+   "Rozdíl kvality proti jednomu promptu."
+  ],
+  "projekt": "obecné",
+  "cas_min": 40
+ },
+ {
+  "id": "HO-2.2.2a",
+  "uroven": "H2",
+  "lo": "GenAI-2.2.2",
+  "nazev": "Testovací případy: strukturovaný prompt, kontrola pokrytí, meta prompt pro E2E",
+  "cil": "Vytvořit funkční testovací případy z akceptačních kritérií, ověřit jejich úplnost tabulkou pokrytí a meta promptem připravit end-to-end procedury.",
+  "zadani": "Použij akceptační kritéria z HO-2.2.1b po úpravách. Proveď tři kroky a výsledek každého zkontroluj. Používej jen vlastní nebo smyšlená data a veřejné ukázkové aplikace, nikdy firemní ani klientská data.",
+  "kroky": [
+   "Krok 1: strukturovaný prompt pro testovací případy v daném formátu.",
+   "Krok 2: tabulka pokrytí AC × testovací případy, označení nepokrytých.",
+   "Krok 3: meta prompt pro end-to-end procedury, vyzkoušet, ohodnotit, nechat upravit."
+  ],
+  "prompt": "Krok 3 (meta prompt)\nChci z testovacích případů výše sestavit end-to-end testovací procedury, které spojí\nuložení košíku, přihlášení z jiného zařízení a dokončení objednávky. Navrhni prompt\nse šesti částmi, kterým o to požádám. Po mém hodnocení ho uprav.",
+  "co_sledovat": [
+   "Zda tabulka pokrytí odhalila AC pokryté jen pozitivním případem.",
+   "Kolik iterací meta promptu bylo potřeba.",
+   "Zda end-to-end procedury dodržují závislosti mezi kroky."
+  ],
+  "projekt": "obecné",
+  "cas_min": 45
+ },
+ {
+  "id": "HO-2.2.2b",
+  "uroven": "H2",
+  "lo": "GenAI-2.2.2",
+  "nazev": "Few-shot pro Gherkin",
+  "cil": "Použít few-shot prompting pro testovací podmínky a testovací případy ve stylu Gherkin.",
+  "zadani": "Připrav dva až tři příklady (uživatelský scénář, testovací podmínky, Gherkin scénáře) pro aplikaci uctenky, například filtr podle odběratele a limit počtu faktur. Pak požádej o totéž pro nový scénář „filtr podle rozsahu ceny“. Pokud výsledek nesedí, uprav příklady, ne jen instrukci. Používej jen vlastní nebo smyšlená data a veřejné ukázkové aplikace, nikdy firemní ani klientská data.",
+  "kroky": [
+   "Napiš příklady ze skutečného chování aplikace (ověř si texty hlášek).",
+   "Spusť prompt s jedním příkladem (one-shot) a se třemi (few-shot).",
+   "Porovnej konzistenci stylu a pokrytí negativních scénářů.",
+   "Uprav příklady (např. přidej negativní scénář) a spusť znovu."
+  ],
+  "prompt": "Instruction: Pro nový uživatelský scénář napiš testovací podmínky a Gherkin scénáře\npřesně ve stylu příkladů. Jedna podmínka = jeden Scenario.\n\nPříklad 1\nUživatelský scénář: Jako účetní chci filtrovat faktury podle odběratele.\nTestovací podmínky: TP1 ... TP2 ...\nGherkin: Feature ... Scenario ... Given ... When ... Then ...\n\nPříklad 2\n...\n\nNový uživatelský scénář: Jako účetní chci filtrovat faktury podle rozsahu ceny.",
+  "co_sledovat": [
+   "Zda model převzal vymyšlené detaily z příkladů.",
+   "Rozdíl mezi one-shot a few-shot v konzistenci.",
+   "Zda jsou pokryté hranice (cena rovná minimu, minimum větší než maximum)."
+  ],
+  "projekt": "uctenky",
+  "cas_min": 40
+ },
+ {
+  "id": "HO-2.2.2c",
+  "uroven": "H2",
+  "lo": "GenAI-2.2.2",
+  "nazev": "Řetězení pro prioritizaci testovací sady",
+  "cil": "Vyzkoušet prioritizaci sady podle rizika, pokrytí a požadavků se závislostmi mezi testovacími případy a ručně odhalit chyby v uvažování modelu.",
+  "zadani": "Připrav smyšlenou sadu 20 testovacích případů internetového bankovnictví s prioritou, rizikem (pravděpodobnost a dopad 1–5) a závislostmi (např. TC-03 potřebuje klienta z TC-01). Vytvoř plán prioritizace pro strategii založenou na rizicích a pro strategii založenou na pokrytí. Používej jen vlastní nebo smyšlená data a veřejné ukázkové aplikace, nikdy firemní ani klientská data.",
+  "kroky": [
+   "Krok 1: nech vypsat všechny závislosti; ověř je proti sadě.",
+   "Krok 2: pořadí podle rizika s dodržením ověřených závislostí.",
+   "Krok 3: alternativní pořadí podle pokrytí požadavků a porovnání obou.",
+   "Ručně zkontroluj každé pořadí proti závislostem."
+  ],
+  "prompt": "Krok 2\nInstruction: Seřaď testovací případy podle rizika (pravděpodobnost × dopad) od\nnejvyššího. Dodrž ověřené závislosti z předchozího kroku.\nInput data: <ověřený seznam závislostí> <tabulka TC s rizikem>\nOutput format: pořadí, ID, riziko, poznámka, pokud závislost posunula TC.",
+  "co_sledovat": [
+   "Počet porušených závislostí v prvním pokusu bez řetězení.",
+   "Zda model správně spočítal součiny rizika.",
+   "Jak se liší pořadí podle rizika a podle pokrytí."
+  ],
+  "projekt": "obecné",
+  "cas_min": 40
+ },
+ {
+  "id": "HO-2.2.3a",
+  "uroven": "H2",
+  "lo": "GenAI-2.2.3",
+  "nazev": "Few-shot pro skripty řízené klíčovými slovy a asistent pro ladění",
+  "cil": "Vytvořit a spravovat skripty řízené klíčovými slovy pomocí few-shot promptu a postavit systémovým promptem asistenta, který skripty kontroluje.",
+  "zadani": "Použij Robot Framework s knihovnou SeleniumLibrary nebo Browser a veřejnou ukázkovou aplikaci (nebo lokálně spuštěné uctenky). Část 1: dokumentace vlastní knihovny klíčových slov, první skripty, validace pomocí AI, rozšíření pokrytí. Část 2: systémový prompt asistenta, který skripty kontroluje a opravuje. Používej jen vlastní nebo smyšlená data a veřejné ukázkové aplikace, nikdy firemní ani klientská data.",
+  "kroky": [
+   "Popiš 6–10 vlastních klíčových slov (název, argumenty, co dělají).",
+   "Ručně napiš dva skripty jako vzor.",
+   "Few-shot promptem nech vygenerovat pět dalších skriptů.",
+   "Nastav systémový prompt asistenta a pošli mu skripty ke kontrole, včetně jednoho schválně chybného.",
+   "Skripty spusť a spočítej execution success rate."
+  ],
+  "prompt": "Systémový prompt:\nJsi asistent pro kontrolu skriptů v Robot Frameworku. Používáš jen klíčová slova\nz knihovny níže. U každého skriptu ověř: jen známá klíčová slova se správným počtem\nargumentů, hesla jen v proměnných, každý test končí ověřením výsledku.\nVrať nálezy (řádek, problém, oprava) a opravený skript, nebo „Bez nálezů“.\nKnihovna: <dokumentace>",
+  "co_sledovat": [
+   "Zda model nevymyslel klíčová slova mimo knihovnu.",
+   "Zda asistent našel schválně vloženou chybu.",
+   "Execution success rate vygenerovaných skriptů."
+  ],
+  "projekt": "uctenky",
+  "cas_min": 60
+ },
+ {
+  "id": "HO-2.2.3b",
+  "uroven": "H2",
+  "lo": "GenAI-2.2.3",
+  "nazev": "Strukturovaná analýza reportu z regresního testování",
+  "cil": "Procvičit metodickou analýzu regresního reportu strukturovanými prompty v jedné konverzaci: porovnání se specifikací, seskupení, seznam známých anomálií, křížová kontrola.",
+  "zadani": "Vytvoř smyšlený export výsledků regresního běhu (CSV, 60–100 řádků) se sloupci test, výsledek, chybová hláška, modul a krátký seznam známých anomálií. Můžeš použít i HTML report z Playwright testů aplikace uctenky. Proveď čtyři kroky v jedné konverzaci. Používej jen vlastní nebo smyšlená data a veřejné ukázkové aplikace, nikdy firemní ani klientská data.",
+  "kroky": [
+   "Krok 1: porovnej výsledky se specifikací, odděl očekávané a skutečné výsledky, kategorizuj selhání.",
+   "Krok 2: seskup podobná selhání podle společné příčiny.",
+   "Krok 3: porovnej skupiny se seznamem známých anomálií a seznam aktualizuj.",
+   "Krok 4: navrhni texty nových reportů o defektech a křížově zkontroluj přiřazení všech selhání."
+  ],
+  "prompt": "Krok 1\nRole: Jsi test analytik regresního testování.\nContext: Noční regresní běh aplikace uctenky.\nInstruction: Projdi výsledky a porovnej je se specifikací testů. Pro každý neúspěšný\ntest odděl očekávaný a skutečný výsledek a urči, zda jde o selhání aplikace, chybu\ntestu, nebo problém prostředí.\nInput data: <CSV> <specifikace testů>\nOutput format: Tabulka: test, očekávaný výsledek, skutečný výsledek, kategorie, zdůvodnění.",
+  "co_sledovat": [
+   "Zda křížová kontrola našla „ztracené“ testy.",
+   "Zda model správně odlišil známou anomálii od nové.",
+   "Kolik selhání zařadil do špatné kategorie."
+  ],
+  "projekt": "uctenky",
+  "cas_min": 45
+ },
+ {
+  "id": "HO-2.2.4",
+  "uroven": "H0",
+  "lo": "GenAI-2.2.4",
+  "nazev": "Metriky monitoringu připravené AI z testovacích dat",
+  "cil": "Vidět, jak LLM z dat z testovacích nástrojů vytvoří metriky postupu, trendů defektů a pokrytí, upozorní na rizika a shrne je pro zainteresované strany.",
+  "zadani": "Připrav smyšlený týdenní export (denně: plán, provedeno, prošlo, selhalo, blokováno, nové a uzavřené defekty). Nech model spočítat metriky, popsat trend, navrhnout opatření a napsat souhrn pro vedení. Všechna čísla přepočítej. Používej jen vlastní nebo smyšlená data a veřejné ukázkové aplikace, nikdy firemní ani klientská data.",
+  "kroky": [
+   "Vlož data a požádej o metriky s ukázaným výpočtem.",
+   "Přepočítej každé číslo ručně nebo skriptem.",
+   "Nech vytvořit souhrn pro vedení a tabulku pro tým.",
+   "Porovnej, zda opatření vyplývají z dat."
+  ],
+  "prompt": "Role: Jsi test manažer.\nContext: Systémové testování mobilního bankovnictví, plán 300 testů na tento týden.\nInstruction: Spočítej metriky postupu a trend defektů, porovnej s plánem, popiš\nodchylky a navrhni opatření pro řízení testování.\nInput data: <CSV>\nConstraints: U každého čísla ukaž výpočet. Co z dat nevyplývá, označ jako předpoklad.\nOutput format: 1) tabulka metrik, 2) tři věty pro vedení bez žargonu, 3) opatření s prioritou.",
+  "co_sledovat": [
+   "Chyby v aritmetice a jejich četnost.",
+   "Zda model rozlišil kumulativní a denní hodnoty.",
+   "Zda souhrn pro vedení odpovídá datům."
+  ],
+  "projekt": "obecné",
+  "cas_min": 25
+ },
+ {
+  "id": "HO-2.2.5",
+  "uroven": "H1",
+  "lo": "GenAI-2.2.5",
+  "nazev": "Výběr techniky promptování pro úlohu",
+  "cil": "Pro různé testovací úlohy posoudit, zda vyžadují přesnost, nebo opakující se strukturu, a zvolit vhodnou techniku nebo kombinaci.",
+  "zadani": "Projdi osm situací z výkladu (oddíl 2.2.5) a přidej čtyři vlastní z praxe (banka, pojišťovna, e-shop, uctenky). U každé napiš techniku, zdůvodnění a první prompt. Výběr prober s kolegou.",
+  "kroky": [
+   "Pro každou úlohu odpověz: jsou k dispozici příklady? Je potřeba ověření po krocích? Je úloha nová a nejasná?",
+   "Zvol techniku nebo kombinaci.",
+   "Napiš první prompt a jedním během ho vyzkoušej."
+  ],
+  "prompt": "Úloha: Převést 120 manuálních testovacích případů do Robot Frameworku, kde už je\n30 hotových skriptů.\nMoje volba: few-shot (opakující se vzor, vzory existují).\nPrompt: <knihovna klíčových slov> + <3 vzorové skripty> + <nový testovací případ>",
+  "co_sledovat": [
+   "Zda zdůvodnění vychází z povahy úlohy, ne z oblíbenosti techniky.",
+   "Kde se hodí kombinace technik."
+  ],
+  "projekt": "obecné",
+  "cas_min": 30
+ },
+ {
+  "id": "HO-2.3.1",
+  "uroven": "H0",
+  "lo": "GenAI-2.3.1",
+  "nazev": "Metriky na výsledku GenAI",
+  "cil": "Vidět, jak se metriky ze sylabu přizpůsobí konkrétní testovací úloze a jak se spočítají.",
+  "zadani": "Vezmi výstup z HO-2.1.2a nebo HO-2.2.2b (testovací případy pro filtr ceny). Předem si urči referenci: seznam požadavků a tříd ekvivalence. Spočítej accuracy, precision, recall, relevanci, diversity, execution success rate (pokud máš skripty) a time efficiency. Prompt spusť aspoň pětkrát.",
+  "kroky": [
+   "Připrav referenci před spuštěním promptu.",
+   "Pro každý běh spočítej metriky.",
+   "Spočítej průměr a rozptyl.",
+   "Doplň jednu metriku specifickou pro úlohu."
+  ],
+  "prompt": "Pomocný prompt pro hodnocení (výsledek zkontroluj ručně):\nPorovnej testovací případy níže s referenčním seznamem tříd ekvivalence. Pro každou\ntřídu uveď, který testovací případ ji pokrývá, nebo „nepokryto“. Nic nedomýšlej.\nInput data: <testovací případy> <reference>",
+  "co_sledovat": [
+   "Rozptyl metrik mezi běhy.",
+   "Zda time efficiency zahrnuje čas kontroly.",
+   "Rozdíl mezi „spustit“ a „projít“ u execution success rate."
+  ],
+  "projekt": "uctenky",
+  "cas_min": 40
+ },
+ {
+  "id": "HO-2.3.2",
+  "uroven": "H1",
+  "lo": "GenAI-2.3.2",
+  "nazev": "Ladění promptu: verze 1 → 2 → 3 a A/B test",
+  "cil": "Iterativně vylepšit prompt pro testovací úlohu a každou iteraci vyhodnotit metrikami a lidskou kontrolou.",
+  "zadani": "Začni jednovětým promptem (verze 1). Na základě analýzy výstupu a zpětné vazby vytvoř verzi 2 a 3. Nakonec udělej A/B test dvou formulací instrukce ve verzi 3. Každou verzi spusť aspoň pětkrát. Používej jen vlastní nebo smyšlená data a veřejné ukázkové aplikace, nikdy firemní ani klientská data.",
+  "kroky": [
+   "Verze 1: zero-shot bez struktury; zapiš typy chyb (output analysis).",
+   "Verze 2: doplň kontext, vstupní data a omezení podle nalezených chyb.",
+   "Získej zpětnou vazbu od kolegy, který by testy použil.",
+   "Verze 3: přidej příklady (few-shot) a přesný formát.",
+   "A/B test: dvě formulace instrukce, stejné metriky, stejný počet běhů.",
+   "Nejlepší verzi ulož do vlastní knihovny promptů s poznámkou, kdy ji použít."
+  ],
+  "prompt": "Verze 1:\nNapiš testovací případy pro filtr faktur podle ceny.\n\nVerze 2:\nRole: Jsi test analytik webových aplikací.\nContext: Aplikace uctenky, stránka Faktury, filtr podle min. a max. ceny.\nInstruction: Navrhni testovací případy pro filtr ceny.\nInput data: Pole Min. cena, Max. cena, tlačítko Filtrovat; hranice jsou včetně.\nConstraints: Pokryj platné a neplatné třídy ekvivalence a hraniční hodnoty.\nNevymýšlej prvky rozhraní.\nOutput format: Tabulka: ID, třída/hranice, vstup, očekávaný výsledek.",
+  "co_sledovat": [
+   "Jak se mezi verzemi mění recall, relevance a execution success rate.",
+   "Zda rozdíl v A/B testu není jen náhoda (rozptyl).",
+   "Která změna přinesla nejvíc."
+  ],
+  "projekt": "uctenky",
+  "cas_min": 60
+ },
+ {
+  "id": "CV-2-01",
+  "uroven": "H2",
+  "lo": "GenAI-2.2.2",
+  "nazev": "Testovací případy pro založení faktury v uctenky",
+  "cil": "Vygenerovat testovací případy z uživatelského scénáře pro vlastní aplikaci a porovnat je s existujícími Playwright testy.",
+  "zadani": "V aplikaci uctenky napiš uživatelský scénář pro založení faktury s akceptačními kritérii (unikátní číslo faktury, cena na dvě desetinná místa, odběratel a dodavatel z existujících osob). Nech vygenerovat testovací případy a z nich dva Playwright testy podle Page Object Modelu v e2e/pages. Testy spusť proti lokální aplikaci.",
+  "kroky": [
+   "Napiš scénář a AC podle skutečného chování aplikace (ověř v kódu serializeru).",
+   "Strukturovaným promptem vygeneruj testovací případy.",
+   "Few-shot promptem s tests/invoices.spec.ts jako vzorem vygeneruj dva testy.",
+   "Spusť je a oprav; zapiš execution success rate a čas."
+  ],
+  "prompt": "Role: Jsi inženýr automatizace testů (Playwright, TypeScript).\nContext: E2E testy aplikace uctenky používají Page Object Model; lokátory jsou jen\nv pages/. Existuje InvoicesPage.\nInstruction: Převeď testovací případy níže na testy v Playwrightu.\nInput data: <testovací případy> <ukázka tests/invoices.spec.ts> <pages/InvoicesPage.ts>\nConstraints: Lokátory jen ve stránkových objektech; chybějící metody vypiš zvlášť;\nžádné waitForTimeout.\nOutput format: Kód testu, pod ním nové metody stránkového objektu.",
+  "co_sledovat": [
+   "Zda model nevymyslel validace, které serializer nemá.",
+   "Zda testy po sobě uklidí data (jako persons.spec.ts).",
+   "Execution success rate a počet ručních oprav."
+  ],
+  "projekt": "uctenky",
+  "cas_min": 60
+ },
+ {
+  "id": "CV-2-02",
+  "uroven": "H2",
+  "lo": "GenAI-2.2.1",
+  "nazev": "Řetězení při analýze specifikace pojistného produktu",
+  "cil": "Procvičit řetězení promptů na delší smyšlené specifikaci a měřit, kolik chyb zachytí kontrola mezi kroky.",
+  "zadani": "Napiš smyšlenou specifikaci kalkulačky pojištění domácnosti (12–15 požadavků, schválně se dvěma rozpory a třemi nejasnostmi). Proveď řetěz: defekty v bázi → testovací podmínky → prioritizace podle rizika → analýza pokrytí. Používej jen vlastní nebo smyšlená data a veřejné ukázkové aplikace, nikdy firemní ani klientská data.",
+  "kroky": [
+   "Připrav specifikaci a zapiš si, které chyby jsi do ní vložil.",
+   "Krok 1 a kontrola: kolik vložených chyb model našel a kolik falešných nálezů přidal.",
+   "Kroky 2–4 s kontrolou po každém.",
+   "Porovnej s jedním velkým promptem."
+  ],
+  "prompt": "Krok 4\nInstruction: Porovnej seznam požadavků s ověřenými testovacími podmínkami. Vytvoř\nmatici trasovatelnosti se stavem pokryto / částečně / nepokryto / k ověření.\nZa pokrytí považuj jen vazbu na obsah požadavku, ne podobnost slov.\nInput data: <požadavky REQ-01..REQ-15> <podmínky po kontrole>",
+  "co_sledovat": [
+   "Precision a recall nálezů v kroku 1 (vložené chyby jsou reference).",
+   "Zda se chyba z kroku 1 přenesla do dalších kroků v jednom velkém promptu."
+  ],
+  "projekt": "obecné",
+  "cas_min": 50
+ },
+ {
+  "id": "CV-2-03",
+  "uroven": "H2",
+  "lo": "GenAI-2.2.3",
+  "nazev": "Systémový prompt pro asistenta reportů o defektech",
+  "cil": "Navrhnout systémový prompt asistenta, který z logu a snímku sestaví report o defektu v jednotném formátu, a ověřit ho na skutečné chybě.",
+  "zadani": "Použij známou chybu z historie projektu uctenky (graf tržeb: dvojitý otazník v adrese, server dostal rok „2025?“ a vrátil 500). Napiš systémový prompt asistenta a uživatelský prompt s logem a hláškou z klienta. Zkus asistenta nejdřív jen s hláškou z klienta, pak s logem serveru.",
+  "kroky": [
+   "Napiš systémový prompt: role, šablona reportu, pravidlo oddělit fakta od hypotéz.",
+   "Uživatelský prompt 1: jen hláška z klienta.",
+   "Uživatelský prompt 2: hláška + log serveru + URL požadavku.",
+   "Porovnej hypotézy kořenové příčiny."
+  ],
+  "prompt": "Systémový prompt:\nJsi asistent pro reporty o defektech webové aplikace (Django REST + React).\nKaždý report vrať ve formátu: název, prostředí, kroky, očekávaný výsledek, skutečný\nvýsledek, závažnost, důkazy (log, URL), hypotéza kořenové příčiny.\nFakta z logu odděl od domněnek; domněnky označ slovem „hypotéza“.\nPokud chybí důkazy, napiš, jaké informace potřebuješ.",
+  "co_sledovat": [
+   "Zda asistent bez logu přiznal nedostatek informací, nebo hádal.",
+   "Zda s logem našel skutečnou příčinu.",
+   "Jak vstupní data změnila kvalitu reportu."
+  ],
+  "projekt": "uctenky",
+  "cas_min": 30
+ },
+ {
+  "id": "CV-2-04",
+  "uroven": "H1",
+  "lo": "GenAI-2.1.3",
+  "nazev": "Systémový prompt pro Šmoulu jako testovacího asistenta",
+  "cil": "Rozdělit pravidla mezi systémový a uživatelský prompt na vlastním agentovi a ověřit, že systémový prompt platí pro celou konverzaci.",
+  "zadani": "Navrhni pro Šmoulu (Telegram → Claude Code headless) režim „testovací asistent“. Do systémového promptu (nebo konfigurace, kterou nástroj přidává k systémovému promptu) dej roli, terminologii ISTQB, formát testovacích případů a zákaz pracovat s osobními údaji. Z Telegramu pošli pět různých uživatelských promptů. Klíče a tokeny drž v proměnných prostředí nebo trezoru, ne v promptu.",
+  "kroky": [
+   "Sepiš pravidla a rozděl je: trvalá → systémový prompt, úlohová → uživatelský.",
+   "Pošli pět dotazů, z toho jeden s vymyšlenými „osobními údaji“.",
+   "Ověř, že formát a terminologie drží i bez opakování v dotazech."
+  ],
+  "prompt": "Systémový prompt (výňatek):\nJsi testovací asistent. Odpovídej česky a používej terminologii ISTQB.\nTestovací případy vracej ve formátu ID, předpoklady, kroky, očekávaný výsledek.\nPokud zpráva obsahuje osobní údaje, upozorni na to a dál s nimi nepracuj.",
+  "co_sledovat": [
+   "Zda asistent drží formát ve všech pěti odpovědích.",
+   "Reakce na zprávu s osobními údaji.",
+   "Co by se změnilo, kdyby pravidla byla jen v prvním uživatelském promptu."
+  ],
+  "projekt": "Šmoula",
+  "cas_min": 30
+ }
+]

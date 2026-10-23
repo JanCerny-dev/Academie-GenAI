@@ -1,0 +1,2489 @@
+{
+ "popis": "Vlastní cvičné otázky ke kapitole 2 sylabu CT-GenAI v1.1 (Prompt Engineering for Effective Software Testing). Napsáno podle learning objectives, nejde o parafráze otázek ze Sample Exam A ani z Udemy kurzů. Počet na LO = počet otázek ve zkoušce × 4 + 1 (2.1.1: 9, ostatní LO po 5).",
+ "otazky": [
+  {
+   "id": "CG-2.1.1-01",
+   "zdroj": "vlastni",
+   "lo": "GenAI-2.1.1",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>A tester writes a structured prompt to obtain test conditions for a claims portal of an insurance company. Which of the following lines belongs to the <b>context</b> component?</p>",
+    "moznosti": [
+     "“The portal is used by brokers on desktop browsers and is being extended with online damage reporting for household insurance.”",
+     "“Use the attached business rules document and the list of claim types.”",
+     "“Derive test conditions for the damage reporting form.”",
+     "“Ignore rules that apply only to car insurance.”"
+    ],
+    "vysvetleni": {
+     "a": "Correct. It gives background about the test object and the functionality to be tested, which is the context (syllabus 2.1.1).",
+     "b": "Incorrect. Attached documents are material the model works with, which is input data (syllabus 2.1.1).",
+     "c": "Incorrect. This is the task itself, which is the instruction (syllabus 2.1.1).",
+     "d": "Incorrect. This restricts how the instruction is applied, which is a constraint (syllabus 2.1.1)."
+    },
+    "vysvetleni_obecne": "Context provides background information that the LLM needs to determine the test conditions: the test object, the functionality and relevant circumstances."
+   },
+   "cz": {
+    "q": "<p>Tester píše strukturovaný prompt, kterým chce získat testovací podmínky pro portál pojišťovny pro hlášení škod. Který z následujících řádků patří do komponenty <b>context</b>?</p>",
+    "moznosti": [
+     "„Portál používají zprostředkovatelé v desktopových prohlížečích a nově se rozšiřuje o online hlášení škod u pojištění domácnosti.“",
+     "„Použij přiložený dokument s obchodními pravidly a seznam typů škod.“",
+     "„Odvoď testovací podmínky pro formulář hlášení škody.“",
+     "„Ignoruj pravidla, která platí jen pro pojištění vozidel.“"
+    ],
+    "vysvetleni": {
+     "a": "Správně. Popisuje pozadí: testovaný objekt a testovanou funkci, tedy kontext (sylabus 2.1.1).",
+     "b": "Špatně. Přiložené dokumenty jsou materiál k práci, tedy vstupní data (sylabus 2.1.1).",
+     "c": "Špatně. Jde o samotnou úlohu, tedy instrukci (sylabus 2.1.1).",
+     "d": "Špatně. Omezuje, jak se instrukce použije, jde tedy o omezení (sylabus 2.1.1)."
+    },
+    "vysvetleni_obecne": "Kontext dává modelu informace o pozadí potřebné k určení testovacích podmínek: testovaný objekt, funkci a okolnosti."
+   },
+   "spravne": [
+    "a"
+   ],
+   "oddil": "2.1.1",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-2.1.1-02",
+   "zdroj": "vlastni",
+   "lo": "GenAI-2.1.1",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>A prompt for reviewing a requirements specification contains the line: “Only analyze requirements with the status ‘Approved’ and skip the reviewer comments.” Which component of a structured prompt does this line represent?</p>",
+    "moznosti": [
+     "Instruction",
+     "Input data",
+     "Output format",
+     "Constraints"
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. The task (analyze the specification) is stated elsewhere; this line only limits its scope (syllabus 2.1.1).",
+     "b": "Incorrect. The line does not provide any material; it states a rule about which material to use (syllabus 2.1.1).",
+     "c": "Incorrect. Nothing in the line describes the structure of the response (syllabus 2.1.1).",
+     "d": "Correct. The line restricts how the instruction is applied to the input data (syllabus 2.1.1)."
+    },
+    "vysvetleni_obecne": "Constraints outline restrictions or special considerations and specify how instructions should be applied to input data."
+   },
+   "cz": {
+    "q": "<p>Prompt pro revizi specifikace požadavků obsahuje řádek: „Analyzuj jen požadavky ve stavu ‚Schváleno‘ a vynech komentáře revidentů.“ Kterou komponentu strukturovaného promptu tento řádek představuje?</p>",
+    "moznosti": [
+     "Instruction (instrukce)",
+     "Input data (vstupní data)",
+     "Output format (formát výstupu)",
+     "Constraints (omezení)"
+    ],
+    "vysvetleni": {
+     "a": "Špatně. Úloha (analyzovat specifikaci) je jinde, tento řádek jen omezuje rozsah (sylabus 2.1.1).",
+     "b": "Špatně. Řádek nedodává žádný materiál, určuje pravidlo, který materiál použít (sylabus 2.1.1).",
+     "c": "Špatně. Řádek nic neříká o podobě odpovědi (sylabus 2.1.1).",
+     "d": "Správně. Řádek omezuje, jak se instrukce použije na vstupní data (sylabus 2.1.1)."
+    },
+    "vysvetleni_obecne": "Omezení popisují restrikce a zvláštní pravidla a určují, jak se instrukce použije na vstupní data."
+   },
+   "spravne": [
+    "d"
+   ],
+   "oddil": "2.1.1",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-2.1.1-03",
+   "zdroj": "vlastni",
+   "lo": "GenAI-2.1.1",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>A tester uses the following prompt several times:</p><pre>Role: Act as a test analyst for an e-commerce web shop.\nContext: The shop introduces pick-up points for parcels.\nInstruction: Generate test cases for selecting a pick-up point.\nInput data: &lt;user story and acceptance criteria AC1-AC3&gt;\nConstraints: Cover each acceptance criterion with at least one positive\nand one negative test case.</pre><p>The content is useful, but the test cases come back sometimes as a list, sometimes as a table and with different fields. Which component is missing and would MOST likely fix this problem?</p>",
+    "moznosti": [
+     "A more specific role",
+     "More context about the shop",
+     "Output format",
+     "An additional constraint to use boundary value analysis"
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. The role shapes perspective and tone, not the structure of the result (syllabus 2.1.1).",
+     "b": "Incorrect. More background would not define the shape of the output (syllabus 2.1.1).",
+     "c": "Correct. The prompt does not specify the expected structure of the response, so the model chooses it each time (syllabus 2.1.1).",
+     "d": "Incorrect. A test technique changes the content of the test cases, not their format (syllabus 2.1.1)."
+    },
+    "vysvetleni_obecne": "Output format specifications denote the expected format, structure or characteristics of the response."
+   },
+   "cz": {
+    "q": "<p>Tester několikrát použije tento prompt:</p><pre>Role: Act as a test analyst for an e-commerce web shop.\nContext: The shop introduces pick-up points for parcels.\nInstruction: Generate test cases for selecting a pick-up point.\nInput data: &lt;user story and acceptance criteria AC1-AC3&gt;\nConstraints: Cover each acceptance criterion with at least one positive\nand one negative test case.</pre><p>Obsah je užitečný, ale testovací případy se vracejí jednou jako seznam, jindy jako tabulka a s různými poli. Která komponenta chybí a NEJSPÍŠ by problém vyřešila?</p>",
+    "moznosti": [
+     "Konkrétnější role",
+     "Víc kontextu o e-shopu",
+     "Output format (formát výstupu)",
+     "Další omezení, aby použil analýzu hraničních hodnot"
+    ],
+    "vysvetleni": {
+     "a": "Špatně. Role ovlivňuje perspektivu a tón, ne strukturu výsledku (sylabus 2.1.1).",
+     "b": "Špatně. Další informace o pozadí neurčí podobu výstupu (sylabus 2.1.1).",
+     "c": "Správně. Prompt neurčuje strukturu odpovědi, a tak ji model pokaždé volí sám (sylabus 2.1.1).",
+     "d": "Špatně. Technika testování mění obsah testovacích případů, ne jejich formát (sylabus 2.1.1)."
+    },
+    "vysvetleni_obecne": "Formát výstupu určuje očekávanou podobu, strukturu a vlastnosti odpovědi."
+   },
+   "spravne": [
+    "c"
+   ],
+   "oddil": "2.1.1",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-2.1.1-04",
+   "zdroj": "vlastni",
+   "lo": "GenAI-2.1.1",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>What is the MAIN purpose of the <b>role</b> component in a structured prompt for a test task?</p>",
+    "moznosti": [
+     "It describes the test object and the functionality to be tested.",
+     "It helps the LLM determine its responsibilities and adopt an appropriate tone and approach, for example as a test manager.",
+     "It defines which user of the chatbot is allowed to send prompts.",
+     "It sets the temperature so that the answers are more creative."
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. This is the purpose of the context (syllabus 2.1.1).",
+     "b": "Correct. The role defines the perspective or persona the model should take (syllabus 2.1.1).",
+     "c": "Incorrect. The role is about the model's persona, not about access rights of users.",
+     "d": "Incorrect. Temperature is a model parameter, not a prompt component (syllabus 2.1.1, 3.1)."
+    },
+    "vysvetleni_obecne": "The role defines the perspective or persona of the model, such as tester, test manager or test automation engineer."
+   },
+   "cz": {
+    "q": "<p>Jaký je HLAVNÍ účel komponenty <b>role</b> ve strukturovaném promptu pro testovací úlohu?</p>",
+    "moznosti": [
+     "Popisuje testovaný objekt a testovanou funkci.",
+     "Pomáhá modelu určit jeho odpovědnost a zvolit vhodný tón a přístup, například jako test manažer.",
+     "Určuje, který uživatel chatbota smí posílat prompty.",
+     "Nastavuje teplotu, aby byly odpovědi kreativnější."
+    ],
+    "vysvetleni": {
+     "a": "Špatně. To je účel kontextu (sylabus 2.1.1).",
+     "b": "Správně. Role určuje perspektivu nebo personu modelu (sylabus 2.1.1).",
+     "c": "Špatně. Role se týká persony modelu, ne přístupových práv uživatelů.",
+     "d": "Špatně. Teplota je parametr modelu, ne komponenta promptu (sylabus 2.1.1, 3.1)."
+    },
+    "vysvetleni_obecne": "Role určuje perspektivu nebo personu modelu, například tester, test manažer nebo inženýr automatizace testů."
+   },
+   "spravne": [
+    "b"
+   ],
+   "oddil": "2.1.1",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-2.1.1-05",
+   "zdroj": "vlastni",
+   "lo": "GenAI-2.1.1",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>A tester wants an LLM to derive acceptance criteria for a new standing order screen of an online banking application. Which of the following is an example of the <b>input data</b> component?</p>",
+    "moznosti": [
+     "“You are an experienced test analyst in retail banking.”",
+     "The GUI wireframe of the screen together with the rules for the amount and due-date fields.",
+     "“List the acceptance criteria in Given-When-Then form, numbered AC1, AC2 and so on.”",
+     "“The bank is adding standing orders to its mobile and web channels.”"
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. This is the role (syllabus 2.1.1).",
+     "b": "Correct. A wireframe and field rules are information needed to perform the task (syllabus 2.1.1, 2.2.1).",
+     "c": "Incorrect. This describes the output format (syllabus 2.1.1).",
+     "d": "Incorrect. This is background information, which is context (syllabus 2.1.1)."
+    },
+    "vysvetleni_obecne": "Input data includes user stories, acceptance criteria, screenshots, code, existing test cases or output examples."
+   },
+   "cz": {
+    "q": "<p>Tester chce, aby LLM odvodil akceptační kritéria pro novou obrazovku trvalého příkazu v internetovém bankovnictví. Co z následujícího je příkladem komponenty <b>input data</b>?</p>",
+    "moznosti": [
+     "„Jsi zkušený test analytik v retailovém bankovnictví.“",
+     "Wireframe obrazovky spolu s pravidly pro pole částka a den splatnosti.",
+     "„Vypiš akceptační kritéria ve tvaru Given-When-Then, číslovaná AC1, AC2 a tak dále.“",
+     "„Banka přidává trvalé příkazy do mobilního a webového kanálu.“"
+    ],
+    "vysvetleni": {
+     "a": "Špatně. To je role (sylabus 2.1.1).",
+     "b": "Správně. Wireframe a pravidla polí jsou informace potřebné k provedení úlohy (sylabus 2.1.1, 2.2.1).",
+     "c": "Špatně. To popisuje formát výstupu (sylabus 2.1.1).",
+     "d": "Špatně. To je informace o pozadí, tedy kontext (sylabus 2.1.1)."
+    },
+    "vysvetleni_obecne": "Vstupní data zahrnují uživatelské scénáře, akceptační kritéria, snímky obrazovky, kód, existující testovací případy nebo ukázky výstupu."
+   },
+   "spravne": [
+    "b"
+   ],
+   "oddil": "2.1.1",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-2.1.1-06",
+   "zdroj": "vlastni",
+   "lo": "GenAI-2.1.1",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Which of the following statements about the six-component prompt structure is correct?</p>",
+    "moznosti": [
+     "The structure is a basis that should be combined with prompting techniques depending on the task and the LLM used.",
+     "A prompt that contains all six components always produces correct results, so prompting techniques are not needed.",
+     "The six components are role, context, instruction, input data, temperature and output format.",
+     "The structure is only used in system prompts, never in user prompts."
+    ],
+    "vysvetleni": {
+     "a": "Correct. The syllabus states that the structure should be combined with prompting techniques depending on the task and the LLM (syllabus 2.1.1).",
+     "b": "Incorrect. The structure improves clarity but does not guarantee correctness; techniques and evaluation are still needed (syllabus 2.1.1, 2.3).",
+     "c": "Incorrect. The sixth component is constraints; temperature is a model parameter (syllabus 2.1.1).",
+     "d": "Incorrect. User prompts should also be well structured, and a system prompt may contain parts of the structure (syllabus 2.1.3)."
+    },
+    "vysvetleni_obecne": "The six components form the basic structure of a prompt, which is combined with prompting techniques."
+   },
+   "cz": {
+    "q": "<p>Které z následujících tvrzení o šestisložkové struktuře promptu je správné?</p>",
+    "moznosti": [
+     "Struktura je základ, který se kombinuje s technikami promptování podle úlohy a použitého LLM.",
+     "Prompt se všemi šesti komponentami dává vždy správné výsledky, takže techniky promptování nejsou potřeba.",
+     "Šest komponent je role, kontext, instrukce, vstupní data, teplota a formát výstupu.",
+     "Struktura se používá jen v systémových promptech, nikdy v uživatelských."
+    ],
+    "vysvetleni": {
+     "a": "Správně. Sylabus říká, že se struktura kombinuje s technikami promptování podle úlohy a LLM (sylabus 2.1.1).",
+     "b": "Špatně. Struktura zlepšuje jasnost, ale nezaručuje správnost; techniky i hodnocení jsou dál potřeba (sylabus 2.1.1, 2.3).",
+     "c": "Špatně. Šestou komponentou jsou omezení; teplota je parametr modelu (sylabus 2.1.1).",
+     "d": "Špatně. I uživatelské prompty mají být dobře strukturované a systémový prompt může obsahovat části struktury (sylabus 2.1.3)."
+    },
+    "vysvetleni_obecne": "Šest komponent tvoří základní strukturu promptu, která se kombinuje s technikami promptování."
+   },
+   "spravne": [
+    "a"
+   ],
+   "oddil": "2.1.1",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-2.1.1-07",
+   "zdroj": "vlastni",
+   "lo": "GenAI-2.1.1",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Which of the following is the BEST example of an <b>instruction</b> in a structured prompt for test design?</p>",
+    "moznosti": [
+     "“Maybe you could have a look at the transfer feature if you have time.”",
+     "“The transfer feature is part of the mobile banking app for private clients.”",
+     "“Present the result as a table with ID, input and expected result.”",
+     "“Derive one test case for each boundary value of the transfer amount field described below.”"
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. It is not imperative and does not state a clear task (syllabus 2.1.1).",
+     "b": "Incorrect. This is context, not an instruction (syllabus 2.1.1).",
+     "c": "Incorrect. This is the output format (syllabus 2.1.1).",
+     "d": "Correct. It is clear, imperative and concise and states the task and its requirement (syllabus 2.1.1)."
+    },
+    "vysvetleni_obecne": "Instructions are clear, imperative and concise directives that include a task description and relevant requirements."
+   },
+   "cz": {
+    "q": "<p>Co z následujícího je NEJLEPŠÍM příkladem <b>instrukce</b> ve strukturovaném promptu pro návrh testů?</p>",
+    "moznosti": [
+     "„Možná by ses mohl podívat na funkci převodu, pokud budeš mít čas.“",
+     "„Funkce převodu je součástí mobilního bankovnictví pro fyzické osoby.“",
+     "„Výsledek uveď jako tabulku s ID, vstupem a očekávaným výsledkem.“",
+     "„Pro každou hraniční hodnotu pole částka převodu popsaného níže odvoď jeden testovací případ.“"
+    ],
+    "vysvetleni": {
+     "a": "Špatně. Není v rozkazovacím způsobu a neříká jasnou úlohu (sylabus 2.1.1).",
+     "b": "Špatně. To je kontext, ne instrukce (sylabus 2.1.1).",
+     "c": "Špatně. To je formát výstupu (sylabus 2.1.1).",
+     "d": "Správně. Je jasná, v rozkazovacím způsobu, stručná a uvádí úlohu i požadavek (sylabus 2.1.1)."
+    },
+    "vysvetleni_obecne": "Instrukce je jasný, stručný pokyn v rozkazovacím způsobu s popisem úlohy a podstatnými požadavky."
+   },
+   "spravne": [
+    "d"
+   ],
+   "oddil": "2.1.1",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-2.1.1-08",
+   "zdroj": "vlastni",
+   "lo": "GenAI-2.1.1",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Test conditions generated by an LLM for an invoicing application regularly mention a PDF export, although the application has no such feature and the input data do not mention it. Which change to the prompt is MOST appropriate?</p>",
+    "moznosti": [
+     "Change the role to “senior test analyst with 20 years of experience”.",
+     "Change the output format from a table to a numbered list.",
+     "Add a constraint: use only functionality described in the input data and list any missing information as open questions.",
+     "Remove the input data so that the model relies on its general knowledge of invoicing."
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. A more senior persona does not tell the model which functionality is in scope (syllabus 2.1.1).",
+     "b": "Incorrect. The format of the result does not influence which features the model invents (syllabus 2.1.1).",
+     "c": "Correct. A constraint specifies how the instruction is applied to the input data and limits invented content (syllabus 2.1.1).",
+     "d": "Incorrect. Less input increases guessing; high-quality input is crucial (syllabus 2.2, 2.2.1)."
+    },
+    "vysvetleni_obecne": "Constraints help to specify how the instruction is applied to the input data, for example by forbidding content that is not in the test basis."
+   },
+   "cz": {
+    "q": "<p>Testovací podmínky, které LLM generuje pro fakturační aplikaci, pravidelně zmiňují export do PDF, přestože aplikace takovou funkci nemá a vstupní data ji nezmiňují. Která změna promptu je NEJVHODNĚJŠÍ?</p>",
+    "moznosti": [
+     "Změnit roli na „senior test analytik s 20 lety praxe“.",
+     "Změnit formát výstupu z tabulky na číslovaný seznam.",
+     "Přidat omezení: používej jen funkce popsané ve vstupních datech a chybějící informace uveď jako otevřené otázky.",
+     "Odstranit vstupní data, aby se model opíral o obecné znalosti fakturace."
+    ],
+    "vysvetleni": {
+     "a": "Špatně. Zkušenější persona modelu neřekne, které funkce jsou v rozsahu (sylabus 2.1.1).",
+     "b": "Špatně. Podoba výsledku neovlivní, které funkce si model vymýšlí (sylabus 2.1.1).",
+     "c": "Správně. Omezení určuje, jak se instrukce použije na vstupní data, a brání vymýšlení (sylabus 2.1.1).",
+     "d": "Špatně. Méně vstupu zvyšuje hádání; kvalitní vstup je nezbytný (sylabus 2.2, 2.2.1)."
+    },
+    "vysvetleni_obecne": "Omezení pomáhají určit, jak se instrukce použije na vstupní data, například zákazem obsahu, který není v testovací bázi."
+   },
+   "spravne": [
+    "c"
+   ],
+   "oddil": "2.1.1",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-2.1.1-09",
+   "zdroj": "vlastni",
+   "lo": "GenAI-2.1.1",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Which of the following pairs of prompt component and example is correct?</p>",
+    "moznosti": [
+     "Context: “return the findings as JSON with the fields id, severity and description”",
+     "Role: “the system under test is a payment gateway used by 300 merchants”",
+     "Input data: “the attached performance test results and server monitoring logs from last night”",
+     "Constraints: “act as a test automation engineer”"
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. This is the output format (syllabus 2.1.1).",
+     "b": "Incorrect. This describes the test object, which is context (syllabus 2.1.1).",
+     "c": "Correct. Results and logs are material for the task, so they are input data (syllabus 2.1.1).",
+     "d": "Incorrect. This is a role (syllabus 2.1.1)."
+    },
+    "vysvetleni_obecne": "Each component answers a different question: who answers (role), about what (context), what to do (instruction), with what (input data), under which rules (constraints) and in which form (output format)."
+   },
+   "cz": {
+    "q": "<p>Která z následujících dvojic komponenta promptu a příklad je správná?</p>",
+    "moznosti": [
+     "Kontext: „nálezy vrať jako JSON s poli id, severity a description“",
+     "Role: „testovaný systém je platební brána, kterou používá 300 obchodníků“",
+     "Vstupní data: „přiložené výsledky výkonnostních testů a logy z monitoringu serverů z poslední noci“",
+     "Omezení: „jednej jako inženýr automatizace testů“"
+    ],
+    "vysvetleni": {
+     "a": "Špatně. To je formát výstupu (sylabus 2.1.1).",
+     "b": "Špatně. Popisuje testovaný objekt, tedy kontext (sylabus 2.1.1).",
+     "c": "Správně. Výsledky a logy jsou materiál pro úlohu, tedy vstupní data (sylabus 2.1.1).",
+     "d": "Špatně. To je role (sylabus 2.1.1)."
+    },
+    "vysvetleni_obecne": "Každá komponenta odpovídá na jinou otázku: kdo odpovídá (role), o čem (kontext), co udělat (instrukce), s čím (vstupní data), podle jakých pravidel (omezení) a v jaké podobě (formát výstupu)."
+   },
+   "spravne": [
+    "c"
+   ],
+   "oddil": "2.1.1",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-2.1.2-01",
+   "zdroj": "vlastni",
+   "lo": "GenAI-2.1.2",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>A prompt contains three user stories, each followed by the Gherkin scenarios that the team wrote for it. At the end there is a fourth user story with the request to write Gherkin scenarios in the same style. Which prompting technique is used?</p>",
+    "moznosti": [
+     "One-shot prompting",
+     "Few-shot prompting",
+     "Prompt chaining",
+     "Meta prompting"
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. One-shot uses exactly one example; here there are three (syllabus 2.1.2).",
+     "b": "Correct. The prompt contains more than one example of the expected result (syllabus 2.1.2).",
+     "c": "Incorrect. The task is not split into several prompts with checks between them (syllabus 2.1.2).",
+     "d": "Incorrect. The model is not asked to create or refine a prompt (syllabus 2.1.2)."
+    },
+    "vysvetleni_obecne": "Zero-shot, one-shot and few-shot differ only in the number of examples in the prompt: none, one, several."
+   },
+   "cz": {
+    "q": "<p>Prompt obsahuje tři uživatelské scénáře, za každým jsou Gherkin scénáře, které k němu tým napsal. Na konci je čtvrtý uživatelský scénář s požadavkem napsat Gherkin scénáře ve stejném stylu. Jaká technika promptování je použita?</p>",
+    "moznosti": [
+     "One-shot prompting",
+     "Few-shot prompting",
+     "Prompt chaining",
+     "Meta prompting"
+    ],
+    "vysvetleni": {
+     "a": "Špatně. One-shot používá právě jeden příklad, tady jsou tři (sylabus 2.1.2).",
+     "b": "Správně. Prompt obsahuje víc než jeden příklad očekávaného výsledku (sylabus 2.1.2).",
+     "c": "Špatně. Úloha není rozdělená do více promptů s kontrolou mezi nimi (sylabus 2.1.2).",
+     "d": "Špatně. Model není žádán o vytvoření nebo vylepšení promptu (sylabus 2.1.2)."
+    },
+    "vysvetleni_obecne": "Zero-shot, one-shot a few-shot se liší jen počtem příkladů v promptu: žádný, jeden, několik."
+   },
+   "spravne": [
+    "b"
+   ],
+   "oddil": "2.1.2",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-2.1.2-02",
+   "zdroj": "vlastni",
+   "lo": "GenAI-2.1.2",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Which of the following BEST describes prompt chaining?</p>",
+    "moznosti": [
+     "The task is broken into intermediate steps with separate prompts, and the result of each step is checked and refined before the next step.",
+     "Several examples of the desired output are placed in one prompt so that the model follows the pattern.",
+     "The model is asked to write a better version of the tester's prompt.",
+     "The same prompt is sent several times and the most frequent answer is selected."
+    ],
+    "vysvetleni": {
+     "a": "Correct. This is the definition in syllabus 2.1.2, including the check between steps.",
+     "b": "Incorrect. This describes few-shot prompting (syllabus 2.1.2).",
+     "c": "Incorrect. This describes meta prompting (syllabus 2.1.2).",
+     "d": "Incorrect. Repeating the same prompt is not decomposition of a task into steps (syllabus 2.1.2)."
+    },
+    "vysvetleni_obecne": "Prompt chaining decomposes a complicated task into subtasks and checks the intermediate LLM outputs systematically."
+   },
+   "cz": {
+    "q": "<p>Co z následujícího NEJLÉPE popisuje prompt chaining?</p>",
+    "moznosti": [
+     "Úloha se rozdělí na mezikroky s vlastními prompty a výsledek každého kroku se před dalším krokem zkontroluje a upraví.",
+     "Do jednoho promptu se vloží několik příkladů požadovaného výstupu, aby model dodržel vzor.",
+     "Model je požádán, aby napsal lepší verzi testerova promptu.",
+     "Stejný prompt se pošle několikrát a vybere se nejčastější odpověď."
+    ],
+    "vysvetleni": {
+     "a": "Správně. Odpovídá definici v sylabu 2.1.2 včetně kontroly mezi kroky.",
+     "b": "Špatně. To popisuje few-shot prompting (sylabus 2.1.2).",
+     "c": "Špatně. To popisuje meta prompting (sylabus 2.1.2).",
+     "d": "Špatně. Opakování stejného promptu není rozklad úlohy na kroky (sylabus 2.1.2)."
+    },
+    "vysvetleni_obecne": "Řetězení promptů rozkládá složitou úlohu na dílčí úlohy a systematicky kontroluje mezivýsledky modelu."
+   },
+   "spravne": [
+    "a"
+   ],
+   "oddil": "2.1.2",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-2.1.2-03",
+   "zdroj": "vlastni",
+   "lo": "GenAI-2.1.2",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Which statement correctly describes meta prompting in software testing?</p>",
+    "moznosti": [
+     "The tester writes detailed prompts manually without any help from the LLM to keep full control.",
+     "The prompt tells the model to reason step by step before giving the final answer.",
+     "The prompt contains metadata about the test environment, such as versions and URLs.",
+     "The LLM generates or refines prompts in an iterative cycle, and the tester evaluates and adjusts them, similar to pairing."
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. The essence of meta prompting is that the LLM helps create the prompt (syllabus 2.1.2).",
+     "b": "Incorrect. This is chain-of-thought prompting, which the syllabus does not list as a core technique.",
+     "c": "Incorrect. Information about the environment is context or input data, not meta prompting (syllabus 2.1.1).",
+     "d": "Correct. Syllabus 2.1.2 describes meta prompting as co-creating prompts with the LLM, a form of pairing."
+    },
+    "vysvetleni_obecne": "Meta prompting uses the LLM's knowledge of effective prompts; it saves effort and helps testers who are unsure how to write a prompt."
+   },
+   "cz": {
+    "q": "<p>Které tvrzení správně popisuje meta prompting v testování softwaru?</p>",
+    "moznosti": [
+     "Tester píše podrobné prompty ručně bez pomoci modelu, aby měl plnou kontrolu.",
+     "Prompt modelu říká, aby před konečnou odpovědí uvažoval krok za krokem.",
+     "Prompt obsahuje metadata o testovacím prostředí, například verze a URL.",
+     "LLM v opakovaném cyklu vytváří nebo vylepšuje prompty a tester je posuzuje a upravuje, podobně jako při párové práci."
+    ],
+    "vysvetleni": {
+     "a": "Špatně. Podstatou meta promptingu je, že prompt pomáhá vytvořit model (sylabus 2.1.2).",
+     "b": "Špatně. To je chain-of-thought, kterou sylabus mezi základními technikami neuvádí.",
+     "c": "Špatně. Informace o prostředí jsou kontext nebo vstupní data, ne meta prompting (sylabus 2.1.1).",
+     "d": "Správně. Sylabus 2.1.2 popisuje meta prompting jako společnou tvorbu promptů s modelem, formu párové práce."
+    },
+    "vysvetleni_obecne": "Meta prompting využívá znalost modelu o účinných promptech; šetří práci a pomáhá testerům, kteří nevědí, jak prompt napsat."
+   },
+   "spravne": [
+    "d"
+   ],
+   "oddil": "2.1.2",
+   "poznamka": "Kurz Podraza v jedné lekci popisuje meta prompting jinak (instrukce, jak má model přemýšlet). Platí sylabus."
+  },
+  {
+   "id": "CG-2.1.2-04",
+   "zdroj": "vlastni",
+   "lo": "GenAI-2.1.2",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>What is the difference between zero-shot and one-shot prompting?</p>",
+    "moznosti": [
+     "A zero-shot prompt is sent without a system prompt; a one-shot prompt is sent with one system prompt.",
+     "A zero-shot prompt gets no answer on the first attempt; a one-shot prompt gets an answer after one retry.",
+     "A zero-shot prompt has no structure; a one-shot prompt has all six components.",
+     "A zero-shot prompt contains no example and relies on the model's pre-existing knowledge; a one-shot prompt contains exactly one example of the expected result."
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. The terms refer to examples in the prompt, not to system prompts (syllabus 2.1.2, 2.1.3).",
+     "b": "Incorrect. “Shot” means an example, not an attempt (syllabus 2.1.2).",
+     "c": "Incorrect. A zero-shot prompt can be fully structured; it just has no example (syllabus 2.1.1, 2.1.2).",
+     "d": "Correct. This matches syllabus 2.1.2."
+    },
+    "vysvetleni_obecne": "The number of examples distinguishes zero-shot (none), one-shot (one) and few-shot (several)."
+   },
+   "cz": {
+    "q": "<p>Jaký je rozdíl mezi zero-shot a one-shot promptingem?</p>",
+    "moznosti": [
+     "Zero-shot prompt se posílá bez systémového promptu; one-shot prompt s jedním systémovým promptem.",
+     "Zero-shot prompt nedostane odpověď na první pokus; one-shot prompt ji dostane po jednom opakování.",
+     "Zero-shot prompt nemá strukturu; one-shot prompt má všech šest komponent.",
+     "Zero-shot prompt neobsahuje žádný příklad a spoléhá na znalosti modelu; one-shot prompt obsahuje právě jeden příklad očekávaného výsledku."
+    ],
+    "vysvetleni": {
+     "a": "Špatně. Pojmy se týkají příkladů v promptu, ne systémových promptů (sylabus 2.1.2, 2.1.3).",
+     "b": "Špatně. „Shot“ znamená příklad, ne pokus (sylabus 2.1.2).",
+     "c": "Špatně. Zero-shot prompt může být plně strukturovaný, jen nemá příklad (sylabus 2.1.1, 2.1.2).",
+     "d": "Správně. Odpovídá sylabu 2.1.2."
+    },
+    "vysvetleni_obecne": "Počet příkladů rozlišuje zero-shot (žádný), one-shot (jeden) a few-shot (několik)."
+   },
+   "spravne": [
+    "d"
+   ],
+   "oddil": "2.1.2",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-2.1.2-05",
+   "zdroj": "vlastni",
+   "lo": "GenAI-2.1.2",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>A test lead first asks an LLM to propose a prompt for generating test cases. She then adds three approved test cases from the team as examples to that prompt. Finally, she splits the work into two prompts, generating test cases and checking coverage, and reviews the output after each one. Which techniques did she use, in this order?</p>",
+    "moznosti": [
+     "Prompt chaining, one-shot prompting, meta prompting",
+     "Zero-shot prompting, few-shot prompting, meta prompting",
+     "Meta prompting, few-shot prompting, prompt chaining",
+     "Meta prompting, prompt chaining, few-shot prompting"
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. The first step is meta prompting and three examples mean few-shot (syllabus 2.1.2).",
+     "b": "Incorrect. The last step is a decomposition with checks, which is prompt chaining (syllabus 2.1.2).",
+     "c": "Correct. The model created the prompt (meta), examples were added (few-shot), and the task was split with checks (chaining); syllabus 2.2.5 describes this combination.",
+     "d": "Incorrect. The techniques are right but the order is wrong (syllabus 2.2.5)."
+    },
+    "vysvetleni_obecne": "The core techniques can be combined; the syllabus gives exactly this sequence as an example."
+   },
+   "cz": {
+    "q": "<p>Vedoucí testů nejprve požádá LLM, aby navrhl prompt pro generování testovacích případů. Do tohoto promptu pak přidá tři schválené testovací případy týmu jako příklady. Nakonec práci rozdělí na dva prompty, generování testovacích případů a kontrolu pokrytí, a po každém výstup zkontroluje. Které techniky použila, v tomto pořadí?</p>",
+    "moznosti": [
+     "Prompt chaining, one-shot prompting, meta prompting",
+     "Zero-shot prompting, few-shot prompting, meta prompting",
+     "Meta prompting, few-shot prompting, prompt chaining",
+     "Meta prompting, prompt chaining, few-shot prompting"
+    ],
+    "vysvetleni": {
+     "a": "Špatně. Prvním krokem je meta prompting a tři příklady znamenají few-shot (sylabus 2.1.2).",
+     "b": "Špatně. Poslední krok je rozklad s kontrolami, tedy prompt chaining (sylabus 2.1.2).",
+     "c": "Správně. Model vytvořil prompt (meta), přidaly se příklady (few-shot) a úloha se rozdělila s kontrolami (chaining); tuto kombinaci popisuje sylabus 2.2.5.",
+     "d": "Špatně. Techniky sedí, ale pořadí je špatně (sylabus 2.2.5)."
+    },
+    "vysvetleni_obecne": "Základní techniky lze kombinovat; sylabus uvádí právě tuto posloupnost jako příklad."
+   },
+   "spravne": [
+    "c"
+   ],
+   "oddil": "2.1.2",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-2.1.3-01",
+   "zdroj": "vlastni",
+   "lo": "GenAI-2.1.3",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>A team builds an internal LLM assistant for testers. Every answer must use ISTQB terminology and must refuse to process personal data of clients. Where should these rules be placed?</p>",
+    "moznosti": [
+     "In each user prompt, because the user prompt sets the rules for the entire session.",
+     "In the system prompt, because it defines the behavior for the whole conversation and stays constant.",
+     "In the first user prompt only, because the model remembers it for the rest of the conversation in the same way as a system prompt.",
+     "In the output format of each answer, because formatting rules control the behavior."
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. User prompts change with each interaction; the system prompt sets the rules for the session (syllabus 2.1.3).",
+     "b": "Correct. Rules that apply to every interaction belong to the system prompt (syllabus 2.1.3).",
+     "c": "Incorrect. A user prompt is not the defined framework for the conversation; the syllabus places such rules in the system prompt (syllabus 2.1.3).",
+     "d": "Incorrect. Output format shapes the response structure, not behavioral rules such as data protection (syllabus 2.1.1)."
+    },
+    "vysvetleni_obecne": "The system prompt is a predefined command set defining behavior and operational parameters for the entire conversation."
+   },
+   "cz": {
+    "q": "<p>Tým staví interního LLM asistenta pro testery. Každá odpověď musí používat terminologii ISTQB a asistent musí odmítnout zpracovat osobní údaje klientů. Kam tato pravidla patří?</p>",
+    "moznosti": [
+     "Do každého uživatelského promptu, protože ten nastavuje pravidla pro celou session.",
+     "Do systémového promptu, protože určuje chování pro celou konverzaci a nemění se.",
+     "Jen do prvního uživatelského promptu, protože si ho model pamatuje po zbytek konverzace stejně jako systémový prompt.",
+     "Do formátu výstupu každé odpovědi, protože pravidla formátu řídí chování."
+    ],
+    "vysvetleni": {
+     "a": "Špatně. Uživatelské prompty se mění s každou interakcí; pravidla pro session nastavuje systémový prompt (sylabus 2.1.3).",
+     "b": "Správně. Pravidla platná pro každou interakci patří do systémového promptu (sylabus 2.1.3).",
+     "c": "Špatně. Uživatelský prompt není definovaný rámec konverzace; sylabus taková pravidla dává do systémového promptu (sylabus 2.1.3).",
+     "d": "Špatně. Formát výstupu tvaruje strukturu odpovědi, ne pravidla chování jako ochranu dat (sylabus 2.1.1)."
+    },
+    "vysvetleni_obecne": "Systémový prompt je předem daná sada pokynů, která určuje chování a provozní parametry pro celou konverzaci."
+   },
+   "spravne": [
+    "b"
+   ],
+   "oddil": "2.1.3",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-2.1.3-02",
+   "zdroj": "vlastni",
+   "lo": "GenAI-2.1.3",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Which of the following statements about a user prompt is correct?</p>",
+    "moznosti": [
+     "It changes with each interaction and forms the immediate context for the response.",
+     "It is defined once by the developer and stays constant for the whole session.",
+     "It is usually hidden from the chatbot's user.",
+     "It overrides the system prompt, so the model ignores the system prompt once a user prompt is sent."
+    ],
+    "vysvetleni": {
+     "a": "Correct. This matches syllabus 2.1.3.",
+     "b": "Incorrect. This describes a system prompt (syllabus 2.1.3).",
+     "c": "Incorrect. User prompts are directly visible (syllabus 2.1.3).",
+     "d": "Incorrect. The model considers both the system prompt and the current user prompt together (syllabus 2.1.3)."
+    },
+    "vysvetleni_obecne": "A user prompt is the actual input of the chatbot's user: questions, instructions or tasks for the current interaction."
+   },
+   "cz": {
+    "q": "<p>Které z následujících tvrzení o uživatelském promptu je správné?</p>",
+    "moznosti": [
+     "Mění se s každou interakcí a tvoří bezprostřední kontext odpovědi.",
+     "Jednou ho definuje vývojář a po celou session se nemění.",
+     "Uživatel chatbota ho obvykle nevidí.",
+     "Přepisuje systémový prompt, takže model po odeslání uživatelského promptu systémový prompt ignoruje."
+    ],
+    "vysvetleni": {
+     "a": "Správně. Odpovídá sylabu 2.1.3.",
+     "b": "Špatně. To popisuje systémový prompt (sylabus 2.1.3).",
+     "c": "Špatně. Uživatelské prompty jsou přímo viditelné (sylabus 2.1.3).",
+     "d": "Špatně. Model bere v úvahu systémový i aktuální uživatelský prompt zároveň (sylabus 2.1.3)."
+    },
+    "vysvetleni_obecne": "Uživatelský prompt je skutečný vstup uživatele chatbota: otázky, pokyny nebo úlohy pro danou interakci."
+   },
+   "spravne": [
+    "a"
+   ],
+   "oddil": "2.1.3",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-2.1.3-03",
+   "zdroj": "vlastni",
+   "lo": "GenAI-2.1.3",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>The system prompt of a test assistant says that test cases must always be returned with the fields ID, preconditions, steps and expected result. A tester sends the user prompt: “Create test cases for changing the card limit.” What is the expected behavior?</p>",
+    "moznosti": [
+     "The model creates test cases for the card limit and uses the fields defined in the system prompt, because it considers both prompts together.",
+     "The model ignores the field definition because the user prompt does not repeat it.",
+     "The model asks the user to confirm the system prompt before answering.",
+     "The model replaces the system prompt with the user prompt for the rest of the session."
+    ],
+    "vysvetleni": {
+     "a": "Correct. The LLM generates responses by considering the unchanging system prompt and the current user prompt together (syllabus 2.1.3).",
+     "b": "Incorrect. Rules in the system prompt apply to the whole conversation without repetition (syllabus 2.1.3).",
+     "c": "Incorrect. The system prompt is not something the user confirms; it is predefined (syllabus 2.1.3).",
+     "d": "Incorrect. The system prompt stays constant throughout the interaction session (syllabus 2.1.3)."
+    },
+    "vysvetleni_obecne": "Typical usage: the system prompt is set once at the start, then successive user prompts are sent; both are considered for each response."
+   },
+   "cz": {
+    "q": "<p>Systémový prompt testovacího asistenta říká, že testovací případy se mají vždy vracet s poli ID, předpoklady, kroky a očekávaný výsledek. Tester pošle uživatelský prompt: „Vytvoř testovací případy pro změnu limitu karty.“ Jaké chování se očekává?</p>",
+    "moznosti": [
+     "Model vytvoří testovací případy pro limit karty s poli ze systémového promptu, protože bere v úvahu oba prompty zároveň.",
+     "Model definici polí ignoruje, protože ji uživatelský prompt neopakuje.",
+     "Model před odpovědí požádá uživatele o potvrzení systémového promptu.",
+     "Model po zbytek session nahradí systémový prompt uživatelským."
+    ],
+    "vysvetleni": {
+     "a": "Správně. Model tvoří odpověď s ohledem na neměnný systémový prompt i aktuální uživatelský prompt (sylabus 2.1.3).",
+     "b": "Špatně. Pravidla ze systémového promptu platí pro celou konverzaci i bez opakování (sylabus 2.1.3).",
+     "c": "Špatně. Systémový prompt uživatel nepotvrzuje, je předem daný (sylabus 2.1.3).",
+     "d": "Špatně. Systémový prompt zůstává po celou session stejný (sylabus 2.1.3)."
+    },
+    "vysvetleni_obecne": "Typický postup: systémový prompt se nastaví jednou na začátku, pak přicházejí uživatelské prompty; pro každou odpověď se berou v úvahu oba."
+   },
+   "spravne": [
+    "a"
+   ],
+   "oddil": "2.1.3",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-2.1.3-04",
+   "zdroj": "vlastni",
+   "lo": "GenAI-2.1.3",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Which of the following would be LEAST appropriate to place in the system prompt of an LLM-powered test assistant?</p>",
+    "moznosti": [
+     "The role of the assistant as a professional software testing assistant.",
+     "The rule to answer concisely and in a formal tone.",
+     "The constraint not to speculate when information is missing.",
+     "The acceptance criteria of the user story the tester is working on today."
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. A role is typical content of a system prompt (syllabus 2.1.3).",
+     "b": "Incorrect. This is an operational parameter, typical for a system prompt (syllabus 2.1.3).",
+     "c": "Incorrect. Constraints that apply to all answers fit into a system prompt (syllabus 2.1.3).",
+     "d": "Correct. Task-specific input that changes with each request belongs to the user prompt (syllabus 2.1.3)."
+    },
+    "vysvetleni_obecne": "A system prompt may contain role, context and constraints valid for the whole conversation; task-specific data go into user prompts."
+   },
+   "cz": {
+    "q": "<p>Co z následujícího by bylo NEJMÉNĚ vhodné umístit do systémového promptu testovacího asistenta postaveného na LLM?</p>",
+    "moznosti": [
+     "Role asistenta jako profesionálního pomocníka pro testování softwaru.",
+     "Pravidlo odpovídat stručně a formálním tónem.",
+     "Omezení nespekulovat, když informace chybí.",
+     "Akceptační kritéria uživatelského scénáře, na kterém tester dnes pracuje."
+    ],
+    "vysvetleni": {
+     "a": "Špatně. Role je typický obsah systémového promptu (sylabus 2.1.3).",
+     "b": "Špatně. Jde o provozní parametr, typický pro systémový prompt (sylabus 2.1.3).",
+     "c": "Špatně. Omezení platná pro všechny odpovědi do systémového promptu patří (sylabus 2.1.3).",
+     "d": "Správně. Vstup specifický pro úlohu, který se mění s každým požadavkem, patří do uživatelského promptu (sylabus 2.1.3)."
+    },
+    "vysvetleni_obecne": "Systémový prompt může obsahovat roli, kontext a omezení platné pro celou konverzaci; data konkrétní úlohy patří do uživatelských promptů."
+   },
+   "spravne": [
+    "d"
+   ],
+   "oddil": "2.1.3",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-2.1.3-05",
+   "zdroj": "vlastni",
+   "lo": "GenAI-2.1.3",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Which statement BEST distinguishes the system prompt from the user prompt?</p>",
+    "moznosti": [
+     "The system prompt contains the specific question of the current interaction; the user prompt contains the general rules.",
+     "The system prompt is generated by the LLM itself after the first user prompt.",
+     "The system prompt is typically set by a developer or tester and is not visible to the chatbot's user in most interfaces; the user prompt is written by the user and is visible.",
+     "The system prompt is used only by AI chatbots, the user prompt only by LLM-powered test applications."
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. The roles are reversed (syllabus 2.1.3).",
+     "b": "Incorrect. The system prompt is predefined, typically by a developer or tester (syllabus 2.1.3).",
+     "c": "Correct. This matches syllabus 2.1.3.",
+     "d": "Incorrect. Both kinds of prompts are used in interactions with LLMs regardless of the type of tool (syllabus 2.1.3)."
+    },
+    "vysvetleni_obecne": "System prompt: framework for the whole conversation, constant, usually hidden. User prompt: per-interaction input, changing, visible."
+   },
+   "cz": {
+    "q": "<p>Které tvrzení NEJLÉPE odlišuje systémový prompt od uživatelského?</p>",
+    "moznosti": [
+     "Systémový prompt obsahuje konkrétní otázku aktuální interakce; uživatelský prompt obecná pravidla.",
+     "Systémový prompt vygeneruje sám LLM po prvním uživatelském promptu.",
+     "Systémový prompt obvykle nastavuje vývojář nebo tester a uživatel chatbota ho ve většině rozhraní nevidí; uživatelský prompt píše uživatel a je viditelný.",
+     "Systémový prompt používají jen AI chatboti, uživatelský prompt jen testovací aplikace postavené na LLM."
+    ],
+    "vysvetleni": {
+     "a": "Špatně. Role jsou prohozené (sylabus 2.1.3).",
+     "b": "Špatně. Systémový prompt je předem daný, obvykle vývojářem nebo testerem (sylabus 2.1.3).",
+     "c": "Správně. Odpovídá sylabu 2.1.3.",
+     "d": "Špatně. Oba druhy promptů se používají při práci s LLM bez ohledu na typ nástroje (sylabus 2.1.3)."
+    },
+    "vysvetleni_obecne": "Systémový prompt: rámec celé konverzace, neměnný, obvykle skrytý. Uživatelský prompt: vstup pro jednu interakci, proměnlivý, viditelný."
+   },
+   "spravne": [
+    "c"
+   ],
+   "oddil": "2.1.3",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-2.2.1-01",
+   "zdroj": "vlastni",
+   "lo": "GenAI-2.2.1",
+   "k": "K3",
+   "body": 2,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>A product owner of an online shop delivers a user story with acceptance criteria for a loyalty program and admits that some criteria are vague. You want to use prompt chaining with human verification to make the acceptance criteria well-formed and actionable. Which sequence of prompts is MOST appropriate?</p><ol><li>Ask the LLM to evaluate whether each criterion is testable and to rewrite untestable ones.</li><li>Ask the LLM to identify ambiguous wording in the story and criteria.</li><li>Ask the LLM to evaluate whether the criteria cover the story completely and propose missing ones.</li></ol><p>After each step you verify and correct the result before the next prompt.</p>",
+    "moznosti": [
+     "1 – 2 – 3",
+     "2 – 1 – 3",
+     "3 – 2 – 1",
+     "All three steps in one prompt, followed by one final review"
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. Testability cannot be judged reliably while the wording is still ambiguous (syllabus 2.2.1, HO-2.2.1b).",
+     "b": "Correct. Ambiguities are resolved first, then testability is assessed on clean criteria, and completeness last (syllabus 2.2.1, HO-2.2.1b).",
+     "c": "Incorrect. Proposing new criteria before clarifying the existing ones builds on vague wording (syllabus 2.2.1, HO-2.2.1b).",
+     "d": "Incorrect. This is not prompt chaining; intermediate results are not verified (syllabus 2.1.2)."
+    },
+    "vysvetleni_obecne": "Each step of the chain uses a verified result of the previous step; the syllabus order is ambiguities, testability, completeness."
+   },
+   "cz": {
+    "q": "<p>Product owner e-shopu dodá uživatelský scénář s akceptačními kritérii pro věrnostní program a přizná, že některá kritéria jsou vágní. Chcete pomocí řetězení promptů s lidským ověřením dosáhnout dobře formulovaných a použitelných akceptačních kritérií. Která posloupnost promptů je NEJVHODNĚJŠÍ?</p><ol><li>Požádat LLM, aby posoudil testovatelnost každého kritéria a netestovatelná přepsal.</li><li>Požádat LLM, aby našel nejednoznačné formulace ve scénáři a kritériích.</li><li>Požádat LLM, aby posoudil, zda kritéria pokrývají scénář úplně, a navrhl chybějící.</li></ol><p>Po každém kroku výsledek ověříte a opravíte, než pošlete další prompt.</p>",
+    "moznosti": [
+     "1 – 2 – 3",
+     "2 – 1 – 3",
+     "3 – 2 – 1",
+     "Všechny tři kroky v jednom promptu a na konci jedna kontrola"
+    ],
+    "vysvetleni": {
+     "a": "Špatně. Testovatelnost nelze spolehlivě posoudit, dokud jsou formulace nejednoznačné (sylabus 2.2.1, HO-2.2.1b).",
+     "b": "Správně. Nejdřív se vyřeší nejednoznačnosti, pak se na vyčištěných kritériích posoudí testovatelnost a nakonec úplnost (sylabus 2.2.1, HO-2.2.1b).",
+     "c": "Špatně. Navrhovat nová kritéria před vyjasněním stávajících znamená stavět na vágních formulacích (sylabus 2.2.1, HO-2.2.1b).",
+     "d": "Špatně. To není řetězení promptů; mezivýsledky se neověřují (sylabus 2.1.2)."
+    },
+    "vysvetleni_obecne": "Každý krok řetězu pracuje s ověřeným výsledkem předchozího; pořadí podle sylabu je nejednoznačnosti, testovatelnost, úplnost."
+   },
+   "spravne": [
+    "b"
+   ],
+   "oddil": "2.2.1",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-2.2.1-02",
+   "zdroj": "vlastni",
+   "lo": "GenAI-2.2.1",
+   "k": "K3",
+   "body": 2,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>A test manager uses the following prompt to prioritize test conditions for a payment module:</p><pre>Role: Act as a test manager in a bank.\nContext: Release of the payment module in three weeks.\nInstruction: Prioritize the test conditions.\nInput data: List of 25 test conditions with ID and description.\nConstraints: Consider the risk level.\nOutput format: Table with ID, priority and short rationale.</pre><p>The priorities look plausible but differ between runs and cannot be traced. Which improvement would MOST improve the prioritization?</p>",
+    "moznosti": [
+     "Change the role to “experienced test manager specialized in risk management”.",
+     "Add risk likelihood and impact for each condition and the number of past defects to the input data, and state in the constraints how the risk level is calculated.",
+     "Add to the output format a chart showing the number of conditions per priority.",
+     "Replace the constraint with “Use best practices for risk-based testing”."
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. The persona changes, but the model still lacks the risk information it needs (syllabus 2.2.1).",
+     "b": "Correct. With likelihood, impact and defect history the LLM can recommend traceable priorities (syllabus 2.2.1).",
+     "c": "Incorrect. Visualizing the result does not make the prioritization better founded (syllabus 2.1.1).",
+     "d": "Incorrect. A reference to unspecified best practices is vague and adds no information (syllabus 2.1.1)."
+    },
+    "vysvetleni_obecne": "Prioritization by risk requires information on likelihood and impact; regulatory aspects, user-facing features and historical defects are further inputs."
+   },
+   "cz": {
+    "q": "<p>Test manažer používá tento prompt k prioritizaci testovacích podmínek platebního modulu:</p><pre>Role: Act as a test manager in a bank.\nContext: Release of the payment module in three weeks.\nInstruction: Prioritize the test conditions.\nInput data: List of 25 test conditions with ID and description.\nConstraints: Consider the risk level.\nOutput format: Table with ID, priority and short rationale.</pre><p>Priority vypadají věrohodně, ale mezi běhy se liší a nedají se zpětně dohledat. Která úprava NEJVÍCE zlepší prioritizaci?</p>",
+    "moznosti": [
+     "Změnit roli na „zkušený test manažer specializovaný na řízení rizik“.",
+     "Doplnit do vstupních dat pravděpodobnost a dopad u každé podmínky a počet dřívějších defektů a do omezení uvést, jak se úroveň rizika počítá.",
+     "Přidat do formátu výstupu graf s počtem podmínek podle priority.",
+     "Nahradit omezení větou „Použij osvědčené postupy testování založeného na rizicích“."
+    ],
+    "vysvetleni": {
+     "a": "Špatně. Persona se změní, ale modelu dál chybí informace o riziku (sylabus 2.2.1).",
+     "b": "Správně. S pravděpodobností, dopadem a historií defektů může LLM doporučit dohledatelné priority (sylabus 2.2.1).",
+     "c": "Špatně. Vizualizace výsledku nezlepší podklad prioritizace (sylabus 2.1.1).",
+     "d": "Špatně. Odkaz na nespecifikované osvědčené postupy je vágní a nepřidává informaci (sylabus 2.1.1)."
+    },
+    "vysvetleni_obecne": "Prioritizace podle rizika potřebuje informace o pravděpodobnosti a dopadu; dalšími vstupy jsou regulace, uživatelské funkce a historie defektů."
+   },
+   "spravne": [
+    "b"
+   ],
+   "oddil": "2.2.1",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-2.2.1-03",
+   "zdroj": "vlastni",
+   "lo": "GenAI-2.2.1",
+   "k": "K3",
+   "body": 2,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>You create a multimodal prompt to derive acceptance criteria for a standing order screen. The input data are the user story, a GUI wireframe and business rules for the fields. You know that the wireframe is older than the business rules and may contradict them. Which constraint is MOST appropriate?</p>",
+    "moznosti": [
+     "“If the wireframe and the business rules contradict each other, the business rules take precedence; list every contradiction separately.”",
+     "“Use only the wireframe, because the image is more precise than text.”",
+     "“Write at most five acceptance criteria.”",
+     "“Act as a UX designer and evaluate the visual design of the screen.”"
+    ],
+    "vysvetleni": {
+     "a": "Correct. It tells the LLM how to apply the instruction to conflicting input data and makes conflicts visible to the tester (syllabus 2.1.1, 2.2.1, HO-2.2.1a).",
+     "b": "Incorrect. It ignores the newer business rules and hides the known contradictions (syllabus 2.2.1).",
+     "c": "Incorrect. Limiting the number does not address the conflicting inputs and may reduce completeness (syllabus 2.2.1).",
+     "d": "Incorrect. This changes the role and the task away from acceptance criteria (syllabus 2.1.1)."
+    },
+    "vysvetleni_obecne": "The quality and relevance of inputs directly impact the output; constraints specify how instructions apply to the input data."
+   },
+   "cz": {
+    "q": "<p>Vytváříte multimodální prompt, který má odvodit akceptační kritéria pro obrazovku trvalého příkazu. Vstupními daty jsou uživatelský scénář, wireframe GUI a obchodní pravidla pro pole. Víte, že wireframe je starší než pravidla a může jim odporovat. Které omezení je NEJVHODNĚJŠÍ?</p>",
+    "moznosti": [
+     "„Pokud si wireframe a obchodní pravidla odporují, platí obchodní pravidla; každý rozpor vypiš zvlášť.“",
+     "„Použij jen wireframe, protože obrázek je přesnější než text.“",
+     "„Napiš nejvýše pět akceptačních kritérií.“",
+     "„Jednej jako UX designér a ohodnoť vizuální návrh obrazovky.“"
+    ],
+    "vysvetleni": {
+     "a": "Správně. Říká modelu, jak použít instrukci na rozporná vstupní data, a zviditelní rozpory testerovi (sylabus 2.1.1, 2.2.1, HO-2.2.1a).",
+     "b": "Špatně. Ignoruje novější pravidla a skryje známé rozpory (sylabus 2.2.1).",
+     "c": "Špatně. Omezení počtu neřeší rozporné vstupy a může snížit úplnost (sylabus 2.2.1).",
+     "d": "Špatně. Mění roli i úlohu mimo akceptační kritéria (sylabus 2.1.1)."
+    },
+    "vysvetleni_obecne": "Kvalita a relevance vstupů přímo ovlivňuje výstup; omezení určují, jak se instrukce použije na vstupní data."
+   },
+   "spravne": [
+    "a"
+   ],
+   "oddil": "2.2.1",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-2.2.1-04",
+   "zdroj": "vlastni",
+   "lo": "GenAI-2.2.1",
+   "k": "K3",
+   "body": 2,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>A test analyst at an insurance company wants to find out which of 42 requirements of a claims module are not yet covered by the existing 96 test conditions. Which prompt is BEST suited?</p>",
+    "moznosti": [
+     "Provide the requirements only and ask the LLM to generate 96 new test conditions.",
+     "Provide the test conditions only and ask the LLM which requirements it thinks are typical for a claims module.",
+     "Provide both lists and ask the LLM to sort the test conditions alphabetically and remove duplicates.",
+     "Provide both lists and ask for a traceability matrix requirement × test conditions, marking each requirement as covered, partially covered or not covered, and counting only links based on the content of the requirement."
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. Without the existing conditions, coverage gaps cannot be identified (syllabus 2.2.1).",
+     "b": "Incorrect. The model would guess requirements instead of using the actual test basis (syllabus 2.2.1).",
+     "c": "Incorrect. Sorting and de-duplication do not show which requirements are uncovered (syllabus 2.2.1).",
+     "d": "Correct. Mapping requirements to test conditions with explicit coverage status supports coverage analysis (syllabus 2.2.1)."
+    },
+    "vysvetleni_obecne": "Coverage analysis maps requirements and user stories to test conditions to check whether all aspects of the test basis are covered."
+   },
+   "cz": {
+    "q": "<p>Test analytik pojišťovny chce zjistit, které ze 42 požadavků modulu pojistných událostí ještě nejsou pokryté existujícími 96 testovacími podmínkami. Který prompt je pro to NEJVHODNĚJŠÍ?</p>",
+    "moznosti": [
+     "Dodat jen požadavky a požádat LLM o vygenerování 96 nových testovacích podmínek.",
+     "Dodat jen testovací podmínky a zeptat se LLM, jaké požadavky jsou pro modul pojistných událostí typické.",
+     "Dodat oba seznamy a požádat LLM, aby seřadil podmínky abecedně a odstranil duplicity.",
+     "Dodat oba seznamy a požádat o matici trasovatelnosti požadavek × testovací podmínky se stavem pokryto, částečně, nepokryto, přičemž se počítají jen vazby podle obsahu požadavku."
+    ],
+    "vysvetleni": {
+     "a": "Špatně. Bez existujících podmínek nelze mezery v pokrytí určit (sylabus 2.2.1).",
+     "b": "Špatně. Model by požadavky hádal místo použití skutečné testovací báze (sylabus 2.2.1).",
+     "c": "Špatně. Řazení a odstranění duplicit neukáže, které požadavky nejsou pokryté (sylabus 2.2.1).",
+     "d": "Správně. Mapování požadavků na podmínky s výslovným stavem pokrytí podporuje analýzu pokrytí (sylabus 2.2.1)."
+    },
+    "vysvetleni_obecne": "Analýza pokrytí mapuje požadavky a uživatelské scénáře na testovací podmínky a ověřuje, zda jsou pokryté všechny aspekty testovací báze."
+   },
+   "spravne": [
+    "d"
+   ],
+   "oddil": "2.2.1",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-2.2.1-05",
+   "zdroj": "vlastni",
+   "lo": "GenAI-2.2.1",
+   "k": "K3",
+   "body": 2,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Before development starts, a tester wants an LLM to help review the requirements of a car insurance premium calculator. Which instruction is BEST suited for this test analysis task?</p>",
+    "moznosti": [
+     "“Write Playwright scripts for the calculator.”",
+     "“Summarize the requirements in three sentences for management.”",
+     "“Identify ambiguities, contradictions and missing information in the requirements and explain for each why it could lead to a defect.”",
+     "“Create a test execution schedule for the calculator.”"
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. Scripts are test implementation, and the calculator does not exist yet (syllabus 2.2.2).",
+     "b": "Incorrect. A summary does not identify defects in the test basis (syllabus 2.2.1).",
+     "c": "Correct. It targets potential defects in the test basis, a typical test analysis task (syllabus 2.2.1).",
+     "d": "Incorrect. Scheduling belongs to test implementation and needs test cases first (syllabus 2.2.2)."
+    },
+    "vysvetleni_obecne": "GenAI can analyze the test basis for inconsistencies, ambiguities or incomplete information and suggest improvements."
+   },
+   "cz": {
+    "q": "<p>Před začátkem vývoje chce tester s pomocí LLM revidovat požadavky na kalkulačku povinného ručení. Která instrukce je pro tuto úlohu testovací analýzy NEJVHODNĚJŠÍ?</p>",
+    "moznosti": [
+     "„Napiš Playwright skripty pro kalkulačku.“",
+     "„Shrň požadavky do tří vět pro vedení.“",
+     "„Najdi v požadavcích nejednoznačnosti, rozpory a chybějící informace a u každé vysvětli, proč by mohla vést k defektu.“",
+     "„Vytvoř harmonogram provedení testů pro kalkulačku.“"
+    ],
+    "vysvetleni": {
+     "a": "Špatně. Skripty patří do implementace testování a kalkulačka ještě neexistuje (sylabus 2.2.2).",
+     "b": "Špatně. Shrnutí neodhalí defekty v testovací bázi (sylabus 2.2.1).",
+     "c": "Správně. Míří na potenciální defekty v testovací bázi, typickou úlohu testovací analýzy (sylabus 2.2.1).",
+     "d": "Špatně. Harmonogram patří do implementace testování a potřebuje nejdřív testovací případy (sylabus 2.2.2)."
+    },
+    "vysvetleni_obecne": "GenAI může v testovací bázi hledat nekonzistence, nejednoznačnosti a neúplné informace a navrhovat zlepšení."
+   },
+   "spravne": [
+    "c"
+   ],
+   "oddil": "2.2.1",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-2.2.2-01",
+   "zdroj": "vlastni",
+   "lo": "GenAI-2.2.2",
+   "k": "K3",
+   "body": 2,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Your team writes test cases in Gherkin. You have a set of approved examples, each consisting of a user story, its test conditions and its Gherkin scenarios. You want the LLM to produce the same for a new user story about filtering invoices by price range. Which prompt is MOST appropriate?</p>",
+    "moznosti": [
+     "Describe Gherkin syntax in general terms and ask for scenarios for the new story, without examples.",
+     "Include the examples but ask only for edge-case scenarios for the new story.",
+     "Include two or three of the approved examples with story, conditions and scenarios, then the new story, and ask for test conditions and Gherkin scenarios in exactly the same style, one scenario per condition.",
+     "Include only the Gherkin scenarios of the examples, without their user stories and conditions, and ask the LLM to follow best practices."
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. This is zero-shot; it does not use the team's approved examples to fix the style (syllabus 2.1.2).",
+     "b": "Incorrect. Focusing only on edge cases would miss the main conditions of the story (syllabus 2.2.2).",
+     "c": "Correct. Few-shot examples that include story, conditions and scenarios model the expected result for the new story (syllabus 2.2.2, HO-2.2.2b).",
+     "d": "Incorrect. Without the story and conditions the examples do not show the mapping from input to output, and “best practices” is vague (syllabus 2.1.1, HO-2.2.2b)."
+    },
+    "vysvetleni_obecne": "In few-shot prompting for Gherkin, each example includes the user story, test conditions and the expected Given-When-Then test cases."
+   },
+   "cz": {
+    "q": "<p>Váš tým píše testovací případy v Gherkinu. Máte sadu schválených příkladů, každý obsahuje uživatelský scénář, jeho testovací podmínky a Gherkin scénáře. Chcete, aby LLM vytvořil totéž pro nový uživatelský scénář o filtrování faktur podle rozsahu ceny. Který prompt je NEJVHODNĚJŠÍ?</p>",
+    "moznosti": [
+     "Obecně popsat syntaxi Gherkinu a požádat o scénáře pro nový příběh bez příkladů.",
+     "Vložit příklady, ale požádat jen o scénáře pro okrajové případy nového příběhu.",
+     "Vložit dva nebo tři schválené příklady se scénářem, podmínkami a Gherkinem, pak nový scénář, a požádat o testovací podmínky a Gherkin scénáře přesně ve stejném stylu, jeden scénář na podmínku.",
+     "Vložit jen Gherkin scénáře z příkladů bez uživatelských scénářů a podmínek a požádat LLM, aby se držel osvědčených postupů."
+    ],
+    "vysvetleni": {
+     "a": "Špatně. Jde o zero-shot, který nevyužije schválené příklady k ukotvení stylu (sylabus 2.1.2).",
+     "b": "Špatně. Zaměření jen na okrajové případy vynechá hlavní podmínky příběhu (sylabus 2.2.2).",
+     "c": "Správně. Few-shot příklady se scénářem, podmínkami a Gherkinem ukazují očekávaný výsledek pro nový scénář (sylabus 2.2.2, HO-2.2.2b).",
+     "d": "Špatně. Bez scénáře a podmínek příklady neukazují převod vstupu na výstup a „osvědčené postupy“ jsou vágní (sylabus 2.1.1, HO-2.2.2b)."
+    },
+    "vysvetleni_obecne": "U few-shot promptu pro Gherkin obsahuje každý příklad uživatelský scénář, testovací podmínky a očekávané testovací případy Given-When-Then."
+   },
+   "spravne": [
+    "c"
+   ],
+   "oddil": "2.2.2",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-2.2.2-02",
+   "zdroj": "vlastni",
+   "lo": "GenAI-2.2.2",
+   "k": "K3",
+   "body": 2,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>A tester needs 500 client records to test the registration of a banking application, including invalid and extreme values. A colleague suggests pasting 50 real client records from production into the prompt “so that the data look realistic”. Which approach is MOST appropriate?</p>",
+    "moznosti": [
+     "Paste the 50 real records and ask the LLM to change only the surnames.",
+     "Describe the field rules and formats in the prompt and ask for synthetic records with an explicit share of invalid and extreme values, without using any real client data.",
+     "Ask the LLM for 500 records with valid values only, because invalid values are generated by the application anyway.",
+     "Ask the LLM to write test cases first and to invent the data later during test execution."
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. Real client data would still be exposed; the syllabus stresses privacy-preserving synthetic data (syllabus 2.2.2, chapter 3).",
+     "b": "Correct. GenAI can synthesize representative, privacy-preserving test data covering extreme situations (syllabus 2.2.2).",
+     "c": "Incorrect. Test data should cover invalid and extreme situations as well (syllabus 2.2.2).",
+     "d": "Incorrect. Data needed for execution belong to test implementation and should be prepared before execution (syllabus 2.2.2)."
+    },
+    "vysvetleni_obecne": "Synthetic test data resemble production data and cover extreme situations without exposing sensitive information."
+   },
+   "cz": {
+    "q": "<p>Tester potřebuje 500 záznamů klientů pro testování registrace v bankovní aplikaci, včetně neplatných a extrémních hodnot. Kolega navrhuje vložit do promptu 50 skutečných záznamů klientů z produkce, „aby data vypadala realisticky“. Který postup je NEJVHODNĚJŠÍ?</p>",
+    "moznosti": [
+     "Vložit 50 skutečných záznamů a požádat LLM, aby změnil jen příjmení.",
+     "Popsat v promptu pravidla a formáty polí a požádat o syntetické záznamy s daným podílem neplatných a extrémních hodnot bez použití skutečných dat klientů.",
+     "Požádat LLM o 500 záznamů jen s platnými hodnotami, protože neplatné hodnoty vytvoří aplikace sama.",
+     "Požádat LLM nejdřív o testovací případy a data vymýšlet až při provedení testů."
+    ],
+    "vysvetleni": {
+     "a": "Špatně. Skutečná data klientů by stále byla odhalena; sylabus zdůrazňuje syntetická data chránící soukromí (sylabus 2.2.2, kapitola 3).",
+     "b": "Správně. GenAI umí syntetizovat reprezentativní data chránící soukromí, včetně extrémních situací (sylabus 2.2.2).",
+     "c": "Špatně. Testovací data mají pokrýt i neplatné a extrémní situace (sylabus 2.2.2).",
+     "d": "Špatně. Data potřebná k provedení patří do implementace testování a připravují se před provedením (sylabus 2.2.2)."
+    },
+    "vysvetleni_obecne": "Syntetická testovací data připomínají produkční data a pokrývají extrémní situace bez odhalení citlivých informací."
+   },
+   "spravne": [
+    "b"
+   ],
+   "oddil": "2.2.2",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-2.2.2-03",
+   "zdroj": "vlastni",
+   "lo": "GenAI-2.2.2",
+   "k": "K3",
+   "body": 2,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>An automation engineer asks an LLM to convert structured test cases into Playwright tests for an invoicing web application. The project uses the Page Object Model and keeps all locators in page objects. The generated tests run, but they contain locators directly in the test code. Which change to the prompt is MOST likely to fix this?</p>",
+    "moznosti": [
+     "Add two existing tests and the page object interfaces as examples, and a constraint that tests may only call page object methods; missing methods must be listed separately.",
+     "Change the role to “expert Playwright engineer”.",
+     "Ask the model to generate the tests in Selenium instead of Playwright.",
+     "Accept the tests because they run, which means the execution success rate is 100 %."
+    ],
+    "vysvetleni": {
+     "a": "Correct. Examples of the project style plus an explicit constraint guide the model to the required structure (syllabus 2.2.2, 2.1.2).",
+     "b": "Incorrect. The role alone does not tell the model about the project's Page Object Model (syllabus 2.1.1).",
+     "c": "Incorrect. Changing the framework does not address the structure problem and breaks consistency with the project.",
+     "d": "Incorrect. Running tests do not prove they fit the project's context; relevance and maintainability also matter (syllabus 2.3.1)."
+    },
+    "vysvetleni_obecne": "GenAI can generate automated test scripts from structured test cases for various frameworks; context and examples make the scripts fit the project."
+   },
+   "cz": {
+    "q": "<p>Inženýr automatizace žádá LLM o převod strukturovaných testovacích případů na Playwright testy pro fakturační webovou aplikaci. Projekt používá Page Object Model a všechny lokátory drží ve stránkových objektech. Vygenerované testy se spustí, ale obsahují lokátory přímo v kódu testu. Která změna promptu to NEJSPÍŠ napraví?</p>",
+    "moznosti": [
+     "Přidat dva existující testy a rozhraní stránkových objektů jako příklady a omezení, že testy smí volat jen metody stránkových objektů; chybějící metody se vypíšou zvlášť.",
+     "Změnit roli na „expert na Playwright“.",
+     "Požádat model, aby testy vygeneroval v Seleniu místo Playwrightu.",
+     "Testy přijmout, protože se spustí, a execution success rate je tedy 100 %."
+    ],
+    "vysvetleni": {
+     "a": "Správně. Příklady stylu projektu a výslovné omezení vedou model k požadované struktuře (sylabus 2.2.2, 2.1.2).",
+     "b": "Špatně. Samotná role modelu o Page Object Modelu projektu nic neřekne (sylabus 2.1.1).",
+     "c": "Špatně. Změna frameworku neřeší problém se strukturou a naruší konzistenci s projektem.",
+     "d": "Špatně. Spustitelnost neznamená soulad s kontextem projektu; záleží i na relevanci a udržovatelnosti (sylabus 2.3.1)."
+    },
+    "vysvetleni_obecne": "GenAI umí ze strukturovaných testovacích případů generovat automatizované skripty pro různé frameworky; kontext a příklady zajistí, že sedí do projektu."
+   },
+   "spravne": [
+    "a"
+   ],
+   "oddil": "2.2.2",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-2.2.2-04",
+   "zdroj": "vlastni",
+   "lo": "GenAI-2.2.2",
+   "k": "K3",
+   "body": 2,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>A test suite of 40 test cases has priorities, risks and dependencies (some test cases prepare data for others). In a single prompt, the LLM produced an execution order sorted by risk, but several test cases were scheduled before the test cases they depend on. Which approach is MOST appropriate?</p>",
+    "moznosti": [
+     "Repeat the same prompt until an order without violations appears.",
+     "Remove the dependencies from the input data so the model can focus on risk.",
+     "Ask the LLM for a meta prompt and use its output as the final schedule.",
+     "Use prompt chaining: first let the LLM extract all dependencies and verify them manually, then ask for an order by risk that respects the verified dependencies, and verify the result again."
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. Repeating does not address the reasoning error and gives no assurance (syllabus 2.2.2, 2.3.2).",
+     "b": "Incorrect. Dependencies are a required criterion of the schedule (syllabus 2.2.2).",
+     "c": "Incorrect. A meta prompt produces a prompt, not a verified schedule (syllabus 2.1.2).",
+     "d": "Correct. Multi-criteria tasks benefit from decomposition with manual verification of the LLM's reasoning (syllabus 2.2.2, HO-2.2.2c)."
+    },
+    "vysvetleni_obecne": "Test execution scheduling considers priority, risks, dependencies and resources; results must be verified to detect reasoning errors."
+   },
+   "cz": {
+    "q": "<p>Testovací sada 40 testovacích případů má priority, rizika a závislosti (některé případy připravují data pro jiné). V jednom promptu LLM vytvořil pořadí provedení seřazené podle rizika, ale několik případů zařadil před případy, na kterých závisí. Který postup je NEJVHODNĚJŠÍ?</p>",
+    "moznosti": [
+     "Opakovat stejný prompt, dokud nevyjde pořadí bez porušení.",
+     "Odstranit závislosti ze vstupních dat, aby se model mohl soustředit na riziko.",
+     "Požádat LLM o meta prompt a jeho výstup použít jako konečný harmonogram.",
+     "Použít řetězení: nejdřív nechat LLM vypsat všechny závislosti a ručně je ověřit, pak požádat o pořadí podle rizika, které ověřené závislosti dodrží, a výsledek znovu ověřit."
+    ],
+    "vysvetleni": {
+     "a": "Špatně. Opakování neřeší chybu v uvažování a nedává žádnou jistotu (sylabus 2.2.2, 2.3.2).",
+     "b": "Špatně. Závislosti jsou povinné kritérium harmonogramu (sylabus 2.2.2).",
+     "c": "Špatně. Meta prompt vytvoří prompt, ne ověřený harmonogram (sylabus 2.1.2).",
+     "d": "Správně. Úlohy s více kritérii těží z rozkladu s ručním ověřením uvažování modelu (sylabus 2.2.2, HO-2.2.2c)."
+    },
+    "vysvetleni_obecne": "Plánování provedení zohledňuje prioritu, rizika, závislosti a zdroje; výsledek je nutné ověřit kvůli chybám v uvažování."
+   },
+   "spravne": [
+    "d"
+   ],
+   "oddil": "2.2.2",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-2.2.2-05",
+   "zdroj": "vlastni",
+   "lo": "GenAI-2.2.2",
+   "k": "K3",
+   "body": 2,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>In the first prompt of a chain, an LLM generated functional test cases from five acceptance criteria in the requested format. What is the MOST appropriate next prompt?</p>",
+    "moznosti": [
+     "Ask the LLM to translate the test cases into another language.",
+     "Ask the LLM to delete test cases that look similar without reviewing them.",
+     "Ask the LLM to estimate how long the project will take.",
+     "Ask the LLM to create a table that shows which acceptance criterion is covered by which test case and to flag criteria without coverage."
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. Translation does not check whether the test cases are complete (syllabus 2.2.2).",
+     "b": "Incorrect. Removing test cases without review may reduce coverage (syllabus 2.2.2).",
+     "c": "Incorrect. Estimation is unrelated to verifying the generated test cases.",
+     "d": "Correct. Verifying completeness with a coverage table is the next step in syllabus HO-2.2.2a (syllabus 2.2.2)."
+    },
+    "vysvetleni_obecne": "HO-2.2.2a: generate test cases, verify completeness with a coverage table, then use a meta prompt for end-to-end procedures."
+   },
+   "cz": {
+    "q": "<p>V prvním promptu řetězu LLM vygeneroval z pěti akceptačních kritérií funkční testovací případy v požadovaném formátu. Jaký je NEJVHODNĚJŠÍ další prompt?</p>",
+    "moznosti": [
+     "Požádat LLM o překlad testovacích případů do jiného jazyka.",
+     "Požádat LLM o smazání podobně vypadajících případů bez kontroly.",
+     "Požádat LLM o odhad, jak dlouho projekt potrvá.",
+     "Požádat LLM o tabulku, která ukáže, které akceptační kritérium pokrývá který testovací případ, a označí kritéria bez pokrytí."
+    ],
+    "vysvetleni": {
+     "a": "Špatně. Překlad neověří úplnost testovacích případů (sylabus 2.2.2).",
+     "b": "Špatně. Odstranění případů bez kontroly může snížit pokrytí (sylabus 2.2.2).",
+     "c": "Špatně. Odhad nesouvisí s ověřením vygenerovaných testovacích případů.",
+     "d": "Správně. Ověření úplnosti tabulkou pokrytí je další krok podle HO-2.2.2a (sylabus 2.2.2)."
+    },
+    "vysvetleni_obecne": "HO-2.2.2a: vygenerovat testovací případy, ověřit úplnost tabulkou pokrytí, pak meta promptem vytvořit end-to-end procedury."
+   },
+   "spravne": [
+    "d"
+   ],
+   "oddil": "2.2.2",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-2.2.3-01",
+   "zdroj": "vlastni",
+   "lo": "GenAI-2.2.3",
+   "k": "K3",
+   "body": 2,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>A regression suite for an online banking application uses a keyword-driven framework with a documented keyword library and about 50 existing scripts. You want an LLM to create scripts for 30 new test cases that are consistent with the existing ones. Which prompt is MOST appropriate?</p>",
+    "moznosti": [
+     "Ask the LLM to write the scripts in Python with its own helper functions, because code is more flexible than keywords.",
+     "Describe the test cases and ask the LLM to create suitable keywords for each step.",
+     "Provide the keyword library documentation and three representative existing scripts as examples, with the constraint to use only keywords from the library and to report any missing keyword instead of inventing it.",
+     "Send the 30 test cases one by one without examples and merge the results manually."
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. This abandons the existing keyword-driven framework and consistency with the suite (syllabus 2.2.3).",
+     "b": "Incorrect. Inventing new keywords breaks the predefined library that represents common steps (syllabus 2.2.3).",
+     "c": "Correct. Few-shot prompting with examples and the library suits repetitive keyword-driven script generation (syllabus 2.2.3, 2.2.5, HO-2.2.3a).",
+     "d": "Incorrect. Without examples the output style is likely to vary; few-shot is recommended for this pattern (syllabus 2.2.5)."
+    },
+    "vysvetleni_obecne": "LLMs can map predefined keywords to test cases and generate keyword-driven scripts; few-shot prompting fits this repetitive pattern."
+   },
+   "cz": {
+    "q": "<p>Regresní sada internetového bankovnictví používá framework řízený klíčovými slovy se zdokumentovanou knihovnou klíčových slov a asi 50 existujícími skripty. Chcete, aby LLM vytvořil skripty pro 30 nových testovacích případů konzistentní s existujícími. Který prompt je NEJVHODNĚJŠÍ?</p>",
+    "moznosti": [
+     "Požádat LLM o skripty v Pythonu s vlastními pomocnými funkcemi, protože kód je pružnější než klíčová slova.",
+     "Popsat testovací případy a požádat LLM, aby pro každý krok vytvořil vhodná klíčová slova.",
+     "Dodat dokumentaci knihovny klíčových slov a tři reprezentativní existující skripty jako příklady s omezením používat jen klíčová slova z knihovny a chybějící klíčové slovo nahlásit místo vymyšlení.",
+     "Posílat 30 testovacích případů po jednom bez příkladů a výsledky ručně sloučit."
+    ],
+    "vysvetleni": {
+     "a": "Špatně. Tím se opustí existující framework klíčových slov a konzistence se sadou (sylabus 2.2.3).",
+     "b": "Špatně. Vymýšlení nových klíčových slov narušuje předem definovanou knihovnu běžných kroků (sylabus 2.2.3).",
+     "c": "Správně. Few-shot s příklady a knihovnou se hodí pro opakované generování skriptů řízených klíčovými slovy (sylabus 2.2.3, 2.2.5, HO-2.2.3a).",
+     "d": "Špatně. Bez příkladů bude styl výstupu kolísat; pro tento vzor se doporučuje few-shot (sylabus 2.2.5)."
+    },
+    "vysvetleni_obecne": "LLM umí mapovat předem definovaná klíčová slova na testovací případy a generovat skripty; few-shot se na tento opakující se vzor hodí."
+   },
+   "spravne": [
+    "c"
+   ],
+   "oddil": "2.2.3",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-2.2.3-02",
+   "zdroj": "vlastni",
+   "lo": "GenAI-2.2.3",
+   "k": "K3",
+   "body": 2,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>A regression suite of an insurance policy system has 1,500 automated tests and runs for five hours. The team wants an LLM to select relevant regression tests after each merge request. The current prompt provides only the code diff and asks: “Select the regression tests that must be run.” The selection is unreliable. Which improvement is MOST effective?</p>",
+    "moznosti": [
+     "Limit the selection to at most 100 tests so that the run takes less than 20 minutes.",
+     "Add a mapping of tests to the modules and files they cover, and instruct the LLM to identify affected areas from the diff and select tests through this mapping, listing changed files with no mapped tests as risks.",
+     "Ask the LLM to make all failing tests self-healing.",
+     "Change the output format to a dashboard with test trends."
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. A fixed limit does not make the selection better founded and may drop necessary tests (syllabus 2.2.3).",
+     "b": "Correct. Impact analysis needs a link between code changes and tests; the mapping is the missing input data (syllabus 2.2.3).",
+     "c": "Incorrect. Self-healing addresses minor UI or API changes, not test selection (syllabus 2.2.3).",
+     "d": "Incorrect. The presentation of the result does not improve the selection itself (syllabus 2.1.1)."
+    },
+    "vysvetleni_obecne": "GenAI can analyze code changes to identify high-risk areas and enable targeted regression testing."
+   },
+   "cz": {
+    "q": "<p>Regresní sada systému pojistných smluv má 1 500 automatizovaných testů a běží pět hodin. Tým chce, aby LLM po každém merge requestu vybral relevantní regresní testy. Současný prompt dodává jen diff kódu a žádá: „Vyber regresní testy, které je nutné spustit.“ Výběr je nespolehlivý. Která úprava je NEJÚČINNĚJŠÍ?</p>",
+    "moznosti": [
+     "Omezit výběr na nejvýše 100 testů, aby běh trval méně než 20 minut.",
+     "Přidat mapu testů na moduly a soubory, které pokrývají, a instruovat LLM, aby z diffu určil ovlivněné oblasti, vybral testy přes mapu a změněné soubory bez testů uvedl jako riziko.",
+     "Požádat LLM, aby všechny padající testy udělal samoopravnými.",
+     "Změnit formát výstupu na dashboard s trendy testů."
+    ],
+    "vysvetleni": {
+     "a": "Špatně. Pevný limit nezlepší podklad výběru a může vynechat potřebné testy (sylabus 2.2.3).",
+     "b": "Správně. Analýza dopadu potřebuje vazbu mezi změnami kódu a testy; mapa je chybějící vstupní data (sylabus 2.2.3).",
+     "c": "Špatně. Samooprava řeší drobné změny UI nebo API, ne výběr testů (sylabus 2.2.3).",
+     "d": "Špatně. Podoba výsledku samotný výběr nezlepší (sylabus 2.1.1)."
+    },
+    "vysvetleni_obecne": "GenAI umí analyzovat změny v kódu, určit vysoce rizikové oblasti a zacílit regresní testování."
+   },
+   "spravne": [
+    "b"
+   ],
+   "oddil": "2.2.3",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-2.2.3-03",
+   "zdroj": "vlastni",
+   "lo": "GenAI-2.2.3",
+   "k": "K3",
+   "body": 2,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>After a UI update, many GUI regression tests fail because button locators changed. The team plans to let an LLM-based tool adapt the scripts automatically. Which way of applying this is MOST appropriate?</p>",
+    "moznosti": [
+     "Let the tool adapt locators for minor changes, log every adaptation with the old and new locator, and have a tester review the changes, especially for high-risk functions.",
+     "Let the tool adapt any failing step automatically and suppress the original failure in the report.",
+     "Delete all failing tests and ask the LLM to generate new ones from scratch.",
+     "Stop running GUI regression tests and rely on API tests only."
+    ],
+    "vysvetleni": {
+     "a": "Correct. Self-healing reduces unnecessary failures, but GenAI output must be checked according to the associated risk (syllabus 2.2.3).",
+     "b": "Incorrect. Hiding failures could mask real defects; output must be checked (syllabus 2.2.3).",
+     "c": "Incorrect. This discards maintained tests instead of adapting them to minor changes (syllabus 2.2.3).",
+     "d": "Incorrect. The syllabus describes how GenAI helps stabilize GUI tests, not abandoning them (syllabus 2.2.3)."
+    },
+    "vysvetleni_obecne": "Self-healing and adaptive tests handle minor UI or API changes; testers must check GenAI output depending on risk."
+   },
+   "cz": {
+    "q": "<p>Po úpravě UI padá mnoho GUI regresních testů, protože se změnily lokátory tlačítek. Tým chce nechat nástroj postavený na LLM skripty automaticky přizpůsobit. Který způsob použití je NEJVHODNĚJŠÍ?</p>",
+    "moznosti": [
+     "Nechat nástroj přizpůsobit lokátory u drobných změn, každou úpravu zalogovat se starým a novým lokátorem a změny nechat zkontrolovat testerem, hlavně u rizikových funkcí.",
+     "Nechat nástroj automaticky přizpůsobit každý padající krok a původní selhání v reportu potlačit.",
+     "Smazat všechny padající testy a požádat LLM o nové od začátku.",
+     "Přestat spouštět GUI regresní testy a spoléhat jen na API testy."
+    ],
+    "vysvetleni": {
+     "a": "Správně. Samooprava omezuje zbytečná selhání, ale výstup GenAI se musí kontrolovat podle souvisejícího rizika (sylabus 2.2.3).",
+     "b": "Špatně. Skrývání selhání může zakrýt skutečné defekty; výstup je nutné kontrolovat (sylabus 2.2.3).",
+     "c": "Špatně. Tím se zahodí udržované testy místo jejich přizpůsobení drobným změnám (sylabus 2.2.3).",
+     "d": "Špatně. Sylabus popisuje, jak GenAI pomáhá GUI testy stabilizovat, ne jak se jich vzdát (sylabus 2.2.3)."
+    },
+    "vysvetleni_obecne": "Samoopravné a adaptivní testy zvládají drobné změny UI a API; tester musí výstup GenAI kontrolovat podle rizika."
+   },
+   "spravne": [
+    "a"
+   ],
+   "oddil": "2.2.3",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-2.2.3-04",
+   "zdroj": "vlastni",
+   "lo": "GenAI-2.2.3",
+   "k": "K3",
+   "body": 2,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>You analyze the results of a nightly regression run with structured prompts in one LLM conversation. Which sequence of steps is MOST appropriate?</p><ol><li>Cluster similar failures by probable common cause.</li><li>Analyze the test results and compare them with the test specification.</li><li>Cross-check that every failed test is assigned to exactly one cluster and that the findings are consistent.</li><li>Compare the clusters with the known anomalies list and update the list.</li></ol>",
+    "moznosti": [
+     "2 – 1 – 4 – 3",
+     "1 – 2 – 3 – 4",
+     "2 – 4 – 3 – 1",
+     "3 – 2 – 1 – 4"
+    ],
+    "vysvetleni": {
+     "a": "Correct. Analysis and comparison with the specification, clustering, known anomalies list, cross-check (syllabus 2.2.3, HO-2.2.3b).",
+     "b": "Incorrect. Clustering before analyzing the results against the specification groups unverified failures (syllabus HO-2.2.3b).",
+     "c": "Incorrect. Known anomalies are compared with clusters, which do not exist yet at step 2 (syllabus HO-2.2.3b).",
+     "d": "Incorrect. A cross-check needs findings to check, so it cannot come first (syllabus HO-2.2.3b)."
+    },
+    "vysvetleni_obecne": "HO-2.2.3b: analysis and comparison with the test specification, clustering of similar defects, maintenance of the known anomalies list, cross-checking."
+   },
+   "cz": {
+    "q": "<p>Analyzujete výsledky nočního regresního běhu strukturovanými prompty v jedné konverzaci s LLM. Která posloupnost kroků je NEJVHODNĚJŠÍ?</p><ol><li>Seskupit podobná selhání podle pravděpodobné společné příčiny.</li><li>Analyzovat výsledky testů a porovnat je se specifikací testů.</li><li>Křížově zkontrolovat, že každý neúspěšný test patří právě do jedné skupiny a že zjištění jsou konzistentní.</li><li>Porovnat skupiny se seznamem známých anomálií a seznam aktualizovat.</li></ol>",
+    "moznosti": [
+     "2 – 1 – 4 – 3",
+     "1 – 2 – 3 – 4",
+     "2 – 4 – 3 – 1",
+     "3 – 2 – 1 – 4"
+    ],
+    "vysvetleni": {
+     "a": "Správně. Analýza a porovnání se specifikací, seskupení, seznam známých anomálií, křížová kontrola (sylabus 2.2.3, HO-2.2.3b).",
+     "b": "Špatně. Seskupování před analýzou výsledků vůči specifikaci seskupuje neověřená selhání (sylabus HO-2.2.3b).",
+     "c": "Špatně. Se známými anomáliemi se porovnávají skupiny, které po kroku 2 ještě neexistují (sylabus HO-2.2.3b).",
+     "d": "Špatně. Křížová kontrola potřebuje zjištění, která kontroluje, nemůže být první (sylabus HO-2.2.3b)."
+    },
+    "vysvetleni_obecne": "HO-2.2.3b: analýza a porovnání se specifikací testů, seskupení podobných defektů, údržba seznamu známých anomálií, křížová kontrola."
+   },
+   "spravne": [
+    "a"
+   ],
+   "oddil": "2.2.3",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-2.2.3-05",
+   "zdroj": "vlastni",
+   "lo": "GenAI-2.2.3",
+   "k": "K3",
+   "body": 2,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>A tester wants an LLM to compile defect reports from failed automated regression tests. The draft prompt provides only the name of the failed test and asks: “Write a defect report.” Developers complain that the reports guess at causes and lack evidence. Which improvement is MOST appropriate?</p>",
+    "moznosti": [
+     "Change the role to “senior developer” so that the reports sound more technical.",
+     "Ask the LLM to keep the reports shorter.",
+     "Ask the LLM to mark every failure as a known anomaly.",
+     "Provide the test log, screenshot, server stack trace and environment data as input, ask for the team's defect report template, and require facts from logs to be separated from root-cause hypotheses."
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. A different persona does not provide the missing evidence (syllabus 2.1.1).",
+     "b": "Incorrect. Shorter reports would still lack evidence and contain guesses.",
+     "c": "Incorrect. This hides possible new defects instead of reporting them (syllabus 2.2.3).",
+     "d": "Correct. Comprehensive defect reports use test logs, screenshots and environment data; separating facts from hypotheses supports root cause analysis (syllabus 2.2.3)."
+    },
+    "vysvetleni_obecne": "GenAI can compile comprehensive defect reports with logs, screenshots and environment data; the quality of the input decides the quality of the report."
+   },
+   "cz": {
+    "q": "<p>Tester chce, aby LLM sestavoval reporty o defektech z neúspěšných automatizovaných regresních testů. Návrh promptu dodává jen název neúspěšného testu a žádá: „Napiš report o defektu.“ Vývojáři si stěžují, že reporty hádají příčiny a chybí v nich důkazy. Která úprava je NEJVHODNĚJŠÍ?</p>",
+    "moznosti": [
+     "Změnit roli na „senior vývojář“, aby reporty zněly techničtěji.",
+     "Požádat LLM o kratší reporty.",
+     "Požádat LLM, aby každé selhání označil jako známou anomálii.",
+     "Dodat jako vstup log testu, snímek obrazovky, stack trace serveru a údaje o prostředí, požadovat šablonu reportu týmu a oddělit fakta z logů od hypotéz o kořenové příčině."
+    ],
+    "vysvetleni": {
+     "a": "Špatně. Jiná persona nedodá chybějící důkazy (sylabus 2.1.1).",
+     "b": "Špatně. Kratší reporty budou stále bez důkazů a s domněnkami.",
+     "c": "Špatně. Tím se skryjí možné nové defekty místo jejich nahlášení (sylabus 2.2.3).",
+     "d": "Správně. Úplný report o defektu využívá logy, snímky a údaje o prostředí; oddělení faktů od hypotéz podporuje analýzu kořenové příčiny (sylabus 2.2.3)."
+    },
+    "vysvetleni_obecne": "GenAI umí sestavit úplné reporty o defektech s logy, snímky a údaji o prostředí; kvalita vstupu rozhoduje o kvalitě reportu."
+   },
+   "spravne": [
+    "d"
+   ],
+   "oddil": "2.2.3",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-2.2.4-01",
+   "zdroj": "vlastni",
+   "lo": "GenAI-2.2.4",
+   "k": "K3",
+   "body": 2,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>A test manager of an e-shop wants an LLM to warn her every morning about deviations from the test plan before they become problems. Her draft prompt:</p><pre>Role: Act as a test manager.\nContext: Acceptance testing of a new e-shop release, four weeks.\nInstruction: Summarize yesterday&#x27;s test results.\nInput data: Export of yesterday&#x27;s test results.\nConstraints: Keep it short and clear.\nOutput format: One paragraph of text.</pre><p>Which improvement BEST supports her goal?</p>",
+    "moznosti": [
+     "Change the role to “test manager with 15 years of experience in e-commerce”.",
+     "Add a chart of passed tests per day to the output format.",
+     "Add the planned daily progress (executed tests, resolved defects) to the input data and change the instruction to compare actual progress with the plan and flag deviations above 10 %.",
+     "Extend the constraint to “keep it short, clear and professional”."
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. The persona adds no plan data to compare against (syllabus 2.1.1).",
+     "b": "Incorrect. A chart without plan values does not show deviations (syllabus 2.2.4).",
+     "c": "Correct. Deviations from the plan can only be detected with the plan as input and an instruction to compare (syllabus 2.2.4).",
+     "d": "Incorrect. This only rephrases the existing constraint and adds no information."
+    },
+    "vysvetleni_obecne": "GenAI can analyze trends, predict risks and alert teams to deviations from the plan."
+   },
+   "cz": {
+    "q": "<p>Test manažerka e-shopu chce, aby ji LLM každé ráno upozornil na odchylky od plánu testování dřív, než se z nich stanou problémy. Její návrh promptu:</p><pre>Role: Act as a test manager.\nContext: Acceptance testing of a new e-shop release, four weeks.\nInstruction: Summarize yesterday&#x27;s test results.\nInput data: Export of yesterday&#x27;s test results.\nConstraints: Keep it short and clear.\nOutput format: One paragraph of text.</pre><p>Která úprava NEJLÉPE podpoří její cíl?</p>",
+    "moznosti": [
+     "Změnit roli na „test manažer s 15 lety praxe v e-commerce“.",
+     "Přidat do formátu výstupu graf prošlých testů po dnech.",
+     "Doplnit do vstupních dat plánovaný denní postup (provedené testy, vyřešené defekty) a změnit instrukci na porovnání skutečnosti s plánem a označení odchylek nad 10 %.",
+     "Rozšířit omezení na „stručně, jasně a profesionálně“."
+    ],
+    "vysvetleni": {
+     "a": "Špatně. Persona nepřidá data plánu, se kterými by se porovnávalo (sylabus 2.1.1).",
+     "b": "Špatně. Graf bez plánovaných hodnot odchylky neukáže (sylabus 2.2.4).",
+     "c": "Správně. Odchylky od plánu lze odhalit jen s plánem na vstupu a instrukcí k porovnání (sylabus 2.2.4).",
+     "d": "Špatně. Jen jinými slovy opakuje existující omezení a nepřidává informaci."
+    },
+    "vysvetleni_obecne": "GenAI umí analyzovat trendy, předvídat rizika a upozorňovat tým na odchylky od plánu."
+   },
+   "spravne": [
+    "c"
+   ],
+   "oddil": "2.2.4",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-2.2.4-02",
+   "zdroj": "vlastni",
+   "lo": "GenAI-2.2.4",
+   "k": "K3",
+   "body": 2,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>An LLM receives the following cumulative data for one week of system testing (plan: 250 executed test cases by Friday) and is asked for test progress metrics:</p><pre>Executed: 200   Passed: 150   Failed: 40   Blocked: 10\nNew defects this week: 30   Closed defects this week: 18</pre><p>Which LLM summary is correct and therefore safe to pass on after review?</p>",
+    "moznosti": [
+     "“80 % of the planned tests were executed; 60 % of the executed tests passed; open defects decreased by 12.”",
+     "“80 % of the planned tests were executed; 75 % of the executed tests passed; the number of open defects grew by 12 this week.”",
+     "“Testing is on plan; 75 % of the executed tests passed; 30 open defects remain.”",
+     "“95 % of the executed tests were completed without blocking; testing is ahead of plan.”"
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. 60 % is 150/250, not the pass rate of executed tests, and open defects increased (syllabus 2.2.4).",
+     "b": "Correct. 200/250 = 80 %, 150/200 = 75 %, 30 − 18 = 12. Metrics produced by an LLM must still be verified (syllabus 2.2.4, chapter 3).",
+     "c": "Incorrect. Execution is 50 tests behind plan, and the open-defect figure ignores closed defects and earlier weeks (syllabus 2.2.4).",
+     "d": "Incorrect. Testing is behind plan (200 of 250), so the conclusion is wrong (syllabus 2.2.4)."
+    },
+    "vysvetleni_obecne": "GenAI transforms test data into monitoring metrics such as progress and defect trends; numbers must be checked because LLMs can make reasoning errors."
+   },
+   "cz": {
+    "q": "<p>LLM dostane tato kumulativní data za týden systémového testování (plán: 250 provedených testovacích případů do pátku) a má z nich vytvořit metriky postupu:</p><pre>Executed: 200   Passed: 150   Failed: 40   Blocked: 10\nNew defects this week: 30   Closed defects this week: 18</pre><p>Které shrnutí od LLM je správné, a tedy po kontrole bezpečné k předání?</p>",
+    "moznosti": [
+     "„Provedeno 80 % plánovaných testů; 60 % provedených testů prošlo; otevřených defektů ubylo o 12.“",
+     "„Provedeno 80 % plánovaných testů; 75 % provedených testů prošlo; počet otevřených defektů za týden vzrostl o 12.“",
+     "„Testování jde podle plánu; 75 % provedených testů prošlo; zbývá 30 otevřených defektů.“",
+     "„95 % provedených testů proběhlo bez blokace; testování je před plánem.“"
+    ],
+    "vysvetleni": {
+     "a": "Špatně. 60 % je 150/250, ne podíl prošlých z provedených, a otevřených defektů přibylo (sylabus 2.2.4).",
+     "b": "Správně. 200/250 = 80 %, 150/200 = 75 %, 30 − 18 = 12. Metriky od LLM je přesto nutné ověřit (sylabus 2.2.4, kapitola 3).",
+     "c": "Špatně. Provádění zaostává o 50 testů a údaj o otevřených defektech ignoruje uzavřené defekty i předchozí týdny (sylabus 2.2.4).",
+     "d": "Špatně. Testování za plánem zaostává (200 z 250), závěr je tedy chybný (sylabus 2.2.4)."
+    },
+    "vysvetleni_obecne": "GenAI převádí testovací data na metriky monitoringu, například postup a trend defektů; čísla je nutné kontrolovat, protože LLM se může v uvažování splést."
+   },
+   "spravne": [
+    "b"
+   ],
+   "oddil": "2.2.4",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-2.2.4-03",
+   "zdroj": "vlastni",
+   "lo": "GenAI-2.2.4",
+   "k": "K3",
+   "body": 2,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Halfway through a release, defects in the payment module increase sharply while two testers are still assigned to low-risk reports. The test manager wants actionable test control proposals from an LLM. Which prompt is MOST appropriate?</p>",
+    "moznosti": [
+     "Ask the LLM to explain what test control means according to ISTQB.",
+     "Provide the defect trend per module, the risk register, the remaining test cases with priorities and the testers' capacity, and ask for proposals to reprioritize tests, adjust the schedule and reallocate testers, each with a rationale.",
+     "Provide the list of testers' names and ask the LLM who should be replaced.",
+     "Ask the LLM to generate a completion report for the release now."
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. A definition does not give actionable proposals for this situation (syllabus 2.2.4).",
+     "b": "Correct. Test control proposals need trends, risks, priorities and resources as input (syllabus 2.2.4).",
+     "c": "Incorrect. This lacks the data needed for test control and focuses on people rather than test priorities.",
+     "d": "Incorrect. A completion report is produced at the end; the situation needs control actions during testing (syllabus 2.2.4)."
+    },
+    "vysvetleni_obecne": "GenAI assists test control by providing insights for reprioritizing tests, adjusting schedules and reallocating resources."
+   },
+   "cz": {
+    "q": "<p>V polovině releasu prudce přibývá defektů v platebním modulu, zatímco dva testeři jsou stále přiděleni na málo rizikové reporty. Test manažer chce od LLM proveditelné návrhy pro řízení testování. Který prompt je NEJVHODNĚJŠÍ?</p>",
+    "moznosti": [
+     "Požádat LLM o vysvětlení, co znamená řízení testování podle ISTQB.",
+     "Dodat trend defektů po modulech, registr rizik, zbývající testovací případy s prioritami a kapacitu testerů a požádat o návrhy na změnu priorit, úpravu harmonogramu a přesun testerů, každý se zdůvodněním.",
+     "Dodat seznam jmen testerů a zeptat se LLM, koho vyměnit.",
+     "Požádat LLM, aby už teď vytvořil souhrnný report z testování pro release."
+    ],
+    "vysvetleni": {
+     "a": "Špatně. Definice nedá proveditelné návrhy pro tuto situaci (sylabus 2.2.4).",
+     "b": "Správně. Návrhy pro řízení testování potřebují na vstupu trendy, rizika, priority a zdroje (sylabus 2.2.4).",
+     "c": "Špatně. Chybí data potřebná k řízení testování a zaměření je na lidi místo priorit testů.",
+     "d": "Špatně. Souhrnný report vzniká na konci; situace vyžaduje opatření řízení během testování (sylabus 2.2.4)."
+    },
+    "vysvetleni_obecne": "GenAI pomáhá řízení testování podklady pro změnu priorit, úpravu harmonogramu a přerozdělení zdrojů."
+   },
+   "spravne": [
+    "b"
+   ],
+   "oddil": "2.2.4",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-2.2.4-04",
+   "zdroj": "vlastni",
+   "lo": "GenAI-2.2.4",
+   "k": "K3",
+   "body": 2,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Development team leads want a weekly report from which they can see quickly which modules need attention. The current LLM output is a single overall pass rate and a long narrative text. Which change to the prompt BEST meets their need?</p>",
+    "moznosti": [
+     "Change the output format to a table per module with executed and failed tests, open defects and the trend compared with the previous week, followed by one sentence per module that needs attention.",
+     "Add the full raw test logs to the report so that nothing is missing.",
+     "Change the role to “quality director”.",
+     "Ask the LLM to report only the overall pass rate, because one number is easiest to understand."
+    ],
+    "vysvetleni": {
+     "a": "Correct. The output is tailored to the audience and highlights relevant metrics per module (syllabus 2.2.4).",
+     "b": "Incorrect. Raw logs make the report harder to read and do not highlight the modules (syllabus 2.2.4).",
+     "c": "Incorrect. A different role does not define the per-module structure the team leads need (syllabus 2.1.1).",
+     "d": "Incorrect. One overall number hides which modules need attention."
+    },
+    "vysvetleni_obecne": "GenAI can create dashboards and summaries that give each stakeholder access to the relevant metrics for quick decisions."
+   },
+   "cz": {
+    "q": "<p>Vedoucí vývojových týmů chtějí týdenní report, ze kterého rychle poznají, které moduly potřebují pozornost. Současný výstup LLM je jedno celkové procento úspěšnosti a dlouhý souvislý text. Která změna promptu NEJLÉPE splní jejich potřebu?</p>",
+    "moznosti": [
+     "Změnit formát výstupu na tabulku po modulech s provedenými a neúspěšnými testy, otevřenými defekty a trendem proti minulému týdnu, a pod ní jednu větu ke každému modulu, který potřebuje pozornost.",
+     "Přidat do reportu kompletní surové logy testů, aby nic nechybělo.",
+     "Změnit roli na „ředitel kvality“.",
+     "Požádat LLM, aby uváděl jen celkové procento úspěšnosti, protože jedno číslo se pochopí nejsnáz."
+    ],
+    "vysvetleni": {
+     "a": "Správně. Výstup je přizpůsobený čtenářům a zvýrazní relevantní metriky po modulech (sylabus 2.2.4).",
+     "b": "Špatně. Surové logy report znepřehlední a moduly nezvýrazní (sylabus 2.2.4).",
+     "c": "Špatně. Jiná role neurčí strukturu po modulech, kterou vedoucí potřebují (sylabus 2.1.1).",
+     "d": "Špatně. Jedno celkové číslo skryje, které moduly potřebují pozornost."
+    },
+    "vysvetleni_obecne": "GenAI umí vytvořit dashboardy a souhrny, které dají každé zainteresované straně relevantní metriky pro rychlé rozhodnutí."
+   },
+   "spravne": [
+    "a"
+   ],
+   "oddil": "2.2.4",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-2.2.4-05",
+   "zdroj": "vlastni",
+   "lo": "GenAI-2.2.4",
+   "k": "K3",
+   "body": 2,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>At the end of a release, a test lead wants an LLM to help prepare a test completion report that supports improving the next test cycle. Which prompt is MOST appropriate?</p>",
+    "moznosti": [
+     "Ask the LLM to write a generic completion report template without any data.",
+     "Provide only the list of passed tests and ask for a positive summary for marketing.",
+     "Ask the LLM to predict the defects of the next release without providing any history.",
+     "Provide final metrics, exit criteria status, the defect list and the retrospective notes, and ask for a report that highlights successes and lessons learned and proposes concrete changes to the test strategy."
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. Without project data the report cannot contain lessons learned for this release (syllabus 2.2.4).",
+     "b": "Incorrect. This ignores failures and lessons learned and targets the wrong audience.",
+     "c": "Incorrect. Predictions without data are guesses and do not form a completion report (syllabus 2.2.4).",
+     "d": "Correct. Completion insights and continuous learning are supported by reports that highlight successes and lessons learned (syllabus 2.2.4)."
+    },
+    "vysvetleni_obecne": "GenAI can generate test completion reports highlighting successes and lessons learned to refine test strategies."
+   },
+   "cz": {
+    "q": "<p>Na konci releasu chce vedoucí testů s pomocí LLM připravit souhrnný report z testování, který pomůže zlepšit další testovací cyklus. Který prompt je NEJVHODNĚJŠÍ?</p>",
+    "moznosti": [
+     "Požádat LLM o obecnou šablonu souhrnného reportu bez jakýchkoli dat.",
+     "Dodat jen seznam prošlých testů a požádat o pozitivní shrnutí pro marketing.",
+     "Požádat LLM o předpověď defektů příštího releasu bez jakékoli historie.",
+     "Dodat konečné metriky, stav výstupních kritérií, seznam defektů a poznámky z retrospektivy a požádat o report, který zdůrazní úspěchy a poučení a navrhne konkrétní změny strategie testování."
+    ],
+    "vysvetleni": {
+     "a": "Špatně. Bez dat projektu nemůže report obsahovat poučení z tohoto releasu (sylabus 2.2.4).",
+     "b": "Špatně. Ignoruje selhání i poučení a míří na nesprávné publikum.",
+     "c": "Špatně. Předpověď bez dat je hádání a není to souhrnný report (sylabus 2.2.4).",
+     "d": "Správně. Přehledy z dokončení a průběžné učení podporují reporty, které zdůrazní úspěchy a poučení (sylabus 2.2.4)."
+    },
+    "vysvetleni_obecne": "GenAI umí vytvářet souhrnné reporty z testování s úspěchy a poučením, podle kterých se upraví strategie testování."
+   },
+   "spravne": [
+    "d"
+   ],
+   "oddil": "2.2.4",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-2.2.5-01",
+   "zdroj": "vlastni",
+   "lo": "GenAI-2.2.5",
+   "k": "K3",
+   "body": 2,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>A team must rewrite about 400 existing defect reports into a new company template. The test lead has three reports already converted correctly by hand. Which prompting technique is BEST suited?</p>",
+    "moznosti": [
+     "Meta prompting to discover what a defect report is",
+     "Prompt chaining with a manual review after each sentence of every report",
+     "Few-shot prompting with the three converted reports as examples",
+     "Zero-shot prompting with the instruction “use the new template”"
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. The task and the target format are already well known; no new prompt needs to be explored (syllabus 2.2.5).",
+     "b": "Incorrect. The task is repetitive rather than complex; such fine-grained chaining adds effort without benefit (syllabus 2.2.5).",
+     "c": "Correct. A repetitive task with a specific output format and available examples fits few-shot prompting (syllabus 2.2.5).",
+     "d": "Incorrect. Without the template or examples the model cannot reproduce the format consistently (syllabus 2.1.2)."
+    },
+    "vysvetleni_obecne": "Few-shot prompting is recommended for repetitive or specific/constrained output format tasks."
+   },
+   "cz": {
+    "q": "<p>Tým musí přepsat asi 400 existujících reportů o defektech do nové firemní šablony. Vedoucí testů má tři reporty, které už ručně správně převedl. Která technika promptování je NEJVHODNĚJŠÍ?</p>",
+    "moznosti": [
+     "Meta prompting, aby se zjistilo, co je report o defektu",
+     "Prompt chaining s ruční kontrolou po každé větě každého reportu",
+     "Few-shot prompting se třemi převedenými reporty jako příklady",
+     "Zero-shot prompting s instrukcí „použij novou šablonu“"
+    ],
+    "vysvetleni": {
+     "a": "Špatně. Úloha i cílový formát jsou známé; není třeba zkoumat nový prompt (sylabus 2.2.5).",
+     "b": "Špatně. Úloha je spíš opakující se než složitá; tak jemné řetězení přidá práci bez přínosu (sylabus 2.2.5).",
+     "c": "Správně. Opakující se úloha s pevným formátem výstupu a dostupnými příklady se hodí pro few-shot (sylabus 2.2.5).",
+     "d": "Špatně. Bez šablony nebo příkladů model formát konzistentně nevytvoří (sylabus 2.1.2)."
+    },
+    "vysvetleni_obecne": "Few-shot se doporučuje pro opakující se úlohy a úlohy s konkrétním nebo omezeným formátem výstupu."
+   },
+   "spravne": [
+    "c"
+   ],
+   "oddil": "2.2.5",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-2.2.5-02",
+   "zdroj": "vlastni",
+   "lo": "GenAI-2.2.5",
+   "k": "K3",
+   "body": 2,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>A tester has to analyze performance test logs of a new streaming platform for anomalies for the first time. Nobody in the team knows which anomalies to look for or how to describe the task to an LLM. Which technique is BEST suited to start?</p>",
+    "moznosti": [
+     "Few-shot prompting with examples of previously found anomalies",
+     "One-shot prompting with an example of a functional test case",
+     "Meta prompting: describe the objective and let the LLM propose a prompt, then evaluate and refine it together",
+     "No GenAI at all, because LLMs cannot analyze logs"
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. There are no examples available yet, since the task is new (syllabus 2.2.5).",
+     "b": "Incorrect. An unrelated example would mislead the model (syllabus 2.1.2).",
+     "c": "Correct. Meta prompting suits flexible, dynamic tasks such as anomaly detection when the right prompt is not yet known (syllabus 2.2.5).",
+     "d": "Incorrect. The syllabus lists anomaly detection and report analysis as tasks suitable for meta prompting (syllabus 2.2.5)."
+    },
+    "vysvetleni_obecne": "Meta prompting: a general description of the objective guides the LLM in creating the prompt; useful for complex tasks like report analysis and anomaly detection."
+   },
+   "cz": {
+    "q": "<p>Tester má poprvé analyzovat logy výkonnostních testů nové streamovací platformy a hledat v nich anomálie. Nikdo v týmu neví, jaké anomálie hledat ani jak úlohu LLM popsat. Která technika je pro začátek NEJVHODNĚJŠÍ?</p>",
+    "moznosti": [
+     "Few-shot prompting s příklady dříve nalezených anomálií",
+     "One-shot prompting s příkladem funkčního testovacího případu",
+     "Meta prompting: popsat cíl, nechat LLM navrhnout prompt a pak ho společně vyhodnotit a vylepšit",
+     "Vůbec nepoužít GenAI, protože LLM neumí analyzovat logy"
+    ],
+    "vysvetleni": {
+     "a": "Špatně. Žádné příklady zatím nejsou, úloha je nová (sylabus 2.2.5).",
+     "b": "Špatně. Nesouvisející příklad by model zmátl (sylabus 2.1.2).",
+     "c": "Správně. Meta prompting se hodí pro pružné a dynamické úlohy, jako je detekce anomálií, když správný prompt ještě není znám (sylabus 2.2.5).",
+     "d": "Špatně. Sylabus uvádí detekci anomálií a analýzu reportů jako úlohy vhodné pro meta prompting (sylabus 2.2.5)."
+    },
+    "vysvetleni_obecne": "Meta prompting: obecný popis cíle vede LLM při tvorbě promptu; hodí se pro složité úlohy jako analýza reportů a detekce anomálií."
+   },
+   "spravne": [
+    "c"
+   ],
+   "oddil": "2.2.5",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-2.2.5-03",
+   "zdroj": "vlastni",
+   "lo": "GenAI-2.2.5",
+   "k": "K3",
+   "body": 2,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>A bank analyzes a long specification of a mortgage process. First, ambiguities must be found; after the business analyst answers them, test conditions are derived; finally, coverage of all requirements is checked. A senior analyst must approve the result of each step before work continues. Which technique is BEST suited?</p>",
+    "moznosti": [
+     "Few-shot prompting",
+     "Prompt chaining",
+     "Meta prompting",
+     "Zero-shot prompting in one prompt"
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. The task is not about reproducing a repetitive output pattern from examples (syllabus 2.2.5).",
+     "b": "Correct. A complex task with human verification at each step fits prompt chaining (syllabus 2.2.5).",
+     "c": "Incorrect. The steps are known; the key need is verification between steps, not creating the prompt (syllabus 2.2.5).",
+     "d": "Incorrect. A single prompt does not allow approval of intermediate results (syllabus 2.1.2)."
+    },
+    "vysvetleni_obecne": "Prompt chaining is recommended for complex tasks requiring precision with human verification at each step."
+   },
+   "cz": {
+    "q": "<p>Banka analyzuje dlouhou specifikaci hypotečního procesu. Nejdřív je třeba najít nejasnosti, po odpovědích business analytika odvodit testovací podmínky a nakonec ověřit pokrytí všech požadavků. Výsledek každého kroku musí před pokračováním schválit senior analytik. Která technika je NEJVHODNĚJŠÍ?</p>",
+    "moznosti": [
+     "Few-shot prompting",
+     "Prompt chaining",
+     "Meta prompting",
+     "Zero-shot prompting v jednom promptu"
+    ],
+    "vysvetleni": {
+     "a": "Špatně. Úloha není o napodobení opakujícího se vzoru z příkladů (sylabus 2.2.5).",
+     "b": "Správně. Složitá úloha s lidským ověřením po každém kroku se hodí pro řetězení promptů (sylabus 2.2.5).",
+     "c": "Špatně. Kroky jsou známé; hlavní potřebou je ověření mezi kroky, ne tvorba promptu (sylabus 2.2.5).",
+     "d": "Špatně. Jeden prompt neumožní schválit mezivýsledky (sylabus 2.1.2)."
+    },
+    "vysvetleni_obecne": "Řetězení promptů se doporučuje pro složité úlohy, které vyžadují přesnost a lidské ověření po každém kroku."
+   },
+   "spravne": [
+    "b"
+   ],
+   "oddil": "2.2.5",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-2.2.5-04",
+   "zdroj": "vlastni",
+   "lo": "GenAI-2.2.5",
+   "k": "K3",
+   "body": 2,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>A company builds an internal LLM-powered tool that generates test cases for dozens of teams. The test lead first wants the LLM to help draft a good prompt, then enrich it with the company's approved test case examples, and finally split the generation into steps whose intermediate results are validated. Which combination does this describe?</p>",
+    "moznosti": [
+     "Meta prompting to create the initial prompt, few-shot prompting with adapted examples, and prompt chaining to validate intermediate steps",
+     "Zero-shot prompting for all steps, because the tool is used by many teams",
+     "Prompt chaining only, because examples are not allowed in system prompts",
+     "Few-shot prompting only, because the company has approved examples"
+    ],
+    "vysvetleni": {
+     "a": "Correct. This is the combination described in syllabus 2.2.5.",
+     "b": "Incorrect. The scenario explicitly uses examples and step validation (syllabus 2.2.5).",
+     "c": "Incorrect. Examples can be used, and the scenario includes meta prompting as well (syllabus 2.2.5).",
+     "d": "Incorrect. It ignores the drafting of the prompt with the LLM and the step-wise validation (syllabus 2.2.5)."
+    },
+    "vysvetleni_obecne": "Multiple techniques can be used for one use case: meta prompting for the initial prompt, few-shot examples, prompt chaining for validation."
+   },
+   "cz": {
+    "q": "<p>Firma staví interní nástroj na LLM, který bude generovat testovací případy pro desítky týmů. Vedoucí testů chce nejdřív s pomocí LLM navrhnout dobrý prompt, pak ho doplnit schválenými firemními příklady testovacích případů a nakonec generování rozdělit na kroky, jejichž mezivýsledky se ověřují. Jakou kombinaci to popisuje?</p>",
+    "moznosti": [
+     "Meta prompting pro vytvoření prvního promptu, few-shot s upravenými příklady a prompt chaining pro ověření mezikroků",
+     "Zero-shot prompting pro všechny kroky, protože nástroj používá mnoho týmů",
+     "Jen prompt chaining, protože příklady nejsou v systémových promptech povoleny",
+     "Jen few-shot prompting, protože firma má schválené příklady"
+    ],
+    "vysvetleni": {
+     "a": "Správně. Přesně tuto kombinaci popisuje sylabus 2.2.5.",
+     "b": "Špatně. Scénář výslovně používá příklady a ověřování kroků (sylabus 2.2.5).",
+     "c": "Špatně. Příklady použít lze a scénář obsahuje i meta prompting (sylabus 2.2.5).",
+     "d": "Špatně. Ignoruje tvorbu promptu s modelem i ověřování po krocích (sylabus 2.2.5)."
+    },
+    "vysvetleni_obecne": "Pro jeden případ užití lze použít víc technik: meta prompting pro první prompt, few-shot příklady, prompt chaining pro ověření."
+   },
+   "spravne": [
+    "a"
+   ],
+   "oddil": "2.2.5",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-2.2.5-05",
+   "zdroj": "vlastni",
+   "lo": "GenAI-2.2.5",
+   "k": "K3",
+   "body": 2,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>A test suite must be prioritized according to risk, coverage of requirements and dependencies between test cases. Earlier one-prompt attempts produced orders that violated dependencies. Which technique is BEST suited?</p>",
+    "moznosti": [
+     "Few-shot prompting with examples of prioritized suites from other projects",
+     "Zero-shot prompting with a higher temperature",
+     "Meta prompting so that the LLM writes the final order as a prompt",
+     "Prompt chaining with manual verification of the intermediate results"
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. Examples from other projects do not contain this suite's dependencies and do not add verification (syllabus 2.2.5).",
+     "b": "Incorrect. Temperature is a model parameter and higher temperature increases variability, not correctness (chapter 3).",
+     "c": "Incorrect. Meta prompting creates prompts; it does not provide verified intermediate results (syllabus 2.1.2).",
+     "d": "Correct. A multi-criteria task where reasoning errors occurred needs decomposition and verification of each step (syllabus 2.2.5, HO-2.2.2c)."
+    },
+    "vysvetleni_obecne": "Select the technique by the nature of the task: precision with verification (chaining), repetitive structure (few-shot), new flexible task (meta)."
+   },
+   "cz": {
+    "q": "<p>Testovací sadu je třeba prioritizovat podle rizika, pokrytí požadavků a závislostí mezi testovacími případy. Dřívější pokusy s jedním promptem vedly k pořadím, která porušovala závislosti. Která technika je NEJVHODNĚJŠÍ?</p>",
+    "moznosti": [
+     "Few-shot prompting s příklady prioritizovaných sad z jiných projektů",
+     "Zero-shot prompting s vyšší teplotou",
+     "Meta prompting, aby LLM napsal konečné pořadí jako prompt",
+     "Prompt chaining s ručním ověřením mezivýsledků"
+    ],
+    "vysvetleni": {
+     "a": "Špatně. Příklady z jiných projektů neobsahují závislosti této sady a nepřidávají ověření (sylabus 2.2.5).",
+     "b": "Špatně. Teplota je parametr modelu a vyšší teplota zvyšuje proměnlivost, ne správnost (kapitola 3).",
+     "c": "Špatně. Meta prompting vytváří prompty, nedává ověřené mezivýsledky (sylabus 2.1.2).",
+     "d": "Správně. Úloha s více kritérii, kde došlo k chybám v uvažování, potřebuje rozklad a ověření každého kroku (sylabus 2.2.5, HO-2.2.2c)."
+    },
+    "vysvetleni_obecne": "Techniku vybírejte podle povahy úlohy: přesnost s ověřením (chaining), opakující se struktura (few-shot), nová pružná úloha (meta)."
+   },
+   "spravne": [
+    "d"
+   ],
+   "oddil": "2.2.5",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-2.3.1-01",
+   "zdroj": "vlastni",
+   "lo": "GenAI-2.3.1",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>An LLM generated 60 Playwright scripts. 48 of them could be executed in the test environment without syntax errors or format problems; 6 of those 48 failed because they found defects. Which metric value is correct?</p>",
+    "moznosti": [
+     "Execution success rate of 70 %",
+     "Recall of 80 %",
+     "Time efficiency of 80 %",
+     "Execution success rate of 80 %"
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. 42/60 wrongly excludes the scripts that ran and found defects (syllabus 2.3.1).",
+     "b": "Incorrect. Recall concerns finding all relevant instances, not executability (syllabus 2.3.1).",
+     "c": "Incorrect. Time efficiency compares time with manual effort (syllabus 2.3.1).",
+     "d": "Correct. 48 of 60 artefacts executed as is; a test that runs and finds a defect counts as executed (syllabus 2.3.1)."
+    },
+    "vysvetleni_obecne": "Execution success rate measures the proportion of generated test artefacts that can be executed successfully as is."
+   },
+   "cz": {
+    "q": "<p>LLM vygeneroval 60 Playwright skriptů. 48 z nich šlo v testovacím prostředí spustit bez syntaktických chyb a problémů s formátem; 6 z těchto 48 selhalo, protože našly defekty. Která hodnota metriky je správná?</p>",
+    "moznosti": [
+     "Execution success rate 70 %",
+     "Recall 80 %",
+     "Time efficiency 80 %",
+     "Execution success rate 80 %"
+    ],
+    "vysvetleni": {
+     "a": "Špatně. 42/60 chybně vynechává skripty, které se spustily a našly defekty (sylabus 2.3.1).",
+     "b": "Špatně. Recall se týká zachycení všech relevantních případů, ne spustitelnosti (sylabus 2.3.1).",
+     "c": "Špatně. Time efficiency porovnává čas s ruční prací (sylabus 2.3.1).",
+     "d": "Správně. 48 ze 60 artefaktů se spustilo bez úprav; test, který se spustí a najde defekt, se počítá jako spuštěný (sylabus 2.3.1)."
+    },
+    "vysvetleni_obecne": "Execution success rate měří podíl vygenerovaných artefaktů, které lze spustit bez úprav."
+   },
+   "spravne": [
+    "d"
+   ],
+   "oddil": "2.3.1",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-2.3.1-02",
+   "zdroj": "vlastni",
+   "lo": "GenAI-2.3.1",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Generated test cases for an age field cover every requirement, but they include only valid equivalence partitions and none of the invalid ones. Which metric is MOST directly low?</p>",
+    "moznosti": [
+     "Accuracy",
+     "Execution success rate",
+     "Recall",
+     "Time efficiency"
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. Coverage of all specified requirements, the syllabus example of accuracy, is achieved here (syllabus 2.3.1).",
+     "b": "Incorrect. Nothing is said about executing scripts (syllabus 2.3.1).",
+     "c": "Correct. Recall measures whether all relevant instances, such as valid and invalid partitions, are covered (syllabus 2.3.1).",
+     "d": "Incorrect. The problem is missing partitions, not time (syllabus 2.3.1)."
+    },
+    "vysvetleni_obecne": "Recall: the degree to which generated test cases cover valid and invalid equivalence partitions of a data class."
+   },
+   "cz": {
+    "q": "<p>Vygenerované testovací případy pro pole Věk pokrývají každý požadavek, ale obsahují jen platné třídy ekvivalence a žádnou neplatnou. Která metrika je NEJPŘÍMĚJI nízká?</p>",
+    "moznosti": [
+     "Accuracy",
+     "Execution success rate",
+     "Recall",
+     "Time efficiency"
+    ],
+    "vysvetleni": {
+     "a": "Špatně. Pokrytí všech specifikovaných požadavků, příklad accuracy ze sylabu, je tu splněno (sylabus 2.3.1).",
+     "b": "Špatně. O spouštění skriptů zadání nic neříká (sylabus 2.3.1).",
+     "c": "Správně. Recall měří, zda jsou pokryty všechny relevantní případy, například platné i neplatné třídy (sylabus 2.3.1).",
+     "d": "Špatně. Problémem jsou chybějící třídy, ne čas (sylabus 2.3.1)."
+    },
+    "vysvetleni_obecne": "Recall: do jaké míry vygenerované testy pokrývají platné a neplatné třídy ekvivalence datové třídy."
+   },
+   "spravne": [
+    "c"
+   ],
+   "oddil": "2.3.1",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-2.3.1-03",
+   "zdroj": "vlastni",
+   "lo": "GenAI-2.3.1",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Test cases generated for an insurance claims portal read fluently, but several of them test a currency conversion feature that the portal does not have and that is not in the test basis. Which metric captures this problem BEST?</p>",
+    "moznosti": [
+     "Diversity",
+     "Relevance and contextual fit",
+     "Time efficiency",
+     "Execution success rate"
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. Diversity concerns breadth without repetition; irrelevant tests may even look diverse (syllabus 2.3.1).",
+     "b": "Correct. It determines whether output is applicable to the context and consistent with the test basis (syllabus 2.3.1).",
+     "c": "Incorrect. The issue is not the time saved (syllabus 2.3.1).",
+     "d": "Incorrect. Even executable tests can be irrelevant to the context (syllabus 2.3.1)."
+    },
+    "vysvetleni_obecne": "Relevance and contextual fit: degree to which the generated test cases are consistent with the test basis and integrate domain-specific requirements."
+   },
+   "cz": {
+    "q": "<p>Testovací případy vygenerované pro portál hlášení škod se čtou plynule, ale několik z nich testuje převod měn, který portál nemá a který není v testovací bázi. Která metrika tento problém zachytí NEJLÉPE?</p>",
+    "moznosti": [
+     "Diversity",
+     "Relevance and contextual fit",
+     "Time efficiency",
+     "Execution success rate"
+    ],
+    "vysvetleni": {
+     "a": "Špatně. Diversity se týká šíře bez opakování; nerelevantní testy mohou dokonce působit rozmanitě (sylabus 2.3.1).",
+     "b": "Správně. Určuje, zda je výstup použitelný v kontextu a v souladu s testovací bází (sylabus 2.3.1).",
+     "c": "Špatně. Problémem není ušetřený čas (sylabus 2.3.1).",
+     "d": "Špatně. I spustitelné testy mohou být pro kontext nerelevantní (sylabus 2.3.1)."
+    },
+    "vysvetleni_obecne": "Relevance a soulad s kontextem: do jaké míry jsou vygenerované testy v souladu s testovací bází a zahrnují doménové požadavky."
+   },
+   "spravne": [
+    "b"
+   ],
+   "oddil": "2.3.1",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-2.3.1-04",
+   "zdroj": "vlastni",
+   "lo": "GenAI-2.3.1",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>A team evaluates an LLM by running a prompt once and calculating the metrics from that single output. Why is this approach insufficient according to the syllabus?</p>",
+    "moznosti": [
+     "Because GenAI is non-deterministic, so metrics must be based on statistically relevant data such as several runs.",
+     "Because metrics may only be calculated automatically, never by manual review.",
+     "Because only time efficiency can be measured from one output.",
+     "Because metrics are only meaningful for fine-tuned models."
+    ],
+    "vysvetleni": {
+     "a": "Correct. Given the non-deterministic nature of GenAI, metrics must be based on statistically relevant data (syllabus 2.3.1).",
+     "b": "Incorrect. The syllabus allows manual reviews as well as automated comparison (syllabus 2.3.1).",
+     "c": "Incorrect. All metrics can be computed from one output; the problem is that one output is not representative.",
+     "d": "Incorrect. The metrics apply to GenAI results on test tasks in general (syllabus 2.3.1)."
+    },
+    "vysvetleni_obecne": "Metrics can be evaluated manually or automatically against a reference, and must rest on statistically relevant data."
+   },
+   "cz": {
+    "q": "<p>Tým hodnotí LLM tak, že prompt spustí jednou a metriky spočítá z tohoto jediného výstupu. Proč je to podle sylabu nedostatečné?</p>",
+    "moznosti": [
+     "Protože GenAI je nedeterministická, metriky musí vycházet ze statisticky relevantních dat, například z více běhů.",
+     "Protože metriky se smí počítat jen automaticky, nikdy ruční revizí.",
+     "Protože z jednoho výstupu lze měřit jen time efficiency.",
+     "Protože metriky mají smysl jen u doladěných (fine-tuned) modelů."
+    ],
+    "vysvetleni": {
+     "a": "Správně. Kvůli nedeterministické povaze GenAI musí metriky vycházet ze statisticky relevantních dat (sylabus 2.3.1).",
+     "b": "Špatně. Sylabus připouští ruční revizi i automatické porovnání (sylabus 2.3.1).",
+     "c": "Špatně. Spočítat lze všechny metriky; problém je, že jeden výstup není reprezentativní.",
+     "d": "Špatně. Metriky se týkají výsledků GenAI v testovacích úlohách obecně (sylabus 2.3.1)."
+    },
+    "vysvetleni_obecne": "Metriky lze vyhodnotit ručně nebo automaticky vůči referenci a musí stát na statisticky relevantních datech."
+   },
+   "spravne": [
+    "a"
+   ],
+   "oddil": "2.3.1",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-2.3.1-05",
+   "zdroj": "vlastni",
+   "lo": "GenAI-2.3.1",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Which statement correctly distinguishes accuracy from precision as defined for evaluating GenAI results on test tasks?</p>",
+    "moznosti": [
+     "Accuracy measures overall correctness against a standard such as requirements or expert-written test cases; precision evaluates correctness with respect to a specific objective, such as identifying anomalies.",
+     "Accuracy measures how many scripts can be executed; precision measures the time saved.",
+     "Accuracy measures the variety of scenarios; precision measures repetition in the output.",
+     "Accuracy and precision are the same metric with different names."
+    ],
+    "vysvetleni": {
+     "a": "Correct. This matches the definitions and examples in syllabus 2.3.1.",
+     "b": "Incorrect. These describe execution success rate and time efficiency (syllabus 2.3.1).",
+     "c": "Incorrect. Variety and repetition relate to diversity (syllabus 2.3.1).",
+     "d": "Incorrect. The syllabus lists them as separate metrics with different meaning (syllabus 2.3.1)."
+    },
+    "vysvetleni_obecne": "Accuracy: overall correctness against standards. Precision: correctness with respect to a specific objective."
+   },
+   "cz": {
+    "q": "<p>Které tvrzení správně odlišuje accuracy od precision podle definic pro hodnocení výsledků GenAI v testovacích úlohách?</p>",
+    "moznosti": [
+     "Accuracy měří celkovou správnost vůči standardu, například požadavkům nebo testům od odborníka; precision hodnotí správnost vzhledem ke konkrétnímu cíli, například k identifikaci anomálií.",
+     "Accuracy měří, kolik skriptů lze spustit; precision měří ušetřený čas.",
+     "Accuracy měří různorodost scénářů; precision měří opakování ve výstupu.",
+     "Accuracy a precision jsou stejná metrika s jinými názvy."
+    ],
+    "vysvetleni": {
+     "a": "Správně. Odpovídá definicím a příkladům v sylabu 2.3.1.",
+     "b": "Špatně. To popisuje execution success rate a time efficiency (sylabus 2.3.1).",
+     "c": "Špatně. Různorodost a opakování se týkají diversity (sylabus 2.3.1).",
+     "d": "Špatně. Sylabus je uvádí jako samostatné metriky s různým významem (sylabus 2.3.1)."
+    },
+    "vysvetleni_obecne": "Accuracy: celková správnost vůči standardu. Precision: správnost vzhledem ke konkrétnímu cíli."
+   },
+   "spravne": [
+    "a"
+   ],
+   "oddil": "2.3.1",
+   "poznamka": "Kurz Roshdy upozorňuje, že význam se liší od definic ve strojovém učení. Platí sylabus."
+  },
+  {
+   "id": "CG-2.3.2-01",
+   "zdroj": "vlastni",
+   "lo": "GenAI-2.3.2",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Testers report that the test cases generated by an LLM contain too many detailed UI steps and are hard to maintain. Which technique for refining the prompt does this situation BEST illustrate?</p>",
+    "moznosti": [
+     "A/B testing of prompts",
+     "Execution success rate",
+     "Meta prompting",
+     "Integrate user feedback"
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. No competing prompt versions are compared here (syllabus 2.3.2).",
+     "b": "Incorrect. This is a metric, not a refinement technique (syllabus 2.3.1).",
+     "c": "Incorrect. Meta prompting is a prompting technique, not one of the evaluation and refinement techniques of 2.3.2.",
+     "d": "Correct. Testers' input on usefulness and level of detail is analyzed and used to refine the prompt (syllabus 2.3.2)."
+    },
+    "vysvetleni_obecne": "Integrate user feedback: gather testers' input on usefulness and clarity, e.g. level of detail, and refine prompts accordingly."
+   },
+   "cz": {
+    "q": "<p>Testeři hlásí, že testovací případy vygenerované LLM obsahují příliš mnoho podrobných kroků v UI a špatně se udržují. Kterou techniku ladění promptu tato situace NEJLÉPE ilustruje?</p>",
+    "moznosti": [
+     "A/B testing of prompts",
+     "Execution success rate",
+     "Meta prompting",
+     "Integrate user feedback (zapracování zpětné vazby uživatelů)"
+    ],
+    "vysvetleni": {
+     "a": "Špatně. Neporovnávají se tu žádné verze promptu (sylabus 2.3.2).",
+     "b": "Špatně. To je metrika, ne technika ladění (sylabus 2.3.1).",
+     "c": "Špatně. Meta prompting je technika promptování, ne jedna z technik hodnocení a ladění z 2.3.2.",
+     "d": "Správně. Názory testerů na užitečnost a úroveň detailu se analyzují a použijí k úpravě promptu (sylabus 2.3.2)."
+    },
+    "vysvetleni_obecne": "Zapracování zpětné vazby: sebrat od testerů názory na užitečnost a srozumitelnost, např. úroveň detailu, a podle nich prompt upravit."
+   },
+   "spravne": [
+    "d"
+   ],
+   "oddil": "2.3.2",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-2.3.2-02",
+   "zdroj": "vlastni",
+   "lo": "GenAI-2.3.2",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>A team has two versions of a prompt for generating test data. It runs each version ten times and compares the share of invalid partitions covered and the number of duplicate records. Which technique is this?</p>",
+    "moznosti": [
+     "Output analysis",
+     "Prompt chaining",
+     "A/B testing of prompts",
+     "Integrate user feedback"
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. Output analysis examines errors in output to understand them, not to compare versions (syllabus 2.3.2).",
+     "b": "Incorrect. Prompt chaining decomposes a task; it is not a prompt evaluation technique (syllabus 2.1.2).",
+     "c": "Correct. Multiple prompt versions are evaluated against predefined metrics (syllabus 2.3.2).",
+     "d": "Incorrect. The comparison is based on metrics, not on users' opinions (syllabus 2.3.2)."
+    },
+    "vysvetleni_obecne": "A/B testing creates multiple versions of prompts and evaluates which performs better based on predefined metrics."
+   },
+   "cz": {
+    "q": "<p>Tým má dvě verze promptu pro generování testovacích dat. Každou spustí desetkrát a porovná podíl pokrytých neplatných tříd a počet duplicitních záznamů. O jakou techniku jde?</p>",
+    "moznosti": [
+     "Output analysis",
+     "Prompt chaining",
+     "A/B testing of prompts",
+     "Integrate user feedback"
+    ],
+    "vysvetleni": {
+     "a": "Špatně. Analýza výstupu zkoumá chyby, aby je pochopila, nesrovnává verze (sylabus 2.3.2).",
+     "b": "Špatně. Řetězení rozkládá úlohu, není to technika hodnocení promptu (sylabus 2.1.2).",
+     "c": "Správně. Víc verzí promptu se hodnotí podle předem daných metrik (sylabus 2.3.2).",
+     "d": "Špatně. Srovnání stojí na metrikách, ne na názorech uživatelů (sylabus 2.3.2)."
+    },
+    "vysvetleni_obecne": "A/B testování vytvoří víc verzí promptu a podle předem daných metrik vyhodnotí, která dává lepší výsledky."
+   },
+   "spravne": [
+    "c"
+   ],
+   "oddil": "2.3.2",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-2.3.2-03",
+   "zdroj": "vlastni",
+   "lo": "GenAI-2.3.2",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Which is a benefit of sharing prompt libraries and organizing prompt evaluation sessions across a test organization?</p>",
+    "moznosti": [
+     "It removes the need to review LLM output, because shared prompts are always correct.",
+     "It helps standardize prompting techniques, maintain consistent quality and avoid repeated errors.",
+     "It makes the LLM deterministic.",
+     "It replaces the need to define metrics for evaluation."
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. Output must still be evaluated; shared prompts do not guarantee correctness (syllabus 2.3).",
+     "b": "Correct. The syllabus names standardization, consistent quality, a culture of learning and avoiding repeated errors (syllabus 2.3.2).",
+     "c": "Incorrect. Sharing prompts does not change the non-deterministic nature of LLMs (syllabus 2.3.1).",
+     "d": "Incorrect. Evaluation sessions build on metrics; they do not replace them (syllabus 2.3.2)."
+    },
+    "vysvetleni_obecne": "Sharing practices and prompt libraries standardizes techniques, keeps quality consistent and promotes a culture of learning and iterative improvement."
+   },
+   "cz": {
+    "q": "<p>Jaký je přínos sdílení knihoven promptů a pořádání session pro hodnocení promptů v celé testovací organizaci?</p>",
+    "moznosti": [
+     "Odpadne nutnost kontrolovat výstup LLM, protože sdílené prompty jsou vždy správné.",
+     "Pomáhá standardizovat techniky promptování, udržet stejnou kvalitu a neopakovat chyby.",
+     "Udělá z LLM deterministický model.",
+     "Nahradí potřebu definovat metriky pro hodnocení."
+    ],
+    "vysvetleni": {
+     "a": "Špatně. Výstup je nutné dál hodnotit; sdílené prompty správnost nezaručují (sylabus 2.3).",
+     "b": "Správně. Sylabus uvádí standardizaci, stejnou kvalitu, kulturu učení a neopakování chyb (sylabus 2.3.2).",
+     "c": "Špatně. Sdílení promptů nezmění nedeterministickou povahu LLM (sylabus 2.3.1).",
+     "d": "Špatně. Session pro hodnocení na metrikách stavějí, nenahrazují je (sylabus 2.3.2)."
+    },
+    "vysvetleni_obecne": "Sdílení postupů a knihoven promptů standardizuje techniky, drží kvalitu a podporuje kulturu učení a postupného zlepšování."
+   },
+   "spravne": [
+    "b"
+   ],
+   "oddil": "2.3.2",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-2.3.2-04",
+   "zdroj": "vlastni",
+   "lo": "GenAI-2.3.2",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>A very long and detailed prompt produces test cases that closely follow the given examples but miss new situations described in a changed user story. What should the tester try FIRST?</p>",
+    "moznosti": [
+     "Add even more examples copied from the old user story.",
+     "Adjust prompt length and specificity, e.g. try a shorter, less prescriptive version and compare the results.",
+     "Stop using GenAI for test design.",
+     "Increase the number of runs without changing the prompt."
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. More old examples would strengthen the narrow pattern even further (syllabus 2.3.2).",
+     "b": "Correct. Sometimes shorter prompts generalize better; experimenting with length and detail is a refinement technique (syllabus 2.3.2).",
+     "c": "Incorrect. The problem can be addressed by refining the prompt (syllabus 2.3.2).",
+     "d": "Incorrect. More runs give more statistics but do not fix the narrowness of the prompt (syllabus 2.3.1)."
+    },
+    "vysvetleni_obecne": "Adjust prompt length and specificity: adding context can help, but in other cases shorter prompts yield better generalization."
+   },
+   "cz": {
+    "q": "<p>Velmi dlouhý a podrobný prompt dává testovací případy, které věrně kopírují dané příklady, ale vynechávají nové situace popsané ve změněném uživatelském scénáři. Co by měl tester zkusit NEJDŘÍV?</p>",
+    "moznosti": [
+     "Přidat ještě víc příkladů zkopírovaných ze starého uživatelského scénáře.",
+     "Upravit délku a konkrétnost promptu, například zkusit kratší a méně předepisující verzi a porovnat výsledky.",
+     "Přestat GenAI pro návrh testů používat.",
+     "Zvýšit počet běhů bez změny promptu."
+    ],
+    "vysvetleni": {
+     "a": "Špatně. Další staré příklady by úzký vzor ještě posílily (sylabus 2.3.2).",
+     "b": "Správně. Kratší prompt někdy lépe zobecní; experiment s délkou a detailem je technika ladění (sylabus 2.3.2).",
+     "c": "Špatně. Problém lze řešit úpravou promptu (sylabus 2.3.2).",
+     "d": "Špatně. Víc běhů dá víc statistiky, ale úzkost promptu neodstraní (sylabus 2.3.1)."
+    },
+    "vysvetleni_obecne": "Úprava délky a konkrétnosti: víc kontextu někdy pomůže, jindy kratší prompt lépe zobecní."
+   },
+   "spravne": [
+    "b"
+   ],
+   "oddil": "2.3.2",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-2.3.2-05",
+   "zdroj": "vlastni",
+   "lo": "GenAI-2.3.2",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>A tester examines a batch of LLM-generated test cases and classifies the errors: wrong boundaries, invented UI elements and expected results that contradict the test basis. She then changes the prompt to prevent these error types. Which technique is she applying?</p>",
+    "moznosti": [
+     "Output analysis",
+     "A/B testing of prompts",
+     "Integrate user feedback",
+     "Few-shot prompting"
+    ],
+    "vysvetleni": {
+     "a": "Correct. Examining output for inaccuracies and understanding error types to refine the prompt is output analysis (syllabus 2.3.2).",
+     "b": "Incorrect. She does not compare several prompt versions (syllabus 2.3.2).",
+     "c": "Incorrect. She analyzes the output herself instead of collecting opinions of other users (syllabus 2.3.2).",
+     "d": "Incorrect. Few-shot is a prompting technique, not an evaluation technique (syllabus 2.1.2)."
+    },
+    "vysvetleni_obecne": "Output analysis: examine AI output for inaccuracies or inconsistencies; understanding error types helps refine prompts."
+   },
+   "cz": {
+    "q": "<p>Testerka prochází dávku testovacích případů vygenerovaných LLM a třídí chyby: špatné hranice, vymyšlené prvky UI a očekávané výsledky v rozporu s testovací bází. Pak prompt upraví, aby se tyto typy chyb neopakovaly. Jakou techniku používá?</p>",
+    "moznosti": [
+     "Output analysis (analýza výstupu)",
+     "A/B testing of prompts",
+     "Integrate user feedback",
+     "Few-shot prompting"
+    ],
+    "vysvetleni": {
+     "a": "Správně. Zkoumání výstupu kvůli nepřesnostem a pochopení typů chyb pro úpravu promptu je analýza výstupu (sylabus 2.3.2).",
+     "b": "Špatně. Neporovnává víc verzí promptu (sylabus 2.3.2).",
+     "c": "Špatně. Výstup analyzuje sama, nesbírá názory jiných uživatelů (sylabus 2.3.2).",
+     "d": "Špatně. Few-shot je technika promptování, ne technika hodnocení (sylabus 2.1.2)."
+    },
+    "vysvetleni_obecne": "Analýza výstupu: zkoumat výstup AI kvůli nepřesnostem a nekonzistencím; pochopení typů chyb pomůže upravit prompt."
+   },
+   "spravne": [
+    "a"
+   ],
+   "oddil": "2.3.2",
+   "poznamka": ""
+  }
+ ]
+}

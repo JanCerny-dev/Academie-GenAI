@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="cs" data-tema="">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Závěrečný projekt | Praxe | ISTQB CT-GenAI</title>
+<meta name="description" content="Praxe CT-GenAI: Závěrečný projekt. AI asistent pro test design. Ze specifikace vzniknou testovací podmínky, testovací případy, scénáře v Gherkin a spustitelné testy. Kvalitu výstupu měří metriky ze sylabu a celé to běží v CI.">
+<meta name="color-scheme" content="light dark">
+<link rel="stylesheet" href="../assets/styl.css">
+<script>
+/* Nastaví uložený režim ještě před vykreslením, aby stránka neproblikla. */
+(function(){try{var t=localStorage.getItem('genai-tema');if(t){document.documentElement.setAttribute('data-tema',t);}}catch(e){}})();
+</script>
+</head>
+<body data-kapitola="6">
+<a class="preskocit" href="#text">Přeskočit na text</a>
+<div class="postup" aria-hidden="true"></div>
+<header class="hlavicka">
+  <div class="hlavicka-vnitrek">
+    <a class="znacka" href="../index.html">ISTQB CT-GenAI <span>česká studijní příručka</span></a>
+    <nav class="navigace" aria-label="Hlavní navigace">
+      <a href="../index.html">Úvod</a>
+      <span class="skupina" data-skupina>
+        <a href="../kapitoly.html" class="zvyraznit">Kapitoly</a>
+        <ul class="podmenu" id="podmenu-kapitoly" aria-label="Seznam kapitol"><li><a href="../kapitola-1/vyklad.html"><b>1</b> Úvod do generativní AI</a></li><li><a href="../kapitola-2/vyklad.html"><b>2</b> Prompt engineering</a></li><li><a href="../kapitola-3/vyklad.html"><b>3</b> Rizika generativní AI</a></li><li><a href="../kapitola-4/vyklad.html"><b>4</b> Infrastruktura s LLM</a></li><li><a href="../kapitola-5/vyklad.html"><b>5</b> Zavedení GenAI v organizaci</a></li></ul>
+      </span>
+      <a href="../slovnik.html">Slovník</a>
+      <a href="../karticky.html">Kartičky</a>
+      <a href="../prirazovani.html">Přiřazování</a>
+      <a href="../cviceni.html">Cvičení</a>
+      <a href="../praxe.html" aria-current="page">Praxe</a>
+      <a href="../cile.html">Cíle</a>
+      <a href="../zkouska.html">Zkouška</a>
+      <a href="../lokalni/index.html" class="lokalni-odkaz">Lokální testy</a>
+      <button type="button" class="prepinac-tema" data-prepinac-tema>Tmavý režim</button>
+      <button type="button" class="ucet-tlacitko" data-ucet hidden>Přihlásit</button>
+    </nav>
+  </div>
+</header>
+<div class="stranka">
+<div class="layout">
+<main>
+<div class="zahlavi">
+  <p class="drobky"><a href="../praxe.html">Praxe</a> · Závěrečný projekt</p>
+  <h1>Závěrečný projekt</h1>
+  <p class="podtitul">AI asistent pro test design. Ze specifikace vzniknou testovací podmínky, testovací případy, scénáře v Gherkin a spustitelné testy. Kvalitu výstupu měří metriky ze sylabu a celé to běží v CI.</p>
+  <ul class="meta"><li>Čas: 40–50 h (4–5 týdnů po 10 h)</li><li>Úroveň: pokročilý</li><li>Nástroje: Python 3.12, OpenAI API nebo Anthropic API (volitelně Ollama), Behave, Playwright, requests, pytest, GitHub Actions</li><li>2 059 slov</li><li>≈ 12 min čtení</li><li>8 cvičení</li></ul>
+  <p class="praxe-souvislosti"><span>Souvisí s kapitolami CT-GenAI: <a href="../kapitola-2/vyklad.html">2. Prompt engineering</a> · <a href="../kapitola-3/vyklad.html">3. Rizika generativní AI</a> · <a href="../kapitola-4/vyklad.html">4. Infrastruktura s LLM</a> · <a href="../kapitola-5/vyklad.html">5. Zavedení GenAI v organizaci</a></span><span>Zdroje: vlastní návrh; Bruno L32–L74 (API, Behave, Playwright); Shetty L9–L12 (test design v chatu), L38–L43 (agent nad doménovým dokumentem), L47–L48 (CI)</span></p>
+  <p class="napoveda" id="praxe-souhrn" aria-live="polite" data-praxe-cviceni="praxe-projekt-etapa-0-hotova praxe-projekt-etapa-1-hotova praxe-projekt-etapa-2-hotova praxe-projekt-etapa-3-hotova praxe-projekt-etapa-4-hotova praxe-projekt-etapa-5-hotova praxe-projekt-etapa-6-hotova praxe-projekt-etapa-7-hotova"><span data-praxe-postup>8 cvičení</span>. Hotová cvičení si odškrtni, stav se ukládá v tomto prohlížeči, po přihlášení i v účtu.</p>
+</div>
+<article class="text" id="text">
+<h2 id="co-postavis">Co postavíš<a class="kotva" href="#co-postavis" aria-label="Odkaz na tento oddíl"></a></h2>
+<p>Postavíš nástroj v Pythonu, který převede textovou specifikaci na testy a sám změří, jak dobře to udělal. Vstupem je specifikace s očíslovanými požadavky. Výstupem jsou testovací podmínky, testovací případy, soubory <code>.feature</code> v jazyce <strong>Gherkin</strong> a testy, které Behave spustí proti skutečné aplikaci. Na konci každého běhu vznikne report s metrikami kvality.</p>
+<p>Asistent nepoužívá jeden velký prompt. Používá <strong>prompt chaining</strong> (řetězení promptů, sylabus 2.1.2). Každý krok má vlastní prompt, vlastní formát výstupu a vlastní kontrolu. Chyba se tak pozná u kroku, kde vznikla, a nepropíše se do dalších.</p>
+<p>Projekt spojuje moduly Praxe do jednoho celku: <a href="09-python-a-openai-api.html">volání LLM z Pythonu</a>, <a href="10-bdd-framework-behave-playwright-ai.html">Behave a Playwright</a> a <a href="06-ci-cd-a-docker-s-ai-agentem.html">GitHub Actions</a>. Přehled nástrojů je v <a href="tahak.html">taháku</a>.</p>
+<h2 id="cilova-aplikace">Cílová aplikace<a class="kotva" href="#cilova-aplikace" aria-label="Odkaz na tento oddíl"></a></h2>
+<p>Projekt stojí na veřejných demo aplikacích, aby šel ukázat komukoli a nepotřeboval žádná firemní data.</p>
+<p>Hlavní cíl je <strong>webdriveruniversity.com</strong>: formulář Contact Us a stránka Login Portal. Formulář má čtyři povinná pole, kontrolu e-mailu, tlačítka SUBMIT a RESET a dvě chybové hlášky. Na takové specifikaci se dobře ukazuje rozdělení do tříd ekvivalence i hraniční hodnoty. Kurz Gianni Bruno pracuje se stejným formulářem, takže máš s čím porovnávat.</p>
+<p>Rozšíření pro API je <strong>goal-tracker API</strong> z téhož kurzu (<code>https://goal-tracker-api.onrender.com/api/v1/</code>). Kurz používá jen endpoint <code>status</code>. Jaké další endpointy API nabízí, si ověř sám, než pro ně napíšeš specifikaci. Aplikace běží na bezplatném hostingu, první požadavek po pauze proto může trvat déle (neověřeno).</p>
+<p>Druhá, soukromá datová sada je <strong>EventHub</strong> z kurzu Rahul Shetty. Jeho dokument požadavků má požadavky s ID (FR-A1, FR-B4…) a tabulku obchodních pravidel. To je ideální referenční sada pro měření recall. Aplikace se spouští lokálně z balíčku kurzu. Dokument požadavků ani kód z kurzu do veřejného repozitáře nedávej, jsou chráněné autorským právem. Do README napiš jen souhrnná čísla z evaluace.</p>
+<aside class="vsuvka vsuvka--pozor" data-stitek="Pozor" aria-label="Pozor"><p class="praxe-blok-nazev">Data a klíče</p><p>Specifikaci píšeš sám a popisuje veřejnou aplikaci, do modelu tedy nejde nic citlivého. API klíč patří do proměnné prostředí (<code>OPENAI_API_KEY</code> nebo <code>ANTHROPIC_API_KEY</code>), lokálně třeba přes Windows Credential Manager, v CI do GitHub Actions secrets. Do repozitáře dej jen <code>.env.example</code> s názvy proměnných bez hodnot. U poskytovatele API si nastav měsíční limit útraty.</p></aside>
+<h2 id="architektura">Architektura<a class="kotva" href="#architektura" aria-label="Odkaz na tento oddíl"></a></h2>
+<p>Diagram ukazuje tok dat. Každá šipka dolů je jeden prompt nebo jeden krok bez LLM. Kontroly v hranatých závorkách běží bez modelu a zastaví řetězec, když výstup nesplní pravidla.</p>
+<div class="kod" data-jazyk="text"><pre><code> specs/contact-us.md        vlastní specifikace, požadavky REQ-CU-01 … REQ-CU-nn
+          |
+          |  prompt 1: testovací analýza (role, kontext, specifikace, výstup JSON)
+          v
+ out/conditions.json        testovací podmínky s vazbou na REQ
+          |  [schéma JSON, každý REQ má aspoň jednu podmínku]
+          |
+          |  prompt 2: testovací návrh (třídy ekvivalence, hraniční hodnoty, few-shot příklad)
+          v
+ out/cases.json             testovací případy: vstupy, kroky, očekávaný výsledek
+          |  [schéma JSON, vazba na podmínku, očekávaný výsledek cituje specifikaci]
+          |
+          |  prompt 3: implementace (katalog povolených kroků Gherkin)
+          v
+ features/*.feature         scénáře v Gherkin
+          |  [parser Gherkin, žádný krok mimo katalog]
+          |
+          |  Behave + Playwright (UI), Behave + requests (API)
+          v
+ out/junit/*.xml            výsledky běhu testů
+          |
+          |  evaluace bez LLM: porovnání s reference/*.golden.json
+          v
+ eval/report.md             metriky, průměr a rozptyl z více běhů, porovnání verzí promptu
+
+ CI (GitHub Actions)
+   push:      lint -&gt; unit testy s falešným LLM (bez klíče, bez nákladů)
+   ručně / 1× týdně: celý řetězec s reálným modelem -&gt; report jako artefakt</code></pre></div>
+<p>Kód má pět částí. Modul <code>llm.py</code> je jediné místo, které volá model. Má jednotné rozhraní pro OpenAI, Anthropic i lokální Ollamu a ukládá odpovědi do cache podle otisku promptu. Díky cache jsou opakované běhy zdarma a testy asistenta deterministické. Modul <code>pipeline.py</code> skládá kroky řetězce a <code>schema.py</code> kontroluje výstupy. Modul <code>gherkin.py</code> hlídá katalog kroků. Modul <code>eval.py</code> počítá metriky.</p>
+<p>Prompty jsou samostatné soubory ve složce <code>prompts/</code> s číslem verze v hlavičce. Každý report zapíše, s jakou verzí promptu a s jakým modelem vznikl. To je základ <strong>LLMOps</strong> (sylabus 4.2.2) v malém měřítku.</p>
+<h2 id="metriky-kvality">Metriky kvality<a class="kotva" href="#metriky-kvality" aria-label="Odkaz na tento oddíl"></a></h2>
+<p>Metriky vycházejí z tabulky v oddílu 2.3.1 sylabu. Měří se proti referenční sadě, kterou napíšeš ručně dřív, než asistenta poprvé spustíš. Jinak by ses nechal ovlivnit tím, co model vygeneroval.</p>
+<div class="tabulka-obal"><table><thead><tr><th>Metrika ze sylabu</th><th>Jak ji v projektu měříš</th></tr></thead><tbody><tr><td>Accuracy</td><td>Podíl požadavků REQ, které vygenerované testovací případy pokrývají.</td></tr><tr><td>Precision</td><td>Podíl vygenerovaných případů, které jsou správné: odkazují na existující požadavek a očekávaný výsledek odpovídá specifikaci. Sporné případy posoudíš ručně.</td></tr><tr><td>Recall</td><td>Podíl tříd ekvivalence a hraničních hodnot z referenční sady, které vygenerované případy pokrývají.</td></tr><tr><td>Relevance a contextual fit</td><td>Podíl případů, které používají jen pole, tlačítka a hlášky ze specifikace. Vymyšlená hláška je <strong>hallucination</strong> (halucinace).</td></tr><tr><td>Diversity</td><td>Počet různých tříd a technik, podíl negativních a hraničních případů, počet téměř stejných případů.</td></tr><tr><td>Execution success rate</td><td>Podíl scénářů, které Behave načte a spustí bez syntaktické chyby a bez nedefinovaného kroku.</td></tr><tr><td>Time efficiency</td><td>Čas generování a revize proti času ruční tvorby referenční sady.</td></tr></tbody></table></div>
+<p>Tabulka ukazuje, že většinu metrik jde spočítat automaticky. Ruční zůstává jen posouzení sporných případů u precision a změření ruční práce u time efficiency.</p>
+<p>Výstup LLM je <strong>non-deterministic</strong> (nedeterministický, sylabus 3.1.4). Jeden běh proto nic nedokazuje. Každou konfiguraci pusť aspoň pětkrát a do reportu zapiš průměr, minimum a maximum. Teplotu nastav nízko a u modelů, které to umí, zafixuj seed.</p>
+<h2 id="etapy">Etapy<a class="kotva" href="#etapy" aria-label="Odkaz na tento oddíl"></a></h2>
+<p>Etapy jdou po sobě. Každá končí kritériem hotovo, které jde ověřit příkazem nebo pohledem do souboru. Zaškrtnutí se ukládá jen v tomto prohlížeči a postup uvidíš na stránce Praxe.</p>
+<h3 id="etapa-0-repozitar-a-prostredi-2-3-h">Etapa 0: Repozitář a prostředí (2–3 h)<a class="kotva" href="#etapa-0-repozitar-a-prostredi-2-3-h" aria-label="Odkaz na tento oddíl"></a></h3>
+<p>Založ repozitář, virtuální prostředí, <code>requirements.txt</code> nebo <code>pyproject.toml</code> a strukturu složek podle oddílu Co dát na GitHub. Do <code>.gitignore</code> přidej <code>.env</code>, <code>out/</code> a <code>.venv/</code>. Klíč načítej jen z proměnné prostředí, chybějící klíč ať skončí srozumitelnou chybou.</p>
+<div class="kod" data-jazyk="bash"><pre><code>python -m venv .venv
+.venv\Scripts\activate
+pip install behave playwright requests pytest jsonschema
+python -m playwright install chromium</code></pre></div>
+<aside class="vsuvka vsuvka--cviceni" id="praxe-projekt-etapa-0-hotova" data-stitek="Cvičení" aria-label="Cvičení"><p class="praxe-blok-nazev">Etapa 0 hotová</p><p>Příkaz <code>python -m asistent --help</code> vypíše nápovědu, <code>pytest</code> projde a v historii gitu není žádný klíč. Ověříš to hledáním řetězce <code>sk-</code> v repozitáři.</p><p class="praxe-cviceni-pata" data-nepocitat><label class="zk-volba praxe-hotovo"><input type="checkbox" data-praxe-hotovo="praxe-projekt-etapa-0-hotova"> Hotovo</label></p></aside>
+<h3 id="etapa-1-specifikace-a-referencni-sada-5-7-h">Etapa 1: Specifikace a referenční sada (5–7 h)<a class="kotva" href="#etapa-1-specifikace-a-referencni-sada-5-7-h" aria-label="Odkaz na tento oddíl"></a></h3>
+<p>Napiš vlastními slovy specifikaci formuláře Contact Us a stránky Login Portal. Každý požadavek dostane ID, třeba <code>REQ-CU-03 E-mail musí obsahovat znak @</code>. Chování ověř ručně v prohlížeči, ne podle paměti. Potom ručně navrhni referenční sadu: testovací podmínky a testovací případy s třídami ekvivalence a hraničními hodnotami. Změř, jak dlouho ti to trvalo. To je základ pro time efficiency.</p>
+<aside class="vsuvka vsuvka--cviceni" id="praxe-projekt-etapa-1-hotova" data-stitek="Cvičení" aria-label="Cvičení"><p class="praxe-blok-nazev">Etapa 1 hotová</p><p>Specifikace má aspoň 12 požadavků s ID. Soubor <code>reference/contact-us.golden.json</code> má aspoň 25 případů, každý s vazbou na požadavek. Čas ruční práce je zapsaný v <code>reference/README.md</code>.</p><p class="praxe-cviceni-pata" data-nepocitat><label class="zk-volba praxe-hotovo"><input type="checkbox" data-praxe-hotovo="praxe-projekt-etapa-1-hotova"> Hotovo</label></p></aside>
+<h3 id="etapa-2-retezec-promptu-pro-analyzu-a-navrh-6-8-h">Etapa 2: Řetězec promptů pro analýzu a návrh (6–8 h)<a class="kotva" href="#etapa-2-retezec-promptu-pro-analyzu-a-navrh-6-8-h" aria-label="Odkaz na tento oddíl"></a></h3>
+<p>Napiš prompt 1 pro testovací podmínky a prompt 2 pro testovací případy. Oba mají strukturu ze sylabu 2.1.1: roli, kontext, instrukce, vstupní data, omezení a formát výstupu. Výstup chtěj jako JSON a hned ho zkontroluj schématem. Když JSON neprojde, pošli modelu chybu a nech ho výstup opravit, nejvýš dvakrát.</p>
+<div class="kod" data-jazyk="python"><pre><code>import json
+from jsonschema import validate
+
+def krok(llm, prompt: str, vstup: dict, schema: dict, pokusu: int = 3) -&gt; dict:
+    zprava = prompt.format(vstup=json.dumps(vstup, ensure_ascii=False))
+    for _ in range(pokusu):
+        odpoved = llm.complete(zprava, temperature=0.2)
+        try:
+            data = json.loads(odpoved)
+            validate(data, schema)
+            return data
+        except Exception as chyba:  # JSON nebo schéma neprošlo: model dostane chybu zpět
+            zprava += f"\n\nPředchozí výstup byl neplatný: {chyba}. Vrať jen opravený JSON."
+    raise RuntimeError("Model nevrátil platný výstup ani po opravách")</code></pre></div>
+<p>Ukázka je kostra, ne hotový kód. Rozhraní <code>llm.complete</code> si navrhni sám tak, aby šlo v testech nahradit falešným objektem, který vrací připravené odpovědi.</p>
+<aside class="vsuvka vsuvka--cviceni" id="praxe-projekt-etapa-2-hotova" data-stitek="Cvičení" aria-label="Cvičení"><p class="praxe-blok-nazev">Etapa 2 hotová</p><p>Jeden příkaz vytvoří <code>out/conditions.json</code> a <code>out/cases.json</code>. Oba projdou schématem a každý požadavek ze specifikace má aspoň jednu testovací podmínku. Unit testy s falešným LLM pokrývají opravu neplatného JSON.</p><p class="praxe-cviceni-pata" data-nepocitat><label class="zk-volba praxe-hotovo"><input type="checkbox" data-praxe-hotovo="praxe-projekt-etapa-2-hotova"> Hotovo</label></p></aside>
+<h3 id="etapa-3-gherkin-a-spustitelne-testy-8-10-h">Etapa 3: Gherkin a spustitelné testy (8–10 h)<a class="kotva" href="#etapa-3-gherkin-a-spustitelne-testy-8-10-h" aria-label="Odkaz na tento oddíl"></a></h3>
+<p>Prompt 3 převede testovací případy na scénáře v Gherkin. Model smí použít jen kroky z katalogu, který mu dáš v promptu, třeba <code>When I fill in "{pole}" with "{hodnota}"</code>. Step definitions k těmto krokům napíšeš jednou ručně v Pythonu s Playwright. Katalog zvedá execution success rate: model nevymýšlí nové kroky, které nikdo neimplementoval. Kontrola po kroku 3 odmítne scénář s krokem mimo katalog.</p>
+<aside class="vsuvka vsuvka--cviceni" id="praxe-projekt-etapa-3-hotova" data-stitek="Cvičení" aria-label="Cvičení"><p class="praxe-blok-nazev">Etapa 3 hotová</p><p>Příkaz <code>behave --dry-run</code> nehlásí žádný nedefinovaný krok. Běh proti webdriveruniversity.com projde, nebo každé selhání máš v <code>eval/selhani.md</code> vysvětlené: chyba testu, nebo skutečná odchylka aplikace od specifikace.</p><p class="praxe-cviceni-pata" data-nepocitat><label class="zk-volba praxe-hotovo"><input type="checkbox" data-praxe-hotovo="praxe-projekt-etapa-3-hotova"> Hotovo</label></p></aside>
+<h3 id="etapa-4-evaluace-a-porovnani-promptu-6-8-h">Etapa 4: Evaluace a porovnání promptů (6–8 h)<a class="kotva" href="#etapa-4-evaluace-a-porovnani-promptu-6-8-h" aria-label="Odkaz na tento oddíl"></a></h3>
+<p>Modul <code>eval.py</code> porovná výstupy s referenční sadou a spočítá metriky z tabulky výše. Celý řetězec pusť pětkrát. Potom vytvoř druhou verzi promptu 2, třeba s few-shot příkladem místo samotného popisu techniky, a porovnej obě verze. To je <strong>A/B testing</strong> promptů ze sylabu 2.3.2. Do reportu zapiš i chyby, které jsi ve výstupu našel ručně, a jak jsi podle nich upravil prompt (output analysis).</p>
+<aside class="vsuvka vsuvka--cviceni" id="praxe-projekt-etapa-4-hotova" data-stitek="Cvičení" aria-label="Cvičení"><p class="praxe-blok-nazev">Etapa 4 hotová</p><p>Příkaz <code>python -m asistent eval</code> vytvoří <code>eval/report.md</code> s tabulkou metrik pro verze A a B, s průměrem, minimem a maximem z pěti běhů. Report uvádí model, teplotu a verzi promptů.</p><p class="praxe-cviceni-pata" data-nepocitat><label class="zk-volba praxe-hotovo"><input type="checkbox" data-praxe-hotovo="praxe-projekt-etapa-4-hotova"> Hotovo</label></p></aside>
+<h3 id="etapa-5-ci-v-github-actions-3-4-h">Etapa 5: CI v GitHub Actions (3–4 h)<a class="kotva" href="#etapa-5-ci-v-github-actions-3-4-h" aria-label="Odkaz na tento oddíl"></a></h3>
+<p>První workflow běží při každém push: kontrola stylu a unit testy s falešným LLM. Nepotřebuje klíč a nic nestojí. Druhé workflow spustíš ručně nebo jednou týdně. Pustí celý řetězec s reálným modelem, spustí Behave a report nahraje jako artefakt. Klíč čte ze secrets. Počet běhů omez, ať nepřekvapí účet.</p>
+<aside class="vsuvka vsuvka--cviceni" id="praxe-projekt-etapa-5-hotova" data-stitek="Cvičení" aria-label="Cvičení"><p class="praxe-blok-nazev">Etapa 5 hotová</p><p>README má odznak zeleného buildu. Ruční spuštění evaluace vytvoří artefakt s reportem. Klíč je jen v GitHub Actions secrets a v logu se nezobrazí.</p><p class="praxe-cviceni-pata" data-nepocitat><label class="zk-volba praxe-hotovo"><input type="checkbox" data-praxe-hotovo="praxe-projekt-etapa-5-hotova"> Hotovo</label></p></aside>
+<h3 id="etapa-6-rozsireni-o-api-a-druhou-datovou-sadu-volitelne-4-6-h">Etapa 6: Rozšíření o API a druhou datovou sadu (volitelně, 4–6 h)<a class="kotva" href="#etapa-6-rozsireni-o-api-a-druhou-datovou-sadu-volitelne-4-6-h" aria-label="Odkaz na tento oddíl"></a></h3>
+<p>Napiš krátkou specifikaci pro goal-tracker API a nech stejný řetězec vytvořit API scénáře. Step definitions pro API používají <code>requests</code>. Pokud máš EventHub z kurzu, spusť evaluaci i nad jeho dokumentem požadavků lokálně a do README zapiš jen výsledná čísla.</p>
+<aside class="vsuvka vsuvka--cviceni" id="praxe-projekt-etapa-6-hotova" data-stitek="Cvičení" aria-label="Cvičení"><p class="praxe-blok-nazev">Etapa 6 hotová</p><p>Aspoň jeden soubor <code>.feature</code> pro API vznikl stejným řetězcem a projde. README porovnává metriky pro UI a API, případně i pro EventHub.</p><p class="praxe-cviceni-pata" data-nepocitat><label class="zk-volba praxe-hotovo"><input type="checkbox" data-praxe-hotovo="praxe-projekt-etapa-6-hotova"> Hotovo</label></p></aside>
+<h3 id="etapa-7-readme-a-portfolio-3-4-h">Etapa 7: README a portfolio (3–4 h)<a class="kotva" href="#etapa-7-readme-a-portfolio-3-4-h" aria-label="Odkaz na tento oddíl"></a></h3>
+<p>Dopiš README podle osnovy v další části. Nech projekt spustit kolegu jen podle README a zapiš, kde se zasekl.</p>
+<aside class="vsuvka vsuvka--cviceni" id="praxe-projekt-etapa-7-hotova" data-stitek="Cvičení" aria-label="Cvičení"><p class="praxe-blok-nazev">Etapa 7 hotová</p><p>Kolega spustí asistenta podle README do 15 minut bez tvé pomoci. README obsahuje výsledky evaluace a sekci Omezení.</p><p class="praxe-cviceni-pata" data-nepocitat><label class="zk-volba praxe-hotovo"><input type="checkbox" data-praxe-hotovo="praxe-projekt-etapa-7-hotova"> Hotovo</label></p></aside>
+<p>Součet etap je 37–50 hodin. Při deseti hodinách týdně to jsou čtyři až pět týdnů. Etapy 0 až 5 tvoří ucelený projekt. Etapa 6 je bonus.</p>
+<h2 id="co-dat-na-github">Co dát na GitHub<a class="kotva" href="#co-dat-na-github" aria-label="Odkaz na tento oddíl"></a></h2>
+<p>Repozitář má být čitelný i pro člověka, který ho otevře na dvě minuty. Struktura:</p>
+<div class="kod" data-jazyk="text"><pre><code>ai-test-design-assistant/
+  README.md               cíl, architektura, spuštění, výsledky, omezení
+  requirements.txt
+  .env.example            jen názvy proměnných, žádné hodnoty
+  specs/                  vlastní specifikace (contact-us.md, login.md, goal-tracker-api.md)
+  reference/              ručně napsaná referenční sada + čas ruční práce
+  prompts/                01-podminky.md, 02-pripady-a.md, 02-pripady-b.md, 03-gherkin.md
+  asistent/               llm.py, pipeline.py, schema.py, gherkin.py, eval.py, cli.py
+  features/               vygenerované scénáře (ukázka jednoho běhu)
+    steps/                ručně psané step definitions (Playwright, requests)
+  eval/                   report.md, selhani.md, results/*.json z jednotlivých běhů
+  tests/                  unit testy s falešným LLM
+  .github/workflows/      ci.yml (push), eval.yml (ručně, 1× týdně)</code></pre></div>
+<p>Do repozitáře nepatří API klíče, soubor <code>.env</code>, materiály z kurzů (dokument EventHub, kód z lekcí) ani nic z práce.</p>
+<p>README má tuto osnovu: jaký problém nástroj řeší, diagram architektury, spuštění v pěti příkazech, tabulka výsledků evaluace, ukázka jednoho vstupu a výstupu, omezení a rizika, souvislost s ISTQB CT-GenAI. Sekce omezení je důležitá. Ukazuje, že víš, kde nástroj selhává.</p>
+<h2 id="jak-to-vypada-v-portfoliu">Jak to vypadá v portfoliu<a class="kotva" href="#jak-to-vypada-v-portfoliu" aria-label="Odkaz na tento oddíl"></a></h2>
+<p>V životopise stačí jedna věta: nástroj v Pythonu, který ze specifikace generuje testy přes řetězení promptů, spouští je v Behave a Playwright a měří kvalitu výstupu metrikami z ISTQB CT-GenAI. K tomu odkaz na repozitář.</p>
+<p>Na pohovoru se ptají na rozhodnutí, ne na seznam technologií. Připrav si tři příběhy s vlastními čísly z reportu. Jak se změnil recall po přidání few-shot příkladu. Jakou halucinaci metrika relevance zachytila a jak jsi upravil prompt. Proč katalog kroků zvedl execution success rate. Čísla neodhaduj, vezmi je z <code>eval/report.md</code>.</p>
+<p>Na LinkedIn se hodí krátký příspěvek s diagramem a jednou tabulkou výsledků. Napiš v něm i to, co nefungovalo.</p>
+<h2 id="rizika-a-omezeni">Rizika a omezení<a class="kotva" href="#rizika-a-omezeni" aria-label="Odkaz na tento oddíl"></a></h2>
+<p>Model občas vymyslí pole nebo hlášku, která ve specifikaci není. Proti tomu stojí kontrola relevance a citace specifikace v očekávaném výsledku. Výstupy se mezi běhy liší, proto cache, nízká teplota a více běhů. Referenční sada je jen tak dobrá, jak pečlivě ji napíšeš: chyby v ní zkreslí všechny metriky. Webová demo aplikace se může změnit bez ohlášení. Když testy začnou padat všechny najednou, ověř nejdřív aplikaci.</p>
+<h2 id="souvislost-se-sylabem-ct-genai">Souvislost se sylabem CT-GenAI<a class="kotva" href="#souvislost-se-sylabem-ct-genai" aria-label="Odkaz na tento oddíl"></a></h2>
+<p>Projekt pokrývá většinu kapitoly 2. Struktura promptů a řetězení promptů jsou v <a href="../kapitola-2/vyklad.html#oddil-2-1">oddílu 2.1</a>. Testovací analýza, návrh a implementace s GenAI jsou v <a href="../kapitola-2/vyklad.html#oddil-2-2">oddílu 2.2</a>. Metriky a A/B testování promptů popisuje <a href="../kapitola-2/vyklad.html#oddil-2-3">oddíl 2.3</a>.</p>
+<p>Halucinace, nedeterminismus a ochrana dat jsou v <a href="../kapitola-3/vyklad.html#oddil-3-1">kapitole 3</a>. Řetězec s kontrolami mezi kroky je jednoduchá testovací infrastruktura postavená na LLM (<a href="../kapitola-4/vyklad.html#oddil-4-1">oddíl 4.1</a>). Verze promptů a modelů v reportu patří k LLMOps (<a href="../kapitola-4/vyklad.html#oddil-4-2">oddíl 4.2</a>). Volba mezi cloudovým a lokálním modelem odpovídá výběru LLM a SLM v <a href="../kapitola-5/vyklad.html#oddil-5-1">oddílu 5.1</a>.</p>
+</article>
+<div class="splneno-radek" data-nepocitat><button type="button" class="tlacitko splneno" data-splneno="modul-projekt" data-text-ne="Označit jako prostudované" data-text-ano="✓ Prostudováno" aria-pressed="false">Označit jako prostudované</button></div>
+<nav class="naradi sousede" aria-label="Sousední moduly"><a href="../praxe.html">← Všechny moduly</a><a href="tahak.html">Tahák nástrojů →</a></nav>
+</main>
+<aside class="strom" aria-label="Obsah stránky"><h2>Na této stránce</h2><ol><li><a href="#co-postavis">Co postavíš</a></li><li><a href="#cilova-aplikace">Cílová aplikace</a></li><li><a href="#architektura">Architektura</a></li><li><a href="#metriky-kvality">Metriky kvality</a></li><li><a href="#etapy">Etapy</a><ol><li><a href="#etapa-0-repozitar-a-prostredi-2-3-h">Etapa 0: Repozitář a prostředí (2–3 h)</a></li><li><a href="#etapa-1-specifikace-a-referencni-sada-5-7-h">Etapa 1: Specifikace a referenční sada (5–7 h)</a></li><li><a href="#etapa-2-retezec-promptu-pro-analyzu-a-navrh-6-8-h">Etapa 2: Řetězec promptů pro analýzu a návrh (6–8 h)</a></li><li><a href="#etapa-3-gherkin-a-spustitelne-testy-8-10-h">Etapa 3: Gherkin a spustitelné testy (8–10 h)</a></li><li><a href="#etapa-4-evaluace-a-porovnani-promptu-6-8-h">Etapa 4: Evaluace a porovnání promptů (6–8 h)</a></li><li><a href="#etapa-5-ci-v-github-actions-3-4-h">Etapa 5: CI v GitHub Actions (3–4 h)</a></li><li><a href="#etapa-6-rozsireni-o-api-a-druhou-datovou-sadu-volitelne-4-6-h">Etapa 6: Rozšíření o API a druhou datovou sadu (volitelně, 4–6 h)</a></li><li><a href="#etapa-7-readme-a-portfolio-3-4-h">Etapa 7: README a portfolio (3–4 h)</a></li></ol></li><li><a href="#co-dat-na-github">Co dát na GitHub</a></li><li><a href="#jak-to-vypada-v-portfoliu">Jak to vypadá v portfoliu</a></li><li><a href="#rizika-a-omezeni">Rizika a omezení</a></li><li><a href="#souvislost-se-sylabem-ct-genai">Souvislost se sylabem CT-GenAI</a></li></ol></aside>
+</div>
+</div>
+<footer class="paticka">
+  <div class="paticka-vnitrek">
+    <p><strong>Neoficiální studijní materiál.</strong> Tento web není produktem ani publikací ISTQB®.
+    ISTQB® je registrovaná ochranná známka International Software Testing Qualifications Board.
+    Texty jsou vlastním zpracováním autora vytvořeným při přípravě na zkoušku CT-GenAI; oficiální sylabus
+    a vzorovou zkoušku si stáhněte přímo na istqb.org.</p>
+    <p>Ke zkoušce vždy platí znění oficiálního sylabu CT-GenAI v1.1. Doplněné informace a příklady z praxe
+    slouží k porozumění, nikoli jako zdroj správných odpovědí u zkoušky.</p>
+    <ul>
+      <li><a href="https://istqb.org/certifications/gen-ai/" target="_blank" rel="noopener noreferrer">ISTQB — CT-GenAI</a></li>
+      <li><a href="https://glossary.istqb.org" target="_blank" rel="noopener noreferrer">Slovník ISTQB</a></li>
+      <li><a href="https://casqb.org" target="_blank" rel="noopener noreferrer">CaSQB</a></li>
+      <li><a href="../zdroje.html">Zdroje a autorská práva</a></li>
+    </ul>
+  </div>
+</footer>
+<script src="../assets/ucet-konfig.js"></script>
+<script src="../assets/ucet.js"></script>
+<script src="../assets/skript.js"></script>
+</body>
+</html>

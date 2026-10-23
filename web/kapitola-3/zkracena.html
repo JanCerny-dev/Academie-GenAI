@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="cs" data-tema="">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>3. Rizika generativní AI — Zkrácená verze | ISTQB CT-GenAI</title>
+<meta name="description" content="Zkrácená verze kapitoly 3 sylabu ISTQB CT-GenAI v1.1: Řízení rizik generativní AI v testování. Jen to, co je nutné znát ke zkoušce. K rychlému opakování.">
+<meta name="color-scheme" content="light dark">
+<link rel="stylesheet" href="../assets/styl.css">
+<script>
+/* Nastaví uložený režim ještě před vykreslením, aby stránka neproblikla. */
+(function(){try{var t=localStorage.getItem('genai-tema');if(t){document.documentElement.setAttribute('data-tema',t);}}catch(e){}})();
+</script>
+</head>
+<body data-kapitola="3">
+<a class="preskocit" href="#text">Přeskočit na text</a>
+<div class="postup" aria-hidden="true"></div>
+<header class="hlavicka">
+  <div class="hlavicka-vnitrek">
+    <a class="znacka" href="../index.html">ISTQB CT-GenAI <span>česká studijní příručka</span></a>
+    <nav class="navigace" aria-label="Hlavní navigace">
+      <a href="../index.html">Úvod</a>
+      <span class="skupina" data-skupina>
+        <a href="../kapitoly.html" class="zvyraznit" aria-current="page">Kapitoly</a>
+        <ul class="podmenu" id="podmenu-kapitoly" aria-label="Seznam kapitol"><li><a href="../kapitola-1/zkracena.html"><b>1</b> Úvod do generativní AI</a></li><li><a href="../kapitola-2/zkracena.html"><b>2</b> Prompt engineering</a></li><li><a href="../kapitola-3/zkracena.html" aria-current="page"><b>3</b> Rizika generativní AI</a></li><li><a href="../kapitola-4/zkracena.html"><b>4</b> Infrastruktura s LLM</a></li><li><a href="../kapitola-5/zkracena.html"><b>5</b> Zavedení GenAI v organizaci</a></li></ul>
+      </span>
+      <a href="../slovnik.html">Slovník</a>
+      <a href="../karticky.html">Kartičky</a>
+      <a href="../prirazovani.html">Přiřazování</a>
+      <a href="../cviceni.html">Cvičení</a>
+      <a href="../praxe.html">Praxe</a>
+      <a href="../cile.html">Cíle</a>
+      <a href="../zkouska.html">Zkouška</a>
+      <a href="../lokalni/index.html" class="lokalni-odkaz">Lokální testy</a>
+      <button type="button" class="prepinac-tema" data-prepinac-tema>Tmavý režim</button>
+      <button type="button" class="ucet-tlacitko" data-ucet hidden>Přihlásit</button>
+    </nav>
+  </div>
+</header>
+<div class="stranka">
+<div class="layout">
+<main>
+<div class="zahlavi">
+  <p class="drobky">Kapitola 3 · Zkrácená verze</p>
+  <h1>Řízení rizik generativní AI v testování softwaru</h1>
+  <p class="podtitul">Co je nutné ke zkoušce: tři vady výstupu LLM, nedeterminismus, ochrana dat a útoky, energie a předpisy.</p>
+  <ul class="meta"><li>1 763 slov</li><li>≈ 10 min čtení</li><li>≈ 12 min poslechu</li><li>4 oddíly</li><li>160 min výuky podle sylabu</li></ul>
+</div>
+<nav class="varianty" aria-label="Varianta zpracování kapitoly 3"><a href="vyklad.html">Plný výklad</a><a href="zkracena.html" aria-current="page">Zkrácená verze</a></nav>
+<article class="text" id="text">
+<p>Kapitola 3 dává ve zkoušce 10 otázek za 11 bodů. Jedna otázka je K3 za 2 body: poznat v ukázce výstupu, o jakou vadu jde. Dvě otázky jsou k útokům z oddílu 3.2.2. Klíčová slova: <strong>security</strong> (bezpečnost), <strong>vulnerability</strong> (zranitelnost), <strong>data privacy</strong> (ochrana dat a soukromí), <strong>hallucination</strong> (halucinace), <strong>temperature</strong> (teplota), <strong>reasoning error</strong> (chyba v uvažování), <strong>bias</strong> (zkreslení), <strong>context manipulation</strong> (manipulace s kontextem).</p>
+<h2 id="oddil-3-1">3.1 Halucinace, chyby v uvažování a zkreslení<a class="kotva" href="#oddil-3-1" aria-label="Odkaz na tento oddíl"></a></h2>
+<aside class="lo-blok" data-stitek="Studijní cíle (learning objectives)" aria-label="Studijní cíle (learning objectives)"><ul><li class="lo k1" id="lo-3-1-1"><span class="lo-id">GenAI-3.1.1</span> <span class="lo-k" data-k="K1">K1</span> <span class="lo-text">Recall the definitions of hallucinations, reasoning errors and biases in Generative AI systems</span></li><li class="lo k3" id="lo-3-1-2"><span class="lo-id">GenAI-3.1.2</span> <span class="lo-k" data-k="K3">K3</span> <span class="lo-text">Identify hallucinations, reasoning errors and biases in LLM output</span></li><li class="lo k2" id="lo-3-1-3"><span class="lo-id">GenAI-3.1.3</span> <span class="lo-k" data-k="K2">K2</span> <span class="lo-text">Summarize mitigation techniques for GenAI hallucinations, reasoning errors and biases in software test tasks</span></li><li class="lo k1" id="lo-3-1-4"><span class="lo-id">GenAI-3.1.4</span> <span class="lo-k" data-k="K1">K1</span> <span class="lo-text">Recall mitigation techniques for non-deterministic behavior of LLMs</span></li></ul></aside>
+<p>LLM vytváří statisticky věrohodný text. Věrohodný neznamená správný. Vady ve výstupu vedou k vadnému testwaru. Kvůli nedeterministickému chování se opravená vada může v další konverzaci vrátit.</p>
+<h3 id="oddil-3-1-1">3.1.1 Tři druhy vad<a class="kotva" href="#oddil-3-1-1" aria-label="Odkaz na tento oddíl"></a></h3>
+<p><strong>Hallucination</strong> (halucinace): výstup je fakticky nesprávný nebo nesouvisí s úlohou. V testování: smyšlené nebo nerelevantní testovací případy, nefunkční skripty, testy na akceptační kritéria, která v zadání nejsou.</p>
+<p><strong>Reasoning error</strong> (chyba v uvažování): model špatně vyloží logickou strukturu, tedy příčinu a následek, podmínku nebo postup po krocích, a dojde k chybnému závěru. LLM nemá skutečné logické uvažování, spoléhá na rozpoznávání vzorů. Typicky při plánování testování a prioritizaci testovacích případů.</p>
+<p><strong>Bias</strong> (zkreslení): pochází z trénovacích dat. Výstup systematicky upřednostňuje určité informace, postupy nebo předpoklady. Příklad: model trénovaný hlavně na angličtině upozaďuje jiné pohledy. V testování při generování testovacích dat a zpřesňování akceptačních kritérií.</p>
+<p>Příčiny všech tří: povaha trénovacích dat a vnitřní omezení architektury transformer.</p>
+<p>Halucinace je jednorázový výmysl, chyba v uvažování jednorázové selhání logiky. Zkreslení se opakuje a pozná se až z více výstupů nebo z celku. Vada, kterou model vytvoří kvůli limitu tokenů nebo kontextového okna, do žádné ze tří kategorií nepatří.</p>
+<aside class="vsuvka vsuvka--zkouska" data-stitek="Pozor u zkoušky" aria-label="Pozor u zkoušky"><p>Model něco přidal, co ve vstupu není? Halucinace. Fakta sedí, ale závěr z nich neplyne? Chyba v uvažování. Výstup je systematicky jednostranný? Zkreslení.</p></aside>
+<h3 id="oddil-3-1-2">3.1.2 Jak vady poznat<a class="kotva" href="#oddil-3-1-2" aria-label="Odkaz na tento oddíl"></a></h3>
+<p>Halucinace: <strong>cross-verification</strong> (křížové ověření s dokumentací, požadavky a známým chováním systému), <strong>domain expertise consultation</strong> (konzultace s doménovým expertem), <strong>consistency checks</strong> (kontroly konzistence mezi výstupy a se známými fakty).</p>
+<p>Chyby v uvažování: <strong>logical validation</strong> (logická validace toku úvahy v revizních cyklech) a <strong>output testing</strong> (spuštění vygenerovaných testů nebo skriptů proti testovanému objektu).</p>
+<p>Zkreslení: revize, zda testware, například testovací kód nebo syntetická data, odpovídá testovací strategii a požadavkům na pokrytí. Kontrola zastoupení typů testů, typicky chybějící nefunkční testy.</p>
+<p>Provádí se revizí nebo kombinací revize a automatizace. Hloubka kontroly odpovídá odhadnutému riziku úlohy. U platebních transakcí ověřujete každý výstup a spouštíte všechny skripty. U interního konceptu stačí rychlé přečtení.</p>
+<p>Postup na ukázku výstupu: nejdřív hledejte prvky bez opory ve vstupu (halucinace). Pak přepočítejte závěry z údajů, které výstup sám uvádí (chyba v uvažování). Nakonec posuďte vyváženost celku vůči strategii a pokrytí (zkreslení).</p>
+<div class="kod" data-jazyk="text"><pre><code>Zadání: AC1 částka 1–500 000 Kč, AC2 formát účtu, AC3 potvrzení kódem.
+Výstup: "TC-06 Po odeslání přijde klientovi potvrzovací SMS (AC4)."
+→ halucinace: AC4 v zadání není (odhalí křížové ověření)
+
+Zadání: riziko = P × D, řadit sestupně.
+Výstup: rizika 15, 8, 10, 12, 3 s prioritami 1, 3, 2, 4, 5
+→ chyba v uvažování: čísla jsou správně, pořadí ne (odhalí logická validace)
+
+Zadání: 20 testovacích klientů pro českou pojišťovnu.
+Výstup: všichni John, Emily, Michael, +1 555…, datum MM/DD/RRRR
+→ zkreslení: systematický sklon k anglickým vzorům (odhalí revize proti strategii)</code></pre></div>
+<aside class="vsuvka vsuvka--zkouska" data-stitek="Pozor u zkoušky" aria-label="Pozor u zkoušky"><p>K3 otázka dává zadání a výstup. Porovnejte výstup se vstupem řádek po řádku. Hledejte prvek, který ve vstupu nemá oporu. Distraktory jsou obvykle prvky, které v zadání výslovně jsou.</p></aside>
+<h3 id="oddil-3-1-3">3.1.3 Jak vadám předcházet<a class="kotva" href="#oddil-3-1-3" aria-label="Odkaz na tento oddíl"></a></h3>
+<p>Vady přicházejí hlavně při špatně navrženém promptu a chybějícím kontextu. Pět technik:</p>
+<ol><li><strong>Provide complete context</strong>: všechny relevantní informace v promptu (oddíl 2.1.1).</li><li><strong>Divide prompts into manageable segments</strong>: prompt chaining, ověření každého kroku před dalším (2.1.2). Chyby v uvažování se chytí brzy.</li><li><strong>Use clear, interpretable data formats</strong>: strukturované, jednoznačné formáty.</li><li><strong>Select the appropriate GenAI model</strong>: model vhodný pro úlohu (5.1.3).</li><li><strong>Compare results across models</strong>: stejný prompt více modelům, porovnat výstupy.</li></ol>
+<p>Doplňkově kapitola 4: RAG a fine-tuning.</p>
+<p>Úplný kontext míří hlavně na halucinace, protože model nemusí domýšlet. Rozdělení na kroky míří hlavně na chyby v uvažování, protože se chyba zachytí v mezivýsledku. Porovnání modelů ukáže nespolehlivá místa u všech tří vad. Toto přiřazení je pomůcka, sylabus ho výslovně nedělá.</p>
+<aside class="vsuvka vsuvka--zkouska" data-stitek="Pozor u zkoušky" aria-label="Pozor u zkoušky"><p>Jasný a strukturovaný formát snižuje nedorozumění. Nezvyšuje kreativitu a nemá vliv na náročnost fine-tuningu.</p></aside>
+<h3 id="oddil-3-1-4">3.1.4 Nedeterministické chování<a class="kotva" href="#oddil-3-1-4" aria-label="Odkaz na tento oddíl"></a></h3>
+<p>Stejný vstup, různé výstupy. Příčina: pravděpodobnostní výběr tokenů při inferenci. Riziko roste s délkou výstupu. Úplnou reprodukovatelnost zaručit nelze.</p>
+<p>Opatření:</p>
+<ul><li><strong>Temperature</strong> (teplota): snížení zúží rozdělení pravděpodobností, výstup je konzistentnější. Cena: méně kreativity a rozmanitosti.</li><li><strong>Random seed</strong> (semínko): některé implementace ho umožní nastavit. Stejná pseudonáhodná posloupnost zlepší opakovatelnost.</li><li>Automatizovat část ověřování výstupu, aby hodnocení bylo strukturované a konzistentní.</li></ul>
+<p>V praxi: výstup ve strukturovaném formátu (JSON se schématem), validátor a kontrolní skripty, které běží pokaždé stejně. Nedeterminismus se dá změřit: stejný prompt pětkrát, výstupy porovnat, pak snížit teplotu a měření zopakovat.</p>
+<aside class="vsuvka vsuvka--zkouska" data-stitek="Pozor u zkoušky" aria-label="Pozor u zkoušky"><p>Rozdělení pravděpodobností zužuje jen nižší teplota. Semínko zlepšuje opakovatelnost, ale rozdělení nezužuje a na jeho hodnotě nezáleží. Learning rate je parametr tréninku, s variabilitou při inferenci nesouvisí.</p></aside>
+<h2 id="oddil-3-2">3.2 Rizika pro ochranu dat a bezpečnost při použití generativní AI v testování<a class="kotva" href="#oddil-3-2" aria-label="Odkaz na tento oddíl"></a></h2>
+<aside class="lo-blok" data-stitek="Studijní cíle (learning objectives)" aria-label="Studijní cíle (learning objectives)"><ul><li class="lo k2" id="lo-3-2-1"><span class="lo-id">GenAI-3.2.1</span> <span class="lo-k" data-k="K2">K2</span> <span class="lo-text">Explain key data privacy and security risks associated with using generative AI in software testing</span></li><li class="lo k2" id="lo-3-2-2"><span class="lo-id">GenAI-3.2.2</span> <span class="lo-k" data-k="K2">K2</span> <span class="lo-text">Give examples of data privacy and vulnerabilities in using Generative AI in software testing</span></li><li class="lo k2" id="lo-3-2-3"><span class="lo-id">GenAI-3.2.3</span> <span class="lo-k" data-k="K2">K2</span> <span class="lo-text">Summarize mitigation strategies to protect data privacy and enhance security in Generative AI for software testing</span></li></ul></aside>
+<p><strong>Data privacy</strong>: ochrana osobních a citlivých údajů před nežádoucím prozrazením. <strong>Security</strong>: ochrana dat a zdrojů před neoprávněným přístupem při zachování přístupu oprávněných. <strong>Vulnerability</strong>: slabina, kterou lze zneužít k útoku.</p>
+<h3 id="oddil-3-2-1">3.2.1 Rizika<a class="kotva" href="#oddil-3-2-1" aria-label="Odkaz na tento oddíl"></a></h3>
+<p>Ochrana dat (i bez útočníka):</p>
+<ul><li><strong>Unintentional data exposure</strong>: výstup nechtěně odhalí citlivou informaci.</li><li><strong>Lack of control over data usage</strong>: nástroj data ukládá a zpracovává bez souhlasu nebo kontroly uživatele.</li><li><strong>Compliance risks</strong>: nesoulad s předpisy, jako je GDPR (nařízení (EU) 2016/679), vede k právním sporům.</li></ul>
+<p>Bezpečnost (počítá s útočníkem):</p>
+<ul><li>Testovací infrastruktura s LLM je zranitelná vůči únikům dat a neoprávněnému přístupu.</li><li>Útočníci zneužijí zranitelnosti LLM manipulativními útoky a mění chování modelu nebo získávají data.</li><li>Útočníci vnášejí škodlivá vstupní data, aby model zmátli.</li></ul>
+<p>Příklad: tester vloží produkční log se jmény klientů do veřejného chatbota. Data opustí firmu (ztráta kontroly), pro zpracování chybí právní základ (nesoulad s GDPR) a jména se mohou objevit ve vygenerovaných testech (neúmyslné vyzrazení). Klientská data proto patří jen do schváleného nástroje, a i tam jen v nezbytném rozsahu.</p>
+<aside class="vsuvka vsuvka--zkouska" data-stitek="Pozor u zkoušky" aria-label="Pozor u zkoušky"><p>Hlavní riziko pro ochranu dat: citlivé informace v promptu budou vyzrazeny nebo zpracovány bez kontroly. Halucinace v syntetických datech nejsou vyzrazení skutečných dat.</p></aside>
+<h3 id="oddil-3-2-2">3.2.2 Útoky na generativní AI v testování<a class="kotva" href="#oddil-3-2-2" aria-label="Odkaz na tento oddíl"></a></h3>
+<div class="tabulka-obal"><table><thead><tr><th>Vektor</th><th>Podstata</th><th>Příklad ze sylabu</th></tr></thead><tbody><tr><td><strong>context manipulation</strong></td><td>požadavky, které mají z modelu vytáhnout důvěrná trénovací data</td><td>překročení kontextového okna dlouhými prompty, model vypustí útržky trénovacích dat</td></tr><tr><td><strong>request manipulation</strong></td><td>vložení dat, která naruší výstup</td><td>obrázek zavede model do jiného kontextu, model halucinuje akceptační kritéria</td></tr><tr><td><strong>data poisoning</strong></td><td>manipulace s trénovacími daty</td><td>falešná hodnocení výsledků AI generovaného reportu o testování</td></tr><tr><td><strong>malicious code generation</strong></td><td>přimět model generovat zadní vrátka, např. volání externích příkazů</td><td>kód otevře komunikační kanál na škodlivou IP adresu</td></tr></tbody></table></div>
+<aside class="vsuvka vsuvka--zkouska" data-stitek="Pozor u zkoušky" aria-label="Pozor u zkoušky"><p>Data poisoning míří na to, z čeho se model učí. Ostatní tři vektory probíhají při používání. Ve verzi sylabu 1.0 se context manipulation jmenovala data exfiltration, některé kurzy používají starý název. Prompt injection a jailbreak sylabus v1.1 nejmenuje.</p></aside>
+<h3 id="oddil-3-2-3">3.2.3 Opatření<a class="kotva" href="#oddil-3-2-3" aria-label="Odkaz na tento oddíl"></a></h3>
+<p>GDPR generativní AI výslovně nezakazuje. Jeho pojistky ale omezují zpracování, hlavně zákonnost a omezení účelu.</p>
+<p>Opatření na ochranu dat:</p>
+<ul><li><strong>Data minimization</strong>: citlivá data jen tam, kde to zákon dovoluje, a jen nezbytné množství necitlivých dat.</li><li><strong>Data anonymization and pseudonymization</strong>: maskovat nebo nahradit citlivé údaje neidentifikujícími.</li><li><strong>Secure data storage and transmission</strong>: šifrování a řízení přístupu.</li><li><strong>Resources training</strong>: školení a pravidla pro odpovědné použití.</li></ul>
+<p>Doplňková opatření:</p>
+<ul><li><strong>Systematic review of the generated output</strong>: lidské hodnocení je nezbytné.</li><li><strong>Evaluation by comparison with another LLM</strong>.</li><li><strong>Choice of a secure, operational environment</strong>: komerční zabezpečená nabídka, zabezpečený cloud, nebo instalace ve vlastní infrastruktuře.</li><li><strong>Regular security audits and vulnerability assessments</strong>.</li><li><strong>Staying updated with security best practices</strong>.</li></ul>
+<p>Opatření se kombinují. Zapojit bezpečnostní inženýry, právníky, CTO nebo CISO.</p>
+<p>Anonymizace vazbu na osobu nevratně ruší. Pseudonymizace nahradí údaj značkou a vazbu lze obnovit z odděleně uložené tabulky. Nejsilnější podobou minimalizace jsou syntetická testovací data vytvořená z datového modelu, bez skutečných záznamů.</p>
+<aside class="vsuvka vsuvka--zkouska" data-stitek="Pozor u zkoušky" aria-label="Pozor u zkoušky"><p>Proti riziku pro ochranu dat hledejte anonymizaci, pseudonymizaci nebo minimalizaci. Porovnání více modelů zlepšuje přesnost, ne ochranu dat. Neomezený přístup nebo vypnuté šifrování jsou zjevně špatně.</p></aside>
+<h2 id="oddil-3-3">3.3 Spotřeba energie a dopad generativní AI na životní prostředí<a class="kotva" href="#oddil-3-3" aria-label="Odkaz na tento oddíl"></a></h2>
+<aside class="lo-blok" data-stitek="Studijní cíle (learning objectives)" aria-label="Studijní cíle (learning objectives)"><ul><li class="lo k2" id="lo-3-3-1"><span class="lo-id">GenAI-3.3.1</span> <span class="lo-k" data-k="K2">K2</span> <span class="lo-text">Explain the impact of task characteristics and model usage on the energy consumption of Generative AI in software testing</span></li></ul></aside>
+<h3 id="oddil-3-3-1">3.3.1 Vliv na spotřebu energie a emise CO₂<a class="kotva" href="#oddil-3-3-1" aria-label="Odkaz na tento oddíl"></a></h3>
+<p>Trénink i provoz LLM vyžadují velké výpočetní zdroje. Použití zatěžuje zařízení, sítě a datová centra. Spotřeba roste s používáním. Rozhoduje složitost úlohy a potřebné výpočetní zdroje.</p>
+<p>Obrázek vygenerovaný výkonným modelem může spotřebovat tolik energie jako úplné nabití telefonu. Text jen malé procento nabití. Přesná data se získávají těžko, ale souhrnný dopad přes miliony uživatelů dává významné emise CO₂. Osvědčený postup: omezit zbytečné interakce s modelem.</p>
+<p>Vlastnosti úlohy: druh výstupu (obrázek, video, text), délka vstupu a výstupu v tokenech, složitost. Větší kontextové okno zvyšuje výpočetní náročnost (oddíl 1.1.2). Způsob použití: velikost modelu, četnost volání, opakované běhy a porovnávání více modelů. Opakované běhy a porovnání modelů zlepšují spolehlivost, ale násobí spotřebu.</p>
+<p>Praktické cvičení HO-3.3.1 (H1): v simulátoru spočítat energii a emise CO₂ pro zadané testovací úlohy a sledovat vliv vlastností úlohy a způsobu použití modelu.</p>
+<aside class="vsuvka vsuvka--zkouska" data-stitek="Pozor u zkoušky" aria-label="Pozor u zkoušky"><p>Obrázky jsou výrazně náročnější než text. Souhrnný dopad textových úloh zanedbatelný není. Vyhledávání s generativní AI spotřebuje víc než klasické vyhledávání.</p></aside>
+<h2 id="oddil-3-4">3.4 Předpisy, standardy a rámce osvědčených postupů pro AI<a class="kotva" href="#oddil-3-4" aria-label="Odkaz na tento oddíl"></a></h2>
+<aside class="lo-blok" data-stitek="Studijní cíle (learning objectives)" aria-label="Studijní cíle (learning objectives)"><ul><li class="lo k1" id="lo-3-4-1"><span class="lo-id">GenAI-3.4.1</span> <span class="lo-k" data-k="K1">K1</span> <span class="lo-text">Recall examples of AI regulations, standards and best practice frameworks relevant to Generative AI in software testing</span></li></ul></aside>
+<h3 id="oddil-3-4-1">3.4.1 Přehled<a class="kotva" href="#oddil-3-4-1" aria-label="Odkaz na tento oddíl"></a></h3>
+<div class="tabulka-obal"><table><thead><tr><th>Název</th><th>Typ</th><th>Obsah</th></tr></thead><tbody><tr><td>ISO/IEC 42001:2023</td><td>standard</td><td>požadavky na systém řízení AI v organizaci; konzistence a spolehlivost</td></tr><tr><td>ISO/IEC 23053:2022</td><td>standard</td><td>rámec pro životní cyklus AI systémů se strojovým učením; bezpečnost, transparentnost, kvalita dat</td></tr><tr><td>EU AI Act</td><td>předpis</td><td>právní rámec, dělí AI aplikace podle úrovně rizika; transparentnost, odpovědnost, zmírnění zkreslení</td></tr><tr><td>NIST AI RMF</td><td>rámec (USA)</td><td>řízení rizik AI; férovost, transparentnost, bezpečnost; prevence zkreslených výsledků testů</td></tr></tbody></table></div>
+<p>K tomu GDPR z oddílu 3.2. Organizace mají sledovat vývoj předpisů, standardů, národních zákonů a rámců.</p>
+<p>Předpis (regulation) je právně závazný. Standard je dobrovolný, pokud ho nevyžaduje smlouva nebo zákon, a organizace se podle něj může certifikovat. Rámec (framework) je soubor doporučení bez závaznosti.</p>
+<aside class="vsuvka vsuvka--zkouska" data-stitek="Pozor u zkoušky" aria-label="Pozor u zkoušky"><p>ISO/IEC 25010 a ISO/IEC/IEEE 29119 jsou ze sylabu CTFL a generativní AI se netýkají. Jako normy pro AI v sylabu CT-GenAI platí 42001 a 23053.</p></aside>
+</article>
+<div class="splneno-radek" data-nepocitat><button type="button" class="tlacitko splneno" data-splneno="kapitola-3-zkracena" data-text-ne="Označit jako prostudované" data-text-ano="✓ Prostudováno" aria-pressed="false">Označit jako prostudované</button></div>
+<nav class="naradi sousede" aria-label="Sousední kapitoly"><a href="../kapitola-2/zkracena.html">← 2. Prompt engineering</a><a href="../kapitola-4/zkracena.html">4. Infrastruktura s LLM →</a></nav>
+</main>
+<aside class="strom" aria-label="Obsah kapitoly"><h2>V této kapitole</h2><ol><li><a href="#oddil-3-1">3.1 Halucinace, chyby v uvažování a zkreslení</a><ol><li><a href="#oddil-3-1-1">3.1.1 Tři druhy vad</a></li><li><a href="#oddil-3-1-2">3.1.2 Jak vady poznat</a></li><li><a href="#oddil-3-1-3">3.1.3 Jak vadám předcházet</a></li><li><a href="#oddil-3-1-4">3.1.4 Nedeterministické chování</a></li></ol></li><li><a href="#oddil-3-2">3.2 Rizika pro ochranu dat a bezpečnost při použití generativní AI v testování</a><ol><li><a href="#oddil-3-2-1">3.2.1 Rizika</a></li><li><a href="#oddil-3-2-2">3.2.2 Útoky na generativní AI v testování</a></li><li><a href="#oddil-3-2-3">3.2.3 Opatření</a></li></ol></li><li><a href="#oddil-3-3">3.3 Spotřeba energie a dopad generativní AI na životní prostředí</a><ol><li><a href="#oddil-3-3-1">3.3.1 Vliv na spotřebu energie a emise CO₂</a></li></ol></li><li><a href="#oddil-3-4">3.4 Předpisy, standardy a rámce osvědčených postupů pro AI</a><ol><li><a href="#oddil-3-4-1">3.4.1 Přehled</a></li></ol></li></ol></aside>
+</div>
+</div>
+<footer class="paticka">
+  <div class="paticka-vnitrek">
+    <p><strong>Neoficiální studijní materiál.</strong> Tento web není produktem ani publikací ISTQB®.
+    ISTQB® je registrovaná ochranná známka International Software Testing Qualifications Board.
+    Texty jsou vlastním zpracováním autora vytvořeným při přípravě na zkoušku CT-GenAI; oficiální sylabus
+    a vzorovou zkoušku si stáhněte přímo na istqb.org.</p>
+    <p>Ke zkoušce vždy platí znění oficiálního sylabu CT-GenAI v1.1. Doplněné informace a příklady z praxe
+    slouží k porozumění, nikoli jako zdroj správných odpovědí u zkoušky.</p>
+    <ul>
+      <li><a href="https://istqb.org/certifications/gen-ai/" target="_blank" rel="noopener noreferrer">ISTQB — CT-GenAI</a></li>
+      <li><a href="https://glossary.istqb.org" target="_blank" rel="noopener noreferrer">Slovník ISTQB</a></li>
+      <li><a href="https://casqb.org" target="_blank" rel="noopener noreferrer">CaSQB</a></li>
+      <li><a href="../zdroje.html">Zdroje a autorská práva</a></li>
+    </ul>
+  </div>
+</footer>
+<script src="../assets/ucet-konfig.js"></script>
+<script src="../assets/ucet.js"></script>
+<script src="../assets/skript.js"></script>
+</body>
+</html>

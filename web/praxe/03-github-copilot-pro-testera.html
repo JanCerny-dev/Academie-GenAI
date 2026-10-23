@@ -1,0 +1,382 @@
+<!doctype html>
+<html lang="cs" data-tema="">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GitHub Copilot pro testera | Praxe | ISTQB CT-GenAI</title>
+<meta name="description" content="Praxe CT-GenAI: GitHub Copilot pro testera. S Copilotem ve VS Code postavíš a rozšíříš malý testovací projekt v Pythonu s Playwrightem a pytestem, napíšeš vlastního agenta na návrh scénářů a vyzkoušíš cloudového agenta na GitHubu.">
+<meta name="color-scheme" content="light dark">
+<link rel="stylesheet" href="../assets/styl.css">
+<script>
+/* Nastaví uložený režim ještě před vykreslením, aby stránka neproblikla. */
+(function(){try{var t=localStorage.getItem('genai-tema');if(t){document.documentElement.setAttribute('data-tema',t);}}catch(e){}})();
+</script>
+</head>
+<body data-kapitola="6">
+<a class="preskocit" href="#text">Přeskočit na text</a>
+<div class="postup" aria-hidden="true"></div>
+<header class="hlavicka">
+  <div class="hlavicka-vnitrek">
+    <a class="znacka" href="../index.html">ISTQB CT-GenAI <span>česká studijní příručka</span></a>
+    <nav class="navigace" aria-label="Hlavní navigace">
+      <a href="../index.html">Úvod</a>
+      <span class="skupina" data-skupina>
+        <a href="../kapitoly.html" class="zvyraznit">Kapitoly</a>
+        <ul class="podmenu" id="podmenu-kapitoly" aria-label="Seznam kapitol"><li><a href="../kapitola-1/vyklad.html"><b>1</b> Úvod do generativní AI</a></li><li><a href="../kapitola-2/vyklad.html"><b>2</b> Prompt engineering</a></li><li><a href="../kapitola-3/vyklad.html"><b>3</b> Rizika generativní AI</a></li><li><a href="../kapitola-4/vyklad.html"><b>4</b> Infrastruktura s LLM</a></li><li><a href="../kapitola-5/vyklad.html"><b>5</b> Zavedení GenAI v organizaci</a></li></ul>
+      </span>
+      <a href="../slovnik.html">Slovník</a>
+      <a href="../karticky.html">Kartičky</a>
+      <a href="../prirazovani.html">Přiřazování</a>
+      <a href="../cviceni.html">Cvičení</a>
+      <a href="../praxe.html" aria-current="page">Praxe</a>
+      <a href="../cile.html">Cíle</a>
+      <a href="../zkouska.html">Zkouška</a>
+      <a href="../lokalni/index.html" class="lokalni-odkaz">Lokální testy</a>
+      <button type="button" class="prepinac-tema" data-prepinac-tema>Tmavý režim</button>
+      <button type="button" class="ucet-tlacitko" data-ucet hidden>Přihlásit</button>
+    </nav>
+  </div>
+</header>
+<div class="stranka">
+<div class="layout">
+<main>
+<div class="zahlavi">
+  <p class="drobky"><a href="../praxe.html">Praxe</a> · Modul 3</p>
+  <h1>GitHub Copilot pro testera</h1>
+  <p class="podtitul">S Copilotem ve VS Code postavíš a rozšíříš malý testovací projekt v Pythonu s Playwrightem a pytestem, napíšeš vlastního agenta na návrh scénářů a vyzkoušíš cloudového agenta na GitHubu.</p>
+  <ul class="meta"><li>Čas: 4–5 h</li><li>Úroveň: středně pokročilý</li><li>Nástroje: VS Code, GitHub Copilot, Python 3, pytest, Playwright (pytest-playwright), Git, GitHub; volitelně PyCharm</li><li>3 879 slov</li><li>≈ 23 min čtení</li><li>3 cvičení</li></ul>
+  <p class="praxe-souvislosti"><span>Souvisí s kapitolami CT-GenAI: <a href="../kapitola-2/vyklad.html">2. Prompt engineering</a> · <a href="../kapitola-3/vyklad.html">3. Rizika generativní AI</a> · <a href="../kapitola-4/vyklad.html">4. Infrastruktura s LLM</a> · <a href="../kapitola-5/vyklad.html">5. Zavedení GenAI v organizaci</a></span><span>Zdroje: Shetty L14–L19, L44–L46 (přílohy create-scenarios.agent.md, eventhub-domain.md)</span></p>
+  <p class="napoveda" id="praxe-souhrn" aria-live="polite" data-praxe-cviceni="praxe-03-github-copilot-pro-testera-login-portal-s-copilotem praxe-03-github-copilot-pro-testera-druhy-vlastni-agent-recenzent-testu praxe-03-github-copilot-pro-testera-agent-nad-vlastnim-projektem"><span data-praxe-postup>3 cvičení</span>. Hotová cvičení si odškrtni, stav se ukládá v tomto prohlížeči, po přihlášení i v účtu.</p>
+</div>
+<article class="text" id="text">
+<p>GitHub Copilot je AI asistent zabudovaný přímo do vývojového prostředí. Na rozdíl od chatu v prohlížeči vidí soubory projektu, umí je upravovat a spouštět příkazy v terminálu. Pro testera to znamená, že nemusí kopírovat kód tam a zpátky. Zároveň to znamená, že nástroj sahá na soubory a příkazy a jeho práci je potřeba kontrolovat stejně pečlivě jako práci kolegy.</p>
+<p>Shetty v kurzu ukazuje Copilot na Playwrightu v TypeScriptu (L15, L16) a na Selenium frameworku v Javě v IntelliJ (L19). Tady je stejný postup přenesený do Pythonu: Playwright s pytestem a stránka Contact Us na webdriveruniversity.com.</p>
+<h2 id="co-postavis">Co postavíš<a class="kotva" href="#co-postavis" aria-label="Odkaz na tento oddíl"></a></h2>
+<p>Na konci modulu budeš mít vlastní repozitář <code>copilot-qa-lab</code>:</p>
+<div class="kod" data-jazyk="text"><pre><code>copilot-qa-lab/
+├── .github/
+│   ├── copilot-instructions.md      pravidla projektu pro Copilot
+│   └── agents/
+│       └── create-scenarios.agent.md vlastní agent na návrh scénářů
+├── docs/
+│   ├── contact-us-domain.md          popis domény (vstup pro agenta)
+│   └── test-scenarios.md             výstup agenta
+├── pages/
+│   ├── __init__.py
+│   └── contact_page.py               Page Object pro Contact Us
+├── tests/
+│   └── test_contact.py               testy v pytestu
+├── pytest.ini
+└── requirements.txt</code></pre></div>
+<p>Část kódu napíše Copilot v režimu agent. Část vysvětlí v režimu ask. Strukturu dalších testů navrhne v režimu plan. Dokumentace scénářů vznikne vlastním agentem. Na konci necháš cloudového agenta na GitHubu připravit pull request.</p>
+<h2 id="predpoklady">Předpoklady<a class="kotva" href="#predpoklady" aria-label="Odkaz na tento oddíl"></a></h2>
+<p><strong>Účty a ceny.</strong> Stav k 23. 10. 2026, ověřit na github.com/features/copilot:</p>
+<div class="tabulka-obal"><table><thead><tr><th>Co</th><th>Potřebuješ</th><th>Poznámka</th></tr></thead><tbody><tr><td>Copilot ve VS Code (ask, agent, plan)</td><td>účet GitHub, tarif Copilot Free stačí</td><td>Free má měsíční limit požadavků. Shetty v L14 ukazuje procento spotřebovaných kreditů přímo v okně chatu.</td></tr><tr><td>Vlastní agenti (<code>.agent.md</code>)</td><td>totéž</td><td>soubor v repozitáři, funguje lokálně</td></tr><tr><td>Cloudový agent (Copilot coding agent)</td><td>placený tarif, ověřit</td><td>Shetty v L46 zmiňuje zkušební verzi Pro s platební kartou. Podmínky se mění, ověřit.</td></tr></tbody></table></div>
+<p>Tabulka ukazuje, že kroky 1 až 8 zvládneš zdarma. Placený tarif potřebuješ jen na krok 9.</p>
+<p><strong>Software.</strong> VS Code v aktuální verzi. Shetty v L14 zdůrazňuje aktualizaci, protože rozhraní Copilotu se mění s každou verzí. Python 3.10 nebo novější, Git a účet na GitHubu.</p>
+<p><strong>Kde to dělat.</strong> Na soukromém počítači a v soukromém repozitáři. Pro práci platí jiná pravidla. Copilot v práci používej jen s licencí, kterou přidělila firma (Copilot Business nebo Enterprise), a s nastavením, které určilo IT. Firemní repozitáře neotvírej s Copilotem přihlášeným pod osobním účtem. Kód by pak odcházel mimo firemní smlouvu. Shetty to v L19 popisuje podobně: zjisti u DevOps nebo bezpečnostního týmu, jaké pluginy a modely jsou povolené.</p>
+<aside class="vsuvka vsuvka--pozor" data-stitek="Pozor" aria-label="Pozor"><p>Copilot v režimu agent může vytvářet a mazat soubory a spouštět příkazy v terminálu. Nech zapnuté výchozí schvalování akcí (Default Approvals), jak radí Shetty v L14. Každý příkaz si před schválením přečti. Do repozitáře nikdy nepatří hesla, tokeny ani soubor <code>.env</code>. Agent je přečte stejně snadno jako zbytek kódu.</p></aside>
+<h2 id="postup">Postup<a class="kotva" href="#postup" aria-label="Odkaz na tento oddíl"></a></h2>
+<h3 id="krok-1-zapni-copilot-ve-vs-code-a-poznej-rezimy">Krok 1: Zapni Copilot ve VS Code a poznej režimy<a class="kotva" href="#krok-1-zapni-copilot-ve-vs-code-a-poznej-rezimy" aria-label="Odkaz na tento oddíl"></a></h3>
+<ol><li>Otevři VS Code. Copilot Chat je ve VS Code zabudovaný, ikona je v horní liště nebo v postranním panelu. Rozšíření není nutné instalovat zvlášť (Shetty L14, ověřit u tvé verze).</li><li>Klikni na ikonu, zvol přihlášení a přihlas se účtem GitHub v prohlížeči.</li><li>V dolní části okna chatu najdeš tři přepínače. Výběr režimu, výběr modelu a nastavení schvalování.</li></ol>
+<p>Shetty v L14 až L16 popisuje režimy takto:</p>
+<div class="tabulka-obal"><table><thead><tr><th>Režim</th><th>Co dělá</th><th>Kdy ho použít</th></tr></thead><tbody><tr><td>Ask</td><td>odpovídá textem, nic nemění</td><td>vysvětlení kódu, konfigurace, chybové hlášky</td></tr><tr><td>Agent</td><td>čte, vytváří, upravuje a maže soubory, spouští příkazy</td><td>psaní testů, opravy, refaktoring</td></tr><tr><td>Plan</td><td>prozkoumá projekt, položí doplňující otázky a navrhne postup</td><td>rozhodnutí o struktuře, než se začne psát kód</td></tr></tbody></table></div>
+<p>Tabulka shrnuje hlavní pravidlo z kurzu. Když nechceš, aby AI sahala na kód, zůstaň v ask. V agent dostane nástroj oprávnění jednat.</p>
+<p>Výběr modelu nech na <strong>Auto</strong>. Copilot podle složitosti úlohy zvolí model sám. Shetty v L15 ukazuje, že pro dotaz na konfiguraci zvolil kódovací model z řady GPT. Dražší modely spotřebují víc z měsíčního limitu.</p>
+<aside class="vsuvka vsuvka--nad-ramec" data-stitek="Nad rámec sylabu" aria-label="Nad rámec sylabu"><p><strong>PyCharm a IntelliJ.</strong> Shetty to ukazuje v L17 a L19. V nastavení otevři <strong>Plugins</strong>, záložku <strong>Marketplace</strong>, vyhledej <strong>GitHub Copilot</strong>, nainstaluj a restartuj IDE. Vpravo se objeví panel <strong>GitHub Copilot Chat</strong> se stejnými režimy Ask, Agent a Plan. Přihlášení probíhá přes prohlížeč. V Eclipse (L18) se plugin instaluje přes Eclipse Marketplace a přihlašuje se kódem zařízení (device code). Postup v modulu funguje ve všech IDE stejně. Liší se jen umístění tlačítek a způsob přidání kontextu. V JetBrains IDE Shetty pro dotaz nad celým projektem používá <code>@project</code>, ve VS Code slouží k tomu <code>#codebase</code> (ověřit u tvé verze).</p></aside>
+<h3 id="krok-2-priprav-kostru-projektu-rucne">Krok 2: Připrav kostru projektu ručně<a class="kotva" href="#krok-2-priprav-kostru-projektu-rucne" aria-label="Odkaz na tento oddíl"></a></h3>
+<p>Kostru vytvoř sám. Je to pár příkazů a víš pak přesně, co v projektu je. V PowerShellu:</p>
+<div class="kod" data-jazyk="text"><pre><code>mkdir copilot-qa-lab
+cd copilot-qa-lab
+git init
+python -m venv .venv
+.venv\Scripts\Activate.ps1
+python -m pip install pytest-playwright
+python -m playwright install chromium
+mkdir pages, tests, docs
+New-Item pages\__init__.py</code></pre></div>
+<p>Vytvoř <code>pytest.ini</code>:</p>
+<div class="kod" data-jazyk="text"><pre><code>[pytest]
+testpaths = tests
+pythonpath = .
+markers =
+    submit: test odesílá formulář na demo stránku</code></pre></div>
+<p>A <code>.gitignore</code> s řádky <code>.venv/</code>, <code>__pycache__/</code>, <code>.env</code>, <code>test-results/</code>.</p>
+<p>Co má vyjít: příkaz <code>python -m pytest</code> doběhne s hlášením „no tests ran“. Prostředí je připravené.</p>
+<p>Ověřeno s Playwright 1.61, pytest-playwright 0.10 a pytest 9 (10/2026). Pokud <code>pip</code> nainstaluje novější Playwright, příkaz <code>playwright install chromium</code> stáhne k němu odpovídající prohlížeč. Bez něj test skončí hláškou „Executable doesn't exist“.</p>
+<h3 id="krok-3-ask-nech-si-vysvetlit-co-nastroj-dela">Krok 3: Ask – nech si vysvětlit, co nástroj dělá<a class="kotva" href="#krok-3-ask-nech-si-vysvetlit-co-nastroj-dela" aria-label="Odkaz na tento oddíl"></a></h3>
+<p>Shetty v L15 otevře konfiguraci Playwrightu a ptá se na rozdíl mezi časovými limity. V Pythonu je ekvivalent fixture <code>page</code> z pluginu pytest-playwright. Otevři <code>pytest.ini</code>, přepni na <strong>Ask</strong> a přidej soubor do kontextu. Ve VS Code přes tlačítko <strong>Add Context</strong> nebo napsáním <code>#file:pytest.ini</code> do promptu.</p>
+<div class="kod" data-jazyk="text"><pre><code>I use pytest with the pytest-playwright plugin. Explain:
+1. Where does the "page" fixture come from and what is its scope?
+2. Which command-line options control browser, headed mode and slow motion?
+3. What does "pythonpath = ." in #file:pytest.ini do?
+Answer briefly, with one example command per point.</code></pre></div>
+<div class="kod" data-jazyk="text"><pre><code>Používám pytest s pluginem pytest-playwright. Vysvětli:
+1. Odkud se bere fixture "page" a jaký má scope?
+2. Které volby příkazové řádky určují prohlížeč, zobrazení okna a zpomalení?
+3. Co dělá "pythonpath = ." v #file:pytest.ini?
+Odpovídej stručně, u každého bodu jeden příklad příkazu.</code></pre></div>
+<p>Co má vyjít: fixture <code>page</code> poskytuje plugin a má scope <code>function</code>, tedy nová stránka pro každý test. Volby <code>--browser</code>, <code>--headed</code> a <code>--slowmo</code>. <code>pythonpath = .</code> přidá kořen projektu do cesty importů, takže testy najdou balíček <code>pages</code>. Ověř aspoň jednu odpověď v dokumentaci pytest-playwright. Model u voleb pluginů někdy uvede volbu, která existuje jen v JavaScriptové verzi Playwrightu.</p>
+<p>Kontext je důležitý. Shetty v L15 vysvětluje, že s přiloženým souborem Copilot hledá nejdřív v něm. Odpověď je přesnější a spotřebuje méně tokenů, než když prochází celý projekt.</p>
+<h3 id="krok-4-agent-page-object-a-prvni-testy">Krok 4: Agent – Page Object a první testy<a class="kotva" href="#krok-4-agent-page-object-a-prvni-testy" aria-label="Odkaz na tento oddíl"></a></h3>
+<p>Teď necháš Copilot napsat kód. Model stránku nevidí, stejně jako v modulu 1. Lokátory mu proto dodej sám. V prohlížeči otevři https://webdriveruniversity.com/Contact-Us/contactus.html, klikni pravým tlačítkem na formulář, zvol <strong>Prozkoumat</strong> a zkopíruj atributy <code>name</code> polí. Shetty v L19 kopíruje celé outer HTML. U veřejné demo stránky to nevadí. U firemní aplikace je lepší popsat jen to, co je potřeba.</p>
+<p>Přepni na <strong>Agent</strong> a pošli:</p>
+<div class="kod" data-jazyk="text"><pre><code>Create a Page Object for the Contact Us page in pages/contact_page.py and tests in tests/test_contact.py.
+
+Facts:
+- URL: https://webdriveruniversity.com/Contact-Us/contactus.html
+- Fields: input[name='first_name'], input[name='last_name'], input[name='email'], textarea[name='message']
+- Buttons: input[type='reset'] (RESET), input[type='submit'] (SUBMIT)
+- Valid submission shows the text "Thank You for your Message!"
+- Invalid email shows "Error: Invalid email address"; an empty field shows "Error: all fields are required"
+
+Rules:
+- Python, pytest-playwright sync API, use the built-in "page" fixture.
+- Locators as attributes in __init__, methods open(), fill(), submit(), reset().
+- Assertions with playwright.sync_api.expect, no time.sleep.
+- Mark tests that click SUBMIT with @pytest.mark.submit.
+- Use only fictitious data with the domain example.com.
+- Do not run any command except: python -m pytest</code></pre></div>
+<p>Česky stačí přeložit úvod a pravidla. Fakta nech v původní podobě, jsou to selektory a texty ze stránky.</p>
+<p>Co má vyjít: Copilot ukáže plán, vytvoří dva soubory a zobrazí změny jako diff. Zelené řádky jsou přidané, červené odebrané. Než klikneš <strong>Keep</strong>, projdi diff. Pokud agent navrhne spustit <code>pytest</code>, schval to. Jiné příkazy, třeba instalaci dalších balíčků, posuď zvlášť.</p>
+<p>Pro srovnání tady je minimální verze, kterou jsem napsal ručně. Copilot nemusí vytvořit totéž. Má ale obsahovat stejné části.</p>
+<div class="kod" data-jazyk="python"><pre><code># pages/contact_page.py
+from playwright.sync_api import Page, expect
+
+URL = "https://webdriveruniversity.com/Contact-Us/contactus.html"
+
+
+class ContactPage:
+    def __init__(self, page: Page):
+        self.page = page
+        self.first_name = page.locator("input[name='first_name']")
+        self.last_name = page.locator("input[name='last_name']")
+        self.email = page.locator("input[name='email']")
+        self.comments = page.locator("textarea[name='message']")
+        self.reset_button = page.locator("input[type='reset']")
+        self.submit_button = page.locator("input[type='submit']")
+
+    def open(self) -&gt; None:
+        self.page.goto(URL)
+
+    def fill(self, first: str, last: str, email: str, comments: str) -&gt; None:
+        self.first_name.fill(first)
+        self.last_name.fill(last)
+        self.email.fill(email)
+        self.comments.fill(comments)
+
+    def submit(self) -&gt; None:
+        self.submit_button.click()
+
+    def reset(self) -&gt; None:
+        self.reset_button.click()
+
+    def expect_message(self, text: str) -&gt; None:
+        expect(self.page.locator("body")).to_contain_text(text)</code></pre></div>
+<div class="kod" data-jazyk="python"><pre><code># tests/test_contact.py
+import pytest
+from playwright.sync_api import expect
+
+from pages.contact_page import ContactPage
+
+
+@pytest.fixture
+def contact(page):
+    cp = ContactPage(page)
+    cp.open()
+    return cp
+
+
+def test_reset_clears_all_fields(contact):
+    contact.fill("Jana", "Testova", "jana@example.com", "Ahoj")
+    contact.reset()
+    for field in (contact.first_name, contact.last_name, contact.email, contact.comments):
+        expect(field).to_have_value("")
+
+
+@pytest.mark.submit
+def test_valid_submission_shows_thank_you(contact):
+    contact.fill("Jana", "Testova", "jana@example.com", "Testovaci zprava")
+    contact.submit()
+    contact.expect_message("Thank You for your Message!")
+
+
+@pytest.mark.submit
+@pytest.mark.parametrize(
+    "first,last,email,comments,message",
+    [
+        ("Jana", "Testova", "jana.example.com", "x", "Error: Invalid email address"),
+        ("", "Testova", "jana@example.com", "x", "Error: all fields are required"),
+    ],
+)
+def test_invalid_input_shows_error(contact, first, last, email, comments, message):
+    contact.fill(first, last, email, comments)
+    contact.submit()
+    contact.expect_message(message)</code></pre></div>
+<p>Spusť testy:</p>
+<div class="kod" data-jazyk="text"><pre><code>python -m pytest -v
+python -m pytest -m "not submit" --headed --slowmo 500</code></pre></div>
+<p>Co má vyjít: čtyři testy. Druhý příkaz spustí jen test tlačítka RESET a ukáže okno prohlížeče, abys viděl, co test dělá. Test RESET je ověřený proti živé stránce (10/2026, spuštěný přes <code>--browser-channel msedge</code>). Testy s odesláním formuláře neověřeno. Texty hlášek jsou převzaté z kurzu a stránka je může zobrazovat jinak. Pokud test selže na textu, oprav očekávání podle toho, co stránka skutečně ukáže, ne podle toho, co tvrdí model.</p>
+<p>Na čem v diffu od Copilotu záleží:</p>
+<ul><li><strong>Vymyšlené lokátory.</strong> Když model napíše <code>#first-name</code> místo <code>input[name='first_name']</code>, nedržel se zadání. Test pak selže na čekání na prvek.</li><li><strong><code>time.sleep</code> nebo <code>wait_for_timeout</code>.</strong> Playwright čeká na prvky sám. Pevné čekání dělá testy pomalé a nestabilní.</li><li><strong>Kontrola přes <code>page.content()</code> a <code>in</code>.</strong> Funguje, ale při selhání neukáže rozumnou chybu. <code>expect(...).to_contain_text</code> čeká a hlásí rozdíl.</li><li><strong>Skutečné e-maily</strong> nebo jména v testovacích datech.</li></ul>
+<h3 id="krok-5-plan-kam-s-testy-pro-login-portal">Krok 5: Plan – kam s testy pro Login Portal<a class="kotva" href="#krok-5-plan-kam-s-testy-pro-login-portal" aria-label="Odkaz na tento oddíl"></a></h3>
+<p>Shetty v L16 se v režimu plan ptá, jestli nový test patří do existujícího souboru, nebo do nového. Copilot prozkoumá projekt a doporučí jeden soubor na funkci nebo stránku. Zkus totéž s druhou stránkou. Přepni na <strong>Plan</strong>:</p>
+<div class="kod" data-jazyk="text"><pre><code>I want to add tests for https://webdriveruniversity.com/Login-Portal/index.html
+(fields #text and #password, button #login-button, result is shown in a JavaScript alert).
+Look at the existing project structure and propose:
+- which files to create or change,
+- how to handle the JavaScript alert in pytest-playwright,
+- how to keep the valid credentials out of the code.
+Do not write code yet. Ask me if something is unclear.</code></pre></div>
+<div class="kod" data-jazyk="text"><pre><code>Chci přidat testy pro https://webdriveruniversity.com/Login-Portal/index.html
+(pole #text a #password, tlačítko #login-button, výsledek se zobrazí v JavaScript alertu).
+Prohlédni si strukturu projektu a navrhni:
+- které soubory vytvořit nebo změnit,
+- jak v pytest-playwright zpracovat JavaScript alert,
+- jak nemít platné přihlašovací údaje v kódu.
+Kód zatím nepiš. Když ti něco není jasné, zeptej se.</code></pre></div>
+<p>Co má vyjít: plán s novým souborem <code>pages/login_page.py</code> a <code>tests/test_login.py</code>, podle vzoru z kroku 4. Pro alert by měl navrhnout <code>page.on("dialog", ...)</code> nebo <code>page.expect_event("dialog")</code>. Pro údaje proměnné prostředí, třeba <code>WDU_USER</code> a <code>WDU_PASS</code>, čtené přes <code>os.environ</code> ve fixture. Pokud plán navrhne údaje rovnou do kódu nebo do <code>pytest.ini</code>, plán odmítni a napiš proč. I u demo stránky jde o návyk.</p>
+<p>Pak přepni na <strong>Agent</strong> a nech plán provést. Ve VS Code k tomu bývá u plánu tlačítko pro předání agentovi (ověřit). Jinak napiš „Implement the plan above“.</p>
+<h3 id="krok-6-dalsi-ulohy-z-praxe">Krok 6: Další úlohy z praxe<a class="kotva" href="#krok-6-dalsi-ulohy-z-praxe" aria-label="Odkaz na tento oddíl"></a></h3>
+<p>Shetty v L19 ukazuje na Selenium frameworku v Javě řadu běžných úloh. Všechny fungují i v Pythonu. Každý prompt pošli v uvedeném režimu a výsledek zkontroluj:</p>
+<div class="tabulka-obal"><table><thead><tr><th>Úloha</th><th>Režim</th><th>Prompt</th></tr></thead><tbody><tr><td>Nový Page Object podle stávajících</td><td>Agent</td><td><code>Create pages/checkbox_page.py in the same style as #file:pages/contact_page.py for &lt;URL&gt;. Locators: ...</code></td></tr><tr><td>Oprava chyb</td><td>Agent</td><td><code>Fix the errors in #file:tests/test_login.py and explain each fix in one line.</code></td></tr><tr><td>Najít použití metody</td><td>Ask</td><td><code>#codebase Where is ContactPage.expect_message used?</code></td></tr><tr><td>Docstringy a komentáře</td><td>Agent</td><td><code>Add docstrings to public methods in #file:pages/contact_page.py. Do not change behaviour.</code></td></tr><tr><td>Test jako ruční testovací případ</td><td>Ask</td><td><code>Describe #file:tests/test_contact.py as manual test cases: ID, preconditions, steps, expected result.</code></td></tr><tr><td>Kroky pro BDD</td><td>Agent</td><td><code>Create pytest-bdd step definitions for #file:features/contact.feature using ContactPage.</code></td></tr><tr><td>Úprava podle připomínky z review</td><td>Agent</td><td><code>Reviewer comment: "&lt;vlož komentář&gt;". Change only the code the comment refers to.</code></td></tr></tbody></table></div>
+<p>Tabulka je tahák. Shetty v L19 opakuje jedno pravidlo: výsledek je tak dobrý, jak dobrý je kontext. Přidej správné soubory a popiš úlohu konkrétně. Převod testu na ruční testovací případ se hodí, když potřebuješ automatické testy evidovat v Jira nebo jiném nástroji pro správu testů.</p>
+<p>U úpravy podle review dej pozor na rozsah změn. Agent rád „vylepší“ i kód, na který se připomínka nevztahovala. Pokyn „change only…“ to omezí, diff to potvrdí.</p>
+<h3 id="krok-7-pravidla-projektu-pro-copilot">Krok 7: Pravidla projektu pro Copilot<a class="kotva" href="#krok-7-pravidla-projektu-pro-copilot" aria-label="Odkaz na tento oddíl"></a></h3>
+<aside class="vsuvka vsuvka--nad-ramec" data-stitek="Nad rámec sylabu" aria-label="Nad rámec sylabu"><p>Kurz tuto funkci nezmiňuje. Copilot čte soubor <code>.github/copilot-instructions.md</code> a jeho obsah přidá ke každému dotazu v repozitáři (ověřit v dokumentaci GitHubu). Je to obdoba systémového promptu z kapitoly 2. Pravidla, která jsi v kroku 4 psal do promptu, tak stačí napsat jednou.</p></aside>
+<p>Vytvoř <code>.github/copilot-instructions.md</code>:</p>
+<div class="kod" data-jazyk="text"><pre><code># Project rules
+- Python 3.10+, pytest, pytest-playwright (sync API).
+- Page Objects live in pages/, tests in tests/. One Page Object per page.
+- Locators are attributes set in __init__. Prefer name, id or role locators.
+- Assertions only with playwright.sync_api.expect. Never use time.sleep or wait_for_timeout.
+- Test data must be fictitious; emails use the domain example.com.
+- Credentials come from environment variables, never from code or config files.
+- Tests that submit a form are marked @pytest.mark.submit.</code></pre></div>
+<p>Co má vyjít: když v novém chatu napíšeš krátký prompt „Add a test that RESET works after a failed submit“, Copilot dodrží pravidla bez dalšího vysvětlování. Ověř to v diffu: žádný <code>sleep</code>, správný marker, data na <code>example.com</code>.</p>
+<h3 id="krok-8-vlastni-agent-na-navrh-scenaru">Krok 8: Vlastní agent na návrh scénářů<a class="kotva" href="#krok-8-vlastni-agent-na-navrh-scenaru" aria-label="Odkaz na tento oddíl"></a></h3>
+<p>Shetty v L45 vytváří vlastního agenta (custom agent). Je to soubor Markdown s hlavičkou, který popisuje roli, vstupy, postup a formát výstupu. Copilot ho pak nabízí ve výběru agentů vedle Ask, Agent a Plan. Shettyho agent <code>create-scenarios</code> čte popis domény EventHub (<code>eventhub-domain.md</code>) a vytváří scénáře podle šesti pohledů: happy path, obchodní pravidla, bezpečnost, negativní případy, hraniční případy a stavy UI. Výstup zapisuje do <code>docs/test-scenarios.md</code>.</p>
+<p>Agent je jen tak dobrý jako popis domény. Nejdřív proto napiš <code>docs/contact-us-domain.md</code>. Stačí to, co víš ze stránky a z dokumentu s požadavky z modulu 1:</p>
+<div class="kod" data-jazyk="text"><pre><code># Contact Us – domain
+
+## Fields
+| Field | Selector | Rule |
+|---|---|---|
+| First Name | input[name='first_name'] | required |
+| Last Name | input[name='last_name'] | required |
+| Email Address | input[name='email'] | required, valid email format |
+| Comments | textarea[name='message'] | required |
+
+## Behaviour
+- SUBMIT with all fields valid shows "Thank You for your Message!" (verify exact text on the page)
+- Invalid email shows "Error: Invalid email address"
+- Any empty field shows "Error: all fields are required"
+- RESET clears all fields
+
+## Unknown (do not assume)
+- Maximum field lengths
+- Which error wins when a field is empty AND the email is invalid
+- Whether submitted data is stored anywhere</code></pre></div>
+<p>Oddíl „Unknown“ je důležitý. Říká agentovi, kde nemá hádat.</p>
+<p>Pak ve VS Code v rozbalovacím seznamu agentů zvol <strong>Configure Custom Agents</strong> a <strong>Create new custom agent</strong>. Umístění zvol ve workspace, tedy <code>.github/agents/</code>. Soubor musí končit na <code>.agent.md</code>. Obsah:</p>
+<div class="kod" data-jazyk="text"><pre><code>---
+name: create-scenarios
+description: Designs functional test scenarios for one feature from docs/*-domain.md files.
+tools: ['read', 'edit', 'search']
+---
+
+# Functional test designer
+
+You are a senior functional test designer. You think like a real user and like a malicious user.
+
+## Before you start
+Read the domain file for the feature the user names, e.g. docs/contact-us-domain.md.
+If there is no domain file for that feature, stop and say so.
+
+## Thinking lenses
+Apply all six to the feature:
+| Lens | Question |
+|---|---|
+| Happy path | What is the expected successful journey? |
+| Business rules | Which documented rules must be validated? |
+| Security | Can input be abused (injection, very long input, scripts)? |
+| Negative | What happens with invalid input or wrong order of actions? |
+| Edge cases | Which boundaries and limits apply? |
+| UI state | What is shown before, during and after an action? |
+
+## Output
+Append to docs/test-scenarios.md using this template:
+
+### TC-&lt;NNN&gt;: &lt;title&gt;
+**Lens**: &lt;one of the six&gt;
+**Priority**: &lt;P0 | P1 | P2&gt;
+**Preconditions**: ...
+**Steps**: numbered
+**Expected result**: ...
+**Source**: &lt;section of the domain file, or "UNKNOWN – needs clarification"&gt;
+**Suggested layer**: &lt;Unit | API | UI end-to-end&gt;
+
+## Rules
+- Every scenario must have a Source. Never invent behaviour that is not in the domain file.
+- Items listed under "Unknown" become questions, not expected results.
+- Do not modify any file other than docs/test-scenarios.md.</code></pre></div>
+<p>Proti Shettyho příloze <code>create-scenarios.agent.md</code> jsem udělal čtyři změny a stojí za to vědět proč:</p>
+<ol><li><strong>Omezené nástroje.</strong> Shettyho soubor má řádek <code>tools</code> zakomentovaný, takže agent smí všechno, co je zapnuté, včetně spouštění příkazů a webu. Agent, který jen píše dokumentaci, potřebuje číst, hledat a upravovat soubory. Méně oprávnění znamená menší škodu, když se něco pokazí. Jde o řízení přístupu, které kapitola 3, oddíl 3.2.3 uvádí mezi opatřeními. V bezpečnosti se tomu obecně říká princip nejnižších oprávnění (least privilege). Názvy nástrojů ověř v dokumentaci, Shettyho šablona je uvádí v podobě <code>'read'</code>, <code>'edit'</code>, <code>'search'</code>.</li><li><strong>Žádné <code>$ARGUMENTS</code>.</strong> Shettyho soubor vznikl převodem ze skillu pro Claude Code (sekce 6 kurzu) a proměnnou <code>$ARGUMENTS</code> si nese odtamtud. Copilot vstup bere ze zprávy uživatele (ověřit, jestli proměnnou podporuje). Formulace „the feature the user names“ funguje v obou případech.</li><li><strong>Pole Source.</strong> Shettyho pravidlo „every scenario must trace back to a documented rule“ je v textu, ale ne v šabloně. Když je pole v šabloně, agent ho vyplní u každého scénáře a ty hned vidíš, co nemá oporu.</li><li><strong>Pozůstatky šablony.</strong> V příloze zůstal řádek „Define what this custom agent does…“ z výchozí šablony a v poli <code>name</code> přípona souboru. Model takový text bere jako součást instrukcí. Patří smazat.</li></ol>
+<p>Spusť agenta. V chatu ho vyber v seznamu agentů a napiš:</p>
+<div class="kod" data-jazyk="text"><pre><code>Contact Us form</code></pre></div>
+<p>Co má vyjít: soubor <code>docs/test-scenarios.md</code> s desítkou až dvěma desítkami scénářů ve stanovené šabloně. Shetty v L46 dostal pro rezervace v EventHubu 32 scénářů. Contact Us je menší, takže čekej méně. Zkontroluj:</p>
+<ul><li>Má každý scénář vyplněný Source?</li><li>Žádný očekávaný výsledek nepochází z oddílu „Unknown“? Ty položky mají být otázky.</li><li>Bezpečnostní scénáře jsou rozumné pro formulář? Například velmi dlouhý text nebo <code>&lt;script&gt;</code> v komentáři, ne „penetrační test serveru“.</li><li>Agent neupravil jiný soubor než <code>docs/test-scenarios.md</code>?</li></ul>
+<p>Vlastní agent je v podstatě uložený systémový prompt s pravidly a omezeným přístupem k nástrojům. Proto ho dávej do repozitáře. Celý tým pak pracuje se stejnými pravidly a jejich změny jsou vidět v historii Gitu.</p>
+<h3 id="krok-9-cloudovy-agent-na-githubu">Krok 9: Cloudový agent na GitHubu<a class="kotva" href="#krok-9-cloudovy-agent-na-githubu" aria-label="Odkaz na tento oddíl"></a></h3>
+<p>Shetty v L46 pushne repozitář na GitHub. Vlastní agenti z <code>.github/agents/</code> se pak objeví i v záložce <strong>Agents</strong> na github.com. Úlohu tam zadáš z prohlížeče. Agent ji zpracuje v cloudu ve vlastní větvi a nabídne pull request. Nepotřebuješ k tomu otevřený projekt ani VS Code.</p>
+<p>Postup podle kurzu (rozhraní ověřit, mění se):</p>
+<ol><li>Vytvoř na GitHubu <strong>soukromý</strong> repozitář a pushni do něj projekt. Shetty to v L46 nechá udělat agenta v chatu. Bezpečnější je pushnout sám a vědět, co odchází. Před pushem zkontroluj <code>git status</code>, že v repozitáři není <code>.env</code> ani jiný soubor s údaji.</li><li>Na github.com otevři repozitář a záložku <strong>Agents</strong>. Bez placeného tarifu tě GitHub vyzve k upgradu.</li><li>Vyber agenta <code>create-scenarios</code> a zadej úlohu, třeba „Login Portal“. Agent nemá doménový soubor, takže by měl podle pravidel skončit s hlášením, že soubor chybí. To je dobrý test, že pravidla fungují.</li><li>Přidej <code>docs/login-portal-domain.md</code>, pushni a úlohu zopakuj.</li><li>Až agent skončí, otevři jeho větev a pull request. Projdi změny v záložce <strong>Files changed</strong> stejně jako u kolegy.</li></ol>
+<p>Co má vyjít: pull request se změnou jediného souboru <code>docs/test-scenarios.md</code>. Pokud agent změnil i jiné soubory, pravidla v <code>.agent.md</code> nefungují a je potřeba je zpřesnit.</p>
+<p>Cloudový agent běží na infrastruktuře GitHubu a má přístup k celému repozitáři. Do repozitáře s cloudovým agentem proto nepatří nic, co by nesmělo opustit firmu. U firemních repozitářů o zapnutí rozhoduje správce organizace na GitHubu, ne jednotlivec.</p>
+<h2 id="overeni">Ověření<a class="kotva" href="#overeni" aria-label="Odkaz na tento oddíl"></a></h2>
+<ul><li><code>python -m pytest -m "not submit"</code> projde. <code>python -m pytest -v</code> projde, nebo víš, proč který test selhal, a máš to zapsané.</li><li>V <code>git log</code> vidíš, které změny udělal Copilot a které ty. Nauč se commitovat po každém kroku zvlášť, třeba se zprávou „Copilot agent: Page Object for Contact Us“.</li><li>V kódu není žádný <code>time.sleep</code>, skutečný e-mail ani přihlašovací údaj. Rychlá kontrola: <code>git grep -n -i -E "sleep|password|@gmail"</code>.</li><li>Test pro Login Portal čte údaje z proměnných prostředí. Bez nich se přeskočí (<code>pytest.skip</code>), ne selže s nesrozumitelnou chybou.</li><li><code>docs/test-scenarios.md</code> má u každého scénáře pole Source.</li><li>Agent <code>create-scenarios</code> bez doménového souboru úlohu odmítne.</li></ul>
+<h2 id="caste-chyby">Časté chyby<a class="kotva" href="#caste-chyby" aria-label="Odkaz na tento oddíl"></a></h2>
+<p><strong>Agent bez kontroly diffu.</strong> Klikneš Keep a necháš v projektu změny, které jsi nečetl. Agent často upraví víc, než bylo potřeba.</p>
+<p><strong>Schválení všech příkazů.</strong> Nastavení, které schvaluje automaticky, ušetří kliknutí, ale agent pak spustí i instalaci balíčků nebo <code>git push</code>. Pro učení nech výchozí schvalování.</p>
+<p><strong>Chybějící kontext.</strong> Bez přiloženého souboru Copilot hádá strukturu projektu a píše kód „obecně“, ne podle tvého vzoru.</p>
+<p><strong>Lokátory z hlavy modelu.</strong> Model stránku nevidí. Lokátory dodej nebo je zkontroluj v prohlížeči.</p>
+<p><strong>Údaje v kódu nebo v <code>pytest.ini</code>.</strong> I u demo stránky. Pro testy patří do proměnných prostředí, v CI do úložiště tajemství (secrets).</p>
+<p><strong>Prohlížeč neodpovídá verzi Playwrightu.</strong> Po aktualizaci <code>playwright</code> spusť <code>python -m playwright install chromium</code>. Jinak test skončí na hlášce „Executable doesn't exist“.</p>
+<p><strong>Copilot s osobním účtem ve firemním repozitáři.</strong> Kód odchází mimo firemní smlouvu. Používej jen licenci a nastavení od firmy.</p>
+<p><strong>Agent s příliš širokými oprávněními.</strong> Vlastní agent na dokumentaci nepotřebuje terminál ani web. Omez <code>tools</code>.</p>
+<h2 id="cviceni">Cvičení<a class="kotva" href="#cviceni" aria-label="Odkaz na tento oddíl"></a></h2>
+<aside class="vsuvka vsuvka--cviceni" id="praxe-03-github-copilot-pro-testera-login-portal-s-copilotem" data-stitek="Cvičení" aria-label="Cvičení"><p class="praxe-blok-nazev">Login Portal s Copilotem</p><p>Cíl: projít ask, plan a agent na nové stránce. Podle kroku 5 nech navrhnout a implementovat testy pro Login Portal. Údaje čti z proměnných <code>WDU_USER</code> a <code>WDU_PASS</code>. Přidej test platného přihlášení, neplatného hesla a prázdných polí. Alert zachyť přes událost <code>dialog</code>. Hotovo: tři testy projdou s nastavenými proměnnými a bez nich se přeskočí. V kódu ani v historii Gitu nejsou údaje. Commit od Copilotu je oddělený od tvých oprav.</p><p class="praxe-cviceni-pata" data-nepocitat><label class="zk-volba praxe-hotovo"><input type="checkbox" data-praxe-hotovo="praxe-03-github-copilot-pro-testera-login-portal-s-copilotem"> Hotovo</label></p></aside>
+<aside class="vsuvka vsuvka--cviceni" id="praxe-03-github-copilot-pro-testera-druhy-vlastni-agent-recenzent-testu" data-stitek="Cvičení" aria-label="Cvičení"><p class="praxe-blok-nazev">Druhý vlastní agent: recenzent testů</p><p>Cíl: napsat agenta, který jen čte a hodnotí. Vytvoř <code>.github/agents/review-tests.agent.md</code> s nástroji jen pro čtení a vyhledávání. Agent projde <code>tests/</code> a <code>pages/</code> podle pravidel z <code>.github/copilot-instructions.md</code> a vypíše nálezy do chatu: soubor, řádek, porušené pravidlo. Nic nemění. Hotovo: agent najde aspoň jeden nález, který jsi do kódu schválně vložil (třeba <code>time.sleep(1)</code>), a nezmění žádný soubor.</p><p class="praxe-cviceni-pata" data-nepocitat><label class="zk-volba praxe-hotovo"><input type="checkbox" data-praxe-hotovo="praxe-03-github-copilot-pro-testera-druhy-vlastni-agent-recenzent-testu"> Hotovo</label></p></aside>
+<aside class="vsuvka vsuvka--cviceni" id="praxe-03-github-copilot-pro-testera-agent-nad-vlastnim-projektem" data-stitek="Cvičení" aria-label="Cvičení"><p class="praxe-blok-nazev">Agent nad vlastním projektem</p><p>Cíl: použít vlastního agenta mimo demo. Napiš doménový soubor pro jednu funkci projektu Účtenky (například nahrání účtenky) a nech agenta <code>create-scenarios</code> navrhnout scénáře. Porovnej je s testy, které v projektu už máš v Playwrightu. Hotovo: tabulka tří sloupců (scénář od agenta, existující test, poznámka). Aspoň dva scénáře, které v projektu chybějí a dávají smysl, a aspoň jeden, který je nesmyslný, s vysvětlením proč.</p><p class="praxe-cviceni-pata" data-nepocitat><label class="zk-volba praxe-hotovo"><input type="checkbox" data-praxe-hotovo="praxe-03-github-copilot-pro-testera-agent-nad-vlastnim-projektem"> Hotovo</label></p></aside>
+<h2 id="souvislost-se-sylabem-ct-genai">Souvislost se sylabem CT-GenAI<a class="kotva" href="#souvislost-se-sylabem-ct-genai" aria-label="Odkaz na tento oddíl"></a></h2>
+<p>Copilot je testovací nástroj postavený na LLM v podobě, kterou popisuje <strong>kapitola 1, oddíl 1.2.2</strong>. Na rozdíl od chatbota z modulu 1 je zabudovaný v IDE a pracuje s kontextem projektu. Režimy ask a agent odpovídají rozdílu mezi asistentem a agentem z <strong>kapitoly 4, oddílu 4.1.3</strong>. Agent si úlohu sám rozdělí na kroky, používá nástroje (soubory, terminál) a člověk schvaluje jeho akce. To je člověk ve smyčce (human-in-the-loop) z téhož oddílu. Cloudový agent v kroku 9 je stejný princip s větší autonomií. Architekturu nástroje, tedy model, kontext a nástroje, popisuje <strong>oddíl 4.1.1</strong>.</p>
+<p>Generování a údržba testovacích skriptů v krocích 4 a 6 je automatizované regresní testování s GenAI z <strong>kapitoly 2, oddílu 2.2.3</strong>. Převod testu na ruční testovací případ a návrh scénářů agentem v kroku 8 patří k návrhu testů z <strong>oddílu 2.2.2</strong>. Pravidla v <code>.github/copilot-instructions.md</code> a v souboru <code>.agent.md</code> jsou systémový prompt z <strong>oddílu 2.1.3</strong>. Šablona výstupu a pole Source jsou komponenty Constraints a Output format z <strong>oddílu 2.1.1</strong>.</p>
+<p>Vymyšlené lokátory a hlášky jsou halucinace z <strong>kapitoly 3, oddílu 3.1.1</strong>. Omezení nástrojů agenta, údaje v proměnných prostředí a kontrola diffu jsou opatření z <strong>oddílu 3.2.3</strong>. Rizika agenta s širokými oprávněními (spuštění škodlivého kódu, únik dat) popisuje <strong>oddíl 3.2.2</strong>. Používání Copilotu s osobním účtem na firemním kódu je stínová AI z <strong>kapitoly 5, oddílu 5.1.1</strong>.</p>
+</article>
+<div class="splneno-radek" data-nepocitat><button type="button" class="tlacitko splneno" data-splneno="modul-03-github-copilot-pro-testera" data-text-ne="Označit jako prostudované" data-text-ano="✓ Prostudováno" aria-pressed="false">Označit jako prostudované</button></div>
+<nav class="naradi sousede" aria-label="Sousední moduly"><a href="02-lokalni-modely-a-ochrana-dat.html">← 2. Lokální modely a ochrana dat</a><a href="../praxe.html">Všechny moduly</a><a href="04-mcp-a-playwright-mcp.html">4. MCP a Playwright MCP →</a></nav>
+</main>
+<aside class="strom" aria-label="Obsah stránky"><h2>V tomto modulu</h2><ol><li><a href="#co-postavis">Co postavíš</a></li><li><a href="#predpoklady">Předpoklady</a></li><li><a href="#postup">Postup</a><ol><li><a href="#krok-1-zapni-copilot-ve-vs-code-a-poznej-rezimy">Krok 1: Zapni Copilot ve VS Code a poznej režimy</a></li><li><a href="#krok-2-priprav-kostru-projektu-rucne">Krok 2: Připrav kostru projektu ručně</a></li><li><a href="#krok-3-ask-nech-si-vysvetlit-co-nastroj-dela">Krok 3: Ask – nech si vysvětlit, co nástroj dělá</a></li><li><a href="#krok-4-agent-page-object-a-prvni-testy">Krok 4: Agent – Page Object a první testy</a></li><li><a href="#krok-5-plan-kam-s-testy-pro-login-portal">Krok 5: Plan – kam s testy pro Login Portal</a></li><li><a href="#krok-6-dalsi-ulohy-z-praxe">Krok 6: Další úlohy z praxe</a></li><li><a href="#krok-7-pravidla-projektu-pro-copilot">Krok 7: Pravidla projektu pro Copilot</a></li><li><a href="#krok-8-vlastni-agent-na-navrh-scenaru">Krok 8: Vlastní agent na návrh scénářů</a></li><li><a href="#krok-9-cloudovy-agent-na-githubu">Krok 9: Cloudový agent na GitHubu</a></li></ol></li><li><a href="#overeni">Ověření</a></li><li><a href="#caste-chyby">Časté chyby</a></li><li><a href="#cviceni">Cvičení</a></li><li><a href="#souvislost-se-sylabem-ct-genai">Souvislost se sylabem CT-GenAI</a></li></ol></aside>
+</div>
+</div>
+<footer class="paticka">
+  <div class="paticka-vnitrek">
+    <p><strong>Neoficiální studijní materiál.</strong> Tento web není produktem ani publikací ISTQB®.
+    ISTQB® je registrovaná ochranná známka International Software Testing Qualifications Board.
+    Texty jsou vlastním zpracováním autora vytvořeným při přípravě na zkoušku CT-GenAI; oficiální sylabus
+    a vzorovou zkoušku si stáhněte přímo na istqb.org.</p>
+    <p>Ke zkoušce vždy platí znění oficiálního sylabu CT-GenAI v1.1. Doplněné informace a příklady z praxe
+    slouží k porozumění, nikoli jako zdroj správných odpovědí u zkoušky.</p>
+    <ul>
+      <li><a href="https://istqb.org/certifications/gen-ai/" target="_blank" rel="noopener noreferrer">ISTQB — CT-GenAI</a></li>
+      <li><a href="https://glossary.istqb.org" target="_blank" rel="noopener noreferrer">Slovník ISTQB</a></li>
+      <li><a href="https://casqb.org" target="_blank" rel="noopener noreferrer">CaSQB</a></li>
+      <li><a href="../zdroje.html">Zdroje a autorská práva</a></li>
+    </ul>
+  </div>
+</footer>
+<script src="../assets/ucet-konfig.js"></script>
+<script src="../assets/ucet.js"></script>
+<script src="../assets/skript.js"></script>
+</body>
+</html>

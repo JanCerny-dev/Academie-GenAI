@@ -1,0 +1,27 @@
+[
+ {
+  "en": "hallucination",
+  "cz": "halucinace",
+  "def": "Věrohodný, ale nepravdivý výstup.",
+  "kap": 1,
+  "oddil": "1.1.1",
+  "klicove": true,
+  "poznamka": "záměna s reasoning error"
+ },
+ {
+  "en": "Token",
+  "cz": "token",
+  "def": "Jednotka textu pro model.",
+  "kap": 1,
+  "oddil": "1.1",
+  "klicove": true
+ },
+ {
+  "en": "chatbot",
+  "cz": "chatbot",
+  "def": "Konverzační aplikace.",
+  "kap": 1,
+  "oddil": "1.2",
+  "klicove": false
+ }
+]

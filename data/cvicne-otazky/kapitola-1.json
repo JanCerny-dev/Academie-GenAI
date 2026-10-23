@@ -1,0 +1,1579 @@
+{
+ "popis": "Vlastní cvičné otázky ke kapitole 1 sylabu CT-GenAI v1.1 (Úvod do generativní AI pro testování softwaru). Formulováno podle studijních cílů, nejde o otázky ze Sample Exam ani z kurzů.",
+ "otazky": [
+  {
+   "id": "CG-1.1.1-01",
+   "zdroj": "vlastni",
+   "lo": "GenAI-1.1.1",
+   "k": "K1",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>A bank's loan approval engine checks the applicant's age, income and repayment history against a table of conditions written by business analysts. The engine does not learn from data. Which type of AI does this engine represent?</p>",
+    "moznosti": [
+     "Classical machine learning",
+     "Deep learning",
+     "Symbolic AI",
+     "Generative AI"
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. Classical machine learning learns from prepared data and selected features; this engine does not learn from data (syllabus 1.1.1).",
+     "b": "Incorrect. Deep learning uses neural networks that learn features from data; no learning takes place here (syllabus 1.1.1).",
+     "c": "Correct. Symbolic AI represents knowledge with symbols and logical rules defined by humans to mimic decision-making (syllabus 1.1.1).",
+     "d": "Incorrect. Generative AI creates new content using deep learning; the engine only evaluates predefined rules (syllabus 1.1.1)."
+    },
+    "vysvetleni_obecne": "Rules written by people and no learning from data are the defining traits of symbolic AI."
+   },
+   "cz": {
+    "q": "<p>Systém banky pro schvalování úvěrů porovnává věk, příjem a historii splácení žadatele s tabulkou podmínek, kterou sepsali business analytici. Systém se z dat neučí. Jaký typ AI tento systém představuje?</p>",
+    "moznosti": [
+     "Klasické strojové učení",
+     "Hluboké učení",
+     "Symbolická AI",
+     "Generativní AI"
+    ],
+    "vysvetleni": {
+     "a": "Nesprávně. Klasické strojové učení se učí z připravených dat a vybraných příznaků. Tento systém se z dat neučí (sylabus 1.1.1).",
+     "b": "Nesprávně. Hluboké učení používá neuronové sítě, které se příznaky učí z dat. Tady žádné učení neprobíhá (sylabus 1.1.1).",
+     "c": "Správně. Symbolická AI reprezentuje znalost symboly a logickými pravidly, která definoval člověk, a tím napodobuje rozhodování (sylabus 1.1.1).",
+     "d": "Nesprávně. Generativní AI vytváří nový obsah pomocí hlubokého učení. Systém jen vyhodnocuje předem daná pravidla (sylabus 1.1.1)."
+    },
+    "vysvetleni_obecne": "Pravidla zapsaná člověkem a žádné učení z dat jsou rozlišující znaky symbolické AI."
+   },
+   "spravne": [
+    "c"
+   ],
+   "oddil": "1.1.1",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-1.1.1-02",
+   "zdroj": "vlastni",
+   "lo": "GenAI-1.1.1",
+   "k": "K1",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Which of the following is a typical part of classical machine learning that deep learning does NOT require users to perform manually?</p>",
+    "moznosti": [
+     "Selecting the features the model uses",
+     "Providing data to learn from",
+     "Validating the results of the model",
+     "Using the trained model for predictions"
+    ],
+    "vysvetleni": {
+     "a": "Correct. Classical machine learning requires feature selection, while deep learning learns features from data automatically (syllabus 1.1.1).",
+     "b": "Incorrect. Both approaches are data-driven and need data to learn from (syllabus 1.1.1).",
+     "c": "Incorrect. The syllabus notes that deep learning may still require human validation of results (syllabus 1.1.1).",
+     "d": "Incorrect. Both approaches use the trained model to make predictions; this is not a difference (syllabus 1.1.1)."
+    },
+    "vysvetleni_obecne": "The difference between classical machine learning and deep learning lies in who defines the features."
+   },
+   "cz": {
+    "q": "<p>Která z následujících činností je typickou součástí klasického strojového učení, ale u hlubokého učení ji uživatel ručně dělat NEMUSÍ?</p>",
+    "moznosti": [
+     "Výběr příznaků, které model používá",
+     "Poskytnutí dat, ze kterých se model učí",
+     "Ověření výsledků modelu",
+     "Použití natrénovaného modelu k předpovědím"
+    ],
+    "vysvetleni": {
+     "a": "Správně. Klasické strojové učení vyžaduje výběr příznaků, hluboké učení se příznaky učí z dat samo (sylabus 1.1.1).",
+     "b": "Nesprávně. Oba přístupy jsou řízené daty a data potřebují (sylabus 1.1.1).",
+     "c": "Nesprávně. Sylabus uvádí, že i hluboké učení může vyžadovat ověření výsledků člověkem (sylabus 1.1.1).",
+     "d": "Nesprávně. Oba přístupy používají natrénovaný model k předpovědím, nejde o rozdíl (sylabus 1.1.1)."
+    },
+    "vysvetleni_obecne": "Klasické ML a hluboké učení se liší v tom, kdo určuje příznaky."
+   },
+   "spravne": [
+    "a"
+   ],
+   "oddil": "1.1.1",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-1.1.1-03",
+   "zdroj": "vlastni",
+   "lo": "GenAI-1.1.1",
+   "k": "K1",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Which statement about generative AI is CORRECT?</p>",
+    "moznosti": [
+     "It generates content by evaluating logical rules defined by domain experts.",
+     "It requires a separate training phase before it can be used for each test task.",
+     "It only assigns existing data items to predefined categories.",
+     "It uses deep learning techniques to create new content based on patterns learned from training data."
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. Logical rules defined by experts describe symbolic AI (syllabus 1.1.1).",
+     "b": "Incorrect. The syllabus highlights that pre-trained models can be applied directly without an additional training phase (syllabus 1.1.1).",
+     "c": "Incorrect. Assigning data to categories is a typical classification task, e.g. defect categorization with classical machine learning, not content generation (syllabus 1.1.1).",
+     "d": "Correct. Generative AI uses deep learning to create new text, images or code by mimicking patterns from its training data (syllabus 1.1.1)."
+    },
+    "vysvetleni_obecne": "Generative AI = deep learning + creation of new content."
+   },
+   "cz": {
+    "q": "<p>Které tvrzení o generativní AI je SPRÁVNÉ?</p>",
+    "moznosti": [
+     "Vytváří obsah vyhodnocováním logických pravidel, která definovali odborníci.",
+     "Před použitím pro každou testovací úlohu vyžaduje samostatnou fázi trénování.",
+     "Pouze zařazuje existující data do předem daných kategorií.",
+     "Používá techniky hlubokého učení a vytváří nový obsah podle vzorců naučených z trénovacích dat."
+    ],
+    "vysvetleni": {
+     "a": "Nesprávně. Logická pravidla od odborníků popisují symbolickou AI (sylabus 1.1.1).",
+     "b": "Nesprávně. Sylabus zdůrazňuje, že předtrénované modely lze použít přímo bez další fáze trénování (sylabus 1.1.1).",
+     "c": "Nesprávně. Zařazování dat do kategorií je klasifikační úloha, například kategorizace defektů klasickým ML, ne tvorba obsahu (sylabus 1.1.1).",
+     "d": "Správně. Generativní AI používá hluboké učení a vytváří nový text, obrázky nebo kód napodobením vzorců z trénovacích dat (sylabus 1.1.1)."
+    },
+    "vysvetleni_obecne": "Generativní AI = hluboké učení + tvorba nového obsahu."
+   },
+   "spravne": [
+    "d"
+   ],
+   "oddil": "1.1.1",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-1.1.1-04",
+   "zdroj": "vlastni",
+   "lo": "GenAI-1.1.1",
+   "k": "K1",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Which type of AI is BEST described by the following: it uses neural networks to learn features automatically from large and complex datasets such as images or audio, although humans may still annotate data and validate results?</p>",
+    "moznosti": [
+     "Symbolic AI",
+     "Deep learning",
+     "Classical machine learning",
+     "Generative AI"
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. Symbolic AI does not learn from data; it uses rules and symbols (syllabus 1.1.1).",
+     "b": "Correct. This matches the syllabus description of deep learning, including the note on human involvement (syllabus 1.1.1).",
+     "c": "Incorrect. Classical machine learning requires manual feature selection (syllabus 1.1.1).",
+     "d": "Incorrect. Generative AI builds on deep learning, but its defining trait is the creation of new content, which the description does not mention (syllabus 1.1.1)."
+    },
+    "vysvetleni_obecne": "Automatic learning of features with neural networks is the defining trait of deep learning."
+   },
+   "cz": {
+    "q": "<p>Který typ AI NEJLÉPE odpovídá popisu: používá neuronové sítě, které se samy učí příznaky z velkých a složitých dat, jako jsou obrázky nebo zvuk, ačkoli člověk může stále anotovat data a ověřovat výsledky?</p>",
+    "moznosti": [
+     "Symbolická AI",
+     "Hluboké učení",
+     "Klasické strojové učení",
+     "Generativní AI"
+    ],
+    "vysvetleni": {
+     "a": "Nesprávně. Symbolická AI se z dat neučí, používá pravidla a symboly (sylabus 1.1.1).",
+     "b": "Správně. Popis odpovídá hlubokému učení podle sylabu, včetně poznámky o zapojení člověka (sylabus 1.1.1).",
+     "c": "Nesprávně. Klasické strojové učení vyžaduje ruční výběr příznaků (sylabus 1.1.1).",
+     "d": "Nesprávně. Generativní AI na hlubokém učení staví, ale jejím rozlišujícím znakem je tvorba nového obsahu, o které popis nemluví (sylabus 1.1.1)."
+    },
+    "vysvetleni_obecne": "Automatické učení příznaků neuronovými sítěmi je rozlišující znak hlubokého učení."
+   },
+   "spravne": [
+    "b"
+   ],
+   "oddil": "1.1.1",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-1.1.1-05",
+   "zdroj": "vlastni",
+   "lo": "GenAI-1.1.1",
+   "k": "K1",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>According to the syllabus, what is the key advantage of using generative AI for software testing?</p>",
+    "moznosti": [
+     "Pre-trained models can be applied directly to test tasks without an additional training phase.",
+     "Generated outputs are deterministic, so they can be compared exactly with expected results.",
+     "Generative AI eliminates the risks associated with other AI approaches.",
+     "Generative AI removes the need for testers to review the test basis."
+    ],
+    "vysvetleni": {
+     "a": "Correct. The syllabus names this as the key advantage, while noting that it comes with risks (syllabus 1.1.1).",
+     "b": "Incorrect. LLMs show non-deterministic behavior (syllabus 1.1.2).",
+     "c": "Incorrect. The syllabus explicitly states that the advantage comes with risks, covered in chapter 3 (syllabus 1.1.1).",
+     "d": "Incorrect. LLMs support analysis of the test basis; they do not replace the tester's review (syllabus 1.2.1)."
+    },
+    "vysvetleni_obecne": "Pre-trained models usable without extra training is the key advantage; risks remain."
+   },
+   "cz": {
+    "q": "<p>Co je podle sylabu hlavní výhodou použití generativní AI pro testování softwaru?</p>",
+    "moznosti": [
+     "Předtrénované modely lze použít přímo na testovací úlohy bez další fáze trénování.",
+     "Vygenerované výstupy jsou deterministické, takže je lze přesně porovnat s očekávanými výsledky.",
+     "Generativní AI odstraňuje rizika spojená s jinými přístupy k AI.",
+     "Generativní AI odstraňuje potřebu, aby tester revidoval testovací bázi."
+    ],
+    "vysvetleni": {
+     "a": "Správně. Sylabus to uvádí jako hlavní výhodu a zároveň upozorňuje na rizika (sylabus 1.1.1).",
+     "b": "Nesprávně. LLM se chovají nedeterministicky (sylabus 1.1.2).",
+     "c": "Nesprávně. Sylabus výslovně uvádí, že výhoda s sebou nese rizika, kterým se věnuje kapitola 3 (sylabus 1.1.1).",
+     "d": "Nesprávně. LLM analýzu testovací báze podporují, revizi testerem nenahrazují (sylabus 1.2.1)."
+    },
+    "vysvetleni_obecne": "Hlavní výhoda: předtrénovaný model bez dalšího trénování. Rizika zůstávají."
+   },
+   "spravne": [
+    "a"
+   ],
+   "oddil": "1.1.1",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-1.1.2-01",
+   "zdroj": "vlastni",
+   "lo": "GenAI-1.1.2",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>A tester pastes the same test case description, once in English and once in Czech, into a tokenizer. The Czech version produces noticeably more tokens. Which explanation is MOST plausible?</p>",
+    "moznosti": [
+     "The tokenizer splits less common words, such as inflected words with diacritics, into more sub-word units.",
+     "The Czech text is converted into embeddings before it is tokenized, which adds tokens.",
+     "The context window is smaller for Czech text, so the tokenizer must use shorter tokens.",
+     "The model translates the Czech text into English and counts tokens of both versions."
+    ],
+    "vysvetleni": {
+     "a": "Correct. Tokens can be characters, sub-words or words; words that are rare in the tokenizer's vocabulary are split into more pieces (syllabus 1.1.2).",
+     "b": "Incorrect. Tokenization comes first; embeddings are then created for the tokens (syllabus 1.1.2).",
+     "c": "Incorrect. The context window limits how many tokens the model considers; it does not change how text is split (syllabus 1.1.2).",
+     "d": "Incorrect. Tokenization splits the input text as it is; no translation step is involved (syllabus 1.1.2)."
+    },
+    "vysvetleni_obecne": "Token count depends on how the tokenizer splits text, not on the number of words."
+   },
+   "cz": {
+    "q": "<p>Tester vloží do tokenizéru stejný popis testovacího případu jednou anglicky a jednou česky. Česká verze má výrazně víc tokenů. Které vysvětlení je NEJPRAVDĚPODOBNĚJŠÍ?</p>",
+    "moznosti": [
+     "Tokenizér rozděluje méně častá slova, například skloňovaná slova s diakritikou, na víc částí slov.",
+     "Český text se před tokenizací převede na embeddingy, což přidá tokeny.",
+     "Kontextové okno je pro český text menší, takže tokenizér musí použít kratší tokeny.",
+     "Model český text přeloží do angličtiny a počítá tokeny obou verzí."
+    ],
+    "vysvetleni": {
+     "a": "Správně. Token může být znak, část slova nebo slovo. Slova, která ve slovníku tokenizéru nejsou častá, se rozdělí na víc kousků (sylabus 1.1.2).",
+     "b": "Nesprávně. Tokenizace je první krok, embeddingy se vytvářejí až pro tokeny (sylabus 1.1.2).",
+     "c": "Nesprávně. Kontextové okno omezuje, kolik tokenů model bere v úvahu, nemění způsob dělení textu (sylabus 1.1.2).",
+     "d": "Nesprávně. Tokenizace dělí vstupní text tak, jak je. Žádný překlad neprobíhá (sylabus 1.1.2)."
+    },
+    "vysvetleni_obecne": "Počet tokenů závisí na tom, jak tokenizér text dělí, ne na počtu slov."
+   },
+   "spravne": [
+    "a"
+   ],
+   "oddil": "1.1.2",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-1.1.2-02",
+   "zdroj": "vlastni",
+   "lo": "GenAI-1.1.2",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>An LLM analysing defect reports treats the words 'defect', 'bug' and 'fault' as closely related. Which concept BEST explains this?</p>",
+    "moznosti": [
+     "Tokenization merges words with similar meaning into a single token.",
+     "The embeddings of these tokens are positioned close to each other in a high-dimensional vector space.",
+     "The context window stores a list of synonyms for frequently used words.",
+     "Non-deterministic behavior makes the model choose between similar words at random."
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. Tokenization splits text into units; it does not merge words by meaning (syllabus 1.1.2).",
+     "b": "Correct. Embeddings encode semantic relationships, and tokens with similar meaning have embeddings close together (syllabus 1.1.2).",
+     "c": "Incorrect. The context window limits the amount of preceding text considered; it is not a synonym store (syllabus 1.1.2).",
+     "d": "Incorrect. Non-determinism causes variation in outputs, not an understanding of related meanings (syllabus 1.1.2)."
+    },
+    "vysvetleni_obecne": "Meaning and similarity are captured by embeddings."
+   },
+   "cz": {
+    "q": "<p>LLM při analýze reportů o defektech zachází se slovy 'defect', 'bug' a 'fault' jako s úzce souvisejícími. Který pojem to NEJLÉPE vysvětluje?</p>",
+    "moznosti": [
+     "Tokenizace slučuje slova s podobným významem do jednoho tokenu.",
+     "Embeddingy těchto tokenů leží ve vícerozměrném vektorovém prostoru blízko sebe.",
+     "Kontextové okno ukládá seznam synonym pro často používaná slova.",
+     "Nedeterministické chování způsobuje, že model mezi podobnými slovy vybírá náhodně."
+    ],
+    "vysvetleni": {
+     "a": "Nesprávně. Tokenizace text dělí na jednotky, neslučuje slova podle významu (sylabus 1.1.2).",
+     "b": "Správně. Embeddingy zachycují významové vztahy a tokeny s podobným významem mají blízké vektory (sylabus 1.1.2).",
+     "c": "Nesprávně. Kontextové okno omezuje množství předchozího textu, není to úložiště synonym (sylabus 1.1.2).",
+     "d": "Nesprávně. Nedeterminismus způsobuje rozdílné výstupy, ne porozumění příbuzným významům (sylabus 1.1.2)."
+    },
+    "vysvetleni_obecne": "Význam a podobnost slov zachycují embeddingy."
+   },
+   "spravne": [
+    "b"
+   ],
+   "oddil": "1.1.2",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-1.1.2-03",
+   "zdroj": "vlastni",
+   "lo": "GenAI-1.1.2",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>An LLM generates an automated API test that looks professional, but it calls an endpoint that does not exist in the system under test. No API specification was given in the prompt. Which characteristic of LLMs BEST explains this result?</p>",
+    "moznosti": [
+     "The context window was too large, so the model lost track of the prompt.",
+     "Tokenization split the endpoint name incorrectly, so the name was changed.",
+     "The transformer produces statistically plausible sequences of tokens, which are not necessarily correct.",
+     "Embeddings are fixed during inference, so the model cannot learn new endpoints."
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. A larger context window helps the model keep more context; the prompt here was short (syllabus 1.1.2).",
+     "b": "Incorrect. Tokenization does not alter content; the endpoint was invented by the model (syllabus 1.1.2).",
+     "c": "Correct. The model predicts the most plausible continuation based on training data and the prompt; plausible is not necessarily correct (syllabus 1.1.2).",
+     "d": "Incorrect. The issue is not learning during inference but generating plausible content without the real specification (syllabus 1.1.2)."
+    },
+    "vysvetleni_obecne": "Plausible is not necessarily correct; outputs must be verified."
+   },
+   "cz": {
+    "q": "<p>LLM vygeneruje automatizovaný test API, který vypadá profesionálně, ale volá endpoint, který v testovaném systému neexistuje. Specifikace API v promptu nebyla. Která vlastnost LLM tento výsledek NEJLÉPE vysvětluje?</p>",
+    "moznosti": [
+     "Kontextové okno bylo příliš velké, takže model ztratil přehled o promptu.",
+     "Tokenizace chybně rozdělila název endpointu, a ten se proto změnil.",
+     "Transformer vytváří statisticky pravděpodobné posloupnosti tokenů, které nemusí být správné.",
+     "Embeddingy jsou během inference pevné, takže se model nemůže naučit nové endpointy."
+    ],
+    "vysvetleni": {
+     "a": "Nesprávně. Větší kontextové okno pomáhá udržet víc kontextu. Prompt byl navíc krátký (sylabus 1.1.2).",
+     "b": "Nesprávně. Tokenizace obsah nemění. Endpoint si model vymyslel (sylabus 1.1.2).",
+     "c": "Správně. Model předpovídá nejpravděpodobnější pokračování podle trénovacích dat a promptu. Pravděpodobné neznamená správné (sylabus 1.1.2).",
+     "d": "Nesprávně. Problémem není učení během inference, ale generování plauzibilního obsahu bez skutečné specifikace (sylabus 1.1.2)."
+    },
+    "vysvetleni_obecne": "Pravděpodobné neznamená správné, výstupy je nutné ověřit."
+   },
+   "spravne": [
+    "c"
+   ],
+   "oddil": "1.1.2",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-1.1.2-04",
+   "zdroj": "vlastni",
+   "lo": "GenAI-1.1.2",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>A tester runs the same prompt twice with identical input data and receives two different sets of test cases. Which explanation is CORRECT?</p>",
+    "moznosti": [
+     "The model was retrained between the two runs using the first result.",
+     "The context window was cleared, so the second run used different training data.",
+     "The tokenizer splits the same text into different tokens on each run.",
+     "LLM inference is probabilistic and depends on hyperparameter settings."
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. Using a model does not retrain it; the variation comes from inference (syllabus 1.1.2).",
+     "b": "Incorrect. The context window does not contain training data; it limits the text considered when generating (syllabus 1.1.2).",
+     "c": "Incorrect. Tokenization of the same text with the same tokenizer is consistent; the variation comes from token selection during generation (syllabus 1.1.2).",
+     "d": "Correct. Non-deterministic behavior is caused mainly by the probabilistic nature of inference and hyperparameter settings (syllabus 1.1.2)."
+    },
+    "vysvetleni_obecne": "Non-determinism: same input, different outputs, caused by probabilistic inference and hyperparameters."
+   },
+   "cz": {
+    "q": "<p>Tester spustí dvakrát stejný prompt se stejnými vstupními daty a dostane dvě různé sady testovacích případů. Které vysvětlení je SPRÁVNÉ?</p>",
+    "moznosti": [
+     "Model byl mezi oběma běhy přetrénován s využitím prvního výsledku.",
+     "Kontextové okno se vymazalo, takže druhý běh použil jiná trénovací data.",
+     "Tokenizér rozdělí stejný text při každém běhu na jiné tokeny.",
+     "Inference LLM je pravděpodobnostní a závisí na nastavení hyperparametrů."
+    ],
+    "vysvetleni": {
+     "a": "Nesprávně. Používáním se model nepřetrénovává. Rozdíl vzniká při inferenci (sylabus 1.1.2).",
+     "b": "Nesprávně. Kontextové okno neobsahuje trénovací data. Omezuje text, který model bere v úvahu při generování (sylabus 1.1.2).",
+     "c": "Nesprávně. Stejný tokenizér rozdělí stejný text stejně. Rozdíl vzniká při výběru tokenů během generování (sylabus 1.1.2).",
+     "d": "Správně. Nedeterministické chování způsobuje hlavně pravděpodobnostní povaha inference a nastavení hyperparametrů (sylabus 1.1.2)."
+    },
+    "vysvetleni_obecne": "Nedeterminismus: stejný vstup, různé výstupy. Příčinou je pravděpodobnostní inference a hyperparametry."
+   },
+   "spravne": [
+    "d"
+   ],
+   "oddil": "1.1.2",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-1.1.2-05",
+   "zdroj": "vlastni",
+   "lo": "GenAI-1.1.2",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>A tester gives an LLM a very long test execution log and asks for a list of all failures. Failures recorded near the beginning of the log are missing from the answer. Which action BEST addresses the cause of this problem?</p>",
+    "moznosti": [
+     "Run the same prompt again, because the next answer will probably include all failures.",
+     "Reduce the input to the relevant parts or split the log into segments that fit within the context window.",
+     "Ask the model to tokenize the log more carefully before answering.",
+     "Replace the log with screenshots of the test runner so that a multimodal model can process it."
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. Repeating the prompt does not change the context window limit; the same information is still lost (syllabus 1.1.2).",
+     "b": "Correct. The log exceeds the context window, so earlier content is not considered; giving the model less or segmented input addresses this (syllabus 1.1.2).",
+     "c": "Incorrect. Tokenization is not influenced by instructions in the prompt, and it is not the cause (syllabus 1.1.2).",
+     "d": "Incorrect. Images are also converted into tokens and embeddings, so the context window limit remains (syllabus 1.1.4)."
+    },
+    "vysvetleni_obecne": "Content that does not fit into the context window is not considered by the model."
+   },
+   "cz": {
+    "q": "<p>Tester dá LLM velmi dlouhý log z provedení testů a požádá o seznam všech selhání. Selhání zapsaná blízko začátku logu v odpovědi chybějí. Který krok NEJLÉPE řeší příčinu problému?</p>",
+    "moznosti": [
+     "Spustit stejný prompt znovu, protože další odpověď nejspíš bude obsahovat všechna selhání.",
+     "Zmenšit vstup na relevantní části nebo rozdělit log na úseky, které se vejdou do kontextového okna.",
+     "Požádat model, aby log před odpovědí tokenizoval pečlivěji.",
+     "Nahradit log snímky obrazovky z nástroje pro spouštění testů, aby ho zpracoval multimodální model."
+    ],
+    "vysvetleni": {
+     "a": "Nesprávně. Opakování promptu nemění limit kontextového okna. Stejná informace se ztratí znovu (sylabus 1.1.2).",
+     "b": "Správně. Log přesahuje kontextové okno, takže starší obsah model nebere v úvahu. Menší nebo rozdělený vstup to řeší (sylabus 1.1.2).",
+     "c": "Nesprávně. Tokenizaci instrukce v promptu neovlivní a není příčinou (sylabus 1.1.2).",
+     "d": "Nesprávně. I obrázky se převádějí na tokeny a embeddingy, takže limit kontextového okna zůstává (sylabus 1.1.4)."
+    },
+    "vysvetleni_obecne": "Co se nevejde do kontextového okna, model nebere v úvahu."
+   },
+   "spravne": [
+    "b"
+   ],
+   "oddil": "1.1.2",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-1.1.2-06",
+   "zdroj": "vlastni",
+   "lo": "GenAI-1.1.2",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Which statement about increasing the size of an LLM's context window is CORRECT?</p>",
+    "moznosti": [
+     "It helps the model maintain coherence over longer passages but increases computational complexity and processing time.",
+     "It makes the model's outputs deterministic because more context is available.",
+     "It reduces the number of tokens needed to represent the same input text.",
+     "It removes the need to verify outputs because the model sees all relevant information."
+    ],
+    "vysvetleni": {
+     "a": "Correct. The syllabus describes both the benefit (coherence over long text, e.g. large test logs) and the cost (computation and time) (syllabus 1.1.2).",
+     "b": "Incorrect. Non-determinism comes from probabilistic inference and hyperparameters, not from context size (syllabus 1.1.2).",
+     "c": "Incorrect. The number of tokens depends on tokenization, not on the size of the context window (syllabus 1.1.2).",
+     "d": "Incorrect. Generated text remains plausible but not necessarily correct, regardless of context size (syllabus 1.1.2)."
+    },
+    "vysvetleni_obecne": "Larger context window: more coherence, more computation."
+   },
+   "cz": {
+    "q": "<p>Které tvrzení o zvětšení kontextového okna LLM je SPRÁVNÉ?</p>",
+    "moznosti": [
+     "Pomáhá modelu udržet souvislost v delších textech, ale zvyšuje výpočetní náročnost a dobu zpracování.",
+     "Díky většímu kontextu jsou výstupy modelu deterministické.",
+     "Snižuje počet tokenů potřebných k reprezentaci stejného vstupního textu.",
+     "Odstraňuje potřebu ověřovat výstupy, protože model vidí všechny relevantní informace."
+    ],
+    "vysvetleni": {
+     "a": "Správně. Sylabus popisuje přínos (souvislost v dlouhém textu, například ve velkých testovacích lozích) i cenu (výpočet a čas) (sylabus 1.1.2).",
+     "b": "Nesprávně. Nedeterminismus vychází z pravděpodobnostní inference a hyperparametrů, ne z velikosti kontextu (sylabus 1.1.2).",
+     "c": "Nesprávně. Počet tokenů závisí na tokenizaci, ne na velikosti kontextového okna (sylabus 1.1.2).",
+     "d": "Nesprávně. Vygenerovaný text je pravděpodobný, ale ne nutně správný, bez ohledu na velikost kontextu (sylabus 1.1.2)."
+    },
+    "vysvetleni_obecne": "Větší kontextové okno: víc souvislostí, víc výpočtu."
+   },
+   "spravne": [
+    "a"
+   ],
+   "oddil": "1.1.2",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-1.1.2-07",
+   "zdroj": "vlastni",
+   "lo": "GenAI-1.1.2",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>In which situation is a small language model (SLM) the MOST appropriate choice instead of a large language model?</p>",
+    "moznosti": [
+     "The team needs high-quality answers to open questions from many different domains.",
+     "The team needs to process screenshots, audio recordings and text in one prompt.",
+     "The team needs a lightweight model for one focused task, such as classifying log lines on a server with limited computing resources.",
+     "The team needs the largest possible context window to analyse complete specifications."
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. Broad, multi-domain tasks favour LLMs with more parameters and wider training (syllabus 1.1.2).",
+     "b": "Incorrect. This requires a multimodal model; being small is not the relevant property (syllabus 1.1.4).",
+     "c": "Correct. SLMs have fewer parameters and are designed for lightweight and focused GenAI solutions (syllabus 1.1.2).",
+     "d": "Incorrect. Nothing in the syllabus links SLMs to large context windows; their benefit is being compact and focused (syllabus 1.1.2)."
+    },
+    "vysvetleni_obecne": "SLM = fewer parameters, lightweight, focused."
+   },
+   "cz": {
+    "q": "<p>Ve které situaci je malý jazykový model (SLM) NEJVHODNĚJŠÍ volbou místo velkého jazykového modelu?</p>",
+    "moznosti": [
+     "Tým potřebuje kvalitní odpovědi na otevřené otázky z mnoha různých oborů.",
+     "Tým potřebuje v jednom promptu zpracovat snímky obrazovky, zvukové nahrávky a text.",
+     "Tým potřebuje lehký model pro jednu zaměřenou úlohu, například třídění řádků logu na serveru s omezeným výpočetním výkonem.",
+     "Tým potřebuje co největší kontextové okno pro analýzu kompletních specifikací."
+    ],
+    "vysvetleni": {
+     "a": "Nesprávně. Široké úlohy napříč obory svědčí LLM s víc parametry a širším tréninkem (sylabus 1.1.2).",
+     "b": "Nesprávně. To vyžaduje multimodální model. Velikost modelu tu není podstatná vlastnost (sylabus 1.1.4).",
+     "c": "Správně. SLM mají méně parametrů a jsou navržené jako lehká a zaměřená řešení GenAI (sylabus 1.1.2).",
+     "d": "Nesprávně. Sylabus SLM s velkým kontextovým oknem nespojuje. Jejich přínos je kompaktnost a zaměření (sylabus 1.1.2)."
+    },
+    "vysvetleni_obecne": "SLM = méně parametrů, lehké, zaměřené řešení."
+   },
+   "spravne": [
+    "c"
+   ],
+   "oddil": "1.1.2",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-1.1.2-08",
+   "zdroj": "vlastni",
+   "lo": "GenAI-1.1.2",
+   "k": "K2",
+   "body": 1,
+   "vyber": 2,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Which TWO statements about tokens and tokenization are CORRECT?</p>",
+    "moznosti": [
+     "The number of tokens in an input determines how much of the context window it uses.",
+     "Each token always corresponds to exactly one word.",
+     "Punctuation marks and special characters can be represented as separate tokens.",
+     "Tokens are vectors that capture the semantic meaning of words.",
+     "Tokenization takes place after the model has generated its response."
+    ],
+    "vysvetleni": {
+     "a": "Correct. The context window is measured in tokens (syllabus 1.1.2).",
+     "b": "Incorrect. A token can be a character, a sub-word or a word (syllabus 1.1.2).",
+     "c": "Correct. Tokenization breaks text into units that may be as small as a character, including punctuation (syllabus 1.1.2).",
+     "d": "Incorrect. Vectors that capture meaning are embeddings, not tokens (syllabus 1.1.2).",
+     "e": "Incorrect. The model first tokenizes the input so that it can process it (syllabus 1.1.2)."
+    },
+    "vysvetleni_obecne": "Tokens are units of text; embeddings are their vectors; the context window is measured in tokens."
+   },
+   "cz": {
+    "q": "<p>Která DVĚ tvrzení o tokenech a tokenizaci jsou SPRÁVNÁ?</p>",
+    "moznosti": [
+     "Počet tokenů ve vstupu určuje, jakou část kontextového okna vstup zabere.",
+     "Každý token vždy odpovídá právě jednomu slovu.",
+     "Interpunkce a speciální znaky mohou být samostatnými tokeny.",
+     "Tokeny jsou vektory, které zachycují význam slov.",
+     "Tokenizace probíhá až poté, co model vygeneruje odpověď."
+    ],
+    "vysvetleni": {
+     "a": "Správně. Kontextové okno se měří v tokenech (sylabus 1.1.2).",
+     "b": "Nesprávně. Token může být znak, část slova nebo slovo (sylabus 1.1.2).",
+     "c": "Správně. Tokenizace dělí text na jednotky, které mohou být malé jako jeden znak, včetně interpunkce (sylabus 1.1.2).",
+     "d": "Nesprávně. Vektory s významem jsou embeddingy, ne tokeny (sylabus 1.1.2).",
+     "e": "Nesprávně. Model vstup nejdřív tokenizuje, aby ho mohl zpracovat (sylabus 1.1.2)."
+    },
+    "vysvetleni_obecne": "Tokeny jsou jednotky textu, embeddingy jejich vektory, kontextové okno se měří v tokenech."
+   },
+   "spravne": [
+    "a",
+    "c"
+   ],
+   "oddil": "1.1.2",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-1.1.2-09",
+   "zdroj": "vlastni",
+   "lo": "GenAI-1.1.2",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Which statement BEST describes how an LLM produces its answer during inference?</p>",
+    "moznosti": [
+     "It looks up a stored answer that matches the prompt in its training data.",
+     "It repeatedly predicts the next token, using relationships between tokens learned during training.",
+     "It applies grammar rules written by linguists to assemble a sentence.",
+     "It first generates embeddings and then converts them back into the original training texts."
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. LLMs generate new text; they do not retrieve stored answers (syllabus 1.1.2).",
+     "b": "Correct. During inference, LLMs predict the next token in a sequence using learned relationships (syllabus 1.1.2).",
+     "c": "Incorrect. Hand-written rules describe symbolic AI, not LLMs (syllabus 1.1.1).",
+     "d": "Incorrect. Embeddings represent tokens numerically; the model does not reconstruct training texts (syllabus 1.1.2)."
+    },
+    "vysvetleni_obecne": "Inference = next-token prediction, token by token."
+   },
+   "cz": {
+    "q": "<p>Které tvrzení NEJLÉPE popisuje, jak LLM při inferenci vytváří odpověď?</p>",
+    "moznosti": [
+     "Vyhledá v trénovacích datech uloženou odpověď, která odpovídá promptu.",
+     "Opakovaně předpovídá další token a využívá přitom vztahy mezi tokeny naučené při trénování.",
+     "Použije gramatická pravidla sepsaná lingvisty a z nich sestaví větu.",
+     "Nejdřív vytvoří embeddingy a ty pak převede zpět na původní trénovací texty."
+    ],
+    "vysvetleni": {
+     "a": "Nesprávně. LLM vytvářejí nový text, nevyhledávají uložené odpovědi (sylabus 1.1.2).",
+     "b": "Správně. Při inferenci LLM předpovídá další token v posloupnosti podle naučených vztahů (sylabus 1.1.2).",
+     "c": "Nesprávně. Ručně psaná pravidla popisují symbolickou AI, ne LLM (sylabus 1.1.1).",
+     "d": "Nesprávně. Embeddingy reprezentují tokeny číselně. Model trénovací texty nerekonstruuje (sylabus 1.1.2)."
+    },
+    "vysvetleni_obecne": "Inference = předpověď dalšího tokenu, jeden po druhém."
+   },
+   "spravne": [
+    "b"
+   ],
+   "oddil": "1.1.2",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-1.1.3-01",
+   "zdroj": "vlastni",
+   "lo": "GenAI-1.1.3",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>A test team needs an LLM to generate test data records that follow an exact JSON schema with the team's field naming conventions. The task requires no complex analysis. Which type of LLM is the BEST fit?</p>",
+    "moznosti": [
+     "Reasoning LLM",
+     "Foundation LLM",
+     "Vision-language model",
+     "Instruction-tuned LLM"
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. Reasoning LLMs target multi-step problem-solving; this task mainly needs precise instruction following (syllabus 1.1.3).",
+     "b": "Incorrect. Foundation LLMs typically need further adaptation to meet specific task requirements such as a fixed format (syllabus 1.1.3).",
+     "c": "Incorrect. The task involves no visual input (syllabus 1.1.4).",
+     "d": "Correct. Instruction-tuned LLMs are optimised for task adherence and instruction following, which suits strict format requirements (syllabus 1.1.3)."
+    },
+    "vysvetleni_obecne": "Exact format and clear instructions point to an instruction-tuned LLM."
+   },
+   "cz": {
+    "q": "<p>Testovací tým potřebuje, aby LLM vygeneroval záznamy testovacích dat přesně podle schématu JSON s konvencemi pojmenování polí, které tým používá. Úloha nevyžaduje složitou analýzu. Který typ LLM se hodí NEJLÉPE?</p>",
+    "moznosti": [
+     "Uvažující (reasoning) LLM",
+     "Základní (foundation) LLM",
+     "Model pro obraz a jazyk",
+     "LLM vyladěný na instrukce"
+    ],
+    "vysvetleni": {
+     "a": "Nesprávně. Uvažující LLM míří na řešení problémů o více krocích. Tady jde hlavně o přesné plnění instrukcí (sylabus 1.1.3).",
+     "b": "Nesprávně. Základní LLM obvykle potřebují další přizpůsobení, aby splnily konkrétní požadavky, jako je pevný formát (sylabus 1.1.3).",
+     "c": "Nesprávně. Úloha nemá žádný vizuální vstup (sylabus 1.1.4).",
+     "d": "Správně. LLM vyladěné na instrukce jsou optimalizované na dodržení úlohy a plnění instrukcí, což odpovídá přísným požadavkům na formát (sylabus 1.1.3)."
+    },
+    "vysvetleni_obecne": "Přesný formát a jasné instrukce vedou na LLM vyladěný na instrukce."
+   },
+   "spravne": [
+    "d"
+   ],
+   "oddil": "1.1.3",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-1.1.3-02",
+   "zdroj": "vlastni",
+   "lo": "GenAI-1.1.3",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Which statement BEST describes how instruction-tuned LLMs are created?</p>",
+    "moznosti": [
+     "They are derived from foundation models by fine-tuning on datasets that pair prompts with expected responses.",
+     "They are trained from scratch only on tasks that require chain-of-thought reasoning.",
+     "They are derived from reasoning models by removing the intermediate reasoning steps.",
+     "They are created by adding hand-written rules on top of a foundation model."
+    ],
+    "vysvetleni": {
+     "a": "Correct. Instruction tuning fine-tunes a foundation model with prompt and response pairs to improve alignment with instructions (syllabus 1.1.3).",
+     "b": "Incorrect. Training on chain-of-thought tasks describes reasoning LLMs, which extend instruction-tuned models (syllabus 1.1.3).",
+     "c": "Incorrect. The order is the opposite: reasoning LLMs build on instruction-tuned LLMs (syllabus 1.1.3).",
+     "d": "Incorrect. Hand-written rules are typical of symbolic AI; instruction tuning is a training process (syllabus 1.1.1, 1.1.3)."
+    },
+    "vysvetleni_obecne": "Order of stages: foundation, instruction-tuned, reasoning."
+   },
+   "cz": {
+    "q": "<p>Které tvrzení NEJLÉPE popisuje, jak vznikají LLM vyladěné na instrukce?</p>",
+    "moznosti": [
+     "Vznikají ze základních modelů doladěním na datových sadách, které párují prompty s očekávanými odpověďmi.",
+     "Trénují se od začátku pouze na úlohách, které vyžadují uvažování v řetězci kroků.",
+     "Vznikají z uvažujících modelů odstraněním mezikroků uvažování.",
+     "Vznikají přidáním ručně psaných pravidel nad základní model."
+    ],
+    "vysvetleni": {
+     "a": "Správně. Ladění na instrukce dolaďuje základní model na dvojicích prompt a odpověď, aby lépe odpovídal pokynům (sylabus 1.1.3).",
+     "b": "Nesprávně. Trénink na úlohách s řetězcem kroků popisuje uvažující LLM, které modely vyladěné na instrukce rozšiřují (sylabus 1.1.3).",
+     "c": "Nesprávně. Pořadí je opačné: uvažující LLM stavějí na modelech vyladěných na instrukce (sylabus 1.1.3).",
+     "d": "Nesprávně. Ručně psaná pravidla jsou typická pro symbolickou AI. Ladění na instrukce je proces trénování (sylabus 1.1.1, 1.1.3)."
+    },
+    "vysvetleni_obecne": "Pořadí fází: základní, vyladěný na instrukce, uvažující."
+   },
+   "spravne": [
+    "a"
+   ],
+   "oddil": "1.1.3",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-1.1.3-03",
+   "zdroj": "vlastni",
+   "lo": "GenAI-1.1.3",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>A test manager wants an LLM to combine test results from several releases, defect reports and the history of code changes in order to recommend where to focus regression testing. Which type of LLM is MOST suitable, and why?</p>",
+    "moznosti": [
+     "An instruction-tuned LLM, because the main challenge of the task is following the output format.",
+     "A reasoning LLM, because the task requires multi-step inference and synthesis of complex information.",
+     "A foundation LLM, because it was trained on the largest and most diverse dataset.",
+     "Any type, because the three types differ only in the number of parameters."
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. Format is not the main challenge here; the task requires combining sources and drawing conclusions (syllabus 1.1.3).",
+     "b": "Correct. Reasoning LLMs are suited to high-cognitive-load tasks involving intermediate reasoning steps and synthesis of complex information (syllabus 1.1.3).",
+     "c": "Incorrect. Broad pre-training does not make foundation LLMs well adapted to specific complex tasks; they typically need further adaptation (syllabus 1.1.3).",
+     "d": "Incorrect. The types differ in their training stages and capabilities, not just in size (syllabus 1.1.3)."
+    },
+    "vysvetleni_obecne": "Synthesis of multiple sources and drawing conclusions point to a reasoning LLM."
+   },
+   "cz": {
+    "q": "<p>Test manažer chce, aby LLM propojil výsledky testů z několika vydání, reporty o defektech a historii změn kódu a doporučil, kam soustředit regresní testování. Který typ LLM je NEJVHODNĚJŠÍ a proč?</p>",
+    "moznosti": [
+     "LLM vyladěný na instrukce, protože hlavní obtíží úlohy je dodržení formátu výstupu.",
+     "Uvažující LLM, protože úloha vyžaduje vícekrokové vyvozování a syntézu složitých informací.",
+     "Základní LLM, protože byl natrénován na největší a nejpestřejší sadě dat.",
+     "Jakýkoli typ, protože tři typy se liší jen počtem parametrů."
+    ],
+    "vysvetleni": {
+     "a": "Nesprávně. Formát tu není hlavní obtíž. Úloha vyžaduje propojit zdroje a vyvodit závěry (sylabus 1.1.3).",
+     "b": "Správně. Uvažující LLM se hodí na kognitivně náročné úlohy s mezikroky a syntézou složitých informací (sylabus 1.1.3).",
+     "c": "Nesprávně. Široké předtrénování nedělá ze základního modelu model přizpůsobený konkrétní složité úloze. Obvykle potřebuje další přizpůsobení (sylabus 1.1.3).",
+     "d": "Nesprávně. Typy se liší fázemi trénování a schopnostmi, ne jen velikostí (sylabus 1.1.3)."
+    },
+    "vysvetleni_obecne": "Syntéza více zdrojů a vyvozování závěrů vedou na uvažující LLM."
+   },
+   "spravne": [
+    "b"
+   ],
+   "oddil": "1.1.3",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-1.1.3-04",
+   "zdroj": "vlastni",
+   "lo": "GenAI-1.1.3",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Which statement about foundation LLMs is CORRECT?</p>",
+    "moznosti": [
+     "They are specifically optimised to follow user instructions and output formats.",
+     "They are always the best choice for test tasks because they know the most.",
+     "They are general-purpose models trained on vast and diverse data, and typically require further adaptation for specific tasks.",
+     "They are trained only on source code and are therefore limited to test automation."
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. Optimisation for instruction following is the result of instruction tuning (syllabus 1.1.3).",
+     "b": "Incorrect. The syllabus states that in testing, instruction-tuned and reasoning LLMs are used, chosen by task complexity (syllabus 1.1.3).",
+     "c": "Correct. Foundation LLMs are powerful and flexible but typically need further adaptation to meet specific task requirements (syllabus 1.1.3).",
+     "d": "Incorrect. Their training data is diverse, including text, code, images and other modalities (syllabus 1.1.3)."
+    },
+    "vysvetleni_obecne": "Foundation LLM: general-purpose, flexible, needs adaptation."
+   },
+   "cz": {
+    "q": "<p>Které tvrzení o základních (foundation) LLM je SPRÁVNÉ?</p>",
+    "moznosti": [
+     "Jsou speciálně optimalizované na plnění instrukcí uživatele a formátů výstupu.",
+     "Jsou pro testovací úlohy vždy nejlepší volbou, protože toho vědí nejvíc.",
+     "Jsou to univerzální modely natrénované na obrovských a pestrých datech a pro konkrétní úlohy obvykle potřebují další přizpůsobení.",
+     "Jsou natrénované jen na zdrojovém kódu, a proto se omezují na automatizaci testů."
+    ],
+    "vysvetleni": {
+     "a": "Nesprávně. Optimalizace na plnění instrukcí je výsledkem ladění na instrukce (sylabus 1.1.3).",
+     "b": "Nesprávně. Sylabus uvádí, že v testování se používají modely vyladěné na instrukce a uvažující modely podle složitosti úlohy (sylabus 1.1.3).",
+     "c": "Správně. Základní LLM jsou silné a flexibilní, ale pro konkrétní požadavky úlohy je obvykle nutné je dál přizpůsobit (sylabus 1.1.3).",
+     "d": "Nesprávně. Jejich trénovací data jsou pestrá: text, kód, obrázky a další modality (sylabus 1.1.3)."
+    },
+    "vysvetleni_obecne": "Základní LLM: univerzální, flexibilní, potřebuje přizpůsobení."
+   },
+   "spravne": [
+    "c"
+   ],
+   "oddil": "1.1.3",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-1.1.3-05",
+   "zdroj": "vlastni",
+   "lo": "GenAI-1.1.3",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Which statement about selecting between instruction-tuned and reasoning LLMs for test tasks is CORRECT?</p>",
+    "moznosti": [
+     "Reasoning LLMs should always be selected because they are the most advanced type.",
+     "Instruction-tuned LLMs are not suitable for software testing because they cannot reason at all.",
+     "Foundation LLMs should be preferred, because both other types are restricted versions of them.",
+     "The selection depends on the complexity and reasoning demands of the specific test task."
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. More advanced does not mean better for every task; simple format-driven tasks do not need a reasoning LLM (syllabus 1.1.3).",
+     "b": "Incorrect. The syllabus states that both instruction-tuned and reasoning LLMs are used in testing (syllabus 1.1.3).",
+     "c": "Incorrect. The other types are further specialised, not restricted; foundation LLMs typically need adaptation (syllabus 1.1.3).",
+     "d": "Correct. The syllabus states that the choice depends on the complexity and reasoning demands of the testing task (syllabus 1.1.3)."
+    },
+    "vysvetleni_obecne": "Model choice depends on task complexity."
+   },
+   "cz": {
+    "q": "<p>Které tvrzení o volbě mezi LLM vyladěným na instrukce a uvažujícím LLM pro testovací úlohy je SPRÁVNÉ?</p>",
+    "moznosti": [
+     "Vždy je třeba zvolit uvažující LLM, protože je to nejpokročilejší typ.",
+     "LLM vyladěné na instrukce se pro testování nehodí, protože vůbec neumějí uvažovat.",
+     "Přednost mají základní LLM, protože oba další typy jsou jejich omezené verze.",
+     "Volba závisí na složitosti a nárocích na uvažování konkrétní testovací úlohy."
+    ],
+    "vysvetleni": {
+     "a": "Nesprávně. Pokročilejší neznamená lepší pro každou úlohu. Jednoduché formátové úlohy uvažující LLM nepotřebují (sylabus 1.1.3).",
+     "b": "Nesprávně. Sylabus uvádí, že v testování se používají oba typy (sylabus 1.1.3).",
+     "c": "Nesprávně. Další typy jsou dál specializované, ne omezené. Základní LLM obvykle přizpůsobení potřebují (sylabus 1.1.3).",
+     "d": "Správně. Sylabus uvádí, že volba závisí na složitosti úlohy a nárocích na uvažování (sylabus 1.1.3)."
+    },
+    "vysvetleni_obecne": "Volba modelu závisí na složitosti úlohy."
+   },
+   "spravne": [
+    "d"
+   ],
+   "oddil": "1.1.3",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-1.1.4-01",
+   "zdroj": "vlastni",
+   "lo": "GenAI-1.1.4",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>A tester wants to check whether a screenshot of a payment confirmation page matches the expected result described in a test case. Which type of model is specifically designed to combine these two inputs?</p>",
+    "moznosti": [
+     "A vision-language model",
+     "A small language model",
+     "A text-only instruction-tuned LLM",
+     "A symbolic AI system"
+    ],
+    "vysvetleni": {
+     "a": "Correct. Vision-language models integrate visual and textual information, e.g. to analyse consistency between text and image (syllabus 1.1.4).",
+     "b": "Incorrect. Being small says nothing about the ability to process images (syllabus 1.1.2).",
+     "c": "Incorrect. A text-only model cannot process the screenshot (syllabus 1.1.4).",
+     "d": "Incorrect. Symbolic AI uses rules and symbols; it is not designed for image and text analysis (syllabus 1.1.1)."
+    },
+    "vysvetleni_obecne": "Image plus text points to a vision-language model."
+   },
+   "cz": {
+    "q": "<p>Tester chce ověřit, zda snímek obrazovky s potvrzením platby odpovídá očekávanému výsledku popsanému v testovacím případu. Který typ modelu je speciálně určen ke spojení těchto dvou vstupů?</p>",
+    "moznosti": [
+     "Model pro obraz a jazyk (vision-language model)",
+     "Malý jazykový model",
+     "Čistě textový LLM vyladěný na instrukce",
+     "Systém symbolické AI"
+    ],
+    "vysvetleni": {
+     "a": "Správně. Modely pro obraz a jazyk propojují vizuální a textovou informaci, například při analýze souladu textu a obrazu (sylabus 1.1.4).",
+     "b": "Nesprávně. Malá velikost modelu nic neříká o schopnosti zpracovat obrázky (sylabus 1.1.2).",
+     "c": "Nesprávně. Čistě textový model snímek obrazovky nezpracuje (sylabus 1.1.4).",
+     "d": "Nesprávně. Symbolická AI používá pravidla a symboly, na analýzu obrazu a textu určená není (sylabus 1.1.1)."
+    },
+    "vysvetleni_obecne": "Obraz a text dohromady vedou na model pro obraz a jazyk."
+   },
+   "spravne": [
+    "a"
+   ],
+   "oddil": "1.1.4",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-1.1.4-02",
+   "zdroj": "vlastni",
+   "lo": "GenAI-1.1.4",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>How does a multimodal LLM process an image that is submitted together with a text prompt?</p>",
+    "moznosti": [
+     "The image is converted into plain text by character recognition, and only the text is processed.",
+     "The image is converted into embeddings, for example using a vision-language model, and processed by the transformer together with the text.",
+     "The image is stored separately and the transformer processes only the text prompt.",
+     "The image is split by the same text tokenizer into characters before processing."
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. Multimodal models process the visual information itself, not only extracted text (syllabus 1.1.4).",
+     "b": "Correct. Tokenization is adapted for each data type; images are converted into embeddings before being processed in the transformer (syllabus 1.1.4).",
+     "c": "Incorrect. The transformer processes the image representation along with the text (syllabus 1.1.4).",
+     "d": "Incorrect. Tokenization is adapted to the modality; images are not treated as text characters (syllabus 1.1.4)."
+    },
+    "vysvetleni_obecne": "Each modality has its own tokenization; images become embeddings."
+   },
+   "cz": {
+    "q": "<p>Jak multimodální LLM zpracuje obrázek, který dostane spolu s textovým promptem?</p>",
+    "moznosti": [
+     "Obrázek se rozpoznáním znaků převede na prostý text a zpracuje se jen tento text.",
+     "Obrázek se převede na embeddingy, například pomocí modelu pro obraz a jazyk, a transformer ho zpracuje spolu s textem.",
+     "Obrázek se uloží zvlášť a transformer zpracuje jen textový prompt.",
+     "Obrázek se před zpracováním rozdělí stejným textovým tokenizérem na znaky."
+    ],
+    "vysvetleni": {
+     "a": "Nesprávně. Multimodální modely zpracují samotnou vizuální informaci, ne jen vytažený text (sylabus 1.1.4).",
+     "b": "Správně. Tokenizace se přizpůsobí každému druhu dat. Obrázky se převedou na embeddingy a ty zpracuje transformer (sylabus 1.1.4).",
+     "c": "Nesprávně. Transformer zpracuje reprezentaci obrázku spolu s textem (sylabus 1.1.4).",
+     "d": "Nesprávně. Tokenizace se přizpůsobuje modalitě. Obrázky se nezpracovávají jako textové znaky (sylabus 1.1.4)."
+    },
+    "vysvetleni_obecne": "Každá modalita má vlastní tokenizaci, obrázky se mění na embeddingy."
+   },
+   "spravne": [
+    "b"
+   ],
+   "oddil": "1.1.4",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-1.1.4-03",
+   "zdroj": "vlastni",
+   "lo": "GenAI-1.1.4",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Which of the following is a typical task of vision-language models?</p>",
+    "moznosti": [
+     "Transcribing audio recordings of review meetings into minutes.",
+     "Generating unit tests from source code without any visual input.",
+     "Answering a question about the content of a screenshot, such as whether an error message is visible.",
+     "Predicting defect-prone modules from code metrics."
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. Audio transcription involves the audio modality, which is outside the visual and textual focus of vision-language models (syllabus 1.1.4).",
+     "b": "Incorrect. A text-only task does not need a vision-language model (syllabus 1.1.4).",
+     "c": "Correct. Visual question answering is one of the tasks the syllabus lists for vision-language models (syllabus 1.1.4).",
+     "d": "Incorrect. Prediction from code metrics is a typical use of classical machine learning (syllabus 1.1.1)."
+    },
+    "vysvetleni_obecne": "Typical VLM tasks: image captioning, visual question answering, text and image consistency."
+   },
+   "cz": {
+    "q": "<p>Která z následujících úloh je typická pro modely pro obraz a jazyk?</p>",
+    "moznosti": [
+     "Přepis zvukových nahrávek z revizních schůzek do zápisu.",
+     "Generování jednotkových testů ze zdrojového kódu bez vizuálního vstupu.",
+     "Odpověď na otázku k obsahu snímku obrazovky, například zda je vidět chybová hláška.",
+     "Předpověď modulů náchylných k defektům z metrik kódu."
+    ],
+    "vysvetleni": {
+     "a": "Nesprávně. Přepis zvuku pracuje se zvukovou modalitou, která je mimo zaměření modelů pro obraz a jazyk (sylabus 1.1.4).",
+     "b": "Nesprávně. Čistě textová úloha model pro obraz a jazyk nepotřebuje (sylabus 1.1.4).",
+     "c": "Správně. Odpovídání na otázky k obrázku (visual question answering) je jedna z úloh, které sylabus u těchto modelů uvádí (sylabus 1.1.4).",
+     "d": "Nesprávně. Předpověď z metrik kódu je typické použití klasického strojového učení (sylabus 1.1.1)."
+    },
+    "vysvetleni_obecne": "Typické úlohy VLM: popis obrázku, odpovídání na otázky k obrázku, soulad textu a obrazu."
+   },
+   "spravne": [
+    "c"
+   ],
+   "oddil": "1.1.4",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-1.1.4-04",
+   "zdroj": "vlastni",
+   "lo": "GenAI-1.1.4",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>A tester gives a multimodal LLM a screenshot of a form together with the related user story and asks it to list discrepancies. Which of the following is a realistic challenge of this approach?</p>",
+    "moznosti": [
+     "The model can process the screenshot only if the user story is removed from the prompt.",
+     "The model will correct the user interface of the application automatically.",
+     "Multimodal LLMs cannot be used to derive test cases from visual input.",
+     "The model may misread small text or report interface elements that are not present."
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. Multimodal models are designed to process image and text together (syllabus 1.1.4).",
+     "b": "Incorrect. The model analyses the inputs; it does not change the application (syllabus 1.1.4).",
+     "c": "Incorrect. The syllabus states that such models can generate test cases that combine text and visual cues (syllabus 1.1.4).",
+     "d": "Correct. Model outputs are plausible but not necessarily correct; misreading details is a typical challenge, so findings must be verified (syllabus 1.1.2, 1.1.4)."
+    },
+    "vysvetleni_obecne": "Multimodal analysis brings benefits and challenges; results need human verification."
+   },
+   "cz": {
+    "q": "<p>Tester dá multimodálnímu LLM snímek obrazovky formuláře spolu s příslušným uživatelským scénářem a požádá o seznam nesouladů. Které z následujícího je reálným úskalím tohoto postupu?</p>",
+    "moznosti": [
+     "Model snímek zpracuje jen tehdy, když se uživatelský scénář z promptu odstraní.",
+     "Model uživatelské rozhraní aplikace automaticky opraví.",
+     "Multimodální LLM nelze použít k odvození testovacích případů z vizuálního vstupu.",
+     "Model může špatně přečíst drobný text nebo nahlásit prvky rozhraní, které na snímku nejsou."
+    ],
+    "vysvetleni": {
+     "a": "Nesprávně. Multimodální modely jsou navržené tak, aby zpracovaly obraz a text společně (sylabus 1.1.4).",
+     "b": "Nesprávně. Model vstupy analyzuje, aplikaci nemění (sylabus 1.1.4).",
+     "c": "Nesprávně. Sylabus uvádí, že tyto modely umí vytvořit testovací případy kombinující text a vizuální podněty (sylabus 1.1.4).",
+     "d": "Správně. Výstupy modelu jsou pravděpodobné, ale ne nutně správné. Chybné čtení detailů je typické úskalí, proto se zjištění ověřují (sylabus 1.1.2, 1.1.4)."
+    },
+    "vysvetleni_obecne": "Multimodální analýza má přínosy i úskalí, výsledky ověřuje člověk."
+   },
+   "spravne": [
+    "d"
+   ],
+   "oddil": "1.1.4",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-1.1.4-05",
+   "zdroj": "vlastni",
+   "lo": "GenAI-1.1.4",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>How can multimodal LLMs, especially those augmented with vision-language models, help increase test coverage?</p>",
+    "moznosti": [
+     "By generating test cases that combine textual data with visual cues from wireframes.",
+     "By executing the same test cases on several devices in parallel.",
+     "By removing the need for a test basis, because the screenshot defines the expected behaviour.",
+     "By replacing reviews of user stories with automatic image comparison."
+    ],
+    "vysvetleni": {
+     "a": "Correct. The syllabus states that such models can generate rich test cases that incorporate textual data and visual cues, increasing overall coverage (syllabus 1.1.4).",
+     "b": "Incorrect. Test execution on devices is not a capability of the model (syllabus 1.2.1).",
+     "c": "Incorrect. A screenshot shows actual behaviour; expected results still come from the test basis (syllabus 1.1.4).",
+     "d": "Incorrect. Multimodal models support the analysis of text and images together; they do not replace reviews (syllabus 1.1.4, 1.2.1)."
+    },
+    "vysvetleni_obecne": "Coverage grows when test cases use both text and visual information."
+   },
+   "cz": {
+    "q": "<p>Jak mohou multimodální LLM, zejména ty doplněné o modely pro obraz a jazyk, pomoci zvýšit pokrytí testy?</p>",
+    "moznosti": [
+     "Generováním testovacích případů, které kombinují textová data s vizuálními podněty z wireframů.",
+     "Paralelním spouštěním stejných testovacích případů na několika zařízeních.",
+     "Odstraněním potřeby testovací báze, protože očekávané chování určuje snímek obrazovky.",
+     "Nahrazením revizí uživatelských scénářů automatickým porovnáním obrázků."
+    ],
+    "vysvetleni": {
+     "a": "Správně. Sylabus uvádí, že tyto modely umí vytvořit testovací případy s textovými daty i vizuálními podněty, a tím zvýšit pokrytí (sylabus 1.1.4).",
+     "b": "Nesprávně. Spouštění testů na zařízeních není schopnost modelu (sylabus 1.2.1).",
+     "c": "Nesprávně. Snímek ukazuje skutečné chování. Očekávané výsledky dál pocházejí z testovací báze (sylabus 1.1.4).",
+     "d": "Nesprávně. Multimodální modely podporují společnou analýzu textu a obrazu, revize nenahrazují (sylabus 1.1.4, 1.2.1)."
+    },
+    "vysvetleni_obecne": "Pokrytí roste, když testovací případy využijí text i vizuální informaci."
+   },
+   "spravne": [
+    "a"
+   ],
+   "oddil": "1.1.4",
+   "poznamka": "Studijní cíl 1.1.4 je K2, ale formulovaný slovesy 'write and execute'. Otázka proto ověřuje porozumění využití multimodálních modelů."
+  },
+  {
+   "id": "CG-1.2.1-01",
+   "zdroj": "vlastni",
+   "lo": "GenAI-1.2.1",
+   "k": "K2",
+   "body": 1,
+   "vyber": 2,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Which TWO of the following are examples of key LLM capabilities for test tasks?</p>",
+    "moznosti": [
+     "Classifying anomalies found in test results according to severity and priority.",
+     "Guaranteeing that generated expected results are correct without further review.",
+     "Generating questions that help clarify ambiguous requirements with stakeholders.",
+     "Executing performance tests directly against the production environment.",
+     "Taking the final release decision instead of the test manager."
+    ],
+    "vysvetleni": {
+     "a": "Correct. Test result analysis includes summarising results and classifying anomalies by severity and priority (syllabus 1.2.1).",
+     "b": "Incorrect. LLMs can help generate expected results, but outputs are plausible, not necessarily correct (syllabus 1.1.2, 1.2.1).",
+     "c": "Correct. Requirements analysis includes generating meaningful questions for stakeholders (syllabus 1.2.1).",
+     "d": "Incorrect. Test execution is not among the listed capabilities; LLMs support automation by generating and improving scripts (syllabus 1.2.1).",
+     "e": "Incorrect. LLMs support testware creation and analysis; decisions remain with people (syllabus 1.2.1)."
+    },
+    "vysvetleni_obecne": "LLMs help with analysis, design, data, automation, results and testware; they do not guarantee correctness or act autonomously."
+   },
+   "cz": {
+    "q": "<p>Která DVĚ z následujících jsou příklady hlavních schopností LLM pro testovací úlohy?</p>",
+    "moznosti": [
+     "Třídění anomálií nalezených ve výsledcích testů podle závažnosti a priority.",
+     "Zaručení správnosti vygenerovaných očekávaných výsledků bez další kontroly.",
+     "Generování otázek, které pomohou se stakeholdery vyjasnit nejednoznačné požadavky.",
+     "Spouštění výkonnostních testů přímo proti produkčnímu prostředí.",
+     "Konečné rozhodnutí o vydání místo test manažera."
+    ],
+    "vysvetleni": {
+     "a": "Správně. Analýza výsledků testů zahrnuje shrnutí a třídění anomálií podle závažnosti a priority (sylabus 1.2.1).",
+     "b": "Nesprávně. LLM pomáhají generovat očekávané výsledky, ale výstupy jsou pravděpodobné, ne nutně správné (sylabus 1.1.2, 1.2.1).",
+     "c": "Správně. Analýza požadavků zahrnuje generování otázek pro stakeholdery (sylabus 1.2.1).",
+     "d": "Nesprávně. Spouštění testů mezi uvedenými schopnostmi není. LLM automatizaci podporují generováním a vylepšováním skriptů (sylabus 1.2.1).",
+     "e": "Nesprávně. LLM podporují tvorbu testwaru a analýzu, rozhodnutí zůstávají na lidech (sylabus 1.2.1)."
+    },
+    "vysvetleni_obecne": "LLM pomáhají s analýzou, návrhem, daty, automatizací, výsledky a testwarem. Správnost nezaručují a samostatně nerozhodují."
+   },
+   "spravne": [
+    "a",
+    "c"
+   ],
+   "oddil": "1.2.1",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-1.2.1-02",
+   "zdroj": "vlastni",
+   "lo": "GenAI-1.2.1",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>A tester describes the premium calculation rules of an insurance product to an LLM and asks what premium the system should return for a 45-year-old client with a specific level of coverage. Which LLM capability is the tester using?</p>",
+    "moznosti": [
+     "Test data generation",
+     "Requirements analysis and improvement",
+     "Test oracle generation",
+     "Test result analysis"
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. The tester already has the input values; the question is about the expected output (syllabus 1.2.1).",
+     "b": "Incorrect. The tester is not looking for ambiguities or gaps in the rules (syllabus 1.2.1).",
+     "c": "Correct. Determining the expected result for given inputs is test oracle generation (syllabus 1.2.1).",
+     "d": "Incorrect. No actual test results are being analysed (syllabus 1.2.1)."
+    },
+    "vysvetleni_obecne": "Expected results = test oracle."
+   },
+   "cz": {
+    "q": "<p>Tester popíše LLM pravidla výpočtu pojistného pro pojistný produkt a zeptá se, jaké pojistné má systém vrátit pro 45letého klienta s určitou výší krytí. Kterou schopnost LLM tester využívá?</p>",
+    "moznosti": [
+     "Generování testovacích dat",
+     "Analýza a zlepšování požadavků",
+     "Generování testovacího orákula",
+     "Analýza výsledků testů"
+    ],
+    "vysvetleni": {
+     "a": "Nesprávně. Vstupní hodnoty už tester má. Ptá se na očekávaný výstup (sylabus 1.2.1).",
+     "b": "Nesprávně. Tester v pravidlech nehledá nejednoznačnosti ani mezery (sylabus 1.2.1).",
+     "c": "Správně. Určení očekávaného výsledku pro dané vstupy je generování testovacího orákula (sylabus 1.2.1).",
+     "d": "Nesprávně. Neanalyzují se žádné skutečné výsledky testů (sylabus 1.2.1)."
+    },
+    "vysvetleni_obecne": "Očekávané výsledky = testovací orákulum."
+   },
+   "spravne": [
+    "c"
+   ],
+   "oddil": "1.2.1",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-1.2.1-03",
+   "zdroj": "vlastni",
+   "lo": "GenAI-1.2.1",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Which of the following BEST illustrates the LLM capability 'test automation support'?</p>",
+    "moznosti": [
+     "The LLM lists the acceptance criteria of a user story that are not testable.",
+     "The LLM writes a summary of last night's regression run for the project manager.",
+     "The LLM generates customer records with boundary values for the date of birth.",
+     "The LLM suggests replacing brittle locators in existing UI test scripts with more stable ones."
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. Finding untestable criteria is requirements analysis and improvement (syllabus 1.2.1).",
+     "b": "Incorrect. Summarising a run is test result analysis or testware creation (syllabus 1.2.1).",
+     "c": "Incorrect. Creating records with boundary values is test data generation (syllabus 1.2.1).",
+     "d": "Correct. Improving existing test scripts by suggesting changes is part of test automation support (syllabus 1.2.1)."
+    },
+    "vysvetleni_obecne": "Test automation support: generate scripts from test case descriptions and improve existing scripts."
+   },
+   "cz": {
+    "q": "<p>Který z následujících příkladů NEJLÉPE ilustruje schopnost LLM 'podpora automatizace testů'?</p>",
+    "moznosti": [
+     "LLM vypíše akceptační kritéria uživatelského scénáře, která nejsou testovatelná.",
+     "LLM napíše pro projektového manažera shrnutí nočního regresního běhu.",
+     "LLM vygeneruje záznamy klientů s hraničními hodnotami data narození.",
+     "LLM navrhne nahradit křehké lokátory ve stávajících skriptech UI testů stabilnějšími."
+    ],
+    "vysvetleni": {
+     "a": "Nesprávně. Hledání netestovatelných kritérií je analýza a zlepšování požadavků (sylabus 1.2.1).",
+     "b": "Nesprávně. Shrnutí běhu je analýza výsledků testů nebo tvorba testwaru (sylabus 1.2.1).",
+     "c": "Nesprávně. Záznamy s hraničními hodnotami jsou generování testovacích dat (sylabus 1.2.1).",
+     "d": "Správně. Vylepšení stávajících testovacích skriptů návrhem změn patří k podpoře automatizace testů (sylabus 1.2.1)."
+    },
+    "vysvetleni_obecne": "Podpora automatizace: skripty z popisu testovacího případu a vylepšení stávajících skriptů."
+   },
+   "spravne": [
+    "d"
+   ],
+   "oddil": "1.2.1",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-1.2.1-04",
+   "zdroj": "vlastni",
+   "lo": "GenAI-1.2.1",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>A tester gives an LLM an acceptance criterion: 'The system shall respond quickly when the user submits the form.' Which response from the LLM is an example of requirements analysis and improvement?</p>",
+    "moznosti": [
+     "A Playwright script that submits the form and measures the response time.",
+     "A note that 'quickly' is ambiguous, with a question asking the product owner for a measurable response time limit.",
+     "A set of 20 form submissions with random input values.",
+     "A test summary report stating that all form tests have passed."
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. Writing a script is test automation support (syllabus 1.2.1).",
+     "b": "Correct. Identifying ambiguity and generating a clarifying question for stakeholders is requirements analysis and improvement (syllabus 1.2.1).",
+     "c": "Incorrect. Creating input values is test data generation (syllabus 1.2.1).",
+     "d": "Incorrect. A summary report is testware creation or test result analysis (syllabus 1.2.1)."
+    },
+    "vysvetleni_obecne": "Requirements analysis: ambiguities, inconsistencies, missing information, clarifying questions."
+   },
+   "cz": {
+    "q": "<p>Tester dá LLM akceptační kritérium: 'Systém musí po odeslání formuláře reagovat rychle.' Která odpověď LLM je příkladem analýzy a zlepšování požadavků?</p>",
+    "moznosti": [
+     "Skript v Playwright, který formulář odešle a změří dobu odezvy.",
+     "Upozornění, že slovo 'rychle' je nejednoznačné, a otázka pro product ownera na měřitelný limit doby odezvy.",
+     "Sada 20 odeslání formuláře s náhodnými vstupními hodnotami.",
+     "Report o testování s konstatováním, že všechny testy formuláře prošly."
+    ],
+    "vysvetleni": {
+     "a": "Nesprávně. Psaní skriptu je podpora automatizace testů (sylabus 1.2.1).",
+     "b": "Správně. Odhalení nejednoznačnosti a otázka pro stakeholdera jsou analýza a zlepšování požadavků (sylabus 1.2.1).",
+     "c": "Nesprávně. Tvorba vstupních hodnot je generování testovacích dat (sylabus 1.2.1).",
+     "d": "Nesprávně. Report je tvorba testwaru nebo analýza výsledků testů (sylabus 1.2.1)."
+    },
+    "vysvetleni_obecne": "Analýza požadavků: nejednoznačnosti, rozpory, chybějící informace, otázky k vyjasnění."
+   },
+   "spravne": [
+    "b"
+   ],
+   "oddil": "1.2.1",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-1.2.1-05",
+   "zdroj": "vlastni",
+   "lo": "GenAI-1.2.1",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>The scope of a release changes after two sprints. A tester asks an LLM to revise the existing test plan to reflect the new scope. Which LLM capability does this represent?</p>",
+    "moznosti": [
+     "Test case creation support",
+     "Test oracle generation",
+     "Testware creation",
+     "Test data generation"
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. The task concerns a planning document, not deriving test cases (syllabus 1.2.1).",
+     "b": "Incorrect. No expected results are being determined (syllabus 1.2.1).",
+     "c": "Correct. Testware creation includes creating documents such as test plans and keeping them updated as the project evolves (syllabus 1.2.1).",
+     "d": "Incorrect. No data sets are being produced (syllabus 1.2.1)."
+    },
+    "vysvetleni_obecne": "Testware creation covers creating and updating test plans, test reports and defect reports."
+   },
+   "cz": {
+    "q": "<p>Rozsah vydání se po dvou sprintech změní. Tester požádá LLM, aby stávající plán testů upravil podle nového rozsahu. Kterou schopnost LLM to představuje?</p>",
+    "moznosti": [
+     "Podpora tvorby testovacích případů",
+     "Generování testovacího orákula",
+     "Tvorba testwaru",
+     "Generování testovacích dat"
+    ],
+    "vysvetleni": {
+     "a": "Nesprávně. Úloha se týká plánovacího dokumentu, ne odvození testovacích případů (sylabus 1.2.1).",
+     "b": "Nesprávně. Neurčují se žádné očekávané výsledky (sylabus 1.2.1).",
+     "c": "Správně. Tvorba testwaru zahrnuje tvorbu dokumentů, jako jsou plány testů, a jejich aktualizaci podle vývoje projektu (sylabus 1.2.1).",
+     "d": "Nesprávně. Nevznikají žádné datové sady (sylabus 1.2.1)."
+    },
+    "vysvetleni_obecne": "Tvorba testwaru zahrnuje tvorbu a aktualizaci plánů testů, reportů o testování a reportů o defektech."
+   },
+   "spravne": [
+    "c"
+   ],
+   "oddil": "1.2.1",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-1.2.2-01",
+   "zdroj": "vlastni",
+   "lo": "GenAI-1.2.2",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>A business analyst without technical background wants quick explanations of boundary value analysis while exploring new requirements with the test team. Which way of using GenAI fits this need BEST?</p>",
+    "moznosti": [
+     "An AI chatbot with a conversational interface",
+     "An LLM-powered testing application integrated into the CI pipeline",
+     "A custom AI agent that performs the role of a test analyst",
+     "A script that calls the LLM API in batch mode overnight"
+    ],
+    "vysvetleni": {
+     "a": "Correct. Chatbots give immediate responses, help clarify test concepts and are accessible to non-technical stakeholders (syllabus 1.2.2).",
+     "b": "Incorrect. Integrated applications automate well-defined tasks; they do not suit ad hoc questions from a non-technical user (syllabus 1.2.2).",
+     "c": "Incorrect. AI agents are an advanced form of LLM-powered applications for defined roles; this need is simple and ad hoc (syllabus 1.2.2).",
+     "d": "Incorrect. Batch processing does not give fast interactive feedback (syllabus 1.2.2)."
+    },
+    "vysvetleni_obecne": "Ad hoc questions, fast feedback and non-technical users point to an AI chatbot."
+   },
+   "cz": {
+    "q": "<p>Business analytik bez technického zázemí chce při zkoumání nových požadavků s testovacím týmem rychle vysvětlit analýzu hraničních hodnot. Který způsob využití GenAI této potřebě odpovídá NEJLÉPE?</p>",
+    "moznosti": [
+     "AI chatbot s konverzačním rozhraním",
+     "Testovací aplikace na LLM integrovaná do CI pipeline",
+     "Vlastní AI agent v roli test analytika",
+     "Skript, který přes noc dávkově volá API LLM"
+    ],
+    "vysvetleni": {
+     "a": "Správně. Chatboti dávají okamžité odpovědi, pomáhají vyjasnit testovací pojmy a zvládnou je i netechničtí stakeholdeři (sylabus 1.2.2).",
+     "b": "Nesprávně. Integrované aplikace automatizují přesně vymezené úlohy. Pro ad hoc dotazy netechnického uživatele se nehodí (sylabus 1.2.2).",
+     "c": "Nesprávně. AI agenti jsou pokročilá forma aplikací na LLM pro vymezené role. Tato potřeba je jednoduchá a ad hoc (sylabus 1.2.2).",
+     "d": "Nesprávně. Dávkové zpracování nedává rychlou interaktivní zpětnou vazbu (sylabus 1.2.2)."
+    },
+    "vysvetleni_obecne": "Ad hoc dotazy, rychlá zpětná vazba a netechnický uživatel vedou na AI chatbota."
+   },
+   "spravne": [
+    "a"
+   ],
+   "oddil": "1.2.2",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-1.2.2-02",
+   "zdroj": "vlastni",
+   "lo": "GenAI-1.2.2",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Which characteristic is MORE typical of LLM-powered testing applications than of AI chatbots?</p>",
+    "moznosti": [
+     "A natural language interface for asking questions and receiving immediate answers.",
+     "Integration through APIs to automate well-defined tasks with greater customisation.",
+     "Support for onboarding new testers by giving quick access to testing knowledge.",
+     "Iterative refinement of outputs by the tester during a conversation."
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. A conversational interface with immediate answers describes AI chatbots (syllabus 1.2.2).",
+     "b": "Correct. LLM-powered testing applications integrate LLMs via APIs, offer customisation and scalability and automate defined tasks (syllabus 1.2.2).",
+     "c": "Incorrect. Onboarding is mentioned as a typical use of chatbots (syllabus 1.2.2).",
+     "d": "Incorrect. Iterative refinement through prompt chaining is described for chatbots (syllabus 1.2.2)."
+    },
+    "vysvetleni_obecne": "Integration via API, customisation and scalability are typical of LLM-powered testing applications."
+   },
+   "cz": {
+    "q": "<p>Která vlastnost je typičtější pro testovací aplikace postavené na LLM než pro AI chatboty?</p>",
+    "moznosti": [
+     "Rozhraní v přirozeném jazyce pro kladení otázek a okamžité odpovědi.",
+     "Integrace přes API pro automatizaci vymezených úloh s větší mírou přizpůsobení.",
+     "Podpora zaškolení nových testerů rychlým přístupem ke znalostem o testování.",
+     "Postupné zpřesňování výstupů testerem v průběhu konverzace."
+    ],
+    "vysvetleni": {
+     "a": "Nesprávně. Konverzační rozhraní s okamžitými odpověďmi popisuje AI chatboty (sylabus 1.2.2).",
+     "b": "Správně. Testovací aplikace na LLM integrují LLM přes API, nabízejí přizpůsobení a škálovatelnost a automatizují vymezené úlohy (sylabus 1.2.2).",
+     "c": "Nesprávně. Zaškolení sylabus uvádí jako typické využití chatbotů (sylabus 1.2.2).",
+     "d": "Nesprávně. Postupné zpřesňování řetězením promptů sylabus popisuje u chatbotů (sylabus 1.2.2)."
+    },
+    "vysvetleni_obecne": "Integrace přes API, přizpůsobení a škálovatelnost jsou typické pro testovací aplikace na LLM."
+   },
+   "spravne": [
+    "b"
+   ],
+   "oddil": "1.2.2",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-1.2.2-03",
+   "zdroj": "vlastni",
+   "lo": "GenAI-1.2.2",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Which statement about prompt engineering and the two ways of interacting with LLMs in testing is CORRECT?</p>",
+    "moznosti": [
+     "Prompt engineering matters only for AI chatbots, because applications prepare the prompts automatically.",
+     "Prompt engineering matters only for LLM-powered applications, because chatbots understand any question.",
+     "Prompt engineering is unnecessary in both cases once the model is large enough.",
+     "Both chatbots and LLM-powered applications need well-designed prompts to make accurate and relevant outputs more likely."
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. Even prompts prepared by an application must be designed well; a weak prompt affects every run (syllabus 1.2.2).",
+     "b": "Incorrect. Chatbot outputs also depend on clear, specific instructions (syllabus 1.2.2).",
+     "c": "Incorrect. Model size does not remove the need for carefully designed prompts (syllabus 1.2.2).",
+     "d": "Correct. The syllabus states that, regardless of the interaction model, successful use requires strong prompt engineering (syllabus 1.2.2)."
+    },
+    "vysvetleni_obecne": "Prompt engineering is needed for both interaction models."
+   },
+   "cz": {
+    "q": "<p>Které tvrzení o prompt engineeringu a dvou způsobech práce s LLM v testování je SPRÁVNÉ?</p>",
+    "moznosti": [
+     "Prompt engineering je důležitý jen u AI chatbotů, protože aplikace připravují prompty automaticky.",
+     "Prompt engineering je důležitý jen u aplikací na LLM, protože chatbot porozumí jakékoli otázce.",
+     "Prompt engineering není potřeba ani v jednom případě, pokud je model dost velký.",
+     "Chatboti i aplikace na LLM potřebují dobře navržené prompty, aby byly přesné a relevantní výstupy pravděpodobnější."
+    ],
+    "vysvetleni": {
+     "a": "Nesprávně. I prompt, který připravuje aplikace, musí být dobře navržený. Slabý prompt ovlivní každý běh (sylabus 1.2.2).",
+     "b": "Nesprávně. Výstupy chatbota také závisejí na jasných a konkrétních instrukcích (sylabus 1.2.2).",
+     "c": "Nesprávně. Velikost modelu potřebu pečlivě navržených promptů neodstraňuje (sylabus 1.2.2).",
+     "d": "Správně. Sylabus uvádí, že bez ohledu na způsob interakce vyžaduje úspěšné nasazení dobrý prompt engineering (sylabus 1.2.2)."
+    },
+    "vysvetleni_obecne": "Prompt engineering potřebují oba způsoby práce s LLM."
+   },
+   "spravne": [
+    "d"
+   ],
+   "oddil": "1.2.2",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-1.2.2-04",
+   "zdroj": "vlastni",
+   "lo": "GenAI-1.2.2",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>A test team wants every new defect report in its test management tool to be automatically classified and linked to similar existing defects, without anyone opening a chat window. Which approach fits BEST?</p>",
+    "moznosti": [
+     "An AI chatbot that testers consult when they have time",
+     "A foundation LLM used without any integration",
+     "A rule-based script that matches keywords in defect titles",
+     "An LLM-powered testing application integrated into the test management tool via an API"
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. A chatbot requires a person to start each interaction; the team wants automation (syllabus 1.2.2).",
+     "b": "Incorrect. A model on its own is not integrated into the tool and does not perform the task automatically (syllabus 1.2.2).",
+     "c": "Incorrect. Keyword matching is a rule-based approach without the language capabilities of LLMs (syllabus 1.1.1).",
+     "d": "Correct. LLM-powered testing applications integrate LLMs via APIs to automate well-defined tasks such as defect analysis (syllabus 1.2.2)."
+    },
+    "vysvetleni_obecne": "Automated, repeated, well-defined tasks inside a tool point to an LLM-powered testing application."
+   },
+   "cz": {
+    "q": "<p>Testovací tým chce, aby se každý nový report o defektu v nástroji pro správu testů automaticky zařadil do kategorie a propojil s podobnými existujícími defekty, aniž by kdokoli otevíral chatovací okno. Který přístup se hodí NEJLÉPE?</p>",
+    "moznosti": [
+     "AI chatbot, kterého se testeři zeptají, když mají čas",
+     "Základní LLM použitý bez jakékoli integrace",
+     "Pravidlový skript, který hledá klíčová slova v názvech defektů",
+     "Testovací aplikace na LLM integrovaná do nástroje pro správu testů přes API"
+    ],
+    "vysvetleni": {
+     "a": "Nesprávně. Chatbot vyžaduje, aby každou interakci zahájil člověk. Tým chce automatizaci (sylabus 1.2.2).",
+     "b": "Nesprávně. Samotný model není integrovaný do nástroje a úlohu automaticky neprovádí (sylabus 1.2.2).",
+     "c": "Nesprávně. Hledání klíčových slov je pravidlový přístup bez jazykových schopností LLM (sylabus 1.1.1).",
+     "d": "Správně. Testovací aplikace na LLM integrují LLM přes API a automatizují vymezené úlohy, jako je analýza defektů (sylabus 1.2.2)."
+    },
+    "vysvetleni_obecne": "Automatizované, opakované a vymezené úlohy uvnitř nástroje vedou na testovací aplikaci na LLM."
+   },
+   "spravne": [
+    "d"
+   ],
+   "oddil": "1.2.2",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-1.2.2-05",
+   "zdroj": "vlastni",
+   "lo": "GenAI-1.2.2",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>How do testers typically use prompt chaining when working with an AI chatbot?</p>",
+    "moznosti": [
+     "They send the same prompt to several chatbots and keep the most frequent answer.",
+     "They split a long document into tokens so that it fits into the context window.",
+     "They refine the output step by step, using the result of one prompt as input for the next one in the conversation.",
+     "They connect the chatbot to the test framework through an API so that prompts run automatically."
+    ],
+    "vysvetleni": {
+     "a": "Incorrect. Comparing answers from several chatbots is not prompt chaining (syllabus 1.2.2).",
+     "b": "Incorrect. Splitting into tokens is tokenization, done by the model, not a prompting technique (syllabus 1.1.2).",
+     "c": "Correct. Prompt chaining lets testers iteratively refine outputs; the output of one prompt feeds the next (syllabus 1.2.2, Appendix D).",
+     "d": "Incorrect. API integration describes LLM-powered testing applications (syllabus 1.2.2)."
+    },
+    "vysvetleni_obecne": "Prompt chaining in a chatbot = iterative refinement through a sequence of prompts."
+   },
+   "cz": {
+    "q": "<p>Jak testeři obvykle využívají řetězení promptů (prompt chaining) při práci s AI chatbotem?</p>",
+    "moznosti": [
+     "Pošlou stejný prompt několika chatbotům a ponechají nejčastější odpověď.",
+     "Rozdělí dlouhý dokument na tokeny, aby se vešel do kontextového okna.",
+     "Výstup postupně zpřesňují tak, že výsledek jednoho promptu použijí jako vstup dalšího promptu v konverzaci.",
+     "Propojí chatbota s testovacím frameworkem přes API, aby se prompty spouštěly automaticky."
+    ],
+    "vysvetleni": {
+     "a": "Nesprávně. Porovnání odpovědí více chatbotů není řetězení promptů (sylabus 1.2.2).",
+     "b": "Nesprávně. Dělení na tokeny je tokenizace, kterou provádí model. Není to technika promptování (sylabus 1.1.2).",
+     "c": "Správně. Řetězení promptů umožňuje testerům výstupy postupně zpřesňovat. Výstup jednoho promptu je vstupem dalšího (sylabus 1.2.2, Appendix D).",
+     "d": "Nesprávně. Integrace přes API popisuje testovací aplikace na LLM (sylabus 1.2.2)."
+    },
+    "vysvetleni_obecne": "Řetězení promptů v chatbotu = postupné zpřesňování sledem promptů."
+   },
+   "spravne": [
+    "c"
+   ],
+   "oddil": "1.2.2",
+   "poznamka": ""
+  }
+ ]
+}

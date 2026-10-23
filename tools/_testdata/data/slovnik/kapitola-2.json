@@ -1,0 +1,18 @@
+[
+ {
+  "en": "token",
+  "cz": "token",
+  "def": "Jednotka textu, počítá se do kontextového okna.",
+  "kap": 2,
+  "oddil": "2.1",
+  "klicove": false
+ },
+ {
+  "en": "few-shot prompting",
+  "cz": "few-shot prompting",
+  "def": "Prompt s několika příklady.",
+  "kap": 2,
+  "oddil": "2.9.9",
+  "klicove": true
+ }
+]

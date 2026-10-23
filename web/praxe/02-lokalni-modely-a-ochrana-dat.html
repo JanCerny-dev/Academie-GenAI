@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="cs" data-tema="">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lokální modely a ochrana dat | Praxe | ISTQB CT-GenAI</title>
+<meta name="description" content="Praxe CT-GenAI: Lokální modely a ochrana dat. Rozběhneš jazykový model na vlastním počítači, necháš ho odpovídat z vlastních dokumentů a z Pythonu, a víš, kdy má lokální model v bance smysl a kdy ne.">
+<meta name="color-scheme" content="light dark">
+<link rel="stylesheet" href="../assets/styl.css">
+<script>
+/* Nastaví uložený režim ještě před vykreslením, aby stránka neproblikla. */
+(function(){try{var t=localStorage.getItem('genai-tema');if(t){document.documentElement.setAttribute('data-tema',t);}}catch(e){}})();
+</script>
+</head>
+<body data-kapitola="6">
+<a class="preskocit" href="#text">Přeskočit na text</a>
+<div class="postup" aria-hidden="true"></div>
+<header class="hlavicka">
+  <div class="hlavicka-vnitrek">
+    <a class="znacka" href="../index.html">ISTQB CT-GenAI <span>česká studijní příručka</span></a>
+    <nav class="navigace" aria-label="Hlavní navigace">
+      <a href="../index.html">Úvod</a>
+      <span class="skupina" data-skupina>
+        <a href="../kapitoly.html" class="zvyraznit">Kapitoly</a>
+        <ul class="podmenu" id="podmenu-kapitoly" aria-label="Seznam kapitol"><li><a href="../kapitola-1/vyklad.html"><b>1</b> Úvod do generativní AI</a></li><li><a href="../kapitola-2/vyklad.html"><b>2</b> Prompt engineering</a></li><li><a href="../kapitola-3/vyklad.html"><b>3</b> Rizika generativní AI</a></li><li><a href="../kapitola-4/vyklad.html"><b>4</b> Infrastruktura s LLM</a></li><li><a href="../kapitola-5/vyklad.html"><b>5</b> Zavedení GenAI v organizaci</a></li></ul>
+      </span>
+      <a href="../slovnik.html">Slovník</a>
+      <a href="../karticky.html">Kartičky</a>
+      <a href="../prirazovani.html">Přiřazování</a>
+      <a href="../cviceni.html">Cvičení</a>
+      <a href="../praxe.html" aria-current="page">Praxe</a>
+      <a href="../cile.html">Cíle</a>
+      <a href="../zkouska.html">Zkouška</a>
+      <a href="../lokalni/index.html" class="lokalni-odkaz">Lokální testy</a>
+      <button type="button" class="prepinac-tema" data-prepinac-tema>Tmavý režim</button>
+      <button type="button" class="ucet-tlacitko" data-ucet hidden>Přihlásit</button>
+    </nav>
+  </div>
+</header>
+<div class="stranka">
+<div class="layout">
+<main>
+<div class="zahlavi">
+  <p class="drobky"><a href="../praxe.html">Praxe</a> · Modul 2</p>
+  <h1>Lokální modely a ochrana dat</h1>
+  <p class="podtitul">Rozběhneš jazykový model na vlastním počítači, necháš ho odpovídat z vlastních dokumentů a z Pythonu, a víš, kdy má lokální model v bance smysl a kdy ne.</p>
+  <ul class="meta"><li>Čas: 3–4 h (plus stahování modelů)</li><li>Úroveň: středně pokročilý</li><li>Nástroje: GPT4All, Python 3, volitelně Ollama nebo LM Studio, Hugging Face Transformers (jen ukázka)</li><li>3 468 slov</li><li>≈ 20 min čtení</li><li>3 cvičení</li></ul>
+  <p class="praxe-souvislosti"><span>Souvisí s kapitolami CT-GenAI: <a href="../kapitola-1/vyklad.html">1. Úvod do generativní AI</a> · <a href="../kapitola-3/vyklad.html">3. Rizika generativní AI</a> · <a href="../kapitola-4/vyklad.html">4. Infrastruktura s LLM</a> · <a href="../kapitola-5/vyklad.html">5. Zavedení GenAI v organizaci</a></span><span>Zdroje: Shetty L13, L69, L72; Bruno L11–L13, L36–L37, L82–L83</span></p>
+  <p class="napoveda" id="praxe-souhrn" aria-live="polite" data-praxe-cviceni="praxe-02-lokalni-modely-a-ochrana-dat-lokalni-versus-cloud-na-jedne-uloze praxe-02-lokalni-modely-a-ochrana-dat-rag-nad-dokumentaci-vlastniho-projektu praxe-02-lokalni-modely-a-ochrana-dat-rozsireni-maskovani"><span data-praxe-postup>3 cvičení</span>. Hotová cvičení si odškrtni, stav se ukládá v tomto prohlížeči, po přihlášení i v účtu.</p>
+</div>
+<article class="text" id="text">
+<p>Cloudový chatbot je pohodlný, ale každý prompt odchází na server poskytovatele. Pro testera v bance nebo pojišťovně to znamená jednoduché pravidlo. Do veřejného chatu nesmí nic, co patří klientovi nebo firmě. Lokální model je jedna z cest, jak s AI pracovat i nad citlivějšími podklady. Data neopustí počítač. Má to ale svou cenu: slabší výsledky, nároky na hardware a také lokální instalace je software, který musí schválit IT.</p>
+<p>Modul má tři části. Nejdřív zprovozníš GPT4All, které ukazují oba kurzy. Pak ho necháš odpovídat z vlastních dokumentů (LocalDocs). Nakonec se k lokálnímu modelu připojíš z Pythonu a před odesláním promptu z něj odstraníš osobní údaje. Ukázka s GPT-Neo z Brunova kurzu vysvětlí, proč není každý stažený model k užitku.</p>
+<h2 id="co-postavis">Co postavíš<a class="kotva" href="#co-postavis" aria-label="Odkaz na tento oddíl"></a></h2>
+<ul><li>Funkční GPT4All s malým modelem, ověřené bez připojení k internetu.</li><li>Kolekci LocalDocs nad veřejným dokumentem s požadavky. Model z ní odpovídá a uvádí zdroj.</li><li>Python skript <code>local_testgen.py</code>, který přečte požadavky ze souboru, zamaskuje v nich e-maily, rodná čísla, čísla účtů a telefony a pošle je lokálnímu modelu přes rozhraní kompatibilní s OpenAI.</li><li>Test <code>test_sanitize.py</code>, který ověří, že maskování funguje.</li><li>Vlastní rozhodovací tabulku: kterou úlohu dělat v cloudu, kterou lokálně a kterou vůbec ne.</li></ul>
+<h2 id="predpoklady">Předpoklady<a class="kotva" href="#predpoklady" aria-label="Odkaz na tento oddíl"></a></h2>
+<p><strong>Hardware.</strong> Lokální model běží v operační paměti. Orientační pravidlo: volná RAM má být aspoň o pár GB větší než soubor modelu. Bruno v L12 stahuje Llama 3 8B o velikosti asi 4,3 GB, Shetty v L72 doporučuje na zkoušení menší Llama 3.2 a varuje, že větší model „zasekne“ počítač. Na běžném notebooku s 16 GB RAM bez dedikované grafické karty počítej s modelem 1–4 GB a s odpovědí v řádu desítek sekund. Čísla jsou orientační, ověřit na vlastním stroji.</p>
+<p><strong>Software.</strong> Stav k 23. 10. 2026, verze a názvy modelů ověřit:</p>
+<div class="tabulka-obal"><table><thead><tr><th>Nástroj</th><th>Co to je</th><th>Cena</th></tr></thead><tbody><tr><td>GPT4All (nomic.ai/gpt4all)</td><td>desktopová aplikace s katalogem modelů a funkcí LocalDocs</td><td>zdarma, ověřit licenci</td></tr><tr><td>Ollama (ollama.com)</td><td>služba na pozadí s příkazovou řádkou a HTTP API</td><td>zdarma, nad rámec kurzu</td></tr><tr><td>LM Studio (lmstudio.ai)</td><td>desktopová aplikace s katalogem modelů a lokálním serverem</td><td>zdarma pro osobní použití, firemní podmínky ověřit, nad rámec kurzu</td></tr><tr><td>Python 3.10+</td><td>pro krok 5 a 6</td><td>zdarma</td></tr></tbody></table></div>
+<p>Tabulka slouží k orientaci. Pro modul stačí GPT4All a Python. Ollama nebo LM Studio použiješ v kroku 5, pokud chceš pohodlnější API.</p>
+<p><strong>Kde to dělat.</strong> Na soukromém počítači. Na firemním notebooku nic z toho bez schválení neinstaluj, ani „jen na zkoušku“. I lokální model je software z internetu: instalátor, knihovny a soubor s vahami modelu. IT musí posoudit jeho původ, licenci a to, kam aplikace volá. Když lokální model chceš používat v práci, obrať se na IT nebo tým, který ve firmě spravuje AI platformu. Jinak jde o stínovou AI (kapitola 5, oddíl 5.1.1).</p>
+<aside class="vsuvka vsuvka--pozor" data-stitek="Pozor" aria-label="Pozor"><p>Lokální model neřeší ochranu dat sám od sebe. Pomáhá jen s jedním rizikem: data neodcházejí k poskytovateli modelu. Pořád platí, že klientská data na soukromém počítači nemají co dělat, a to ani v lokálním modelu. Celý modul proto pracuje s veřejnými a vlastními dokumenty.</p></aside>
+<h2 id="postup">Postup<a class="kotva" href="#postup" aria-label="Odkaz na tento oddíl"></a></h2>
+<h3 id="krok-1-rozhodni-jestli-lokalni-model-vubec-potrebujes">Krok 1: Rozhodni, jestli lokální model vůbec potřebuješ<a class="kotva" href="#krok-1-rozhodni-jestli-lokalni-model-vubec-potrebujes" aria-label="Odkaz na tento oddíl"></a></h3>
+<p>Než něco stáhneš, ujasni si, k čemu lokální model je. Shetty v L13 popisuje tři cesty, kterými firmy řeší obavu z úniku dat do cloudových modelů:</p>
+<ol><li><strong>Podnikový model ve vlastním nebo smluvně chráněném prostředí.</strong> Poskytovatel nabízí podnikovou verzi se smlouvou o zpracování dat a s nulovou retencí (zero data retention). Data se neukládají a nepoužívají k tréninku.</li><li><strong>Brána před modelem</strong> (AI gateway). Každý prompt nejdřív projde filtrem, který zachytí citlivé údaje a požadavek zablokuje nebo zamaskuje.</li><li><strong>Lokální model.</strong> Data neopustí stroj. Výkon omezuje hardware.</li></ol>
+<p>Shetty k tomu dodává, že bezpečnost modelů je věc infrastruktury a bezpečnostního týmu, ne testera. To je pravda jen napůl. Výběr a provoz nástroje opravdu řeší IT. Za to, co do nástroje vložíš, ale odpovídáš ty.</p>
+<p>Zapiš si do poznámek tři úlohy ze své práce, kde bys AI rád použil, a ke každé jednu větu: jaká data by do modelu šla. Tabulku dokončíš v kroku 8.</p>
+<p>Co má vyjít: krátký seznam. Typicky zjistíš, že pro polovinu úloh stačí cloudový chat bez citlivých dat. Například vysvětlení chybové hlášky frameworku nebo návrh struktury testovacího plánu. Lokální model má smysl tam, kde musíš pracovat s interním textem a schválený cloudový nástroj nemáš.</p>
+<h3 id="krok-2-nainstaluj-gpt4all-a-stahni-maly-model">Krok 2: Nainstaluj GPT4All a stáhni malý model<a class="kotva" href="#krok-2-nainstaluj-gpt4all-a-stahni-maly-model" aria-label="Odkaz na tento oddíl"></a></h3>
+<p>Bruno (L12) a Shetty (L72) postupují stejně:</p>
+<ol><li>Na stránce nomic.ai/gpt4all stáhni instalátor pro svůj systém a nainstaluj ho.</li><li>Spusť aplikaci a otevři <strong>Models</strong> a <strong>Add Model</strong>.</li><li>Vyber malý model z katalogu. Shetty doporučuje Llama 3.2 (asi 2 GB). Bruno používá Llama 3 8B Instruct (asi 4,3 GB). Názvy a velikosti v katalogu se mění, ověřit.</li><li>Počkej na stažení. Soubor se uloží do složky, kterou vidíš v <strong>Settings</strong>. Tam ji můžeš i změnit.</li><li>Otevři <strong>Chats</strong>, založ nový chat a nahoře vyber stažený model.</li></ol>
+<p>Pošli kontrolní dotaz:</p>
+<div class="kod" data-jazyk="text"><pre><code>In three sentences: what is the difference between a test condition and a test case?</code></pre></div>
+<p>Co má vyjít: odpověď za několik sekund až desítek sekund. Pak <strong>vypni Wi-Fi nebo odpoj kabel</strong> a pošli další dotaz. Odpověď musí přijít i bez sítě. Tím ověříš, že model opravdu běží lokálně. Oba lektoři to v lekcích dělají stejně.</p>
+<p>Všimni si kvality. Malý model odpoví obecně správně, ale u definic ISTQB se často splete nebo je smíchá. Porovnej odpověď s CTFL sylabem. Tohle je první praktická zkušenost s tím, co sylabus říká o malých jazykových modelech (SLM): jsou levnější a soukromé, ale méně přesné.</p>
+<h3 id="krok-3-testovaci-pripady-z-lokalniho-modelu">Krok 3: Testovací případy z lokálního modelu<a class="kotva" href="#krok-3-testovaci-pripady-z-lokalniho-modelu" aria-label="Odkaz na tento oddíl"></a></h3>
+<p>V tom samém chatu pošli prompt z Brunovy přílohy L13, jen přeložený do struktury z modulu 1:</p>
+<div class="kod" data-jazyk="text"><pre><code>You are a test analyst. Create at most 8 functional test cases for a Contact Us form.
+Facts:
+- Fields First Name, Last Name, Email Address, Comments are all required.
+- SUBMIT sends the form, RESET clears all fields.
+- Valid submission shows "Thank You for your Message!"
+- Invalid email shows "Error: Invalid email address"
+- Any empty field shows "Error: all fields are required"
+Use only these facts. Output a Markdown table: ID, Title, Steps, Expected result.</code></pre></div>
+<div class="kod" data-jazyk="text"><pre><code>Jsi test analytik. Vytvoř nejvýš 8 funkčních testovacích případů pro formulář Contact Us.
+Fakta:
+- Pole First Name, Last Name, Email Address, Comments jsou povinná.
+- SUBMIT formulář odešle, RESET vymaže všechna pole.
+- Platné odeslání zobrazí "Thank You for your Message!"
+- Neplatný e-mail zobrazí "Error: Invalid email address"
+- Prázdné pole zobrazí "Error: all fields are required"
+Použij jen tato fakta. Výstup: Markdown tabulka ID, Název, Kroky, Očekávaný výsledek.</code></pre></div>
+<p>Co má vyjít: tabulka, často s menšími chybami. Malé modely porušují limit počtu, mění znění hlášek nebo nedodrží formát tabulky. V češtině bývají slabší než v angličtině. Spusť stejný prompt v libovolném cloudovém chatu a porovnej. Zapiš si tři konkrétní rozdíly. Bruno v L13 ukazuje i to, že lokální aplikace neumí vytvořit soubor Word. To ale není vlastnost modelu, jen aplikace.</p>
+<h3 id="krok-4-model-nad-vlastnimi-dokumenty-localdocs">Krok 4: Model nad vlastními dokumenty (LocalDocs)<a class="kotva" href="#krok-4-model-nad-vlastnimi-dokumenty-localdocs" aria-label="Odkaz na tento oddíl"></a></h3>
+<p>Shetty v L69 popisuje situaci, kterou zná každý nový tester v bance. Dostaneš desítky dokumentů a máš se v doméně rychle zorientovat. GPT4All na to má funkci <strong>LocalDocs</strong>. Aplikace dokumenty rozseká na kousky, z každého vytvoří <strong>embedding</strong> (vektorovou reprezentaci) a uloží je do lokálního indexu. Při dotazu nejdřív vyhledá kousky podobné otázce a vloží je modelu do promptu. To je princip <strong>RAG</strong> (generování rozšířené o vyhledávání), který sylabus popisuje v kapitole 4.</p>
+<p>Jako dokumenty použij něco veřejného nebo vlastního. Dobře poslouží dokument s požadavky na demo aplikaci EventHub ze Shettyho kurzu (<code>EventHub-Product-Requirements-Document.pdf</code>, asi 1 700 slov), Brunův dokument ke Contact Us, nebo dokumentace tvého projektu Účtenky.</p>
+<ol><li>Dokumenty dej do samostatné složky, třeba <code>C:\ai-docs\eventhub</code>.</li><li>V GPT4All otevři <strong>LocalDocs</strong>, zvol <strong>Add Collection</strong>, pojmenuj ji a vyber složku.</li><li>Počkej, až aplikace dokončí <strong>embedding</strong>. U pár dokumentů jde o minuty.</li><li>V chatu vpravo zaškrtni kolekci a pošli otázku, na kterou je odpověď v dokumentu.</li></ol>
+<p>Příklad otázek pro EventHub:</p>
+<div class="kod" data-jazyk="text"><pre><code>According to the documents, how many bookings can one user have at most, and what happens when the limit is reached?
+Quote the sentence you used.</code></pre></div>
+<div class="kod" data-jazyk="text"><pre><code>Podle dokumentů: kolik rezervací může mít jeden uživatel nejvýš a co se stane při dosažení limitu?
+Uveď větu, ze které vycházíš.</code></pre></div>
+<p>Co má vyjít: odpověď s odkazem na zdroj. GPT4All pod odpovědí ukazuje, ze kterého souboru čerpalo. Dokument EventHub uvádí v požadavku FR-B6 nejvýš 9 rezervací na uživatele. Desátá rezervace smaže nejstarší (FIFO). Stejné pravidlo je i v tabulce Business rules. Ověř, že model odpověděl stejně a že citovaná věta v dokumentu opravdu je.</p>
+<p>Pak zkus tři kontrolní otázky. Každá ukazuje jinou slabinu RAG:</p>
+<ul><li><strong>Otázka, na kterou dokument odpověď nemá.</strong> Třeba „What is the refund policy?“, pokud v dokumentu není. Dobrá odpověď je „v dokumentech to není“. Malý model si často vymyslí obecné pravidlo.</li><li><strong>Otázka mimo doménu.</strong> Shetty se ptá na hlavní město Itálie. Model odpoví z vlastních znalostí, i když je kolekce zapnutá. Zdroj u odpovědi pak chybí. Vždy proto kontroluj, jestli odpověď vychází z dokumentu.</li><li><strong>Otázka, jejíž odpověď je rozdělená do dvou míst dokumentu.</strong> Vyhledání najde jen část a odpověď bude neúplná.</li></ul>
+<p>Výsledky si zapiš. Přesně tohle je cvičení HO-4.1.2 ze sylabu: vyzkoušet RAG a poznat jeho silné stránky i omezení.</p>
+<aside class="vsuvka vsuvka--pozor" data-stitek="Pozor" aria-label="Pozor"><p>Shetty v L69 tvrdí, že tím „trénuješ vlastní model“. To není přesné. LocalDocs model netrénuje ani nedolaďuje. Model zůstává stejný, jen dostává do promptu vyhledané kousky dokumentů. Rozdíl mezi RAG a fine-tuningem je zkouškové téma (kapitola 4, oddíly 4.1.2 a 4.2.1).</p></aside>
+<h3 id="krok-5-lokalni-model-jako-api">Krok 5: Lokální model jako API<a class="kotva" href="#krok-5-lokalni-model-jako-api" aria-label="Odkaz na tento oddíl"></a></h3>
+<p>Okno chatu stačí na zkoušení. Pro opakovanou práci, třeba generování testovacích dat pro každý nový požadavek, se hodí volat model z Pythonu. Všechny tři nástroje umí běžet jako lokální server s rozhraním kompatibilním s OpenAI. Výchozí adresy podle dokumentace nástrojů, ověřit:</p>
+<div class="tabulka-obal"><table><thead><tr><th>Nástroj</th><th>Jak zapnout server</th><th>Adresa</th></tr></thead><tbody><tr><td>Ollama</td><td>běží automaticky po instalaci</td><td><code>http://localhost:11434/v1</code></td></tr><tr><td>LM Studio</td><td>záložka Developer, Start Server</td><td><code>http://localhost:1234/v1</code></td></tr><tr><td>GPT4All</td><td>Settings, Enable Local API Server</td><td><code>http://localhost:4891/v1</code></td></tr></tbody></table></div>
+<p>Tabulka ukazuje, že skript níže funguje se všemi třemi. Liší se jen adresa a název modelu.</p>
+<aside class="vsuvka vsuvka--nad-ramec" data-stitek="Nad rámec sylabu" aria-label="Nad rámec sylabu"><p>Ollama a LM Studio kurzy nezmiňují. Dnes jsou to běžnější nástroje pro lokální modely než GPT4All. Ollama se ovládá z příkazové řádky. Model stáhneš a spustíš příkazem <code>ollama run llama3.2:3b</code> a stejný model je pak dostupný přes API. LM Studio má grafické rozhraní podobné GPT4All a navíc ukazuje, kolik paměti model zabere. Názvy modelů ověřit v katalogu nástroje.</p></aside>
+<p>Pro Ollamu stáhni model a ověř, že server odpovídá:</p>
+<div class="kod" data-jazyk="text"><pre><code>ollama pull llama3.2:3b
+ollama list</code></pre></div>
+<p>Co má vyjít: model v seznamu s velikostí kolem 2 GB (ověřit).</p>
+<h3 id="krok-6-python-skript-s-maskovanim-osobnich-udaju">Krok 6: Python skript s maskováním osobních údajů<a class="kotva" href="#krok-6-python-skript-s-maskovanim-osobnich-udaju" aria-label="Odkaz na tento oddíl"></a></h3>
+<p>Bruno v L83 radí dvě věci, které platí pro cloudová i lokální API. Data před odesláním <strong>anonymizuj</strong> (nahraď citlivé hodnoty zástupnými) a API klíče nikdy nepiš do kódu. Lokální server klíč nepotřebuje, takže druhé pravidlo tu odpadá. První platí dál. Návyk maskovat data se ti vyplatí ve chvíli, kdy stejný skript přepneš na cloudové API.</p>
+<p>Vytvoř složku projektu a v ní soubor <code>local_testgen.py</code>:</p>
+<div class="kod" data-jazyk="python"><pre><code># local_testgen.py – testovací případy z lokálního modelu přes OpenAI-kompatibilní API
+import json
+import os
+import re
+import sys
+import urllib.request
+
+BASE_URL = os.getenv("LOCAL_LLM_URL", "http://localhost:11434/v1")  # Ollama
+MODEL = os.getenv("LOCAL_LLM_MODEL", "llama3.2:3b")
+
+PATTERNS = [
+    (re.compile(r"[\w.+-]+@[\w-]+\.[\w.]+"), "&lt;EMAIL&gt;"),
+    (re.compile(r"\bCZ\d{2}(?: ?\d{4}){5}\b"), "&lt;IBAN&gt;"),
+    (re.compile(r"\b\d{6}/\d{3,4}\b"), "&lt;RC&gt;"),
+    (re.compile(r"\b(?:\d{1,6}-)?\d{2,10}/\d{4}\b"), "&lt;UCET&gt;"),
+    (re.compile(r"\b\d{9,10}\b"), "&lt;RC&gt;"),
+    (re.compile(r"(?:\+420 ?)?\b\d{3} ?\d{3} ?\d{3}\b"), "&lt;TELEFON&gt;"),
+]
+
+
+def sanitize(text: str) -&gt; str:
+    for pattern, placeholder in PATTERNS:
+        text = pattern.sub(placeholder, text)
+    return text
+
+
+def ask(prompt: str) -&gt; str:
+    body = {
+        "model": MODEL,
+        "messages": [
+            {"role": "system", "content": "You are a test analyst. Answer only from the given requirements."},
+            {"role": "user", "content": prompt},
+        ],
+        "temperature": 0.2,
+    }
+    req = urllib.request.Request(
+        f"{BASE_URL}/chat/completions",
+        data=json.dumps(body).encode("utf-8"),
+        headers={"Content-Type": "application/json"},
+    )
+    with urllib.request.urlopen(req, timeout=600) as resp:
+        data = json.load(resp)
+    return data["choices"][0]["message"]["content"]
+
+
+if __name__ == "__main__":
+    requirements = open(sys.argv[1], encoding="utf-8").read()
+    clean = sanitize(requirements)
+    prompt = (
+        "Create at most 10 functional test cases as a Markdown table "
+        "(ID, Title, Steps, Expected result) for these requirements. "
+        "If something is unclear, list it under 'Open questions'.\n\n" + clean
+    )
+    print(ask(prompt))</code></pre></div>
+<p>Co v kódu stojí za vysvětlení:</p>
+<ul><li>Skript používá jen standardní knihovnu Pythonu. Nic se neinstaluje přes <code>pip</code>, takže ho jde spustit i na stroji s omezeným přístupem k balíčkům.</li><li>Adresa serveru a název modelu jsou v proměnných prostředí. Přepnutí na LM Studio je jen změna <code>LOCAL_LLM_URL</code>, ne úprava kódu.</li><li><code>sanitize()</code> prochází seznam regulárních výrazů a nahrazuje nálezy zástupným textem. Pořadí je důležité. Rodné číslo s lomítkem musí být nahrazeno dřív než číslo účtu, jinak by ho výraz pro účet označil jako účet. U šestimístného čísla účtu s kódem banky to nejde rozlišit, ale zamaskované je v obou případech.</li><li>Systémový prompt drží model u dodaných požadavků. <code>temperature</code> 0.2 snižuje rozptyl odpovědí (kapitola 3, oddíl 3.1.4).</li><li><code>timeout=600</code>: lokální model na procesoru může odpovídat i minuty.</li></ul>
+<p>Vedle vytvoř test maskování <code>test_sanitize.py</code>. Údaje v něm jsou vymyšlené:</p>
+<div class="kod" data-jazyk="python"><pre><code>from local_testgen import sanitize
+
+
+def test_masks_personal_data():
+    text = ("Klient jan.novak@banka.cz, RČ 850101/1234, účet 19-2000145399/0800, "
+            "IBAN CZ65 0800 0000 1920 0014 5399, tel. +420 777 123 456.")
+    out = sanitize(text)
+    for leaked in ["jan.novak", "850101", "2000145399", "CZ65", "777 123"]:
+        assert leaked not in out, out
+
+
+def test_keeps_normal_text():
+    assert sanitize("Pole Email Address je povinné.") == "Pole Email Address je povinné."</code></pre></div>
+<p>Spusť test a pak skript nad dokumentem s požadavky (třeba Brunovým Contact Us uloženým jako <code>contact_us.txt</code>):</p>
+<div class="kod" data-jazyk="text"><pre><code>python -m pip install pytest
+python -m pytest test_sanitize.py -v
+python local_testgen.py contact_us.txt</code></pre></div>
+<p>Pro LM Studio před spuštěním nastav proměnné (PowerShell):</p>
+<div class="kod" data-jazyk="text"><pre><code>$env:LOCAL_LLM_URL = "http://localhost:1234/v1"
+$env:LOCAL_LLM_MODEL = "&lt;název modelu z LM Studia&gt;"
+python local_testgen.py contact_us.txt</code></pre></div>
+<p>Co má vyjít: oba testy projdou. Skript vypíše tabulku testovacích případů. První volání může trvat déle, protože server model načítá do paměti. Maskování a test jsou ověřené spuštěním (Python 3.12, 10/2026). Volání API je ověřené jen proti zkušebnímu serveru, který vrací pevnou odpověď ve formátu OpenAI. Se skutečnou Ollamou, LM Studiem a GPT4All neověřeno.</p>
+<p>Maskování přes regulární výrazy je pomůcka, ne záruka. Nepozná jména, adresy, čísla smluv ani interní názvy systémů. Proto je pravidlo opačné, než by se mohlo zdát. Maskování nedělá z citlivého dokumentu bezpečný. Je to pojistka pro případ, že ti do veřejného nebo vlastního dokumentu něco proklouzne. Rozdíl mezi anonymizací a pseudonymizací vysvětluje kapitola 3, oddíl 3.2.3. Výměna e-mailu za <code>&lt;EMAIL&gt;</code> je anonymizace jen tehdy, když z textu nejde osobu poznat jinak.</p>
+<h3 id="krok-7-proc-ne-kazdy-model-ukazka-gpt-neo">Krok 7: Proč ne každý model – ukázka GPT-Neo<a class="kotva" href="#krok-7-proc-ne-kazdy-model-ukazka-gpt-neo" aria-label="Odkaz na tento oddíl"></a></h3>
+<p>Bruno v L36 ukazuje opačnou cestu než GPT4All. Stáhne model <strong>GPT-Neo 2.7B</strong> z platformy <strong>Hugging Face</strong> a spustí ho přímo z Pythonu přes knihovnu <code>transformers</code>. Sám radí lekci jen sledovat a nepouštět. Model má kolem 10 GB, instalace knihoven narazí na verzi Pythonu a na Windows potřebuje i Rust a nástroje Visual Studio. Odpověď na procesoru trvá dlouho a výsledek podle Bruna není moc užitečný.</p>
+<p>Podstatná část jeho kódu má tři řádky:</p>
+<div class="kod" data-jazyk="python"><pre><code>from transformers import pipeline
+
+generator = pipeline("text-generation", model="EleutherAI/gpt-neo-2.7B")
+response = generator(prompt, max_new_tokens=500)</code></pre></div>
+<p><code>pipeline("text-generation")</code> načte model a při prvním spuštění ho stáhne do mezipaměti Hugging Face. <code>max_new_tokens</code> omezuje délku odpovědi. Zbytek Brunova souboru jen volí GPU nebo CPU a přesnost výpočtů.</p>
+<p>Kurz nevysvětluje, proč je výsledek tak slabý. Hlavní důvod je v typu modelu. GPT-Neo z roku 2021 je <strong>foundation LLM</strong> (základní model). Neumí plnit instrukce, jen pokračuje v textu. Na prompt „Generate test cases…“ proto často napíše další podobné zadání nebo náhodný text. GPT4All i Ollama naopak nabízejí modely vyladěné na instrukce (instruction-tuned), obvykle s „Instruct“ nebo „chat“ v názvu. Rozdíl vysvětluje kapitola 1, oddíl 1.1.3.</p>
+<p>Pokud si to chceš ověřit, vezmi místo 2.7B nejmenší variantu <code>EleutherAI/gpt-neo-125m</code> (zhruba 0,5 GB, ověřit). Stejný prompt jako v kroku 3 dá text, který s testovacími případy skoro nesouvisí. Instalace <code>transformers</code> a <code>torch</code> ale stáhne několik GB knihoven. Neověřeno.</p>
+<p>Bruno v L37 shrnuje volbu modelu do tří možností. Cloudové API (OpenAI) je rychlé a jednoduché, ale platí se za použití a data odcházejí ven. Open-source model v kódu je zdarma a flexibilní, ale náročný na hardware a nastavení. GPT4All je kompromis: lokální model s optimalizovaným během a jednoduchým rozhraním. Dnes do stejné škatulky patří Ollama a LM Studio.</p>
+<h3 id="krok-8-rozhodovaci-tabulka-pro-praci-v-bance">Krok 8: Rozhodovací tabulka pro práci v bance<a class="kotva" href="#krok-8-rozhodovaci-tabulka-pro-praci-v-bance" aria-label="Odkaz na tento oddíl"></a></h3>
+<p>Vrať se k seznamu z kroku 1 a doplň ho do tabulky. Níže je vzor s typickými úlohami testera. Hodnoty jsou ilustrační. Co skutečně smíš, určuje interní pravidlo firmy, ne tahle tabulka.</p>
+<div class="tabulka-obal"><table><thead><tr><th>Úloha</th><th>Data, která by šla do modelu</th><th>Veřejný cloudový chat</th><th>Schválený podnikový nástroj</th><th>Lokální model na soukromém PC</th></tr></thead><tbody><tr><td>Vysvětlit chybu v pytest nebo Playwright</td><td>obecný kód bez názvů systémů</td><td>ano</td><td>ano</td><td>ano</td></tr><tr><td>Testovací případy z požadavků klienta</td><td>interní dokument</td><td>ne</td><td>ano, podle pravidel</td><td>ne</td></tr><tr><td>Testovací data pro formulář</td><td>syntetická data</td><td>ano</td><td>ano</td><td>ano</td></tr><tr><td>Analýza logu z testovacího prostředí</td><td>technické a možná osobní údaje</td><td>ne</td><td>podle pravidel, po kontrole</td><td>ne</td></tr><tr><td>Rešerše domény z dokumentace projektu</td><td>interní dokumenty</td><td>ne</td><td>ano, podle pravidel</td><td>ne</td></tr><tr><td>Procvičování na veřejném demo projektu</td><td>veřejná data</td><td>ano</td><td>ano</td><td>ano</td></tr></tbody></table></div>
+<p>Tabulka ukazuje hlavní poznatek modulu. Lokální model na soukromém počítači nepřidává žádné nové povolení pro firemní data. Smysl má pro učení, pro vlastní projekty a jako argument pro IT. Ve firmě odpovídá spíš sloupec „schválený podnikový nástroj“. Ten může být i lokálně provozovaný model na firemní infrastruktuře.</p>
+<p>Bruno v L82 přidává tři etické zásady, které do tabulky nejdou, ale patří k ní:</p>
+<ul><li><strong>Zkreslení (bias).</strong> Model může v testovacích datech přednostně generovat jen některé typy jmen, adres nebo věkových skupin. Kontroluj rozložení vygenerovaných dat, hlavně u testů, které mají odhalit diskriminaci, třeba u scoringu.</li><li><strong>Přílišné spoléhání na AI</strong> (over-reliance). Výstup kontroluje člověk, který systému rozumí.</li><li><strong>Transparentnost.</strong> Zaznamenej, kde a jak jsi AI použil, s nástrojem a modelem. Bruno to doporučuje jako běžnou praxi. Ve firmě to často požadují i interní pravidla. Text vygenerovaný AI se nemá v dokumentaci vydávat za ručně psaný.</li></ul>
+<h2 id="overeni">Ověření<a class="kotva" href="#overeni" aria-label="Odkaz na tento oddíl"></a></h2>
+<ul><li>Po odpojení od sítě GPT4All dál odpovídá (krok 2).</li><li>Máš zapsané tři konkrétní rozdíly mezi výstupem lokálního a cloudového modelu na stejném promptu (krok 3).</li><li>LocalDocs odpověděla na otázku z dokumentu se správným zdrojem a máš zapsané výsledky tří kontrolních otázek (krok 4).</li><li><code>python -m pytest test_sanitize.py</code> projde. Když do testu přidáš vlastní vymyšlené rodné číslo v jiném formátu a test selže, víš proč.</li><li><code>local_testgen.py</code> vrátí odpověď z lokálního serveru. Během běhu vidíš ve Správci úloh, že roste využití procesoru nebo GPU. To je důkaz, že výpočet běží u tebe.</li><li>Rozhodovací tabulka z kroku 8 má aspoň tři tvoje úlohy.</li></ul>
+<h2 id="caste-chyby">Časté chyby<a class="kotva" href="#caste-chyby" aria-label="Odkaz na tento oddíl"></a></h2>
+<p><strong>Příliš velký model.</strong> Stáhneš model, který se do paměti nevejde. Počítač začne swapovat a odpověď nepřijde. Začni modelem do 4 GB a zvětšuj postupně.</p>
+<p><strong>Základní model místo instrukčního.</strong> Model jen pokračuje v textu a na zadání nereaguje. Hledej v názvu „Instruct“ nebo „chat“.</p>
+<p><strong>Vypnutá kolekce LocalDocs.</strong> Model odpovídá ze svých znalostí a ty si myslíš, že z dokumentů. Kontroluj, jestli je u odpovědi uvedený zdroj.</p>
+<p><strong>Záměna RAG za trénink.</strong> LocalDocs model nemění. Když dokumenty smažeš z kolekce, model o nich nic neví.</p>
+<p><strong>Lokální instalace na firemním notebooku bez schválení.</strong> I když data neodcházejí, jde o neschválený software. Řeší se s IT, ne obcházením.</p>
+<p><strong>Víra v maskování.</strong> Regulární výraz nepozná jméno ani interní identifikátor. Citlivý dokument maskováním bezpečný nebude.</p>
+<p><strong>Neověřená licence modelu.</strong> Modely mají různé licence. Některé omezují komerční použití. Pro firemní nasazení to musí posoudit IT nebo právní oddělení.</p>
+<h2 id="cviceni">Cvičení<a class="kotva" href="#cviceni" aria-label="Odkaz na tento oddíl"></a></h2>
+<aside class="vsuvka vsuvka--cviceni" id="praxe-02-lokalni-modely-a-ochrana-dat-lokalni-versus-cloud-na-jedne-uloze" data-stitek="Cvičení" aria-label="Cvičení"><p class="praxe-blok-nazev">Lokální versus cloud na jedné úloze</p><p>Cíl: změřit rozdíl v kvalitě a čase. Spusť prompt z kroku 3 třikrát v lokálním modelu a třikrát v cloudovém chatu. U každého běhu zapiš čas odpovědi, počet testovacích případů a počet chyb (vymyšlená hláška, porušený formát, překročený limit). Hotovo: tabulka šesti běhů a dvě věty závěru, pro kterou úlohu by ti lokální model stačil.</p><p class="praxe-cviceni-pata" data-nepocitat><label class="zk-volba praxe-hotovo"><input type="checkbox" data-praxe-hotovo="praxe-02-lokalni-modely-a-ochrana-dat-lokalni-versus-cloud-na-jedne-uloze"> Hotovo</label></p></aside>
+<aside class="vsuvka vsuvka--cviceni" id="praxe-02-lokalni-modely-a-ochrana-dat-rag-nad-dokumentaci-vlastniho-projektu" data-stitek="Cvičení" aria-label="Cvičení"><p class="praxe-blok-nazev">RAG nad dokumentací vlastního projektu</p><p>Cíl: vyzkoušet RAG na skutečném projektu. Vytvoř kolekci LocalDocs z README a dokumentace projektu Účtenky nebo BOS Harvester. Napiš pět otázek, na které znáš odpověď: tři s odpovědí v dokumentaci, jednu s odpovědí rozdělenou do dvou souborů a jednu, na kterou dokumentace odpověď nemá. Hotovo: u každé otázky zapsaná odpověď, uvedený zdroj a hodnocení správná / částečná / vymyšlená. Aspoň jedna věta o tom, co bys v dokumentaci změnil, aby vyhledávání fungovalo lépe.</p><p class="praxe-cviceni-pata" data-nepocitat><label class="zk-volba praxe-hotovo"><input type="checkbox" data-praxe-hotovo="praxe-02-lokalni-modely-a-ochrana-dat-rag-nad-dokumentaci-vlastniho-projektu"> Hotovo</label></p></aside>
+<aside class="vsuvka vsuvka--cviceni" id="praxe-02-lokalni-modely-a-ochrana-dat-rozsireni-maskovani" data-stitek="Cvičení" aria-label="Cvičení"><p class="praxe-blok-nazev">Rozšíření maskování</p><p>Cíl: procvičit, že maskování je pomůcka s mezerami. Přidej do <code>PATTERNS</code> výraz pro číslo pojistné smlouvy ve vymyšleném formátu <code>PS-2026-000123</code> a pro datum narození <code>1. 1. 1985</code>. Ke každému napiš test v <code>test_sanitize.py</code>. Pak napiš test, který ukáže, co maskování nezachytí (například jméno a příjmení), a označ ho <code>@pytest.mark.xfail</code> (na začátek souboru pak patří <code>import pytest</code>). Hotovo: všechny testy projdou nebo jsou označené jako očekávané selhání. Komentář v kódu vysvětluje, proč jména regulárním výrazem maskovat nejdou.</p><p class="praxe-cviceni-pata" data-nepocitat><label class="zk-volba praxe-hotovo"><input type="checkbox" data-praxe-hotovo="praxe-02-lokalni-modely-a-ochrana-dat-rozsireni-maskovani"> Hotovo</label></p></aside>
+<h2 id="souvislost-se-sylabem-ct-genai">Souvislost se sylabem CT-GenAI<a class="kotva" href="#souvislost-se-sylabem-ct-genai" aria-label="Odkaz na tento oddíl"></a></h2>
+<p>Modul je praktickou podobou <strong>kapitoly 3, oddílu 3.2</strong>. Rizika posílání dat do cloudu a ztráta kontroly nad nimi jsou v <strong>oddílu 3.2.1</strong>. Opatření z kroku 6 a 8 (minimalizace dat, anonymizace, schválené prostředí) jsou v <strong>oddílu 3.2.3</strong>. Tam je i praktický příklad s GPT4All. Teplota v API volání souvisí s nedeterministickým chováním z <strong>oddílu 3.1.4</strong>. Etické zásady z Brunovy lekce L82 navazují na zkreslení (bias) v <strong>oddílu 3.1.1</strong> a na předpisy a rámce v <strong>oddílu 3.4.1</strong>. Spotřebě energie a nástrojům na její měření, včetně měření lokálně běžícího kódu, se věnuje <strong>oddíl 3.3.1</strong>.</p>
+<p>LocalDocs v kroku 4 je RAG z <strong>kapitoly 4, oddílu 4.1.2</strong>. Odpovídá praktickému cíli HO-4.1.2. Rozdíl mezi RAG a doladěním modelu je v <strong>oddílu 4.2.1</strong>. Proč GPT-Neo nereaguje na instrukce, vysvětluje rozdíl mezi základním a instrukčním modelem v <strong>kapitole 1, oddílu 1.1.3</strong>.</p>
+<p>Výběr mezi velkým cloudovým modelem a malým lokálním modelem je téma <strong>kapitoly 5, oddílu 5.1.3</strong> (výběr LLM/SLM). Instalace lokálního nástroje bez schválení je stínová AI z <strong>oddílu 5.1.1</strong>.</p>
+</article>
+<div class="splneno-radek" data-nepocitat><button type="button" class="tlacitko splneno" data-splneno="modul-02-lokalni-modely-a-ochrana-dat" data-text-ne="Označit jako prostudované" data-text-ano="✓ Prostudováno" aria-pressed="false">Označit jako prostudované</button></div>
+<nav class="naradi sousede" aria-label="Sousední moduly"><a href="01-prompty-pro-testera.html">← 1. Prompty pro testera v chatu</a><a href="../praxe.html">Všechny moduly</a><a href="03-github-copilot-pro-testera.html">3. GitHub Copilot pro testera →</a></nav>
+</main>
+<aside class="strom" aria-label="Obsah stránky"><h2>V tomto modulu</h2><ol><li><a href="#co-postavis">Co postavíš</a></li><li><a href="#predpoklady">Předpoklady</a></li><li><a href="#postup">Postup</a><ol><li><a href="#krok-1-rozhodni-jestli-lokalni-model-vubec-potrebujes">Krok 1: Rozhodni, jestli lokální model vůbec potřebuješ</a></li><li><a href="#krok-2-nainstaluj-gpt4all-a-stahni-maly-model">Krok 2: Nainstaluj GPT4All a stáhni malý model</a></li><li><a href="#krok-3-testovaci-pripady-z-lokalniho-modelu">Krok 3: Testovací případy z lokálního modelu</a></li><li><a href="#krok-4-model-nad-vlastnimi-dokumenty-localdocs">Krok 4: Model nad vlastními dokumenty (LocalDocs)</a></li><li><a href="#krok-5-lokalni-model-jako-api">Krok 5: Lokální model jako API</a></li><li><a href="#krok-6-python-skript-s-maskovanim-osobnich-udaju">Krok 6: Python skript s maskováním osobních údajů</a></li><li><a href="#krok-7-proc-ne-kazdy-model-ukazka-gpt-neo">Krok 7: Proč ne každý model – ukázka GPT-Neo</a></li><li><a href="#krok-8-rozhodovaci-tabulka-pro-praci-v-bance">Krok 8: Rozhodovací tabulka pro práci v bance</a></li></ol></li><li><a href="#overeni">Ověření</a></li><li><a href="#caste-chyby">Časté chyby</a></li><li><a href="#cviceni">Cvičení</a></li><li><a href="#souvislost-se-sylabem-ct-genai">Souvislost se sylabem CT-GenAI</a></li></ol></aside>
+</div>
+</div>
+<footer class="paticka">
+  <div class="paticka-vnitrek">
+    <p><strong>Neoficiální studijní materiál.</strong> Tento web není produktem ani publikací ISTQB®.
+    ISTQB® je registrovaná ochranná známka International Software Testing Qualifications Board.
+    Texty jsou vlastním zpracováním autora vytvořeným při přípravě na zkoušku CT-GenAI; oficiální sylabus
+    a vzorovou zkoušku si stáhněte přímo na istqb.org.</p>
+    <p>Ke zkoušce vždy platí znění oficiálního sylabu CT-GenAI v1.1. Doplněné informace a příklady z praxe
+    slouží k porozumění, nikoli jako zdroj správných odpovědí u zkoušky.</p>
+    <ul>
+      <li><a href="https://istqb.org/certifications/gen-ai/" target="_blank" rel="noopener noreferrer">ISTQB — CT-GenAI</a></li>
+      <li><a href="https://glossary.istqb.org" target="_blank" rel="noopener noreferrer">Slovník ISTQB</a></li>
+      <li><a href="https://casqb.org" target="_blank" rel="noopener noreferrer">CaSQB</a></li>
+      <li><a href="../zdroje.html">Zdroje a autorská práva</a></li>
+    </ul>
+  </div>
+</footer>
+<script src="../assets/ucet-konfig.js"></script>
+<script src="../assets/ucet.js"></script>
+<script src="../assets/skript.js"></script>
+</body>
+</html>

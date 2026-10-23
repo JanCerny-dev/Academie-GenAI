@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="cs" data-tema="">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ISTQB CT-GenAI — česká studijní příručka</title>
+<meta name="description" content="Česká studijní příručka k certifikaci ISTQB CT-GenAI (Testing with Generative AI): výklad s anglickou terminologií, slovník, kartičky, cvičení a simulace zkoušky.">
+<meta name="color-scheme" content="light dark">
+<link rel="stylesheet" href="assets/styl.css">
+<script>
+/* Nastaví uložený režim ještě před vykreslením, aby stránka neproblikla. */
+(function(){try{var t=localStorage.getItem('genai-tema');if(t){document.documentElement.setAttribute('data-tema',t);}}catch(e){}})();
+</script>
+</head>
+<body>
+<a class="preskocit" href="#text">Přeskočit na text</a>
+<div class="postup" aria-hidden="true"></div>
+<header class="hlavicka">
+  <div class="hlavicka-vnitrek">
+    <a class="znacka" href="index.html">ISTQB CT-GenAI <span>česká studijní příručka</span></a>
+    <nav class="navigace" aria-label="Hlavní navigace">
+      <a href="index.html" aria-current="page">Úvod</a>
+      <span class="skupina" data-skupina>
+        <a href="kapitoly.html" class="zvyraznit">Kapitoly</a>
+        <ul class="podmenu" id="podmenu-kapitoly" aria-label="Seznam kapitol"><li><a href="kapitola-1/vyklad.html"><b>1</b> Úvod do generativní AI</a></li><li><a href="kapitola-2/vyklad.html"><b>2</b> Prompt engineering</a></li><li><a href="kapitola-3/vyklad.html"><b>3</b> Rizika generativní AI</a></li><li><a href="kapitola-4/vyklad.html"><b>4</b> Infrastruktura s LLM</a></li><li><a href="kapitola-5/vyklad.html"><b>5</b> Zavedení GenAI v organizaci</a></li></ul>
+      </span>
+      <a href="slovnik.html">Slovník</a>
+      <a href="karticky.html">Kartičky</a>
+      <a href="prirazovani.html">Přiřazování</a>
+      <a href="cviceni.html">Cvičení</a>
+      <a href="praxe.html">Praxe</a>
+      <a href="cile.html">Cíle</a>
+      <a href="zkouska.html">Zkouška</a>
+      <a href="lokalni/index.html" class="lokalni-odkaz">Lokální testy</a>
+      <button type="button" class="prepinac-tema" data-prepinac-tema>Tmavý režim</button>
+      <button type="button" class="ucet-tlacitko" data-ucet hidden>Přihlásit</button>
+    </nav>
+  </div>
+</header>
+<div class="stranka uvod">
+<main id="text">
+
+<div class="uvod-hlava">
+  <p class="drobky">Specialist Level · sylabus v1.1</p>
+  <h1>Příprava na ISTQB CT-GenAI v češtině</h1>
+  <p class="perex">Certified Tester Testing with Generative AI: výklad česky s anglickou terminologií,
+  slovník a kartičky, přiřazovací a praktická cvičení a simulace zkoušky v angličtině i češtině.</p>
+  <p class="uvod-stav">Zatím hotovo: 10 stránek výkladu (51 tisíc slov), 215 pojmů ve slovníku, 49 přiřazovacích sad, 43 praktických cvičení, 237 veřejných otázek, 12 modulů Praxe.</p>
+</div>
+
+<section class="sekce" id="postup">
+  <h2>Tvůj postup</h2>
+  <ul class="prehled"><li data-prehled="splneno" data-ids="kapitola-1-vyklad kapitola-1-zkracena kapitola-2-vyklad kapitola-2-zkracena kapitola-3-vyklad kapitola-3-zkracena kapitola-4-vyklad kapitola-4-zkracena kapitola-5-vyklad kapitola-5-zkracena"><a href="kapitoly.html">Prostudované kapitoly (výklad i zkrácená verze)</a><span class="prehled-hodnota" data-hodnota>–</span><span class="prehled-pruh" aria-hidden="true"><span></span></span></li><li data-prehled="mapa" data-ids="HO-1.1.2 HO-1.1.4 CV-1-01 CV-1-02 CV-1-03 HO-2.1.1 HO-2.1.2a HO-2.1.2b HO-2.2.1a HO-2.2.1b HO-2.2.2a HO-2.2.2b HO-2.2.2c HO-2.2.3a HO-2.2.3b HO-2.2.4 HO-2.2.5 HO-2.3.1 HO-2.3.2 CV-2-01 CV-2-02 CV-2-03 CV-2-04 HO-3.1.2a HO-3.1.2b HO-3.2.3 HO-3.3.1 CV-3-01 CV-3-02 CV-3-03 CV-3-04 HO-4.1.2 HO-4.1.3 HO-4.2.1 CV-4-01 CV-4-02 CV-4-03 CV-4-04 HO-5.1.3 CV-5-01 CV-5-02 CV-5-03 CV-5-04" data-klic="genai-cviceni-hotovo"><a href="cviceni.html">Praktická cvičení</a><span class="prehled-hodnota" data-hodnota>–</span><span class="prehled-pruh" aria-hidden="true"><span></span></span></li><li data-prehled="splneno" data-ids="modul-tahak modul-01-prompty-pro-testera modul-02-lokalni-modely-a-ochrana-dat modul-03-github-copilot-pro-testera modul-04-mcp-a-playwright-mcp modul-05-claude-code-pro-qa modul-06-ci-cd-a-docker-s-ai-agentem modul-07-n8n-agent-pro-qa modul-08-nastroje-postavene-na-llm modul-09-python-a-openai-api modul-10-bdd-framework-behave-playwright-ai modul-11-api-testy-s-ai modul-12-jenkins-ci-a-reporty modul-projekt"><a href="praxe.html">Prostudované moduly Praxe</a><span class="prehled-hodnota" data-hodnota>–</span><span class="prehled-pruh" aria-hidden="true"><span></span></span></li><li data-prehled="mapa" data-ids="praxe-01-prompty-pro-testera-login-portal-od-nuly praxe-01-prompty-pro-testera-tri-techniky-jedna-uloha praxe-01-prompty-pro-testera-rozpory-v-pozadavcich praxe-02-lokalni-modely-a-ochrana-dat-lokalni-versus-cloud-na-jedne-uloze praxe-02-lokalni-modely-a-ochrana-dat-rag-nad-dokumentaci-vlastniho-projektu praxe-02-lokalni-modely-a-ochrana-dat-rozsireni-maskovani praxe-03-github-copilot-pro-testera-login-portal-s-copilotem praxe-03-github-copilot-pro-testera-druhy-vlastni-agent-recenzent-testu praxe-03-github-copilot-pro-testera-agent-nad-vlastnim-projektem praxe-04-mcp-a-playwright-mcp-rezervace-jako-rucni-kroky-a-test praxe-04-mcp-a-playwright-mcp-data-z-databaze-do-formulare praxe-04-mcp-a-playwright-mcp-posudek-ciziho-serveru praxe-05-claude-code-pro-qa-skills-pro-vlastni-projekt-uctenky praxe-05-claude-code-pro-qa-recenze-a-oprava-jednoho-testu praxe-05-claude-code-pro-qa-report-pokryti-a-jeho-kontrola praxe-06-ci-cd-a-docker-s-ai-agentem-cervena-pipeline-schvalne praxe-06-ci-cd-a-docker-s-ai-agentem-kontejner-proti-lokalnimu-eventhubu praxe-06-ci-cd-a-docker-s-ai-agentem-cela-aplikace-v-github-actions praxe-07-n8n-agent-pro-qa-agent-ktery-nezaklada-duplicity praxe-07-n8n-agent-pro-qa-test-prompt-injection praxe-07-n8n-agent-pro-qa-klasicke-workflow-proti-agentovi praxe-08-nastroje-postavene-na-llm-platforma-proti-vlastnimu-agentovi praxe-08-nastroje-postavene-na-llm-hodnoceni-druhe-platformy praxe-08-nastroje-postavene-na-llm-doporuceni-pro-tym praxe-09-python-a-openai-api-login-portal-misto-contact-us praxe-09-python-a-openai-api-zmer-opakovatelnost praxe-09-python-a-openai-api-recenze-vystupu-podle-metrik praxe-10-bdd-framework-behave-playwright-ai-rozsir-examples-o-techniky-navrhu-testu praxe-10-bdd-framework-behave-playwright-ai-druhy-feature-soubor-pro-login-portal praxe-10-bdd-framework-behave-playwright-ai-zmer-kolik-navrhu-z-ai-bylo-pouzitelnych praxe-11-api-testy-s-ai-scenare-z-dokumentace-goal-trackeru praxe-11-api-testy-s-ai-porovnani-odpovedi-se-snapshotem praxe-11-api-testy-s-ai-sql-dotazy-se-zmenenym-schematem praxe-12-jenkins-ci-a-reporty-nocni-regresni-beh praxe-12-jenkins-ci-a-reporty-freestyle-job-prevedeny-na-jenkinsfile praxe-12-jenkins-ci-a-reporty-srovnani-jenkins-a-github-actions praxe-projekt-etapa-0-hotova praxe-projekt-etapa-1-hotova praxe-projekt-etapa-2-hotova praxe-projekt-etapa-3-hotova praxe-projekt-etapa-4-hotova praxe-projekt-etapa-5-hotova praxe-projekt-etapa-6-hotova praxe-projekt-etapa-7-hotova" data-klic="genai-praxe-hotovo"><a href="praxe.html">Cvičení v Praxi</a><span class="prehled-hodnota" data-hodnota>–</span><span class="prehled-pruh" aria-hidden="true"><span></span></span></li><li data-prehled="prirazovani" data-celkem="49"><a href="prirazovani.html">Přiřazovací sady na 100 %</a><span class="prehled-hodnota" data-hodnota>–</span><span class="prehled-pruh" aria-hidden="true"><span></span></span></li><li data-prehled="karticky" data-celkem="215"><a href="karticky.html">Kartičky v 5. přihrádce</a><span class="prehled-hodnota" data-hodnota>–</span><span class="prehled-pruh" aria-hidden="true"><span></span></span></li><li data-prehled="cile" data-celkem="37"><a href="cile.html">Studijní cíle, které umíš</a><span class="prehled-hodnota" data-hodnota>–</span><span class="prehled-pruh" aria-hidden="true"><span></span></span></li><li data-prehled="zkousky"><a href="zkouska.html">Splněné zkoušky</a><span class="prehled-hodnota" data-hodnota>–</span><span class="prehled-pruh" aria-hidden="true"><span></span></span></li></ul>
+  <p class="napoveda">Kapitoly a moduly Praxe si označíš tlačítkem „Označit jako prostudované“ pod textem,
+  cvičení zaškrtávátkem Hotovo. Testy a kartičky se počítají samy.</p>
+  <p class="napoveda">Bez přihlášení se postup ukládá jen v tomto prohlížeči.</p>
+  <p class="napoveda" data-ucet-info hidden>Chceš mít postup uložený na všech zařízeních, i po smazání historie
+  prohlížeče? Přihlas se tlačítkem <strong>Přihlásit</strong> vpravo nahoře. Přihlásit se jde jen Google účtem.</p>
+</section>
+
+<div class="uvod-sloupce">
+
+<section class="sekce" id="zkouska-fakta">
+  <h2>Co je CT-GenAI</h2>
+  <p>Certifikace ISTQB pro testery, kteří používají generativní AI: prompt engineering pro testovací
+  úlohy, rizika (halucinace, ochrana dat, prompt injection), infrastruktura s LLM (RAG, agenti, LLMOps)
+  a zavedení GenAI do testovací organizace. Navazuje na Foundation Level.</p>
+  <dl class="zkratky">
+    <div><dt>40 otázek · 46 bodů</dt><dd>Otázka K3 (použití) má 2 body, ostatní 1 bod. K1 8 otázek, K2 26, K3 6.</dd></div>
+    <div><dt>Hranice 30 bodů (65 %)</dt><dd>Počítají se body, ne počet správných odpovědí.</dd></div>
+    <div><dt>60 minut, 75 minut</dt><dd>Prodloužení o 25 % pro ty, kdo zkoušku skládají v jiném než rodném jazyce.</dd></div>
+    <div><dt>Jen anglicky</dt><dd>Zkouška není v češtině. Proto je u každého pojmu anglický termín.</dd></div>
+    <div><dt>Podmínka: CTFL</dt><dd>Ke zkoušce je potřeba certifikát ISTQB Foundation Level.</dd></div>
+  </dl>
+</section>
+
+<section class="sekce" id="jak-studovat">
+  <h2>Jak web používat</h2>
+  <p>Části webu jsou kroky jednoho postupu. Nejlépe fungují v tomto pořadí:</p>
+  <ol class="postup-studia">
+    <li><a href="kapitoly.html"><strong>Plný výklad</strong></a> — souvislý text kapitoly s příklady z praxe. Tudy začni.</li>
+    <li><strong>Zkrácená verze</strong> — jen to, co je nutné ke zkoušce. K opakování.</li>
+    <li><a href="slovnik.html"><strong>Slovník</strong></a> a <a href="karticky.html"><strong>kartičky</strong></a> —
+    anglické termíny a jejich význam. Kartičky opakují Leitnerovou metodou.</li>
+    <li><a href="prirazovani.html"><strong>Přiřazování</strong></a> — zařazení příkladů k pojmům a technikám.</li>
+    <li><a href="cviceni.html"><strong>Praktická cvičení</strong></a> — prompty k vyzkoušení v chatbotu (hands-on objectives).</li>
+    <li><a href="praxe.html"><strong>Praxe</strong></a> — návody k AI nástrojům v testování. Ke zkoušce nejsou nutné.</li>
+    <li><a href="zkouska.html"><strong>Zkoušky česky</strong></a> — pochopit, na co se otázky ptají.</li>
+    <li><a href="zkouska.html"><strong>Zkoušky anglicky se skrytým českým překladem</strong></a> — nácvik na ostrou zkoušku.
+    Překlad odkryješ tlačítkem, jen když si nejsi jistý.</li>
+    <li><strong>Lokální testy</strong> — otázky z placených kurzů Udemy, jen na tomto počítači, <a href="lokalni/index.html">otevřít</a>.</li>
+  </ol>
+  <p>Svůj postup po studijních cílech uvidíš na stránce <a href="cile.html">Cíle</a>,
+  celkový přehled <a href="#postup">nahoře na této stránce</a>.</p>
+</section>
+
+</div>
+
+<section class="sekce" id="praxe">
+  <h2>Praxe: AI nástroje v testování</h2>
+  <p>Vedle přípravy na zkoušku má web sekci <a href="praxe.html">Praxe</a>. Jsou v ní návody krok za krokem:
+  prompty v chatu, GitHub Copilot a MCP, Claude Code, vlastní framework v Pythonu s Behave a Playwright
+  a spuštění v CI. Patří k nim <a href="praxe.html#rozcestnik">tahák nástrojů a závěrečný projekt</a>.
+  Na zkoušku se nezkouší, ale ukazuje pojmy ze sylabu v reálné práci.</p>
+</section>
+
+<section class="sekce" id="plan">
+  <h2>Studijní plán na 6 týdnů</h2>
+  <div class="md plan"><p>Metoda z CTFL: výklad 2× → výpisky vlastními slovy → testy. Navíc <strong>slovník EN–CZ</strong> a ke každé kapitole praktické cvičení.</p>
+<h3 id="faze-zpracovani-januv-plan">Fáze zpracování (Janův plán)<a class="kotva" href="#faze-zpracovani-januv-plan" aria-label="Odkaz na tento oddíl"></a></h3>
+<ol><li><strong>Teorie česky s anglickou terminologií</strong> – výukový materiál ze všech přípravných kurzů.</li><li><strong>Testy česky</strong> – pochopit, na co se otázky ptají.</li><li><strong>Testy anglicky se schovaným českým překladem</strong> – finální nácvik na zkoušku.</li></ol>
+<h3 id="tyden-1-orientace-a-vstupni-test">Týden 1 – orientace a vstupní test<a class="kotva" href="#tyden-1-orientace-a-vstupni-test" aria-label="Odkaz na tento oddíl"></a></h3>
+<ul><li>Stáhnout z istqb.org <strong>sylabus v1.1 (EN)</strong> a <strong>Sample Exam A</strong>.</li><li>Přečíst celý sylabus jednou, bez výpisků.</li><li>Sample Exam A naslepo, zapsat skóre jako výchozí bod.</li><li>Založit <strong>slovník EN–CZ</strong> (hallucination, grounding, one-shot, context window, RAG, LLMOps…).</li></ul>
+<h3 id="tyden-2-kapitola-1-uvod-do-genai-kapitola-2-prompt-engineering">Týden 2 – kapitola 1 (úvod do GenAI) + kapitola 2 (prompt engineering)<a class="kotva" href="#tyden-2-kapitola-1-uvod-do-genai-kapitola-2-prompt-engineering" aria-label="Odkaz na tento oddíl"></a></h3>
+<ul><li>Učit se podle <strong>learning objectives</strong> a K-úrovní (K1 zapamatovat, K2 pochopit, K3 použít).</li><li><strong>Prakticky:</strong> nechat LLM navrhnout testy pro <code>uctenky</code> různými technikami (zero-shot, one-shot, chain-of-thought, role) a porovnat výsledky.</li></ul>
+<h3 id="tyden-3-kapitola-3-rizika-genai">Týden 3 – kapitola 3 (rizika GenAI)<a class="kotva" href="#tyden-3-kapitola-3-rizika-genai" aria-label="Odkaz na tento oddíl"></a></h3>
+<ul><li>Halucinace, chyby v uvažování, bias, ochrana dat, prompt injection, energetická náročnost. ale nemusí být pravdivé.</li><li><strong>Prakticky:</strong> 10 odpovědí LLM z oboru, který znáš do hloubky (CFD, MKP) – najít halucinace a sepsat, podle čeho je poznáš.</li></ul>
+<h3 id="tyden-4-kapitola-4-llm-testovaci-infrastruktura">Týden 4 – kapitola 4 (LLM testovací infrastruktura)<a class="kotva" href="#tyden-4-kapitola-4-llm-testovaci-infrastruktura" aria-label="Odkaz na tento oddíl"></a></h3>
+<ul><li>RAG, agenti v automatizaci testů, fine-tuning, LLMOps.</li><li><strong>Šmoula jako případová studie</strong> – popsat jeho architekturu pojmy ze sylabu.</li><li><strong>Prakticky:</strong> malý RAG nad sylabem.</li></ul>
+<h3 id="tyden-5-kapitola-5-zavedeni-genai-do-organizace-prvni-testy">Týden 5 – kapitola 5 (zavedení GenAI do organizace) + první testy<a class="kotva" href="#tyden-5-kapitola-5-zavedeni-genai-do-organizace-prvni-testy" aria-label="Odkaz na tento oddíl"></a></h3>
+<ul><li>Strategie zavedení, výběr nástrojů, měření přínosu, změna rolí.</li><li>Udemy testy po kapitolách.</li></ul>
+<h3 id="tyden-6-ostre-testy-a-zkouska">Týden 6 – ostré testy a zkouška<a class="kotva" href="#tyden-6-ostre-testy-a-zkouska" aria-label="Odkaz na tento oddíl"></a></h3>
+<ul><li>Celé testy na čas (75 min).</li><li>Každou chybu dohledat k learning objective.</li><li>Na konci znovu Sample Exam A a porovnat s týdnem 1.</li><li>Na zkoušku až při opakovaném výsledku <strong>nad 80 %</strong>.</li></ul></div>
+</section>
+
+<section class="sekce" id="predcitani">
+  <h2>Nechte si to předčítat</h2>
+  <dl class="zkratky">
+    <div><dt>Ctrl + Shift + U</dt><dd>Spustí a zastaví předčítání v Microsoft Edge. Výklad je psaný tak,
+    aby se dal poslouchat.</dd></div>
+  </dl>
+</section>
+
+</main>
+</div>
+<footer class="paticka">
+  <div class="paticka-vnitrek">
+    <p><strong>Neoficiální studijní materiál.</strong> Tento web není produktem ani publikací ISTQB®.
+    ISTQB® je registrovaná ochranná známka International Software Testing Qualifications Board.
+    Texty jsou vlastním zpracováním autora vytvořeným při přípravě na zkoušku CT-GenAI; oficiální sylabus
+    a vzorovou zkoušku si stáhněte přímo na istqb.org.</p>
+    <p>Ke zkoušce vždy platí znění oficiálního sylabu CT-GenAI v1.1. Doplněné informace a příklady z praxe
+    slouží k porozumění, nikoli jako zdroj správných odpovědí u zkoušky.</p>
+    <ul>
+      <li><a href="https://istqb.org/certifications/gen-ai/" target="_blank" rel="noopener noreferrer">ISTQB — CT-GenAI</a></li>
+      <li><a href="https://glossary.istqb.org" target="_blank" rel="noopener noreferrer">Slovník ISTQB</a></li>
+      <li><a href="https://casqb.org" target="_blank" rel="noopener noreferrer">CaSQB</a></li>
+      <li><a href="zdroje.html">Zdroje a autorská práva</a></li>
+    </ul>
+  </div>
+</footer>
+<script src="assets/ucet-konfig.js"></script>
+<script src="assets/ucet.js"></script>
+<script src="assets/skript.js"></script>
+</body>
+</html>

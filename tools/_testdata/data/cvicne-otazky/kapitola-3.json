@@ -1,0 +1,926 @@
+{
+ "popis": "Testovací otázky ke kapitole 3",
+ "otazky": [
+  {
+   "id": "CG-3.1.1-01",
+   "zdroj": "vlastni",
+   "lo": "GenAI-3.1.1",
+   "k": "K1",
+   "body": 1,
+   "vyber": 2,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Test question CG-3.1.1-01 for GenAI-3.1.1?</p>",
+    "moznosti": [
+     "Answer text 1 of CG-3.1.1-01",
+     "Answer text 2 of CG-3.1.1-01",
+     "Answer text 3 of CG-3.1.1-01",
+     "Answer text 4 of CG-3.1.1-01"
+    ],
+    "vysvetleni": {
+     "a": "Correct.",
+     "b": "Incorrect.",
+     "c": "Correct.",
+     "d": "Incorrect."
+    },
+    "vysvetleni_obecne": "<p>General explanation.</p>"
+   },
+   "cz": {
+    "q": "<p>Testovací otázka CG-3.1.1-01 k GenAI-3.1.1?</p>",
+    "moznosti": [
+     "Text odpovědi 1 otázky CG-3.1.1-01",
+     "Text odpovědi 2 otázky CG-3.1.1-01",
+     "Text odpovědi 3 otázky CG-3.1.1-01",
+     "Text odpovědi 4 otázky CG-3.1.1-01"
+    ],
+    "vysvetleni": {
+     "a": "Správně.",
+     "b": "Špatně.",
+     "c": "Správně.",
+     "d": "Špatně."
+    },
+    "vysvetleni_obecne": "<p>Obecné vysvětlení.</p>"
+   },
+   "spravne": [
+    "a",
+    "c"
+   ],
+   "oddil": "3.1.1",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-3.1.1-02",
+   "zdroj": "vlastni",
+   "lo": "GenAI-3.1.1",
+   "k": "K1",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Test question CG-3.1.1-02 for GenAI-3.1.1?</p>",
+    "moznosti": [
+     "Answer text 1 of CG-3.1.1-02",
+     "Answer text 2 of CG-3.1.1-02",
+     "Answer text 3 of CG-3.1.1-02",
+     "Answer text 4 of CG-3.1.1-02"
+    ],
+    "vysvetleni": {
+     "a": "Incorrect.",
+     "b": "Correct.",
+     "c": "Incorrect.",
+     "d": "Incorrect."
+    },
+    "vysvetleni_obecne": "<p>General explanation.</p>"
+   },
+   "cz": {
+    "q": "<p>Testovací otázka CG-3.1.1-02 k GenAI-3.1.1?</p>",
+    "moznosti": [
+     "Text odpovědi 1 otázky CG-3.1.1-02",
+     "Text odpovědi 2 otázky CG-3.1.1-02",
+     "Text odpovědi 3 otázky CG-3.1.1-02",
+     "Text odpovědi 4 otázky CG-3.1.1-02"
+    ],
+    "vysvetleni": {
+     "a": "Špatně.",
+     "b": "Správně.",
+     "c": "Špatně.",
+     "d": "Špatně."
+    },
+    "vysvetleni_obecne": "<p>Obecné vysvětlení.</p>"
+   },
+   "spravne": [
+    "b"
+   ],
+   "oddil": "3.1.1",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-3.1.2-01",
+   "zdroj": "vlastni",
+   "lo": "GenAI-3.1.2",
+   "k": "K3",
+   "body": 2,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Test question CG-3.1.2-01 for GenAI-3.1.2?</p>",
+    "moznosti": [
+     "Answer text 1 of CG-3.1.2-01",
+     "Answer text 2 of CG-3.1.2-01",
+     "Answer text 3 of CG-3.1.2-01",
+     "Answer text 4 of CG-3.1.2-01"
+    ],
+    "vysvetleni": {
+     "a": "Correct.",
+     "b": "Incorrect.",
+     "c": "Incorrect.",
+     "d": "Incorrect."
+    },
+    "vysvetleni_obecne": "<p>General explanation.</p>"
+   },
+   "cz": {
+    "q": "<p>Testovací otázka CG-3.1.2-01 k GenAI-3.1.2?</p>",
+    "moznosti": [
+     "Text odpovědi 1 otázky CG-3.1.2-01",
+     "Text odpovědi 2 otázky CG-3.1.2-01",
+     "Text odpovědi 3 otázky CG-3.1.2-01",
+     "Text odpovědi 4 otázky CG-3.1.2-01"
+    ],
+    "vysvetleni": {
+     "a": "Správně.",
+     "b": "Špatně.",
+     "c": "Špatně.",
+     "d": "Špatně."
+    },
+    "vysvetleni_obecne": "<p>Obecné vysvětlení.</p>"
+   },
+   "spravne": [
+    "a"
+   ],
+   "oddil": "3.1.2",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-3.1.2-02",
+   "zdroj": "vlastni",
+   "lo": "GenAI-3.1.2",
+   "k": "K3",
+   "body": 2,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Test question CG-3.1.2-02 for GenAI-3.1.2?</p>",
+    "moznosti": [
+     "Answer text 1 of CG-3.1.2-02",
+     "Answer text 2 of CG-3.1.2-02",
+     "Answer text 3 of CG-3.1.2-02",
+     "Answer text 4 of CG-3.1.2-02"
+    ],
+    "vysvetleni": {
+     "a": "Incorrect.",
+     "b": "Correct.",
+     "c": "Incorrect.",
+     "d": "Incorrect."
+    },
+    "vysvetleni_obecne": "<p>General explanation.</p>"
+   },
+   "cz": {
+    "q": "<p>Testovací otázka CG-3.1.2-02 k GenAI-3.1.2?</p>",
+    "moznosti": [
+     "Text odpovědi 1 otázky CG-3.1.2-02",
+     "Text odpovědi 2 otázky CG-3.1.2-02",
+     "Text odpovědi 3 otázky CG-3.1.2-02",
+     "Text odpovědi 4 otázky CG-3.1.2-02"
+    ],
+    "vysvetleni": {
+     "a": "Špatně.",
+     "b": "Správně.",
+     "c": "Špatně.",
+     "d": "Špatně."
+    },
+    "vysvetleni_obecne": "<p>Obecné vysvětlení.</p>"
+   },
+   "spravne": [
+    "b"
+   ],
+   "oddil": "3.1.2",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-3.1.3-01",
+   "zdroj": "vlastni",
+   "lo": "GenAI-3.1.3",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Test question CG-3.1.3-01 for GenAI-3.1.3?</p>",
+    "moznosti": [
+     "Answer text 1 of CG-3.1.3-01",
+     "Answer text 2 of CG-3.1.3-01",
+     "Answer text 3 of CG-3.1.3-01",
+     "Answer text 4 of CG-3.1.3-01"
+    ],
+    "vysvetleni": {
+     "a": "Correct.",
+     "b": "Incorrect.",
+     "c": "Incorrect.",
+     "d": "Incorrect."
+    },
+    "vysvetleni_obecne": "<p>General explanation.</p>"
+   },
+   "cz": {
+    "q": "<p>Testovací otázka CG-3.1.3-01 k GenAI-3.1.3?</p>",
+    "moznosti": [
+     "Text odpovědi 1 otázky CG-3.1.3-01",
+     "Text odpovědi 2 otázky CG-3.1.3-01",
+     "Text odpovědi 3 otázky CG-3.1.3-01",
+     "Text odpovědi 4 otázky CG-3.1.3-01"
+    ],
+    "vysvetleni": {
+     "a": "Správně.",
+     "b": "Špatně.",
+     "c": "Špatně.",
+     "d": "Špatně."
+    },
+    "vysvetleni_obecne": "<p>Obecné vysvětlení.</p>"
+   },
+   "spravne": [
+    "a"
+   ],
+   "oddil": "3.1.3",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-3.1.3-02",
+   "zdroj": "vlastni",
+   "lo": "GenAI-3.1.3",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Test question CG-3.1.3-02 for GenAI-3.1.3?</p>",
+    "moznosti": [
+     "Answer text 1 of CG-3.1.3-02",
+     "Answer text 2 of CG-3.1.3-02",
+     "Answer text 3 of CG-3.1.3-02",
+     "Answer text 4 of CG-3.1.3-02"
+    ],
+    "vysvetleni": {
+     "a": "Incorrect.",
+     "b": "Correct.",
+     "c": "Incorrect.",
+     "d": "Incorrect."
+    },
+    "vysvetleni_obecne": "<p>General explanation.</p>"
+   },
+   "cz": {
+    "q": "<p>Testovací otázka CG-3.1.3-02 k GenAI-3.1.3?</p>",
+    "moznosti": [
+     "Text odpovědi 1 otázky CG-3.1.3-02",
+     "Text odpovědi 2 otázky CG-3.1.3-02",
+     "Text odpovědi 3 otázky CG-3.1.3-02",
+     "Text odpovědi 4 otázky CG-3.1.3-02"
+    ],
+    "vysvetleni": {
+     "a": "Špatně.",
+     "b": "Správně.",
+     "c": "Špatně.",
+     "d": "Špatně."
+    },
+    "vysvetleni_obecne": "<p>Obecné vysvětlení.</p>"
+   },
+   "spravne": [
+    "b"
+   ],
+   "oddil": "3.1.3",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-3.1.4-01",
+   "zdroj": "vlastni",
+   "lo": "GenAI-3.1.4",
+   "k": "K1",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Test question CG-3.1.4-01 for GenAI-3.1.4?</p>",
+    "moznosti": [
+     "Answer text 1 of CG-3.1.4-01",
+     "Answer text 2 of CG-3.1.4-01",
+     "Answer text 3 of CG-3.1.4-01",
+     "Answer text 4 of CG-3.1.4-01"
+    ],
+    "vysvetleni": {
+     "a": "Correct.",
+     "b": "Incorrect.",
+     "c": "Incorrect.",
+     "d": "Incorrect."
+    },
+    "vysvetleni_obecne": "<p>General explanation.</p>"
+   },
+   "cz": {
+    "q": "<p>Testovací otázka CG-3.1.4-01 k GenAI-3.1.4?</p>",
+    "moznosti": [
+     "Text odpovědi 1 otázky CG-3.1.4-01",
+     "Text odpovědi 2 otázky CG-3.1.4-01",
+     "Text odpovědi 3 otázky CG-3.1.4-01",
+     "Text odpovědi 4 otázky CG-3.1.4-01"
+    ],
+    "vysvetleni": {
+     "a": "Správně.",
+     "b": "Špatně.",
+     "c": "Špatně.",
+     "d": "Špatně."
+    },
+    "vysvetleni_obecne": "<p>Obecné vysvětlení.</p>"
+   },
+   "spravne": [
+    "a"
+   ],
+   "oddil": "3.1.4",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-3.1.4-02",
+   "zdroj": "vlastni",
+   "lo": "GenAI-3.1.4",
+   "k": "K1",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Test question CG-3.1.4-02 for GenAI-3.1.4?</p>",
+    "moznosti": [
+     "Answer text 1 of CG-3.1.4-02",
+     "Answer text 2 of CG-3.1.4-02",
+     "Answer text 3 of CG-3.1.4-02",
+     "Answer text 4 of CG-3.1.4-02"
+    ],
+    "vysvetleni": {
+     "a": "Incorrect.",
+     "b": "Correct.",
+     "c": "Incorrect.",
+     "d": "Incorrect."
+    },
+    "vysvetleni_obecne": "<p>General explanation.</p>"
+   },
+   "cz": {
+    "q": "<p>Testovací otázka CG-3.1.4-02 k GenAI-3.1.4?</p>",
+    "moznosti": [
+     "Text odpovědi 1 otázky CG-3.1.4-02",
+     "Text odpovědi 2 otázky CG-3.1.4-02",
+     "Text odpovědi 3 otázky CG-3.1.4-02",
+     "Text odpovědi 4 otázky CG-3.1.4-02"
+    ],
+    "vysvetleni": {
+     "a": "Špatně.",
+     "b": "Správně.",
+     "c": "Špatně.",
+     "d": "Špatně."
+    },
+    "vysvetleni_obecne": "<p>Obecné vysvětlení.</p>"
+   },
+   "spravne": [
+    "b"
+   ],
+   "oddil": "3.1.4",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-3.2.1-01",
+   "zdroj": "vlastni",
+   "lo": "GenAI-3.2.1",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Test question CG-3.2.1-01 for GenAI-3.2.1?</p>",
+    "moznosti": [
+     "Answer text 1 of CG-3.2.1-01",
+     "Answer text 2 of CG-3.2.1-01",
+     "Answer text 3 of CG-3.2.1-01",
+     "Answer text 4 of CG-3.2.1-01"
+    ],
+    "vysvetleni": {
+     "a": "Correct.",
+     "b": "Incorrect.",
+     "c": "Incorrect.",
+     "d": "Incorrect."
+    },
+    "vysvetleni_obecne": "<p>General explanation.</p>"
+   },
+   "cz": {
+    "q": "<p>Testovací otázka CG-3.2.1-01 k GenAI-3.2.1?</p>",
+    "moznosti": [
+     "Text odpovědi 1 otázky CG-3.2.1-01",
+     "Text odpovědi 2 otázky CG-3.2.1-01",
+     "Text odpovědi 3 otázky CG-3.2.1-01",
+     "Text odpovědi 4 otázky CG-3.2.1-01"
+    ],
+    "vysvetleni": {
+     "a": "Správně.",
+     "b": "Špatně.",
+     "c": "Špatně.",
+     "d": "Špatně."
+    },
+    "vysvetleni_obecne": "<p>Obecné vysvětlení.</p>"
+   },
+   "spravne": [
+    "a"
+   ],
+   "oddil": "3.2.1",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-3.2.1-02",
+   "zdroj": "vlastni",
+   "lo": "GenAI-3.2.1",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Test question CG-3.2.1-02 for GenAI-3.2.1?</p>",
+    "moznosti": [
+     "Answer text 1 of CG-3.2.1-02",
+     "Answer text 2 of CG-3.2.1-02",
+     "Answer text 3 of CG-3.2.1-02",
+     "Answer text 4 of CG-3.2.1-02"
+    ],
+    "vysvetleni": {
+     "a": "Incorrect.",
+     "b": "Correct.",
+     "c": "Incorrect.",
+     "d": "Incorrect."
+    },
+    "vysvetleni_obecne": "<p>General explanation.</p>"
+   },
+   "cz": {
+    "q": "<p>Testovací otázka CG-3.2.1-02 k GenAI-3.2.1?</p>",
+    "moznosti": [
+     "Text odpovědi 1 otázky CG-3.2.1-02",
+     "Text odpovědi 2 otázky CG-3.2.1-02",
+     "Text odpovědi 3 otázky CG-3.2.1-02",
+     "Text odpovědi 4 otázky CG-3.2.1-02"
+    ],
+    "vysvetleni": {
+     "a": "Špatně.",
+     "b": "Správně.",
+     "c": "Špatně.",
+     "d": "Špatně."
+    },
+    "vysvetleni_obecne": "<p>Obecné vysvětlení.</p>"
+   },
+   "spravne": [
+    "b"
+   ],
+   "oddil": "3.2.1",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-3.2.2-01",
+   "zdroj": "vlastni",
+   "lo": "GenAI-3.2.2",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Test question CG-3.2.2-01 for GenAI-3.2.2?</p>",
+    "moznosti": [
+     "Answer text 1 of CG-3.2.2-01",
+     "Answer text 2 of CG-3.2.2-01",
+     "Answer text 3 of CG-3.2.2-01",
+     "Answer text 4 of CG-3.2.2-01"
+    ],
+    "vysvetleni": {
+     "a": "Correct.",
+     "b": "Incorrect.",
+     "c": "Incorrect.",
+     "d": "Incorrect."
+    },
+    "vysvetleni_obecne": "<p>General explanation.</p>"
+   },
+   "cz": {
+    "q": "<p>Testovací otázka CG-3.2.2-01 k GenAI-3.2.2?</p>",
+    "moznosti": [
+     "Text odpovědi 1 otázky CG-3.2.2-01",
+     "Text odpovědi 2 otázky CG-3.2.2-01",
+     "Text odpovědi 3 otázky CG-3.2.2-01",
+     "Text odpovědi 4 otázky CG-3.2.2-01"
+    ],
+    "vysvetleni": {
+     "a": "Správně.",
+     "b": "Špatně.",
+     "c": "Špatně.",
+     "d": "Špatně."
+    },
+    "vysvetleni_obecne": "<p>Obecné vysvětlení.</p>"
+   },
+   "spravne": [
+    "a"
+   ],
+   "oddil": "3.2.2",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-3.2.2-02",
+   "zdroj": "vlastni",
+   "lo": "GenAI-3.2.2",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Test question CG-3.2.2-02 for GenAI-3.2.2?</p>",
+    "moznosti": [
+     "Answer text 1 of CG-3.2.2-02",
+     "Answer text 2 of CG-3.2.2-02",
+     "Answer text 3 of CG-3.2.2-02",
+     "Answer text 4 of CG-3.2.2-02"
+    ],
+    "vysvetleni": {
+     "a": "Incorrect.",
+     "b": "Correct.",
+     "c": "Incorrect.",
+     "d": "Incorrect."
+    },
+    "vysvetleni_obecne": "<p>General explanation.</p>"
+   },
+   "cz": {
+    "q": "<p>Testovací otázka CG-3.2.2-02 k GenAI-3.2.2?</p>",
+    "moznosti": [
+     "Text odpovědi 1 otázky CG-3.2.2-02",
+     "Text odpovědi 2 otázky CG-3.2.2-02",
+     "Text odpovědi 3 otázky CG-3.2.2-02",
+     "Text odpovědi 4 otázky CG-3.2.2-02"
+    ],
+    "vysvetleni": {
+     "a": "Špatně.",
+     "b": "Správně.",
+     "c": "Špatně.",
+     "d": "Špatně."
+    },
+    "vysvetleni_obecne": "<p>Obecné vysvětlení.</p>"
+   },
+   "spravne": [
+    "b"
+   ],
+   "oddil": "3.2.2",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-3.2.2-03",
+   "zdroj": "vlastni",
+   "lo": "GenAI-3.2.2",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Test question CG-3.2.2-03 for GenAI-3.2.2?</p>",
+    "moznosti": [
+     "Answer text 1 of CG-3.2.2-03",
+     "Answer text 2 of CG-3.2.2-03",
+     "Answer text 3 of CG-3.2.2-03",
+     "Answer text 4 of CG-3.2.2-03"
+    ],
+    "vysvetleni": {
+     "a": "Incorrect.",
+     "b": "Incorrect.",
+     "c": "Correct.",
+     "d": "Incorrect."
+    },
+    "vysvetleni_obecne": "<p>General explanation.</p>"
+   },
+   "cz": {
+    "q": "<p>Testovací otázka CG-3.2.2-03 k GenAI-3.2.2?</p>",
+    "moznosti": [
+     "Text odpovědi 1 otázky CG-3.2.2-03",
+     "Text odpovědi 2 otázky CG-3.2.2-03",
+     "Text odpovědi 3 otázky CG-3.2.2-03",
+     "Text odpovědi 4 otázky CG-3.2.2-03"
+    ],
+    "vysvetleni": {
+     "a": "Špatně.",
+     "b": "Špatně.",
+     "c": "Správně.",
+     "d": "Špatně."
+    },
+    "vysvetleni_obecne": "<p>Obecné vysvětlení.</p>"
+   },
+   "spravne": [
+    "c"
+   ],
+   "oddil": "3.2.2",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-3.2.2-04",
+   "zdroj": "vlastni",
+   "lo": "GenAI-3.2.2",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Test question CG-3.2.2-04 for GenAI-3.2.2?</p>",
+    "moznosti": [
+     "Answer text 1 of CG-3.2.2-04",
+     "Answer text 2 of CG-3.2.2-04",
+     "Answer text 3 of CG-3.2.2-04",
+     "Answer text 4 of CG-3.2.2-04"
+    ],
+    "vysvetleni": {
+     "a": "Incorrect.",
+     "b": "Incorrect.",
+     "c": "Incorrect.",
+     "d": "Correct."
+    },
+    "vysvetleni_obecne": "<p>General explanation.</p>"
+   },
+   "cz": {
+    "q": "<p>Testovací otázka CG-3.2.2-04 k GenAI-3.2.2?</p>",
+    "moznosti": [
+     "Text odpovědi 1 otázky CG-3.2.2-04",
+     "Text odpovědi 2 otázky CG-3.2.2-04",
+     "Text odpovědi 3 otázky CG-3.2.2-04",
+     "Text odpovědi 4 otázky CG-3.2.2-04"
+    ],
+    "vysvetleni": {
+     "a": "Špatně.",
+     "b": "Špatně.",
+     "c": "Špatně.",
+     "d": "Správně."
+    },
+    "vysvetleni_obecne": "<p>Obecné vysvětlení.</p>"
+   },
+   "spravne": [
+    "d"
+   ],
+   "oddil": "3.2.2",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-3.2.3-01",
+   "zdroj": "vlastni",
+   "lo": "GenAI-3.2.3",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Test question CG-3.2.3-01 for GenAI-3.2.3?</p>",
+    "moznosti": [
+     "Answer text 1 of CG-3.2.3-01",
+     "Answer text 2 of CG-3.2.3-01",
+     "Answer text 3 of CG-3.2.3-01",
+     "Answer text 4 of CG-3.2.3-01"
+    ],
+    "vysvetleni": {
+     "a": "Correct.",
+     "b": "Incorrect.",
+     "c": "Incorrect.",
+     "d": "Incorrect."
+    },
+    "vysvetleni_obecne": "<p>General explanation.</p>"
+   },
+   "cz": {
+    "q": "<p>Testovací otázka CG-3.2.3-01 k GenAI-3.2.3?</p>",
+    "moznosti": [
+     "Text odpovědi 1 otázky CG-3.2.3-01",
+     "Text odpovědi 2 otázky CG-3.2.3-01",
+     "Text odpovědi 3 otázky CG-3.2.3-01",
+     "Text odpovědi 4 otázky CG-3.2.3-01"
+    ],
+    "vysvetleni": {
+     "a": "Správně.",
+     "b": "Špatně.",
+     "c": "Špatně.",
+     "d": "Špatně."
+    },
+    "vysvetleni_obecne": "<p>Obecné vysvětlení.</p>"
+   },
+   "spravne": [
+    "a"
+   ],
+   "oddil": "3.2.3",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-3.2.3-02",
+   "zdroj": "vlastni",
+   "lo": "GenAI-3.2.3",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Test question CG-3.2.3-02 for GenAI-3.2.3?</p>",
+    "moznosti": [
+     "Answer text 1 of CG-3.2.3-02",
+     "Answer text 2 of CG-3.2.3-02",
+     "Answer text 3 of CG-3.2.3-02",
+     "Answer text 4 of CG-3.2.3-02"
+    ],
+    "vysvetleni": {
+     "a": "Incorrect.",
+     "b": "Correct.",
+     "c": "Incorrect.",
+     "d": "Incorrect."
+    },
+    "vysvetleni_obecne": "<p>General explanation.</p>"
+   },
+   "cz": {
+    "q": "<p>Testovací otázka CG-3.2.3-02 k GenAI-3.2.3?</p>",
+    "moznosti": [
+     "Text odpovědi 1 otázky CG-3.2.3-02",
+     "Text odpovědi 2 otázky CG-3.2.3-02",
+     "Text odpovědi 3 otázky CG-3.2.3-02",
+     "Text odpovědi 4 otázky CG-3.2.3-02"
+    ],
+    "vysvetleni": {
+     "a": "Špatně.",
+     "b": "Správně.",
+     "c": "Špatně.",
+     "d": "Špatně."
+    },
+    "vysvetleni_obecne": "<p>Obecné vysvětlení.</p>"
+   },
+   "spravne": [
+    "b"
+   ],
+   "oddil": "3.2.3",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-3.3.1-01",
+   "zdroj": "vlastni",
+   "lo": "GenAI-3.3.1",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Test question CG-3.3.1-01 for GenAI-3.3.1?</p>",
+    "moznosti": [
+     "Answer text 1 of CG-3.3.1-01",
+     "Answer text 2 of CG-3.3.1-01",
+     "Answer text 3 of CG-3.3.1-01",
+     "Answer text 4 of CG-3.3.1-01"
+    ],
+    "vysvetleni": {
+     "a": "Correct.",
+     "b": "Incorrect.",
+     "c": "Incorrect.",
+     "d": "Incorrect."
+    },
+    "vysvetleni_obecne": "<p>General explanation.</p>"
+   },
+   "cz": {
+    "q": "<p>Testovací otázka CG-3.3.1-01 k GenAI-3.3.1?</p>",
+    "moznosti": [
+     "Text odpovědi 1 otázky CG-3.3.1-01",
+     "Text odpovědi 2 otázky CG-3.3.1-01",
+     "Text odpovědi 3 otázky CG-3.3.1-01",
+     "Text odpovědi 4 otázky CG-3.3.1-01"
+    ],
+    "vysvetleni": {
+     "a": "Správně.",
+     "b": "Špatně.",
+     "c": "Špatně.",
+     "d": "Špatně."
+    },
+    "vysvetleni_obecne": "<p>Obecné vysvětlení.</p>"
+   },
+   "spravne": [
+    "a"
+   ],
+   "oddil": "3.3.1",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-3.3.1-02",
+   "zdroj": "vlastni",
+   "lo": "GenAI-3.3.1",
+   "k": "K2",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Test question CG-3.3.1-02 for GenAI-3.3.1?</p>",
+    "moznosti": [
+     "Answer text 1 of CG-3.3.1-02",
+     "Answer text 2 of CG-3.3.1-02",
+     "Answer text 3 of CG-3.3.1-02",
+     "Answer text 4 of CG-3.3.1-02"
+    ],
+    "vysvetleni": {
+     "a": "Incorrect.",
+     "b": "Correct.",
+     "c": "Incorrect.",
+     "d": "Incorrect."
+    },
+    "vysvetleni_obecne": "<p>General explanation.</p>"
+   },
+   "cz": {
+    "q": "<p>Testovací otázka CG-3.3.1-02 k GenAI-3.3.1?</p>",
+    "moznosti": [
+     "Text odpovědi 1 otázky CG-3.3.1-02",
+     "Text odpovědi 2 otázky CG-3.3.1-02",
+     "Text odpovědi 3 otázky CG-3.3.1-02",
+     "Text odpovědi 4 otázky CG-3.3.1-02"
+    ],
+    "vysvetleni": {
+     "a": "Špatně.",
+     "b": "Správně.",
+     "c": "Špatně.",
+     "d": "Špatně."
+    },
+    "vysvetleni_obecne": "<p>Obecné vysvětlení.</p>"
+   },
+   "spravne": [
+    "b"
+   ],
+   "oddil": "3.3.1",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-3.4.1-01",
+   "zdroj": "vlastni",
+   "lo": "GenAI-3.4.1",
+   "k": "K1",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Test question CG-3.4.1-01 for GenAI-3.4.1?</p>",
+    "moznosti": [
+     "Answer text 1 of CG-3.4.1-01",
+     "Answer text 2 of CG-3.4.1-01",
+     "Answer text 3 of CG-3.4.1-01",
+     "Answer text 4 of CG-3.4.1-01"
+    ],
+    "vysvetleni": {
+     "a": "Correct.",
+     "b": "Incorrect.",
+     "c": "Incorrect.",
+     "d": "Incorrect."
+    },
+    "vysvetleni_obecne": "<p>General explanation.</p>"
+   },
+   "cz": {
+    "q": "<p>Testovací otázka CG-3.4.1-01 k GenAI-3.4.1?</p>",
+    "moznosti": [
+     "Text odpovědi 1 otázky CG-3.4.1-01",
+     "Text odpovědi 2 otázky CG-3.4.1-01",
+     "Text odpovědi 3 otázky CG-3.4.1-01",
+     "Text odpovědi 4 otázky CG-3.4.1-01"
+    ],
+    "vysvetleni": {
+     "a": "Správně.",
+     "b": "Špatně.",
+     "c": "Špatně.",
+     "d": "Špatně."
+    },
+    "vysvetleni_obecne": "<p>Obecné vysvětlení.</p>"
+   },
+   "spravne": [
+    "a"
+   ],
+   "oddil": "3.4.1",
+   "poznamka": ""
+  },
+  {
+   "id": "CG-3.4.1-02",
+   "zdroj": "vlastni",
+   "lo": "GenAI-3.4.1",
+   "k": "K1",
+   "body": 1,
+   "vyber": 1,
+   "keep_order": false,
+   "en": {
+    "q": "<p>Test question CG-3.4.1-02 for GenAI-3.4.1?</p>",
+    "moznosti": [
+     "Answer text 1 of CG-3.4.1-02",
+     "Answer text 2 of CG-3.4.1-02",
+     "Answer text 3 of CG-3.4.1-02",
+     "Answer text 4 of CG-3.4.1-02"
+    ],
+    "vysvetleni": {
+     "a": "Incorrect.",
+     "b": "Correct.",
+     "c": "Incorrect.",
+     "d": "Incorrect."
+    },
+    "vysvetleni_obecne": "<p>General explanation.</p>"
+   },
+   "cz": {
+    "q": "<p>Testovací otázka CG-3.4.1-02 k GenAI-3.4.1?</p>",
+    "moznosti": [
+     "Text odpovědi 1 otázky CG-3.4.1-02",
+     "Text odpovědi 2 otázky CG-3.4.1-02",
+     "Text odpovědi 3 otázky CG-3.4.1-02",
+     "Text odpovědi 4 otázky CG-3.4.1-02"
+    ],
+    "vysvetleni": {
+     "a": "Špatně.",
+     "b": "Správně.",
+     "c": "Špatně.",
+     "d": "Špatně."
+    },
+    "vysvetleni_obecne": "<p>Obecné vysvětlení.</p>"
+   },
+   "spravne": [
+    "b"
+   ],
+   "oddil": "3.4.1",
+   "poznamka": ""
+  }
+ ]
+}
