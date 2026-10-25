@@ -66,6 +66,9 @@
   function nastavPostup() {
     var pruh = document.querySelector(".postup");
     if (!pruh) return;
+    /* Kde to prohlížeč umí, pruh kreslí CSS (animation-timeline) a stránka se při
+       posunu vůbec nemění. Změny DOM při posunu zasekávají Číst nahlas v Edge. */
+    if (window.CSS && CSS.supports && CSS.supports("animation-timeline: scroll()")) return;
 
     var ceka = false;
     function prekresli() {
@@ -99,8 +102,19 @@
     });
 
     var viditelne = {};
+    var posledni;
 
-    function obnov() {
+    /* Číst nahlas v Edge posouvá stránku samo a zastaví se, když se během čtení
+       změní DOM. Obsah se proto přepíná jen při posunu, který udělal čtenář. */
+    var vstup = 0, tlacitkoDole = false;
+    ["wheel", "touchstart", "touchmove", "keydown", "click"].forEach(function (u) {
+      window.addEventListener(u, function () { vstup = Date.now(); }, { passive: true, capture: true });
+    });
+    window.addEventListener("mousedown", function () { tlacitkoDole = true; vstup = Date.now(); }, true);
+    window.addEventListener("mouseup", function () { tlacitkoDole = false; vstup = Date.now(); }, true);
+    function posunulCtenar() { return tlacitkoDole || Date.now() - vstup < 2000; }
+
+    function obnov(vzdy) {
       var aktivni = null;
       for (var i = 0; i < nadpisy.length; i++) {
         if (viditelne[nadpisy[i].id]) { aktivni = nadpisy[i]; break; }
@@ -110,11 +124,11 @@
           if (nadpisy[j].getBoundingClientRect().top < 120) { aktivni = nadpisy[j]; break; }
         }
       }
-      odkazy.forEach(function (a) { a.classList.remove("aktivni"); a.removeAttribute("aria-current"); });
-      if (aktivni && podleId[aktivni.id]) {
-        podleId[aktivni.id].classList.add("aktivni");
-        podleId[aktivni.id].setAttribute("aria-current", "true");
-      }
+      if (aktivni === posledni) return;
+      if (vzdy !== true && !posunulCtenar()) return;
+      posledni = aktivni;
+      odkazy.forEach(function (a) { a.classList.remove("aktivni"); });
+      if (aktivni && podleId[aktivni.id]) podleId[aktivni.id].classList.add("aktivni");
     }
 
     var pozorovatel = new IntersectionObserver(function (zaznamy) {
@@ -124,7 +138,7 @@
 
     nadpisy.forEach(function (h) { pozorovatel.observe(h); });
     window.addEventListener("scroll", obnov, { passive: true });
-    obnov();
+    obnov(true);
   }
 
   /* --- tlačítko Kopírovat u bloků kódu (prompty do chatbota) -------------- */

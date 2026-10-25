@@ -174,6 +174,19 @@ a:hover { text-decoration-color: currentColor; }
   transition: width .1s linear;
 }
 
+@supports (animation-timeline: scroll()) {
+  .postup {
+    width: 100%;
+    transform-origin: 0 50%;
+    transform: scaleX(0);
+    transition: none;
+    animation: postup-cteni linear both;
+    animation-timeline: scroll(root block);
+    animation-duration: auto !important; /* přebije zkrácení animací u prefers-reduced-motion */
+  }
+  @keyframes postup-cteni { to { transform: scaleX(1); } }
+}
+
 .hlavicka {
   position: sticky;
   top: 0;
@@ -503,7 +516,9 @@ h1 {
 }
 .text h2:first-child { margin-top: 1rem; border-top: 0; padding-top: 0; }
 
-.text p { margin: 0 0 1.35rem; hyphens: auto; }
+/* Bez automatického dělení slov: při předčítání v Edge se kvůli němu
+   přelamovaly řádky a text skákal. */
+.text p { margin: 0 0 1.35rem; }
 
 /* Značka odkazu je v CSS, ne v textu — předčítání ji tak nepřečte
    a kontrola počtu slov ji nezapočítá. */
@@ -1337,7 +1352,7 @@ h3:hover .kotva { opacity: 1; }
 .vsuvka--pojem::before { color: var(--akcent); }
 .vsuvka ul, .vsuvka ol { margin: 0 0 1.15rem; padding-left: 1.3rem; }
 .vsuvka .kod { color: var(--text); }
-.pojem-term { font-family: var(--pismo-ui); font-weight: 700; font-size: 1.05rem; color: var(--akcent); }
+.pojem-term { font-family: var(--pismo-ui); font-weight: 700; color: var(--akcent); }
 
 /* boční obsah s podnadpisy */
 .strom ol ol a { padding-left: 1.5rem; font-size: .8rem; }

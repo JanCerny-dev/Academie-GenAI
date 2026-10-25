@@ -49,7 +49,7 @@
   <p class="napoveda" id="praxe-souhrn" aria-live="polite" data-praxe-cviceni="praxe-10-bdd-framework-behave-playwright-ai-rozsir-examples-o-techniky-navrhu-testu praxe-10-bdd-framework-behave-playwright-ai-druhy-feature-soubor-pro-login-portal praxe-10-bdd-framework-behave-playwright-ai-zmer-kolik-navrhu-z-ai-bylo-pouzitelnych"><span data-praxe-postup>3 cvičení</span>. Hotová cvičení si odškrtni, stav se ukládá v tomto prohlížeči, po přihlášení i v účtu.</p>
 </div>
 <article class="text" id="text">
-<h2 id="co-postavis">Co postavíš<a class="kotva" href="#co-postavis" aria-label="Odkaz na tento oddíl"></a></h2>
+<h2 id="co-postavis">Co postavíš<a class="kotva" href="#co-postavis" aria-hidden="true" tabindex="-1"></a></h2>
 <p>Sedmá sekce Brunova kurzu je největší. V jednatřiceti lekcích staví od prázdné složky testovací framework, který spojuje čtyři věci. <strong>BDD</strong> (behavior-driven development, vývoj řízený chováním) dává testům čitelnou podobu ve větách. <strong>Playwright</strong> ovládá prohlížeč. <strong>Behave</strong> propojuje věty s kódem v Pythonu. OpenAI API pomáhá s psaním scénářů a kódu.</p>
 <p>Tento modul prochází stejnou cestu v sedmnácti krocích. Každý krok končí něčím, co jde spustit a ověřit. Na konci máš framework, který:</p>
 <ul><li>vygeneruje soubor <code>.feature</code> se scénáři pro formulář Contact Us na webdriveruniversity.com,</li><li>má kroky napsané jednou a znovu použité v mnoha scénářích,</li><li>otevírá a zavírá prohlížeč centrálně v <code>environment.py</code>,</li><li>nechá AI navrhnout kód pro dosud neimplementované kroky,</li><li>používá Scenario Outline, Background a tagy,</li><li>spouští se vlastním runnerem, vytváří report v Allure a při selhání přiloží screenshot,</li><li>před každým během uklidí staré výsledky.</li></ul>
@@ -75,12 +75,12 @@
 ├── reports/                     výsledky Allure (generuje se)
 └── screenshots/                 screenshoty selhání (generuje se)</code></pre></div>
 <p>Modul 11 do stejného frameworku přidá testy API a modul 12 ho spustí v Jenkinsu. Názvy souborů držím podle kurzu, aby se daly dohledat v přílohách lekcí. Kód ukazuji ve dvou podobách. Nejdřív podstatnou část z kurzu s vysvětlením, potom vlastní minimální variantu, která opravuje chyby nebo bezpečnostní slabiny originálu.</p>
-<h2 id="predpoklady">Předpoklady<a class="kotva" href="#predpoklady" aria-label="Odkaz na tento oddíl"></a></h2>
+<h2 id="predpoklady">Předpoklady<a class="kotva" href="#predpoklady" aria-hidden="true" tabindex="-1"></a></h2>
 <p>Hotový modul 9 nebo stejné znalosti: virtuální prostředí, API klíč v proměnné prostředí, první volání OpenAI API. Dál potřebuješ:</p>
 <ul><li><strong>Python 3.12</strong> a VS Code. Kurz natáčel na Pythonu 3.13.</li><li><strong>Balíčky.</strong> Kurz má v <code>requirements.txt</code> z L40 tyto verze: <code>behave==1.2.6</code>, <code>playwright==1.49.0</code>, <code>openai==1.57.0</code>. V L66 přidává <code>allure-behave</code> bez uvedené verze. Lokálně mám Playwright 1.61.0, Behave jsem nespouštěl. Novější řada Behave 1.3 mění syntaxi tagů (viz krok 13). Pokud chceš postupovat přesně podle kurzu, nainstaluj verze z kurzu.</li><li><strong>Prohlížeče pro Playwright:</strong> stáhne je příkaz <code>python -m playwright install chromium</code> (zhruba stovky MB).</li><li><strong>Java a Allure CLI</strong> pro HTML reporty (krok 15). Allure je program v Javě. Bruno používá JDK 21 kvůli Jenkinsu v modulu 12.</li><li><strong>Rozšíření VS Code</strong> „Cucumber (Gherkin) Full Support“ pro zvýraznění a proklik z kroku na kód. Kurz mu v L47 nastavuje cesty v <code>settings.json</code>.</li><li><strong>Kredit na OpenAI.</strong> Celý modul spotřebuje desítky volání, v řádu desítek centů.</li></ul>
 <aside class="vsuvka vsuvka--pozor" data-stitek="Pozor" aria-label="Pozor"><p>Framework testuje veřejnou cvičnou stránku webdriveruniversity.com. Do promptů posíláš jen popis jejího formuláře a kód kroků. U firemní aplikace by stejný postup znamenal posílat do cloudu požadavky, zdrojový kód a selektory klienta. To bez schváleného nástroje nedělej.</p></aside>
-<h2 id="postup">Postup<a class="kotva" href="#postup" aria-label="Odkaz na tento oddíl"></a></h2>
-<h3 id="krok-1-bdd-a-gherkin-za-pet-minut-l38-l39">Krok 1: BDD a Gherkin za pět minut (L38–L39)<a class="kotva" href="#krok-1-bdd-a-gherkin-za-pet-minut-l38-l39" aria-label="Odkaz na tento oddíl"></a></h3>
+<h2 id="postup">Postup<a class="kotva" href="#postup" aria-hidden="true" tabindex="-1"></a></h2>
+<h3 id="krok-1-bdd-a-gherkin-za-pet-minut-l38-l39">Krok 1: BDD a Gherkin za pět minut (L38–L39)<a class="kotva" href="#krok-1-bdd-a-gherkin-za-pet-minut-l38-l39" aria-hidden="true" tabindex="-1"></a></h3>
 <p>BDD popisuje chování systému příklady, kterým rozumí analytik, tester i vývojář. Příklady se píšou jazykem <strong>Gherkin</strong>. Soubor s příponou <code>.feature</code> obsahuje jednu funkci (Feature) a pod ní scénáře (Scenario). Každý scénář má kroky začínající klíčovými slovy:</p>
 <ul><li><code>Given</code> popisuje výchozí stav (jsem na formuláři),</li><li><code>When</code> popisuje akci (vyplním pole, kliknu),</li><li><code>Then</code> popisuje očekávaný výsledek (vidím hlášku),</li><li><code>And</code> a <code>But</code> pokračují předchozím druhem kroku.</li></ul>
 <div class="kod" data-jazyk="gherkin"><pre><code>Feature: Contact Us form functionality
@@ -92,7 +92,7 @@
     Then I should see the message "Thank You for your Message!"</code></pre></div>
 <p>Behave ke každé větě hledá <strong>step definition</strong> (definice kroku). Je to funkce v Pythonu označená dekorátorem <code>@given</code>, <code>@when</code> nebo <code>@then</code> s textem, který na větu pasuje. Text může obsahovat parametry ve složených závorkách. Krok <code>When I fill in the "first_name" field with "Joe"</code> tak obslouží funkce s dekorátorem <code>@when('I fill in the "{field}" field with "{value}"')</code>.</p>
 <p>Scénáře v kurzu píšou anglicky, protože Behave i AI s anglickými klíčovými slovy pracují nejspolehlivěji. Gherkin umí i češtinu (<code># language: cs</code>, klíčová slova Pokud, Když, Pak), ale v týmech se používá výjimečně.</p>
-<h3 id="krok-2-kostra-projektu-a-prvni-test-v-playwrightu-l40">Krok 2: Kostra projektu a první test v Playwrightu (L40)<a class="kotva" href="#krok-2-kostra-projektu-a-prvni-test-v-playwrightu-l40" aria-label="Odkaz na tento oddíl"></a></h3>
+<h3 id="krok-2-kostra-projektu-a-prvni-test-v-playwrightu-l40">Krok 2: Kostra projektu a první test v Playwrightu (L40)<a class="kotva" href="#krok-2-kostra-projektu-a-prvni-test-v-playwrightu-l40" aria-hidden="true" tabindex="-1"></a></h3>
 <p>Vytvoř složku a virtuální prostředí stejně jako v modulu 9 a nainstaluj balíčky:</p>
 <div class="kod" data-jazyk="powershell"><pre><code>mkdir ai_bdd_test_framework
 cd ai_bdd_test_framework
@@ -122,7 +122,7 @@ def test_navigation():
         browser.close()</code></pre></div>
 <p><code>sync_playwright()</code> spustí řídicí proces Playwrightu. <code>launch()</code> otevře prohlížeč, <code>new_page()</code> v něm novou záložku. Kombinace <code>--start-maximized</code> a <code>no_viewport=True</code> zvětší okno na celou obrazovku. Bez <code>no_viewport</code> by Playwright nastavil pevnou velikost stránky 1280 × 720 bodů.</p>
 <p>Spusť <code>python run_tests.py</code>. Otevře se Chromium, načte formulář a v terminálu se objeví titulek stránky. Tím víš, že instalace prohlížeče proběhla.</p>
-<h3 id="krok-3-napojeni-na-openai-l41">Krok 3: Napojení na OpenAI (L41)<a class="kotva" href="#krok-3-napojeni-na-openai-l41" aria-label="Odkaz na tento oddíl"></a></h3>
+<h3 id="krok-3-napojeni-na-openai-l41">Krok 3: Napojení na OpenAI (L41)<a class="kotva" href="#krok-3-napojeni-na-openai-l41" aria-hidden="true" tabindex="-1"></a></h3>
 <p>Bruno vytvoří tři soubory. Do <code>config/openai_key.json</code> uloží klíč. Do <code>config/prompts.py</code> slovník promptů. Do <code>utils/openai_utils.py</code> funkce pro volání API:</p>
 <div class="kod" data-jazyk="python"><pre><code>def initialize_client():
     with open("config/openai_key.json", "r") as f:
@@ -167,7 +167,7 @@ def generate_text(prompt: str, max_tokens: int = 1500) -&gt; str:
     return odpoved.choices[0].message.content.strip()</code></pre></div>
 <p>Do <code>.gitignore</code> dej hned teď <code>.env</code>, <code>.venv/</code>, <code>reports/</code>, <code>screenshots/</code> a <code>__pycache__/</code>. Proč klíč nepatří do souboru v projektu, rozebírá modul 9 v kroku 2.</p>
 <p>Bruno integraci ověří funkcí, která požádá o jednoduchý scénář pro přihlašovací formulář a vypíše ho. Udělej totéž v interaktivním Pythonu z kořene projektu: <code>python -c "from utils.openai_utils import generate_text; print(generate_text('Write a simple Gherkin scenario for a login form.'))"</code>. Má vyjít krátký scénář s Given, When a Then.</p>
-<h3 id="krok-4-ai-vygeneruje-soubor-feature-l42-l43">Krok 4: AI vygeneruje soubor .feature (L42–L43)<a class="kotva" href="#krok-4-ai-vygeneruje-soubor-feature-l42-l43" aria-label="Odkaz na tento oddíl"></a></h3>
+<h3 id="krok-4-ai-vygeneruje-soubor-feature-l42-l43">Krok 4: AI vygeneruje soubor .feature (L42–L43)<a class="kotva" href="#krok-4-ai-vygeneruje-soubor-feature-l42-l43" aria-hidden="true" tabindex="-1"></a></h3>
 <p>Do <code>config/prompts.py</code> patří prompt pro formulář. Bruno ho v L42 rozšiřuje o dvě důležité věty: každý scénář má začínat stejným krokem a výstup nemá být obalený značkami kódu. Zkrácená podoba:</p>
 <div class="kod" data-jazyk="python"><pre><code>prompts = {
     "contact_us_form": """
@@ -209,7 +209,7 @@ def generate_text(prompt: str, max_tokens: int = 1500) -&gt; str:
     And I click on the 'SUBMIT' button
     Then I should see the success message 'Thank You for your Message'</code></pre></div>
 <p>Při revizi si všimni tří věcí. Kroky jsou čitelné, ale každý má hodnotu napevno, takže by potřeboval vlastní kód. Názvy polí jsou popisky z obrazovky, ne identifikátory, podle kterých je najde automatizace. A očekávaná hláška chybí vykřičník, protože chyběl už v promptu. Model vyrobil přesně to, co dostal. Revize vygenerovaného výstupu člověkem je tady povinná, ne volitelná.</p>
-<h3 id="krok-5-setup-a-teardown-v-environment-py-l44-l45">Krok 5: Setup a teardown v environment.py (L44–L45)<a class="kotva" href="#krok-5-setup-a-teardown-v-environment-py-l44-l45" aria-label="Odkaz na tento oddíl"></a></h3>
+<h3 id="krok-5-setup-a-teardown-v-environment-py-l44-l45">Krok 5: Setup a teardown v environment.py (L44–L45)<a class="kotva" href="#krok-5-setup-a-teardown-v-environment-py-l44-l45" aria-hidden="true" tabindex="-1"></a></h3>
 <p>Behave hledá soubor <code>features/environment.py</code> a volá v něm funkce zvané <strong>hooks</strong> (háčky) v pevně daných okamžicích. Kurz používá čtyři:</p>
 <div class="tabulka-obal"><table><thead><tr><th>Hook</th><th>Kdy se volá</th><th>Co v něm frameworku dělá</th></tr></thead><tbody><tr><td><code>before_all</code></td><td>jednou před všemi testy</td><td>načte <code>env.json</code>, spustí Playwright a prohlížeč</td></tr><tr><td><code>before_scenario</code></td><td>před každým scénářem</td><td>otevře novou stránku</td></tr><tr><td><code>after_scenario</code></td><td>po každém scénáři</td><td>zavře stránku (později screenshot)</td></tr><tr><td><code>after_all</code></td><td>jednou po všech testech</td><td>zavře prohlížeč, zastaví Playwright</td></tr></tbody></table></div>
 <p>Rozdělení má důvod. Spuštění prohlížeče trvá sekundy, takže se dělá jednou. Nová stránka pro každý scénář zajistí, že si scénáře nepředávají cookies ani vyplněná pole. Metoda <code>browser.new_page()</code> navíc pro každou stránku vytvoří samostatný kontext prohlížeče, takže je izolace úplná.</p>
@@ -243,7 +243,7 @@ def after_all(context):
     context.playwright.stop()</code></pre></div>
 <p>Oproti kurzu jsou tu dvě změny. Ukládám <code>base_url</code> do kontextu, protože kurz ho sice má v <code>env.json</code>, ale v krocích pak píše celou adresu napevno. A proměnná prostředí <code>HEADLESS</code> umí přepsat hodnotu z <code>env.json</code>. V Jenkinsu tak spustíš testy bez okna a nemusíš měnit soubor v repozitáři.</p>
 <p><code>context.playwright["chromium"]</code> funguje, protože objekt Playwright zpřístupňuje prohlížeče i přes hranaté závorky. Hodnotu <code>browser</code> v <code>env.json</code> tak můžeš přepnout na <code>firefox</code> nebo <code>webkit</code> bez změny kódu, pokud jsi ty prohlížeče nainstaloval.</p>
-<h3 id="krok-6-sablony-kroku-pres-dry-run-l46-l47">Krok 6: Šablony kroků přes dry run (L46–L47)<a class="kotva" href="#krok-6-sablony-kroku-pres-dry-run-l46-l47" aria-label="Odkaz na tento oddíl"></a></h3>
+<h3 id="krok-6-sablony-kroku-pres-dry-run-l46-l47">Krok 6: Šablony kroků přes dry run (L46–L47)<a class="kotva" href="#krok-6-sablony-kroku-pres-dry-run-l46-l47" aria-hidden="true" tabindex="-1"></a></h3>
 <p>Teď má Behave soubor <code>.feature</code>, ale žádné definice kroků. Bruno nechá v souboru jen první scénář (ostatní zakomentuje) a spustí:</p>
 <div class="kod" data-jazyk="powershell"><pre><code>python -m behave --dry-run</code></pre></div>
 <p>Volba <code>--dry-run</code> nic nespouští, jen zkontroluje, ke kterým krokům chybí definice. Pro chybějící kroky vypíše hotové šablony:</p>
@@ -257,7 +257,7 @@ def step_impl(context):
 "cucumberautocomplete.steps": ["features/steps/*.py"],
 "cucumberautocomplete.syncfeatures": "features/*feature"</code></pre></div>
 <p>Po změně je potřeba okno znovu načíst (<em>Developer: Reload Window</em>). Rozšíření občas kroky nerozpozná hned. Rozhodující je výstup <code>--dry-run</code>, ne podtržení v editoru.</p>
-<h3 id="krok-7-parametrizace-kroku-podle-dry-l48">Krok 7: Parametrizace kroků podle DRY (L48)<a class="kotva" href="#krok-7-parametrizace-kroku-podle-dry-l48" aria-label="Odkaz na tento oddíl"></a></h3>
+<h3 id="krok-7-parametrizace-kroku-podle-dry-l48">Krok 7: Parametrizace kroků podle DRY (L48)<a class="kotva" href="#krok-7-parametrizace-kroku-podle-dry-l48" aria-hidden="true" tabindex="-1"></a></h3>
 <p>Když odkomentuješ zbylé scénáře, <code>--dry-run</code> nahlásí spoustu nových nedefinovaných kroků. Věta <code>When I fill in 'First Name' with 'Jane'</code> se od <code>... with 'John'</code> liší jen jménem. Behave je ale bere jako dva různé kroky. S napevno zapsanými hodnotami bys potřeboval funkci pro každou kombinaci pole a hodnoty.</p>
 <p>Princip <strong>DRY</strong> (don't repeat yourself, neopakuj se) to řeší parametry. Bruno přepíše věty ve feature souboru tak, aby se proměnná část dala vyjmout:</p>
 <div class="kod" data-jazyk="gherkin"><pre><code>When I fill in the "first_name" field with "Joe"
@@ -283,7 +283,7 @@ def verify_error_message(context, message): ...
 @then('all fields should be cleared')
 def verify_all_fields_cleared(context): ...</code></pre></div>
 <p>Bruno také přejmenuje funkce z generického <code>step_impl</code> na popisné názvy. Behave na názvu nezáleží, ale ve výpisu chyb a v editoru se popisné názvy čtou mnohem lépe.</p>
-<h3 id="krok-8-vlastni-kontext-pro-napovedu-v-editoru-l49-l50">Krok 8: Vlastní kontext pro nápovědu v editoru (L49–L50)<a class="kotva" href="#krok-8-vlastni-kontext-pro-napovedu-v-editoru-l49-l50" aria-label="Odkaz na tento oddíl"></a></h3>
+<h3 id="krok-8-vlastni-kontext-pro-napovedu-v-editoru-l49-l50">Krok 8: Vlastní kontext pro nápovědu v editoru (L49–L50)<a class="kotva" href="#krok-8-vlastni-kontext-pro-napovedu-v-editoru-l49-l50" aria-hidden="true" tabindex="-1"></a></h3>
 <p>Objekt <code>context</code> je v Behave obecný. Editor neví, že <code>context.page</code> je stránka Playwrightu, a nenabízí její metody. Bruno proto v L49 definuje třídu jen pro <strong>type hints</strong> (typové nápovědy) a v L50 ji podle DRY přesune do samostatného souboru <code>utils/types.py</code>, aby ji nemusel opakovat v každém souboru:</p>
 <div class="kod" data-jazyk="python"><pre><code>from playwright.sync_api import Playwright, Browser, Page
 
@@ -303,7 +303,7 @@ def fill_in_field(context: CustomContext, field, value):
     context.page.wait_for_selector(field_selector)
     context.page.fill(field_selector, value)</code></pre></div>
 <p>Selektor <code>[name="first_name"]</code> je <strong>CSS selector</strong>, který najde prvek podle atributu <code>name</code>. Volání <code>wait_for_selector</code> počká, až se prvek objeví. Playwright ale u <code>fill</code> čeká automaticky, takže tento řádek je navíc. Nevadí, jen zbytečně prodlužuje kód.</p>
-<h3 id="krok-9-ai-navrhne-kod-pro-neimplementovane-kroky-l51-l52">Krok 9: AI navrhne kód pro neimplementované kroky (L51–L52)<a class="kotva" href="#krok-9-ai-navrhne-kod-pro-neimplementovane-kroky-l51-l52" aria-label="Odkaz na tento oddíl"></a></h3>
+<h3 id="krok-9-ai-navrhne-kod-pro-neimplementovane-kroky-l51-l52">Krok 9: AI navrhne kód pro neimplementované kroky (L51–L52)<a class="kotva" href="#krok-9-ai-navrhne-kod-pro-neimplementovane-kroky-l51-l52" aria-hidden="true" tabindex="-1"></a></h3>
 <p>Zbývají čtyři kroky s <code>print("TO DO!")</code>. Místo ručního psaní nechá Bruno model analyzovat soubor kroků a navrhnout implementaci. Skript <code>utils/analyze_steps.py</code> načte soubor kroků, přidá k němu popis prostředí a pošle to modelu:</p>
 <div class="kod" data-jazyk="python"><pre><code>environment_context = """
 The automation framework is already set up to initialize Playwright in environment.py.
@@ -348,7 +348,7 @@ def analyzuj(steps_soubor: str, feature_soubor: str, vystup: str = "ai_suggestio
 if __name__ == "__main__":
     analyzuj("features/steps/contact_us_form_steps.py", "features/contact_form.feature")</code></pre></div>
 <p>Skript návrhy jen ukládá. Do souboru kroků je nikdy nepíše sám. O převzetí kódu rozhoduje člověk po kontrole.</p>
-<h3 id="krok-10-kontrola-ai-navrhu-a-dokonceni-kroku-l53-l57">Krok 10: Kontrola AI návrhů a dokončení kroků (L53–L57)<a class="kotva" href="#krok-10-kontrola-ai-navrhu-a-dokonceni-kroku-l53-l57" aria-label="Odkaz na tento oddíl"></a></h3>
+<h3 id="krok-10-kontrola-ai-navrhu-a-dokonceni-kroku-l53-l57">Krok 10: Kontrola AI návrhů a dokončení kroků (L53–L57)<a class="kotva" href="#krok-10-kontrola-ai-navrhu-a-dokonceni-kroku-l53-l57" aria-hidden="true" tabindex="-1"></a></h3>
 <p>Lekce L53 až L57 ukazují, jak s návrhy z modelu pracovat. Bruno nic nepřebírá naslepo. Návrh zkopíruje, spustí test a podle výsledku ho opraví. Soubor <code>ai-suggestions.txt</code> v přílohách zachycuje tři typy problémů, které potkáš u každého generovaného testovacího kódu.</p>
 <p><strong>Více variant, jedna správná.</strong> Pro klik na tlačítko dostal Bruno tři selektory: <code>[name="SUBMIT"]</code>, <code>button:has-text("SUBMIT")</code> a <code>button=SUBMIT</code>. Žádný nefungoval. Tlačítka na stránce nejsou prvky <code>&lt;button&gt;</code>, ale <code>&lt;input type="submit" value="SUBMIT"&gt;</code>. Správný selektor <code>[value="SUBMIT"]</code> našel Bruno sám v nástrojích pro vývojáře v prohlížeči. Model stránku neviděl, takže hádal podle nejčastějšího vzoru.</p>
 <p><strong>Neexistující metoda.</strong> Pro kontrolu vymazaných polí model navrhl <code>context.page.locator(field_selector).value()</code>. Locator v Playwrightu metodu <code>value()</code> nemá. Správně je <code>input_value()</code>. Kód vypadá věrohodně a projde kontrolou syntaxe, spadne až za běhu. To je typická <strong>halucinace</strong> v generovaném kódu.</p>
@@ -386,7 +386,7 @@ def over_prazdna_pole(context: CustomContext):
         expect(context.page.locator(f'[name="{name}"]')).to_have_value("")</code></pre></div>
 <p>Krok <code>I should see the message</code> nahrazuje oba původní kroky pro úspěch i chybu. Bruno k němu dojde v L60. Kontrola textu v <code>body</code> funguje pro stránku s poděkováním i pro chybovou stránku. Timeout 5 sekund je delší než Brunovy 2 sekundy. Veřejná stránka občas odpovídá pomalu a krátký timeout pak dělá <strong>flaky</strong> testy (nestabilní, jednou projdou a jednou ne).</p>
 <p>V tomto bodě by měly projít všechny čtyři scénáře: <code>python -m behave</code>.</p>
-<h3 id="krok-11-scenario-outline-l58-l60">Krok 11: Scenario Outline (L58–L60)<a class="kotva" href="#krok-11-scenario-outline-l58-l60" aria-label="Odkaz na tento oddíl"></a></h3>
+<h3 id="krok-11-scenario-outline-l58-l60">Krok 11: Scenario Outline (L58–L60)<a class="kotva" href="#krok-11-scenario-outline-l58-l60" aria-hidden="true" tabindex="-1"></a></h3>
 <p>Scénáře pro úspěšné odeslání a pro neplatný e-mail mají stejné kroky, liší se jen daty. <strong>Scenario Outline</strong> (šablona scénáře) je zapíše jednou a data dá do tabulky <strong>Examples</strong>. Behave pak spustí scénář jednou pro každý řádek tabulky a do míst <code>&lt;nazev_sloupce&gt;</code> dosadí hodnoty:</p>
 <div class="kod" data-jazyk="gherkin"><pre><code>Scenario Outline: Form submission scenarios
     When I fill in the "first_name" field with "&lt;first_name&gt;"
@@ -404,7 +404,7 @@ def over_prazdna_pole(context: CustomContext):
 <p>Třetí řádek řeší prázdná pole. Prázdnou hodnotu by krok <code>fill</code> zapsal jako prázdný řetězec, což je u prázdného pole totéž. Bruno ale chce pole úplně přeskočit, a proto zvolil dohodnutou značku <code>\n</code>. Krok ji v kódu porovnává s <code>"\\n"</code>, protože z tabulky přijde jako dva znaky: zpětné lomítko a písmeno n, ne jako nový řádek. Je to funkční, ale nečitelné. Srozumitelnější značka by byla třeba <code>&lt;prázdné&gt;</code> nebo <code>-</code>. Ať zvolíš cokoli, napiš to do komentáře nad tabulku.</p>
 <p>Tabulka Examples je místo, kde se uplatní techniky návrhu testů. Každý řádek je jeden testovací případ. Doplnit řádky pro hraniční hodnoty a třídy ekvivalence (e-mail bez domény, e-mail s mezerou, velmi dlouhý komentář) je přesně úloha, kterou můžeš zadat modelu. Výsledek ale stejně jako u kroků zkontroluj. Model nezná skutečnou validaci stránky a očekávané hlášky si může domyslet.</p>
 <p>Bruno v L59 ještě ukazuje, že Scenario Outline se dá přehnat. Když se do jedné šablony nacpou scénáře s různou logikou, tabulka je široká a scénář ztrácí srozumitelnost. Proto scénář pro RESET a pro chybějící pole zůstávají samostatné.</p>
-<h3 id="krok-12-background-l61-l62">Krok 12: Background (L61–L62)<a class="kotva" href="#krok-12-background-l61-l62" aria-label="Odkaz na tento oddíl"></a></h3>
+<h3 id="krok-12-background-l61-l62">Krok 12: Background (L61–L62)<a class="kotva" href="#krok-12-background-l61-l62" aria-hidden="true" tabindex="-1"></a></h3>
 <p>Každý scénář začíná krokem <code>Given I am on the Contact Us form</code>. Klíčové slovo <strong>Background</strong> (pozadí) zapíše společné kroky jednou na začátek feature souboru. Behave je spustí před každým scénářem, včetně každého řádku Scenario Outline:</p>
 <div class="kod" data-jazyk="gherkin"><pre><code>Feature: Contact Us form functionality
 
@@ -415,7 +415,7 @@ def over_prazdna_pole(context: CustomContext):
         When I fill in the "first_name" field with "&lt;first_name&gt;"
         ...</code></pre></div>
 <p>Background patří jen pro předpoklady, které opravdu platí pro všechny scénáře v souboru. Jakmile by jeden scénář potřeboval začít jinde, Background už nesedí a krok musí zpět do scénářů. Background se také nemá rozrůst do dlouhé sekvence kroků. Čtenář scénáře pak nevidí, v jakém stavu test začíná.</p>
-<h3 id="krok-13-tagy-l63-l64">Krok 13: Tagy (L63–L64)<a class="kotva" href="#krok-13-tagy-l63-l64" aria-label="Odkaz na tento oddíl"></a></h3>
+<h3 id="krok-13-tagy-l63-l64">Krok 13: Tagy (L63–L64)<a class="kotva" href="#krok-13-tagy-l63-l64" aria-hidden="true" tabindex="-1"></a></h3>
 <p><strong>Tag</strong> (štítek) je slovo se zavináčem nad Feature nebo Scenario. Umožní spustit jen část testů. Bruno označí celý soubor <code>@regression</code> a dva rychlé scénáře <code>@smoke</code>:</p>
 <div class="kod" data-jazyk="gherkin"><pre><code>@regression
 Feature: Contact Us form functionality
@@ -429,14 +429,14 @@ Feature: Contact Us form functionality
 <div class="kod" data-jazyk="powershell"><pre><code>python -m behave --tags=@smoke          # jen dva smoke scénáře
 python -m behave --tags=@regression     # všech pět (3 řádky Outline + 2 scénáře)</code></pre></div>
 <p>Kombinace tagů se zapisují podle verze Behave různě. Kurz používá Behave 1.2.6 se starou syntaxí. Čárka znamená „nebo“, opakovaná volba <code>--tags</code> znamená „a zároveň“ a vlnovka znamená „ne“: <code>--tags=@smoke,@api</code> nebo <code>--tags=@regression --tags=~@slow</code>. Novější řada Behave 1.3 přijímá čitelné výrazy jako <code>--tags="@regression and not @slow"</code> (neověřeno). Pokud se ti kombinace tagů chová divně, nejdřív zkontroluj <code>pip show behave</code>.</p>
-<h3 id="krok-14-vlastni-runner-l65">Krok 14: Vlastní runner (L65)<a class="kotva" href="#krok-14-vlastni-runner-l65" aria-label="Odkaz na tento oddíl"></a></h3>
+<h3 id="krok-14-vlastni-runner-l65">Krok 14: Vlastní runner (L65)<a class="kotva" href="#krok-14-vlastni-runner-l65" aria-hidden="true" tabindex="-1"></a></h3>
 <p>Psát dlouhé příkazy s volbami je otravné a v CI se snadno udělá překlep. Bruno proto vytvoří <code>custom_runner.py</code>, který zavolá Behave přímo z Pythonu:</p>
 <div class="kod" data-jazyk="python"><pre><code>from behave.__main__ import main as behave_main
 
 if __name__ == "__main__":
     behave_main(["--tags", "@regression"])</code></pre></div>
 <p>Funkce <code>behave_main</code> dostane stejný seznam voleb, jaký bys napsal do příkazové řádky. Výhoda je, že do runneru můžeš přidat logiku. V dalších krocích přibude formát pro Allure a úklid složek. V modulu 12 přibude výběr tagu z Jenkinsu. Runner zatím vrací návratový kód z Behave jen implicitně. Pro CI je lepší napsat <code>raise SystemExit(behave_main([...]))</code>, aby neúspěšné testy vrátily nenulový kód.</p>
-<h3 id="krok-15-reporty-v-allure-l66">Krok 15: Reporty v Allure (L66)<a class="kotva" href="#krok-15-reporty-v-allure-l66" aria-label="Odkaz na tento oddíl"></a></h3>
+<h3 id="krok-15-reporty-v-allure-l66">Krok 15: Reporty v Allure (L66)<a class="kotva" href="#krok-15-reporty-v-allure-l66" aria-hidden="true" tabindex="-1"></a></h3>
 <p>Textový výstup Behave se dobře čte v terminálu, ale špatně se sdílí. <strong>Allure Report</strong> vytvoří z výsledků HTML stránku s přehledem, historií a přílohami. Má dvě části: formátovač pro Behave, který při běhu zapisuje výsledky jako soubory JSON, a nástroj příkazové řádky, který z nich sestaví web.</p>
 <p>Formátovač je balíček <code>allure-behave</code> (už nainstalovaný v kroku 2). V runneru se zapne dvěma volbami:</p>
 <div class="kod" data-jazyk="python"><pre><code>import os
@@ -456,7 +456,7 @@ if __name__ == "__main__":
 allure open reports/allure-report</code></pre></div>
 <p>První příkaz sestaví statický web do <code>reports/allure-report</code>, volba <code>--clean</code> smaže předchozí verzi. Druhý spustí lokální web server a otevře prohlížeč. Server ukončíš klávesami Ctrl+C. Pro rychlé prohlížení stačí jeden příkaz <code>allure serve reports/allure-results</code>, který report sestaví do dočasné složky a rovnou ho otevře.</p>
 <p>Report HTML neotevírej dvojklikem ze souboru. Prohlížeč pak kvůli bezpečnostním pravidlům nenačte data a stránka zůstane prázdná nebo ukazuje „Loading“.</p>
-<h3 id="krok-16-screenshot-pri-selhani-l67">Krok 16: Screenshot při selhání (L67)<a class="kotva" href="#krok-16-screenshot-pri-selhani-l67" aria-label="Odkaz na tento oddíl"></a></h3>
+<h3 id="krok-16-screenshot-pri-selhani-l67">Krok 16: Screenshot při selhání (L67)<a class="kotva" href="#krok-16-screenshot-pri-selhani-l67" aria-hidden="true" tabindex="-1"></a></h3>
 <p>Když UI test selže, první otázka zní: co bylo v tu chvíli na obrazovce? Bruno v <code>after_scenario</code> zjistí, zda scénář selhal, uloží screenshot do složky <code>screenshots</code> a přiloží ho k reportu v Allure:</p>
 <div class="kod" data-jazyk="python"><pre><code>if scenario.status == "failed":
     screenshot_path = f"screenshots/{scenario.name.replace(' ', '_')}.png"
@@ -480,7 +480,7 @@ def after_scenario(context, scenario):
     context.page.close()</code></pre></div>
 <p>Nahrazení všech zvláštních znaků je důležité. Název scénáře z Outline obsahuje dvojtečky, zavináče nebo uvozovky. Některé z těchto znaků Windows v názvu souboru nepovolí. Kurzové <code>replace(' ', '_')</code> řeší jen mezery a navíc předpokládá, že složka <code>screenshots</code> existuje. Bez ní <code>page.screenshot(path=...)</code> skončí chybou.</p>
 <p>Ověření: Bruno záměrně pokazí dva řádky v Examples (přidá do očekávané hlášky „555“). Dva scénáře selžou a v reportu Allure mají u kroku přiložený screenshot. Udělej totéž a pak změnu vrať.</p>
-<h3 id="krok-17-uklid-pred-behem-l68">Krok 17: Úklid před během (L68)<a class="kotva" href="#krok-17-uklid-pred-behem-l68" aria-label="Odkaz na tento oddíl"></a></h3>
+<h3 id="krok-17-uklid-pred-behem-l68">Krok 17: Úklid před během (L68)<a class="kotva" href="#krok-17-uklid-pred-behem-l68" aria-hidden="true" tabindex="-1"></a></h3>
 <p>Každý běh přidává do <code>reports/allure-results</code> nové soubory JSON a do <code>screenshots</code> nové obrázky. Staré výsledky by se v reportu míchaly s novými. Bruno proto do runneru přidá funkci, která složky před během smaže a znovu vytvoří:</p>
 <div class="kod" data-jazyk="python"><pre><code>import shutil
 
@@ -511,15 +511,15 @@ if __name__ == "__main__":
         "--format", "pretty",
     ]))</code></pre></div>
 <p>Spuštění: <code>python custom_runner.py @smoke</code>. Modul 12 tento runner rozšíří o čtení tagu z Jenkinsu.</p>
-<h3 id="kde-ai-v-tomto-frameworku-pomohla-a-kde-ne">Kde AI v tomto frameworku pomohla a kde ne<a class="kotva" href="#kde-ai-v-tomto-frameworku-pomohla-a-kde-ne" aria-label="Odkaz na tento oddíl"></a></h3>
+<h3 id="kde-ai-v-tomto-frameworku-pomohla-a-kde-ne">Kde AI v tomto frameworku pomohla a kde ne<a class="kotva" href="#kde-ai-v-tomto-frameworku-pomohla-a-kde-ne" aria-hidden="true" tabindex="-1"></a></h3>
 <p>Po sedmnácti krocích stojí za to se ohlédnout. AI ve frameworku dělala tři věci. Vygenerovala první verzi scénářů z popisu požadavků. Navrhla šablony implementace pro kroky. A v kurzu ještě radila s nastavením nástrojů, například s instalací Allure.</p>
 <p>Všechny tři výstupy potřebovaly opravu. Scénáře měly hodnoty napevno a chybnou hlášku převzatou z promptu. Kód kroků obsahoval neexistující metody a selektory pro prvky, které na stránce nejsou. Bez spuštění testu a bez pohledu do nástrojů pro vývojáře by framework nefungoval.</p>
 <p>Užitek je přesto reálný. Model ušetřil psaní kostry a Bruno se mohl soustředit na kontrolu. Klíčem je, že framework má jasnou strukturu. Kroky jsou krátké a parametrizované a správa prohlížeče je na jednom místě. Model dostal tuto strukturu v kontextu a jeho návrhy do ní zapadly. Čím chaotičtější framework, tím horší návrhy.</p>
-<h2 id="overeni">Ověření<a class="kotva" href="#overeni" aria-label="Odkaz na tento oddíl"></a></h2>
+<h2 id="overeni">Ověření<a class="kotva" href="#overeni" aria-hidden="true" tabindex="-1"></a></h2>
 <p>Framework je hotový, když z kořene projektu platí všechno níže:</p>
 <ol><li><code>python -m behave --dry-run</code> ukazuje <code>0 undefined</code> u kroků.</li><li><code>python custom_runner.py @regression</code> skončí s výsledkem 1 feature passed a 5 scenarios passed. Kurz uvádí stejný výsledek po L68: tři řádky Scenario Outline a dva samostatné scénáře.</li><li><code>python custom_runner.py @smoke</code> spustí jen dva scénáře, zbytek je skipped.</li><li>Po <code>allure serve reports/allure-results</code> vidíš v reportu pět zelených testů.</li><li>Po záměrném pokažení jednoho řádku v Examples selže právě jeden scénář, v reportu má screenshot a ve složce <code>screenshots</code> je jeden soubor PNG.</li><li>Druhé spuštění runneru začne s prázdnou složkou <code>screenshots</code>.</li><li><code>python run_tests.py</code> nepřepíše existující <code>features/contact_form.feature</code>.</li><li><code>git status</code> neukazuje <code>.env</code>, <code>reports/</code> ani <code>screenshots/</code>.</li></ol>
 <p>Nic z tohoto modulu jsem nespouštěl. Kód kroků, hooků a runneru vychází z příloh kurzu a z dokumentace Playwrightu a Behave. Před prvním během počítej s drobnými opravami, hlavně kolem verzí balíčků.</p>
-<h2 id="caste-chyby">Časté chyby<a class="kotva" href="#caste-chyby" aria-label="Odkaz na tento oddíl"></a></h2>
+<h2 id="caste-chyby">Časté chyby<a class="kotva" href="#caste-chyby" aria-hidden="true" tabindex="-1"></a></h2>
 <p><strong><code>ModuleNotFoundError: No module named 'utils'</code> nebo <code>'config'</code>.</strong> Skript běží z jiné složky, nebo byl spuštěn jako soubor místo modulu. Spouštěj z kořene projektu: <code>python -m utils.analyze_steps</code>. Totéž platí pro Behave. Spuštění <code>python -m behave</code> z kořene přidá aktuální složku do cesty importů, a proto kroky a <code>environment.py</code> najdou <code>utils</code>. Samotný příkaz <code>behave</code> z jiné složky to zaručit nemusí.</p>
 <p><strong>Behave nenajde <code>environment.py</code>.</strong> Soubor musí ležet přímo ve složce <code>features</code>, ne v kořeni projektu ani v <code>features/steps</code>.</p>
 <p><strong><code>AmbiguousStep</code>.</strong> Dva vzory kroků pasují na stejnou větu, například <code>I fill in "{field}"</code> a <code>I fill in "{field}" field with "{value}"</code>. Behave bere první shodu a ohlásí konflikt. Vzory piš tak, aby se nepřekrývaly.</p>
@@ -530,11 +530,11 @@ if __name__ == "__main__":
 <p><strong><code>allure</code> není rozpoznaný příkaz.</strong> Složka <code>bin</code> z rozbaleného Allure chybí v <code>PATH</code>, nebo je potřeba otevřít nový terminál. Po změně <code>PATH</code> se starý terminál nedozví nic.</p>
 <p><strong>Screenshot se neuloží.</strong> Složka <code>screenshots</code> neexistuje, nebo název scénáře obsahuje znak, který Windows v názvu souboru nedovolí.</p>
 <p><strong>Generátor přepsal ručně upravený feature soubor.</strong> Kód zapisuje v režimu <code>"w"</code> místo <code>"x"</code>. Generované soubory nech v gitu, rozdíl pak vždy uvidíš v <code>git diff</code>.</p>
-<h2 id="cviceni">Cvičení<a class="kotva" href="#cviceni" aria-label="Odkaz na tento oddíl"></a></h2>
+<h2 id="cviceni">Cvičení<a class="kotva" href="#cviceni" aria-hidden="true" tabindex="-1"></a></h2>
 <aside class="vsuvka vsuvka--cviceni" id="praxe-10-bdd-framework-behave-playwright-ai-rozsir-examples-o-techniky-navrhu-testu" data-stitek="Cvičení" aria-label="Cvičení"><p class="praxe-blok-nazev">Rozšiř Examples o techniky návrhu testů</p><p>Cíl: použít AI na test design a výsledek ověřit spuštěním. Požádej model o nové řádky tabulky Examples pro pole Email: třídy ekvivalence a hraniční případy (chybí @, chybí doména, dvě zavináče, mezera, velmi dlouhá adresa). Do promptu dej stávající tabulku jako vzor (few-shot). Hotovo: tabulka má aspoň pět nových řádků, každý jsi spustil a u řádků, kde se skutečné chování stránky liší od návrhu modelu, jsi opravil očekávaný výsledek podle stránky a zapsal, kde se model mýlil.</p><p class="praxe-cviceni-pata" data-nepocitat><label class="zk-volba praxe-hotovo"><input type="checkbox" data-praxe-hotovo="praxe-10-bdd-framework-behave-playwright-ai-rozsir-examples-o-techniky-navrhu-testu"> Hotovo</label></p></aside>
 <aside class="vsuvka vsuvka--cviceni" id="praxe-10-bdd-framework-behave-playwright-ai-druhy-feature-soubor-pro-login-portal" data-stitek="Cvičení" aria-label="Cvičení"><p class="praxe-blok-nazev">Druhý feature soubor pro Login Portal</p><p>Cíl: ověřit, že framework je opravdu znovupoužitelný. Přidej do <code>config/prompts.py</code> prompt <code>login_form</code> (Bruno ho má v L43), vygeneruj <code>features/login.feature</code> a doplň kroky. Využij existující kroky, kde to jde. Hotovo: <code>python -m behave --dry-run</code> hlásí 0 undefined, nové kroky jsou nejvýš tři, scénáře projdou a jsou označené tagem <code>@login</code>. Stránka zobrazuje výsledek přihlášení v dialogovém okně prohlížeče, takže budeš potřebovat <code>page.on("dialog", ...)</code>. Zjisti to z dokumentace Playwrightu, ne od modelu, a porovnej to s tím, co navrhne <code>analyze_steps</code>.</p><p class="praxe-cviceni-pata" data-nepocitat><label class="zk-volba praxe-hotovo"><input type="checkbox" data-praxe-hotovo="praxe-10-bdd-framework-behave-playwright-ai-druhy-feature-soubor-pro-login-portal"> Hotovo</label></p></aside>
 <aside class="vsuvka vsuvka--cviceni" id="praxe-10-bdd-framework-behave-playwright-ai-zmer-kolik-navrhu-z-ai-bylo-pouzitelnych" data-stitek="Cvičení" aria-label="Cvičení"><p class="praxe-blok-nazev">Změř, kolik návrhů z AI bylo použitelných</p><p>Cíl: mít vlastní data o kvalitě generovaného kódu. Smaž implementaci čtyř kroků (nech <code>print("TO DO!")</code>) a spusť svou variantu <code>analyze_steps</code> třikrát. Hotovo: tabulka pro každý krok a běh se sloupci „funguje beze změny“, „funguje po drobné opravě“, „nefunguje“ a „typ chyby“ (selektor, neexistující metoda, chybějící aserce). Jedna věta závěru, která úprava promptu by pomohla nejvíc.</p><p class="praxe-cviceni-pata" data-nepocitat><label class="zk-volba praxe-hotovo"><input type="checkbox" data-praxe-hotovo="praxe-10-bdd-framework-behave-playwright-ai-zmer-kolik-navrhu-z-ai-bylo-pouzitelnych"> Hotovo</label></p></aside>
-<h2 id="souvislost-se-sylabem-ct-genai">Souvislost se sylabem CT-GenAI<a class="kotva" href="#souvislost-se-sylabem-ct-genai" aria-label="Odkaz na tento oddíl"></a></h2>
+<h2 id="souvislost-se-sylabem-ct-genai">Souvislost se sylabem CT-GenAI<a class="kotva" href="#souvislost-se-sylabem-ct-genai" aria-hidden="true" tabindex="-1"></a></h2>
 <p>Celý modul je praktickou ukázkou oddílu 2.2.2 (návrh testů a implementace testování s GenAI). AI v něm převádí požadavky na scénáře v Gherkinu a scénáře na kód kroků. Sylabus výslovně uvádí generování BDD scénářů a testovacích skriptů jako příklad. Oddíl 2.2.3 (automatizované regresní testování s GenAI) odpovídá krokům 9 a 10. Model navrhuje kód pro existující framework, a proto potřebuje znát jeho konvence: kde vzniká prohlížeč, jak se jmenuje stránka v kontextu, jak vypadají aserce. Proměnná <code>environment_context</code> je přesně ta komponenta Context, kterou oddíl 2.1.1 popisuje v struktuře promptu. Vzorová tabulka Examples ve cvičení 1 je few-shot prompting z oddílu 2.1.2.</p>
 <p>Revize návrhů v kroku 10 je kapitola 3 v praxi. Neexistující metoda <code>value()</code> a výjimka <code>Error.TimeoutError</code> jsou halucinace z oddílu 3.1.1. Selektory pro prvky <code>&lt;button&gt;</code>, které na stránce nejsou, jsou chyba v uvažování: model z běžného vzoru odvodil nesprávný závěr o konkrétní stránce. Spuštění testu a pohled do nástrojů pro vývojáře jsou techniky odhalení z oddílu 3.1.2. Doplnění pravidel do promptu (používej jen existující metody, Then musí mít aserci) jsou opatření z oddílu 3.1.3. Nastavení nízké teploty v L52 souvisí s nedeterministickým chováním z oddílu 3.1.4.</p>
 <p>Cvičení 3 je jednoduché měření kvality výstupu podle oddílu 2.3.1 a následné ladění promptu podle oddílu 2.3.2. Upozornění na kód a selektory klienta v cloudových modelech odpovídá rizikům z oddílu 3.2.1.</p>

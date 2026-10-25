@@ -227,9 +227,16 @@ class _Prevod:
             if term:
                 v.pojmy.append(term)
                 ident = f' id="{self.unikatni("pojem-" + slug(term))}"'
-                hlava = f'<p class="pojem-term">{inline(term)}</p>'
+                hlava = f'<strong class="pojem-term">{inline(term)}</strong> – '
+            # Termín patří do prvního odstavce definice. Samostatný anglický odstavec
+            # zasekával Číst nahlas v Edge (přepíná jazyk hlasu).
+            telo = self.bloky(vnitrek)
+            if hlava and telo.startswith("<p>"):
+                telo = "<p>" + hlava + telo[3:]
+            elif hlava:
+                telo = f"<p>{hlava.rstrip(' –')}</p>{telo}"
             return (f'<aside class="vsuvka vsuvka--pojem"{ident} data-stitek="{stitek}" aria-label="{stitek}">'
-                    f"{hlava}{self.bloky(vnitrek)}</aside>")
+                    f"{telo}</aside>")
         return (f'<aside class="vsuvka vsuvka--{druh}" data-stitek="{stitek}" aria-label="{stitek}">'
                 f"{self.bloky(vnitrek)}</aside>")
 
@@ -269,7 +276,7 @@ class _Prevod:
         kotva = self.unikatni(kotva_oddilu(cislo) if cislo else slug(text))
         if uroven <= 3:
             v.oddily.append(Oddil(uroven=uroven, cislo=cislo, text=text, kotva=kotva))
-        znak = "" if uroven > 3 else f'<a class="kotva" href="#{kotva}" aria-label="Odkaz na tento oddíl"></a>'
+        znak = "" if uroven > 3 else f'<a class="kotva" href="#{kotva}" aria-hidden="true" tabindex="-1"></a>'
         return f'<h{uroven} id="{kotva}">{inline(text)}{znak}</h{uroven}>'
 
     def bloky(self, radky: list[str]) -> str:
